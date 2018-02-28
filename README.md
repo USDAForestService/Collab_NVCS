@@ -95,7 +95,7 @@ develops new keys for the West.
 4. Make sure your Windows ORACLE_HOME environment variable is set otherwise cx_Oracle may fail to resolve 
    the net service name.  I set the value to: C:\oracle\product\11.2.0\client
 
-5. Test the database connection and the NVCS program:
+5. Test the database connection:
 
    Open a command prompt and type:
 
