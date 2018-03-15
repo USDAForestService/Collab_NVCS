@@ -6,10 +6,52 @@ classification variable describing the present vegetative community (very
 similar to forest type). NVCS stands for National Vegetation Classification 
 Standard.
 
-Separate steps are required to export FIA data, run those data through the 
-Python Code, then import the results into NIMS. Data initially will be 
-available only for eastern US forested P2 plots, with hope for adding western 
-plots later.
+Data initially will be available only for eastern U.S. forested P2 plots.
+
+## Dependencies
+- Python 3
+- Cx_Oracle Python module for Oracle 11g
+
+## Set-Up
+1. Download and install Python 3.6.3:
+
+   - Go to [python.org](https://www.python.org/downloads/release/python-363/ "Python 3.6.3") 
+   and download the "Windows x86 executable installer" (the file name is python-3.6.3.exe).  
+   
+   - Run the installer.
+   
+2. Download and install cx_Oracle:
+
+   - Go to [pypi.python.org](https://pypi.python.org/pypi/cx_Oracle "Cx_Oracle Downloads")
+   and download the wheel file cx_Oracle-6.0.3-cp36-cp36m-win32.whl
+
+   - Open a command prompt and type:
+   ```
+   <MY_PYTHON_DIR>\python -m pip install <MY_DOWNLOAD_DIR>\cx_Oracle-6.0.3-cp36-cp36m-win32.whl
+   ```
+   where <MY_PYTHON_DIR> is your Python 3.6.3 installation directory
+     and <MY_DOWNLOAD_DIR> is the download directory for your cx_Oracle wheel file
+     
+3. Extract the attached zip file.  I extracted it to C:\NVCS_EAST.  It should contain one folder, nvcs.
+
+4. Make sure your Windows ORACLE_HOME environment variable is set otherwise cx_Oracle may fail to resolve 
+   the net service name.  I set the value to: C:\oracle\product\11.2.0\client
+
+5. Test the database connection:
+
+   - Open a command prompt and type:
+    `cd C:\NVCS_EAST` (or whatever you called it), then 
+    `python`.
+
+   You should see the prompt >>> and the version number 3.6.3.
+
+   - Next, test the database connection:
+    ```python
+    >>> import cx_Oracle
+    >>> con = cx_Oracle.connect('your_username/your_password@LUPE01P')
+    #If you get the >>> back then it worked and you can close the connection:
+    >>> con.close()
+    ```
 
 ## Background
 
@@ -66,46 +108,3 @@ code changes including restructuring of the hierarchy. Likewise, it will be
 easy to extend the key (e.g. include the Western U.S.) or develop a separate 
 key for another region of interest (e.g. a single state) – once NatureServe 
 develops new keys for the West.
-
-## Dependencies
-- Python 3
-- Cx_Oracle Python module for Oracle 11g
-
-## Set-Up
-1. Download and install Python 3.6.3:
-
-   Go to https://www.python.org/downloads/release/python-363/ 
-   and download the "Windows x86 executable installer" (the file name is python-3.6.3.exe).  
-   
-   Run the installer.
-   
-2. Download and install cx_Oracle:
-
-   Go to https://pypi.python.org/pypi/cx_Oracle
-   and download the wheel file cx_Oracle-6.0.3-cp36-cp36m-win32.whl
-
-   Open a command prompt and type:
-   
-   <MY_PYTHON_DIR>\python -m pip install <MY_DOWNLOAD_DIR>\cx_Oracle-6.0.3-cp36-cp36m-win32.whl
-   where <MY_PYTHON_DIR> is your Python 3.6.3 installation directory
-     and <MY_DOWNLOAD_DIR> is the download directory for your cx_Oracle wheel file
-     
-3. Extract the attached zip file.  I extracted it to C:\NVCS_PROJECT.  It should contain one folder, nvcs.
-
-4. Make sure your Windows ORACLE_HOME environment variable is set otherwise cx_Oracle may fail to resolve 
-   the net service name.  I set the value to: C:\oracle\product\11.2.0\client
-
-5. Test the database connection:
-
-   Open a command prompt and type:
-
-cd C:\NVCS_PROJECT (or whatever you called it)
-  python
-
-   You should see the prompt >>> and the version number 3.6.3.
-
-   Next test the database connection:
-   >>> import cx_Oracle
-   >>> con = cx_Oracle.connect('your_username/your_password@LUPE01P')
-   If you get the >>> back then it worked and you can close the connection:
-   >>> con.close()
