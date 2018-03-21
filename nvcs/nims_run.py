@@ -47,9 +47,6 @@ def lookup_nvcs_hierarchy_struct_cn(schema_name, con, node_id, stdorgcd):
         cur.close()
         return (rnvcshs_cn, confidence)
 
-def expand_hierarchy(cur, cnd_cn):
-    pass
-
 def update_nims_cond_nvcs_tbl(schema_name, con, cnd_cn, node_id, stdorgcd):
     cur = con.cursor()
     (rnvcshs_cn, confidence) = lookup_nvcs_hierarchy_struct_cn(schema_name, con, node_id, stdorgcd)
@@ -58,7 +55,6 @@ def update_nims_cond_nvcs_tbl(schema_name, con, cnd_cn, node_id, stdorgcd):
     #print("cnd_cn=%s, rnvcshs_cn=%s, confidence=%s" % (cnd_cn, rnvcshs_cn, confidence))
     cur.execute("delete from " + schema_name + ".nims_cond_nvcs_tbl where cnd_cn=:p_cnd_cn", p_cnd_cn = cnd_cn)
     cur.execute("insert into " + schema_name + ".nims_cond_nvcs_tbl (cnd_cn, rnvcshs_cn, confidence, publish) select :p_cnd_cn, cn, :p_confidence, 'Y' from " + schema_name + ".ref_nvcs_hierarchy_strct start with cn = :p_rnvcshs_cn connect by prior parent_cn = cn", p_cnd_cn=cnd_cn, p_rnvcshs_cn=rnvcshs_cn, p_confidence=confidence)
-    expand_hierarchy(cur, cnd_cn)
     cur.close()
 
 class Timer:
