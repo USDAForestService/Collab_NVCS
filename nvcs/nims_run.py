@@ -84,6 +84,7 @@ def driver_update_mode(con, schema_name, statecd, invyr, countycd, plot):
             "       END ecoregion_status" +\
             "  FROM " + schema_name + ".nims_plot_vw plt, " + schema_name + ".nims_cond_vw cnd" +\
             " WHERE cnd.plt_cn = plt.cn" +\
+            "   AND " + schema_name + ".nims_utils.get_state_rscd(plt.statecd) in (23, 24, 33)" +\
             "   AND plt.statecd=" + str(statecd) +\
             "   AND plt.invyr=" + str(invyr)
     if countycd is not None:
