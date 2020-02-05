@@ -187,7 +187,7 @@ def driver(connect_string, schema_name, mode, statecd, invyr, countycd = None, p
                 driver_delete_mode(con, schema_name, statecd, invyr, countycd, plot)
             else:
                 print(mode.upper() + " is not a valid mode.  The parameter value must be 'UPDATE' or 'DELETE'.")
-            #con.commit()
+            con.commit()
     print("%.03f sec.\n" % t.interval)
 
 if __name__ == '__main__':
