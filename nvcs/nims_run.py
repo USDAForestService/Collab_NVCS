@@ -59,11 +59,11 @@ def update_nims_cond_nvcs_tbl(schema_name, con, cnd_cn, node_id, stdorgcd):
 
 class Timer:
     def __enter__(self):
-        self.start = time.clock()
+        self.start = time.monotonic()
         return self
 
     def __exit__(self, *args):
-        self.end = time.clock()
+        self.end = time.monotonic()
         self.interval = self.end - self.start
 
 def driver_update_mode(con, schema_name, statecd, invyr, countycd, plot):
@@ -96,8 +96,7 @@ def driver_update_mode(con, schema_name, statecd, invyr, countycd, plot):
     ecoregion_not_supported_count = 0
     skipped_count = 0
 
-    print("Run parameters: (schema_name=%s, statecd=%d, invyr=%d, countycd=%s, plot=%s)" % (
-        schema_name, statecd, invyr, "" if countycd is None else str(countycd), "" if plot is None else str(plot)))
+    print(f"Run parameters: (schema_name={schema_name}, statecd={statecd}, invyr={invyr}, countycd={countycd!s}, plot={plot!s})")
     #print("SELECT statement: " + ' '.join(sql.split()))
     print("Updating " + schema_name + "." + "NIMS_COND_NVCS_TBL... ", end='', flush=True)
 
@@ -142,12 +141,12 @@ def driver_update_mode(con, schema_name, statecd, invyr, countycd, plot):
 
     print("done.")
     print("Run summary:")
-    print("%6d forested conditions were assigned an NVCS code" % success_count)
-    print("%6d forested conditions were assigned an NVCS code of %d because the algorithm failed to produce a classification" % (failure_count, NID_ALGORITHM_FAILED))
-    print("%6d forested conditions were assigned an NVCS code of %d because the eco-subsection is not supported by the algorithm" % (ecoregion_not_supported_count, NID_ECOREGION_NOT_SUPPORTED))
-    print("%6d conditions were skipped because the status is not forested" % skipped_count)
+    print(f"{success_count: 6d} forested conditions were assigned an NVCS code")
+    print(f"{failure_count: 6d} forested conditions were assigned an NVCS code of {NID_ALGORITHM_FAILED:d} because the algorithm failed to produce a classification")
+    print(f"{ecoregion_not_supported_count:6d} forested conditions were assigned an NVCS code of {NID_ECOREGION_NOT_SUPPORTED:d} because the eco-subsection is not supported by the algorithm")
+    print(f"{skipped_count: 6d} conditions were skipped because the status is not forested")
     print(" -----")
-    print("%6d conditions were processed in " % condition_count, end='')
+    print(f"{condition_count: 6d} conditions were processed in ", end='')
 
 def driver_delete_mode(con, schema_name, statecd, invyr, countycd, plot):
     innersql = "SELECT cn FROM " + schema_name + ".nims_cond_vw WHERE statecd=" + str(statecd) + " AND invyr=" + str(invyr)
@@ -157,8 +156,7 @@ def driver_delete_mode(con, schema_name, statecd, invyr, countycd, plot):
         innersql= innersql + " AND plot=" + str(plot)
     sql = "DELETE FROM " + schema_name + ".nims_cond_nvcs_tbl WHERE cnd_cn IN (" + innersql + ")"
 
-    print("Run parameters: (schema_name=%s, statecd=%d, invyr=%d, countycd=%s, plot=%s)" % (
-        schema_name, statecd, invyr, "" if countycd is None else str(countycd), "" if plot is None else str(plot)))
+    print(f"Run parameters: (schema_name={schema_name}, statecd={statecd}, invyr={invyr}, countycd={countycd!s}, plot={plot!s})")
     print("DELETE statement: " + ' '.join(sql.split()))
     print("Deleting from " + schema_name + ".NIMS_COND_NVCS_TBL... ", end='', flush=True)
 
@@ -170,7 +168,7 @@ def driver_delete_mode(con, schema_name, statecd, invyr, countycd, plot):
         cur.close()
 
     print("done.")
-    print("%d rows were deleted in " % rowcount, end='')
+    print(f"{rowcount:d} rows were deleted in ", end='')
 
 def driver(connect_string, schema_name, mode, statecd, invyr, countycd = None, plot = None):
     global logfile
@@ -188,7 +186,7 @@ def driver(connect_string, schema_name, mode, statecd, invyr, countycd = None, p
             else:
                 print(mode.upper() + " is not a valid mode.  The parameter value must be 'UPDATE' or 'DELETE'.")
             con.commit()
-    print("%.03f sec.\n" % t.interval)
+    print("{0:.03f} sec.\n".format(t.interval))
 
 if __name__ == '__main__':
     #from nvcs.nims_run import driver
@@ -208,4 +206,3 @@ if __name__ == '__main__':
     print()
     print("5. Load 2009 Kansas at PROD using OS authentication:")
     print("driver('/@fia01p', 'fs_nims_nrs', 'UPDATE', 20, 2009)")
-
