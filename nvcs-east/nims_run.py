@@ -6,8 +6,10 @@ from nvcs.key_eastern_us import Tree
 from nvcs.classifier import Classifier
 import logging
 import time
+from datetime import date
 
-__version__ = "1.0"
+__version__ = "1.3"
+__version_date__ = date.fromisoformat('2021-11-21')
 
 logfile = "nvcs-debug.log"
 
@@ -111,7 +113,7 @@ def driver_update_mode(con, schema_name, statecd, invyr, countycd, plot):
             if cond_status_cd == 1: # forested
                 if ecoregion_status == 'supported': # compute an NVCS code
                     (cond, trees) = fetch_nims_nvcs_input(schema_name, con, cnd_cn)
-                    if cond is not None and trees is not None:
+                    if cond and trees:
                         plot = Plot(*cond)
                         plot.trees = []
                         for t in trees:
