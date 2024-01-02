@@ -1,7 +1,7 @@
 import collections
-from nvcs.classifier import Node
-from nvcs.pattern import Pattern
-from nvcs.pattern import PatternList
+from classifier import Node
+from pattern import Pattern
+from pattern import PatternList
 import logging
 
 class Plot:
