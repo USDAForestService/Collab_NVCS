@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Natural and Ruderal Forests",
+
+   "id":
+      "Natural and Ruderal Forests",
+
+   "level":
+      "division",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

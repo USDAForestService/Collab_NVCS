@@ -1,0 +1,30 @@
+{"node": {
+
+   "name":
+      "Exotic Southern Hardwood Plantation Cultural Type (CTY019)",
+
+   "id":
+      "Exotic Southern Hardwood Plantation Cultural Type (CTY019)",
+
+   "level":
+      "type",
+
+   "description": [
+      "Tree species not as above.  Stands found in ecodivisions 230,",
+      "M230, 310 and ecoprovince 255. [note -if there are common exotic hardwood",
+      "plantation species types in the south, they should be listed here, and",
+      "additional couplets added below]."
+   ],
+
+   "trigger": [
+      "match(SOUTHERN_REGION)"
+   ],
+
+   "filters": {
+      "SOUTHERN_REGION": [
+        {"ecoregion": "230, M230, 310, 255"}
+      ]
+   }
+
+}}
+

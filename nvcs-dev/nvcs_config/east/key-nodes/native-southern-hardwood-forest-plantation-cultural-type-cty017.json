@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Native Southern Hardwood Forest Plantation Cultural Type (CTY017)",
+
+   "id":
+      "Native Southern Hardwood Forest Plantation Cultural Type (CTY017)",
+
+   "level":
+      "type",
+
+   "description": [
+      "Stands found in ecodivisions 230, M230, 310 and ecoprovince 255."
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "230, M230, 310, 255"}
+      ]
+   }
+
+}}
+

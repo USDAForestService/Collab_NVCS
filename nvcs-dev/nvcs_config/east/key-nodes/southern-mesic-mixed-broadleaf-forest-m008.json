@@ -1,0 +1,84 @@
+{"node": {
+
+   "name":
+      "Southern Mesic Mixed Broadleaf Forest (M008)",
+
+   "id":
+      "Southern Mesic Mixed Broadleaf Forest (M008)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      " i. Tree composition dominated by one or more of Acer barbatum, Aesculus pavia, Fagus grandifolia,",
+      "    Halesia diptera, Ilex opaca, Magnolia acuminata, Magnolia grandiflora, Magnolia virginiana,",
+      "    Pinus glabra, Quercus michauxii, Quercus pagoda, Quercus phellos, Quercus shumardii,",
+      "    Sabal palmetto, Tilia spp., Tilia americana, Tilia americana var. heterophylla,",
+      "    Tilia americana var. caroliniana (>=50% RIV)",
+      "OR",
+      "ii. Tree composition as above, but with >=20% RIV; AND other species [in the context of",
+      "    EcoProvince 232] are any combination of Acer rubrum, Aesculus pavia, Carpinus caroliniana,",
+      "    Carya alba, Celtis spp., Celtis laevigata, Cornus florida, Diospyros virginiana,",
+      "    Fraxinus americana, Halesia spp., Halesia carolina (=H. tetraptera), Liquidambar styraciflua,",
+      "    Liriodendron tulipifera, Magnolia macrophylla, Nyssa sylvatica, Ostrya virginiana,",
+      "    Oxydendrum arboreum, Quercus alba, Quercus falcata, Quercus muehlenbergii, Quercus rubra,",
+      "    Quercus virginiana, Quercus nigra, Juniperus spp., Pinus taeda (together >=50% RIV)"
+   ],
+
+   "trigger": [
+      "    riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
+      "or (riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and riv(STRONG_MESIC_DIAGNOSTICS) + riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)"
+   ],
+
+   "filters": {
+      "STRONG_MESIC_DIAGNOSTICS": [
+        {"species": "Acer barbatum"},
+        {"species": "Aesculus pavia"},
+        {"species": "Fagus grandifolia"},
+        {"species": "Halesia diptera"},
+        {"species": "Ilex opaca"},
+        {"species": "Magnolia acuminata"},
+        {"species": "Magnolia grandiflora"},
+        {"species": "Magnolia virginiana"},
+        {"species": "Pinus glabra"},
+        {"species": "Quercus michauxii"},
+        {"species": "Quercus pagoda"},
+        {"species": "Quercus phellos"},
+        {"species": "Quercus shumardii"},
+        {"species": "Sabal palmetto"},
+        {"species": "Tilia spp."},
+        {"species": "Tilia americana"},
+        {"species": "Tilia americana var. heterophylla"},
+        {"species": "Tilia americana var. caroliniana"}
+      ],
+      "MODERATE_MESIC_DIAGNOSTICS": [
+        {"species": "Acer rubrum"},
+        {"species": "Aesculus pavia"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Carya alba"},
+        {"species": "Celtis spp."},
+        {"species": "Celtis laevigata"},
+        {"species": "Cornus florida"},
+        {"species": "Diospyros virginiana"},
+        {"species": "Fraxinus americana"},
+        {"species": "Halesia spp."},
+        {"species": "Halesia carolina"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Liriodendron tulipifera"},
+        {"species": "Magnolia macrophylla"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Oxydendrum arboreum"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus muehlenbergii"},
+        {"species": "Quercus rubra"},
+        {"species": "Quercus virginiana"},
+        {"species": "Quercus nigra"},
+        {"species": "Juniperus spp."},
+        {"species": "Pinus taeda"}
+      ]
+   }
+
+}}
+

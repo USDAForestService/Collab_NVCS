@@ -1,0 +1,74 @@
+{"node": {
+
+   "name":
+      "Central Hardwood Swamp Forest (M503)",
+
+   "id":
+      "Central Hardwood Swamp Forest (M503)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      " i. Tree composition dominated by one or more of of STRONG CENTRAL SWAMP DIAGNOSTICS",
+      "    Fraxinus nigra, Larix laricina, Nyssa sylvatica, Quercus bicolor, Quercus palustris,",
+      "    Quercus phellos, Quercus shumardii, Salix amygdaloides, Thuja occidentalis,",
+      "    Tsuga canadensis or Picea rubens (>=50% RIV);",
+      "OR",
+      "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of",
+      "    MODERATE DIAGNOSTICS Acer rubrum, Acer saccharum, Acer saccharinum, Acer spicatum,",
+      "    Betula alleghaniensis, Carpinus caroliniana, Carya cordiformis, Fagus grandifolia,",
+      "    Fraxinus pennsylvanica, Liriodendron tulipifera, Liquidambar styraciflua, Morus spp.,",
+      "    Morus rubra, Ostrya virginiana, Quercus alba, Quercus macrocarpa, Populus balsamifera,",
+      "    Populus tremuloides, Salix bebbiana, Salix nigra, Tilia americana, Ulmus americana",
+      "    (together >=50% RIV)."
+   ],
+
+   "trigger": [
+      "    riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS) >= 50",
+      "or (    riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS) >= 20",
+      "    and riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+   ],
+
+   "filters": {
+      "STRONG_CENTRAL_SWAMP_DIAGNOSTICS": [
+        {"species": "Fraxinus nigra"},
+        {"species": "Larix laricina"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Quercus bicolor"},
+        {"species": "Quercus palustris"},
+        {"species": "Quercus phellos"},
+        {"species": "Quercus shumardii"},
+        {"species": "Salix amygdaloides"},
+        {"species": "Thuja occidentalis"},
+        {"species": "Tsuga canadensis"},
+        {"species": "Picea rubens"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer rubrum"},
+        {"species": "Acer saccharum"},
+        {"species": "Acer saccharinum"},
+        {"species": "Acer spicatum"},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Carya cordiformis"},
+        {"species": "Fagus grandifolia"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Liriodendron tulipifera"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Morus spp."},
+        {"species": "Morus rubra"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Populus balsamifera"},
+        {"species": "Populus tremuloides"},
+        {"species": "Salix bebbiana"},
+        {"species": "Salix nigra"},
+        {"species": "Tilia americana"},
+        {"species": "Ulmus americana"}
+      ]
+   }
+
+}}
+

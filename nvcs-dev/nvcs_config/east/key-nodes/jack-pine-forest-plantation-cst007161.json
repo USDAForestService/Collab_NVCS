@@ -1,0 +1,36 @@
+{"node": {
+
+   "name":
+      "Jack Pine Forest Plantation (CST007161)",
+
+   "id":
+      "Jack Pine Forest Plantation (CST007161)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "Tree composition dominated by Pinus banksiana >= 25% RIV,",
+      "and exceeds each species of Pinus resinosa and Pinus strobus."
+   ],
+
+   "trigger": [
+      "    riv(JACK_PINE) >= 25",
+      "and riv(JACK_PINE) > riv(RED_PINE)",
+      "and riv(JACK_PINE) > riv(WHITE_PINE)"
+   ],
+
+   "filters": {
+      "JACK_PINE": [
+        {"species": "Pinus banksiana"}
+      ],
+      "RED_PINE": [
+        {"species": "Pinus resinosa"}
+      ],
+      "WHITE_PINE": [
+        {"species": "Pinus strobus"}
+      ]
+   }
+
+}}
+

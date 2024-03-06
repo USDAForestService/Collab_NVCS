@@ -1,0 +1,56 @@
+{"node": {
+
+   "name":
+      "Intermountain Pinyon-Juniper Woodland (M896)",
+
+   "id":
+      "M896",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION M242C, 342, M332, M261D, M261E, M261G, 315, 313,",
+		"M313, 321, M331D, M331E, M331F, M331G, M331H, M331I, M331J, 341, M262B,",
+		"322, 331I, 331J, M333, M341,",
+		"AND tree composition dominated by one or more of STRONG DIAGNOSTIC",
+		"species Juniperus occidentalis, Juniperus osteosperma, Pinus monophylla,",
+		"or Cercocarpus ledifolius (RIV=>20%), ",
+      "OR",
+        "ii. Located in above ECOREGION, and tree composition as above,",
+		"but with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of Juniperus californica, Pinus edulis, Pinus jeffreyi",
+		"Juniperus grandis, Juniperus monosperma, Juniperus scopulorum, and Pinus ponderosa",
+		"or [PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES]",
+		"(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "M242C, 342, M332, M261D, M261E, M261G, 315, 313, M313, 321, M331D, M331E, M331F, M331G, M331H, M331I, M331J, 341, M262B, 322, 331I, 331J, M333, M341"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Juniperus occidentalis"},
+		{"species": "Juniperus osteosperma"},
+		{"species": "Pinus monophylla"},
+		{"species": "Cercocarpus ledifolius"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Juniperus californica"},
+		{"species": "Pinus edulis"},
+		{"species": "Pinus jeffreyi"},
+		{"species": "Juniperus grandis"},
+		{"species": "Juniperus monosperma"},
+		{"species": "Juniperus scopulorum"},
+		{"species": "Pinus ponderosa"}
+      ]
+   }
+
+}}

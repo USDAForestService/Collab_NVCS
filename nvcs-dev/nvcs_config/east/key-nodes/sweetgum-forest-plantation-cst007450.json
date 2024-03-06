@@ -1,0 +1,32 @@
+{"node": {
+
+   "name":
+      "Sweetgum Forest Plantation Subtype (CST007450)",
+
+   "id":
+      "Sweetgum Forest Plantation Subtype (CST007450)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "Tree composition dominated by Liquidambar styraciflua >=25% RIV,",
+      "and exceeds species of Liriodendron tulipifera."
+   ],
+
+   "trigger": [
+      "    riv(SWEETGUM) >= 25",
+      "and riv(SWEETGUM) > riv(TULIPTREE)"
+   ],
+
+   "filters": {
+      "SWEETGUM": [
+        {"species": "Liquidambar styraciflua"}
+      ],
+      "TULIPTREE": [
+        {"species": "Liriodendron tulipifera"}
+      ]
+   }
+
+}}
+

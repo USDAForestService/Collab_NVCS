@@ -1,0 +1,67 @@
+{"node": {
+
+   "name":
+      "Southwest Warm Desert Riparian Forest (G109)",
+
+   "id":
+      "G109",
+
+   "level":
+      "group",
+
+   "description": [
+      "i. Located in ECOREGION M313, 313C, 315A, 315B, 315H, 321, 322 and",
+	  "tree composition dominated by one or more of STRONG DIAGNOSTIC",
+	  "species Alnus oblongifolia, Fraxinus velutina, Juglans major,",
+	  "Juglans microcarpa, Platanus wrightii, Populus fremontii,",
+	  "Salix gooddingii, Salix lasiolepis, or Washingtonia filifera",
+	  "(RIV=>50%),",
+       "OR",
+      "ii. Located in above ECOREGION, and tree composition as above, but",
+	  "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+	  "combination of Acer grandidentatum, Acer negundo, Celtis laevigata,",
+	  "Hesperocyparis arizonica, Populus angustifolia, Populus deltoides,",
+	  "Prosopis glandulosa, Prosopis velutina, Quercus arizonica,",
+	  "Quercus emoryi, Quercus oblongifolia, or Robinia neomexicana",
+	  "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species",
+	  "RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "M313, 313C, 315A, 315B, 315H, 321, 322"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+	    {"species": "Alnus oblongifolia"},
+		{"species": "Fraxinus velutina"},
+		{"species": "Juglans major"},
+	    {"species": "Juglans microcarpa"},
+		{"species": "Platanus wrightii"},
+		{"species": "Populus fremontii"},
+	    {"species": "Salix gooddingii"},
+		{"species": "Salix lasiolepis"},
+		{"species": "Washingtonia filifera"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+	    {"species": "Acer grandidentatum"},
+		{"species": "Acer negundo"},
+		{"species": "Celtis laevigata"},
+	    {"species": "Hesperocyparis arizonica"},
+		{"species": "Populus angustifolia"},
+		{"species": "Populus deltoides"},
+	    {"species": "Prosopis glandulosa"},
+		{"species": "Prosopis velutina"},
+		{"species": "Quercus arizonica"},
+	    {"species": "Quercus emoryi"},
+		{"species": "Quercus oblongifolia"},
+		{"species": "Robinia neomexicana"}
+      ]
+   }
+
+}}

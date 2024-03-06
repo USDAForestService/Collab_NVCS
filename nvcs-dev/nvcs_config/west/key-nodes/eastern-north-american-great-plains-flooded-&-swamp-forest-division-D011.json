@@ -1,0 +1,62 @@
+{"node": {
+
+   "name":
+      "Eastern North American-Great Plains Flooded & Swamp Forest Division (D011)",
+
+   "id":
+      "D011",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition and ecology matching one of the following options:",
+      "i. Located in ECOREGION ECOREGION 332, M334, 331 – exclude 331A, ",
+      "AND",
+      "ii. EITHER",
+        "a. Tree composition dominated by one or more of STRONG diagnostic tree species",
+        "Celtis occidentalis, Fraxinus pennsylvanica, Populus deltoides,",
+		"Salix nigra or Salix amygdaloides (=>50% RIV),",
+      "OR",
+        "b. The above tree species, but with =>20% RIV AND other MODERATE diagnostic species any combination of",
+        "Acer negundo, Acer saccharinum, Celtis laevigata, Platanus occidentalis, or Ulmus americana",
+		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+	  "OR",
+		"c. Any EXOTIC = yes tree species =>80% RIV"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and not match(ECOREGIONS_EXCL) and",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or",
+	  "riv(EXOTIC_TREE_SPP) >=80 )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "332, M334, 331"}
+      ],
+      "ECOREGIONS_EXCL": [
+        {"ecoregion": "331A"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Celtis occidentalis"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Populus deltoides"},
+        {"species": "Salix nigra"},
+		{"species": "Salix amygdaloides"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer negundo"},
+        {"species": "Acer saccharinum"},
+        {"species": "Celtis laevigata"},
+        {"species": "Platanus occidentalis"},
+        {"species": "Ulmus americana"}
+      ],
+	  "EXOTIC_TREE_SPP": [
+	    {"exotic": "yes"}
+	  ]
+   }
+
+}}
+

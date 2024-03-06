@@ -1,0 +1,33 @@
+{"node": {
+
+   "name":
+      "Interior West Ruderal Flooded & Swamp Forest & Woodland (M298)",
+
+   "id":
+      "M298",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Vegetation dominated by ruderal vegetation (nonnative invasive or",
+	  "weedy native vegetation that invades natural stands or vegetation",
+	  "that dominates on formerly cleared and/or planted sites but which",
+	  "has been allowed to succeed more-or-less spontaneously). Tree",
+	  "composition dominated by ruderal native or EXOTIC = yes",
+	  "(>= 80% RIV)",
+	  "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division"
+   ],
+
+   "trigger": [
+      "riv(EXOTIC) >= 80"
+   ],
+
+   "filters": {
+      "RUDERAL_OR_EXOTIC": [
+        {"exotic": "yes"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,87 @@
+{"node": {
+
+   "name":
+      "Southern & South-Central Oak - Pine Forest & Woodland - Cool (M016)",
+
+   "id":
+      "Southern & South-Central Oak - Pine Forest & Woodland - Cool (M016)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Plots not in CT, DE, OH, MA, NJ, NY, PA, WV AND",
+      "  i. Tree composition dominated by one or more of the STRONG DRY SOUTH-CENTRAL DIAGNOSTICS of Acer barbatum,",
+      "     Carya pallida, Carya texana, Diospyros virginiana, Fraxinus quadrangulata, Ilex opaca,",
+      "     Juniperus ashei, Oxydendrum arboreum, Pinus echinata, Pinus taeda, Quercus falcata (= var. falcata),",
+      "     Quercus marilandica, Quercus nigra, Quercus stellata (= var. stellata), Ulmus alata (>=50% RIV);",
+      "OR",
+      " ii. States and tree composition as above, but with >=20% RIV; AND other species are any combination of",
+      "     MODERATE DRY SOUTH-CENTRAL DIAGNOSTICS Betula lenta, Carpinus caroliniana, Carya glabra, Carya alba,",
+      "     Carya ovata, Cercis canadensis, Cornus florida, Diospyros virginiana, Juglans nigra, Juniperus virginiana,",
+      "     Liriodendron tulipifera, Liquidambar styraciflua, Prunus serotina, Quercus alba, Quercus coccinea,",
+      "     Quercus prinus, Quercus rubra, Quercus velutina (together >=50% RIV).",
+      "OR",
+      "iii. Plot occurs in in 221H, 223, M223, 231, M231, 234, 255 [composition to be added; this could pull in",
+      "     mesic and dry stands that have low diagnostic trees and lots of ruderals, but ruderals <80%]."
+   ],
+
+   "trigger": [
+      "    match(EXCLUDED_STATES) and riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) >= 50",
+      "or (match(EXCLUDED_STATES) and riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) >= 20 and riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) + riv(MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS) >= 50)",
+      "or  match(ECOREGIONS)"
+   ],
+
+   "filters": {
+      "EXCLUDED_STATES": [
+        {"state": "!CT, DE, OH, MA, NJ, NY, PA, WV"}
+      ],
+      "STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS": [
+        {"species": "Acer barbatum"},
+        {"species": "Carya pallida"},
+        {"species": "Carya texana"},
+        {"species": "Diospyros virginiana"},
+        {"species": "Fraxinus quadrangulata"},
+        {"species": "Ilex opaca"},
+        {"species": "Juniperus ashei"},
+        {"species": "Oxydendrum arboreum"},
+        {"species": "Pinus echinata"},
+        {"species": "Pinus taeda"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus marilandica"},
+        {"species": "Quercus nigra"},
+        {"species": "Quercus stellata"},
+        {"species": "Ulmus alata"}
+      ],
+      "MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS": [
+        {"species": "Betula lenta"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Carya glabra"},
+        {"species": "Carya alba"},
+        {"species": "Carya ovata"},
+        {"species": "Cercis canadensis"},
+        {"species": "Cornus florida"},
+        {"species": "Diospyros virginiana"},
+        {"species": "Juglans nigra"},
+        {"species": "Juniperus virginiana"},
+        {"species": "Liriodendron tulipifera"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Prunus serotina"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus coccinea"},
+        {"species": "Quercus incana"},
+        {"species": "Quercus laurifolia"},
+        {"species": "Quercus pagoda"},
+        {"species": "Quercus prinus"},
+        {"species": "Quercus rubra"},
+        {"species": "Quercus shumardii"},
+        {"species": "Quercus velutina"}
+      ],
+      "ECOREGIONS": [
+        {"ecoregion": "221H, 223, M223, 231, M231, 234, 255"}
+      ]
+   }
+
+}}
+

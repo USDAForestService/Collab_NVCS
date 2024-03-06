@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Exotic Caribbean Conifer Plantation Cultural Type (CTY002)",
+
+   "id":
+      "Exotic Caribbean Conifer Plantation Cultural Type (CTY002)",
+
+   "level":
+      "type",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

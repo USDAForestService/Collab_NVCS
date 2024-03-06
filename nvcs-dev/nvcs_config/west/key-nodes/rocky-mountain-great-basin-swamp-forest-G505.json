@@ -1,0 +1,59 @@
+{"node": {
+
+   "name":
+      "Rocky Mountain-Great Basin Swamp Forest (G505)",
+
+   "id":
+      "G505",
+
+   "level":
+      "group",
+
+   "description": [
+      "i. Elevation less than 1500 meters and",
+	  "located in ECOREGION 331A, 342A, 342D, 342F, 342G, 342H, M332,",
+	  "M331A, M331B, M331D, M331J, M333C, M333A, M333B, M333D and",
+	  "tree composition dominated by one or more of STRONG DIAGNOSTIC species",
+	  "Abies grandis, Abies lasiocarpa, Picea engelmannii, Picea glauca,",
+	  "Pinus contorta, Pseudotsuga menziesii, Thuja plicata, or",
+	  "Tsuga heterophylla (RIV=>50%),",
+       "OR",
+      "ii. Elevation less than 1500 meters and",
+	  "located in above ECOREGION, and tree composition as above, but",
+	  "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+	  "combination of Betula papyrifera, Fraxinus latifolia,",
+	  "Larix occidentalis, Populus balsamifera, or",
+	  "Populus tremuloides (>=30% RIV; i.e., together STRONG and MODERATE",
+	  "diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "elevation() < 1500 and match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "331A, 342A, 342D, 342F, 342G, 342H, M332, M331A, M331B, M331D, M331J, M333C, M333A, M333B, M333D"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Abies grandis"},
+		{"species": "Abies lasiocarpa"},
+		{"species": "Picea engelmannii"},
+		{"species": "Picea glauca"},
+	    {"species": "Pinus contorta"},
+		{"species": "Pseudotsuga menziesii"},
+		{"species": "Thuja plicata"},
+	    {"species": "Tsuga heterophylla"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Betula papyrifera"},
+		{"species": "Fraxinus latifolia"},
+	    {"species": "Larix occidentalis"},
+		{"species": "Populus balsamifera"},
+	    {"species": "Populus tremuloides"}
+      ]
+   }
+
+}}

@@ -1,0 +1,58 @@
+{"node": {
+
+   "name":
+      "Balconian Dry-Mesic Hardwood Forest (G028)",
+
+   "id":
+      "G028",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 315E, 315C, 315G, 321B, 315D and tree",
+		"composition dominated by one or more of STRONG DIAGNOSTIC species",
+		"Acer grandidentatum, Quercus buckleyi, Quercus laceyi,",
+		"Quercus muehlenbergii, or Ulmus crassifolia (RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of Arbutus xalapensis, Celtis laevigata var. reticulata,",
+		"Fraxinus albicans, Juglans major, Juniperus ashei, Prunus serotina,",
+		"Quercus macrocarpa, Quercus stellata, or",
+		"Quercus sinuata var. breviloba (>=30% RIV; i.e., together STRONG and",
+		"MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "315E, 315C, 315G, 321B, 315D"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer grandidentatum"},
+		{"species": "Quercus buckleyi"},
+		{"species": "Quercus laceyi"},
+		{"species": "Quercus muehlenbergii"},
+		{"species": "Ulmus crassifolia"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Arbutus xalapensis"},
+		{"species": "Celtis laevigata var. reticulata"},
+		{"species": "Fraxinus albicans"},
+		{"species": "Juglans major"},
+		{"species": "Juniperus ashei"},
+		{"species": "Prunus serotina"},
+		{"species": "Quercus macrocarpa"},
+		{"species": "Quercus stellata"},
+		{"species": "Quercus sinuata var. breviloba"}
+      ]
+   }
+
+}}

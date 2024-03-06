@@ -1,0 +1,58 @@
+{"node": {
+
+   "name":
+      "Central Midwest Oak Forest, Woodland & Savanna (M012)",
+
+   "id":
+      "M012",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Tree composition dominated by one of the following:",
+        "i. Located in ECOREGION 332 AND",
+		"tree composition dominated by one or more of the following",
+		"STRONG DRY DIAGNOSTICS species of Populus tremuloides,",
+		"Quercus rubra, Quercus velutina, ",
+		"Quercus macrocarpa, Quercus muehlenbergii, or Quercus stellata (=>50% RIV);",
+      "OR",
+        "ii. tree composition as above, but with =>20% RIV, AND",
+		"other species are any combination of MODERATE DRY DIAGNOSTICS diagnostic species",
+		"of Betula papyrifera, Juniperus virginiana or weakly diagnostic species of Amelanchier spp.,",
+		"Carya cordiformis, Cercis canadensis, Diospyros virginiana, Morus rubra, Ostrya virginiana,",
+		"Prunus serotina (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "332A, 332D, 332C, 332E"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+		{"species": "Populus tremuloides"},
+		{"species": "Quercus rubra"},
+		{"species": "Quercus velutina"},
+		{"species": "Quercus macrocarpa"},
+		{"species": "Quercus muehlenbergii"},
+		{"species": "Quercus stellata"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Betula papyrifera"},
+        {"species": "Juniperus virginiana"},
+		{"species": "Amelanchier"},
+		{"species": "Carya cordiformis"},
+		{"species": "Cercis canadensis"},
+		{"species": "Diospyros virginiana"},
+		{"species": "Morus rubra"},
+		{"species": "Ostrya virginiana"},
+		{"species": "Prunus serotina"}
+      ]
+   }
+
+}}

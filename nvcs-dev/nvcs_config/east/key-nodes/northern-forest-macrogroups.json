@@ -1,0 +1,121 @@
+{"node": {
+
+   "name":
+      "Northern Forest macrogroups",
+
+   "id":
+      "Northern Forest macrogroups",
+
+   "level":
+      "division",
+
+   "description": [
+      "  i. Tree composition dominated by one or more of Abies balsamea, Abies fraseri, Picea rubens (>=20% RIV)",
+      "OR",
+      " ii. Plots occurs in EcoProvinces 212, M211, 211A - 211E, 211Ja, 211Jb, 211Jc [intentionally exclude 211F,",
+      "     211G, 211Jd], 222J, 222K, 222L, 222M, 222R, 222U AND",
+      "        a. Tree composition dominated by one or more of Acer pensylvanicum, Acer spicatum, Amelanchier spp.,",
+      "           Betula alleghaniensis, Betula papyrifera, Betula populifolia, Fraxinus nigra, Picea glauca, Picea mariana,",
+      "           Pinus banksiana, Pinus resinosa, Populus balsamifera, Prunus pensylvanica, Sorbus americana, Thuja occidentalis,",
+      "           Tsuga canadensis (>=50% RIV)",
+      "       OR",
+      "        b. Tree composition as above, but with >=20% RIV, AND other species, are any combination of Acer rubrum,",
+      "           Acer saccharum, Abies balsamea, Abies fraseri, Betula lenta, Carpinus caroliniana, Fagus grandifolia,",
+      "           Fraxinus americana, Fraxinus pennsylvanica, Larix laricina, Ostrya virginiana, Picea rubens,",
+      "           Pinus strobus, Populus grandidentata, Populus tremuloides, Prunus serotina, Prunus virginiana,",
+      "           Quercus ellipsoidalis, Quercus macrocarpa, Quercus rubra, Tilia americana, or Ulmus americana (together >=50% RIV)",
+      "OR",
+      "iii. Plots occur in EcoProvinces 212, M211, 211A - 211E, 211Ja, 211Jb, 211Jc [intentionally exclude 211F, 211G, 211Jd] AND",
+      "     Tree composition dominated by one or more of Acer rubrum, Acer saccharum, Betula alleghaniensis, Betula lenta,",
+      "     Carpinus caroliniana, Fagus grandifolia, Fraxinus americana, Fraxinus pennsylvanica, Larix laricina,",
+      "     Ostrya virginiana, Pinus strobus, Populus grandidentata, Populus tremuloides, Prunus serotina,",
+      "     Quercus ellipsoidalis, Quercus macrocarpa, Quercus rubra, Tilia americana, or Ulmus americana (>= 50% RIV)"
+   ],
+
+   "trigger": [
+      "    riv(DIAGNOSTIC_SPECIES_I) >= 20",
+      "or (     match(ECOREGIONS_II)",
+      "    and (riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 50 or (riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES_II) + riv(MODERATE_DIAGNOSTIC_SPECIES_II) >= 50)))",
+      "or (     match(ECOREGIONS_III)",
+      "    and  riv(STRONG_DIAGNOSTIC_SPECIES_III) >= 50)"
+   ],
+
+   "filters": {
+      "DIAGNOSTIC_SPECIES_I": [
+        {"species": "Abies balsamea"},
+        {"species": "Abies fraseri"},
+        {"species": "Picea rubens"}
+      ],
+      "ECOREGIONS_II": [
+        {"ecoregion": "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc, 222J, 222K, 222L, 222M, 222R, 222U"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES_II": [
+        {"species": "Acer pensylvanicum"},
+        {"species": "Acer spicatum"},
+        {"species": "Amelanchier spp."},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Betula papyrifera"},
+        {"species": "Betula populifolia"},
+        {"species": "Fraxinus nigra"},
+        {"species": "Picea glauca"},
+        {"species": "Picea mariana"},
+        {"species": "Pinus banksiana"},
+        {"species": "Pinus resinosa"},
+        {"species": "Populus balsamifera"},
+        {"species": "Prunus pensylvanica"},
+        {"species": "Sorbus americana"},
+        {"species": "Thuja occidentalis"},
+        {"species": "Tsuga canadensis"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES_II": [
+        {"species": "Acer rubrum"},
+        {"species": "Acer saccharum"},
+        {"species": "Abies balsamea"},
+        {"species": "Abies fraseri"},
+        {"species": "Betula lenta"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Fagus grandifolia"},
+        {"species": "Fraxinus americana"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Larix laricina"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Picea rubens"},
+        {"species": "Pinus strobus"},
+        {"species": "Populus grandidentata"},
+        {"species": "Populus tremuloides"},
+        {"species": "Prunus serotina"},
+        {"species": "Prunus virginiana"},
+        {"species": "Quercus ellipsoidalis"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Quercus rubra"},
+        {"species": "Tilia americana"},
+        {"species": "Ulmus americana"}
+      ],
+      "ECOREGIONS_III": [
+        {"ecoregion": "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES_III": [
+        {"species": "Acer rubrum"},
+        {"species": "Acer saccharum"},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Betula lenta"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Fagus grandifolia"},
+        {"species": "Fraxinus americana"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Larix laricina"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Pinus strobus"},
+        {"species": "Populus grandidentata"},
+        {"species": "Populus tremuloides"},
+        {"species": "Prunus serotina"},
+        {"species": "Quercus ellipsoidalis"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Quercus rubra"},
+        {"species": "Tilia americana"},
+        {"species": "Ulmus americana"}
+      ]
+   }
+
+}}
+

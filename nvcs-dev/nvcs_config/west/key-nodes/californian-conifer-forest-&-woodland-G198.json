@@ -1,0 +1,83 @@
+{"node": {
+
+   "name":
+      "Californian Conifer Forest & Woodland (G198)",
+
+   "id":
+      "G198",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION M261D, M261A, 261B, 322A, M262A, 263,",
+		"M261B, M261C, M261F, M261E, M262B, 261A ",
+		"and tree composition dominated by one or more of STRONG DIAGNOSTIC",
+		"species Hesperocyparis abramsiana, Hesperocyparis bakeri,",
+		"Hesperocyparis forbesii, Hesperocyparis goveniana,",
+		"Hesperocyparis macnabiana, Hesperocyparis macrocarpa,",
+		"Hesperocyparis nevadensis, Hesperocyparis pigmaea,",
+		"Hesperocyparis sargentii, Hesperocyparis stephensonii,",
+		"Juniperus californica",
+		"Pinus sabiniana, Pinus attenuata, Pinus coulteri, Pinus muricata,",
+		"Pinus radiata, Pinus torreyana, or Pinus quadrifolia (RIV=>50%), ",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of Arbutus menziesii, Calocedrus decurrens,",
+		"Notholithocarpus densiflorus, Pinus jeffreyi, Pinus monophylla,",
+		"Pinus ponderosa, Pseudotsuga menziesii, Pseudotsuga macrocarpa,",
+		"Quercus agrifolia, Quercus chrysolepis, Quercus kelloggii,",
+		"Quercus wislizeni, or Quercus douglasii (>=30% RIV; i.e., together",
+		"STRONG and MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "M261D, M261A, 261B, 322A, M262A, 263, M261B, M261C, M261F, M261E, M262B, 261A"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Hesperocyparis abramsiana"},
+		{"species": "Hesperocyparis bakeri"},
+		{"species": "Hesperocyparis forbesii"},
+		{"species": "Hesperocyparis goveniana"},
+		{"species": "Hesperocyparis macnabiana"},
+		{"species": "Hesperocyparis macrocarpa"},
+		{"species": "Hesperocyparis nevadensis"},
+		{"species": "Hesperocyparis pigmaea"},
+		{"species": "Hesperocyparis sargentii"},
+		{"species": "Hesperocyparis stephensonii"},
+		{"species": "Juniperus californica"},
+		{"species": "Pinus sabiniana"},
+		{"species": "Pinus attenuata"},
+		{"species": "Pinus coulteri"},
+		{"species": "Pinus muricata"},
+		{"species": "Pinus radiata"},
+		{"species": "Pinus torreyana"},
+		{"species": "Pinus quadrifolia"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Arbutus menziesii"},
+		{"species": "Calocedrus decurrens"},
+		{"species": "Notholithocarpus densiflorus"},
+		{"species": "Pinus jeffreyi"},
+		{"species": "Pinus monophylla"},
+		{"species": "Pinus ponderosa"},
+		{"species": "Pseudotsuga menziesii"},
+		{"species": "Pseudotsuga macrocarpa"},
+		{"species": "Quercus agrifolia"},
+		{"species": "Quercus chrysolepis"},
+		{"species": "Quercus kelloggii"},
+		{"species": "Quercus wislizeni"},
+		{"species": "Quercus douglasii"}
+      ]
+   }
+
+}}

@@ -1,0 +1,51 @@
+{"node": {
+
+   "name":
+      "Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)",
+
+   "id":
+      "G225",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 315A, 315H, 321A, 322A, 331B, 331G, 331J,",
+		"331H, 331I, 341C, 341F, 341G, 342E, 342F, 342G, M341A, 313A, 313B,",
+		"313C, M313, 342D, 342J, M331D, M331E, M331F, M331G, M331H, M331I,",
+		"M341B, M341C, 341A, 341B and tree composition dominated by one or",
+		"more of STRONG DIAGNOSTIC species Acer grandidentatum,",
+		"Abies concolor, Picea pungens or Pseudotsuga menziesii (RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of Picea engelmannii,",
+		"Pinus ponderosa, or Populus tremuloides (>=30% RIV; i.e.,",
+		"together STRONG and MODERATE diagnostic species RIV =>50%) "
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "315A, 315H, 321A, 322A, 331B, 331G, 331J, 331H, 331I, 341C, 341F, 341G, 342E, 342F, 342G, M341A, 313A, 313B, 313C, M313, 342D, 342J, M331D, M331E, M331F, M331G, M331H, M331I, M341B, M341C, 341A, 341B"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer grandidentatum"},
+        {"species": "Abies concolor"},
+		{"species": "Picea pungens"},
+		{"species": "Pseudotsuga menziesii"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+		{"species": "Picea engelmannii"},
+		{"species": "Pinus ponderosa"},
+		{"species": "Populus tremuloides"}
+      ]
+   }
+
+}}

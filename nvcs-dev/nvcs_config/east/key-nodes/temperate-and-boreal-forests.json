@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Temperate & Boreal Forests",
+
+   "id":
+      "Temperate & Boreal Forests",
+
+   "level":
+      "division",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

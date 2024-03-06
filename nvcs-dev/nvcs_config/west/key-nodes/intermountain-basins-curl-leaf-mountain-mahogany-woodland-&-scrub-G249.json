@@ -1,0 +1,46 @@
+{"node": {
+
+   "name":
+      "Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)",
+
+   "id":
+      "G249",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 322B, 341B, 341C, 342F, 342A, 342G, 342I,",
+		"342E, M242B, M261A, M261B, M261F, M262B, M332A, M331G, M331H,",
+		"M242C, M332E, M332F, M332G, M332B, M332D, M261D, M261E, M261G, 342H,",
+		"342B, 342D, 342C, 342J, M331A, M331B, M331E, M331J, M331D, 313A,",
+		"341A, 341F, 341E, 341D, 341G, 322A, M341 ",
+		"and tree composition dominated by one or more of STRONG DIAGNOSTIC",
+		"species Cercocarpus ledifolius (RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of [PLACEHOLDER - INSERT P2 VEG] (>=30% RIV; i.e.,",
+		"together STRONG and MODERATE diagnostic species RIV =>50%) "
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "322B, 341B, 341C, 342F, 342A, 342G, 342I, 342E, M242B, M261A, M261B, M261F, M262B, M332A, M331G, M331H, M242C, M332E, M332F, M332G, M332B, M332D, M261D, M261E, M261G, 342H, 342B, 342D, 342C, 342J, M331A, M331B, M331E, M331J, M331D, 313A, 341A, 341F, 341E, 341D, 341G, 322A, M341"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Cercocarpus ledifolius"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "placeholder - add moderate diagnostic"}
+      ]
+   }
+
+}}

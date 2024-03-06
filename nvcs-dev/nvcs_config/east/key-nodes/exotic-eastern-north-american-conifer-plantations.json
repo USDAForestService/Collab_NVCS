@@ -1,0 +1,25 @@
+{"node": {
+
+   "name":
+      "Exotic Eastern North American Conifer Plantations",
+
+   "id":
+      "Exotic Eastern North American Conifer Plantations",
+
+   "level":
+      "type",
+
+   "description": [
+      "Tree species are dominated by exotic conifers (See",
+      "Appendix A) with RIV > native conifers.  Implemented as NOT native conifers."
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

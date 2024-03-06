@@ -1,0 +1,56 @@
+{"node": {
+
+   "name":
+      "Tropical Florida Forest",
+
+   "id":
+      "Tropical Florida Forest",
+
+   "level":
+      "division",
+
+   "description": [
+      "Stands found in Tropical Florida (Ecosection 411A) AND",
+      "  i. Tropical Tree composition dominated by one or more of Bursera simaruba, Coccoloba diversifolia,",
+      "     Guapira discolor, Metopium toxiferum, Sabal palmetto, or \"other palms\" (>=50% RIV); stands only found",
+      "     in EcoSection 411A;",
+      " OR",
+      " ii. The above tree species, but with >=20% RIV, AND other species are any combination of Coccothrinax",
+      "     argentata, Conocarpus erectus, Sideroxylon salicifolium, Thrinax morrisii (together >=50% RIV); stands",
+      "     only found in EcoSection 411A.",
+      " OR",
+      "iii. Ruderal (weedy natives and exotic) tree species with >=80% RIV"
+   ],
+
+   "trigger": [
+      "    match(TROPICAL_FLORIDA)",
+      "and (    riv(STRONG_DIAGNOSTIC_SPECIES) >= 50",
+      "     or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)",
+      "     or  riv(RUDERAL_SPECIES) >= 80)"
+   ],
+
+   "filters": {
+      "TROPICAL_FLORIDA": [
+        {"state": "FL", "ecoregion": "411A"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Bursera simaruba"},
+        {"species": "Coccoloba diversifolia"},
+        {"species": "Guapira discolor"},
+        {"species": "Metopium toxiferum"},
+        {"species": "Sabal palmetto"},
+        {"species": "other palms"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Coccothrinax argentata"},
+        {"species": "Conocarpus erectus"},
+        {"species": "Sideroxylon salicifolium"},
+        {"species": "Thrinax morrisii"}
+      ],
+      "RUDERAL_SPECIES": [
+        {"ruderal": "yes"}
+      ]
+   }
+
+}}
+

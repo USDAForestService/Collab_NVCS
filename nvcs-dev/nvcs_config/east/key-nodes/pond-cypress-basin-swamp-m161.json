@@ -1,0 +1,50 @@
+{"node": {
+
+   "name":
+      "Pond-cypress Basin Swamp (M161)",
+
+   "id":
+      "Pond-cypress Basin Swamp (M161)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      " i. Tree composition dominated by STRONG POND CYPRESS DIAGNOSTICS",
+      "    Taxodium distichum var. nutans (= Taxodium ascendens) (>=50% RIV);",
+      "OR",
+      "ii. Tree composition as above, but with >=20% RIV, AND other species are",
+      "    any combination of MODERATE DIAGNOSTICS coastal plain species of Acer rubrum,",
+      "    Annona glabra, Liriodendron tulipifera, Liquidambar styraciflua,",
+      "    Nyssa sylvatica var. biflora (= Nyssa biflora), Persea borbonia (= Persea palustris),",
+      "    Pinus serotina, Pinus elliottii, Pinus taeda, Taxodium distichum, Sabal palmetto",
+      "    (together >=50% RIV)."
+   ],
+
+   "trigger": [
+      "    riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 50",
+      "or (    riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 20",
+      "    and riv(STRONG_POND_CYPRESS_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+   ],
+
+   "filters": {
+      "STRONG_POND_CYPRESS_DIAGNOSTICS": [
+        {"species": "Taxodium ascendens"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer rubrum"},
+        {"species": "Annona glabra"},
+        {"species": "Liriodendron tulipifera"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Nyssa biflora"},
+        {"species": "Persea borbonia"},
+        {"species": "Pinus elliottii"},
+        {"species": "Pinus serotina"},
+        {"species": "Pinus taeda"},
+        {"species": "Taxodium distichum"},
+        {"species": "Sabal palmetto"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,90 @@
+{"node": {
+
+   "name":
+      "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)",
+
+   "id":
+      "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      " i. Tree composition dominated by STRONG FLOODPLAIN DIAGNOSTICS Acer saccharinum, Carya aquatica, Betula nigra,",
+      "    Carya illinoinensis, Celtis laevigata, Fraxinus pennsylvanica, Fraxinus profunda, Liquidambar styraciflua,",
+      "    Gleditsia aquatica, Juniperus virginiana var. silicicola, Nyssa aquatica, Nyssa biflora, Nyssa ogeche,",
+      "    Planera aquatica, Platanus occidentalis, Populus deltoides, Quercus falcata var. pagodifolia (= Q. pagoda),",
+      "    Quercus laurifolia, Quercus lyrata, Quercus michauxii, Quercus nigra, Quercus phellos, Quercus shumardii,",
+      "    Quercus texana, Salix caroliniana, Salix nigra, Sapindus saponaria var. drummondii, Taxodium distichum,",
+      "    Ulmus americana, Ulmus crassifolia (>=50% RIV);",
+      "OR",
+      "ii. Tree composition as above, but with at least 20% RIV; AND in combination with other species of MODERATE DIAGNOSTICS",
+      "    Acer negundo, Acer rubrum, Carpinus caroliniana, Chamaecyparis thyoides, Gleditsia triacanthos, Halesia diptera,",
+      "    Ilex opaca, Juglans nigra, Liriodendron tulipifera, Magnolia grandiflora, Magnolia virginiana, Nyssa sylvatica,",
+      "    Pinus elliottii, Pinus glabra, Pinus taeda, Quercus macrocarpa, Sabal palmetto, Ulmus rubra, Ulmus serotina (together >=50% RIV)"
+   ],
+
+   "trigger": [
+      "    riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 50",
+      "or (    riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 20",
+      "    and riv(STRONG_FLOODPLAIN_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+   ],
+
+   "filters": {
+      "STRONG_FLOODPLAIN_DIAGNOSTICS": [
+        {"species": "Acer saccharinum"},
+        {"species": "Carya aquatica"},
+        {"species": "Betula nigra"},
+        {"species": "Carya illinoinensis"},
+        {"species": "Celtis laevigata"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Fraxinus profunda"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Gleditsia aquatica"},
+        {"species": "Juniperus virginiana var. silicicola"},
+        {"species": "Nyssa aquatica"},
+        {"species": "Nyssa biflora"},
+        {"species": "Nyssa ogeche"},
+        {"species": "Planera aquatica"},
+        {"species": "Platanus occidentalis"},
+        {"species": "Populus deltoides"},
+        {"species": "Quercus pagoda"},
+        {"species": "Quercus laurifolia"},
+        {"species": "Quercus lyrata"},
+        {"species": "Quercus michauxii"},
+        {"species": "Quercus nigra"},
+        {"species": "Quercus phellos"},
+        {"species": "Quercus shumardii"},
+        {"species": "Quercus texana"},
+        {"species": "Salix caroliniana"},
+        {"species": "Salix nigra"},
+        {"species": "Sapindus saponaria var. drummondii"},
+        {"species": "Taxodium distichum"},
+        {"species": "Ulmus americana"},
+        {"species": "Ulmus crassifolia"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer negundo"},
+        {"species": "Acer rubrum"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Chamaecyparis thyoides"},
+        {"species": "Gleditsia triacanthos"},
+        {"species": "Halesia diptera"},
+        {"species": "Ilex opaca"},
+        {"species": "Juglans nigra"},
+        {"species": "Liriodendron tulipifera"},
+        {"species": "Magnolia grandiflora"},
+        {"species": "Magnolia virginiana"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Pinus elliottii"},
+        {"species": "Pinus glabra"},
+        {"species": "Pinus taeda"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Sabal palmetto"},
+        {"species": "Ulmus rubra"},
+        {"species": "Ulmus serotina"}
+      ]
+   }
+
+}}
+

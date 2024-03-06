@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Caribbean Conifer Plantations",
+
+   "id":
+      "Caribbean Conifer Plantations",
+
+   "level":
+      "type",
+
+   "description": [
+      "Caribbean species are conifers >=25% RIV"
+   ],
+
+   "trigger": [
+      "riv(CONIFERS) >= 25"
+   ],
+
+   "filters": {
+      "CONIFERS": [
+        {"softwoodhardwood": "S"}
+      ]
+   }
+
+}}
+

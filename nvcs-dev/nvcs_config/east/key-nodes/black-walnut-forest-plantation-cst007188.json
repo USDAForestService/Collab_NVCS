@@ -1,0 +1,41 @@
+{"node": {
+
+   "name":
+      "Black Walnut Forest Plantation (CST007188)",
+
+   "id":
+      "Black Walnut Forest Plantation (CST007188)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "Tree composition dominated by Juglans nigra >=25% RIV,",
+      "and exceeds each species of Populus tremuloides,",
+      "Populus spp., and Robinia pseudoacacia."
+   ],
+
+   "trigger": [
+      "    riv(BLACK_WALNUT) >= 25",
+      "and riv(BLACK_WALNUT) > riv(QUAKING_ASPEN)",
+      "and riv(BLACK_WALNUT) > riv(POPULUS_SPP)",
+      "and riv(BLACK_WALNUT) > riv(BLACK_LOCUST)"
+   ],
+
+   "filters": {
+      "BLACK_WALNUT": [
+        {"species": "Juglans nigra"}
+      ],
+      "QUAKING_ASPEN": [
+        {"species": "Populus tremuloides"}
+      ],
+      "POPULUS_SPP": [
+        {"species": "Populus spp."}
+      ],
+      "BLACK_LOCUST": [
+        {"species": "Robinia pseudoacacia"}
+      ]
+   }
+
+}}
+

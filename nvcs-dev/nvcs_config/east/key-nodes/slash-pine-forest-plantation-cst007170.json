@@ -1,0 +1,44 @@
+{"node": {
+
+   "name":
+      "Slash Pine Forest Plantation (CST007170)",
+
+   "id":
+      "Slash Pine Forest Plantation (CST007170)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "Tree composition dominated by Pinus elliottii; i.e. Pinus elliotti >= 25% RIV,",
+      "and exceeds each species of Pinus echinta, Pinus palustris, Pinus clausa or Pinus taeda."
+   ],
+
+   "trigger": [
+      "    riv(SLASH_PINE) >= 25",
+      "and riv(SLASH_PINE) > riv(SHORTLEAF_PINE)",
+      "and riv(SLASH_PINE) > riv(LONGLEAF_PINE)",
+      "and riv(SLASH_PINE) > riv(LOBLOLLY_PINE)",
+      "and riv(SLASH_PINE) > riv(SAND_PINE)"
+   ],
+
+   "filters": {
+      "SHORTLEAF_PINE": [
+        {"species": "Pinus echinata"}
+      ],
+      "LONGLEAF_PINE": [
+        {"species": "Pinus palustris"}
+      ],
+      "SLASH_PINE": [
+        {"species": "Pinus elliottii"}
+      ],
+      "LOBLOLLY_PINE": [
+        {"species": "Pinus taeda"}
+      ],
+      "SAND_PINE": [
+        {"species": "Pinus clausa"}
+      ]
+   }
+
+}}
+

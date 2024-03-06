@@ -1,0 +1,52 @@
+{"node": {
+
+   "name":
+      "Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)",
+
+   "id":
+      "G749",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 242B, 342B, M242B, M242C, M261, 341D",
+		"and tree composition dominated by one or more of STRONG",
+		"DIAGNOSTIC species Abies magnifica, Abies shastensis [Abies",
+		"magnifica var. shastensis],, Abies procera, or Tsuga mertensiana",
+		"(RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of Abies lasiocarpa, Pinus albicaulis, Pinus contorta,",
+		"Pinus jeffreyi, or Pinus monticola (>=30% RIV; i.e., together STRONG",
+		"and MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "242B, 342B, M242B, M242C, M261, 341D"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Abies magnifica"},
+		{"species": "Abies shastensis"},
+		{"species": "Abies procera"},
+		{"species": "Tsuga mertensiana"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Abies lasiocarpa"},
+        {"species": "Pinus albicaulis"},
+		{"species": "Pinus contorta"},
+		{"species": "Pinus jeffreyi"},
+		{"species": "Pinus monticola"}
+      ]
+   }
+
+}}

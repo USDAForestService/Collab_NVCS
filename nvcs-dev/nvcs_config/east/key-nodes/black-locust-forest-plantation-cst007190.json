@@ -1,0 +1,41 @@
+{"node": {
+
+   "name":
+      "Black Locust Forest Plantation (CST007190)",
+
+   "id":
+      "Black Locust Forest Plantation (CST007190)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "Tree composition dominated by Robinia pseudoacacia, >=25% RIV,",
+      "and exceeds each species of Juglans nigra, Populus tremuloides",
+      "and Populus spp."
+   ],
+
+   "trigger": [
+      "    riv(BLACK_LOCUST) >= 25",
+      "and riv(BLACK_LOCUST) > riv(BLACK_WALNUT)",
+      "and riv(BLACK_LOCUST) > riv(QUAKING_ASPEN)",
+      "and riv(BLACK_LOCUST) > riv(POPULUS_SPP)"
+   ],
+
+   "filters": {
+      "BLACK_LOCUST": [
+        {"species": "Robinia pseudoacacia"}
+      ],
+      "BLACK_WALNUT": [
+        {"species": "Juglans nigra"}
+      ],
+      "QUAKING_ASPEN": [
+        {"species": "Populus tremuloides"}
+      ],
+      "POPULUS_SPP": [
+        {"species": "Populus spp."}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,83 @@
+{"node": {
+
+   "name":
+      "Southeastern North American Flooded & Swamp Forest Division (D062)",
+
+   "id":
+      "D062",
+
+   "level":
+      "division",
+
+   "description": [
+     "Tree composition and ecology matching one of the following options:",
+	  "i. Located in ECOREGION 315 AND",
+	  "tree composition dominated by one or more of Carya illinoinensis,",
+	  "Quercus virginiana, or Sabal palmetto (=>20% RIV);",
+	  "OR",
+	  "ii. Located in ECOREGION 315 (in OK or TX), AND",
+	  "tree composition dominated by one or more of Celtis laevigata,",
+	  "Celtis laevigata var. reticulata, Celtis occidentalis, Fraxinus pennsylvanica,",
+	  "Juglans microcarpa, Juglans nigra, Juglans major, Platanus occidentalis,",
+	  "Populus deltoides, Salix nigra, Sapindus saponaria var. drummondii,",
+	  "Sideroxylon lanuginosum, Taxodium distichum, Quercus macrocarpa, Quercus shumardii,",
+	  "or Ulmus americana (=>50% RIV);",
+	  "OR Tree composition as above, but with =>20% RIV; AND other species are",
+	  "any combination of Acer negundo, Prosopis glandulosa",
+	  "Fraxinus albicans, Prunus serotina, and Quercus fusiformis",
+	  "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),",
+	  "[Additional tree species not tracked by FIA include Ulmus crassifolia]",
+	  "OR",
+      "iii. Located in above ECOREGION and any EXOTIC = yes tree species =>80% RIV"
+   ],
+
+   "trigger": [
+      "( match(ECOREGIONS_1) and riv(SPECIES_1) >= 20 )",
+      "or ( match(ECOREGIONS_2) and ( riv(SPECIES_2) >= 50 or (riv(SPECIES_2) >= 20 and riv(SPECIES_3) >= 30) ))",
+	  "or ( match(ECOREGIONS_1) and riv(EXOTIC_TREE_SPP) >=80 )"
+   ],
+
+   "filters": {
+      "ECOREGIONS_1": [
+        {"ecoregion": "315"}
+      ],
+      "ECOREGIONS_2": [
+        {"ecoregion": "315", "state": "OK, TX"}
+      ],
+      "SPECIES_1": [
+		{"species": "Carya illinoinensis"},
+		{"species": "Quercus virginiana"},
+		{"species": "Sabal palmetto"}
+      ],
+      "SPECIES_2": [
+        {"species": "Celtis laevigata"},
+		{"species": "Celtis laevigata var. reticulata"},
+		{"species": "Celtis occidentalis"},
+		{"species": "Fraxinus pennsylvanica"},
+	    {"species": "Juglans microcarpa"},
+		{"species": "Juglans nigra"},
+		{"species": "Juglans major"},
+		{"species": "Platanus occidentalis"},
+	    {"species": "Populus deltoides"},
+		{"species": "Salix nigra"},
+		{"species": "Sapindus saponaria var. drummondii"},
+	    {"species": "Sideroxylon lanuginosum"},
+		{"species": "Taxodium distichum"},
+		{"species": "Quercus macrocarpa"},
+		{"species": "Quercus shumardii"},
+	    {"species": "Ulmus americana"}
+      ],
+      "SPECIES_3": [
+        {"species": "Acer negundo"},
+		{"species": "Prosopis glandulosa"},
+		{"species": "Fraxinus albicans"},
+		{"species": "Prunus serotina"},
+		{"species": "Quercus fusiformis"}
+      ],
+	  "EXOTIC_TREE_SPP": [
+	    {"exotic": "yes"}
+	  ]
+   }
+
+}}
+

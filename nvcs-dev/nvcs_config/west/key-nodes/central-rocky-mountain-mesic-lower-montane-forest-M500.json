@@ -1,0 +1,60 @@
+{"node": {
+
+   "name":
+      "Central Rocky Mountain Mesic Lower Montane Forest (M500)",
+
+   "id":
+      "M500",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION M242C, M242D, 331N, 342H, M332, M333, 331A,",
+		"331K, 342D, M331A, M331B, 342A, 331G, 342F, M331J, M331D, 331D,",
+		"342I, 342G, AND tree composition",
+		"dominated by one or more of STRONG MESIC DIAGNOSTIC species",
+		"Abies grandis, Larix occidentalis, Pseudotsuga menziesii,",
+		"Thuja plicata, or Tsuga heterophylla (RIV=>50%),",
+      "OR",
+        "ii. Located in above ECOREGION, and tree composition as above,",
+		"but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC species",
+		"in any combination of Abies lasiocarpa, Betula papyrifera,",
+		"Picea engelmannii, Picea glauca, Pinus contorta, Pinus monticola,",
+		"Pinus ponderosa, or Populus tremuloides",
+		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%),",
+		"[Additional tree species not tracked by FIA include",
+		"Picea engelmannii x glauca]"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "M242C, M242D, 331N, 342H, M332, M333, 331A, 331K, 342D, M331A, M331B, 342A, 331G, 342F, M331J, M331D, 331D, 342I, 342G"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Abies grandis"},
+		{"species": "Larix occidentalis"},
+		{"species": "Pseudotsuga menziesii"},
+		{"species": "Thuja plicata"},
+		{"species": "Tsuga heterophylla"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Abies lasiocarpa"},
+		{"species": "Betula papyrifera"},
+		{"species": "Picea engelmannii"},
+		{"species": "Picea glauca"},
+		{"species": "Pinus contorta"},
+		{"species": "Pinus monticola"},
+		{"species": "Pinus ponderosa"},
+		{"species": "Populus tremuloides"}
+      ]
+   }
+
+}}

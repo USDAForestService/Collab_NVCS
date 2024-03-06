@@ -1,0 +1,59 @@
+{"node": {
+
+   "name":
+      "Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)",
+
+   "id":
+      "G216",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 331E, 331D, 331F, 331G, 331H, 331L, 331N,",
+		"331M, 331K, M332Db, M332Dc, M331Ah, M331Ai, M331Ar, M331B, M334A,",
+		"332D, 332C and tree",
+		"composition dominated by the STRONG DIAGNOSTIC species Pinus ponderosa",
+		"(RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of",
+		"Acer negundo, Betula papyrifera,",
+		"Fraxinus pennsylvanica, Juniperus scopulorum, Populus tremuloides,",
+		"Quercus macrocarpa, or Ulmus americana (>=30% RIV; i.e., together",
+		"STRONG and MODERATE diagnostic species RIV =>50%)",
+	   "AND",
+	    "iii. Located in above ECOREGION, and tree composition as above, but",
+		"with Pseudotsuga menziesii (<=1% RIV)"
+
+   ],
+
+   "trigger": [
+      "(match(ECOREGIONS) and riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) or ",
+      "(match(ECOREGIONS) and riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) and ",
+	  "(match(ECOREGIONS) and riv(PSME) <= 1)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "331E, 331D, 331F, 331G, 331H, 331L, 331N, 331M, 331K, M332Db, M332Dc, M331Ah, M331Ai, M331Ar, M331B, M334A, 332D, 332C"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Pinus ponderosa"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer negundo"},
+		{"species": "Betula papyrifera"},
+		{"species": "Fraxinus pennsylvanica"},
+		{"species": "Juniperus scopulorum"},
+		{"species": "Populus tremuloides"},
+		{"species": "Quercus macrocarpa"},
+		{"species": "Ulmus americana"}
+      ],
+      "PSME": [
+        {"species": "Pseudotsuga menziesii"}
+	  ]
+   }
+
+}}

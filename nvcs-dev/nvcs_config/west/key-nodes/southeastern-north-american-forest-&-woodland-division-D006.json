@@ -1,0 +1,71 @@
+{"node": {
+
+   "name":
+      "Southeastern North American Forest & Woodland Division (D006)",
+
+   "id":
+      "D006",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition and ecology matching one of the following options:",
+      "  i. Located in ECOREGION 315E [Texas and Oklahoma]",
+      "AND",
+      "  ii. EITHER",
+        "a. Tree composition contains one or more of Aesculus pavia,",
+		"Quercus margarettiae, Quercus sinuata var. sinuata,",
+		"Quercus virginiana, or Sabal palmetto (>=20% RIV),",
+		"[Additional tree species not tracked by FIA include",
+		"Quercus fusiformis = Quercus virginiana var. fusiformis,",
+		"Quercus geminata, Serenoa repens]",
+      "OR",
+        "b. The above tree species, but with =>10% RIV AND other MODERATE",
+		"diagnostic species, any combination of Celtis laevigata,",
+		"Fraxinus americana, Juniperus virginiana, Ostrya virginiana,",
+		"Persea borbonia, Prunus serotina, Quercus marilandica, Quercus stellata,",
+		"or Ulmus alata (>=40% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+	  "OR",
+		"c. Any EXOTIC = yes tree species =>80% RIV"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and match(STATES) and",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) or",
+	  "riv(EXOTIC_TREE_SPP) >=80 )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "315E"}
+      ],
+      "STATES": [
+        {"state": "TX, OK"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Aesculus pavia"},
+        {"species": "Quercus margarettiae"},
+        {"species": "Quercus sinuata var. sinuata"},
+        {"species": "Quercus virginiana"},
+        {"species": "Sabal palmetto"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Celtis laevigata"},
+		{"species": "Fraxinus americana"},
+		{"species": "Juniperus virginiana"},
+		{"species": "Ostrya virginiana"},
+		{"species": "Persea borbonia"},
+		{"species": "Prunus serotina"},
+		{"species": "Quercus marilandica"},
+		{"species": "Quercus stellata"},
+		{"species": "Ulmus alata"}
+      ],
+	  "EXOTIC_TREE_SPP": [
+	    {"exotic": "yes"}
+	  ]
+   }
+
+}}
+

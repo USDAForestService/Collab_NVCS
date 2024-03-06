@@ -1,0 +1,50 @@
+{"node": {
+
+   "name":
+      "Californian Coastal Redwood Forest (G235)",
+
+   "id":
+      "G235",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION M262A, M242A, M261A, 263, M261B, 261A and",
+		"tree composition dominated by one or more of STRONG DIAGNOSTIC species",
+		"Chamaecyparis lawsoniana or Sequoia sempervirens (RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of Arbutus menziesii, Notholithocarpus densiflorus,",
+		"Picea sitchensis, Pseudotsuga menziesii, Tsuga heterophylla, or",
+		"Umbellularia californica (>=30% RIV; i.e., together STRONG and",
+		"MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "M262A, M242A, M261A, 263, M261B, 261A"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Chamaecyparis lawsoniana"},
+		{"species": "Sequoia sempervirens"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Arbutus menziesii"},
+		{"species": "Notholithocarpus densiflorus"},
+		{"species": "Picea sitchensis"},
+		{"species": "Pseudotsuga menziesii"},
+		{"species": "Tsuga heterophylla"},
+		{"species": "Umbellularia californica"}
+      ]
+   }
+
+}}

@@ -1,0 +1,58 @@
+{"node": {
+
+   "name":
+      "Southeastern North American Forest & Woodland Division",
+
+   "id":
+      "Southeastern North American Forest & Woodland Division",
+
+   "level":
+      "division",
+
+   "description": [
+      "    i. Stands found in Ecoprovince 231, 232, 234A, 234C, but excluding NJ, PA",
+      "       AND",
+      "   ii. Tree composition contains one or more of Aesculus pavia, Halesia diptera,",
+      "       Juniperus virginiana var. silicicola Magnolia grandiflora, Pinus clausa, Pinus glabra,",
+      "       Pinus palustris, Pinus elliottii, Quercus incana, Quercus laevis, Quercus laurifolia,",
+      "       Quercus margarettiae, Quercus minima, Quercus sinuata, Quercus virginiana, Sabal palmetto (>=5% RIV);",
+      "       [Additional tree species not tracked by FIA include Quercus fusiformis = Quercus virginiana var. fusiformis),",
+      "       Quercus geminata, Serenoa repens]",
+      "OR",
+      "   Plot found in Ecosections 231B, 231E, 231H, 232B, 232C, 232D, 232E, 232F, 232G, 232H, 232I, 232J, 232K, 232L, 234,",
+      "   411A excluding NJ, PA, KY, TN, IL"
+   ],
+
+   "trigger": [
+      "(match(ECOREGIONS_1) and riv(DIAGNOSTIC_SPECIES_1) >= 5) or match(ECOREGIONS_2)"
+   ],
+
+   "filters": {
+      "ECOREGIONS_1": [
+        {"ecoregion": "231, 232, 234A, 234C", "state": "!NJ, PA"}
+      ],
+      "DIAGNOSTIC_SPECIES_1": [
+        {"species": "Aesculus pavia"},
+        {"species": "Halesia diptera"},
+        {"species": "Juniperus virginiana var. silicicola"},
+        {"species": "Magnolia grandiflora"},
+        {"species": "Pinus clausa"},
+        {"species": "Pinus glabra"},
+        {"species": "Pinus palustris"},
+        {"species": "Pinus elliottii"},
+        {"species": "Quercus incana"},
+        {"species": "Quercus laevis"},
+        {"species": "Quercus laurifolia"},
+        {"species": "Quercus margarettiae"},
+        {"species": "Quercus minima"},
+        {"species": "Quercus sinuata var. sinuata"},
+        {"species": "Quercus virginiana"},
+        {"species": "Sabal palmetto"}
+      ],
+      "ECOREGIONS_2": [
+        {"ecoregion": "231B, 231E, 231H, 232B, 232C, 232D, 232E, 232F, 232G, 232H, 232I, 232J, 232K, 232L, 234, 411A", "state": "!NJ, PA, KY, TN, IL"}
+      ]
+   }
+
+}}
+

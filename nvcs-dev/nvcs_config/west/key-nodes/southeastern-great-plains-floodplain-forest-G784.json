@@ -1,0 +1,62 @@
+{"node": {
+
+   "name":
+      "Southeastern Great Plains Floodplain Forest (G784)",
+
+   "id":
+      "G784",
+
+   "level":
+      "group",
+
+   "description": [
+      "i. Located in ECOREGION 321B, 315C, 315D, 315E, 315G and tree",
+	  "composition dominated by one or more of STRONG DIAGNOSTIC species",
+	  "Carya illinoinensis, Celtis laevigata,",
+	  "Celtis laevigata var. reticulata, Platanus occidentalis,",
+	  "Populus deltoides, Salix nigra, Sapindus saponaria var. drummondii,",
+	  "Sideroxylon lanuginosum, Taxodium distichum, or Ulmus crassifolia,",
+	  "(RIV=>50%),",
+       "OR",
+      "ii. Located in above ECOREGION, and tree composition as above, but",
+	  "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+	  "combination of Acer negundo, Fraxinus albicans, Fraxinus pennsylvanica,",
+	  "Juglans microcarpa, Prosopis glandulosa, Prunus serotina,",
+	  "or Quercus fusiformis (>=30% RIV; i.e., together STRONG and MODERATE",
+	  "diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "321B, 315C, 315D, 315E, 315G"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Carya illinoinensis"},
+		{"species": "Celtis laevigata"},
+	    {"species": "Celtis laevigata var. reticulata"},
+		{"species": "Platanus occidentalis"},
+	    {"species": "Populus deltoides"},
+		{"species": "Salix nigra"},
+		{"species": "Sapindus saponaria var. drummondii"},
+	    {"species": "Sideroxylon lanuginosum"},
+		{"species": "Taxodium distichum"},
+		{"species": "Ulmus crassifolia"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer negundo"},
+		{"species": "Fraxinus albicans"},
+		{"species": "Fraxinus pennsylvanica"},
+	    {"species": "Juglans microcarpa"},
+		{"species": "Prosopis glandulosa"},
+		{"species": "Prunus serotina"},
+	    {"species": "Quercus fusiformis"}
+      ]
+   }
+
+}}

@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Caribbean Swamp Forest via upland (M617)",
+
+   "id":
+      "Caribbean Swamp Forest via upland (M617)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Tree composition >= 50% Sabal palmetto RIV"
+   ],
+
+   "trigger": [
+      "riv(SABAL_PALMETTO) >= 50"
+   ],
+
+   "filters": {
+      "SABAL_PALMETTO": [
+        {"species": "Sabal palmetto"}
+      ]
+   }
+
+}}
+

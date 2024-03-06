@@ -1,0 +1,57 @@
+{"node": {
+
+   "name":
+      "Great Plains Temperate Flooded & Swamp Forests",
+
+   "id":
+      "F026",
+
+   "level":
+      "formation",
+
+   "description": [
+      "Forests found in ECOREGION 315, 331, 332, M334, AND",
+      "tree composition is dominated by one or more of Acer negundo,",
+	  "Carya illinoinensis, Celtis laevigata, Celtis laevigata var. reticulata,",
+	  "Celtis occidentalis, Fraxinus pennsylvanica, Juglans microcarpa,",
+	  "Juglans nigra, Juglans major, Platanus occidentalis, Populus deltoides,",
+	  "Quercus macrocarpa, Quercus shumardii, Quercus virginiana, Salix nigra,",
+	  "Salix amygdaloides, Sapindus saponaria var. drummondii,",
+	  "Sideroxylon lanuginosum, Taxodium distichum, or Ulmus americana",
+	  "(=>20% RIV)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS_GP) and riv(DIAGNOSTIC_SPECIES) >= 20"
+   ],
+
+   "filters": {
+      "ECOREGIONS_GP": [
+        {"ecoregion": "315, 331, 332, M334"}
+      ],
+      "DIAGNOSTIC_SPECIES": [
+        {"species": "Acer negundo"},
+		{"species": "Carya illinoinensis"},
+		{"species": "Celtis laevigata"},
+		{"species": "Celtis laevigata var. reticulata"},
+	    {"species": "Celtis occidentalis"},
+		{"species": "Fraxinus pennsylvanica"},
+		{"species": "Juglans microcarpa"},
+	    {"species": "Juglans nigra"},
+		{"species": "Juglans major"},
+		{"species": "Platanus occidentalis"},
+		{"species": "Populus deltoides"},
+	    {"species": "Quercus macrocarpa"},
+		{"species": "Quercus shumardii"},
+		{"species": "Quercus virginiana"},
+		{"species": "Salix nigra"},
+	    {"species": "Salix amygdaloides"},
+		{"species": "Sapindus saponaria var. drummondii"},
+	    {"species": "Sideroxylon lanuginosum"},
+		{"species": "Taxodium distichum"},
+		{"species": "Ulmus americana"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,118 @@
+{"node": {
+
+   "name":
+      "Western North American Interior Flooded Forest Division (D013)",
+
+   "id":
+      "D013",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition and ecology matching one of the following options:",
+      "i. Located in ECOREGION 261, M261, 262, M262, 313, M313, 315, 321, 322, M331, 341, M341, 342",
+      "AND",
+      "ii. EITHER",
+      "a. Tree composition dominated by one or more of STRONG diagnostic tree species",
+	  "Alnus oblongifolia, Alnus rhombifolia, Cordia boissieri, Diospyros texana, Ebenopsis ebano,",
+	  "Ehretia anacua, Fraxinus berlandieriana, Leucaena pulverulenta, Parkinsonia aculeata, ",
+	  "Phaulothamnus spinescens, Sabal mexicana, Sideroxylon celastrinum, Ulmus crassifolia, ",
+	  "Washingtonia filifera,",
+      "Juglans californica, Juglans major, Juglans microcarpa, Platanus racemosa, Platanus wrightii, Populus fremontii,",
+      "Populus deltoides, Prosopis glandulosa, Elaeagnus angustifolia, and Tamarix spp. (=>50% RIV),",
+      "OR",
+      "b. The above tree species, but with =>20% RIV AND other MODERATE diagnostic species any combination of",
+      "Acacia farnesiana, Acer negundo, Celtis ehrenbergiana, Celtis laevigata, Fraxinus anomala, Fraxinus velutina,",
+	  "Salix amygdaloides, Salix nigra, Salix gooddingii, Salix laevigata, Sapindus saponaria, Ailanthus altissima,",
+	  "Eucalyptus spp., Ulmus pumila, Acer macrophyllum, Acer grandidentatum, Alnus rubra, Fraxinus latifolia,",
+	  "Hesperocyparis arizonica, Populus angustifolia, Prosopis pubescens, Prosopis velutina, Quercus arizonica, ",
+	  "Quercus emoryi, Quercus oblongifolia, Quercus agrifolia, Quercus gambelii, Quercus lobata, Quercus douglasii,",
+	  "Quercus kelloggii, Robinia neomexicana, Salix lasiolepis, Salix lutea, Taxodium mucronatum, ",
+	  "and Umbellularia californica",
+	  "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+	  "OR",
+	  "c. Any EXOTIC = yes tree species =>80% RIV"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or",
+	  "riv(EXOTIC_TREE_SPP) >=80 )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "261, M261, 262, M262, 313, M313, 315, 321, 322, M331, 341, M341, 342"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+	    {"species": "Alnus oblongifolia"},
+		{"species": "Alnus rhombifolia"},
+		{"species": "Cordia boissieri"},
+		{"species": "Diospyros texana"},
+		{"species": "Ebenopsis ebano"},
+		{"species": "Ehretia anacua"},
+		{"species": "Fraxinus berlandieriana"},
+		{"species": "Leucaena pulverulenta"},
+		{"species": "Parkinsonia aculeata"},
+		{"species": "Phaulothamnus spinescens"},
+		{"species": "Sabal mexicana"},
+		{"species": "Sideroxylon celastrinum"},
+		{"species": "Ulmus crassifolia"},
+		{"species": "Washingtonia filifera"},
+        {"species": "Juglans californica"},
+        {"species": "Juglans major"},
+		{"species": "Juglans microcarpa"},
+        {"species": "Platanus racemosa"},
+        {"species": "Platanus wrightii"},
+        {"species": "Populus fremontii"},
+        {"species": "Populus deltoides ssp. wislizeni"},
+        {"species": "Prosopis glandulosa"},
+        {"species": "Elaeagnus angustifolia"},
+        {"species": "Tamarix"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acacia farnesiana"},
+		{"species": "Acer negundo"},
+		{"species": "Celtis ehrenbergiana"},
+		{"species": "Celtis laevigata"},
+		{"species": "Fraxinus anomala"},
+		{"species": "Fraxinus velutina"},
+		{"species": "Salix amygdaloides"},
+		{"species": "Salix nigra"},
+		{"species": "Salix gooddingii"},
+		{"species": "Salix laevigata"},
+		{"species": "Sapindus saponaria"},
+		{"species": "Ailanthus altissima"},
+		{"species": "Eucalyptus"},
+		{"species": "Ulmus pumila"},
+		{"species": "Acer macrophyllum"},
+		{"species": "Acer grandidentatum"},
+		{"species": "Alnus rubra"},
+		{"species": "Fraxinus latifolia"},
+		{"species": "Hesperocyparis arizonica"},
+		{"species": "Populus angustifolia"},
+		{"species": "Prosopis pubescens"},
+		{"species": "Prosopis velutina"},
+		{"species": "Quercus arizonica"},
+		{"species": "Quercus emoryi"},
+		{"species": "Quercus oblongifolia"},
+		{"species": "Quercus agrifolia"},
+		{"species": "Quercus gambelii"},
+		{"species": "Quercus lobata"},
+		{"species": "Quercus douglasii"},
+		{"species": "Quercus kelloggii"},
+		{"species": "Robinia neomexicana"},
+		{"species": "Salix lasiolepis"},
+		{"species": "Salix lutea"},
+		{"species": "Taxodium mucronatum"},
+		{"species": "Umbellularia californica"}
+      ],
+	  "EXOTIC_TREE_SPP": [
+	    {"exotic": "yes"}
+	  ]
+   }
+
+}}
+

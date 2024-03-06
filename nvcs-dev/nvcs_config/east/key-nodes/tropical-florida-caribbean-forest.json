@@ -1,0 +1,30 @@
+{"node": {
+
+   "name":
+      "Tropical Florida - Caribbean Forest",
+
+   "id":
+      "Tropical Florida - Caribbean Forest",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tropical hardwood and tropical conifer forests found in Puerto Rico, U.S. Virgin Islands,",
+      "and in tropical Florida (EcoSection 411A)"
+   ],
+
+   "trigger": [
+      "match(TROPICAL_ATLANTIC)"
+   ],
+
+   "filters": {
+      "TROPICAL_ATLANTIC": [
+        {"state": "FL", "ecoregion": "411A"},
+        {"state": "PR"},
+        {"state": "VI"}
+      ]
+   }
+
+}}
+

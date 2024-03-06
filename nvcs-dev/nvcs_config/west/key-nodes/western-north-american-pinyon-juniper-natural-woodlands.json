@@ -1,0 +1,32 @@
+{"node": {
+
+   "name":
+      "Western North American Pinyon-Juniper Natural Woodlands",
+
+   "id":
+      "D010",
+
+   "level":
+      "division",
+
+   "description": [
+      "Vegetation in a relatively natural state, dominated by native species,",
+	  "little or no evidence of trees in a row, no very recent logging,",
+	  "understory mowing, etc. (trees may be early successional pole-sized",
+	  "trees following logging or blowdowns). Tree composition is dominated by",
+	  "ruderal native or EXOTIC = yes (< 20% RIV)",
+	  "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)"
+   ],
+
+   "trigger": [
+      "riv(EXOTIC) < 20"
+   ],
+
+   "filters": {
+      "EXOTIC": [
+        {"exotic": "yes"}
+      ]
+   }
+
+}}
+

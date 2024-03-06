@@ -1,0 +1,72 @@
+{"node": {
+
+   "name":
+      "Madrean Lowland Evergreen Woodland (M010)",
+
+   "id":
+      "M010",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 322, 313C, M313, 321, 315, AND",
+		"tree composition dominated by one or more of STRONG DIAGNOSTIC species",
+		"Juniperus coahuilensis, Juniperus deppeana, Juniperus flaccida,",
+		"Juniperus pinchotii, Pinus cembroides, Pinus discolor,",
+		"Prosopis glandulosa, Prosopis velutina [these Prosopis species may be ruderal",
+		"or wetland types, or not even woodlands in the NVC], Quercus arizonica,",
+		"Quercus emoryi, Quercus gravesii, Quercus grisea, or Quercus oblongifolia",
+		"(RIV=>20%), [Additional tree species not tracked by FIA include",
+		"Pinus remota, Quercus albocincta, Quercus chihuahuensis,",
+		"Quercus graciliformis]",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above,",
+		"but with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any combination",
+		"of Arbutus arizonica, Arbutus xalapensis, Juniperus monosperma,",
+		"Pinus arizonica, Pinus edulis, Pinus engelmannii, Pinus leiophylla",
+		"Pinus strobiformis, Quercus hypoleucoides, and Quercus rugosa",
+		"(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%))"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "322, 313C, M313, 321, 315"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Juniperus coahuilensis"},
+		{"species": "Juniperus deppeana"},
+		{"species": "Juniperus flaccida"},
+		{"species": "Juniperus pinchotii"},
+		{"species": "Pinus cembroides"},
+		{"species": "Pinus discolor"},
+		{"species": "Prosopis glandulosa"},
+		{"species": "Prosopis velutina"},
+		{"species": "Quercus arizonica"},
+		{"species": "Quercus emoryi"},
+		{"species": "Quercus gravesii"},
+		{"species": "Quercus grisea"},
+		{"species": "Quercus oblongifolia"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Arbutus arizonica"},
+		{"species": "Arbutus xalapensis"},
+		{"species": "Juniperus monosperma"},
+		{"species": "Pinus arizonica"},
+		{"species": "Pinus edulis"},
+		{"species": "Pinus engelmannii"},
+		{"species": "Pinus leiophylla"},
+		{"species": "Pinus strobiformis"},
+		{"species": "Quercus hypoleucoides"},
+		{"species": "Quercus rugosa"}
+      ]
+   }
+
+}}

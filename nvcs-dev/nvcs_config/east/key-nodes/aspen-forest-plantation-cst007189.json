@@ -1,0 +1,37 @@
+{"node": {
+
+   "name":
+      "Aspen Forest Plantation (CST007189)",
+
+   "id":
+      "Aspen Forest Plantation (CST007189)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "i. Tree composition dominated by Populus tremuloides, Populus spp. >=25% RIV,",
+      "   and exceeds each species of Juglans nigra and Robinia pseudoacacia."
+   ],
+
+   "trigger": [
+      "    riv(ASPEN) >= 25",
+      "and riv(ASPEN) > riv(BLACK_WALNUT)",
+      "and riv(ASPEN) > riv(BLACK_LOCUST)"
+   ],
+
+   "filters": {
+      "ASPEN": [
+        {"species": "Populus tremuloides"},
+        {"species": "Populus spp."}
+      ],
+      "BLACK_WALNUT": [
+        {"species": "Juglans nigra"}
+      ],
+      "BLACK_LOCUST": [
+        {"species": "Robinia pseudoacacia"}
+      ]
+   }
+
+}}
+

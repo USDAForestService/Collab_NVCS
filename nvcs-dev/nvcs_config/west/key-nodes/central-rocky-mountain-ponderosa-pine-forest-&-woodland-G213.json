@@ -1,0 +1,51 @@
+{"node": {
+
+   "name":
+      "Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)",
+
+   "id":
+      "G213",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION M261G, 331D, 342A, 342B, 342F, 342G, M331J,",
+		"M242C, M242D - only eastern ecosubsections M242Dd, M242De, M242Df,",
+		"M242Dg, M242Dh, 331A, 331G, 331K, 331N, 342C, 342D, 342H, 342I, M332,",
+		"M333, M331A, M331B, M331D and tree",
+		"composition dominated by the STRONG DIAGNOSTIC species",
+		"Pinus ponderosa (RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of",
+		"Pinus flexilis (>=30% RIV; i.e., together",
+		"STRONG and MODERATE diagnostic species RIV =>50%)",
+	   "AND",
+	    "iii. Located in above ECOREGION, and tree composition as above, but",
+		"with Pseudotsuga menziesii (<=10% RIV)"
+   ],
+
+   "trigger": [
+      "(match(ECOREGIONS) and riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) or ",
+      "(match(ECOREGIONS) and riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) and ",
+	  "(match(ECOREGIONS) and riv(PSME) <= 10)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "M261G, 331D, 342A, 342B, 342F, 342G, M331J, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 331A, 331G, 331K, 331N, 342C, 342D, 342H, 342I, M332, M333, M331A, M331B, M331D"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Pinus ponderosa"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Pinus flexilis"}
+      ],
+      "PSME": [
+        {"species": "Pseudotsuga menziesii"}
+	  ]
+   }
+
+}}

@@ -1,0 +1,95 @@
+{"node": {
+
+   "name":
+      "Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)",
+
+   "id":
+      "Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Tree composition dominated by one of the following:",
+      " i. Plots occurs in EcoProvinces or EcoSections 212, M211, 211A - 211E, 211Ja, 211Jb, 211Jc [intentionally",
+      "    exclude 211F, 211G, 211Jd], 222J, 222K, 222L, 222M, 222N, 222R, 222U",
+      "    AND",
+      "    Tree composition dominated by one or more STRONG LAURENTIAN-ACADIAN DIAGNOSTICS of Fraxinus nigra,",
+      "    Larix laricina, Picea mariana, Picea rubens, Populus balsamifera, Tsuga canadensis,",
+      "    Thuja occidentalis (>=50% RIV)",
+      "OR",
+      "ii. Plots occur in EcoProvinces or EcoSections 212, M211, 211, 222I, 221A-221D",
+      "    AND",
+      "    iia. Tree composition dominated by one or more of ECOREGIONALLY STRONG LAURENTIAN-ACADIAN DIAGNOSTICS",
+      "         Acer rubrum, Acer saccharinum, Chamaecyparis thyoides, Fraxinus nigra, Fraxinus pennsylvanica,",
+      "         Larix laricina, Picea mariana, Picea rubens, Pinus rigida, Populus balsamifera, Salix amygdaloides,",
+      "         Tsuga canadensis, Thuja occidentalis, Ulmus americana, Ulmus rubra (>=50% RIV) AND in Province 212,",
+      "         M211, 211, 222I, 221A-221D.",
+      "     OR",
+      "    iib. Tree composition and ecoregions as above, but with >=20% RIV, AND other species are any combination",
+      "         of MODERATE DIAGNOSTICS Abies balsamea, Acer nigrum, Acer negundo, Acer saccharum, Betula alleghaniensis,",
+      "         Betula papyrifera, Carpinus caroliniana, Fraxinus americana, Nyssa sylvatica, Ostrya virginiana,",
+      "         Populus tremuloides, Prunus serotina, Quercus macrocarpa, Tilia americana (together >=50% RIV)"
+   ],
+
+   "trigger": [
+      "   (    match(ECOREGIONS_I)",
+      "    and riv(STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS) >= 50)",
+      "or (     match(ECOREGIONS_II)",
+      "    and (    riv(ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS) >= 50",
+      "         or (riv(ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS) >= 20 and riv(ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES_II) >= 50)))"
+   ],
+
+   "filters": {
+      "ECOREGIONS_I": [
+        {"ecoregion": "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc, 222J, 222K, 222L, 222M, 222N, 222R, 222U"}
+      ],
+      "STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS": [
+        {"species": "Fraxinus nigra"},
+        {"species": "Larix laricina"},
+        {"species": "Picea mariana"},
+        {"species": "Picea rubens"},
+        {"species": "Populus balsamifera"},
+        {"species": "Tsuga canadensis"},
+        {"species": "Thuja occidentalis"}
+      ],
+      "ECOREGIONS_II": [
+        {"ecoregion": "212, M211, 211, 222I, 221A, 221B, 221C, 221D"}
+      ],
+      "ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS": [
+        {"species": "Acer rubrum"},
+        {"species": "Acer saccharinum"},
+        {"species": "Chamaecyparis thyoides"},
+        {"species": "Fraxinus nigra"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Larix laricina"},
+        {"species": "Picea mariana"},
+        {"species": "Picea rubens"},
+        {"species": "Pinus rigida"},
+        {"species": "Populus balsamifera"},
+        {"species": "Salix amygdaloides"},
+        {"species": "Tsuga canadensis"},
+        {"species": "Thuja occidentalis"},
+        {"species": "Ulmus americana"},
+        {"species": "Ulmus rubra"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES_II": [
+        {"species": "Abies balsamea"},
+        {"species": "Acer nigrum"},
+        {"species": "Acer negundo"},
+        {"species": "Acer saccharum"},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Betula papyrifera"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Fraxinus americana"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Populus tremuloides"},
+        {"species": "Prunus serotina"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Tilia americana"}
+      ]
+   }
+
+}}
+

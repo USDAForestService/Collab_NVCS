@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Eastern North American Ruderal Forest (M013)",
+
+   "id":
+      "M013",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Only one Macrogroup"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+      "RUDERAL_EXOTIC": [
+        {"ruderal": "yes"},
+        {"exotic": "yes"}
+      ]
+   }
+
+}}

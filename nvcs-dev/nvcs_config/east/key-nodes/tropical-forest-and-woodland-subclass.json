@@ -1,0 +1,42 @@
+{"node": {
+
+   "name":
+      "Tropical Forest & Woodland Subclass",
+
+   "id":
+      "Tropical Forest & Woodland Subclass",
+
+   "level":
+      "division",
+
+   "description": [
+      "Forests dominated by tropical hardwood, other palms and tropical conifer",
+      "tree species. Found in tropical regions of the United States - Puerto Rico,",
+      "U.S. Virgin Islands and Tropical Florida (EcoSection 411A) but excluding stands",
+      "containing alone or in combination Pinus elliottii, Pinus palustris, Quercus virginiana,",
+      "Quercus laurifolia, Taxodium ascendens > 20% RIV. [n.b. Some tropical forest types may",
+      "extend into EcoSubsections 232Da, 232Ga, 232Gb, but specific diagnostic species will ",
+      "need to be identified to key them out.]"
+   ],
+
+   "trigger": [
+      "match(TROPICAL_LOCATION) and riv(EXCLUDED_SPECIES) < 20"
+   ],
+
+   "filters": {
+      "TROPICAL_LOCATION": [
+        {"state": "PR"},
+        {"state": "VI"},
+        {"state": "FL", "ecoregion": "411A"}
+      ],
+      "EXCLUDED_SPECIES": [
+        {"species": "Pinus elliottii"},
+        {"species": "Pinus palustris"},
+        {"species": "Quercus virginiana"},
+        {"species": "Quercus laurifolia"},
+        {"species": "Taxodium ascendens"}
+      ]
+   }
+
+}}
+

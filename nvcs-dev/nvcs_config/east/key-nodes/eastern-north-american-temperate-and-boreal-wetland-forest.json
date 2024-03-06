@@ -1,0 +1,31 @@
+{"node": {
+
+   "name":
+      "Eastern North American Temperate & Boreal Wetland Forest",
+
+   "id":
+      "Eastern North American Temperate & Boreal Wetland Forest",
+
+   "level":
+      "division",
+
+   "description": [
+      "Eastern North American wetland Temperate & Boreal Forest (all forests found",
+      "in EcoSection 411A, EcoDomain Humid Temperate (200 or M200) of the eastern",
+      "United States and Canada, and EcoDomain Polar (100 or M100) east of Alberta",
+      "and the Yukon [may not need worry about east-west boreal line since tree",
+      "species for Macrogroups are the same across the line."
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "411A, 200, M200, 100, M100"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,37 @@
+{"node": {
+
+   "name":
+      "Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)",
+
+   "id":
+      "G222",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 313C, 315A, 315H, 321A, 322A, 322B, M242B,",
+		"M261A, M261D, M242C, M242D – only eastern ecosubsections M242Dd,",
+		"M242De, M242Df, M242Dg, M242Dh, M261E, M261G, 313A, 313B, 331, 341,",
+		"342, M332, M313, M331, M341, M333, M334",
+		"and tree composition dominated by one or more of STRONG DIAGNOSTIC",
+		"species Populus tremuloides or Betula papyrifera (RIV=>75%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "riv(STRONG_DIAGNOSTIC_SPECIES) >= 75"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "313C, 315A, 315H, 321A, 322A, 322B, M242B, M261A, M261D, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, M261E, M261G, 313A, 313B, 331, 341, 342, M332, M313, M331, M341, M333, M334"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Populus tremuloides"},
+		{"species": "Betula papyrifera"}
+	  ]
+   }
+
+}}

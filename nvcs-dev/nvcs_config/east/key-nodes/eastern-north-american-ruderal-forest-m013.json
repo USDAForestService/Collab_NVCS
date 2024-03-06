@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Eastern North American Ruderal Forest (M013)",
+
+   "id":
+      "Eastern North American Ruderal Forest (M013)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

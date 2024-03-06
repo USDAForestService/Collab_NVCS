@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Central Hardwood Swamp Forest LC (M503)",
+
+   "id":
+      "Central Hardwood Swamp Forest LC (M503)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

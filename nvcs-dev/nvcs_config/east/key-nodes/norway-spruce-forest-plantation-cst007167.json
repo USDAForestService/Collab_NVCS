@@ -1,0 +1,35 @@
+{"node": {
+
+   "name":
+      "Norway Spruce Forest Plantation (CST007167)",
+
+   "id":
+      "Norway Spruce Forest Plantation (CST007167)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      " i. Tree composition dominated by Picea abies with >=50% RIV",
+      "OR",
+      "ii. Tree composition dominated by Pinus abies, but with >=25% RIV, AND species",
+      "    of Pinus sylvestris or Larix spp. alone or in combination <25% RIV"
+   ],
+
+   "trigger": [
+      "    riv(NORWAY_SPRUCE) >= 50",
+      "or (riv(NORWAY_SPRUCE) >= 25 and riv(OTHER_EXOTIC_CONIFERS) < 25)"
+   ],
+
+   "filters": {
+      "NORWAY_SPRUCE": [
+        {"species": "Picea abies"}
+      ],
+      "OTHER_EXOTIC_CONIFERS": [
+        {"species": "Pinus sylvestris"},
+        {"species": "Larix spp."}
+      ]
+   }
+
+}}
+

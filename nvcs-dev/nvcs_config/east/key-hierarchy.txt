@@ -1,0 +1,149 @@
+Forest Plantations
+	Tropical Forest Plantation Cultural Group
+		Caribbean Forest Plantation Cultural Subgroup (CSG008)
+			Caribbean Conifer Plantations
+				Native Caribbean Conifer Plantation Cultural Type (CTY001)
+				Exotic Caribbean Conifer Plantation Cultural Type (CTY002)
+			Caribbean Hardwood Plantations
+				Native Caribbean Hardwood Plantation Cultural Type (CTY003)
+				Exotic Caribbean Hardwood Plantation Cultural Type (CTY004)
+			Miscellaneous Caribbean Plantation Cultural Type (CTYP19)
+	Temperate & Boreal Forest Plantation Cultural Group (CGR007)
+		Eastern North American Temperate Forest Plantation Cultural Subgroup (CSG005)
+			Eastern North American Conifer Plantations
+				Native Eastern North American Conifer Plantations
+					Native Southern Pine Plantation Cultural Type (CTY012)
+						Shortleaf Pine Forest Plantation (CST007169)
+						Longleaf Pine Forest Plantation (CST007176)
+						Slash Pine Forest Plantation (CST007170)
+						Loblolly Pine Forest Plantation (CST007179)
+						Sand Pine Forest Plantation (CST007168)
+						Native Miscellaneous Southern Pine Forest Plantation (CST007160)
+					Native Northern Conifer Plantation
+						Native Northern Pine Plantation Cultural Type (CTY009)
+							Red Pine Forest Plantation (CST007117)
+							White Pine Forest Plantation (CST007178)
+							Jack Pine Forest Plantation (CST007161)
+							Native Miscellaneous Northern Pine Forest Plantation
+						Native Northern Spruce - Fir Plantation Cultural Type (CTY010)
+							White Spruce Forest Plantation (CST007164)
+							Balsam Fir Forest Plantation (CST007182)
+							Red Spruce Forest Plantation (CST004758)
+							Native Miscellaneous Northern Conifer Forest Plantation (CST007163)
+				Exotic Eastern North American Conifer Plantations
+					Exotic Northern Conifer Plantation Cultural Type (CTY014)
+						Scotch Pine Exotic Forest Plantation (CST006313)
+						Norway Spruce Forest Plantation (CST007167)
+						Larch Forest Plantation (CST006408)
+						Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)
+					Exotic Southern Conifer Plantation Cultural Type (CTY015)
+						Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)
+			Eastern North American Hardwood Plantation
+				Native Eastern North American Hardwood Plantations
+					Native Northern Hardwood Forest Plantation Cultural Type (CTY016)
+						Black Walnut Forest Plantation (CST007188)
+						Aspen Forest Plantation (CST007189)
+						Black Locust Forest Plantation (CST007190)
+						Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)
+					Native Southern Hardwood Forest Plantation Cultural Type (CTY017)
+						Tuliptree Forest Plantation (CST007197)
+						Sweetgum Forest Plantation Subtype (CST007450)
+						Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)
+				Exotic Eastern North American Hardwood Plantations
+					Exotic Northern Hardwood Plantation Cultural Type (CTY018)
+					Exotic Southern Hardwood Plantation Cultural Type (CTY019)
+		North American Boreal Forest Plantation Cultural Subgroup
+Natural and Ruderal Forests
+	Wetland Forest & Woodlands
+		Caribbean Florida Wetland Forest
+			Tropical Florida Natural Wetland Forest
+				Caribbean Swamp Forest via tropical Florida (M617)
+				Western Atlantic & Caribbean Mangrove (M005)
+			Tropical Florida Ruderal Wetland Forest
+				Tropical Florida Ruderal Flooded & Swamp Forest (Mnew1)
+		Caribbean Wetland Forest
+			Caribbean Natural Wetland Forest
+				Caribbean Swamp Forest via wetland (M617)
+			Caribbean Ruderal Wetland Forest
+		Temperate & Boreal Wetland Forest
+			Eastern North American Temperate & Boreal Wetland Forest
+				Southeastern North American Flooded & Swamp Forest Division
+					Eastern Warm Temperate Natural Wetland Forest
+						Southern Great Plains Floodplain Forest & Woodland (M154)
+						Pond-cypress Basin Swamp (M161)
+						Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)
+						Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)
+						Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)
+						Pond-cypress Basin Swamp LC (M161)
+						Longleaf Pine Woodland LC2 (M007)
+						Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)
+					Eastern Warm Temperate Ruderal Wetland Forest
+						Southeastern North American Ruderal Flooded & Swamp Forest (M310)
+				Eastern Cool Temperate & North American Boreal Wetland Forest
+					North American Boreal Flooded & Swamp Forest Division
+						North American Boreal Natural Wetland Forest
+							North American Boreal Conifer Poor Swamp (M299)
+							North American Boreal Conifer Poor Swamp LC (M299)
+						North American Boreal Ruderal Wetland Forest
+					Eastern North American - Great Plains Flooded & Swamp Forest Division
+						Eastern Cool Temperate Natural Wetland Forests
+							Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)
+							Central Hardwood Floodplain Forest (M029)
+							Central Hardwood Swamp Forest (M503)
+							Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)
+							Central Hardwood Floodplain Forest LC (M029)
+							Central Hardwood Swamp Forest LC (M503)
+						Eastern Cool Temperate Ruderal Wetland Forests
+							Eastern North American Ruderal Flooded & Swamp Forest (M302)
+	Upland Forest & Woodlands
+		Tropical Forest & Woodland Subclass
+			Tropical Florida - Caribbean Forest
+				Tropical Florida Forest
+					Tropical Florida Natural Forest
+						Caribbean Swamp Forest via upland (M617)
+						Caribbean Coastal Lowland Dry Forest (M134)
+						Caribbean Coastal Lowland Dry Forest LC (M134)
+					Tropical Florida Ruderal Forest
+						Caribbean Ruderal Dry Forest (M514)
+				Caribbean Forest
+					Caribbean Natural Forest
+						Caribbean & Central American Dry Forests
+							Caribbean-Mesoamerican Pine Forest (M296)
+							Caribbean-Mesoamerican Pine Forest LC (M296)
+					Caribbean Ruderal Forest
+						Caribbean Ruderal Dry Forest (M514)
+		Temperate & Boreal Forests
+			Eastern North American Temperate & Boreal Forests
+				Southeastern North American Forest & Woodland Division
+					Southeastern Warm Temperate Natural Forests
+						Southern & South-Central Oak - Pine Forest & Woodland (M016)
+						Southern Mesic Mixed Broadleaf Forest (M008)
+						Longleaf Pine Woodland (M007)
+						Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)
+						Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)
+						Longleaf Pine Woodland LC1 (M007)
+						Southern Mesic Mixed Broadleaf Forest LC (M008)
+					Southeastern Warm Temperate Ruderal Forests
+						Southeastern North American Ruderal Forest (M305)
+				Eastern North American Forest & Woodland Division
+					Eastern Cool Temperate Natural Forest & Woodlands
+						Great Plains Forest & Woodland (M151)
+						Northern Forest macrogroups
+							Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)
+							Laurentian-Acadian Mesic Hardwood - Conifer Forest (M014)
+							Laurentian-Acadian Pine - Hardwood Forest & Woodland LC (M159)
+							Laurentian-Acadian Mesic Hardwood - Conifer Forest LC1 (M014)
+						Central Forest macrogroups
+							Central Midwest Oak Forest, Woodland & Savanna (M012)
+							Central Midwest Mesic Forest (M882)
+							Central Midwest Oak Forest, Woodland & Savanna LC (M012)
+							Central Midwest Mesic Forest LC (M882)
+							Appalachian, Interior - Northeastern Mesic Forest (M883)
+							Southern & South-Central Oak - Pine Forest & Woodland - Cool (M016)
+							Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)
+							Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)
+							Southern & South-Central Oak - Pine Forest & Woodland LC (M016)
+							Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland LC (M502)
+							Appalachian, Interior - Northeastern Mesic Forest LC (M883)
+					Eastern Cool Temperate Ruderal Forest & Woodlands
+						Eastern North American Ruderal Forest (M013)

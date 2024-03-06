@@ -1,0 +1,44 @@
+{"node": {
+
+   "name":
+      "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)",
+
+   "id":
+      "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Plots found in ecosection 231A, B, D, E, 232A-D, F, G AND",
+      "tree composition, with STRONG SWAMP DIAGNOSTICS Pinus palustris < 5% RIV AND dominated by one or more",
+      "of Chamaecyparis thyoides, Cliftonia monophylla [not tracked by FIA], Fraxinus caroliniana, Gordonia lasianthus,",
+      "Magnolia virginiana, Persea borbonia, Pinus serotina or Quercus laurifolia, Sabal palmetto (>=20% RIV);"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and (riv(EXCLUDED_SPECIES) < 5 and riv(STRONG_SWAMP_DIAGNOSTICS) >= 20)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "231A, 231B, 231D, 231E, 232A, 232B, 232C, 232D, 232F, 232G"}
+      ],
+      "EXCLUDED_SPECIES": [
+        {"species": "Pinus palustris"}
+      ],
+      "STRONG_SWAMP_DIAGNOSTICS": [
+        {"species": "Chamaecyparis thyoides"},
+        {"species": "Cliftonia monophylla"},
+        {"species": "Fraxinus caroliniana"},
+        {"species": "Gordonia lasianthus"},
+        {"species": "Magnolia virginiana"},
+        {"species": "Persea borbonia"},
+        {"species": "Pinus serotina"},
+        {"species": "Quercus laurifolia"},
+        {"species": "Sabal palmetto"}
+      ]
+   }
+
+}}
+

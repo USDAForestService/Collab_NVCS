@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Central Midwest Mesic Forest LC (M882)",
+
+   "id":
+      "Central Midwest Mesic Forest LC (M882)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "222, 251 ! 222I"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,31 @@
+{"node": {
+
+   "name":
+      "Native Eastern North American Conifer Plantations",
+
+   "id":
+      "Native Eastern North American Conifer Plantations",
+
+   "level":
+      "type",
+
+   "description": [
+      "Tree species dominated by native conifers (See",
+      "Appendix A) with RIV > exotic conifers"
+   ],
+
+   "trigger": [
+      "riv(NATIVE_CONIFERS) > riv(EXOTIC_CONIFERS)"
+   ],
+
+   "filters": {
+      "NATIVE_CONIFERS": [
+        {"exotic": "no", "softwoodhardwood": "S"}
+      ],
+      "EXOTIC_CONIFERS": [
+        {"exotic": "yes", "softwoodhardwood": "S"}
+      ]
+   }
+
+}}
+

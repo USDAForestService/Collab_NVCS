@@ -1,0 +1,33 @@
+{"node": {
+
+   "name":
+      "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
+
+   "id":
+      "M885",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Vegetation in a relatively natural state, dominated by native species,",
+	  "little or no evidence of trees in a row, no very recent logging,",
+	  "understory mowing, etc. (trees may be early successional pole-sized",
+	  "trees following logging or blowdowns). Tree composition is dominated by",
+	  "ruderal native or EXOTIC = yes (< 20% RIV)",
+	  "(See Appendix xx [PLACEHOLDER])"
+   ],
+
+   "trigger": [
+      "riv(RUDERAL_EXOTIC) < 20"
+   ],
+
+   "filters": {
+      "RUDERAL_EXOTIC": [
+        {"ruderal": "yes"},
+        {"exotic": "yes"}
+      ]
+   }
+
+}}
+

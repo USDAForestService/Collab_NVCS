@@ -1,0 +1,48 @@
+{"node": {
+
+   "name":
+      "Caribbean Florida Wetland Forest",
+
+   "id":
+      "Caribbean Florida Wetland Forest",
+
+   "level":
+      "division",
+
+   "description": [
+      " i. Plots found in Ecosection 411A (Tropical Florida) BUT excluding stands with Persea borbonia,",
+      "    Pinus elliottii, Quercus virginiana, Taxodium ascendens >=20% RIV.",
+      "OR",
+      "ii. Plots found in Ecosection 232 (Tropical Florida and Gulf or Atlantic coast)",
+      "    AND with tree composition dominated by one or more of Avicennia germinans, Conocarpus erectus,",
+      "    Laguncularia racemosa, Rhizophora mangle (>=20% RIV);"
+   ],
+
+   "trigger": [
+      "    (match(TROPICAL_FLORIDA) and riv(EXCLUDED_SPECIES) < 20)",
+      " or (match(GULF_OR_ATLANTIC_COAST) and riv(DIAGNOSTIC_SPECIES) >= 20)"
+   ],
+
+   "filters": {
+      "TROPICAL_FLORIDA": [
+        {"state": "FL", "ecoregion": "411A"}
+      ],
+      "EXCLUDED_SPECIES": [
+        {"species": "Persea borbonia"},
+        {"species": "Pinus elliottii"},
+        {"species": "Quercus virginiana"},
+        {"species": "Taxodium ascendens"}
+      ],
+      "GULF_OR_ATLANTIC_COAST": [
+        {"ecoregion": "232"}
+      ],
+      "DIAGNOSTIC_SPECIES": [
+        {"species": "Avicennia germinans"},
+        {"species": "Conocarpus erectus"},
+        {"species": "Laguncularia racemosa"},
+        {"species": "Rhizophora mangle"}
+      ]
+   }
+
+}}
+

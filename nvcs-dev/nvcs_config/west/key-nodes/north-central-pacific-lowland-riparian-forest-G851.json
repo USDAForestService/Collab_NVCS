@@ -1,0 +1,59 @@
+{"node": {
+
+   "name":
+      "North-Central Pacific Lowland Riparian Forest (G851)",
+
+   "id":
+      "G851",
+
+   "level":
+      "group",
+
+   "description": [
+      "i. Located in ECOREGION M242C, M261A, M261B, M261D, M261E, M262A, 242,",
+	  "M242A, M242B, M242D, 261A, 263 and tree",
+	  "composition dominated by one or more of STRONG DIAGNOSTIC species",
+	  "Abies grandis, Alnus rhombifolia, Alnus rubra, Fraxinus latifolia,",
+	  "Picea sitchensis, or Populus trichocarpa (RIV=>50%),",
+       "OR",
+      "ii. Located in above ECOREGION, and tree composition as above, but",
+	  "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+	  "combination of Acer macrophyllum, Chamaecyparis lawsoniana,",
+	  "Notholithocarpus densiflorus, Platanus racemosa, Populus fremontii,",
+	  "Pseudotsuga menziesii, Quercus lobata, Thuja plicata, or",
+	  "Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,",
+	  "together STRONG and MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "M242C, M261A, M261B, M261D, M261E, M262A, 242, M242A, M242B, M242D, 261A, 263"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Abies grandis"},
+		{"species": "Alnus rhombifolia"},
+		{"species": "Alnus rubra"},
+		{"species": "Fraxinus latifolia"},
+	    {"species": "Picea sitchensis"},
+		{"species": "Populus trichocarpa"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer macrophyllum"},
+		{"species": "Chamaecyparis lawsoniana"},
+	    {"species": "Notholithocarpus densiflorus"},
+		{"species": "Platanus racemosa"},
+		{"species": "Populus fremontii"},
+	    {"species": "Pseudotsuga menziesii"},
+		{"species": "Quercus lobata"},
+		{"species": "Thuja plicata"},
+	    {"species": "Tsuga heterophylla"}
+      ]
+   }
+
+}}

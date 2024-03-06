@@ -1,0 +1,38 @@
+{"node": {
+
+   "name":
+      "Exotic Northern Conifer Plantation Cultural Type (CTY014)",
+
+   "id":
+      "Exotic Northern Conifer Plantation Cultural Type (CTY014)",
+
+   "level":
+      "type",
+
+   "description": [
+      "Exotic conifer tree species dominated by Pinus sylvestris,",
+      "Picea abies, Larix decidua (not used by FIA), or Larix spp. alone or in",
+      "combination >=25% RIV or stand found in ecodivisions 210, M210, 220, M220,",
+      "330 and ecoprovince 251 [note - this list represents the expected list of",
+      "common exotic conifer plantation species types.  If other common exotic",
+      "conifer plantation species are identified, they should be added to this list",
+      "and additional couplets added below]."
+   ],
+
+   "trigger": [
+      "riv(COMMON_EXOTIC_CONIFERS) >= 25 or match(NORTHERN_REGION)"
+   ],
+
+   "filters": {
+      "COMMON_EXOTIC_CONIFERS": [
+        {"species": "Pinus sylvestris"},
+        {"species": "Picea abies"},
+        {"species": "Larix spp."}
+      ],
+      "NORTHERN_REGION": [
+        {"ecoregion": "210, M210, 220, M220, 330, 251"}
+      ]
+   }
+
+}}
+

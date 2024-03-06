@@ -1,0 +1,140 @@
+{"node": {
+
+   "name":
+      "Appalachian, Interior - Northeastern Mesic Forest (M883)",
+
+   "id":
+      "Appalachian, Interior - Northeastern Mesic Forest (M883)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "  i. Tree composition dominated by any one or more of the STRONG MESIC DIAGNOSTICS [Appalachian- Interior-Northeast Mesic",
+      "     Forest Diagnostics] Acer nigrum [questionable], Acer pensylvanicum, Aesculus flava, Betula alleghaniensis, Betula lenta,",
+      "     Halesia carolina (=H. tetraptera), Halesia spp., Magnolia acuminata, Magnolia tripetala, Tilia americana var. heterophylla,",
+      "     Tsuga canadensis, (>=50% RIV);",
+      " OR",
+      " ii. Plot occurs in EcoProvinces 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, 232 [only plots in VA, PA,",
+      "     DE, MD, NJ, southern IN, southern IL] AND tree composition dominated by any one or more of the ECOREGIONAL STRONG MESIC",
+      "     DIAGNOSTICS [Strong Appalachian- Northeast Mesic Forest Diagnostics] Acer nigrum, Acer pensylvanicum, Acer saccharum,",
+      "     Aesculus flava, Aesculus glabra, Asimina triloba, Betula alleghaniensis, Betula lenta, Carya cordiformis, Celtis occidentalis,",
+      "     Fagus grandifolia, Fraxinus americana, Fraxinus pennsylvanica, Halesia carolina (= H. tetraptera), Halesia spp., Liriodendron tulipifera,",
+      "     Liquidambar styraciflua, Magnolia acuminata, Magnolia fraseri, Magnolia macrophylla, Magnolia tripetela,Quercus shumardii,",
+      "     Tilia americana, Tilia americana var. heterophylla, Tsuga canadensis, Ulmus americana (>=20% RIV);",
+      "  AND",
+      "     any of the following ECOREGIONAL MODERATE MESIC DIAGNOSTICS [Moderate Appalachian-Interior-Northeast Mesic Forest Diagnostics]",
+      "     Acer barbatum,Amelanchier spp., Betula populifolia, Betula papyrifera, Carpinus caroliniana, Carya ovalis, Cornus florida,",
+      "     Gleditsia triacanthos, Juglans cinerea, Juglans nigra, Ostrya virginiana, Oxydendrum arboreum, Pinus strobus,",
+      "     Platanus occidentalis, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Prunus virginiana,",
+      "     Quercus bicolor, Quercus imbricaria, Quercus muehlenbergii, Quercus pagoda, Quercus phellos, Quercus rubra, Quercus shumardii,",
+      "     Ulmus rubra, Ulmus thomasii (together >=50% RIV) [note, some mesic Nyssa sylvatica - Quercus alba) plots from Arkansas could",
+      "     key out here]",
+      " OR",
+      "iii. Plot occurs in EcoSections 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, 232 AND tree composition dominated",
+      "     by ECOREGIONAL MODERATE MESIC OAK DIAGNOSTICS Quercus rubra with >=20% RIV, and the following dry Quercus spp. or Carya spp.",
+      "     (Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya glabra, Carya alba, Carya pallida)",
+      "     <20% RIV"
+   ],
+
+   "trigger": [
+      "    riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
+      "or (    match(ECOREGIONS_1)",
+      "    and (   (    riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) >= 20",
+      "             and riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) + riv(ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS) >= 50)",
+      "         or (    riv(ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS) >= 20",
+      "             and riv(EXCLUDED_SPECIES) < 20)))"
+   ],
+
+   "filters": {
+      "ECOREGIONS_1": [
+        {"ecoregion": "211F, 211G, 211Jd, 221, M221, 223B, 223C, 223D, 223E, 223F, 223G, 231A, 231C, 231D, 231I, 232"}
+      ],
+      "STRONG_MESIC_DIAGNOSTICS": [
+        {"species": "Acer nigrum"},
+        {"species": "Acer pensylvanicum"},
+        {"species": "Aesculus flava"},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Betula lenta"},
+        {"species": "Halesia carolina"},
+        {"species": "Halesia spp."},
+        {"species": "Magnolia acuminata"},
+        {"species": "Magnolia tripetala"},
+        {"species": "Tilia americana var. heterophylla"},
+        {"species": "Tsuga canadensis"}
+      ],
+      "ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS": [
+        {"species": "Acer nigrum"},
+        {"species": "Acer pensylvanicum"},
+        {"species": "Acer saccharum"},
+        {"species": "Aesculus flava"},
+        {"species": "Aesculus glabra"},
+        {"species": "Asimina triloba"},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Betula lenta"},
+        {"species": "Carya cordiformis"},
+        {"species": "Celtis occidentalis"},
+        {"species": "Fagus grandifolia"},
+        {"species": "Fraxinus americana"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Halesia carolina"},
+        {"species": "Halesia spp."},
+        {"species": "Liriodendron tulipifera"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Magnolia acuminata"},
+        {"species": "Magnolia fraseri"},
+        {"species": "Magnolia macrophylla"},
+        {"species": "Magnolia tripetala"},
+        {"species": "Quercus shumardii"},
+        {"species": "Tilia americana"},
+        {"species": "Tilia americana var. heterophylla"},
+        {"species": "Tsuga canadensis"},
+        {"species": "Ulmus americana"}
+      ],
+      "ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS": [
+        {"species": "Acer barbatum"},
+        {"species": "Amelanchier spp."},
+        {"species": "Betula populifolia"},
+        {"species": "Betula papyrifera"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Carya ovalis"},
+        {"species": "Cornus florida"},
+        {"species": "Gleditsia triacanthos"},
+        {"species": "Juglans cinerea"},
+        {"species": "Juglans nigra"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Oxydendrum arboreum"},
+        {"species": "Pinus strobus"},
+        {"species": "Platanus occidentalis"},
+        {"species": "Populus grandidentata"},
+        {"species": "Populus tremuloides"},
+        {"species": "Prunus pensylvanica"},
+        {"species": "Prunus serotina"},
+        {"species": "Prunus virginiana"},
+        {"species": "Quercus bicolor"},
+        {"species": "Quercus imbricaria"},
+        {"species": "Quercus muehlenbergii"},
+        {"species": "Quercus pagoda"},
+        {"species": "Quercus phellos"},
+        {"species": "Quercus rubra"},
+        {"species": "Quercus shumardii"},
+        {"species": "Ulmus rubra"},
+        {"species": "Ulmus thomasii"}
+      ],
+      "ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS": [
+        {"species": "Quercus rubra"}
+      ],
+      "EXCLUDED_SPECIES": [
+        {"species": "Quercus alba"},
+        {"species": "Quercus coccinea"},
+        {"species": "Quercus prinus"},
+        {"species": "Quercus stellata"},
+        {"species": "Quercus velutina"},
+        {"species": "Carya glabra"},
+        {"species": "Carya alba"},
+        {"species": "Carya pallida"}
+      ]
+   }
+
+}}
+

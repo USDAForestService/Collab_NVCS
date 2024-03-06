@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Native Miscellaneous Northern Pine Forest Plantation",
+
+   "id":
+      "Native Miscellaneous Northern Pine Forest Plantation",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

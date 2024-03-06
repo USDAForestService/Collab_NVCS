@@ -1,0 +1,30 @@
+{"node": {
+
+   "name":
+      "Native Caribbean Hardwood Plantation Cultural Type (CTY003)",
+
+   "id":
+      "Native Caribbean Hardwood Plantation Cultural Type (CTY003)",
+
+   "level":
+      "type",
+
+   "description": [
+      "Species of native hardwoods have > RIV than exotic species"
+   ],
+
+   "trigger": [
+      "riv(NATIVE_HARDWOODS) > riv(EXOTIC_HARDWOODS)"
+   ],
+
+   "filters": {
+      "NATIVE_HARDWOODS": [
+        {"softwoodhardwood": "H", "exotic": "no"}
+      ],
+      "EXOTIC_HARDWOODS": [
+        {"softwoodhardwood": "H", "exotic": "yes"}
+      ]
+   }
+
+}}
+

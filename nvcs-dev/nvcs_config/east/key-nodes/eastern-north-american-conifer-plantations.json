@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Eastern North American Conifer Plantations",
+
+   "id":
+      "Eastern North American Conifer Plantations",
+
+   "level":
+      "subgroup",
+
+   "description": [
+      "Eastern North American species are conifers >=25% RIV"
+   ],
+
+   "trigger": [
+      "riv(CONIFERS) >= 25"
+   ],
+
+   "filters": {
+      "CONIFERS": [
+        {"softwoodhardwood": "S"}
+      ]
+   }
+
+}}
+

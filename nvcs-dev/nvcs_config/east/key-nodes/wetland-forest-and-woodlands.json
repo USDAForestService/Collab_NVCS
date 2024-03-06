@@ -1,0 +1,105 @@
+{"node": {
+
+   "name":
+      "Wetland Forest & Woodlands",
+
+   "id":
+      "Wetland Forest & Woodlands",
+
+   "level":
+      "division",
+
+   "description": [
+      "  i. The \"physiographic class code\" in FIA database is NOT in the Hydric or Riverine series, AND EITHER",
+      "     ia. the \"obligate wet\" (W1) species (see Appendix A) have a combined RIV >=20%; OR",
+      "     ib. the \"obligate wet\" (W1) species have at least a combined RIV of >=5%, and the combination",
+      "         of \"obligate wet\" (W1) and \"facultative wet\" (W2) has a combined RIV of >=50%, OR",
+      "     ic. \"facultative wet\" (W2) tree species have a combined RIV of >=60%,",
+      "     id. \"facultative wet\" (W2) tree species have at least a combined RIV > 30%, and the combination",
+      "         of \"facultative wet\" (W2) and \"facultative\" (W3) > 70%, OR",
+      "     ie. Wetland indicators W1, W2 (WI) > Upland indicators (UI).  Do not include exotic or",
+      "         FAC(W3) species.",
+      " ii. if \"physiographic class code\" in FIA database is in the Hydric or Riverine series, AND EITHER",
+      "     iia. the \"obligate wet\" (W1) wetland diagnostic species have a combined RIV of (>=10%), OR",
+      "     iib. the \"obligate wet\" (W1) species have at least a combined RIV of >=5%, and the combination",
+      "          of \"obligate wet\" (W1) and \"facultative wet\" (W2) have a combined RIV of >=40%, OR",
+      "     iic. the \"facultative wet\" (W2) tree species have a combined RIV of >= 50%",
+      "     iid. \"facultative wet\" (W2) tree species have at least a combined RIV > 20%, and the combination",
+      "          of \"facultative wet\" (W2) and \"facultative\" (W3) > 60%, OR",
+      "     iie. Wetland indicators W1, W2 (WI) > Upland indicators (UI).  Do not include exotic or",
+      "          FAC(W3) species.",
+      "     iif. \"facultative\" (W3) have combine RIV >= 80%",
+      "iii. the ecoregion is 231E, 231G, OR 255 AND",
+      "     iiia. The \"physiographic class code\" in FIA Database is in the Riverine series",
+      "     OR",
+      "     iiib. The \"obligate wet\" (W1) species have at least a combined RIV >=5%, and the combination of",
+      "           \"obligate wet\" (W1), \"facultative wet\" (W2), \"facultative\" (W3), and Gleditsia triacanthos",
+      "           and Quercus virginiana have a combined RIV >=50%",
+      " iv. the ecoregion is 211, M211, 212, AND",
+      "     the combination of \"obligate wet\" (W1) and \"facultative wet\" (W2) >= 50%,",
+      "     OR",
+      "     Fraxinus nigra, Larix laricina, Picea mariana, Populus balsamifera, and Thuja occidentalis have a combined RIV >= 25%"
+   ],
+
+   "trigger": [
+      "   (not match(HYDRIC_OR_RIVERINE) and (    riv(W1) >= 20",
+      "                                       or (riv(W1) >= 5 and riv(W1) + riv(W2) >= 50)",
+      "                                       or  riv(W2) >= 60",
+      "                                       or (riv(W2) >= 30 and riv(W2) + riv(W3) >= 70)",
+      "                                       or  riv(WETLAND) > riv(UPLAND)",
+      "                                      ))",
+      "or (    match(HYDRIC_OR_RIVERINE) and (    riv(W1) >= 10",
+      "                                       or (riv(W1) >= 5 and riv(W1) + riv(W2) >= 40)",
+      "                                       or riv(W2) >= 50",
+      "                                       or (riv(W2) >= 20 and riv(W2) + riv(W3) >= 60)",
+      "                                       or riv(WETLAND) > riv(UPLAND)",
+      "                                       or riv(W3) >= 80",
+      "                                      ))",
+      "or (match(ECOREGIONS_III) and (match(RIVERINE) or (riv(W1) >= 5 and riv(W1) + riv(W2) + riv(W3) + riv(SPECIES_III) >= 50)))",
+      "or (match(ECOREGIONS_IV) and (riv(W1) + riv(W2) >= 50 or riv(SPECIES_IV) >= 25))"
+   ],
+
+   "filters": {
+      "HYDRIC_OR_RIVERINE": [
+        {"hydric": "yes"},
+        {"riverine": "yes"}
+      ],
+      "W1": [
+        {"wetland": "obl"}
+      ],
+      "W2": [
+        {"wetland": "facw"}
+      ],
+      "W3": [
+        {"wetland": "fac"}
+      ],
+      "WETLAND": [
+        {"wetland": "obl, facw", "exotic": "no"}
+      ],
+      "UPLAND": [
+        {"wetland": "upl", "exotic": "no"}
+      ],
+      "ECOREGIONS_III": [
+        {"ecoregion": "231E, 231G, 255"}
+      ],
+      "RIVERINE": [
+        {"riverine": "yes"}
+      ],
+      "SPECIES_III": [
+        {"species": "Gleditsia triacanthos"},
+        {"species": "Quercus virginiana"}
+      ],
+      "ECOREGIONS_IV": [
+        {"ecoregion": "211, M211, 212"}
+      ],
+      "SPECIES_IV": [
+        {"species": "Fraxinus nigra"},
+        {"species": "Larix laricina"},
+        {"species": "Picea mariana"},
+        {"species": "Populus balsamifera"},
+        {"species": "Thuja occidentalis"}
+      ]
+   }
+
+}}
+

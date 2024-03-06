@@ -1,0 +1,45 @@
+{"node": {
+
+   "name":
+      "Balsam Fir Forest Plantation (CST007182)",
+
+   "id":
+      "Balsam Fir Forest Plantation (CST007182)",
+
+   "level":
+      "subtype",
+
+   "description": [
+      "Tree composition dominated by Abies balsamea >=25% RIV,",
+      "and exceeds each species of Larix laricina, Picea glauca,",
+      "Picea rubens and Picea mariana."
+   ],
+
+   "trigger": [
+      "    riv(BALSAM_FIR) >= 25",
+      "and riv(BALSAM_FIR) > riv(NATIVE_TAMARACK)",
+      "and riv(BALSAM_FIR) > riv(WHITE_SPRUCE)",
+      "and riv(BALSAM_FIR) > riv(RED_SPRUCE)",
+      "and riv(BALSAM_FIR) > riv(BLACK_SPRUCE)"
+   ],
+
+   "filters": {
+      "BALSAM_FIR": [
+        {"species": "Abies balsamea"}
+      ],
+      "NATIVE_TAMARACK": [
+        {"species": "Larix laricina"}
+      ],
+      "RED_SPRUCE": [
+        {"species": "Picea rubens"}
+      ],
+      "WHITE_SPRUCE": [
+        {"species": "Picea glauca"}
+      ],
+      "BLACK_SPRUCE": [
+        {"species": "Picea mariana"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,77 @@
+{"node": {
+
+   "name":
+      "Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)",
+
+   "id":
+      "Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Plot not in Ecoregion 212 AND",
+      " i. Tree composition dominated by one or more of the STRONG APPALACHIAN DRY DIAGNOSTICS of Carya glabra,",
+      "    Carya ovata, Carya alba, Castanea dentata, Fraxinus quadrangulata, Juniperus virginiana, Nyssa sylvatica,",
+      "    Pinus echinata, Pinus pungens, Pinus rigida, Pinus strobus, Pinus virginiana, Quercus alba, Quercus coccinea,",
+      "    Quercus ellipsoidalis, Quercus falcata (= var. falcata), Quercus imbricaria, Quercus ilicifolia,",
+      "    Quercus marilandica, Quercus prinus, Quercus stellata, Quercus velutina, Tsuga caroliniana",
+      "    (>=50% RIV);",
+      "OR",
+      "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of weakly diagnostic",
+      "    species of Amelanchier spp., Carpinus caroliniana, Cercis canadensis, Cornus florida,",
+      "    Ostrya virginiana, Oxydendrum arboreum, Pinus banksiana, Prunus serotina, Prunus virginiana,",
+      "    Quercus muehlenbergii, Quercus rubra, Sassafras albidum (>=50% RIV)"
+   ],
+
+   "trigger": [
+      "match(ECOREGION) and (riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 or (riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 and riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50))"
+   ],
+
+   "filters": {
+      "ECOREGION": [
+        {"ecoregion": "!212"}
+      ],
+      "STRONG_APPALACHIAN_DRY_DIAGNOSTICS": [
+        {"species": "Carya glabra"},
+        {"species": "Carya ovata"},
+        {"species": "Carya alba"},
+        {"species": "Castanea dentata"},
+        {"species": "Fraxinus quadrangulata"},
+        {"species": "Juniperus virginiana"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Pinus echinata"},
+        {"species": "Pinus pungens"},
+        {"species": "Pinus rigida"},
+        {"species": "Pinus strobus"},
+        {"species": "Pinus virginiana"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus coccinea"},
+        {"species": "Quercus ellipsoidalis"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus imbricaria"},
+        {"species": "Quercus ilicifolia"},
+        {"species": "Quercus marilandica"},
+        {"species": "Quercus prinus"},
+        {"species": "Quercus stellata"},
+        {"species": "Quercus velutina"},
+        {"species": "Tsuga caroliniana"}
+      ],
+      "MODERATE_APPALACHIAN_DRY_DIAGNOSTICS": [
+        {"species": "Amelanchier spp."},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Cercis canadensis"},
+        {"species": "Cornus florida"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Oxydendrum arboreum"},
+        {"species": "Pinus banksiana"},
+        {"species": "Prunus serotina"},
+        {"species": "Prunus virginiana"},
+        {"species": "Quercus muehlenbergii"},
+        {"species": "Quercus rubra"},
+        {"species": "Sassafras albidum"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,60 @@
+{"node": {
+
+   "name":
+      "Californian Mediterranean Riparian Forest (G113)",
+
+   "id":
+      "G113",
+
+   "level":
+      "group",
+
+   "description": [
+      "i. Located in ECOREGION 261, 262, 263, 322A, 322C, M242A, M261A, M261B,",
+	  "M261C, M262 and tree composition dominated by one or more of STRONG",
+	  "DIAGNOSTIC species Alnus rhombifolia, Juglans californica,",
+	  "Platanus racemosa, Quercus agrifolia, Quercus lobata, Salix gooddingii,",
+	  "Salix laevigata, or Umbellularia californica (RIV=>50%),",
+       "OR",
+      "ii. Located in above ECOREGION, and tree composition as above, but with",
+	  "=>20% RIV AND with other MODERATE DIAGNOSTIC species in any combination",
+	  "of Acer macrophyllum, Acer negundo, Alnus rubra, Fraxinus latifolia,",
+	  "Populus fremontii, Quercus douglasii, Quercus kelloggii,",
+	  "Salix lasiolepis, or Salix lutea (>=30% RIV; i.e., together STRONG and",
+	  "MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "261, 262, 263, 322A, 322C, M242A, M261A, M261B, M261C, M262"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+	    {"species": "Alnus rhombifolia"},
+		{"species": "Juglans californica"},
+	    {"species": "Platanus racemosa"},
+		{"species": "Quercus agrifolia"},
+		{"species": "Quercus lobata"},
+		{"species": "Salix gooddingii"},
+	    {"species": "Salix laevigata"},
+		{"species": "Umbellularia californica"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+	    {"species": "Acer macrophyllum"},
+		{"species": "Acer negundo"},
+		{"species": "Alnus rubra"},
+		{"species": "Fraxinus latifolia"},
+	    {"species": "Populus fremontii"},
+		{"species": "Quercus douglasii"},
+		{"species": "Quercus kelloggii"},
+	    {"species": "Salix lasiolepis"},
+		{"species": "Salix lutea"}
+      ]
+   }
+
+}}

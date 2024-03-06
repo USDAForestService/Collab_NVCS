@@ -1,0 +1,41 @@
+{"node": {
+
+   "name":
+      "North American Boreal Conifer Poor Swamp (M299)",
+
+   "id":
+      "North American Boreal Conifer Poor Swamp (M299)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Tree composition dominated by one of the following:",
+      " i.   Any combination of one or more of the boreal wetland conifer species (Larix laricina,",
+      "      Picea mariana (>=50% RIV);",
+      "OR",
+      "ii.  The above tree composition with >=20% RIV; AND other species are any combination of",
+      "     boreal hardwoods Betula papyrifera, or other conifers Abies balsamea, Picea glauca,",
+      "     Pinus banksiana (together >=95% RIV);"
+   ],
+
+   "trigger": [
+      "riv(STRONG_DIAGNOSTIC_SPECIES) >= 50",
+      "or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 95)"
+   ],
+
+   "filters": {
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Larix laricina"},
+        {"species": "Picea mariana"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Betula papyrifera"},
+        {"species": "Abies balsamea"},
+        {"species": "Picea glauca"},
+        {"species": "Pinus banksiana"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,76 @@
+{"node": {
+
+   "name":
+      "Pond-cypress Basin Swamp LC (M161)",
+
+   "id":
+      "Pond-cypress Basin Swamp LC (M161)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "% RIV OF STRONG POND CYPRESS DIAGNOSTICS > STRONG LONGLEAF DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS"
+   ],
+
+   "trigger": [
+      "   riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > riv(STRONG_LONGLEAF_DIAGNOSTICS)",
+      "or riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > riv(STRONG_FLOODPLAIN_DIAGNOSTICS)"
+   ],
+
+   "filters": {
+      "STRONG_POND_CYPRESS_DIAGNOSTICS": [
+        {"species": "Taxodium ascendens"}
+      ],
+      "STRONG_LONGLEAF_DIAGNOSTICS": [
+        {"species": "Pinus clausa"},
+        {"species": "Pinus elliottii"},
+        {"species": "Pinus palustris"}
+      ],
+      "STRONG_SWAMP_DIAGNOSTICS": [
+        {"species": "Chamaecyparis thyoides"},
+        {"species": "Cliftonia monophylla"},
+        {"species": "Fraxinus caroliniana"},
+        {"species": "Gordonia lasianthus"},
+        {"species": "Magnolia virginiana"},
+        {"species": "Persea borbonia"},
+        {"species": "Pinus serotina"},
+        {"species": "Quercus laurifolia"},
+        {"species": "Sabal palmetto"}
+      ],
+      "STRONG_FLOODPLAIN_DIAGNOSTICS": [
+        {"species": "Acer saccharinum"},
+        {"species": "Carya aquatica"},
+        {"species": "Betula nigra"},
+        {"species": "Carya illinoinensis"},
+        {"species": "Celtis laevigata"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Fraxinus profunda"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Gleditsia aquatica"},
+        {"species": "Juniperus virginiana var. silicicola"},
+        {"species": "Nyssa aquatica"},
+        {"species": "Nyssa biflora"},
+        {"species": "Nyssa ogeche"},
+        {"species": "Planera aquatica"},
+        {"species": "Platanus occidentalis"},
+        {"species": "Populus deltoides"},
+        {"species": "Quercus pagoda"},
+        {"species": "Quercus laurifolia"},
+        {"species": "Quercus lyrata"},
+        {"species": "Quercus michauxii"},
+        {"species": "Quercus nigra"},
+        {"species": "Quercus phellos"},
+        {"species": "Quercus shumardii"},
+        {"species": "Quercus texana"},
+        {"species": "Salix caroliniana"},
+        {"species": "Salix nigra"},
+        {"species": "Sapindus saponaria var. drummondii"},
+        {"species": "Taxodium distichum"},
+        {"species": "Ulmus americana"},
+        {"species": "Ulmus crassifolia"}
+      ]
+   }
+
+}}
+

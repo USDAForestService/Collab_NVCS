@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Temperate & Boreal Forest & Woodland Subclass",
+
+   "id":
+      "S15",
+
+   "level":
+      "subclass",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

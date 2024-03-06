@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Eastern Cool Temperate & North American Boreal Wetland Forest",
+
+   "id":
+      "Eastern Cool Temperate & North American Boreal Wetland Forest",
+
+   "level":
+      "division",
+
+   "description": [
+      "other"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

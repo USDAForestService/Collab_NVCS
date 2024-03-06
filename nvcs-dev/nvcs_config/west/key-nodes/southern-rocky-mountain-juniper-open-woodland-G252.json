@@ -1,0 +1,43 @@
+{"node": {
+
+   "name":
+      "Southern Rocky Mountain Juniper Open Woodland (G252)",
+
+   "id":
+      "G252",
+
+   "level":
+      "group",
+
+   "description": [
+      "Plot location and tree composition are as follows:",
+	    "i. Located in ECOREGION 315A, 315B, 315H, 313B, 313D, M313, 321A,",
+		"M331G, M331F, 331B, 331J, 331I",
+		"and tree composition dominated by one or more of STRONG",
+		"DIAGNOSTIC species Juniperus monosperma (RIV=>50%),",
+       "OR",
+        "ii. Located in above ECOREGION, and tree composition as above, but",
+		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+		"combination of Juniperus scopulorum (>=30% RIV; i.e., together",
+		"STRONG and MODERATE diagnostic species RIV =>50%)"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and ",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "315A, 315B, 315H, 313B, 313D, M313, 321A, M331G, M331F, 331B, 331J, 331I"}
+	  ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Juniperus monosperma"}
+	  ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+		{"species": "Juniperus scopulorum"}
+      ]
+   }
+
+}}

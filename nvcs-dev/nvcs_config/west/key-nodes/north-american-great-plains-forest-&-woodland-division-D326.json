@@ -1,0 +1,85 @@
+{"node": {
+
+   "name":
+      "North American Great Plains Forest & Woodland Division (D326)",
+
+   "id":
+      "D326",
+
+   "level":
+      "division",
+
+   "description": [
+		"Tree composition and ecology matching one of the following options:",
+        "i. Located in ECOREGION 315, 331 – exclude 331A and 331J, 332",
+        "AND",
+        "ii. EITHER",
+        "a. Tree composition dominated by one or more of STRONG diagnostic",
+		"broadleaf trees Fraxinus pennsylvanica, Juniperus virginiana,",
+		"Populus tremuloides, Prosopis glandulosa, Prosopis velutina, Quercus macrocarpa,",
+		"Quercus marilandica, Quercus stellata, Ulmus americana,",
+		"Ulmus crassifolia or Ulmus rubra (=>50% RIV),",
+        "OR",
+        "b. The above tree species, but with =>20% RIV AND other MODERATE",
+		"diagnostic species, any combination of Acer negundo,",
+		"Betula papyrifera, Celtis occidentalis, Crataegus spp.,",
+		"Juglans nigra, Juniperus scopulorum, Morus rubra, Pinus ponderosa,",
+		"Populus grandidentata, Populus balsamifera, Ostrya virginiana",
+		"Prunus virginiana, or Quercus muehlenbergii",
+		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+	    "OR",
+		"c. Any EXOTIC = yes tree species =>80% RIV"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS_1) and not match(ECOREGIONS_EXCL) and",
+      "( riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50 or",
+      "(riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or",
+	  "riv(EXOTIC_TREE_SPP) >=80 )"
+   ],
+
+   "filters": {
+      "ECOREGIONS_1": [
+        {"ecoregion": "315, 331, 332"}
+      ],
+      "ECOREGIONS_EXCL": [
+        {"ecoregion": "331A, 331J"}
+      ],
+      "ECOREGIONS_2": [
+        {"ecoregion": "M334A"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES_1": [
+        {"species": "Fraxinus pennsylvanica"},
+		{"species": "Juniperus virginiana"},
+		{"species": "Populus tremuloides"},
+		{"species": "Prosopis glandulosa"},
+		{"species": "Prosopis velutina"},
+		{"species": "Quercus macrocarpa"},
+		{"species": "Quercus marilandica"},
+		{"species": "Quercus stellata"},
+		{"species": "Ulmus americana"},
+		{"species": "Ulmus crassifolia"},
+		{"species": "Ulmus rubra"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Acer negundo"},
+		{"species": "Betula papyrifera"},
+		{"species": "Celtis occidentalis"},
+		{"species": "Crataegus"},
+		{"species": "Juglans nigra"},
+		{"species": "Juniperus scopulorum"},
+		{"species": "Morus rubra"},
+		{"species": "Pinus ponderosa"},
+		{"species": "Populus grandidentata"},
+		{"species": "Populus balsamifera"},
+		{"species": "Ostrya virginiana"},
+		{"species": "Prunus virginiana"},
+		{"species": "Quercus muehlenbergii"}
+      ],
+	  "EXOTIC_TREE_SPP": [
+	    {"exotic": "yes"}
+      ]
+   }
+
+}}
+

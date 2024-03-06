@@ -1,0 +1,46 @@
+{"node": {
+
+   "name":
+      "North American Boreal Flooded & Swamp Forest Division",
+
+   "id":
+      "North American Boreal Flooded & Swamp Forest Division",
+
+   "level":
+      "division",
+
+   "description": [
+      "Plots in Ecoprovince 212, 211, M211 AND",
+      " i.  Tree composition dominated by one or more of boreal wetland conifer species",
+      "     (Larix laricina, Picea mariana) (if in EcoProvince 212) (>=80% RIV);",
+      "OR",
+      "ii.  The above tree composition but with >=20% RIV; AND other species are any",
+      "     combination of boreal hardwoods (Betula papyrifera) or other conifers",
+      "     (Abies balsamea, Picea glauca, Pinus banksiana) species (together >=95% RIV);",
+      "     [N.B. role of Thuja occidentalis in boreal swamps still under review]"
+   ],
+
+   "trigger": [
+      "    match(BOREAL_REGION)",
+      "and (    riv(STRONG_DIAGNOSTIC_SPECIES) >= 80 ",
+      "     or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 95))"
+   ],
+
+   "filters": {
+      "BOREAL_REGION": [
+        {"ecoregion": "212, 211, M211"}
+      ],
+      "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Larix laricina"},
+        {"species": "Picea mariana"}
+      ],
+      "MODERATE_DIAGNOSTIC_SPECIES": [
+        {"species": "Betula papyrifera"},
+        {"species": "Abies balsamea"},
+        {"species": "Picea glauca"},
+        {"species": "Pinus banksiana"}
+      ]
+   }
+
+}}
+

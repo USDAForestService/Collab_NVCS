@@ -1,0 +1,26 @@
+{"node": {
+
+   "name":
+      "Caribbean Swamp Forest via wetland (M617)",
+
+   "id":
+      "Caribbean Swamp Forest via wetland (M617)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Only one Macrogroup reported for the Caribbean U.S., its territories and commonwealth.",
+      "See also M618 (Caribbean Floodplain Forest) reported elsewhere in the Caribbean, and",
+      "likely present in Puerto Rico"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

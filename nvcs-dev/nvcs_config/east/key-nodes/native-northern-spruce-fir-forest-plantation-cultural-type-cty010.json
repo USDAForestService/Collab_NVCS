@@ -1,0 +1,24 @@
+{"node": {
+
+   "name":
+      "Native Northern Spruce - Fir Plantation Cultural Type (CTY010)",
+
+   "id":
+      "Native Northern Spruce - Fir Plantation Cultural Type (CTY010)",
+
+   "level":
+      "type",
+
+   "description": [
+      "Native Pinus species <50% RIV"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+   }
+
+}}
+

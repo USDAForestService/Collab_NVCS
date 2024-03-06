@@ -1,0 +1,32 @@
+{"node": {
+
+   "name":
+      "Southeastern Warm Temperate Natural Forests",
+
+   "id":
+      "Southeastern Warm Temperate Natural Forests",
+
+   "level":
+      "division",
+
+   "description": [
+      "Vegetation in a relatively natural state, dominated by native species; little or no",
+      "evidence of trees in a row, no very recent logging, understory mowing, etc. (trees",
+      "may be early successional pole-sized trees following logging or blowdowns).  Tree",
+      "composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -",
+      "needs to be refined for this Division)"
+   ],
+
+   "trigger": [
+      "riv(RUDERAL_OR_EXOTIC_SPECIES) < 80"
+   ],
+
+   "filters": {
+      "RUDERAL_OR_EXOTIC_SPECIES": [
+        {"ruderal": "yes"},
+        {"exotic": "yes"}
+      ]
+   }
+
+}}
+

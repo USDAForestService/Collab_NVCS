@@ -1,0 +1,62 @@
+{"node": {
+
+   "name":
+      "Central Hardwood Floodplain Forest LC (M029)",
+
+   "id":
+      "Central Hardwood Floodplain Forest LC (M029)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      " i. % RIV STRONG CENTRAL FLOODPLAIN DIAGNOSTICS > STRONG CENTRAL SWAMP DIAGNOSTICS",
+      "OR",
+      "ii. Physiographic code = R (Riverine)"
+   ],
+
+   "trigger": [
+      "   riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) > riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS)",
+      "or match(RIVERINE)"
+   ],
+
+   "filters": {
+      "STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS": [
+        {"species": "Acer negundo"},
+        {"species": "Acer saccharinum"},
+        {"species": "Carya cordiformis"},
+        {"species": "Carya laciniosa"},
+        {"species": "Celtis laevigata"},
+        {"species": "Celtis occidentalis"},
+        {"species": "Betula nigra"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Platanus occidentalis"},
+        {"species": "Populus deltoides"},
+        {"species": "Populus deltoides spp. monilifera"},
+        {"species": "Salix bebbiana"},
+        {"species": "Salix nigra"},
+        {"species": "Salix caroliniana"},
+        {"species": "Salix spp."},
+        {"species": "Ulmus americana"},
+        {"species": "Ulmus rubra"}
+      ],
+      "STRONG_CENTRAL_SWAMP_DIAGNOSTICS": [
+        {"species": "Fraxinus nigra"},
+        {"species": "Larix laricina"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Quercus bicolor"},
+        {"species": "Quercus palustris"},
+        {"species": "Quercus phellos"},
+        {"species": "Quercus shumardii"},
+        {"species": "Salix amygdaloides"},
+        {"species": "Thuja occidentalis"},
+        {"species": "Tsuga canadensis"},
+        {"species": "Picea rubens"}
+      ],
+      "RIVERINE": [
+        {"riverine": "yes"}
+      ]
+   }
+
+}}
+
