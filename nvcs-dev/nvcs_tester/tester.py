@@ -10,7 +10,9 @@ import sys
 #sys.path.append("C:/ctoney/FIA/nvcs/nvcs-workspace/nvcs_west/nvcs")
 sys.path.append("C:/ctoney/FIA/nvcs/git/nvcs-west/nvcs")
 
-import key_western_us
+import key_western_us as classification_key
+#import key_eastern_us as classification_key
+#import key_alaska_us as classification_key
 from classifier import Classifier
 from plot_reader import read_sqlite
 import logging
@@ -22,7 +24,7 @@ def run(dbfile, plottbl, outfile):
     print('Output file = %s' % outfile)
 
     #Create NVC plot classification key
-    classifier = Classifier(key_western_us.ClassificationKey())
+    classifier = Classifier(classification_key.ClassificationKey())
     
     #Classify plots read from a text file
     logging.basicConfig(filename='C:/ctoney/FIA/nvcs/nvcs-workspace/nvcs_west/nvcs_tester/run_output/debug.log', filemode='w', level=logging.DEBUG) # or ERROR
