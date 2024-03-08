@@ -4,7 +4,9 @@ v.2 Oct 26,2022
 
 @author: ctoney
 '''
-import key_western_us
+import key_western_us as classification_key
+# import key_eastern_us as classification_key
+# import key_alaska_us as classification_key
 from classifier import Node
 import sys
 import ast
@@ -17,7 +19,7 @@ def usage():
     return
 
 def fixup(key_outfile, out_csv):
-    nvcskey = key_western_us.ClassificationKey()
+    nvcskey = classification_key.ClassificationKey()
     writer = csv.writer(open(out_csv, 'w', newline=''))
     header = ['ident','solution_id','solution_desc','solution_path','last_node','last_node_desc']
     header = header + ['soln_div_id','soln_div_desc','soln_mg_id','soln_mg_desc','soln_grp_id','soln_grp_desc']
