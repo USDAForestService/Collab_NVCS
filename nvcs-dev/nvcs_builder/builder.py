@@ -1,6 +1,7 @@
 import json
 import re
 import os
+import configuration
 
 def _makevarcode(varname, alternatives):
     pattcode = [str(patts) for patts in alternatives]
@@ -100,13 +101,15 @@ class KeyBuilder:
 
 if __name__ == '__main__':
     import builder
-    projectRoot = r'C:\Users\kelvynmeyers\Documents\GitHub\FS-Enterprise\NVCS'
-    keybuilder = builder.KeyBuilder(configdir=projectRoot + r'\nvcs-dev\nvcs_config\west', templatedir=projectRoot + r'\nvcs-dev\nvcs_config')
-    #keybuilder = builder.KeyBuilder(configdir=projectRoot + r'\nvcs-dev\nvcs_config\east', templatedir=projectRoot + r'\nvcs-dev\nvcs_config')
-    #keybuilder = builder.KeyBuilder(configdir=projectRoot + r'\nvcs-dev\nvcs_config\alaska', templatedir=projectRoot + r'\nvcs-dev\nvcs_config')
+
+    config = configuration.DebugConfig()
+    templatePath = config.get(config.base, "TemplatePath")
+    configPath = config.get(config.target, "In_ConfigPath")
+    keyPath = config.get(config.target, "Out_KeyPath")
+
+    keybuilder = builder.KeyBuilder(configPath, templatePath)
     code = keybuilder.build()
-    f = open(projectRoot + r'\nvcs-dev\nvcs\key_western_us.py', 'w')
-    #f = open(projectRoot + r'\nvcs-dev\nvcs\key_eastern_us.py', 'w')
-    #f = open(projectRoot + r'\nvcs-dev\nvcs\key_alaska_us.py', 'w')
+
+    f = open(keyPath, 'w')
     f.write(code)
     f.close()
