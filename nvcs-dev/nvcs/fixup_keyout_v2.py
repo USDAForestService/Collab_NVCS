@@ -5,11 +5,17 @@ v.2 Oct 26,2022
 @author: ctoney
 '''
 
+import os
 import sys
+import inspect
 import ast
 import csv
 
-sys.path.append(r"C:\Users\kelvynmeyers\Documents\GitHub\FS-Enterprise\NVCS\nvcs-dev")
+# Update sys path for correct run-time importing
+currDir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentDir = os.path.dirname(currDir)
+sys.path.append(parentDir)
+
 from nvcs_builder import configuration
 config = configuration.DebugConfig()
 if config.target == config.westSection:

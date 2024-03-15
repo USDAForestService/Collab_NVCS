@@ -6,24 +6,30 @@ Created on May 1, 2013
 - 2024-02-02 switch to read_sqlite()
 '''
 
+import os
 import sys
+import inspect
 
-sys.path.append(r"C:\Users\kelvynmeyers\Documents\GitHub\FS-Enterprise\NVCS\nvcs-dev")
+# Update sys path for correct run-time importing
+currDir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentDir = os.path.dirname(currDir)
+sys.path.append(parentDir)
+sys.path.append(parentDir + "/nvcs")
+
+from classifier import Classifier
+from plot_reader import read_sqlite, read_file
+import logging
+from time import process_time
+
 from nvcs_builder import configuration
 config = configuration.DebugConfig()
 
-sys.path.append(r"C:\Users\kelvynmeyers\Documents\GitHub\FS-Enterprise\NVCS\nvcs-dev\nvcs")
 if config.target == config.westSection:
     import key_western_us as classification_key
 elif config.target == config.eastSection:
     import key_eastern_us as classification_key
 elif config.target == config.alaskaSection:
     import key_alaska_us as classification_key
-
-from classifier import Classifier
-from plot_reader import read_sqlite, read_file
-import logging
-from time import process_time
 
 def run(outfile, debugfile, dbfile = None, plottbl = None, txtfile = None):
 
