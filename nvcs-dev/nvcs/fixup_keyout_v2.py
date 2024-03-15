@@ -4,17 +4,25 @@ v.2 Oct 26,2022
 
 @author: ctoney
 '''
-import key_western_us as classification_key
-# import key_eastern_us as classification_key
-# import key_alaska_us as classification_key
-from classifier import Node
+
 import sys
 import ast
 import csv
 
+sys.path.append(r"C:\Users\kelvynmeyers\Documents\GitHub\FS-Enterprise\NVCS\nvcs-dev")
+from nvcs_builder import configuration
+config = configuration.DebugConfig()
+if config.target == config.westSection:
+    import key_western_us as classification_key
+elif config.target == config.eastSection:
+    import key_eastern_us as classification_key
+elif config.target == config.alaskaSection:
+    import key_alaska_us as classification_key
+
 def usage():
     print()
     print("Usage: fixup_keyout.py <key output file> <out csv>")
+    print("Or use no arguments and rely on config files")
     print()
     return
 
@@ -66,8 +74,13 @@ def fixup(key_outfile, out_csv):
 
 
 if __name__ == '__main__':
-    if (len(sys.argv) != 3):
+    if len(sys.argv) == 1:
+        key_outfile = config.get(config.target, "Out_TesterResultsPath")
+        out_csv = config.get(config.target, "Out_FixupCsvPath")
+        fixup(key_outfile, out_csv)
+    elif len(sys.argv) != 3:
         usage()
         sys.exit()
-    fixup(sys.argv[1], sys.argv[2])
+    else:
+        fixup(sys.argv[1], sys.argv[2])
 
