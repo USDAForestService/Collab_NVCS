@@ -129,9 +129,7 @@ Natural and Ruderal Forests
 						Great Plains Forest & Woodland (M151)
 						Northern Forest macrogroups
 							Laurentian Pine Hardwood Forest & Woodland (M159)
-							Laurentian-Acadian Mesic Hardwood - Conifer Forest (M014)
 							Laurentian Pine - Hardwood Forest & Woodland LC (M159)
-							Laurentian-Acadian Mesic Hardwood - Conifer Forest LC1 (M014)
 						Central Forest macrogroups
 							Central Midwest Oak Forest, Woodland & Savanna (M012)
 							Central Midwest Mesic Forest (M882)
@@ -139,7 +137,6 @@ Natural and Ruderal Forests
 							Central Midwest Mesic Forest LC (M882)
 							Appalachian Mesic Forest (M883)
 							Appalachian Oak - Pine Forest & Woodland (M502)
-							Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)
 							Appalachian Oak - Pine Forest & Woodland LC (M502)
 							Appalachian Mesic Forest LC (M883)
 					Eastern Cool Temperate Ruderal Forest & Woodlands
