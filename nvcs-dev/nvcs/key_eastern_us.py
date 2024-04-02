@@ -270,9 +270,9 @@ class ClassificationKey:
         self.nodes[128] = Node(128, 127, element_127(), 'Eastern Cool Temperate Natural Forest & Woodlands')
         self.nodes[129] = Node(129, 128, element_128(), 'Great Plains Forest & Woodland (M151)')
         self.nodes[130] = Node(130, 128, element_129(), 'Northern Forest macrogroups')
-        self.nodes[131] = Node(131, 130, element_130(), 'Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)')
+        self.nodes[131] = Node(131, 130, element_130(), 'Laurentian Pine Hardwood Forest & Woodland (M159)')
         self.nodes[132] = Node(132, 130, element_131(), 'Laurentian-Acadian Mesic Hardwood - Conifer Forest (M014)')
-        self.nodes[133] = Node(133, 130, element_132(), 'Laurentian-Acadian Pine - Hardwood Forest & Woodland LC (M159)')
+        self.nodes[133] = Node(133, 130, element_132(), 'Laurentian Pine - Hardwood Forest & Woodland LC (M159)')
         self.nodes[134] = Node(134, 130, element_133(), 'Laurentian-Acadian Mesic Hardwood - Conifer Forest LC1 (M014)')
         self.nodes[135] = Node(135, 128, element_134(), 'Central Forest macrogroups')
         self.nodes[136] = Node(136, 135, element_135(), 'Central Midwest Oak Forest, Woodland & Savanna (M012)')
@@ -4433,10 +4433,10 @@ def element_129():
 
 def element_130():
 
-    """Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)"""
-    """Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)"""
+    """Laurentian Pine Hardwood Forest & Woodland (M159)"""
+    """Laurentian Pine Hardwood Forest & Woodland (M159)"""
     level = 'macrogroup'
-    code = 'Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)'
+    code = 'Laurentian Pine Hardwood Forest & Woodland (M159)'
 
     #  i. Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana,
     #     Pinus banksiana, Pinus resinosa, Pinus strobus, Quercus alba, Quercus ellipsoidalis,
@@ -4472,7 +4472,7 @@ def element_130():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=130|Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)', plot.ident)
+        logging.debug('%s|NODE=130|Laurentian Pine Hardwood Forest & Woodland (M159)', plot.ident)
         result = (    plot.riv(STRONG_DRY_DIAGNOSTICS) >= 50
                or (    plot.riv(STRONG_DRY_DIAGNOSTICS) >= 20
                    and plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))
@@ -4529,10 +4529,10 @@ def element_131():
 
 def element_132():
 
-    """Laurentian-Acadian Pine - Hardwood Forest & Woodland LC (M159)"""
-    """Laurentian-Acadian Pine - Hardwood Forest & Woodland LC (M159)"""
+    """Laurentian Pine - Hardwood Forest & Woodland LC (M159)"""
+    """Laurentian Pine - Hardwood Forest & Woodland LC (M159)"""
     level = 'macrogroup'
-    code = 'Laurentian-Acadian Pine - Hardwood Forest & Woodland LC (M159)'
+    code = 'Laurentian Pine - Hardwood Forest & Woodland LC (M159)'
 
     # % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS [if stands lacks both strong
     # dry and strong mesic diagnostics, plot will be assigned to the mesic]
@@ -4575,7 +4575,7 @@ def element_132():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=132|Laurentian-Acadian Pine - Hardwood Forest & Woodland LC (M159)', plot.ident)
+        logging.debug('%s|NODE=132|Laurentian Pine - Hardwood Forest & Woodland LC (M159)', plot.ident)
         result = (plot.riv(STRONG_DRY_DIAGNOSTICS) > plot.riv(STRONG_MESIC_DIAGNOSTICS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
