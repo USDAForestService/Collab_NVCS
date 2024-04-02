@@ -137,10 +137,10 @@ Natural and Ruderal Forests
 							Central Midwest Mesic Forest (M882)
 							Central Midwest Oak Forest, Woodland & Savanna LC (M012)
 							Central Midwest Mesic Forest LC (M882)
-							Appalachian, Interior - Northeastern Mesic Forest (M883)
+							Appalachian Mesic Forest (M883)
 							Appalachian Oak - Pine Forest & Woodland (M502)
 							Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)
 							Appalachian Oak - Pine Forest & Woodland LC (M502)
-							Appalachian, Interior - Northeastern Mesic Forest LC (M883)
+							Appalachian Mesic Forest LC (M883)
 					Eastern Cool Temperate Ruderal Forest & Woodlands
 						Eastern North American Ruderal Forest (M013)

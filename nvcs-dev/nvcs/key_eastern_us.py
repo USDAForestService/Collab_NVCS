@@ -279,11 +279,11 @@ class ClassificationKey:
         self.nodes[137] = Node(137, 135, element_136(), 'Central Midwest Mesic Forest (M882)')
         self.nodes[138] = Node(138, 135, element_137(), 'Central Midwest Oak Forest, Woodland & Savanna LC (M012)')
         self.nodes[139] = Node(139, 135, element_138(), 'Central Midwest Mesic Forest LC (M882)')
-        self.nodes[140] = Node(140, 135, element_139(), 'Appalachian, Interior - Northeastern Mesic Forest (M883)')
+        self.nodes[140] = Node(140, 135, element_139(), 'Appalachian Mesic Forest (M883)')
         self.nodes[141] = Node(141, 135, element_140(), 'Appalachian Oak - Pine Forest & Woodland (M502)')
         self.nodes[142] = Node(142, 135, element_141(), 'Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)')
         self.nodes[143] = Node(143, 135, element_142(), 'Appalachian Oak - Pine Forest & Woodland LC (M502)')
-        self.nodes[144] = Node(144, 135, element_143(), 'Appalachian, Interior - Northeastern Mesic Forest LC (M883)')
+        self.nodes[144] = Node(144, 135, element_143(), 'Appalachian Mesic Forest LC (M883)')
         self.nodes[145] = Node(145, 127, element_144(), 'Eastern Cool Temperate Ruderal Forest & Woodlands')
         self.nodes[146] = Node(146, 145, element_145(), 'Eastern North American Ruderal Forest (M013)')
 
@@ -4873,10 +4873,10 @@ def element_138():
 
 def element_139():
 
-    """Appalachian, Interior - Northeastern Mesic Forest (M883)"""
-    """Appalachian, Interior - Northeastern Mesic Forest (M883)"""
+    """Appalachian Mesic Forest (M883)"""
+    """Appalachian Mesic Forest (M883)"""
     level = 'macrogroup'
-    code = 'Appalachian, Interior - Northeastern Mesic Forest (M883)'
+    code = 'Appalachian Mesic Forest (M883)'
 
     #   i. Tree composition dominated by any one or more of the STRONG MESIC DIAGNOSTICS [Appalachian- Interior-Northeast Mesic
     #      Forest Diagnostics] Acer nigrum [questionable], Acer pensylvanicum, Aesculus flava, Betula alleghaniensis, Betula lenta,
@@ -4998,7 +4998,7 @@ def element_139():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=139|Appalachian, Interior - Northeastern Mesic Forest (M883)', plot.ident)
+        logging.debug('%s|NODE=139|Appalachian Mesic Forest (M883)', plot.ident)
         result = (    plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
                or (    plot.match(ECOREGIONS_1)
                    and (   (    plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) >= 20
@@ -5192,15 +5192,15 @@ def element_142():
 
 def element_143():
 
-    """Appalachian, Interior - Northeastern Mesic Forest LC (M883)"""
-    """Appalachian, Interior - Northeastern Mesic Forest LC (M883)"""
+    """Appalachian Mesic Forest LC (M883)"""
+    """Appalachian Mesic Forest LC (M883)"""
     level = 'macrogroup'
-    code = 'Appalachian, Interior - Northeastern Mesic Forest LC (M883)'
+    code = 'Appalachian Mesic Forest LC (M883)'
 
     # other
 
     def match(plot):
-        logging.debug('%s|NODE=143|Appalachian, Interior - Northeastern Mesic Forest LC (M883)', plot.ident)
+        logging.debug('%s|NODE=143|Appalachian Mesic Forest LC (M883)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
