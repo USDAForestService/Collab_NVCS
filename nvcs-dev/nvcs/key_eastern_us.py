@@ -280,9 +280,9 @@ class ClassificationKey:
         self.nodes[138] = Node(138, 135, element_137(), 'Central Midwest Oak Forest, Woodland & Savanna LC (M012)')
         self.nodes[139] = Node(139, 135, element_138(), 'Central Midwest Mesic Forest LC (M882)')
         self.nodes[140] = Node(140, 135, element_139(), 'Appalachian, Interior - Northeastern Mesic Forest (M883)')
-        self.nodes[141] = Node(141, 135, element_140(), 'Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)')
+        self.nodes[141] = Node(141, 135, element_140(), 'Appalachian Oak - Pine Forest & Woodland (M502)')
         self.nodes[142] = Node(142, 135, element_141(), 'Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)')
-        self.nodes[143] = Node(143, 135, element_142(), 'Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland LC (M502)')
+        self.nodes[143] = Node(143, 135, element_142(), 'Appalachian Oak - Pine Forest & Woodland LC (M502)')
         self.nodes[144] = Node(144, 135, element_143(), 'Appalachian, Interior - Northeastern Mesic Forest LC (M883)')
         self.nodes[145] = Node(145, 127, element_144(), 'Eastern Cool Temperate Ruderal Forest & Woodlands')
         self.nodes[146] = Node(146, 145, element_145(), 'Eastern North American Ruderal Forest (M013)')
@@ -5011,10 +5011,10 @@ def element_139():
 
 def element_140():
 
-    """Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)"""
-    """Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)"""
+    """Appalachian Oak - Pine Forest & Woodland (M502)"""
+    """Appalachian Oak - Pine Forest & Woodland (M502)"""
     level = 'macrogroup'
-    code = 'Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)'
+    code = 'Appalachian Oak - Pine Forest & Woodland (M502)'
 
     # Plot not in Ecoregion 212 AND
     #  i. Tree composition dominated by one or more of the STRONG APPALACHIAN DRY DIAGNOSTICS of Carya glabra,
@@ -5075,7 +5075,7 @@ def element_140():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=140|Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)', plot.ident)
+        logging.debug('%s|NODE=140|Appalachian Oak - Pine Forest & Woodland (M502)', plot.ident)
         result = (plot.match(ECOREGION) and (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 or (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 and plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + plot.riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -5103,10 +5103,10 @@ def element_141():
 
 def element_142():
 
-    """Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland LC (M502)"""
-    """Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland LC (M502)"""
+    """Appalachian Oak - Pine Forest & Woodland LC (M502)"""
+    """Appalachian Oak - Pine Forest & Woodland LC (M502)"""
     level = 'macrogroup'
-    code = 'Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland LC (M502)'
+    code = 'Appalachian Oak - Pine Forest & Woodland LC (M502)'
 
     # i. %RIV STRONG APPALACHIAN DRY DIAGNOSTICS > either STRONG DRY SOUTH-CENTRAL DIAGNOSTICS OR ECOREGIONAL STRONG MESIC DIAGNOSTICS
 
@@ -5183,7 +5183,7 @@ def element_142():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=142|Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland LC (M502)', plot.ident)
+        logging.debug('%s|NODE=142|Appalachian Oak - Pine Forest & Woodland LC (M502)', plot.ident)
         result = (   plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) > plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS)
                or plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) > plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
