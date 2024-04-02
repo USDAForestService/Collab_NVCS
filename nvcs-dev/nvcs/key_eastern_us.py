@@ -229,10 +229,10 @@ class ClassificationKey:
         self.nodes[ 87] = Node( 87,  83, element_087(), 'North American Boreal Ruderal Wetland Forest')
         self.nodes[ 88] = Node( 88,  82, element_088(), 'Eastern North American - Great Plains Flooded & Swamp Forest Division')
         self.nodes[ 89] = Node( 89,  88, element_089(), 'Eastern Cool Temperate Natural Wetland Forests')
-        self.nodes[ 90] = Node( 90,  89, element_090(), 'Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)')
+        self.nodes[ 90] = Node( 90,  89, element_090(), 'Laurentian-Acadian Flooded & Swamp Forest (M504)')
         self.nodes[ 91] = Node( 91,  89, element_091(), 'Central Hardwood Floodplain Forest (M029)')
         self.nodes[ 92] = Node( 92,  89, element_092(), 'Central Hardwood Swamp Forest (M503)')
-        self.nodes[ 93] = Node( 93,  89, element_093(), 'Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)')
+        self.nodes[ 93] = Node( 93,  89, element_093(), 'Laurentian-Acadian Flooded & Swamp Forest LC (M504)')
         self.nodes[ 94] = Node( 94,  89, element_094(), 'Central Hardwood Floodplain Forest LC (M029)')
         self.nodes[ 95] = Node( 95,  89, element_095(), 'Central Hardwood Swamp Forest LC (M503)')
         self.nodes[ 96] = Node( 96,  88, element_096(), 'Eastern Cool Temperate Ruderal Wetland Forests')
@@ -2947,10 +2947,10 @@ def element_089():
 
 def element_090():
 
-    """Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)"""
-    """Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)"""
+    """Laurentian-Acadian Flooded & Swamp Forest (M504)"""
+    """Laurentian-Acadian Flooded & Swamp Forest (M504)"""
     level = 'macrogroup'
-    code = 'Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)'
+    code = 'Laurentian-Acadian Flooded & Swamp Forest (M504)'
 
     # Tree composition dominated by one of the following:
     #  i. Plots occurs in EcoProvinces or EcoSections 212, M211, 211A - 211E, 211Ja, 211Jb, 211Jc [intentionally
@@ -3027,7 +3027,7 @@ def element_090():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=090|Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)', plot.ident)
+        logging.debug('%s|NODE=090|Laurentian-Acadian Flooded & Swamp Forest (M504)', plot.ident)
         result = (   (    plot.match(ECOREGIONS_I)
                    and plot.riv(STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS) >= 50)
                or (     plot.match(ECOREGIONS_II)
@@ -3178,10 +3178,10 @@ def element_092():
 
 def element_093():
 
-    """Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)"""
-    """Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)"""
+    """Laurentian-Acadian Flooded & Swamp Forest LC (M504)"""
+    """Laurentian-Acadian Flooded & Swamp Forest LC (M504)"""
     level = 'macrogroup'
-    code = 'Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)'
+    code = 'Laurentian-Acadian Flooded & Swamp Forest LC (M504)'
 
     # ECOREGION is 212, M211, 211, 222I, 221A-221D
 
@@ -3190,7 +3190,7 @@ def element_093():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=093|Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)', plot.ident)
+        logging.debug('%s|NODE=093|Laurentian-Acadian Flooded & Swamp Forest LC (M504)', plot.ident)
         result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result

@@ -87,10 +87,10 @@ Natural and Ruderal Forests
 						North American Boreal Ruderal Wetland Forest
 					Eastern North American - Great Plains Flooded & Swamp Forest Division
 						Eastern Cool Temperate Natural Wetland Forests
-							Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)
+							Laurentian-Acadian Flooded & Swamp Forest (M504)
 							Central Hardwood Floodplain Forest (M029)
 							Central Hardwood Swamp Forest (M503)
-							Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)
+							Laurentian-Acadian Flooded & Swamp Forest LC (M504)
 							Central Hardwood Floodplain Forest LC (M029)
 							Central Hardwood Swamp Forest LC (M503)
 						Eastern Cool Temperate Ruderal Wetland Forests
