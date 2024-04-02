@@ -126,7 +126,6 @@ Natural and Ruderal Forests
 						Southeastern North American Ruderal Forest (M305)
 				Eastern North American Forest & Woodland Division
 					Eastern Cool Temperate Natural Forest & Woodlands
-						Great Plains Forest & Woodland (M151)
 						Northern Forest macrogroups
 							Laurentian Pine Hardwood Forest & Woodland (M159)
 							Laurentian Pine - Hardwood Forest & Woodland LC (M159)
