@@ -82,8 +82,8 @@ Natural and Ruderal Forests
 				Eastern Cool Temperate & North American Boreal Wetland Forest
 					North American Boreal Flooded & Swamp Forest Division
 						North American Boreal Natural Wetland Forest
-							North American Boreal Conifer Poor Swamp (M299)
-							North American Boreal Conifer Poor Swamp LC (M299)
+							North American Boreal Swamp (M299)
+							North American Boreal Swamp LC (M299)
 						North American Boreal Ruderal Wetland Forest
 					Eastern North American - Great Plains Flooded & Swamp Forest Division
 						Eastern Cool Temperate Natural Wetland Forests

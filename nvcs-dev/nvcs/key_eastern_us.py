@@ -224,8 +224,8 @@ class ClassificationKey:
         self.nodes[ 82] = Node( 82,  69, element_082(), 'Eastern Cool Temperate & North American Boreal Wetland Forest')
         self.nodes[ 83] = Node( 83,  82, element_083(), 'North American Boreal Flooded & Swamp Forest Division')
         self.nodes[ 84] = Node( 84,  83, element_084(), 'North American Boreal Natural Wetland Forest')
-        self.nodes[ 85] = Node( 85,  84, element_085(), 'North American Boreal Conifer Poor Swamp (M299)')
-        self.nodes[ 86] = Node( 86,  84, element_086(), 'North American Boreal Conifer Poor Swamp LC (M299)')
+        self.nodes[ 85] = Node( 85,  84, element_085(), 'North American Boreal Swamp (M299)')
+        self.nodes[ 86] = Node( 86,  84, element_086(), 'North American Boreal Swamp LC (M299)')
         self.nodes[ 87] = Node( 87,  83, element_087(), 'North American Boreal Ruderal Wetland Forest')
         self.nodes[ 88] = Node( 88,  82, element_088(), 'Eastern North American - Great Plains Flooded & Swamp Forest Division')
         self.nodes[ 89] = Node( 89,  88, element_089(), 'Eastern Cool Temperate Natural Wetland Forests')
@@ -2835,10 +2835,10 @@ def element_084():
 
 def element_085():
 
-    """North American Boreal Conifer Poor Swamp (M299)"""
-    """North American Boreal Conifer Poor Swamp (M299)"""
+    """North American Boreal Swamp (M299)"""
+    """North American Boreal Swamp (M299)"""
     level = 'macrogroup'
-    code = 'North American Boreal Conifer Poor Swamp (M299)'
+    code = 'North American Boreal Swamp (M299)'
 
     # Tree composition dominated by one of the following:
     #  i.   Any combination of one or more of the boreal wetland conifer species (Larix laricina,
@@ -2861,7 +2861,7 @@ def element_085():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=085|North American Boreal Conifer Poor Swamp (M299)', plot.ident)
+        logging.debug('%s|NODE=085|North American Boreal Swamp (M299)', plot.ident)
         result = (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
                or (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(STRONG_DIAGNOSTIC_SPECIES) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 95))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -2870,15 +2870,15 @@ def element_085():
 
 def element_086():
 
-    """North American Boreal Conifer Poor Swamp LC (M299)"""
-    """North American Boreal Conifer Poor Swamp LC (M299)"""
+    """North American Boreal Swamp LC (M299)"""
+    """North American Boreal Swamp LC (M299)"""
     level = 'macrogroup'
-    code = 'North American Boreal Conifer Poor Swamp LC (M299)'
+    code = 'North American Boreal Swamp LC (M299)'
 
     # other
 
     def match(plot):
-        logging.debug('%s|NODE=086|North American Boreal Conifer Poor Swamp LC (M299)', plot.ident)
+        logging.debug('%s|NODE=086|North American Boreal Swamp LC (M299)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
