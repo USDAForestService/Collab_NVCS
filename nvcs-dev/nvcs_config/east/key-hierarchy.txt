@@ -116,7 +116,6 @@ Natural and Ruderal Forests
 			Eastern North American Temperate & Boreal Forests
 				Southeastern North American Forest & Woodland Division
 					Southeastern Warm Temperate Natural Forests
-						Southern & South-Central Oak - Pine Forest & Woodland (M016)
 						Southern Mesic Mixed Broadleaf Forest (M008)
 						Longleaf Pine Woodland (M007)
 						Southeastern Coastal Plain Evergreen Oak Forest (M885)
@@ -139,10 +138,8 @@ Natural and Ruderal Forests
 							Central Midwest Oak Forest, Woodland & Savanna LC (M012)
 							Central Midwest Mesic Forest LC (M882)
 							Appalachian, Interior - Northeastern Mesic Forest (M883)
-							Southern & South-Central Oak - Pine Forest & Woodland - Cool (M016)
 							Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland (M502)
 							Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)
-							Southern & South-Central Oak - Pine Forest & Woodland LC (M016)
 							Appalachian-Northeastern Oak - Hardwood - Pine Forest & Woodland LC (M502)
 							Appalachian, Interior - Northeastern Mesic Forest LC (M883)
 					Eastern Cool Temperate Ruderal Forest & Woodlands
