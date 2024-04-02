@@ -119,8 +119,8 @@ Natural and Ruderal Forests
 						Southern & South-Central Oak - Pine Forest & Woodland (M016)
 						Southern Mesic Mixed Broadleaf Forest (M008)
 						Longleaf Pine Woodland (M007)
-						Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)
-						Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)
+						Southeastern Coastal Plain Evergreen Oak Forest (M885)
+						Southeastern Coastal Plain Evergreen Oak Forest LC (M885)
 						Longleaf Pine Woodland LC1 (M007)
 						Southern Mesic Mixed Broadleaf Forest LC (M008)
 					Southeastern Warm Temperate Ruderal Forests

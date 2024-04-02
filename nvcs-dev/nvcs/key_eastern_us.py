@@ -261,8 +261,8 @@ class ClassificationKey:
         self.nodes[119] = Node(119, 118, element_118(), 'Southern & South-Central Oak - Pine Forest & Woodland (M016)')
         self.nodes[120] = Node(120, 118, element_119(), 'Southern Mesic Mixed Broadleaf Forest (M008)')
         self.nodes[121] = Node(121, 118, element_120(), 'Longleaf Pine Woodland (M007)')
-        self.nodes[122] = Node(122, 118, element_121(), 'Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)')
-        self.nodes[123] = Node(123, 118, element_122(), 'Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)')
+        self.nodes[122] = Node(122, 118, element_121(), 'Southeastern Coastal Plain Evergreen Oak Forest (M885)')
+        self.nodes[123] = Node(123, 118, element_122(), 'Southeastern Coastal Plain Evergreen Oak Forest LC (M885)')
         self.nodes[124] = Node(124, 118, element_123(), 'Longleaf Pine Woodland LC1 (M007)')
         self.nodes[125] = Node(125, 118, element_124(), 'Southern Mesic Mixed Broadleaf Forest LC (M008)')
         self.nodes[126] = Node(126, 117, element_125(), 'Southeastern Warm Temperate Ruderal Forests')
@@ -4044,10 +4044,10 @@ def element_120():
 
 def element_121():
 
-    """Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)"""
-    """Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)"""
+    """Southeastern Coastal Plain Evergreen Oak Forest (M885)"""
+    """Southeastern Coastal Plain Evergreen Oak Forest (M885)"""
     level = 'macrogroup'
-    code = 'Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)'
+    code = 'Southeastern Coastal Plain Evergreen Oak Forest (M885)'
 
     # Plot is in 232B, C, D, E, G [not in 232A, F, H, I, J], 255Da, Db, Dc [not 255Dd] or 411A, AND
     #  i. Tree composition is dominated by one or more of Juniperus virginiana var. silicicola,
@@ -4110,7 +4110,7 @@ def element_121():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=121|Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)', plot.ident)
+        logging.debug('%s|NODE=121|Southeastern Coastal Plain Evergreen Oak Forest (M885)', plot.ident)
         result = (plot.match(ECOREGIONS) and
                  (    plot.riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) >= 50
                   or (    plot.riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) >= 20
@@ -4121,10 +4121,10 @@ def element_121():
 
 def element_122():
 
-    """Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)"""
-    """Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)"""
+    """Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"""
+    """Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"""
     level = 'macrogroup'
-    code = 'Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)'
+    code = 'Southeastern Coastal Plain Evergreen Oak Forest LC (M885)'
 
     # Plot is in 232B-E, 232G, 255Da-Dc or 411A, AND
     # % RIV of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS > either STRONG LONGLEAF DIAGNOSTICS or STRONG MESIC DIAGNOSTICS
@@ -4173,7 +4173,7 @@ def element_122():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=122|Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)', plot.ident)
+        logging.debug('%s|NODE=122|Southeastern Coastal Plain Evergreen Oak Forest LC (M885)', plot.ident)
         result = (plot.match(ECOREGIONS) and
                  (   plot.riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) > plot.riv(STRONG_LONGLEAF_DIAGNOSTICS)
                   or plot.riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) > plot.riv(STRONG_MESIC_DIAGNOSTICS)))
