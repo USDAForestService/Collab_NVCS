@@ -21,7 +21,7 @@
       "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of weakly diagnostic",
       "    species of Amelanchier spp., Carpinus caroliniana, Cercis canadensis, Cornus florida,",
       "    Ostrya virginiana, Oxydendrum arboreum, Pinus banksiana, Prunus serotina, Prunus virginiana,",
-      "    Quercus muehlenbergii, Quercus rubra, Sassafras albidum (>=50% RIV)"
+      "    Quercus muehlenbergii, Quercus rubra, Sassafras albidum (together >=50% RIV)"
    ],
 
    "trigger": [
