@@ -100,6 +100,7 @@ Natural and Ruderal Forests
 			Tropical Florida - Caribbean Forest
 				Tropical Florida Forest
 					Tropical Florida Natural Forest
+						Caribbean-Mesoamerican Pine Forest (M296)
 						Caribbean Swamp Forest via upland (M617)
 						Caribbean Coastal Lowland Dry Forest (M134)
 						Caribbean Coastal Lowland Dry Forest LC (M134)
@@ -114,8 +115,15 @@ Natural and Ruderal Forests
 						Caribbean Ruderal Dry Forest (M514)
 		Temperate & Boreal Forests
 			Eastern North American Temperate & Boreal Forests
+				North American Great Plains Forest & Woodland
+					Great Plains Natural Woodlands
+						Northern Great Plains Forest & Woodland (M545)
+						Southern Great Plains Forest & Woodland (M544)
+					Great Plains Ruderal Woodlands
+						Great Plains Ruderal Woodland (M524)
 				Southeastern North American Forest & Woodland Division
 					Southeastern Warm Temperate Natural Forests
+						South-Central Oak - Pine Forest & Woodland (M540)
 						Southern Mesic Mixed Broadleaf Forest (M008)
 						Longleaf Pine Woodland (M007)
 						Southeastern Coastal Plain Evergreen Oak Forest (M885)
@@ -125,7 +133,7 @@ Natural and Ruderal Forests
 					Southeastern Warm Temperate Ruderal Forests
 						Southeastern North American Ruderal Forest (M305)
 				Eastern North American Forest & Woodland Division
-					Eastern Cool Temperate Natural Forest & Woodlands
+					Eastern North American Natural Forests & Woodlands
 						Northern Forest macrogroups
 							Laurentian Pine - Hardwood Forest & Woodland (M159)
 							Laurentian Pine - Hardwood Forest & Woodland LC (M159)
@@ -138,5 +146,5 @@ Natural and Ruderal Forests
 							Appalachian Oak - Pine Forest & Woodland (M502)
 							Appalachian Oak - Pine Forest & Woodland LC (M502)
 							Appalachian Mesic Forest LC (M883)
-					Eastern Cool Temperate Ruderal Forest & Woodlands
+					Eastern North American Ruderal Forests & Woodlands
 						Eastern North American Ruderal Forest (M013)
