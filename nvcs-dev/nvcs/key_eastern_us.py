@@ -2953,22 +2953,21 @@ def element_090():
     code = 'Laurentian-Acadian Flooded & Swamp Forest (M504)'
 
     # Tree composition dominated by one of the following:
-    #  i. Plots occurs in EcoProvinces or EcoSections 212, M211, 211A - 211E, 211Ja, 211Jb, 211Jc [intentionally
+    #  i. Located in EcoProvinces or Ecosections 212, M211, 211A - 211E, 211Ja, 211Jb, 211Jc [intentionally
     #     exclude 211F, 211G, 211Jd], 222J, 222K, 222L, 222M, 222N, 222R, 222U
     #     AND
     #     Tree composition dominated by one or more STRONG LAURENTIAN-ACADIAN DIAGNOSTICS of Fraxinus nigra,
     #     Larix laricina, Picea mariana, Picea rubens, Populus balsamifera, Tsuga canadensis,
     #     Thuja occidentalis (>=50% RIV)
     # OR
-    # ii. Plots occur in EcoProvinces or EcoSections 212, M211, 211, 222I, 221A-221D
+    # ii. Located in Province 212, M211, 211, 222I, or 221A-221D
     #     AND
     #     iia. Tree composition dominated by one or more of ECOREGIONALLY STRONG LAURENTIAN-ACADIAN DIAGNOSTICS
-    #          Acer rubrum, Acer saccharinum, Chamaecyparis thyoides, Fraxinus nigra, Fraxinus pennsylvanica,
+    #          Acer rubrum, Acer saccharinum, Fraxinus nigra, Fraxinus pennsylvanica,
     #          Larix laricina, Picea mariana, Picea rubens, Pinus rigida, Populus balsamifera, Salix amygdaloides,
-    #          Tsuga canadensis, Thuja occidentalis, Ulmus americana, Ulmus rubra (>=50% RIV) AND in Province 212,
-    #          M211, 211, 222I, 221A-221D.
+    #          Tsuga canadensis, Thuja occidentalis, Ulmus americana, Ulmus rubra (>=50% RIV)
     #      OR
-    #     iib. Tree composition and ecoregions as above, but with >=20% RIV, AND other species are any combination
+    #     iib. Tree composition as above, but with >=20% RIV, AND other species are any combination
     #          of MODERATE DIAGNOSTICS Abies balsamea, Acer nigrum, Acer negundo, Acer saccharum, Betula alleghaniensis,
     #          Betula papyrifera, Carpinus caroliniana, Fraxinus americana, Nyssa sylvatica, Ostrya virginiana,
     #          Populus tremuloides, Prunus serotina, Quercus macrocarpa, Tilia americana (together >=50% RIV)
@@ -2994,7 +2993,6 @@ def element_090():
     ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS = PatternList('ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS',
         {'species': 'Acer rubrum'},
         {'species': 'Acer saccharinum'},
-        {'species': 'Chamaecyparis thyoides'},
         {'species': 'Fraxinus nigra'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Larix laricina'},
@@ -3183,7 +3181,7 @@ def element_093():
     level = 'macrogroup'
     code = 'Laurentian-Acadian Flooded & Swamp Forest LC (M504)'
 
-    # ECOREGION is 212, M211, 211, 222I, 221A-221D
+    # Located in Ecogegion 212, M211, 211, 222I, 221A-221D
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '212, M211, 211, 222I, 221A, 221B, 221C, 221D'}
@@ -3980,19 +3978,19 @@ def element_120():
     level = 'macrogroup'
     code = 'Southeastern Coastal Plain Evergreen Oak Forest (M885)'
 
-    # Plot is in 232B, C, D, E, G [not in 232A, F, H, I, J], 255Da, Db, Dc [not 255Dd] or 411A, AND
-    #  i. Tree composition is dominated by one or more of Juniperus virginiana var. silicicola,
-    #     Pinus glabra, Quercus incana, Quercus laevis, Quercus laurifolia (presumably = Quercus hemisphaerica, if upland),
-    #     Quercus margarettiae, Quercus minima, Quercus margarettiae, Quercus virginiana, Sabal palmetto (>=50% RIV);
+    # Ecosections: Located in 232B-E, 232G, 255Da-Dc or 411A, AND
+    #  i. Tree composition is dominated by one or more of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS Juniperus virginiana var. silicicola
+    #     Pinus glabra, Quercus incana, Quercus laevis, Quercus laurifolia [presumably = Quercus hemisphaerica, if upland],
+    #     Quercus margarettiae, Quercus minima, Quercus virginiana, Sabal palmetto (=>50% RIV); 
     #     [Additional tree species not tracked by FIA include Quercus fusiformis = Quercus virginiana var. fusiformis),
-    #     Quercus geminata, Serenoa repens,]
+    #     Quercus geminata]
     # OR
-    # ii. Tree composition as above, but with >=20% RIV; AND other species are any combination of Acer rubrum,
-    #     Carpinus caroliniana, Carya alba, Celtis laevigata, Celtis spp., Fraxinus americana, Ilex opaca,
+    # ii. Ecosections and tree composition as above, but with =>20% RIV; AND other species are any combination of MODERATE OAK-MIXED HARDWOOD DIAGNOSTICS Acer barbatum,
+    #     Carpinus caroliniana, Carya alba, Carya glabra, Celtis laevigata, Celtis spp., Fraxinus americana, Ilex opaca,
     #     Juniperus spp., Juniperus virginiana, Liquidambar styraciflua, Magnolia grandiflora, Nyssa sylvatica,
-    #     Ostrya virginiana, Oxydendrum arboreum, other palms, Persea borbonia, Prunus serotina, Quercus alba,
-    #     Quercus falcata, , Quercus nigra, Quercus pagoda, Quercus stellata, Pinus echinata, Pinus taeda,
-    #     Ulmus alata (together >=50% RIV).
+    #     Ostrya virginiana, Oxydendron arboreum, other palms, Persea borbonia, Prunus serotina, Quercus alba,
+    #     Quercus falcata, Quercus nigra, Quercus pagoda, Quercus stellata, Pinus echinata, Pinus taeda,
+    #     Sabal spp., Ulmus alata (together =>50% RIV).
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A'}
@@ -4057,7 +4055,7 @@ def element_121():
     level = 'macrogroup'
     code = 'Southeastern Coastal Plain Evergreen Oak Forest LC (M885)'
 
-    # Plot is in 232B-E, 232G, 255Da-Dc or 411A, AND
+    # Located in 232B-E, 232G, 255Da-Dc, or 411A, AND
     # % RIV of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS > either STRONG LONGLEAF DIAGNOSTICS or STRONG MESIC DIAGNOSTICS
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -4752,29 +4750,29 @@ def element_136():
     code = 'Appalachian Mesic Forest (M883)'
 
     #   i. Tree composition dominated by any one or more of the STRONG MESIC DIAGNOSTICS [Appalachian- Interior-Northeast Mesic
-    #      Forest Diagnostics] Acer nigrum [questionable], Acer pensylvanicum, Aesculus flava, Betula alleghaniensis, Betula lenta,
-    #      Halesia carolina (=H. tetraptera), Halesia spp., Magnolia acuminata, Magnolia tripetala, Tilia americana var. heterophylla,
-    #      Tsuga canadensis, (>=50% RIV);
+    #      Forest Diagnostics] Acer nigrum, Acer pensylvanicum, Aesculus flava, Betula alleghaniensis, Betula lenta,
+    #      Halesia carolina (=H. tetraptera), Halesia spp., Magnolia acuminata, Magnolia tripetela, Tilia americana var. heterophylla,
+    #      Tsuga canadensis (>=50% RIV);
     #  OR
-    #  ii. Plot occurs in EcoProvinces 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, 232 [only plots in VA, PA,
+    #  ii. Located in EcoProvinces 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, or 232 [only plots in VA, PA
     #      DE, MD, NJ, southern IN, southern IL] AND tree composition dominated by any one or more of the ECOREGIONAL STRONG MESIC
     #      DIAGNOSTICS [Strong Appalachian- Northeast Mesic Forest Diagnostics] Acer nigrum, Acer pensylvanicum, Acer saccharum,
     #      Aesculus flava, Aesculus glabra, Asimina triloba, Betula alleghaniensis, Betula lenta, Carya cordiformis, Celtis occidentalis,
     #      Fagus grandifolia, Fraxinus americana, Fraxinus pennsylvanica, Halesia carolina (= H. tetraptera), Halesia spp., Liriodendron tulipifera,
-    #      Liquidambar styraciflua, Magnolia acuminata, Magnolia fraseri, Magnolia macrophylla, Magnolia tripetela,Quercus shumardii,
+    #      Liquidambar styraciflua, Magnolia acuminata, Magnolia fraseri, Magnolia macrophylla, Magnolia tripetela, Quercus shumardii,
     #      Tilia americana, Tilia americana var. heterophylla, Tsuga canadensis, Ulmus americana (>=20% RIV);
     #   AND
     #      any of the following ECOREGIONAL MODERATE MESIC DIAGNOSTICS [Moderate Appalachian-Interior-Northeast Mesic Forest Diagnostics]
-    #      Acer barbatum,Amelanchier spp., Betula populifolia, Betula papyrifera, Carpinus caroliniana, Carya ovalis, Cornus florida,
+    #      Acer barbatum, Amelanchier spp., Betula populifolia, Betula papyrifera, Carpinus caroliniana, Carya ovalis, Cornus florida,
     #      Gleditsia triacanthos, Juglans cinerea, Juglans nigra, Ostrya virginiana, Oxydendrum arboreum, Pinus strobus,
     #      Platanus occidentalis, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Prunus virginiana,
     #      Quercus bicolor, Quercus imbricaria, Quercus muehlenbergii, Quercus pagoda, Quercus phellos, Quercus rubra, Quercus shumardii,
     #      Ulmus rubra, Ulmus thomasii (together >=50% RIV) [note, some mesic Nyssa sylvatica - Quercus alba) plots from Arkansas could
     #      key out here]
     #  OR
-    # iii. Plot occurs in EcoSections 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, 232 AND tree composition dominated
+    # iii. Located in EcoSections 211F, 211G, 211Jd, 221, M221, 223, M223, 231A, 231C, 231D, 231I, 231G, M231A, or 232 [only plots in VA, PA, DE, MD, NJ, PA] AND tree composition dominated
     #      by ECOREGIONAL MODERATE MESIC OAK DIAGNOSTICS Quercus rubra with >=20% RIV, and the following dry Quercus spp. or Carya spp.
-    #      (Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya glabra, Carya alba, Carya pallida)
+    #      (Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya alba, Carya glabra, Carya pallida)
     #      <20% RIV
 
     ECOREGIONS_1 = PatternList('ECOREGIONS_1',
@@ -4865,8 +4863,8 @@ def element_136():
         {'species': 'Quercus prinus'},
         {'species': 'Quercus stellata'},
         {'species': 'Quercus velutina'},
-        {'species': 'Carya glabra'},
         {'species': 'Carya alba'},
+        {'species': 'Carya glabra'},
         {'species': 'Carya pallida'}
     )
 
@@ -4900,7 +4898,7 @@ def element_137():
     # ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of weakly diagnostic
     #     species of Amelanchier spp., Carpinus caroliniana, Cercis canadensis, Cornus florida,
     #     Ostrya virginiana, Oxydendrum arboreum, Pinus banksiana, Prunus serotina, Prunus virginiana,
-    #     Quercus muehlenbergii, Quercus rubra, Sassafras albidum (>=50% RIV)
+    #     Quercus muehlenbergii, Quercus rubra, Sassafras albidum (together >=50% RIV)
 
     ECOREGION = PatternList('ECOREGION',
         {'ecoregion': '!212'}
