@@ -269,7 +269,7 @@ class ClassificationKey:
         self.nodes[127] = Node(127, 116, element_126(), 'Eastern North American Forest & Woodland Division')
         self.nodes[128] = Node(128, 127, element_127(), 'Eastern Cool Temperate Natural Forest & Woodlands')
         self.nodes[129] = Node(129, 128, element_128(), 'Northern Forest macrogroups')
-        self.nodes[130] = Node(130, 129, element_129(), 'Laurentian Pine Hardwood Forest & Woodland (M159)')
+        self.nodes[130] = Node(130, 129, element_129(), 'Laurentian Pine - Hardwood Forest & Woodland (M159)')
         self.nodes[131] = Node(131, 129, element_130(), 'Laurentian Pine - Hardwood Forest & Woodland LC (M159)')
         self.nodes[132] = Node(132, 128, element_131(), 'Central Forest macrogroups')
         self.nodes[133] = Node(133, 132, element_132(), 'Central Midwest Oak Forest, Woodland & Savanna (M012)')
@@ -4367,10 +4367,10 @@ def element_128():
 
 def element_129():
 
-    """Laurentian Pine Hardwood Forest & Woodland (M159)"""
-    """Laurentian Pine Hardwood Forest & Woodland (M159)"""
+    """Laurentian Pine - Hardwood Forest & Woodland (M159)"""
+    """Laurentian Pine - Hardwood Forest & Woodland (M159)"""
     level = 'macrogroup'
-    code = 'Laurentian Pine Hardwood Forest & Woodland (M159)'
+    code = 'Laurentian Pine - Hardwood Forest & Woodland (M159)'
 
     #  i. Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana,
     #     Pinus banksiana, Pinus resinosa, Pinus strobus, Quercus alba, Quercus ellipsoidalis,
@@ -4406,7 +4406,7 @@ def element_129():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=129|Laurentian Pine Hardwood Forest & Woodland (M159)', plot.ident)
+        logging.debug('%s|NODE=129|Laurentian Pine - Hardwood Forest & Woodland (M159)', plot.ident)
         result = (    plot.riv(STRONG_DRY_DIAGNOSTICS) >= 50
                or (    plot.riv(STRONG_DRY_DIAGNOSTICS) >= 20
                    and plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))

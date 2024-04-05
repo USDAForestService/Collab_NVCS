@@ -127,7 +127,7 @@ Natural and Ruderal Forests
 				Eastern North American Forest & Woodland Division
 					Eastern Cool Temperate Natural Forest & Woodlands
 						Northern Forest macrogroups
-							Laurentian Pine Hardwood Forest & Woodland (M159)
+							Laurentian Pine - Hardwood Forest & Woodland (M159)
 							Laurentian Pine - Hardwood Forest & Woodland LC (M159)
 						Central Forest macrogroups
 							Central Midwest Oak Forest, Woodland & Savanna (M012)
