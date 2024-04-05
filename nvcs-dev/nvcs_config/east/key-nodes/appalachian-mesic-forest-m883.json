@@ -11,29 +11,29 @@
 
    "description": [
       "  i. Tree composition dominated by any one or more of the STRONG MESIC DIAGNOSTICS [Appalachian- Interior-Northeast Mesic",
-      "     Forest Diagnostics] Acer nigrum [questionable], Acer pensylvanicum, Aesculus flava, Betula alleghaniensis, Betula lenta,",
-      "     Halesia carolina (=H. tetraptera), Halesia spp., Magnolia acuminata, Magnolia tripetala, Tilia americana var. heterophylla,",
-      "     Tsuga canadensis, (>=50% RIV);",
+      "     Forest Diagnostics] Acer nigrum, Acer pensylvanicum, Aesculus flava, Betula alleghaniensis, Betula lenta,",
+      "     Halesia carolina (=H. tetraptera), Halesia spp., Magnolia acuminata, Magnolia tripetela, Tilia americana var. heterophylla,",
+      "     Tsuga canadensis (>=50% RIV);",
       " OR",
-      " ii. Plot occurs in EcoProvinces 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, 232 [only plots in VA, PA,",
+      " ii. Located in EcoProvinces 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, or 232 [only plots in VA, PA",
       "     DE, MD, NJ, southern IN, southern IL] AND tree composition dominated by any one or more of the ECOREGIONAL STRONG MESIC",
       "     DIAGNOSTICS [Strong Appalachian- Northeast Mesic Forest Diagnostics] Acer nigrum, Acer pensylvanicum, Acer saccharum,",
       "     Aesculus flava, Aesculus glabra, Asimina triloba, Betula alleghaniensis, Betula lenta, Carya cordiformis, Celtis occidentalis,",
       "     Fagus grandifolia, Fraxinus americana, Fraxinus pennsylvanica, Halesia carolina (= H. tetraptera), Halesia spp., Liriodendron tulipifera,",
-      "     Liquidambar styraciflua, Magnolia acuminata, Magnolia fraseri, Magnolia macrophylla, Magnolia tripetela,Quercus shumardii,",
+      "     Liquidambar styraciflua, Magnolia acuminata, Magnolia fraseri, Magnolia macrophylla, Magnolia tripetela, Quercus shumardii,",
       "     Tilia americana, Tilia americana var. heterophylla, Tsuga canadensis, Ulmus americana (>=20% RIV);",
       "  AND",
       "     any of the following ECOREGIONAL MODERATE MESIC DIAGNOSTICS [Moderate Appalachian-Interior-Northeast Mesic Forest Diagnostics]",
-      "     Acer barbatum,Amelanchier spp., Betula populifolia, Betula papyrifera, Carpinus caroliniana, Carya ovalis, Cornus florida,",
+      "     Acer barbatum, Amelanchier spp., Betula populifolia, Betula papyrifera, Carpinus caroliniana, Carya ovalis, Cornus florida,",
       "     Gleditsia triacanthos, Juglans cinerea, Juglans nigra, Ostrya virginiana, Oxydendrum arboreum, Pinus strobus,",
       "     Platanus occidentalis, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Prunus virginiana,",
       "     Quercus bicolor, Quercus imbricaria, Quercus muehlenbergii, Quercus pagoda, Quercus phellos, Quercus rubra, Quercus shumardii,",
       "     Ulmus rubra, Ulmus thomasii (together >=50% RIV) [note, some mesic Nyssa sylvatica - Quercus alba) plots from Arkansas could",
       "     key out here]",
       " OR",
-      "iii. Plot occurs in EcoSections 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, 232 AND tree composition dominated",
+      "iii. Located in EcoSections 211F, 211G, 211Jd, 221, M221, 223, M223, 231A, 231C, 231D, 231I, 231G, M231A, or 232 [only plots in VA, PA, DE, MD, NJ, PA] AND tree composition dominated",
       "     by ECOREGIONAL MODERATE MESIC OAK DIAGNOSTICS Quercus rubra with >=20% RIV, and the following dry Quercus spp. or Carya spp.",
-      "     (Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya glabra, Carya alba, Carya pallida)",
+      "     (Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya alba, Carya glabra, Carya pallida)",
       "     <20% RIV"
    ],
 
@@ -130,8 +130,8 @@
         {"species": "Quercus prinus"},
         {"species": "Quercus stellata"},
         {"species": "Quercus velutina"},
-        {"species": "Carya glabra"},
         {"species": "Carya alba"},
+        {"species": "Carya glabra"},
         {"species": "Carya pallida"}
       ]
    }
