@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Acadian-Northern Appalachian Forest (M103)",
+
+   "id":
+      "Acadian-Northern Appalachian Forest (M103)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Tree composition not as above; that is plots are not located in Ecoprovince 212, M211, 222J, 222K, 222L, 222M, 222R, or 222U [i.e. found in 211A – 211E, 211Ja, 211Jb, 211Jc]."
+   ],
+
+   "trigger": [
+      "match(ECOREGION)"
+   ],
+
+   "filters": {
+      "ECOREGION": [
+        {"ecoregion": "211A, 211B, 211C, 211D, 211E, 211Ja 211Jb, 211Jc ! 212, M211, 222J, 222k, 222l, 222M, 222R, 222U"}
+      ]
+   }
+
+}}
+
