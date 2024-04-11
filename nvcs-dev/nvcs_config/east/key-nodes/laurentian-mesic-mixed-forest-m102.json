@@ -1,0 +1,55 @@
+{"node": {
+
+   "name":
+      "Laurentian Mesic Mixed Forest (M102)",
+
+   "id":
+      "Laurentian Mesic Mixed Forest (M102)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Located in Ecoprovince 212, M211, 222J, 222K, 222L, 222M, 222R, or 222U AND",
+      " i. Tree composition dominated by any one or more of the hardwoods and/or conifer STRONG MESIC DIAGNOSTICS of Abies balsamea,",
+      "    Abies fraseri, Acer pensylvanicum, Acer saccharum, Acer spicatum, Betula alleghaniensis, Betula lenta, Fagus grandifolia,",
+      "    Fraxinus americana, Fraxinus nigra, Fraxinus pennsylvanica, Larix laricina, Picea glauca, Picea mariana, Populus balsamifera,",
+      "    Populus grandidentata, Quercus macrocarpa, Quercus rubra, Thuja occidentalis, Tilia americana, Tsuga canadensis, Ulmus americana (>=20% RIV);"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS) and riv(STRONG_MESIC_DIAGNOSTICS) >= 20"
+   ],
+
+   "filters": {
+     "ECOREGIONS": [
+        {"ecoregion": "212, M211, 222J, 222K, 222L, 222M, 222R, 222U"}
+      ],
+      "STRONG_MESIC_DIAGNOSTICS": [
+        {"species": "Abies balsamea"},
+        {"species": "Abies fraseri"},
+        {"species": "Acer pensylvanicum"},
+        {"species": "Acer saccharum"},
+        {"species": "Acer spicatum"},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Betula lenta"},
+        {"species": "Fagus grandifolia"},
+        {"species": "Fraxinus americana"},
+        {"species": "Fraxinus nigra"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Larix laricina"},
+        {"species": "Picea glauca"},
+        {"species": "Picea mariana"},
+        {"species": "Populus balsamifera"},
+        {"species": "Populus grandidentata"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Quercus rubra"},
+        {"species": "Thuja occidentalis"},
+        {"species": "Tilia americana"},
+        {"species": "Tsuga canadensis"},
+        {"species": "Ulmus americana"}
+      ]
+   }
+
+}}
+

@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "Laurentian Mesic Mixed Forest LC2 (M102)",
+
+   "id":
+      "Laurentian Mesic Mixed Forest LC2 (M102)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Located in Ecoregion 212"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "212"}
+      ]
+   }
+
+}}
+
