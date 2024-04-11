@@ -1,0 +1,49 @@
+{"node": {
+
+   "name":
+      "North Atlantic Coastal Forest & Woodland - Mesic (M525)",
+
+   "id":
+      "North Atlantic Coastal Forest & Woodland - Mesic (M525)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "LOCATED in 221An, 221Ab, 232A, 232H (but not North Carolina) or 232I AND ",
+      "Tree composition dominated by one or more of the following:",
+      " i.  Tree composition dominated by one or more of the STRONG MESIC DIAGNOSTICS species of",
+      "     Fagus grandifolia, Betula lenta, Liriodendron tulipifera  (>=50% RIV);",
+      "OR",
+      "ii.  Tree composition as above, but with >=20% RIV, AND other species are any combination of",
+      "     MODERATE MESIC DIAGNOSTICS diagnostic species of Carya cordiformis, Quercus alba,",
+      "     Quercus rubra (together >=50% RIV);"
+   ],
+
+   "trigger": [
+      "(match(ECOREGIONS_I) or match(ECOREGIONS_II)) and",
+      "(riv(STRONG_MESIC_DIAGNOSTICS) >= 50 or riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and riv(STRONG_MESIC_DIAGNOSTICS) + riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)"
+   ],
+
+   "filters": {
+      "ECOREGIONS_I": [
+        {"ecoregion": "221An, 221Ab, 232A, 232I"}
+      ],
+      "ECOREGIONS_II": [
+        {"ecoregion": "232H"},
+        {"state":  "!NC"}
+      ],
+      "STRONG_MESIC_DIAGNOSTICS": [
+        {"species": "Fagus grandifolia"},
+        {"species": "Betula lenta"},
+        {"species": "Liriodendron tulipifera"}
+      ],
+      "MODERATE_MESIC_DIAGNOSTICS": [
+        {"species": "Carya cordiformis"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus rubra"}
+      ]
+   }
+
+}}
+

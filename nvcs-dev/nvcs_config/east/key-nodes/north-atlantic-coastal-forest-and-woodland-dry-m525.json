@@ -1,0 +1,55 @@
+{"node": {
+
+   "name":
+      "North Atlantic Coastal Forest & Woodland - Dry (M525)",
+
+   "id":
+      "North Atlantic Coastal Forest & Woodland - Dry (M525)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "LOCATED in 221An, 221Ab, 232A, 232H (but not North Carolina) or 232I AND ",
+      "Tree composition dominated by one or more of the following:",
+      " i.  Tree composition dominated by one or more of the STRONG DRY DIAGNOSTICS species of",
+      "     Pinus rigida, Pinus echinata, Pinus virginiana, Quercus alba, Quercus falcata (= var. falcata),",
+      "     Quercus stellata, Quercus velutina  (>=50% RIV);",
+      "OR",
+      "ii.  Tree composition as above, but with =>20% RIV, AND other species are any combination of",
+      "     MODERATE DRY DIAGNOSTICS diagnostic species of Pinus strobus, Quercus coccinea,",
+      "     Quercus montana, Quercus muehlenbergii (together >=50% RIV);"
+   ],
+
+   "trigger": [
+      "(match(ECOREGIONS_I) or match(ECOREGIONS_II)) and",
+      "(riv(STRONG_DRY_DIAGNOSTICS) >= 50 or riv(STRONG_DRY_DIAGNOSTICS) >= 20 and riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >= 50)"
+   ],
+
+   "filters": {
+      "ECOREGIONS_I": [
+        {"ecoregion": "221An, 221Ab, 232A, 232I"}
+      ],
+      "ECOREGIONS_II": [
+        {"ecoregion": "232H"},
+        {"state":  "!NC"}
+      ],
+      "STRONG_DRY_DIAGNOSTICS": [
+        {"species": "Pinus rigida"},
+        {"species": "Pinus echinata"},
+        {"species": "Pinus virginiana"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus stellata"},
+        {"species": "Quercus velutina"}
+      ],
+      "MODERATE_DRY_DIAGNOSTICS": [
+        {"species": "Pinus strobus"},
+        {"species": "Quercus coccinea"},
+        {"species": "Quercus montana"},
+        {"species": "Quercus muehlenbergii"}
+      ]
+   }
+
+}}
+
