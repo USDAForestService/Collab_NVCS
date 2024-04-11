@@ -1,0 +1,75 @@
+{"node": {
+
+   "name":
+      "South-Central Oak - Pine Forest & Woodland (M540)",
+
+   "id":
+      "South-Central Oak - Pine Forest & Woodland (M540)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "1i. Located in 232F, 231E, 234D, or 255D and tree composition dominated by",
+      "    Carya glabra, Carya ovalis, Carya pallida, Ilex opaca, Pinus taeda, Pinus echinata, Quercus arkansana",
+      "    Quercus falcata, Quercus incana, Quercus margarettiae, or Quercus stellata (>= 20%);",
+      "OR",
+      "1ii.",
+      "  a.  Located in 231, 232, 234D, or 255D and tree composition dominated by ",
+      "      Carya glabra, Carya ovalis, Carya pallida, Ilex opaca, Pinus echinata, Pinus taeda, Quercus stellata,",
+      "      Quercus marilandica or Quercus coccinea (>=50% RIV);",
+      "  OR",
+      "  b.  Located in 231, 232, 234D, or 255D and tree composition as above, but with =>20% RIV; AND",
+      "      with other species are any combination of Oxydendron arboreum, Quercus alba, Quercus falcata,",
+      "      Quercus nigra, Quercus montana, Quercus muehlenbergii (together >=50% RIV)"
+   ],
+
+   "trigger": [
+      "(match(EGOREGIONS_I) and riv(SPECIES_I) >= 20) or ",
+      "(match(ECOREGIONS_II) and riv(SPECIES_II) >= 50) or ",
+      "(match(ECOREGIONS_II) and riv(SPECIES_II) >= 20 and riv(SPECIES_II) + riv(SPECIES_III) >= 50)"
+   ],
+
+   "filters": {
+      "ECOREGIONS_I": [
+        {"ecoregion": "232F, 231E, 234D, 255D"}
+      ],
+     "ECOREGIONS_II": [
+        {"ecoregion": "231, 232, 234D, 255D"}
+      ],
+      "SPECIES_I": [
+        {"species": "Carya glabra"},
+        {"species": "Carya ovalis"},
+        {"species": "Carya pallida"},
+        {"species": "Ilex opaca"},
+        {"species": "Pinus taeda"},
+        {"species": "Pinus echinata"},
+        {"species": "Quercus arkansana"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus incana"},
+        {"species": "Quercus margarettiae"},
+        {"species": "Quercus stellata"}
+      ],
+     "SPECIES_II": [
+        {"species": "Carya glabra"},
+        {"species": "Carya ovalis"},
+        {"species": "Carya pallida"},
+        {"species": "Ilex opaca"},
+        {"species": "Pinus echinata"},
+        {"species": "Pinus taeda"},
+        {"species": "Quercus stellata"},
+        {"species": "Quercus marilandica"},
+        {"species": "Quercus coccinea"}
+     ],
+     "SPECIES_III": [
+        {"species": "Oxydendron arboreum"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus nigra"},
+        {"species": "Quercus montana"},
+        {"species": "Quercus muehlenbergii"}
+      ]
+   }
+
+}}
+
