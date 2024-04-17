@@ -1,0 +1,25 @@
+{"node": {
+
+   "name":
+      "Appalachian and Central Interior Forest macrogroups",
+
+   "id":
+      "Appalachian and Central Interior Forest macrogroups",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition not as above"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+
+   }
+
+}}
+
