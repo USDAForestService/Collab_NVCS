@@ -1,0 +1,64 @@
+{"node": {
+
+   "name":
+      "Northern Great Plains Forest & Woodland (M545)",
+
+   "id":
+      "Northern Great Plains Forest & Woodland (M545)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Located in Ecoprovince 331, 332, AND",
+      "Tilia americana and Acer saccharum, singly or in combination < 5% RIV, AND",
+      " i. Tree composition dominated by one or more of STRONG PLAINS DIAGNOSTICS Fraxinus pennsylvanica,",
+      "    Juniperus virginiana, Populus tremuloides, Quercus macrocarpa, Ulmus americana, Ulmus rubra (>=50% RIV);",
+      "OR",
+      "ii. Tree composition as above, but with>=20% RIV AND other species are any combination of MODERATE PLAINS DIAGNOSTICS",
+      "    Acer negundo, Betula papyrifera, Celtis occidentalis, Crataegus spp., Juglans nigra, Juniperus scopulorum,",
+      "    Morus rubra, Pinus ponderosa, Prunus virginiana, Quercus rubra, Quercus muehlenbergii, Ulmus rubra (together >=50% RIV);"
+   ],
+
+   "trigger": [
+      "match(ECOREGION) and",
+      " (riv(SPECIES_TA) < 5 or riv(SPECIES_AS) < 5 or riv(SPECIES_TA) + riv(SPECIES_AS) < 5) and",
+      " (riv(STRONG_PLAINS_DIAGNOSTICS) >= 50 or (riv(STRONG_PLAINS_DIAGNOSTICS) >= 20 and riv(STRONG_PLAINS_DIAGNOSTICS) + riv(MODERATE_PLAINS_DIAGNOSTICS) >= 50))"
+   ],
+
+   "filters": {
+      "ECOREGION": [
+        {"ecoregion": "331, 332"}
+      ],
+      "SPECIES_TA": [
+         {"species":  "Tilia americana"}
+      ],
+      "SPECIES_AS": [
+         {"species":  "Acer saccharum"}
+      ],
+      "STRONG_PLAINS_DIAGNOSTICS": [
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Juniperus virginiana"},
+        {"species": "Populus tremuloides"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Ulmus americana"},
+        {"species": "Ulmus rubra"}
+      ],
+      "MODERATE_PLAINS_DIAGNOSTICS": [
+        {"species": "Acer negundo"},
+        {"species": "Betula papyrifera"},
+        {"species": "Celtis occidentalis"},
+        {"species": "Crataegus spp."},
+        {"species": "Juglans nigra"},
+        {"species": "Juniperus scopulorum"},
+        {"species": "Morus rubra"},
+        {"species": "Pinus ponderosa"},
+        {"species": "Prunus virginiana"},
+        {"species": "Quercus rubra"},
+        {"species": "Quercus muehlenbergii"},
+        {"species": "Ulmus rubra"}
+      ]
+   }
+
+}}
+
