@@ -1,0 +1,27 @@
+{"node": {
+
+   "name":
+      "North American Great Plains Forest & Woodland (D008)",
+
+   "id":
+      "North American Great Plains Forest & Woodland (D008)",
+
+   "level":
+      "division",
+
+   "description": [
+      "Located in Ecoprovince 331, 332, 315B, 315C, 315D, 315E, 315F, 315G, 255"
+   ],
+
+   "trigger": [
+      "match(ECOREGION)"
+   ],
+
+   "filters": {
+      "ECOREGION": [
+        {"ecoregion": "331, 332, 315B, 315C, 315D, 315E, 315F, 315G, 255"}
+      ]
+   }
+
+}}
+
