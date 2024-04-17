@@ -1,0 +1,31 @@
+{"node": {
+
+   "name":
+      "Great Plains Ruderal Woodlands",
+
+   "id":
+      "Great Plains Ruderal Woodlands",
+
+   "level":
+      "division",
+
+   "description": [
+      "Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that ",
+      "invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but ",
+      "which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ",
+      "ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division)"
+   ],
+
+   "trigger": [
+      "riv(RUDERAL_OR_EXOTIC_SPECIES) >= 80"
+   ],
+
+   "filters": {
+      "RUDERAL_OR_EXOTIC_SPECIES": [
+        {"ruderal": "yes"},
+        {"exotic": "yes"}
+      ]
+   }
+
+}}
+
