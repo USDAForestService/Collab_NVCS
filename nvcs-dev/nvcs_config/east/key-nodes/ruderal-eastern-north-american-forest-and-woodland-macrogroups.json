@@ -1,0 +1,25 @@
+{"node": {
+
+   "name":
+      "Ruderal Eastern North American Forest & Woodland Macrogroups",
+
+   "id":
+      "Ruderal Eastern North American Forest & Woodland Macrogroups",
+
+   "level":
+      "division",
+
+   "description": [
+      "Only one Macrogroup"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+
+   }
+
+}}
+
