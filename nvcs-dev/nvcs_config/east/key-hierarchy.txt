@@ -153,7 +153,7 @@ Natural and Ruderal Forests
 							Appalachian and South-Central Dry Forests
 								Central Interior Oak - Pine Forest & Woodland (M543)
 								Appalachian Oak - Pine Forest & Woodland (M502)
-								Laurentian Mesic Forest LC2 (M102)
+								Laurentian Mesic Mixed Forest LC2 (M102)
 								Central Interior Oak - Pine Forest & Woodland LC (M543)
 								Appalachian Oak - Pine Forest & Woodland LC (M502)
 								Appalachian Mesic Forest LC (M883)
