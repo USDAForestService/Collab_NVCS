@@ -1,0 +1,95 @@
+{"node": {
+
+   "name":
+      "Central Interior Oak - Pine Forest & Woodland LC (M543)",
+
+   "id":
+      "Central Interior Oak - Pine Forest & Woodland LC (M543)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "% RIV of STRONG DRY SOUTH-CENTRAL DIAGNOSTICS > either STRONG APPALACHIAN DRY DIAGNOSTICS or ECOREGIONAL STRONG MESIC DIAGNOSTICS"
+   ],
+
+   "trigger": [
+      "riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) > riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS)",
+     " and riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) > riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS)"
+   ],
+
+   "filters": {
+      "STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS": [
+        {"species": "Acer barbatum"},
+        {"species": "Carya pallida"},
+        {"species": "Carya texana"},
+        {"species": "Diospyros virginiana"},
+        {"species": "Fraxinus quadrangulata"},
+        {"species": "Ilex opaca"},
+        {"species": "Juniperus ashei"},
+        {"species": "Oxydendrum arboreum"},
+        {"species": "Pinus echinata"},
+        {"species": "Pinus taeda"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus marilandica"},
+        {"species": "Quercus nigra"},
+        {"species": "Quercus stellata"},
+        {"species": "Ulmus alata"}
+      ],
+      "STRONG_APPALACHIAN_DRY_DIAGNOSTICS": [
+        {"species": "Carya glabra"},
+        {"species": "Carya ovata"},
+        {"species": "Carya alba"},
+        {"species": "Castanea dentata"},
+        {"species": "Fraxinus quadrangulata"},
+        {"species": "Juniperus virginiana"},
+        {"species": "Nyssa sylvatica"},
+        {"species": "Pinus echinata"},
+        {"species": "Pinus pungens"},
+        {"species": "Pinus rigida"},
+        {"species": "Pinus strobus"},
+        {"species": "Pinus virginiana"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus coccinea"},
+        {"species": "Quercus ellipsoidalis"},
+        {"species": "Quercus falcata"},
+        {"species": "Quercus imbricaria"},
+        {"species": "Quercus ilicifolia"},
+        {"species": "Quercus marilandica"},
+        {"species": "Quercus prinus"},
+        {"species": "Quercus stellata"},
+        {"species": "Quercus velutina"},
+        {"species": "Tsuga caroliniana"}
+      ],
+     "ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS": [
+        {"species": "Acer nigrum"},
+        {"species": "Acer pensylvanicum"},
+        {"species": "Acer saccharum"},
+        {"species": "Aesculus flava"},
+        {"species": "Aesculus glabra"},
+        {"species": "Asimina triloba"},
+        {"species": "Betula alleghaniensis"},
+        {"species": "Betula lenta"},
+        {"species": "Carya cordiformis"},
+        {"species": "Celtis occidentalis"},
+        {"species": "Fagus grandifolia"},
+        {"species": "Fraxinus americana"},
+        {"species": "Fraxinus pennsylvanica"},
+        {"species": "Halesia carolina"},
+        {"species": "Halesia spp."},
+        {"species": "Liriodendron tulipifera"},
+        {"species": "Liquidambar styraciflua"},
+        {"species": "Magnolia acuminata"},
+        {"species": "Magnolia fraseri"},
+        {"species": "Magnolia macrophylla"},
+        {"species": "Magnolia tripetala"},
+        {"species": "Quercus shumardii"},
+        {"species": "Tilia americana"},
+        {"species": "Tilia americana var. heterophylla"},
+        {"species": "Tsuga canadensis"},
+        {"species": "Ulmus americana"}
+      ]
+   }
+
+}}
+
