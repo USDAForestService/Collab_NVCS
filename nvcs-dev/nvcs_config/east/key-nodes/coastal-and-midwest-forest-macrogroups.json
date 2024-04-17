@@ -1,0 +1,25 @@
+{"node": {
+
+   "name":
+      "Coastal and Midwest Forest macrogroups",
+
+   "id":
+      "Coastal and Midwest Forest macrogroups",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition not as above"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+
+   }
+
+}}
+
