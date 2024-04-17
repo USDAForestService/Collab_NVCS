@@ -1,0 +1,49 @@
+{"node": {
+
+   "name":
+      "Southern Great Plains Forest & Woodland (M544)",
+
+   "id":
+      "Southern Great Plains Forest & Woodland (M544)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "Located in Ecoprovince 315, [315B – G] and 255",
+      "[Typical species include Acer grandidentatum, Fraxinus albicans, Juniperus ashei, Pinus cembroides, Juglans major, Juniperus virginiana,",
+      "Quercus buckleyi, Quercus fusiformis, Quercus laceyi, Quercus marilandica, Quercus muehlenbergii, Quercus sinuata var. breviloba,",
+      "Quercus stellata, Sapindus saponaria, Ulmus alata, Ulmus crassifolia, Ulmus rubra]"
+   ],
+
+   "trigger": [
+      "match(ECOREGIONS)"
+   ],
+
+   "filters": {
+      "ECOREGIONS": [
+        {"ecoregion": "315, 315B, 315C, 315D, 315E, 315G, 255"}
+      ],
+      "SPECIES": [
+        {"species": "Acer grandidentatum"},
+        {"species": "Fraxinus albicans"},
+        {"species": "Juniperus ashei"},
+        {"species": "Pinus cembroides"},
+        {"species": "Juglans major"},
+        {"species": "Juniperus virginiana"},
+        {"species": "Quercus buckleyi"},
+        {"species": "Quercus fusiformis"},
+        {"species": "Quercus laceyi"},
+        {"species": "Quercus marilandica"},
+        {"species": "Quercus muehlenbergii"},
+        {"species": "Quercus sinuata var. breviloba"},
+        {"species": "Quercus stellata"},
+        {"species": "Sapindus saponaria"},
+        {"species": "Ulmus alata"},
+        {"species": "Ulmus crassifolia"},
+        {"species": "Ulmus rubra"}
+      ]
+   }
+
+}}
+
