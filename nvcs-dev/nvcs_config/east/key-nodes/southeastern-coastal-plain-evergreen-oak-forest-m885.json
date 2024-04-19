@@ -13,16 +13,16 @@
       "Ecosections: Located in 232B-E, 232G, 255Da-Dc or 411A, AND",
       " i. Tree composition is dominated by one or more of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS Juniperus virginiana var. silicicola",
       "    Pinus glabra, Quercus incana, Quercus laevis, Quercus laurifolia [presumably = Quercus hemisphaerica, if upland],",
-      "    Quercus margarettiae, Quercus minima, Quercus virginiana, Sabal palmetto (=>50% RIV); ",
+      "    Quercus margarettiae, Quercus minima, Quercus virginiana, Sabal palmetto (>=50% RIV); ",
       "    [Additional tree species not tracked by FIA include Quercus fusiformis = Quercus virginiana var. fusiformis),",
       "    Quercus geminata]",
       "OR",
-      "ii. Ecosections and tree composition as above, but with =>20% RIV; AND other species are any combination of MODERATE OAK-MIXED HARDWOOD DIAGNOSTICS Acer barbatum,",
-      "    Carpinus caroliniana, Carya alba, Carya glabra, Celtis laevigata, Celtis spp., Fraxinus americana, Ilex opaca,",
+      "ii. Ecosections and tree composition as above, but with =>20% RIV; AND other species are any combination of MODERATE OAK-MIXED HARDWOOD DIAGNOSTICS",
+      "    Acer barbatum, Acer rubrum, Carpinus caroliniana, Carya alba, Carya glabra, Carya illinoinensis, Celtis laevigata, Celtis spp., Fraxinus americana, Ilex opaca,",
       "    Juniperus spp., Juniperus virginiana, Liquidambar styraciflua, Magnolia grandiflora, Nyssa sylvatica,",
       "    Ostrya virginiana, Oxydendron arboreum, other palms, Persea borbonia, Prunus serotina, Quercus alba,",
       "    Quercus falcata, Quercus nigra, Quercus pagoda, Quercus stellata, Pinus echinata, Pinus taeda,",
-      "    Sabal spp., Ulmus alata (together =>50% RIV)."
+      "    Sabal spp., Ulmus alata (together >=50% RIV)."
    ],
 
    "trigger": [
@@ -53,6 +53,7 @@
         {"species": "Carpinus caroliniana"},
         {"species": "Carya alba"},
         {"species": "Carya glabra"},
+        {"species": "Carya illinoinensis"},
         {"species": "Celtis laevigata"},
         {"species": "Celtis spp."},
         {"species": "Fraxinus americana"},
@@ -63,7 +64,7 @@
         {"species": "Magnolia grandiflora"},
         {"species": "Nyssa sylvatica"},
         {"species": "Ostrya virginiana"},
-        {"species": "Oxydendrum arboreum"},
+        {"species": "Oxydendron arboreum"},
         {"species": "other palms"},
         {"species": "Persea borbonia"},
         {"species": "Prunus serotina"},
@@ -74,6 +75,7 @@
         {"species": "Quercus stellata"},
         {"species": "Pinus echinata"},
         {"species": "Pinus taeda"},
+        {"species": "Sabal spp."},
         {"species": "Ulmus alata"}
       ]
    }
