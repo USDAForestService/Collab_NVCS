@@ -1,0 +1,25 @@
+{"node": {
+
+   "name":
+      "Appalachian and South-Central Dry Forests",
+
+   "id":
+      "Appalachian and South-Central Dry Forests",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition not as above"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+
+   }
+
+}}
+
