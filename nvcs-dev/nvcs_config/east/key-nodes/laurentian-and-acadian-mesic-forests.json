@@ -1,0 +1,25 @@
+{"node": {
+
+   "name":
+      "Laurentian and Acadian Mesic Forests",
+
+   "id":
+      "Laurentian and Acadian Mesic Forests",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition not as above"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+
+   }
+
+}}
+
