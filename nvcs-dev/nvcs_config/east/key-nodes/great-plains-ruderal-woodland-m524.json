@@ -1,0 +1,25 @@
+{"node": {
+
+   "name":
+      "Great Plains Ruderal Woodland (M524)",
+
+   "id":
+      "Great Plains Ruderal Woodland (M524)",
+
+   "level":
+      "macrogroup",
+
+   "description": [
+      "If plot assigned to Great Plains Ruderal Woodland"
+   ],
+
+   "trigger": [
+      "true"
+   ],
+
+   "filters": {
+
+   }
+
+}}
+
