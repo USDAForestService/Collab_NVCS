@@ -25,7 +25,7 @@
    ],
 
    "trigger": [
-      "(match(EGOREGIONS_I) and riv(SPECIES_I) >= 20) or ",
+      "(match(ECOREGIONS_I) and riv(SPECIES_I) >= 20) or ",
       "(match(ECOREGIONS_II) and riv(SPECIES_II) >= 50) or ",
       "(match(ECOREGIONS_II) and riv(SPECIES_II) >= 20 and riv(SPECIES_II) + riv(SPECIES_III) >= 50)"
    ],
