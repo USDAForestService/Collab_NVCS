@@ -1,0 +1,54 @@
+{"node": {
+
+   "name":
+      "Laurentian and Acadian Dry Forests",
+
+   "id":
+      "Laurentian and Acadian Dry Forests",
+
+   "level":
+      "division",
+
+   "description": [
+      "Tree composition dominated by one of the following:",
+      "  i. Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana,",
+      "     Pinus banksiana, Pinus resinosa, Pinus strobus, Quercus alba, Quercus ellipsoidalis,",
+   "        Quercus macrocarpa, Quercus velutina (>=50% RIV);",
+      " OR",
+      " ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of",
+      "     MODERATE DRY DIAGNOSTICS of Amelanchier spp., Betula populifolia, Betula papyrifera,",
+      "     Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides,",
+      "     Prunus pensylvanica, Prunus serotina, Quercus rubra (together >=50% RIV);"
+   ],
+
+   "trigger": [
+      "riv(STRONG_DRY_DIAGNOSTICS) >= 50 or (riv(STRONG_DRY_DIAGNOSTICS) >= 20 and riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >= 50)"
+   ],
+
+   "filters": {
+      "STRONG_DRY_DIAGNOSTICS": [
+        {"species": "Picea mariana"},
+        {"species": "Pinus banksiana"},
+        {"species": "Pinus resinosa"},
+        {"species": "Pinus strobus"},
+        {"species": "Quercus alba"},
+        {"species": "Quercus ellipsoidalis"},
+        {"species": "Quercus macrocarpa"},
+        {"species": "Quercus velutina"}
+      ],
+      "MODERATE_DRY_DIAGNOSTICS": [
+        {"species": "Amelanchier spp."},
+        {"species": "Betula populifolia"},
+        {"species": "Betula papyrifera"},
+        {"species": "Carpinus caroliniana"},
+        {"species": "Ostrya virginiana"},
+        {"species": "Populus grandidentata"},
+        {"species": "Populus tremuloides"},
+        {"species": "Prunus pensylvanica"},
+        {"species": "Prunus serotina"},
+        {"species": "Quercus rubra"}
+      ]
+   }
+
+}}
+
