@@ -4262,16 +4262,16 @@ def element_127():
     # Ecosections: Located in 232B-E, 232G, 255Da-Dc or 411A, AND
     #  i. Tree composition is dominated by one or more of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS Juniperus virginiana var. silicicola
     #     Pinus glabra, Quercus incana, Quercus laevis, Quercus laurifolia [presumably = Quercus hemisphaerica, if upland],
-    #     Quercus margarettiae, Quercus minima, Quercus virginiana, Sabal palmetto (=>50% RIV); 
+    #     Quercus margarettiae, Quercus minima, Quercus virginiana, Sabal palmetto (>=50% RIV); 
     #     [Additional tree species not tracked by FIA include Quercus fusiformis = Quercus virginiana var. fusiformis),
     #     Quercus geminata]
     # OR
-    # ii. Ecosections and tree composition as above, but with =>20% RIV; AND other species are any combination of MODERATE OAK-MIXED HARDWOOD DIAGNOSTICS Acer barbatum,
-    #     Carpinus caroliniana, Carya alba, Carya glabra, Celtis laevigata, Celtis spp., Fraxinus americana, Ilex opaca,
+    # ii. Ecosections and tree composition as above, but with =>20% RIV; AND other species are any combination of MODERATE OAK-MIXED HARDWOOD DIAGNOSTICS
+    #     Acer barbatum, Acer rubrum, Carpinus caroliniana, Carya alba, Carya glabra, Carya illinoinensis, Celtis laevigata, Celtis spp., Fraxinus americana, Ilex opaca,
     #     Juniperus spp., Juniperus virginiana, Liquidambar styraciflua, Magnolia grandiflora, Nyssa sylvatica,
     #     Ostrya virginiana, Oxydendron arboreum, other palms, Persea borbonia, Prunus serotina, Quercus alba,
     #     Quercus falcata, Quercus nigra, Quercus pagoda, Quercus stellata, Pinus echinata, Pinus taeda,
-    #     Sabal spp., Ulmus alata (together =>50% RIV).
+    #     Sabal spp., Ulmus alata (together >=50% RIV).
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A'}
@@ -4295,6 +4295,7 @@ def element_127():
         {'species': 'Carpinus caroliniana'},
         {'species': 'Carya alba'},
         {'species': 'Carya glabra'},
+        {'species': 'Carya illinoinensis'},
         {'species': 'Celtis laevigata'},
         {'species': 'Celtis spp.'},
         {'species': 'Fraxinus americana'},
@@ -4305,7 +4306,7 @@ def element_127():
         {'species': 'Magnolia grandiflora'},
         {'species': 'Nyssa sylvatica'},
         {'species': 'Ostrya virginiana'},
-        {'species': 'Oxydendrum arboreum'},
+        {'species': 'Oxydendron arboreum'},
         {'species': 'other palms'},
         {'species': 'Persea borbonia'},
         {'species': 'Prunus serotina'},
@@ -4316,6 +4317,7 @@ def element_127():
         {'species': 'Quercus stellata'},
         {'species': 'Pinus echinata'},
         {'species': 'Pinus taeda'},
+        {'species': 'Sabal spp.'},
         {'species': 'Ulmus alata'}
     )
 
@@ -5277,17 +5279,17 @@ def element_150():
 
     #   i. Tree composition dominated by any one or more of the STRONG MESIC DIAGNOSTICS [Appalachian- Interior-Northeast Mesic
     #      Forest Diagnostics] Acer nigrum, Acer pensylvanicum, Aesculus flava, Betula alleghaniensis, Betula lenta,
-    #      Halesia carolina (=H. tetraptera), Halesia spp., Magnolia acuminata, Magnolia tripetela, Tilia americana var. heterophylla,
+    #      Halesia carolina (= H. tetraptera), Halesia spp., Magnolia acuminata, Magnolia tripetela, Tilia americana var. heterophylla,
     #      Tsuga canadensis (>=50% RIV);
     #  OR
     #  ii. Located in EcoProvinces 211F, 211G, 211Jd, 221, M221, 223B-223G, 231A, 231C, 231D, 231I, or 232 [only plots in VA, PA
-    #      DE, MD, NJ, southern IN, southern IL] AND tree composition dominated by any one or more of the ECOREGIONAL STRONG MESIC
+    #      DE, MD, NJ, southern IN, Southern IL], AND tree composition dominated by any one or more of the ECOREGIONAL STRONG MESIC
     #      DIAGNOSTICS [Strong Appalachian- Northeast Mesic Forest Diagnostics] Acer nigrum, Acer pensylvanicum, Acer saccharum,
     #      Aesculus flava, Aesculus glabra, Asimina triloba, Betula alleghaniensis, Betula lenta, Carya cordiformis, Celtis occidentalis,
     #      Fagus grandifolia, Fraxinus americana, Fraxinus pennsylvanica, Halesia carolina (= H. tetraptera), Halesia spp., Liriodendron tulipifera,
     #      Liquidambar styraciflua, Magnolia acuminata, Magnolia fraseri, Magnolia macrophylla, Magnolia tripetela, Quercus shumardii,
     #      Tilia americana, Tilia americana var. heterophylla, Tsuga canadensis, Ulmus americana (>=20% RIV);
-    #   AND
+    #    AND
     #      any of the following ECOREGIONAL MODERATE MESIC DIAGNOSTICS [Moderate Appalachian-Interior-Northeast Mesic Forest Diagnostics]
     #      Acer barbatum, Amelanchier spp., Betula populifolia, Betula papyrifera, Carpinus caroliniana, Carya ovalis, Cornus florida,
     #      Gleditsia triacanthos, Juglans cinerea, Juglans nigra, Ostrya virginiana, Oxydendrum arboreum, Pinus strobus,
@@ -5297,12 +5299,15 @@ def element_150():
     #      key out here]
     #  OR
     # iii. Located in EcoSections 211F, 211G, 211Jd, 221, M221, 223, M223, 231A, 231C, 231D, 231I, 231G, M231A, or 232 [only plots in VA, PA, DE, MD, NJ, PA] AND tree composition dominated
-    #      by ECOREGIONAL MODERATE MESIC OAK DIAGNOSTICS Quercus rubra with >=20% RIV, and the following dry Quercus spp. or Carya spp.
-    #      (Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya alba, Carya glabra, Carya pallida)
-    #      <20% RIV
+    #      by ECOREGIONAL MODERATE MESIC OAK DIAGNOSTICS Quercus rubra with >=20% RIV, AND <20% RIV of the following dry Quercus spp. or Carya spp.:
+    #      Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya alba, Carya glabra, Carya pallida
 
-    ECOREGIONS_1 = PatternList('ECOREGIONS_1',
+    ECOREGIONS_I = PatternList('ECOREGIONS_I',
         {'ecoregion': '211F, 211G, 211Jd, 221, M221, 223B, 223C, 223D, 223E, 223F, 223G, 231A, 231C, 231D, 231I, 232'}
+    )
+
+    ECOREGIONS_II = PatternList('ECOREGIONS_II',
+        {'ecoregion': '211F, 211G, 211Jd, 221, M221, 223, M223, 231A, 231C, 231D, 231I, 231G, M231A, 232'}
     )
 
     STRONG_MESIC_DIAGNOSTICS = PatternList('STRONG_MESIC_DIAGNOSTICS',
@@ -5396,12 +5401,9 @@ def element_150():
 
     def match(plot):
         logging.debug('%s|NODE=150|Appalachian Mesic Forest (M883)', plot.ident)
-        result = (    plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
-               or (    plot.match(ECOREGIONS_1)
-                   and (   (    plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) >= 20
-                            and plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) + plot.riv(ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS) >= 50)
-                        or (    plot.riv(ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS) >= 20
-                            and plot.riv(EXCLUDED_SPECIES) < 20))))
+        result = (plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
+                or (plot.match(ECOREGIONS_I) and plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) >= 20 and plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) + plot.riv(ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS) >= 50)
+                or (plot.match(ECOREGIONS_II) and plot.riv(ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS) >= 20 and plot.riv(EXCLUDED_SPECIES) < 20))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
