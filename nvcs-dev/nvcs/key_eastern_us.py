@@ -279,29 +279,28 @@ class ClassificationKey:
         self.nodes[137] = Node(137, 136, element_135(), 'Northern Forest macrogroups')
         self.nodes[138] = Node(138, 137, element_136(), 'Laurentian and Acadian Dry Forests')
         self.nodes[139] = Node(139, 138, element_137(), 'Laurentian Pine - Hardwood Forest & Woodland (M159)')
-        self.nodes[140] = Node(140, 138, element_138(), 'Laurentian Pine - Hardwood Forest & Woodland LC (M159)')
-        self.nodes[141] = Node(141, 137, element_139(), 'Laurentian and Acadian Mesic Forests')
-        self.nodes[142] = Node(142, 141, element_140(), 'Laurentian Mesic Mixed Forest (M102)')
-        self.nodes[143] = Node(143, 141, element_141(), 'Acadian-Northern Appalachian Forest (M103)')
-        self.nodes[144] = Node(144, 136, element_142(), 'Coastal and Midwest Forest macrogroups')
-        self.nodes[145] = Node(145, 144, element_143(), 'North Atlantic Coastal Forest & Woodland - Mesic (M525)')
-        self.nodes[146] = Node(146, 144, element_144(), 'North Atlantic Coastal Forest & Woodland - Dry (M525)')
-        self.nodes[147] = Node(147, 144, element_145(), 'Central Midwest Oak Forest, Woodland & Savanna (M012)')
-        self.nodes[148] = Node(148, 144, element_146(), 'Central Midwest Mesic Forest (M882)')
-        self.nodes[149] = Node(149, 144, element_147(), 'Central Midwest Oak Forest, Woodland & Savanna LC (M012)')
-        self.nodes[150] = Node(150, 144, element_148(), 'Central Midwest Mesic Forest LC (M882)')
-        self.nodes[151] = Node(151, 136, element_149(), 'Appalachian and Central Interior Forest macrogroups')
-        self.nodes[152] = Node(152, 151, element_150(), 'Appalachian Mesic Forest (M883)')
-        self.nodes[153] = Node(153, 151, element_151(), 'Appalachian and South-Central Dry Forests')
-        self.nodes[154] = Node(154, 153, element_152(), 'Central Interior Oak - Pine Forest & Woodland (M543)')
-        self.nodes[155] = Node(155, 153, element_153(), 'Appalachian Oak - Pine Forest & Woodland (M502)')
-        self.nodes[156] = Node(156, 153, element_154(), 'Laurentian Mesic Mixed Forest LC2 (M102)')
-        self.nodes[157] = Node(157, 153, element_155(), 'Central Interior Oak - Pine Forest & Woodland LC (M543)')
-        self.nodes[158] = Node(158, 153, element_156(), 'Appalachian Oak - Pine Forest & Woodland LC (M502)')
-        self.nodes[159] = Node(159, 153, element_157(), 'Appalachian Mesic Forest LC (M883)')
-        self.nodes[160] = Node(160, 135, element_158(), 'Eastern North American Ruderal Forests & Woodlands')
-        self.nodes[161] = Node(161, 160, element_159(), 'Ruderal Eastern North American Forest & Woodland Macrogroups')
-        self.nodes[162] = Node(162, 161, element_160(), 'Eastern North American Ruderal Forest (M013)')
+        self.nodes[140] = Node(140, 137, element_138(), 'Laurentian and Acadian Mesic Forests')
+        self.nodes[141] = Node(141, 140, element_139(), 'Laurentian Mesic Mixed Forest (M102)')
+        self.nodes[142] = Node(142, 140, element_140(), 'Acadian-Northern Appalachian Forest (M103)')
+        self.nodes[143] = Node(143, 136, element_141(), 'Coastal and Midwest Forest macrogroups')
+        self.nodes[144] = Node(144, 143, element_142(), 'North Atlantic Coastal Forest & Woodland - Mesic (M525)')
+        self.nodes[145] = Node(145, 143, element_143(), 'North Atlantic Coastal Forest & Woodland - Dry (M525)')
+        self.nodes[146] = Node(146, 143, element_144(), 'Central Midwest Oak Forest, Woodland & Savanna (M012)')
+        self.nodes[147] = Node(147, 143, element_145(), 'Central Midwest Mesic Forest (M882)')
+        self.nodes[148] = Node(148, 143, element_146(), 'Central Midwest Oak Forest, Woodland & Savanna LC (M012)')
+        self.nodes[149] = Node(149, 143, element_147(), 'Central Midwest Mesic Forest LC (M882)')
+        self.nodes[150] = Node(150, 136, element_148(), 'Appalachian and Central Interior Forest macrogroups')
+        self.nodes[151] = Node(151, 150, element_149(), 'Appalachian Mesic Forest (M883)')
+        self.nodes[152] = Node(152, 150, element_150(), 'Appalachian and South-Central Dry Forests')
+        self.nodes[153] = Node(153, 152, element_151(), 'Central Interior Oak - Pine Forest & Woodland (M543)')
+        self.nodes[154] = Node(154, 152, element_152(), 'Appalachian Oak - Pine Forest & Woodland (M502)')
+        self.nodes[155] = Node(155, 152, element_153(), 'Laurentian Mesic Mixed Forest LC2 (M102)')
+        self.nodes[156] = Node(156, 152, element_154(), 'Central Interior Oak - Pine Forest & Woodland LC (M543)')
+        self.nodes[157] = Node(157, 152, element_155(), 'Appalachian Oak - Pine Forest & Woodland LC (M502)')
+        self.nodes[158] = Node(158, 152, element_156(), 'Appalachian Mesic Forest LC (M883)')
+        self.nodes[159] = Node(159, 135, element_157(), 'Eastern North American Ruderal Forests & Woodlands')
+        self.nodes[160] = Node(160, 159, element_158(), 'Ruderal Eastern North American Forest & Woodland Macrogroups')
+        self.nodes[161] = Node(161, 160, element_159(), 'Eastern North American Ruderal Forest (M013)')
 
         for ident, element in self.nodes.items():
             if (element.parent is not None):
@@ -4718,60 +4717,6 @@ def element_137():
 
 def element_138():
 
-    """Laurentian Pine - Hardwood Forest & Woodland LC (M159)"""
-    """Laurentian Pine - Hardwood Forest & Woodland LC (M159)"""
-    level = 'macrogroup'
-    code = 'Laurentian Pine - Hardwood Forest & Woodland LC (M159)'
-
-    # % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS [if stands lacks both strong
-    # dry and strong mesic diagnostics, plot will be assigned to the mesic]
-
-    STRONG_DRY_DIAGNOSTICS = PatternList('STRONG_DRY_DIAGNOSTICS',
-        {'species': 'Picea mariana'},
-        {'species': 'Pinus banksiana'},
-        {'species': 'Pinus resinosa'},
-        {'species': 'Pinus strobus'},
-        {'species': 'Quercus alba'},
-        {'species': 'Quercus ellipsoidalis'},
-        {'species': 'Quercus macrocarpa'},
-        {'species': 'Quercus velutina'}
-    )
-
-    STRONG_MESIC_DIAGNOSTICS = PatternList('STRONG_MESIC_DIAGNOSTICS',
-        {'species': 'Abies balsamea'},
-        {'species': 'Abies fraseri'},
-        {'species': 'Acer pensylvanicum'},
-        {'species': 'Acer saccharum'},
-        {'species': 'Acer spicatum'},
-        {'species': 'Betula alleghaniensis'},
-        {'species': 'Betula lenta'},
-        {'species': 'Fagus grandifolia'},
-        {'species': 'Fraxinus americana'},
-        {'species': 'Fraxinus nigra'},
-        {'species': 'Fraxinus pennsylvanica'},
-        {'species': 'Larix laricina'},
-        {'species': 'Picea glauca'},
-        {'species': 'Picea mariana'},
-        {'species': 'Picea rubens'},
-        {'species': 'Populus balsamifera'},
-        {'species': 'Populus grandidentata'},
-        {'species': 'Quercus macrocarpa'},
-        {'species': 'Quercus rubra'},
-        {'species': 'Thuja occidentalis'},
-        {'species': 'Tilia americana'},
-        {'species': 'Tsuga canadensis'},
-        {'species': 'Ulmus americana'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=138|Laurentian Pine - Hardwood Forest & Woodland LC (M159)', plot.ident)
-        result = (plot.riv(STRONG_DRY_DIAGNOSTICS) > plot.riv(STRONG_MESIC_DIAGNOSTICS))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_139():
-
     """Laurentian and Acadian Mesic Forests"""
     """Laurentian and Acadian Mesic Forests"""
     level = 'division'
@@ -4780,13 +4725,13 @@ def element_139():
     # Tree composition not as above
 
     def match(plot):
-        logging.debug('%s|NODE=139|Laurentian and Acadian Mesic Forests', plot.ident)
+        logging.debug('%s|NODE=138|Laurentian and Acadian Mesic Forests', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_140():
+def element_139():
 
     """Laurentian Mesic Mixed Forest (M102)"""
     """Laurentian Mesic Mixed Forest (M102)"""
@@ -4829,13 +4774,13 @@ def element_140():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=140|Laurentian Mesic Mixed Forest (M102)', plot.ident)
+        logging.debug('%s|NODE=139|Laurentian Mesic Mixed Forest (M102)', plot.ident)
         result = (plot.match(ECOREGIONS) and plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_141():
+def element_140():
 
     """Acadian-Northern Appalachian Forest (M103)"""
     """Acadian-Northern Appalachian Forest (M103)"""
@@ -4849,13 +4794,13 @@ def element_141():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=141|Acadian-Northern Appalachian Forest (M103)', plot.ident)
+        logging.debug('%s|NODE=140|Acadian-Northern Appalachian Forest (M103)', plot.ident)
         result = (plot.match(ECOREGION))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_142():
+def element_141():
 
     """Coastal and Midwest Forest macrogroups"""
     """Coastal and Midwest Forest macrogroups"""
@@ -4865,13 +4810,13 @@ def element_142():
     # Tree composition not as above
 
     def match(plot):
-        logging.debug('%s|NODE=142|Coastal and Midwest Forest macrogroups', plot.ident)
+        logging.debug('%s|NODE=141|Coastal and Midwest Forest macrogroups', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_143():
+def element_142():
 
     """North Atlantic Coastal Forest & Woodland - Mesic (M525)"""
     """North Atlantic Coastal Forest & Woodland - Mesic (M525)"""
@@ -4909,14 +4854,14 @@ def element_143():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=143|North Atlantic Coastal Forest & Woodland - Mesic (M525)', plot.ident)
+        logging.debug('%s|NODE=142|North Atlantic Coastal Forest & Woodland - Mesic (M525)', plot.ident)
         result = ((plot.match(ECOREGIONS_I) or plot.match(ECOREGIONS_II)) and
                (plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50 or plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and plot.riv(STRONG_MESIC_DIAGNOSTICS) + plot.riv(MODERATE_MESIC_DIAGNOSTICS) >= 50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_144():
+def element_143():
 
     """North Atlantic Coastal Forest & Woodland - Dry (M525)"""
     """North Atlantic Coastal Forest & Woodland - Dry (M525)"""
@@ -4960,14 +4905,14 @@ def element_144():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=144|North Atlantic Coastal Forest & Woodland - Dry (M525)', plot.ident)
+        logging.debug('%s|NODE=143|North Atlantic Coastal Forest & Woodland - Dry (M525)', plot.ident)
         result = ((plot.match(ECOREGIONS_I) or plot.match(ECOREGIONS_II)) and
                (plot.riv(STRONG_DRY_DIAGNOSTICS) >= 50 or plot.riv(STRONG_DRY_DIAGNOSTICS) >= 20 and plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DRY_DIAGNOSTICS) >= 50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_145():
+def element_144():
 
     """Central Midwest Oak Forest, Woodland & Savanna (M012)"""
     """Central Midwest Oak Forest, Woodland & Savanna (M012)"""
@@ -5027,7 +4972,7 @@ def element_145():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=145|Central Midwest Oak Forest, Woodland & Savanna (M012)', plot.ident)
+        logging.debug('%s|NODE=144|Central Midwest Oak Forest, Woodland & Savanna (M012)', plot.ident)
         result = (    plot.match(ECOREGIONS)
                and (    plot.riv(STRONG_DRY_DIAGNOSTICS) >= 50
                     or (plot.riv(STRONG_DRY_DIAGNOSTICS) >= 20 and plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DRY_DIAGNOSTICS) >= 50)))
@@ -5035,7 +4980,7 @@ def element_145():
         return result
     return level, code, match
 
-def element_146():
+def element_145():
 
     """Central Midwest Mesic Forest (M882)"""
     """Central Midwest Mesic Forest (M882)"""
@@ -5134,7 +5079,7 @@ def element_146():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=146|Central Midwest Mesic Forest (M882)', plot.ident)
+        logging.debug('%s|NODE=145|Central Midwest Mesic Forest (M882)', plot.ident)
         result = (    plot.match(ECOREGIONS)
                and (    plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
                     or (plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and plot.riv(STRONG_MESIC_DIAGNOSTICS) + plot.riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)
@@ -5143,7 +5088,7 @@ def element_146():
         return result
     return level, code, match
 
-def element_147():
+def element_146():
 
     """Central Midwest Oak Forest, Woodland & Savanna LC (M012)"""
     """Central Midwest Oak Forest, Woodland & Savanna LC (M012)"""
@@ -5199,13 +5144,13 @@ def element_147():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=147|Central Midwest Oak Forest, Woodland & Savanna LC (M012)', plot.ident)
+        logging.debug('%s|NODE=146|Central Midwest Oak Forest, Woodland & Savanna LC (M012)', plot.ident)
         result = (plot.match(ECOREGIONS) and plot.riv(STRONG_DRY_DIAGNOSTICS) > plot.riv(STRONG_MESIC_DIAGNOSTICS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_148():
+def element_147():
 
     """Central Midwest Mesic Forest LC (M882)"""
     """Central Midwest Mesic Forest LC (M882)"""
@@ -5219,13 +5164,13 @@ def element_148():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=148|Central Midwest Mesic Forest LC (M882)', plot.ident)
+        logging.debug('%s|NODE=147|Central Midwest Mesic Forest LC (M882)', plot.ident)
         result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_149():
+def element_148():
 
     """Appalachian and Central Interior Forest macrogroups"""
     """Appalachian and Central Interior Forest macrogroups"""
@@ -5235,13 +5180,13 @@ def element_149():
     # Tree composition not as above
 
     def match(plot):
-        logging.debug('%s|NODE=149|Appalachian and Central Interior Forest macrogroups', plot.ident)
+        logging.debug('%s|NODE=148|Appalachian and Central Interior Forest macrogroups', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_150():
+def element_149():
 
     """Appalachian Mesic Forest (M883)"""
     """Appalachian Mesic Forest (M883)"""
@@ -5371,7 +5316,7 @@ def element_150():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=150|Appalachian Mesic Forest (M883)', plot.ident)
+        logging.debug('%s|NODE=149|Appalachian Mesic Forest (M883)', plot.ident)
         result = (plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
                 or (plot.match(ECOREGIONS_I) and plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) >= 20 and plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS) + plot.riv(ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS) >= 50)
                 or (plot.match(ECOREGIONS_II) and plot.riv(ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS) >= 20 and plot.riv(EXCLUDED_SPECIES) < 20))
@@ -5379,7 +5324,7 @@ def element_150():
         return result
     return level, code, match
 
-def element_151():
+def element_150():
 
     """Appalachian and South-Central Dry Forests"""
     """Appalachian and South-Central Dry Forests"""
@@ -5389,13 +5334,13 @@ def element_151():
     # Tree composition not as above
 
     def match(plot):
-        logging.debug('%s|NODE=151|Appalachian and South-Central Dry Forests', plot.ident)
+        logging.debug('%s|NODE=150|Appalachian and South-Central Dry Forests', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_152():
+def element_151():
 
     """Central Interior Oak - Pine Forest & Woodland (M543)"""
     """Central Interior Oak - Pine Forest & Woodland (M543)"""
@@ -5471,7 +5416,7 @@ def element_152():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=152|Central Interior Oak - Pine Forest & Woodland (M543)', plot.ident)
+        logging.debug('%s|NODE=151|Central Interior Oak - Pine Forest & Woodland (M543)', plot.ident)
         result = ((not plot.match(EXCLUDED_STATES) and plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) >= 50)
                 or (plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) >= 20 and plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) + plot.riv(MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS) >= 50)
                 or plot.match(ECOREGIONS))
@@ -5479,7 +5424,7 @@ def element_152():
         return result
     return level, code, match
 
-def element_153():
+def element_152():
 
     """Appalachian Oak - Pine Forest & Woodland (M502)"""
     """Appalachian Oak - Pine Forest & Woodland (M502)"""
@@ -5545,13 +5490,13 @@ def element_153():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=153|Appalachian Oak - Pine Forest & Woodland (M502)', plot.ident)
+        logging.debug('%s|NODE=152|Appalachian Oak - Pine Forest & Woodland (M502)', plot.ident)
         result = (plot.match(ECOREGION) and (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 or (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 and plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + plot.riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_154():
+def element_153():
 
     """Laurentian Mesic Mixed Forest LC2 (M102)"""
     """Laurentian Mesic Mixed Forest LC2 (M102)"""
@@ -5565,13 +5510,13 @@ def element_154():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=154|Laurentian Mesic Mixed Forest LC2 (M102)', plot.ident)
+        logging.debug('%s|NODE=153|Laurentian Mesic Mixed Forest LC2 (M102)', plot.ident)
         result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_155():
+def element_154():
 
     """Central Interior Oak - Pine Forest & Woodland LC (M543)"""
     """Central Interior Oak - Pine Forest & Woodland LC (M543)"""
@@ -5654,14 +5599,14 @@ def element_155():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=155|Central Interior Oak - Pine Forest & Woodland LC (M543)', plot.ident)
+        logging.debug('%s|NODE=154|Central Interior Oak - Pine Forest & Woodland LC (M543)', plot.ident)
         result = (plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) > plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS)
                 and plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) > plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_156():
+def element_155():
 
     """Appalachian Oak - Pine Forest & Woodland LC (M502)"""
     """Appalachian Oak - Pine Forest & Woodland LC (M502)"""
@@ -5743,14 +5688,14 @@ def element_156():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=156|Appalachian Oak - Pine Forest & Woodland LC (M502)', plot.ident)
+        logging.debug('%s|NODE=155|Appalachian Oak - Pine Forest & Woodland LC (M502)', plot.ident)
         result = (   plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) > plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS)
                or plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) > plot.riv(ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_157():
+def element_156():
 
     """Appalachian Mesic Forest LC (M883)"""
     """Appalachian Mesic Forest LC (M883)"""
@@ -5760,13 +5705,13 @@ def element_157():
     # other
 
     def match(plot):
-        logging.debug('%s|NODE=157|Appalachian Mesic Forest LC (M883)', plot.ident)
+        logging.debug('%s|NODE=156|Appalachian Mesic Forest LC (M883)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_158():
+def element_157():
 
     """Eastern North American Ruderal Forests & Woodlands"""
     """Eastern North American Ruderal Forests & Woodlands"""
@@ -5784,13 +5729,13 @@ def element_158():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=158|Eastern North American Ruderal Forests & Woodlands', plot.ident)
+        logging.debug('%s|NODE=157|Eastern North American Ruderal Forests & Woodlands', plot.ident)
         result = (plot.riv(RUDERAL_OR_EXOTIC_SPECIES) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_159():
+def element_158():
 
     """Ruderal Eastern North American Forest & Woodland Macrogroups"""
     """Ruderal Eastern North American Forest & Woodland Macrogroups"""
@@ -5800,13 +5745,13 @@ def element_159():
     # Only one Macrogroup
 
     def match(plot):
-        logging.debug('%s|NODE=159|Ruderal Eastern North American Forest & Woodland Macrogroups', plot.ident)
+        logging.debug('%s|NODE=158|Ruderal Eastern North American Forest & Woodland Macrogroups', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_160():
+def element_159():
 
     """Eastern North American Ruderal Forest (M013)"""
     """Eastern North American Ruderal Forest (M013)"""
@@ -5816,7 +5761,7 @@ def element_160():
     # other
 
     def match(plot):
-        logging.debug('%s|NODE=160|Eastern North American Ruderal Forest (M013)', plot.ident)
+        logging.debug('%s|NODE=159|Eastern North American Ruderal Forest (M013)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result

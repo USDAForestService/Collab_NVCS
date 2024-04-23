@@ -137,7 +137,6 @@ Natural and Ruderal Forests
 						Northern Forest macrogroups
 							Laurentian and Acadian Dry Forests
 								Laurentian Pine - Hardwood Forest & Woodland (M159)
-								Laurentian Pine - Hardwood Forest & Woodland LC (M159)
 							Laurentian and Acadian Mesic Forests
 								Laurentian Mesic Mixed Forest (M102)
 								Acadian-Northern Appalachian Forest (M103)
