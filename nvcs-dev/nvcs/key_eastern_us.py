@@ -4703,44 +4703,15 @@ def element_137():
     level = 'macrogroup'
     code = 'Laurentian Pine - Hardwood Forest & Woodland (M159)'
 
-    #  i. Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana,
-    #     Pinus banksiana, Pinus resinosa, Pinus strobus, Quercus alba, Quercus ellipsoidalis,
-    #     Quercus macrocarpa, Quercus velutina (>=50% RIV);
-    # OR
-    # ii. Tree composition as above, but with >=20% RIV, AND other species are any combination
-    #     of MODERATE DRY DIAGNOSTICS Amelanchier spp., Betula populifolia, Betula papyrifera, 
-    #     Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, 
-    #     Prunus pensylvanica, Prunus serotina, Quercus rubra (together >=50% RIV)
+    # Located in Ecoprovince 212, M211, 222J, 222K, 222L, 222M, 222R, or 222U
 
-    STRONG_DRY_DIAGNOSTICS = PatternList('STRONG_DRY_DIAGNOSTICS',
-        {'species': 'Picea mariana'},
-        {'species': 'Pinus banksiana'},
-        {'species': 'Pinus resinosa'},
-        {'species': 'Pinus strobus'},
-        {'species': 'Quercus alba'},
-        {'species': 'Quercus ellipsoidalis'},
-        {'species': 'Quercus macrocarpa'},
-        {'species': 'Quercus velutina'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Amelanchier spp.'},
-        {'species': 'Betula populifolia'},
-        {'species': 'Betula papyrifera'},
-        {'species': 'Carpinus caroliniana'},
-        {'species': 'Ostrya virginiana'},
-        {'species': 'Populus grandidentata'},
-        {'species': 'Populus tremuloides'},
-        {'species': 'Prunus pensylvanica'},
-        {'species': 'Prunus serotina'},
-        {'species': 'Quercus rubra'}
+    ECOREGIONS = PatternList('ECOREGIONS',
+        {'ecoregion': '212, M211, 222J, 222K, 222L, 222M, 222R, 222U'}
     )
 
     def match(plot):
         logging.debug('%s|NODE=137|Laurentian Pine - Hardwood Forest & Woodland (M159)', plot.ident)
-        result = (    plot.riv(STRONG_DRY_DIAGNOSTICS) >= 50
-               or (    plot.riv(STRONG_DRY_DIAGNOSTICS) >= 20
-                   and plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))
+        result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
