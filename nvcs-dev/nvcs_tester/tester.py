@@ -17,7 +17,7 @@ sys.path.append(parentDir)
 sys.path.append(parentDir + "/nvcs")
 
 from classifier import Classifier
-from plot_reader import read_sqlite, read_file
+from plot_io import read_sqlite, read_file
 import logging
 from time import process_time
 

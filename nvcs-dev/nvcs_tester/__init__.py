@@ -1,1 +1,1 @@
-__all__ = ['plot_reader', 'tester']
+__all__ = ['plot_io', 'tester']
