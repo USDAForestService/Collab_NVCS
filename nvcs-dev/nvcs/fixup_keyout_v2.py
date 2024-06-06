@@ -16,6 +16,7 @@ currDir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()
 parentDir = os.path.dirname(currDir)
 sys.path.append(parentDir)
 
+from nvcs_tester import plot_io
 from nvcs_builder import configuration
 config = configuration.DebugConfig()
 if config.target == config.westSection:
@@ -32,11 +33,13 @@ def usage():
     print()
     return
 
-def fixup(key_outfile, out_csv):
+def fixup(key_outfile, out_csv, out_db, out_db_tbl):
     nvcskey = classification_key.ClassificationKey()
+    print(f"Attempting to read from file at: {key_outfile}")
     writer = csv.writer(open(out_csv, 'w', newline=''))
     header = ['ident','solution_id','solution_desc','solution_path','last_node','last_node_desc']
     header = header + ['soln_div_id','soln_div_desc','soln_mg_id','soln_mg_desc','soln_grp_id','soln_grp_desc']
+    outRows = []
     writer.writerow(header)
     with open(key_outfile, 'r') as f:
         line = f.readline().strip()
@@ -50,8 +53,9 @@ def fixup(key_outfile, out_csv):
                 solution_desc = 'unclassified'
             else:
                 solution_desc = nvcskey.nodes[solution_id].description
-            
-            solution_path = ast.literal_eval(key_result[2])
+
+            solution_path_str = key_result[2]
+            solution_path = ast.literal_eval(solution_path_str)
             last_node = solution_path[-1]
             last_node_desc = nvcskey.nodes[last_node].description
             
@@ -73,20 +77,25 @@ def fixup(key_outfile, out_csv):
                     soln_grp_desc = nvcskey.nodes[id].description
             
             #print(ident, solution_id, solution_desc, solution_path, last_node, last_node_desc)
-            outrow = [ident, solution_id, solution_desc, solution_path, last_node, last_node_desc]
+            outrow = [ident, solution_id, solution_desc, solution_path_str, last_node, last_node_desc]
             outrow = outrow + [soln_div_id, soln_div_desc, soln_mg_id, soln_mg_desc, soln_grp_id, soln_grp_desc]
+            outRows.append(outrow)
             writer.writerow(outrow)
             line = f.readline().strip()
 
+    print(f"Successfully wrote {len(outRows)} rows to: {out_csv}")
+    plot_io.write_sqlite(out_db, out_db_tbl, header, outRows)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
         key_outfile = config.get(config.target, "Out_TesterResultsPath")
         out_csv = config.get(config.target, "Out_FixupCsvPath")
-        fixup(key_outfile, out_csv)
-    elif len(sys.argv) != 3:
+        out_db = config.get(config.target, "Out_FixupDbPath")
+        out_db_tbl = config.get(config.target, "Out_FixupDbTable")
+        fixup(key_outfile, out_csv, out_db, out_db_tbl)
+    elif len(sys.argv) != 5:
         usage()
         sys.exit()
     else:
-        fixup(sys.argv[1], sys.argv[2])
+        fixup(sys.argv[1], sys.argv[2], sys.argsv[3], sys.argv[4])
 
