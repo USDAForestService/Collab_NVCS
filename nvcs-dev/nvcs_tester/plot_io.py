@@ -55,6 +55,24 @@ def read_sqlite(dbfile, tbl):
         yield plot
     con.close()
 
+def write_sqlite(dbfile, tbl, columns, dataRows):
+    con = sqlite3.connect(dbfile)
+    cur = con.cursor()
+
+    insertedColumns = ','.join(columns)
+    cur.execute(f"DROP TABLE IF EXISTS [{tbl}];")
+    cur.execute(f"CREATE TABLE {tbl} ({insertedColumns});")
+
+    insertedPlaceholders = ','.join(['?'] * len(columns))
+    insertStatement = f"INSERT INTO {tbl} ({insertedColumns}) VALUES ({insertedPlaceholders});"
+    insertedRows = [tuple(i) for i in dataRows]
+
+    cur.executemany(insertStatement, insertedRows)
+    con.commit()
+    con.close()
+
+    print(f"Successfully inserted {len(insertedRows)} rows into '{tbl}' at: {dbfile}")
+
 if __name__ == '__main__':
     #for plot in read_file('C:/nvcs-workspace/nvcs_west/nvcs_tester/run_input/nvcs-case-dataset-1.csv'):
         print(plot)
