@@ -15,6 +15,7 @@ import csv
 currDir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentDir = os.path.dirname(currDir)
 sys.path.append(parentDir)
+sys.path.append(parentDir + "/nvcs")
 
 from nvcs_tester import plot_io
 from nvcs_builder import configuration
