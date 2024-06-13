@@ -55,6 +55,39 @@ def read_sqlite(dbfile, tbl):
         yield plot
     con.close()
 
+def query_sqlite(dbfile, query):
+    con = sqlite3.connect(dbfile)
+    cur = con.cursor()
+    cur.execute(query)
+    results = cur.fetchall()
+    con.close()
+    return results
+
+def table_info_sqlite(dbfile, tbl):
+    sql = f"PRAGMA table_info('{tbl}')"
+    table_info = query_sqlite(dbfile, sql)
+    table_definition = ""
+
+    for i in range(len(table_info)):
+        column = table_info[i]
+        name = column[1]
+        type = column[2]
+        not_null = " NOT NULL" if column[3] != 0 else ""
+        primary_key = " PRIMARY KEY" if column[5] != 0 else ""
+        default_value = ""
+        if isinstance(column[4], str):
+            f" DEFAULT VALUE '{column[4]}'"
+        elif column[4] is not None:
+            f" DEFAULT VALUE {column[4]}"
+
+        table_definition += f"'{name}' {type}{not_null}{default_value}{primary_key}"
+        if i < len(table_info) - 1:
+            table_definition += ","
+
+    table_creation_sql = f"CREATE TABLE '{tbl} ({table_definition})';"
+    return table_creation_sql
+
+
 def write_sqlite(dbfile, tbl, columns, dataRows):
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
