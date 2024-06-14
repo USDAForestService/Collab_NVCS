@@ -6,6 +6,7 @@ Created on Mar 28, 2013
 - 2024-02-01 add read_sqlite()
 '''
 import sqlite3
+import csv
 
 from key_western_us import Plot
 from key_western_us import Tree
@@ -33,6 +34,12 @@ def read_file(plotfile):
                     prev = curr
                     yield plot
                     break;
+
+def read_csv(file_path):
+    with open(file_path, newline='') as f:
+        reader = csv.reader(f)
+        results = list(reader)
+    return results
 
 def read_sqlite(dbfile, tbl):
     plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION'
@@ -63,10 +70,11 @@ def query_sqlite(dbfile, query):
     con.close()
     return results
 
-def table_info_sqlite(dbfile, tbl):
+def table_info_sqlite(dbfile, tbl, new_tbl):
     sql = f"PRAGMA table_info('{tbl}')"
     table_info = query_sqlite(dbfile, sql)
     table_definition = ""
+    table_columns = []
 
     for i in range(len(table_info)):
         column = table_info[i]
@@ -84,17 +92,21 @@ def table_info_sqlite(dbfile, tbl):
         if i < len(table_info) - 1:
             table_definition += ","
 
-    table_creation_sql = f"CREATE TABLE '{tbl} ({table_definition})';"
-    return table_creation_sql
+        table_columns.append(name)
+
+    table_name = new_tbl if new_tbl is not None else tbl
+    table_creation_sql = f"CREATE TABLE '{table_name}' ({table_definition});"
+    return table_creation_sql, table_columns
 
 
-def write_sqlite(dbfile, tbl, columns, dataRows):
+def write_sqlite(dbfile, tbl, dataRows, columns, table_definition=None):
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
 
     insertedColumns = ','.join(columns)
+    createStatement = table_definition if table_definition is not None else f"CREATE TABLE {tbl} ({insertedColumns});"
     cur.execute(f"DROP TABLE IF EXISTS [{tbl}];")
-    cur.execute(f"CREATE TABLE {tbl} ({insertedColumns});")
+    cur.execute(createStatement)
 
     insertedPlaceholders = ','.join(['?'] * len(columns))
     insertStatement = f"INSERT INTO {tbl} ({insertedColumns}) VALUES ({insertedPlaceholders});"

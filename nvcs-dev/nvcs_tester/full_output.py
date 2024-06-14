@@ -1,6 +1,7 @@
 import os
 import sys
 import inspect
+from datetime import date
 
 # Update sys path for correct run-time importing
 currDir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -63,6 +64,10 @@ Potential SQLite Content:
         - FS_FIADB_REF_FOREST_TYPE
             - Queried via FIADB?
             - Maybe we take output as CSV and manually write to SQLite until future updates to avoid querying FIADB
+        - PYTHON_KEY_OUTPUT
+            - nvcs_pnwrs_rmrs_2017 via Chris' output
+            - Might wanna copy logic from fixup_keyout_v2 here
+    
     Views:
         - NVCS_KEY_TEST_DATA_<year>_VW
         - NVCS_ANALYTICAL_TEST_DATA_<year>_VW
@@ -86,15 +91,56 @@ SELECT *
 FROM NVCS_ANALYTICAL_TEST_DATA WHERE RSCD IN (22, 23, 26, 33) AND INVYR = 2017
 
 '''
-def generateFullOutput(in_ClassificationKey, in_KeyTestData_db, in_KeyTestData_tbl, in_AnlyTestData_db, in_AnlyTestData_tbl, in_RefForestType_path, out_FullOutput_db):
-    # Tables retrieved from SQLite Database inputs
-    nvcs_key_test_data_rows = plot_io.query_sqlite(in_KeyTestData_db, f"SELECT * FROM {in_KeyTestData_tbl};")
-    nvcs_analytical_test_data_rows = plot_io.query_sqlite(in_AnlyTestData_db, f"SELECT * FROM {in_AnlyTestData_tbl};")
+def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in_RefForestType, out_FullOutput_db):
+    # Create table containing unfiltered key input source
+    nvcs_key_test_data_definition, nvcs_key_test_data_columns = plot_io.table_info_sqlite(
+        in_KeyTestData['source_db'], in_KeyTestData['source_tbl_nm'], new_tbl=in_KeyTestData['new_tbl_nm'])
+    nvcs_key_test_data_rows = plot_io.query_sqlite(
+        in_KeyTestData['source_db'], f"SELECT * FROM {in_KeyTestData['source_tbl_nm']};")
 
-    # Tables retrieved from local project directory
+    # Create table containing unfiltered analytical input source
+    nvcs_analytical_test_data_definition, nvcs_analytical_test_data_columns = plot_io.table_info_sqlite(
+        in_AnlyTestData['source_db'], in_AnlyTestData['source_tbl_nm'], new_tbl=in_AnlyTestData['new_tbl_nm'])
+    nvcs_analytical_test_data_rows = plot_io.query_sqlite(
+        in_AnlyTestData['source_db'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
 
-    # Tables created via code
+    # Create table containing REF_FOREST_TYPE values
+    fs_fiadb_ref_forest_type_definition = (f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
+                                           "'VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',"
+                                           "'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',"
+                                           "'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE')")
+    fs_fiadb_ref_forest_type_columns = ['VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',
+                                        'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',
+                                        'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE']
+    fs_fiadb_ref_forest_type_rows = plot_io.read_csv(in_RefForestType["source_db"])
+
+    # Create table containing NVCS classifications, IDs, and codes
+    ref_nvcs_algorithm_node_definition = ("CREATE TABLE 'REF_NVCS_ALGORITHM_NODE' ("
+                                          "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
+                                          "'NVC_LEVEL' VARCHAR(256), 'NVC_CODE' VARCHAR(256));")
+    ref_nvcs_algorithm_node_columns = ['IDENT', 'PARENT', 'DESCRIPTION', 'NVC_LEVEL', 'NVC_CODE']
     ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
+
+    # Create table containing report metadata
+    ref_key_output_table_definition = ("CREATE TABLE 'REF_KEY_OUTPUT_TABLE' ("
+                                       "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
+                                       "'DESCRIPTION' VARCHAR(256));")
+    ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
+    ref_key_output_table_rows = [['python_input_vw', str(date.today()), 'Inventory year filtered, used as Python input']]
+
+    # Views created via code
+
+    # Create content in output file
+    plot_io.write_sqlite(out_FullOutput_db, in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
+                         nvcs_key_test_data_columns, nvcs_key_test_data_definition)
+    plot_io.write_sqlite(out_FullOutput_db, in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
+                         nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
+    plot_io.write_sqlite(out_FullOutput_db, in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
+                         fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
+    plot_io.write_sqlite(out_FullOutput_db, 'REF_NVCS_ALGORITHM_NODE', ref_nvcs_algorithm_node_rows,
+                         ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
+    plot_io.write_sqlite(out_FullOutput_db, "REF_KEY_OUTPUT_TABLE", ref_key_output_table_rows,
+                         ref_key_output_table_columns, ref_key_output_table_definition)
 
 def export_node_table(classification_key):
     rows = [
@@ -111,32 +157,42 @@ def export_node_table(classification_key):
 
 def usage():
     print()
-    print("Usage: full_output.py <stuff>")
-    print("Or use no arguments and rely on config files")
+    print("Usage: Fill out ~/nvcs_config/debug_config.ini")
     print()
     return
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        config = configuration.DebugConfig()
-        
-        if config.target == config.westSection:
-            import key_western_us as classification_key
-        elif config.target == config.eastSection:
-            import key_eastern_us as classification_key
-        elif config.target == config.alaskaSection:
-            import key_alaska_us as classification_key
-
-        in_KeyTest_db = config.get(config.target, "In_DbPath")
-        in_KeyTest_tbl = config.get(config.target, "In_DbTable")
-
-        # TODO: REMOVE
-        plot_io.table_info_sqlite(in_KeyTest_db, in_KeyTest_tbl)
+    if len(sys.argv) != 1:
+        usage()
         exit()
 
-        generateFullOutput(classification_key, in_KeyTest_db, in_KeyTest_tbl)
-    elif len(sys.argv) == 4:
-        classification_key = ""
-        generateFullOutput()
-    else:
-        usage()
+    config = configuration.DebugConfig()
+
+    if config.target == config.westSection:
+        import key_western_us as classification_key
+    elif config.target == config.eastSection:
+        import key_eastern_us as classification_key
+    elif config.target == config.alaskaSection:
+        import key_alaska_us as classification_key
+
+    in_KeyTestDataInfo = {
+        "source_db": config.get(config.target, "In_DbPath"),
+        "source_tbl_nm": config.get(config.target, "In_DbTable"),
+        "new_tbl_nm": "NVCS_KEY_TEST_DATA_ALL"
+    }
+
+    in_AnlyTestData = {
+        "source_db": config.get(config.target, "In_AnlyDbPath"),
+        "source_tbl_nm": config.get(config.target, "In_AnlyDbTable"),
+        "new_tbl_nm": "NVCS_ANALYTICAL_TEST_DATA_ALL"
+    }
+
+    in_RefAlgNodes = {
+        "source_db": config.get(config.target, "In_RefForestTypeDbPath"),
+        "source_tbl_nm": None,
+        "new_tbl_nm": "FS_FIADB_REF_FOREST_TYPE"
+    }
+
+    out_FullOutput_db = config.get(config.target, "Out_FullOutputPath")
+
+    generateFullOutput(classification_key, in_KeyTestDataInfo, in_AnlyTestData, in_RefAlgNodes, out_FullOutput_db)
