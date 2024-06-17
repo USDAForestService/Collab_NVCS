@@ -62,6 +62,12 @@ def read_sqlite(dbfile, tbl):
         yield plot
     con.close()
 
+def execute_sqlite(dbfile, query):
+    con = sqlite3.connect(dbfile)
+    cur = con.cursor()
+    cur.execute(query)
+    con.close()
+
 def query_sqlite(dbfile, query):
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
