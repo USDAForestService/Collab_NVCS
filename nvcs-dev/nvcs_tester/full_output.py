@@ -108,26 +108,32 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         in_AnlyTestData['source'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
 
     # Prepare table containing REF_FOREST_TYPE values
-    fs_fiadb_ref_forest_type_definition = (f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
-                                           "'VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',"
-                                           "'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',"
-                                           "'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE')")
+    fs_fiadb_ref_forest_type_definition = (
+        f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
+        "'VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',"
+        "'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',"
+        "'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE')"
+    )
     fs_fiadb_ref_forest_type_columns = ['VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',
                                         'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',
                                         'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE']
     fs_fiadb_ref_forest_type_rows = plot_io.read_csv(in_RefForestType["source"])
 
     # Prepare table containing NVCS classifications, IDs, and codes
-    ref_nvcs_algorithm_node_definition = ("CREATE TABLE 'REF_NVCS_ALGORITHM_NODE' ("
-                                          "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
-                                          "'NVC_LEVEL' VARCHAR(256), 'NVC_CODE' VARCHAR(256));")
+    ref_nvcs_algorithm_node_definition = (
+        "CREATE TABLE 'REF_NVCS_ALGORITHM_NODE' ("
+        "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
+        "'NVC_LEVEL' VARCHAR(256), 'NVC_CODE' VARCHAR(256));"
+    )
     ref_nvcs_algorithm_node_columns = ['IDENT', 'PARENT', 'DESCRIPTION', 'NVC_LEVEL', 'NVC_CODE']
     ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
 
     # Prepare table containing report metadata
-    ref_key_output_table_definition = ("CREATE TABLE 'REF_KEY_OUTPUT_TABLE' ("
-                                       "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
-                                       "'DESCRIPTION' VARCHAR(256));")
+    ref_key_output_table_definition = (
+        "CREATE TABLE 'REF_KEY_OUTPUT_TABLE' ("
+        "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
+        "'DESCRIPTION' VARCHAR(256));"
+    )
     ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
     ref_key_output_table_rows = [['python_input_vw', str(date.today()), 'Inventory year filtered, used as Python input']]
 
@@ -147,14 +153,95 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
                          ref_key_output_table_columns, ref_key_output_table_definition)
 
     # Views created via code
-    python_key_input_vw_definition = ("CREATE VIEW 'PYTHON_KEY_INPUT_VW' AS "
-                                      "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
-                                      "ELEVATION,SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
-                                      f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} WHERE RSCD IN (22, 23, 26, 33) "
-                                      "AND INVYR = 2017;")
+    python_key_input_vw_definition = (
+        "CREATE VIEW 'PYTHON_KEY_INPUT_VW' AS "
+        "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
+        "ELEVATION,SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
+        f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} WHERE RSCD IN (22, 23, 26, 33) "
+        "AND INVYR = 2017;"
+    )
+
+    nvcs_analytical_test_data_vw_definition = (
+        "CREATE VIEW 'NVCS_ANALYTICAL_TEST_DATA_2017_VW' AS "
+        "SELECT * FROM NVCS_ANALYTICAL_TEST_DATA_ALL "
+        "WHERE RSCD IN (22, 23, 26, 33) AND INVYR = 2017"
+    )
+
+    analytical_data_w_key_output_yw_definition = (
+        "CREATE VIEW 'ANALYTICAL_DATA_W_KEY_OUTPUT_VW' AS "
+        "SELECT KEY_INPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_INPUT.solution_desc, "
+        "KEY_INPUT.last_node_desc, ANLY.ECOREGION, ANLY.EPA_ECO_REGION, ANLY.USACE_SWC, ANLY.PLANTATION, ANLY.HYDRIC, "
+        "ANLY.RIVERINE, ANLY.ELEVATION, ANLY.PHYSCLCD, ANLY.TOPO_POSITION, ANLY.BALIVE, ANLY.ASPECT, ANLY.SLOPE, "
+        "ANLY.FOR_TYPE, FS_FIADB_REF_FOREST_TYPE.MEANING AS FOR_TYPE_NAME, ANLY.HAB_TYPE, ANLY.SYMBOL, ANLY.SPECIES, "
+        "ANLY.RIV, ANLY.WETLAND, ANLY.RUDERAL, ANLY.EXOTIC, ANLY.SOFTWOODHARDWOOD, ANLY.PLANTED, ANLY.TALLYTREE, "
+        "ANLY.SPCOV, ANLY.RIV_UNDERSTORY, ANLY.RIV_OVERSTORY, ANLY.LAYER_NUMBER, ANLY.FBCOV, ANLY.SHCOV, ANLY.GRCOV, "
+        "ANLY.TTCOV, ANLY.NTCOV, ANLY.COVER_FB_LAYER1, ANLY.COVER_SH_LAYER1, ANLY.COVER_GR_LAYER1, ANLY.COVER_TT_LAYER1, "
+        "ANLY.COVER_NT_LAYER1, ANLY.COVER_FB_LAYER2, ANLY.COVER_SH_LAYER2, ANLY.COVER_GR_LAYER2, ANLY.COVER_TT_LAYER2, "
+        "ANLY.COVER_NT_LAYER2, ANLY.COVER_FB_LAYER3, ANLY.COVER_SH_LAYER3, ANLY.COVER_GR_LAYER3, ANLY.COVER_TT_LAYER3, "
+        "ANLY.COVER_NT_LAYER3, ANLY.COVER_FB_LAYER4, ANLY.COVER_SH_LAYER4, ANLY.COVER_GR_LAYER4, ANLY.COVER_TT_LAYER4, "
+        "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.UNADJ_FOR_COND, ANLY.NUM_FORCOND_PLOT "
+        "FROM (PYTHON_KEY_INPUT_VW AS 'KEY_INPUT' "
+        "INNER JOIN NVCS_ANALYTICAL_TEST_DATA_2017_VW AS 'ANLY' ON KEY_INPUT.IDENT = ANLY.IDENT) "
+        "INNER JOIN FS_FIADB_REF_FOREST_TYPE ON ANLY.FOR_TYPE = FS_FIADB_REF_FOREST_TYPE.VALUE;"
+    )
+
+    count_cond_by_solution_vw_definition = (
+        "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW' AS "
+        "SELECT PYTHON_KEY_INPUT_VW.solution_desc, PYTHON_KEY_INPUT_VW.solution_id, "
+        "Count(PYTHON_KEY_INPUT_VW.ident) AS CountOfident FROM PYTHON_KEY_INPUT_VW "
+        "GROUP BY PYTHON_KEY_INPUT_VW.solution_desc, PYTHON_KEY_INPUT_VW.solution_id "
+        "ORDER BY Count(PYTHON_KEY_INPUT_VW.ident) DESC;"
+    )
+
+    # TODO: Revisit, SQLite seems to have errors with RIGHT JOIN
+    count_cond_by_solution_v2_vw_definition = (
+        "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW_V2_VW AS' "
+        "SELECT REF_NVCS_ALGORITHM_NODE.ident AS node_id, REF_NVCS_ALGORITHM_NODE.description, "
+        "COUNT_COND_BY_SOLUTION_VW.CountOfident FROM COUNT_COND_BY_SOLUTION_VW_VW "
+        "RIGHT JOIN REF_NVCS_ALGORITHM_NODE ON COUNT_COND_BY_SOLUTION_VW.solution_id = REF_NVCS_ALGORITHM_NODE.ident "
+        "WHERE (((REF_NVCS_ALGORITHM_NODE.nvc_level)='group' OR (REF_NVCS_ALGORITHM_NODE.nvc_level)='unclassified')) "
+        "ORDER BY REF_NVCS_ALGORITHM_NODE.ident;"
+    )
+
+    count_unclass_cond_by_last_node_vw_definition = (
+        "CREATE VIEW 'COUNT_UNCLASS_COND_BY_LAST_NODE_VW' AS "
+        "SELECT PYTHON_KEY_INPUT_VW.last_node_desc, Count(PYTHON_KEY_INPUT_VW.ident) AS CountOfident "
+        "FROM PYTHON_KEY_INPUT_VW WHERE (((PYTHON_KEY_INPUT_VW.solution_id)=-1)) "
+        "GROUP BY PYTHON_KEY_INPUT_VW.last_node_desc ORDER BY Count(PYTHON_KEY_INPUT_VW.ident) DESC;"
+    )
+
+    qry_key_output_riv_0_vw_definition = (
+        "CREATE VIEW 'QRY_KEY_OUTPUT_RIV_0_VW' AS "
+        "SELECT KEY_INPUT.ident, KEY_INPUT.CND_CN, KEY_INPUT.solution_id, KEY_INPUT.solution_desc, "
+        "KEY_INPUT.last_node, KEY_INPUT.last_node_desc, QNACL.FOR_TYPE, QNACL.FOR_TYPE_NAME, QNPICL.SumOfRIV, "
+        "QNACL.BALIVE, QNACL.TTCOV FROM (qry_nvcs_python_input_cond_level as 'QNPICL' "
+        "INNER JOIN PYTHON_KEY_INPUT_VW as 'KEY_INPUT' ON QNPICL.IDENT = KEY_INPUT.ident) "
+        "INNER JOIN qry_nvcs_analytical_cond_level AS 'QNACL' ON KEY_INPUT.CND_CN = QNACL.CND_CN "
+        "WHERE (((QNPICL.SumOfRIV)=0)) ORDER BY KEY_INPUT.solution_id;"
+    )
+
+    # TODO: Follow up with Chris. These views rely on tables/views that don't exist in latest AccessDB output
+    qry_nvcs_analytical_cond_level_vw_definition = ""
+    qry_nvcs_python_input_cond_level_vw_definition = ""
+
+    # Drop views (if exist) in output file
+    drop_view_sql = "DROP VIEW IF EXISTS {0}"
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("PYTHON_KEY_INPUT_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("NVCS_ANALYTICAL_TEST_DATA_2017_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("ANALYTICAL_DATA_W_KEY_OUTPUT_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_V2_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_UNCLASS_COND_BY_LAST_NODE_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("QRY_KEY_OUTPUT_RIV_0_VW"))
 
     # Create views in output file
     plot_io.execute_sqlite(out_FullOutput_db, python_key_input_vw_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, nvcs_analytical_test_data_vw_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, analytical_data_w_key_output_yw_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_vw_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_v2_vw_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, count_unclass_cond_by_last_node_vw_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, qry_key_output_riv_0_vw_definition)
 
 
 def export_node_table(classification_key):
