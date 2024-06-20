@@ -192,12 +192,11 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "ORDER BY Count(KEY_OUTPUT.ident) DESC;"
     )
 
-    # TODO: Revisit, SQLite seems to have errors with RIGHT JOIN
     count_cond_by_solution_v2_vw_definition = (
-        "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW_V2_VW AS' "
+        "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW_V2_VW' AS "
         "SELECT RNAN.ident AS node_id, RNAN.description, "
-        "CCBS.CountOfident FROM COUNT_COND_BY_SOLUTION_VW as 'CCBS' "
-        "RIGHT JOIN REF_NVCS_ALGORITHM_NODE AS 'RNAN' ON CCBS.solution_id = RNAN.ident "
+        "CCBS.CountOfident FROM REF_NVCS_ALGORITHM_NODE AS 'RNAN' "
+        "LEFT JOIN COUNT_COND_BY_SOLUTION_VW as 'CCBS' ON CCBS.solution_id = RNAN.ident "
         "WHERE (((RNAN.nvc_level)='group' OR (RNAN.nvc_level)='unclassified')) "
         "ORDER BY RNAN.ident;"
     )
