@@ -76,8 +76,7 @@ Potential SQLite Content:
         - COUNT_COND_BY_SOLUTION_V2_VW
         - COUNT_UNCLASS_COND_BY_LAST_NODE_VW
         - QRY_KEY_OUTPUT_RIV_0_VW
-        - QRY_NVCS_ANALYTICAL_COND_LEVEL_VW
-        - QRY_NVCS_PYTHON_INPUT_COND_LEVEL_VW
+            - Potentially refactoring or dropping
 
 CREATE VIEW NVCS_KEY_TEST_DATA_WEST_2017_VW 
 AS 
@@ -210,20 +209,6 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "GROUP BY KEY_OUTPUT.last_node_desc ORDER BY Count(KEY_OUTPUT.ident) DESC;"
     )
 
-    qry_key_output_riv_0_vw_definition = (
-        "CREATE VIEW 'QRY_KEY_OUTPUT_RIV_0_VW' AS "
-        "SELECT KEY_OUTPUT.ident, KEY_OUTPUT.CND_CN, KEY_OUTPUT.solution_id, KEY_OUTPUT.solution_desc, "
-        "KEY_OUTPUT.last_node, KEY_OUTPUT.last_node_desc, QNACL.FOR_TYPE, QNACL.FOR_TYPE_NAME, QNPICL.SumOfRIV, "
-        "QNACL.BALIVE, QNACL.TTCOV FROM (qry_nvcs_python_input_cond_level as 'QNPICL' "
-        "INNER JOIN PYTHON_KEY_OUTPUT as 'KEY_OUTPUT' ON QNPICL.IDENT = KEY_OUTPUT.ident) "
-        "INNER JOIN qry_nvcs_analytical_cond_level AS 'QNACL' ON KEY_OUTPUT.CND_CN = QNACL.CND_CN "
-        "WHERE (((QNPICL.SumOfRIV)=0)) ORDER BY KEY_OUTPUT.solution_id;"
-    )
-
-    # TODO: Follow up with Chris. These views rely on tables/views that don't exist in latest AccessDB output
-    qry_nvcs_analytical_cond_level_vw_definition = ""
-    qry_nvcs_python_input_cond_level_vw_definition = ""
-
     # Drop views (if exist) in output file
     drop_view_sql = "DROP VIEW IF EXISTS {0}"
     plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("PYTHON_KEY_INPUT_VW"))
@@ -232,7 +217,6 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
     plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_VW"))
     plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_V2_VW"))
     plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_UNCLASS_COND_BY_LAST_NODE_VW"))
-    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("QRY_KEY_OUTPUT_RIV_0_VW"))
 
     # Create views in output file
     plot_io.execute_sqlite(out_FullOutput_db, python_key_input_vw_definition)
@@ -241,7 +225,6 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
     plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_vw_definition)
     plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_v2_vw_definition)
     plot_io.execute_sqlite(out_FullOutput_db, count_unclass_cond_by_last_node_vw_definition)
-    plot_io.execute_sqlite(out_FullOutput_db, qry_key_output_riv_0_vw_definition)
 
 
 def export_node_table(classification_key):
