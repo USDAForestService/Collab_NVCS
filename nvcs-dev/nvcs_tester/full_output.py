@@ -157,8 +157,8 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "CREATE VIEW 'PYTHON_KEY_INPUT_VW' AS "
         "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
         "ELEVATION,SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
-        f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} WHERE RSCD IN (22, 23, 26, 33) "
-        "AND INVYR = 2017;"
+        f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
+        "WHERE RSCD IN (22, 23, 26, 33)  AND INVYR = 2017;"
     )
 
     nvcs_analytical_test_data_vw_definition = (
@@ -169,8 +169,8 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
 
     analytical_data_w_key_output_yw_definition = (
         "CREATE VIEW 'ANALYTICAL_DATA_W_KEY_OUTPUT_VW' AS "
-        "SELECT KEY_INPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_INPUT.solution_desc, "
-        "KEY_INPUT.last_node_desc, ANLY.ECOREGION, ANLY.EPA_ECO_REGION, ANLY.USACE_SWC, ANLY.PLANTATION, ANLY.HYDRIC, "
+        "SELECT KEY_OUTPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_OUTPUT.solution_desc, "
+        "KEY_OUTPUT.last_node_desc, ANLY.ECOREGION, ANLY.EPA_ECO_REGION, ANLY.USACE_SWC, ANLY.PLANTATION, ANLY.HYDRIC, "
         "ANLY.RIVERINE, ANLY.ELEVATION, ANLY.PHYSCLCD, ANLY.TOPO_POSITION, ANLY.BALIVE, ANLY.ASPECT, ANLY.SLOPE, "
         "ANLY.FOR_TYPE, FFRFT.MEANING AS FOR_TYPE_NAME, ANLY.HAB_TYPE, ANLY.SYMBOL, ANLY.SPECIES, "
         "ANLY.RIV, ANLY.WETLAND, ANLY.RUDERAL, ANLY.EXOTIC, ANLY.SOFTWOODHARDWOOD, ANLY.PLANTED, ANLY.TALLYTREE, "
@@ -180,17 +180,17 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "ANLY.COVER_NT_LAYER2, ANLY.COVER_FB_LAYER3, ANLY.COVER_SH_LAYER3, ANLY.COVER_GR_LAYER3, ANLY.COVER_TT_LAYER3, "
         "ANLY.COVER_NT_LAYER3, ANLY.COVER_FB_LAYER4, ANLY.COVER_SH_LAYER4, ANLY.COVER_GR_LAYER4, ANLY.COVER_TT_LAYER4, "
         "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.UNADJ_FOR_COND, ANLY.NUM_FORCOND_PLOT "
-        "FROM (PYTHON_KEY_INPUT_VW AS 'KEY_INPUT' "
-        "INNER JOIN NVCS_ANALYTICAL_TEST_DATA_2017_VW AS 'ANLY' ON KEY_INPUT.IDENT = ANLY.IDENT) "
+        "FROM (PYTHON_KEY_OUTPUT AS 'KEY_OUTPUT' "
+        "INNER JOIN NVCS_ANALYTICAL_TEST_DATA_2017_VW AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
         "INNER JOIN FS_FIADB_REF_FOREST_TYPE AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
     )
 
     count_cond_by_solution_vw_definition = (
         "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW' AS "
-        "SELECT KEY_INPUT.solution_desc, KEY_INPUT.solution_id, "
-        "Count(PYTHON_KEY_INPUT_VW.ident) AS CountOfident FROM PYTHON_KEY_INPUT_VW AS 'KEY_INPUT' "
-        "GROUP BY KEY_INPUT.solution_desc, KEY_INPUT.solution_id "
-        "ORDER BY Count(KEY_INPUT.ident) DESC;"
+        "SELECT KEY_OUTPUT.solution_desc, KEY_OUTPUT.solution_id, "
+        "Count(KEY_OUTPUT.ident) AS CountOfident FROM PYTHON_KEY_OUTPUT AS 'KEY_OUTPUT' "
+        "GROUP BY KEY_OUTPUT.solution_desc, KEY_OUTPUT.solution_id "
+        "ORDER BY Count(KEY_OUTPUT.ident) DESC;"
     )
 
     # TODO: Revisit, SQLite seems to have errors with RIGHT JOIN
@@ -205,19 +205,19 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
 
     count_unclass_cond_by_last_node_vw_definition = (
         "CREATE VIEW 'COUNT_UNCLASS_COND_BY_LAST_NODE_VW' AS "
-        "SELECT KEY_INPUT.last_node_desc, Count(KEY_INPUT.ident) AS CountOfident "
-        "FROM PYTHON_KEY_INPUT_VW AS 'KEY_INPUT' WHERE (((KEY_INPUT.solution_id)=-1)) "
-        "GROUP BY KEY_INPUT.last_node_desc ORDER BY Count(KEY_INPUT.ident) DESC;"
+        "SELECT KEY_OUTPUT.last_node_desc, Count(KEY_OUTPUT.ident) AS CountOfident "
+        "FROM PYTHON_KEY_OUTPUT AS 'KEY_OUTPUT' WHERE (((KEY_OUTPUT.solution_id)=-1)) "
+        "GROUP BY KEY_OUTPUT.last_node_desc ORDER BY Count(KEY_OUTPUT.ident) DESC;"
     )
 
     qry_key_output_riv_0_vw_definition = (
         "CREATE VIEW 'QRY_KEY_OUTPUT_RIV_0_VW' AS "
-        "SELECT KEY_INPUT.ident, KEY_INPUT.CND_CN, KEY_INPUT.solution_id, KEY_INPUT.solution_desc, "
-        "KEY_INPUT.last_node, KEY_INPUT.last_node_desc, QNACL.FOR_TYPE, QNACL.FOR_TYPE_NAME, QNPICL.SumOfRIV, "
+        "SELECT KEY_OUTPUT.ident, KEY_OUTPUT.CND_CN, KEY_OUTPUT.solution_id, KEY_OUTPUT.solution_desc, "
+        "KEY_OUTPUT.last_node, KEY_OUTPUT.last_node_desc, QNACL.FOR_TYPE, QNACL.FOR_TYPE_NAME, QNPICL.SumOfRIV, "
         "QNACL.BALIVE, QNACL.TTCOV FROM (qry_nvcs_python_input_cond_level as 'QNPICL' "
-        "INNER JOIN PYTHON_KEY_INPUT_VW as 'KEY_INPUT' ON QNPICL.IDENT = KEY_INPUT.ident) "
-        "INNER JOIN qry_nvcs_analytical_cond_level AS 'QNACL' ON KEY_INPUT.CND_CN = QNACL.CND_CN "
-        "WHERE (((QNPICL.SumOfRIV)=0)) ORDER BY KEY_INPUT.solution_id;"
+        "INNER JOIN PYTHON_KEY_OUTPUT as 'KEY_OUTPUT' ON QNPICL.IDENT = KEY_OUTPUT.ident) "
+        "INNER JOIN qry_nvcs_analytical_cond_level AS 'QNACL' ON KEY_OUTPUT.CND_CN = QNACL.CND_CN "
+        "WHERE (((QNPICL.SumOfRIV)=0)) ORDER BY KEY_OUTPUT.solution_id;"
     )
 
     # TODO: Follow up with Chris. These views rely on tables/views that don't exist in latest AccessDB output
