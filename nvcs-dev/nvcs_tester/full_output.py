@@ -172,7 +172,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "SELECT KEY_INPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_INPUT.solution_desc, "
         "KEY_INPUT.last_node_desc, ANLY.ECOREGION, ANLY.EPA_ECO_REGION, ANLY.USACE_SWC, ANLY.PLANTATION, ANLY.HYDRIC, "
         "ANLY.RIVERINE, ANLY.ELEVATION, ANLY.PHYSCLCD, ANLY.TOPO_POSITION, ANLY.BALIVE, ANLY.ASPECT, ANLY.SLOPE, "
-        "ANLY.FOR_TYPE, FS_FIADB_REF_FOREST_TYPE.MEANING AS FOR_TYPE_NAME, ANLY.HAB_TYPE, ANLY.SYMBOL, ANLY.SPECIES, "
+        "ANLY.FOR_TYPE, FFRFT.MEANING AS FOR_TYPE_NAME, ANLY.HAB_TYPE, ANLY.SYMBOL, ANLY.SPECIES, "
         "ANLY.RIV, ANLY.WETLAND, ANLY.RUDERAL, ANLY.EXOTIC, ANLY.SOFTWOODHARDWOOD, ANLY.PLANTED, ANLY.TALLYTREE, "
         "ANLY.SPCOV, ANLY.RIV_UNDERSTORY, ANLY.RIV_OVERSTORY, ANLY.LAYER_NUMBER, ANLY.FBCOV, ANLY.SHCOV, ANLY.GRCOV, "
         "ANLY.TTCOV, ANLY.NTCOV, ANLY.COVER_FB_LAYER1, ANLY.COVER_SH_LAYER1, ANLY.COVER_GR_LAYER1, ANLY.COVER_TT_LAYER1, "
@@ -182,32 +182,32 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.UNADJ_FOR_COND, ANLY.NUM_FORCOND_PLOT "
         "FROM (PYTHON_KEY_INPUT_VW AS 'KEY_INPUT' "
         "INNER JOIN NVCS_ANALYTICAL_TEST_DATA_2017_VW AS 'ANLY' ON KEY_INPUT.IDENT = ANLY.IDENT) "
-        "INNER JOIN FS_FIADB_REF_FOREST_TYPE ON ANLY.FOR_TYPE = FS_FIADB_REF_FOREST_TYPE.VALUE;"
+        "INNER JOIN FS_FIADB_REF_FOREST_TYPE AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
     )
 
     count_cond_by_solution_vw_definition = (
         "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW' AS "
-        "SELECT PYTHON_KEY_INPUT_VW.solution_desc, PYTHON_KEY_INPUT_VW.solution_id, "
-        "Count(PYTHON_KEY_INPUT_VW.ident) AS CountOfident FROM PYTHON_KEY_INPUT_VW "
-        "GROUP BY PYTHON_KEY_INPUT_VW.solution_desc, PYTHON_KEY_INPUT_VW.solution_id "
-        "ORDER BY Count(PYTHON_KEY_INPUT_VW.ident) DESC;"
+        "SELECT KEY_INPUT.solution_desc, KEY_INPUT.solution_id, "
+        "Count(PYTHON_KEY_INPUT_VW.ident) AS CountOfident FROM PYTHON_KEY_INPUT_VW AS 'KEY_INPUT' "
+        "GROUP BY KEY_INPUT.solution_desc, KEY_INPUT.solution_id "
+        "ORDER BY Count(KEY_INPUT.ident) DESC;"
     )
 
     # TODO: Revisit, SQLite seems to have errors with RIGHT JOIN
     count_cond_by_solution_v2_vw_definition = (
         "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW_V2_VW AS' "
-        "SELECT REF_NVCS_ALGORITHM_NODE.ident AS node_id, REF_NVCS_ALGORITHM_NODE.description, "
-        "COUNT_COND_BY_SOLUTION_VW.CountOfident FROM COUNT_COND_BY_SOLUTION_VW_VW "
-        "RIGHT JOIN REF_NVCS_ALGORITHM_NODE ON COUNT_COND_BY_SOLUTION_VW.solution_id = REF_NVCS_ALGORITHM_NODE.ident "
-        "WHERE (((REF_NVCS_ALGORITHM_NODE.nvc_level)='group' OR (REF_NVCS_ALGORITHM_NODE.nvc_level)='unclassified')) "
-        "ORDER BY REF_NVCS_ALGORITHM_NODE.ident;"
+        "SELECT RNAN.ident AS node_id, RNAN.description, "
+        "CCBS.CountOfident FROM COUNT_COND_BY_SOLUTION_VW as 'CCBS' "
+        "RIGHT JOIN REF_NVCS_ALGORITHM_NODE AS 'RNAN' ON CCBS.solution_id = RNAN.ident "
+        "WHERE (((RNAN.nvc_level)='group' OR (RNAN.nvc_level)='unclassified')) "
+        "ORDER BY RNAN.ident;"
     )
 
     count_unclass_cond_by_last_node_vw_definition = (
         "CREATE VIEW 'COUNT_UNCLASS_COND_BY_LAST_NODE_VW' AS "
-        "SELECT PYTHON_KEY_INPUT_VW.last_node_desc, Count(PYTHON_KEY_INPUT_VW.ident) AS CountOfident "
-        "FROM PYTHON_KEY_INPUT_VW WHERE (((PYTHON_KEY_INPUT_VW.solution_id)=-1)) "
-        "GROUP BY PYTHON_KEY_INPUT_VW.last_node_desc ORDER BY Count(PYTHON_KEY_INPUT_VW.ident) DESC;"
+        "SELECT KEY_INPUT.last_node_desc, Count(KEY_INPUT.ident) AS CountOfident "
+        "FROM PYTHON_KEY_INPUT_VW AS 'KEY_INPUT' WHERE (((KEY_INPUT.solution_id)=-1)) "
+        "GROUP BY KEY_INPUT.last_node_desc ORDER BY Count(KEY_INPUT.ident) DESC;"
     )
 
     qry_key_output_riv_0_vw_definition = (
