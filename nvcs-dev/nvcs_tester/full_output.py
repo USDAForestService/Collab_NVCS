@@ -9,7 +9,7 @@ parentDir = os.path.dirname(currDir)
 sys.path.append(parentDir)
 sys.path.append(parentDir + "/nvcs")
 
-from nvcs_tester import plot_io, fixup_keyout_v2
+from nvcs_tester import plot_io, fixup_keyout_v2, tester
 from nvcs_builder import configuration
 
 
@@ -94,19 +94,54 @@ TODO: Consider creating input views here, then running tester.py, and putting ou
 
 '''
 def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_KeyOutput, out_FullOutput_db):
-    # Prepare table containing unfiltered key input source
+    # Drop views (if they exist) in output file
+    drop_view_sql = "DROP VIEW IF EXISTS {0}"
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("PYTHON_KEY_INPUT_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("NVCS_ANALYTICAL_TEST_DATA_2017_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("ANALYTICAL_DATA_W_KEY_OUTPUT_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_V2_VW"))
+    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_UNCLASS_COND_BY_LAST_NODE_VW"))
+
+    # Prepare & create table containing unfiltered key input source
     nvcs_key_test_data_definition, nvcs_key_test_data_columns = plot_io.table_info_sqlite(
         in_KeyTestData['source'], in_KeyTestData['source_tbl_nm'], new_tbl=in_KeyTestData['new_tbl_nm'])
     nvcs_key_test_data_rows = plot_io.query_sqlite(
         in_KeyTestData['source'], f"SELECT * FROM {in_KeyTestData['source_tbl_nm']};")
+    plot_io.write_sqlite(out_FullOutput_db, in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
+                         nvcs_key_test_data_columns, nvcs_key_test_data_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, f"DROP INDEX IF EXISTS idx_test_ident;")
+    plot_io.execute_sqlite(out_FullOutput_db, f"CREATE INDEX idx_test_ident ON {in_KeyTestData['new_tbl_nm']} (IDENT);")
 
-    # Prepare table containing unfiltered analytical input source
+    # Create a filtered input view
+    python_key_input_vw_definition = (
+        "CREATE VIEW 'PYTHON_KEY_INPUT_VW' AS "
+        "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
+        "ELEVATION, COALESCE(SPECIES, '') AS 'SPECIES', RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
+        f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
+        "WHERE RSCD IN (22, 23, 26, 33)  AND INVYR = 2017;"
+    )
+    plot_io.execute_sqlite(out_FullOutput_db, python_key_input_vw_definition)
+
+    # Run input data through the key
+    tester.run(outfile=in_KeyTestData['source_out'], debugfile=in_KeyTestData['source_debug'],
+               dbfile=out_FullOutput_db, plottbl='PYTHON_KEY_INPUT_VW')
+
+    # Run the outfile through the fixup and save to the new database
+    fixup_keyout_v2.fixup(key_outfile=in_KeyTestData["source_out"], out_csv=in_KeyOutput["csv_output"],
+                          out_db=out_FullOutput_db, out_db_tbl=in_KeyOutput["new_tbl_nm"])
+
+    # Prepare & create table containing unfiltered analytical input source
     nvcs_analytical_test_data_definition, nvcs_analytical_test_data_columns = plot_io.table_info_sqlite(
         in_AnlyTestData['source'], in_AnlyTestData['source_tbl_nm'], new_tbl=in_AnlyTestData['new_tbl_nm'])
     nvcs_analytical_test_data_rows = plot_io.query_sqlite(
         in_AnlyTestData['source'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
+    plot_io.write_sqlite(out_FullOutput_db, in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
+                         nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
+    plot_io.execute_sqlite(out_FullOutput_db, f"DROP INDEX IF EXISTS idx_anly_ident;")
+    plot_io.execute_sqlite(out_FullOutput_db, f"CREATE INDEX idx_anly_ident ON {in_AnlyTestData['new_tbl_nm']} (IDENT);")
 
-    # Prepare table containing REF_FOREST_TYPE values
+    # Prepare & create table containing REF_FOREST_TYPE values
     fs_fiadb_ref_forest_type_definition = (
         f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
         "'VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',"
@@ -117,8 +152,10 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
                                         'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',
                                         'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE']
     fs_fiadb_ref_forest_type_rows = plot_io.read_csv(in_RefForestType["source"])
+    plot_io.write_sqlite(out_FullOutput_db, in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
+                         fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
 
-    # Prepare table containing NVCS classifications, IDs, and codes
+    # Prepare & create table containing NVCS classifications, IDs, and codes
     ref_nvcs_algorithm_node_definition = (
         "CREATE TABLE 'REF_NVCS_ALGORITHM_NODE' ("
         "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
@@ -126,8 +163,10 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
     )
     ref_nvcs_algorithm_node_columns = ['IDENT', 'PARENT', 'DESCRIPTION', 'NVC_LEVEL', 'NVC_CODE']
     ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
+    plot_io.write_sqlite(out_FullOutput_db, 'REF_NVCS_ALGORITHM_NODE', ref_nvcs_algorithm_node_rows,
+                         ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
 
-    # Prepare table containing report metadata
+    # Prepare & create table containing report metadata
     ref_key_output_table_definition = (
         "CREATE TABLE 'REF_KEY_OUTPUT_TABLE' ("
         "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
@@ -135,36 +174,17 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
     )
     ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
     ref_key_output_table_rows = [['python_input_vw', str(date.today()), 'Inventory year filtered, used as Python input']]
-
-    # Prepare and create table containing classification output
-    fixup_keyout_v2.fixup(in_KeyOutput["source"], in_KeyOutput["csv_output"], out_FullOutput_db, in_KeyOutput["new_tbl_nm"])
-
-    # Create tables in output file
-    plot_io.write_sqlite(out_FullOutput_db, in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
-                         nvcs_key_test_data_columns, nvcs_key_test_data_definition)
-    plot_io.write_sqlite(out_FullOutput_db, in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
-                         nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
-    plot_io.write_sqlite(out_FullOutput_db, in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
-                         fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
-    plot_io.write_sqlite(out_FullOutput_db, 'REF_NVCS_ALGORITHM_NODE', ref_nvcs_algorithm_node_rows,
-                         ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
     plot_io.write_sqlite(out_FullOutput_db, "REF_KEY_OUTPUT_TABLE", ref_key_output_table_rows,
                          ref_key_output_table_columns, ref_key_output_table_definition)
 
     # Views created via code
-    python_key_input_vw_definition = (
-        "CREATE VIEW 'PYTHON_KEY_INPUT_VW' AS "
-        "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
-        "ELEVATION,SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
-        f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
-        "WHERE RSCD IN (22, 23, 26, 33)  AND INVYR = 2017;"
-    )
 
     nvcs_analytical_test_data_vw_definition = (
         "CREATE VIEW 'NVCS_ANALYTICAL_TEST_DATA_2017_VW' AS "
         "SELECT * FROM NVCS_ANALYTICAL_TEST_DATA_ALL "
         "WHERE RSCD IN (22, 23, 26, 33) AND INVYR = 2017"
     )
+    plot_io.execute_sqlite(out_FullOutput_db, nvcs_analytical_test_data_vw_definition)
 
     analytical_data_w_key_output_yw_definition = (
         "CREATE VIEW 'ANALYTICAL_DATA_W_KEY_OUTPUT_VW' AS "
@@ -183,6 +203,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "INNER JOIN NVCS_ANALYTICAL_TEST_DATA_2017_VW AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
         "INNER JOIN FS_FIADB_REF_FOREST_TYPE AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
     )
+    plot_io.execute_sqlite(out_FullOutput_db, analytical_data_w_key_output_yw_definition)
 
     count_cond_by_solution_vw_definition = (
         "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW' AS "
@@ -191,6 +212,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "GROUP BY KEY_OUTPUT.solution_desc, KEY_OUTPUT.solution_id "
         "ORDER BY Count(KEY_OUTPUT.ident) DESC;"
     )
+    plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_vw_definition)
 
     count_cond_by_solution_v2_vw_definition = (
         "CREATE VIEW 'COUNT_COND_BY_SOLUTION_VW_V2_VW' AS "
@@ -200,6 +222,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "WHERE (((RNAN.nvc_level)='group' OR (RNAN.nvc_level)='unclassified')) "
         "ORDER BY RNAN.ident;"
     )
+    plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_v2_vw_definition)
 
     count_unclass_cond_by_last_node_vw_definition = (
         "CREATE VIEW 'COUNT_UNCLASS_COND_BY_LAST_NODE_VW' AS "
@@ -207,22 +230,6 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         "FROM PYTHON_KEY_OUTPUT AS 'KEY_OUTPUT' WHERE (((KEY_OUTPUT.solution_id)=-1)) "
         "GROUP BY KEY_OUTPUT.last_node_desc ORDER BY Count(KEY_OUTPUT.ident) DESC;"
     )
-
-    # Drop views (if exist) in output file
-    drop_view_sql = "DROP VIEW IF EXISTS {0}"
-    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("PYTHON_KEY_INPUT_VW"))
-    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("NVCS_ANALYTICAL_TEST_DATA_2017_VW"))
-    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("ANALYTICAL_DATA_W_KEY_OUTPUT_VW"))
-    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_VW"))
-    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_COND_BY_SOLUTION_V2_VW"))
-    plot_io.execute_sqlite(out_FullOutput_db, drop_view_sql.format("COUNT_UNCLASS_COND_BY_LAST_NODE_VW"))
-
-    # Create views in output file
-    plot_io.execute_sqlite(out_FullOutput_db, python_key_input_vw_definition)
-    plot_io.execute_sqlite(out_FullOutput_db, nvcs_analytical_test_data_vw_definition)
-    plot_io.execute_sqlite(out_FullOutput_db, analytical_data_w_key_output_yw_definition)
-    plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_vw_definition)
-    plot_io.execute_sqlite(out_FullOutput_db, count_cond_by_solution_v2_vw_definition)
     plot_io.execute_sqlite(out_FullOutput_db, count_unclass_cond_by_last_node_vw_definition)
 
 
@@ -261,9 +268,11 @@ if __name__ == '__main__':
     elif config.target == config.alaskaSection:
         import key_alaska_us as classification_key
 
-    in_KeyTestDataInfo = {
+    in_KeyTestData = {
         "source": config.get(config.target, "In_DbPath"),
         "source_tbl_nm": config.get(config.target, "In_DbTable"),
+        "source_out": config.get(config.target, "Out_TesterResultsPath"),
+        "source_debug": config.get(config.target, "Out_DebugLogPath"),
         "new_tbl_nm": "NVCS_KEY_TEST_DATA_ALL"
     }
 
@@ -288,5 +297,5 @@ if __name__ == '__main__':
 
     out_FullOutput_db = config.get(config.target, "Out_FullOutputPath")
 
-    generateFullOutput(classification_key, in_KeyTestDataInfo, in_AnlyTestData, in_RefAlgNodes, in_KeyOutput,
+    generateFullOutput(classification_key, in_KeyTestData, in_AnlyTestData, in_RefAlgNodes, in_KeyOutput,
                        out_FullOutput_db)
