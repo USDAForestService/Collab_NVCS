@@ -13,89 +13,13 @@ from nvcs_tester import plot_io, fixup_keyout_v2, tester
 from nvcs_builder import configuration
 
 
-
-'''
-What should this output contain?
-
-Chris' AccessDB Content:
-    Tables:
-        - FS_FIADB_REF_FOREST_TYPE
-            - queried from FIADB?
-        - NVCS_ANALYTICAL_DATA_WEST_2017_VW
-            - Jason's SQLite data but filtered down to just 2017 data
-        - nvcs_pnwrs_rmrs_2017
-            - Fixup_keyou_v2 output
-        - ref_key_output_table
-            - Metadata on the current iteration of the key
-        - ref_nvcs_algorithm_node
-            - Generated from /nvcs/export_node_table.py
-            - Needs a -1 Unclassified added manually as the first row
-    Queries:
-        - analytical_data_w_key_output
-        - count_cond_by_solution
-        - count_cond_by_solution_v2
-        - count_unclass_cond_by_last_node
-        - qry_key_output_riv_0
-        - qry_nvcs_analytical_cond_level
-        - qry_nvcs_python_input_cond_level
-    Notes:
-        - We want all queries as views
-        - IDENT can now be used for joining tables in queries instead of PLT_CN, CONDID, and CND_CN
-        
-Jason's SQLite Content:
-    Tables:
-        - NVCS_ANALYTICAL_TEST_DATA
-            - Plot condition list with all analytical columns for every year
-        - NVCS_KEY_TEST_DATA
-            - Plot condition list with only necessary analytical columns for every year
-        - REF_SPECIES_NVCS_WEST
-            - Western species list
-
-Potential SQLite Content:
-    Tables:
-        - NVCS_KEY_TEST_DATA_ALL
-            - NVCS_KEY_TEST_DATA (via Jason's SQLite Content)
-        - NVCS_ANALYTICAL_TEST_DATA_ALL
-            - NVCS_ANALYTICAL_TEST_DATA (via Jason's SQLite Content)
-        - REF_KEY_OUTPUT_TABLE
-            - ref_key_output_table (manually-added like Chris' AccessDB content)
-        - REF_NVCS_ALGORITHM_NODE
-            - Via /nvcs/export_node_Table.py and a -1 Unclassified entry at the beginning
-        - FS_FIADB_REF_FOREST_TYPE
-            - Queried via FIADB?
-            - Maybe we take output as CSV and manually write to SQLite until future updates to avoid querying FIADB
-        - PYTHON_KEY_OUTPUT
-            - nvcs_pnwrs_rmrs_2017 via Chris' output
-            - Might wanna copy logic from fixup_keyout_v2 here
-    
-    Views:
-        - Y{inventory_year}_PYTHON_KEY_INPUT_VW
-        - Y{inventory_year}_NVCS_ANALYTICAL_TEST_DATA_VW
-        - Y{inventory_year}_ANALYTICAL_DATA_W_KEY_OUTPUT_VW
-        - Y{inventory_year}_COUNT_COND_BY_SOLUTION_VW
-        - Y{inventory_year}_COUNT_COND_BY_SOLUTION_V2_VW
-        - Y{inventory_year}_COUNT_UNCLASS_COND_BY_LAST_NODE_VW
-        - QRY_KEY_OUTPUT_RIV_0_VW
-            - Potentially refactoring or dropping
-
-CREATE VIEW NVCS_KEY_TEST_DATA_WEST_2017_VW 
-AS 
-SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION,
-       SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, SPCOV
-FROM NVCS_KEY_TEST_DATA WHERE RSCD IN (22, 23, 26, 33) AND INVYR = 2017;
- 
-CREATE VIEW NVCS_ANALYTICAL_DATA_WEST_2017_VW 
-AS 
-SELECT *
-FROM NVCS_ANALYTICAL_TEST_DATA WHERE RSCD IN (22, 23, 26, 33) AND INVYR = 2017
-
-TODO: Consider creating input views here, then running tester.py, and putting outputs into the SQLite
-    all from within this script
-
-'''
 def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_KeyOutput, out_Options):
     # Re-usable query strings
     drop_view_sql = "DROP VIEW IF EXISTS {0}"
+
+    # Announce generation of shared tables/views
+    print("-" * 50)
+    print("Generating shared tables and views")
 
     # Prepare & create table containing unfiltered key input source
     nvcs_key_test_data_definition, nvcs_key_test_data_columns = plot_io.table_info_sqlite(
@@ -167,7 +91,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
             "ELEVATION, COALESCE(SPECIES, '') AS 'SPECIES', RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
             f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
-            f"WHERE RSCD IN (22, 23, 26, 33)  AND INVYR = {inventory_year};"
+            f"WHERE INVYR = {inventory_year}{out_Options['additional_where_clause']};"
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(python_key_input_vw_name))
         plot_io.execute_sqlite(out_Options["output_db"], python_key_input_vw_definition)
@@ -186,10 +110,11 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         nvcs_analytical_test_data_vw_definition = (
             f"CREATE VIEW '{nvcs_analytical_test_data_vw_name}' AS "
             f"SELECT * FROM {in_AnlyTestData['new_tbl_nm']} "
-            f"WHERE RSCD IN (22, 23, 26, 33) AND INVYR = {inventory_year}"
+            f"WHERE INVYR = {inventory_year}{out_Options['additional_where_clause']}"
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(nvcs_analytical_test_data_vw_name))
         plot_io.execute_sqlite(out_Options["output_db"], nvcs_analytical_test_data_vw_definition)
+        print(f"Successfully generated '{nvcs_analytical_test_data_vw_name}' at: {out_Options['output_db']}")
     
         analytical_data_w_key_output_yw_nm = f"Y{inventory_year}_ANALYTICAL_DATA_W_KEY_OUTPUT_VW"
         analytical_data_w_key_output_yw_definition = (
@@ -211,6 +136,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(analytical_data_w_key_output_yw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], analytical_data_w_key_output_yw_definition)
+        print(f"Successfully generated '{analytical_data_w_key_output_yw_nm}' at: {out_Options['output_db']}")
     
         count_cond_by_solution_vw_nm = f"Y{inventory_year}_COUNT_COND_BY_SOLUTION_VW"
         count_cond_by_solution_vw_definition = (
@@ -222,6 +148,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_cond_by_solution_vw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], count_cond_by_solution_vw_definition)
+        print(f"Successfully generated '{count_cond_by_solution_vw_nm}' at: {out_Options['output_db']}")
     
         count_cond_by_solution_v2_vw_nm = f"Y{inventory_year}_COUNT_COND_BY_SOLUTION_V2_VW"
         count_cond_by_solution_v2_vw_definition = (
@@ -234,6 +161,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_cond_by_solution_v2_vw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], count_cond_by_solution_v2_vw_definition)
+        print(f"Successfully generated '{count_cond_by_solution_v2_vw_nm}' at: {out_Options['output_db']}")
     
         count_unclass_cond_by_last_node_vw_nm = f"Y{inventory_year}_COUNT_UNCLASS_COND_BY_LAST_NODE_VW"
         count_unclass_cond_by_last_node_vw_definition = (
@@ -244,6 +172,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_unclass_cond_by_last_node_vw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], count_unclass_cond_by_last_node_vw_definition)
+        print(f"Successfully generated '{count_unclass_cond_by_last_node_vw_nm}' at: {out_Options['output_db']}")
 
 
 def export_node_table(classification_key):
@@ -308,6 +237,7 @@ if __name__ == '__main__':
 
     out_Options = {
         "inventory_years": [2017],
+        "additional_where_clause": " AND RSCD IN (22, 23, 26, 33)",
         "output_db": config.get(config.target, "Out_FullOutputPath")
     }
 
