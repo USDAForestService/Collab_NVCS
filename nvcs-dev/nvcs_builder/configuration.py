@@ -1,4 +1,5 @@
 import configparser
+import ast
 
 
 class DebugConfig:
@@ -16,4 +17,11 @@ class DebugConfig:
         return_value = self.config.get(section, prop)
         if return_value == '':
             return_value = None
+        return return_value
+
+    def get_literal(self, section, prop):
+        return_value = self.config.get(section, prop)
+        if return_value == '':
+            return_value = None
+        return_value = ast.literal_eval(return_value)
         return return_value

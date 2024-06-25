@@ -91,7 +91,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
             "ELEVATION, COALESCE(SPECIES, '') AS 'SPECIES', RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
             f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
-            f"WHERE INVYR = {inventory_year}{out_Options['additional_where_clause']};"
+            f"WHERE INVYR = {inventory_year} {out_Options['additional_where_clause']};"
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(python_key_input_vw_name))
         plot_io.execute_sqlite(out_Options["output_db"], python_key_input_vw_definition)
@@ -110,7 +110,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         nvcs_analytical_test_data_vw_definition = (
             f"CREATE VIEW '{nvcs_analytical_test_data_vw_name}' AS "
             f"SELECT * FROM {in_AnlyTestData['new_tbl_nm']} "
-            f"WHERE INVYR = {inventory_year}{out_Options['additional_where_clause']}"
+            f"WHERE INVYR = {inventory_year} {out_Options['additional_where_clause']}"
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(nvcs_analytical_test_data_vw_name))
         plot_io.execute_sqlite(out_Options["output_db"], nvcs_analytical_test_data_vw_definition)
@@ -215,30 +215,30 @@ if __name__ == '__main__':
         "source_tbl_nm": config.get(config.target, "In_DbTable"),
         "source_out": config.get(config.target, "Out_TesterResultsPath"),
         "source_debug": config.get(config.target, "Out_DebugLogPath"),
-        "new_tbl_nm": "NVCS_KEY_TEST_DATA_ALL"
+        "new_tbl_nm": config.get(config.base, "Out_FullOutput_KeyTestDataName")
     }
 
     in_AnlyTestData = {
         "source": config.get(config.target, "In_AnlyDbPath"),
         "source_tbl_nm": config.get(config.target, "In_AnlyDbTable"),
-        "new_tbl_nm": "NVCS_ANALYTICAL_TEST_DATA_ALL"
+        "new_tbl_nm": config.get(config.base, "Out_FullOutput_AnlyTestDataName")
     }
 
     in_RefForestType = {
         "source": config.get(config.target, "In_RefForestTypeDbPath"),
-        "new_tbl_nm": "FS_FIADB_REF_FOREST_TYPE"
+        "new_tbl_nm": config.get(config.base, "Out_FullOutput_RefForestTypeName")
     }
     
     in_KeyOutput = {
         "source": config.get(config.target, "Out_TesterResultsPath"),
-        "new_tbl_nm": "PYTHON_KEY_OUTPUT",
+        "new_tbl_nm": config.get(config.base, "Out_FullOutput_KeyOutputName"),
         "csv_output": config.get(config.target, "Out_FixupCsvPath")
     }
 
     out_Options = {
-        "inventory_years": [2017],
-        "additional_where_clause": " AND RSCD IN (22, 23, 26, 33)",
-        "output_db": config.get(config.target, "Out_FullOutputPath")
+        "inventory_years": config.get_literal(config.base, "Out_FullOutput_InventoryYears"),
+        "additional_where_clause": config.get(config.base, "Out_FullOutput_WhereClause"),
+        "output_db": config.get(config.target, "Out_FullOutput_DbPath")
     }
 
     generateFullOutput(classification_key, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_KeyOutput,
