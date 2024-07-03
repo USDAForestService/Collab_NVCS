@@ -13,72 +13,75 @@ from nvcs_tester import plot_io, fixup_keyout_v2, tester
 from nvcs_builder import configuration
 
 
-def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_KeyOutput, out_Options):
+def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_RefAlgNode, in_KeyOutput, out_Options):
     # Re-usable query strings
     drop_view_sql = "DROP VIEW IF EXISTS {0}"
 
-    # Announce generation of shared tables/views
-    print("-" * 50)
-    print("Generating shared tables and views")
+    if out_Options["skip_shared_tables"]:
+        print("-" * 50)
+        print("Skipping shared table and view generation")
+    else:
+        # Announce generation of shared tables/views
+        print("-" * 50)
+        print("Generating shared tables and views")
 
-    # Prepare & create table containing unfiltered key input source
-    nvcs_key_test_data_definition, nvcs_key_test_data_columns = plot_io.table_info_sqlite(
-        in_KeyTestData['source'], in_KeyTestData['source_tbl_nm'], new_tbl=in_KeyTestData['new_tbl_nm'])
-    nvcs_key_test_data_rows = plot_io.query_sqlite(
-        in_KeyTestData['source'], f"SELECT * FROM {in_KeyTestData['source_tbl_nm']};")
-    plot_io.write_sqlite(out_Options["output_db"], in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
-                         nvcs_key_test_data_columns, nvcs_key_test_data_definition)
-    plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_test_ident;")
-    plot_io.execute_sqlite(out_Options["output_db"], f"CREATE INDEX idx_test_ident ON {in_KeyTestData['new_tbl_nm']} (IDENT);")
-    
-    # Prepare & create table containing unfiltered analytical input source
-    nvcs_analytical_test_data_definition, nvcs_analytical_test_data_columns = plot_io.table_info_sqlite(
-        in_AnlyTestData['source'], in_AnlyTestData['source_tbl_nm'], new_tbl=in_AnlyTestData['new_tbl_nm'])
-    nvcs_analytical_test_data_rows = plot_io.query_sqlite(
-        in_AnlyTestData['source'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
-    plot_io.write_sqlite(out_Options["output_db"], in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
-                         nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
-    plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_anly_ident;")
-    plot_io.execute_sqlite(out_Options["output_db"],
-                           f"CREATE INDEX idx_anly_ident ON {in_AnlyTestData['new_tbl_nm']} (IDENT);")
+        # Prepare & create table containing unfiltered key input source
+        nvcs_key_test_data_definition, nvcs_key_test_data_columns = plot_io.table_info_sqlite(
+            in_KeyTestData['source'], in_KeyTestData['source_tbl_nm'], new_tbl=in_KeyTestData['new_tbl_nm'])
+        nvcs_key_test_data_rows = plot_io.query_sqlite(
+            in_KeyTestData['source'], f"SELECT * FROM {in_KeyTestData['source_tbl_nm']};")
+        plot_io.write_sqlite(out_Options["output_db"], in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
+                             nvcs_key_test_data_columns, nvcs_key_test_data_definition)
+        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_test_ident;")
+        plot_io.execute_sqlite(out_Options["output_db"], f"CREATE INDEX idx_test_ident ON {in_KeyTestData['new_tbl_nm']} (IDENT);")
 
-    # Prepare & create table containing REF_FOREST_TYPE values
-    fs_fiadb_ref_forest_type_definition = (
-        f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
-        "'VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',"
-        "'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',"
-        "'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE')"
-    )
-    fs_fiadb_ref_forest_type_columns = ['VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',
-                                        'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',
-                                        'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE']
-    fs_fiadb_ref_forest_type_rows = plot_io.read_csv(in_RefForestType["source"])
-    plot_io.write_sqlite(out_Options["output_db"], in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
-                         fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
+        # Prepare & create table containing unfiltered analytical input source
+        nvcs_analytical_test_data_definition, nvcs_analytical_test_data_columns = plot_io.table_info_sqlite(
+            in_AnlyTestData['source'], in_AnlyTestData['source_tbl_nm'], new_tbl=in_AnlyTestData['new_tbl_nm'])
+        nvcs_analytical_test_data_rows = plot_io.query_sqlite(
+            in_AnlyTestData['source'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
+        plot_io.write_sqlite(out_Options["output_db"], in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
+                             nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
+        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_anly_ident;")
+        plot_io.execute_sqlite(out_Options["output_db"],
+                               f"CREATE INDEX idx_anly_ident ON {in_AnlyTestData['new_tbl_nm']} (IDENT);")
 
-    # Prepare & create table containing NVCS classifications, IDs, and codes
-    ref_nvcs_algorithm_nm = 'REF_NVCS_ALGORITHM_NODE'
-    ref_nvcs_algorithm_node_definition = (
-        f"CREATE TABLE '{ref_nvcs_algorithm_nm}' ("
-        "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
-        "'NVC_LEVEL' VARCHAR(256), 'NVC_CODE' VARCHAR(256));"
-    )
-    ref_nvcs_algorithm_node_columns = ['IDENT', 'PARENT', 'DESCRIPTION', 'NVC_LEVEL', 'NVC_CODE']
-    ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
-    plot_io.write_sqlite(out_Options["output_db"], ref_nvcs_algorithm_nm, ref_nvcs_algorithm_node_rows,
-                         ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
+        # Prepare & create table containing REF_FOREST_TYPE values
+        fs_fiadb_ref_forest_type_definition = (
+            f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
+            "'VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',"
+            "'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',"
+            "'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE')"
+        )
+        fs_fiadb_ref_forest_type_columns = ['VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',
+                                            'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',
+                                            'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE']
+        fs_fiadb_ref_forest_type_rows = plot_io.read_csv(in_RefForestType["source"])
+        plot_io.write_sqlite(out_Options["output_db"], in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
+                             fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
 
-    # Prepare & create table containing report metadata
-    ref_key_output_table_definition = (
-        "CREATE TABLE 'REF_KEY_OUTPUT_TABLE' ("
-        "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
-        "'DESCRIPTION' VARCHAR(256));"
-    )
-    ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
-    ref_key_output_table_rows = [
-        ['python_input_vw', str(date.today()), 'Inventory year filtered, used as Python input']]
-    plot_io.write_sqlite(out_Options["output_db"], "REF_KEY_OUTPUT_TABLE", ref_key_output_table_rows,
-                         ref_key_output_table_columns, ref_key_output_table_definition)
+        # Prepare & create table containing NVCS classifications, IDs, and codes
+        ref_nvcs_algorithm_node_definition = (
+            f"CREATE TABLE '{in_RefAlgNode['new_tbl_nm']}' ("
+            "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
+            "'NVC_LEVEL' VARCHAR(256), 'NVC_CODE' VARCHAR(256));"
+        )
+        ref_nvcs_algorithm_node_columns = ['IDENT', 'PARENT', 'DESCRIPTION', 'NVC_LEVEL', 'NVC_CODE']
+        ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
+        plot_io.write_sqlite(out_Options["output_db"], in_RefAlgNode["new_tbl_nm"], ref_nvcs_algorithm_node_rows,
+                             ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
+
+        # Prepare & create table containing report metadata
+        ref_key_output_table_definition = (
+            "CREATE TABLE 'REF_KEY_OUTPUT_TABLE' ("
+            "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
+            "'DESCRIPTION' VARCHAR(256));"
+        )
+        ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
+        ref_key_output_table_rows = [
+            ['python_input_vw', str(date.today()), 'Inventory year filtered, used as Python input']]
+        plot_io.write_sqlite(out_Options["output_db"], "REF_KEY_OUTPUT_TABLE", ref_key_output_table_rows,
+                             ref_key_output_table_columns, ref_key_output_table_definition)
     
     for inventory_year in out_Options["inventory_years"]:
         print("-" * 50)
@@ -154,7 +157,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         count_cond_by_solution_v2_vw_definition = (
             f"CREATE VIEW '{count_cond_by_solution_v2_vw_nm}' AS "
             "SELECT RNAN.ident AS node_id, RNAN.description, "
-            f"CCBS.CountOfident FROM {ref_nvcs_algorithm_nm} AS 'RNAN' "
+            f"CCBS.CountOfident FROM {in_RefAlgNode['new_tbl_nm']} AS 'RNAN' "
             f"LEFT JOIN {count_cond_by_solution_vw_nm} as 'CCBS' ON CCBS.solution_id = RNAN.ident "
             "WHERE (((RNAN.nvc_level)='group' OR (RNAN.nvc_level)='unclassified')) "
             "ORDER BY RNAN.ident;"
@@ -228,6 +231,10 @@ if __name__ == '__main__':
         "source": config.get(config.target, "In_RefForestTypeDbPath"),
         "new_tbl_nm": config.get(config.base, "Out_FullOutput_RefForestTypeName")
     }
+
+    in_RefAlgNode = {
+        "new_tbl_nm": config.get(config.base, "Out_FullOutput_RefAlgNodeName")
+    }
     
     in_KeyOutput = {
         "source": config.get(config.target, "Out_TesterResultsPath"),
@@ -238,8 +245,9 @@ if __name__ == '__main__':
     out_Options = {
         "inventory_years": config.get_literal(config.base, "Out_FullOutput_InventoryYears"),
         "additional_where_clause": config.get(config.base, "Out_FullOutput_WhereClause"),
-        "output_db": config.get(config.target, "Out_FullOutput_DbPath")
+        "output_db": config.get(config.target, "Out_FullOutput_DbPath"),
+        "skip_shared_tables": config.get_literal(config.base, "Out_FullOutput_SkipSharedTables")
     }
 
-    generateFullOutput(classification_key, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_KeyOutput,
-                       out_Options)
+    generateFullOutput(classification_key, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_RefAlgNode,
+                       in_KeyOutput, out_Options)
