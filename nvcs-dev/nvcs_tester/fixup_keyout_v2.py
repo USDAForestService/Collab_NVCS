@@ -85,7 +85,7 @@ def fixup(key_outfile, out_csv, out_db, out_db_tbl):
             line = f.readline().strip()
 
     print(f"Successfully wrote {len(outRows)} rows to: {out_csv}")
-    plot_io.write_sqlite(out_db, out_db_tbl, outRows, header)
+    plot_io.write_table_sqlite(out_db, out_db_tbl, outRows, header)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:

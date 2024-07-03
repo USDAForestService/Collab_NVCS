@@ -105,7 +105,27 @@ def table_info_sqlite(dbfile, tbl, new_tbl):
     return table_creation_sql, table_columns
 
 
-def write_sqlite(dbfile, tbl, dataRows, columns, table_definition=None):
+def write_rows_sqlite(dbfile, tbl, dataRows, columns, cur=None):
+    con = None
+    if cur is None:
+        con = sqlite3.connect(dbfile)
+        cur = con.cursor()
+
+    insertedColumns = ','.join(columns)
+    insertedPlaceholders = ','.join(['?'] * len(columns))
+    insertStatement = f"INSERT INTO {tbl} ({insertedColumns}) VALUES ({insertedPlaceholders});"
+    insertedRows = [tuple(i) for i in dataRows]
+
+    cur.executemany(insertStatement, insertedRows)
+
+    if con is not None:
+        con.commit()
+        con.close()
+
+    return insertedRows
+
+
+def write_table_sqlite(dbfile, tbl, dataRows, columns, table_definition=None):
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
 
@@ -114,11 +134,7 @@ def write_sqlite(dbfile, tbl, dataRows, columns, table_definition=None):
     cur.execute(f"DROP TABLE IF EXISTS [{tbl}];")
     cur.execute(createStatement)
 
-    insertedPlaceholders = ','.join(['?'] * len(columns))
-    insertStatement = f"INSERT INTO {tbl} ({insertedColumns}) VALUES ({insertedPlaceholders});"
-    insertedRows = [tuple(i) for i in dataRows]
-
-    cur.executemany(insertStatement, insertedRows)
+    insertedRows = write_rows_sqlite(dbfile, tbl, dataRows, columns, cur)
     con.commit()
     con.close()
 
