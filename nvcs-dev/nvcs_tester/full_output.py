@@ -102,6 +102,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
 
         # Create a filtered input view
         python_key_input_vw_name = f"Y{inventory_year}_PYTHON_KEY_INPUT_VW"
+        python_key_input_vw_desc = f"View containing filtered input data fed through the classification key [{inventory_year} plots only]"
         python_key_input_vw_definition = (
             f"CREATE VIEW '{python_key_input_vw_name}' AS "
             "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
@@ -111,6 +112,9 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         )
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(python_key_input_vw_name))
         plot_io.execute_sqlite(out_Options["output_db"], python_key_input_vw_definition)
+        python_key_input_vw_metadata = [[python_key_input_vw_name, str(date.today()), python_key_input_vw_desc]]
+        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
+                                  python_key_input_vw_metadata, ref_key_output_table_columns)
     
         # Run input data through the key
         tester.run(outfile=in_KeyTestData['source_out'], debugfile=in_KeyTestData['source_debug'],
@@ -118,7 +122,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
     
         # Run the outfile through the fixup and save to the new database
         key_output_nm = f"Y{inventory_year}_{in_KeyOutput['new_tbl_nm']}"
-        key_output_desc = f"{in_KeyOutput['description']} for {inventory_year} data"
+        key_output_desc = f"{in_KeyOutput['description']} [{inventory_year} plots only]"
         fixup_keyout_v2.fixup(key_outfile=in_KeyTestData["source_out"], out_csv=in_KeyOutput["csv_output"],
                               out_db=out_Options["output_db"], out_db_tbl=key_output_nm)
         key_output_metadata = [[key_output_nm, str(date.today()), key_output_desc]]
@@ -127,6 +131,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
     
         # Views created via code
         nvcs_analytical_test_data_vw_name = f"Y{inventory_year}_NVCS_ANALYTICAL_TEST_DATA_VW"
+        nvcs_analytical_test_data_vw_desc = f"View containing filtered analytical data [{inventory_year} plots only]"
         nvcs_analytical_test_data_vw_definition = (
             f"CREATE VIEW '{nvcs_analytical_test_data_vw_name}' AS "
             f"SELECT * FROM {in_AnlyTestData['new_tbl_nm']} "
@@ -135,8 +140,12 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(nvcs_analytical_test_data_vw_name))
         plot_io.execute_sqlite(out_Options["output_db"], nvcs_analytical_test_data_vw_definition)
         print(f"Successfully generated '{nvcs_analytical_test_data_vw_name}' at: {out_Options['output_db']}")
+        nvcs_analytical_test_data_vw_metadata = [[nvcs_analytical_test_data_vw_name, str(date.today()), nvcs_analytical_test_data_vw_desc]]
+        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
+                                  nvcs_analytical_test_data_vw_metadata, ref_key_output_table_columns)
     
         analytical_data_w_key_output_yw_nm = f"Y{inventory_year}_ANALYTICAL_DATA_W_KEY_OUTPUT_VW"
+        analytical_data_w_key_output_yw_desc = f"View containing filtered analytical data joined with classification results and forest types [{inventory_year} plots only]"
         analytical_data_w_key_output_yw_definition = (
             f"CREATE VIEW '{analytical_data_w_key_output_yw_nm}' AS "
             "SELECT KEY_OUTPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_OUTPUT.solution_desc, "
@@ -157,8 +166,12 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(analytical_data_w_key_output_yw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], analytical_data_w_key_output_yw_definition)
         print(f"Successfully generated '{analytical_data_w_key_output_yw_nm}' at: {out_Options['output_db']}")
+        analytical_data_w_key_output_yw_metadata = [[analytical_data_w_key_output_yw_nm, str(date.today()), analytical_data_w_key_output_yw_desc]]
+        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
+                                  analytical_data_w_key_output_yw_metadata, ref_key_output_table_columns)
     
         count_cond_by_solution_vw_nm = f"Y{inventory_year}_COUNT_COND_BY_SOLUTION_VW"
+        count_cond_by_solution_vw_desc = f"View containing frequency of all terminal node classifications [{inventory_year} plots only]"
         count_cond_by_solution_vw_definition = (
             f"CREATE VIEW '{count_cond_by_solution_vw_nm}' AS "
             "SELECT KEY_OUTPUT.solution_desc, KEY_OUTPUT.solution_id, "
@@ -169,8 +182,12 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_cond_by_solution_vw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], count_cond_by_solution_vw_definition)
         print(f"Successfully generated '{count_cond_by_solution_vw_nm}' at: {out_Options['output_db']}")
+        count_cond_by_solution_vw_metadata = [[count_cond_by_solution_vw_nm, str(date.today()), count_cond_by_solution_vw_desc]]
+        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
+                                  count_cond_by_solution_vw_metadata, ref_key_output_table_columns)
     
         count_cond_by_solution_v2_vw_nm = f"Y{inventory_year}_COUNT_COND_BY_SOLUTION_V2_VW"
+        count_cond_by_solution_v2_vw_desc = f"View containing frequency of group-level terminal node classifications [{inventory_year} plots only]"
         count_cond_by_solution_v2_vw_definition = (
             f"CREATE VIEW '{count_cond_by_solution_v2_vw_nm}' AS "
             "SELECT RNAN.ident AS node_id, RNAN.description, "
@@ -182,8 +199,12 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_cond_by_solution_v2_vw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], count_cond_by_solution_v2_vw_definition)
         print(f"Successfully generated '{count_cond_by_solution_v2_vw_nm}' at: {out_Options['output_db']}")
+        count_cond_by_solution_v2_vw_metadata = [[count_cond_by_solution_v2_vw_nm, str(date.today()), count_cond_by_solution_v2_vw_desc]]
+        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
+                                  count_cond_by_solution_v2_vw_metadata, ref_key_output_table_columns)
     
         count_unclass_cond_by_last_node_vw_nm = f"Y{inventory_year}_COUNT_UNCLASS_COND_BY_LAST_NODE_VW"
+        count_unclass_cond_by_last_node_vw_desc = f"View containing frequency of last internal nodes accessed before becoming unclassified [{inventory_year} plots only]"
         count_unclass_cond_by_last_node_vw_definition = (
             f"CREATE VIEW '{count_unclass_cond_by_last_node_vw_nm}' AS "
             "SELECT KEY_OUTPUT.last_node_desc, Count(KEY_OUTPUT.ident) AS CountOfident "
@@ -193,12 +214,15 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_unclass_cond_by_last_node_vw_nm))
         plot_io.execute_sqlite(out_Options["output_db"], count_unclass_cond_by_last_node_vw_definition)
         print(f"Successfully generated '{count_unclass_cond_by_last_node_vw_nm}' at: {out_Options['output_db']}")
+        count_unclass_cond_by_last_node_vw_metadata = [[count_unclass_cond_by_last_node_vw_nm, str(date.today()), count_unclass_cond_by_last_node_vw_desc]]
+        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
+                                  count_unclass_cond_by_last_node_vw_metadata, ref_key_output_table_columns)
 
 
 def export_node_table(classification_key):
     rows = [
         ['ident', 'parent', 'description', 'nvc_level', 'nvc_code'],
-        ['-1', '', 'unclassified', '', '']
+        ['-1', '', 'unclassified', 'unclassified', '']
     ]
 
     key = classification_key.ClassificationKey()
