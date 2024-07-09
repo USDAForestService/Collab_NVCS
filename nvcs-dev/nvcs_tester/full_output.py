@@ -1,7 +1,7 @@
 import os
 import sys
 import inspect
-from datetime import date
+import datetime
 
 # Update sys path for correct run-time importing
 currDir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -12,31 +12,27 @@ sys.path.append(parentDir + "/nvcs")
 from nvcs_tester import plot_io, fixup_keyout_v2, tester
 from nvcs_builder import configuration
 
+# Script variables
+ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
 
 def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_RefAlgNode, in_RefKeyOutput, in_KeyOutput, out_Options):
-    # Re-usable query strings
-    drop_view_sql = "DROP VIEW IF EXISTS {0}"
-
-    # Prepare & create table containing report metadata
-    print("-" * 50)
-    print("Generating metadata table")
-    ref_key_output_table_definition = (
-        f"CREATE TABLE '{in_RefKeyOutput['new_tbl_nm']}' ("
-        "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
-        "'DESCRIPTION' VARCHAR(256));"
-    )
-    ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
-    ref_key_output_table_metadata = [[in_RefKeyOutput['new_tbl_nm'], str(date.today()), in_RefKeyOutput['description']]]
-    plot_io.write_table_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], ref_key_output_table_metadata,
-                               ref_key_output_table_columns, ref_key_output_table_definition)
-
     if out_Options["skip_shared_tables"]:
         print("-" * 50)
         print("Skipping shared table and view generation")
     else:
         # Announce generation of shared tables/views
         print("-" * 50)
-        print("Generating shared tables and views")
+        print("Generating shared tables and views\n")
+
+        # Prepare & create table containing report metadata
+        ref_key_output_table_definition = (
+            f"CREATE TABLE '{in_RefKeyOutput['new_tbl_nm']}' ("
+            "'TABLE_NAME' VARCHAR(256), 'CREATED_DATE' VARCHAR(256), "
+            "'DESCRIPTION' VARCHAR(256));"
+        )
+        ref_key_output_table_metadata = [[in_RefKeyOutput['new_tbl_nm'], get_formatted_date(), in_RefKeyOutput['description']]]
+        plot_io.write_table_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], ref_key_output_table_metadata,
+                                   ref_key_output_table_columns, ref_key_output_table_definition)
 
         # Prepare & create table containing unfiltered key input source
         nvcs_key_test_data_definition, nvcs_key_test_data_columns = plot_io.table_info_sqlite(
@@ -47,9 +43,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
                              nvcs_key_test_data_columns, nvcs_key_test_data_definition)
         plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_test_ident;")
         plot_io.execute_sqlite(out_Options["output_db"], f"CREATE INDEX idx_test_ident ON {in_KeyTestData['new_tbl_nm']} (IDENT);")
-        nvcs_key_test_data_metadata = [[in_KeyTestData['new_tbl_nm'], str(date.today()), in_KeyTestData['description']]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  nvcs_key_test_data_metadata, ref_key_output_table_columns)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_KeyTestData['new_tbl_nm'], in_KeyTestData['description'])
 
         # Prepare & create table containing unfiltered analytical input source
         nvcs_analytical_test_data_definition, nvcs_analytical_test_data_columns = plot_io.table_info_sqlite(
@@ -61,9 +55,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_anly_ident;")
         plot_io.execute_sqlite(out_Options["output_db"],
                                f"CREATE INDEX idx_anly_ident ON {in_AnlyTestData['new_tbl_nm']} (IDENT);")
-        nvcs_analytical_test_data_metadata = [[in_AnlyTestData['new_tbl_nm'], str(date.today()), in_AnlyTestData['description']]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  nvcs_analytical_test_data_metadata, ref_key_output_table_columns)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_AnlyTestData['new_tbl_nm'], in_AnlyTestData['description'])
 
         # Prepare & create table containing REF_FOREST_TYPE values
         fs_fiadb_ref_forest_type_definition = (
@@ -78,9 +70,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         fs_fiadb_ref_forest_type_rows = plot_io.read_csv(in_RefForestType["source"])
         plot_io.write_table_sqlite(out_Options["output_db"], in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
                              fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
-        fs_fiadb_ref_forest_type_metadata = [[in_RefForestType['new_tbl_nm'], str(date.today()), in_RefForestType['description']]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  fs_fiadb_ref_forest_type_metadata, ref_key_output_table_columns)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefForestType['new_tbl_nm'], in_RefForestType['description'])
 
         # Prepare & create table containing NVCS classifications, IDs, and codes
         ref_nvcs_algorithm_node_definition = (
@@ -92,13 +82,11 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
         plot_io.write_table_sqlite(out_Options["output_db"], in_RefAlgNode["new_tbl_nm"], ref_nvcs_algorithm_node_rows,
                              ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
-        ref_nvcs_algorithm_node_metadata = [[in_RefAlgNode['new_tbl_nm'], str(date.today()), in_RefAlgNode['description']]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  ref_nvcs_algorithm_node_metadata, ref_key_output_table_columns)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefAlgNode['new_tbl_nm'], in_RefAlgNode['description'])
 
     for inventory_year in out_Options["inventory_years"]:
         print("-" * 50)
-        print(f"Generating tables and views for: {inventory_year}")
+        print(f"Generating tables and views for: {inventory_year}\n")
 
         # Create a filtered input view
         python_key_input_vw_name = f"Y{inventory_year}_PYTHON_KEY_INPUT_VW"
@@ -110,11 +98,8 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
             f"WHERE INVYR = {inventory_year} {out_Options['additional_where_clause']};"
         )
-        plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(python_key_input_vw_name))
-        plot_io.execute_sqlite(out_Options["output_db"], python_key_input_vw_definition)
-        python_key_input_vw_metadata = [[python_key_input_vw_name, str(date.today()), python_key_input_vw_desc]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  python_key_input_vw_metadata, ref_key_output_table_columns)
+        plot_io.create_view(out_Options["output_db"], python_key_input_vw_name, python_key_input_vw_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], python_key_input_vw_name, python_key_input_vw_desc)
     
         # Run input data through the key
         tester.run(outfile=in_KeyTestData['source_out'], debugfile=in_KeyTestData['source_debug'],
@@ -125,9 +110,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         key_output_desc = f"{in_KeyOutput['description']} [{inventory_year} plots only]"
         fixup_keyout_v2.fixup(key_outfile=in_KeyTestData["source_out"], out_csv=in_KeyOutput["csv_output"],
                               out_db=out_Options["output_db"], out_db_tbl=key_output_nm)
-        key_output_metadata = [[key_output_nm, str(date.today()), key_output_desc]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  key_output_metadata, ref_key_output_table_columns)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], key_output_nm, key_output_desc)
     
         # Views created via code
         nvcs_analytical_test_data_vw_name = f"Y{inventory_year}_NVCS_ANALYTICAL_TEST_DATA_VW"
@@ -137,13 +120,9 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             f"SELECT * FROM {in_AnlyTestData['new_tbl_nm']} "
             f"WHERE INVYR = {inventory_year} {out_Options['additional_where_clause']}"
         )
-        plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(nvcs_analytical_test_data_vw_name))
-        plot_io.execute_sqlite(out_Options["output_db"], nvcs_analytical_test_data_vw_definition)
-        print(f"Successfully generated '{nvcs_analytical_test_data_vw_name}' at: {out_Options['output_db']}")
-        nvcs_analytical_test_data_vw_metadata = [[nvcs_analytical_test_data_vw_name, str(date.today()), nvcs_analytical_test_data_vw_desc]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  nvcs_analytical_test_data_vw_metadata, ref_key_output_table_columns)
-    
+        plot_io.create_view(out_Options["output_db"], nvcs_analytical_test_data_vw_name, nvcs_analytical_test_data_vw_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], nvcs_analytical_test_data_vw_name, nvcs_analytical_test_data_vw_desc)
+
         analytical_data_w_key_output_yw_nm = f"Y{inventory_year}_ANALYTICAL_DATA_W_KEY_OUTPUT_VW"
         analytical_data_w_key_output_yw_desc = f"View containing filtered analytical data joined with classification results and forest types [{inventory_year} plots only]"
         analytical_data_w_key_output_yw_definition = (
@@ -163,13 +142,9 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             f"INNER JOIN {nvcs_analytical_test_data_vw_name} AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
             f"INNER JOIN {in_RefForestType['new_tbl_nm']} AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
         )
-        plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(analytical_data_w_key_output_yw_nm))
-        plot_io.execute_sqlite(out_Options["output_db"], analytical_data_w_key_output_yw_definition)
-        print(f"Successfully generated '{analytical_data_w_key_output_yw_nm}' at: {out_Options['output_db']}")
-        analytical_data_w_key_output_yw_metadata = [[analytical_data_w_key_output_yw_nm, str(date.today()), analytical_data_w_key_output_yw_desc]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  analytical_data_w_key_output_yw_metadata, ref_key_output_table_columns)
-    
+        plot_io.create_view(out_Options["output_db"], analytical_data_w_key_output_yw_nm, analytical_data_w_key_output_yw_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], analytical_data_w_key_output_yw_nm, analytical_data_w_key_output_yw_desc)
+
         count_cond_by_solution_vw_nm = f"Y{inventory_year}_COUNT_COND_BY_SOLUTION_VW"
         count_cond_by_solution_vw_desc = f"View containing frequency of all terminal node classifications [{inventory_year} plots only]"
         count_cond_by_solution_vw_definition = (
@@ -179,13 +154,9 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "GROUP BY KEY_OUTPUT.solution_desc, KEY_OUTPUT.solution_id "
             "ORDER BY Count(KEY_OUTPUT.ident) DESC;"
         )
-        plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_cond_by_solution_vw_nm))
-        plot_io.execute_sqlite(out_Options["output_db"], count_cond_by_solution_vw_definition)
-        print(f"Successfully generated '{count_cond_by_solution_vw_nm}' at: {out_Options['output_db']}")
-        count_cond_by_solution_vw_metadata = [[count_cond_by_solution_vw_nm, str(date.today()), count_cond_by_solution_vw_desc]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  count_cond_by_solution_vw_metadata, ref_key_output_table_columns)
-    
+        plot_io.create_view(out_Options["output_db"], count_cond_by_solution_vw_nm, count_cond_by_solution_vw_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], count_cond_by_solution_vw_nm, count_cond_by_solution_vw_desc)
+
         count_cond_by_solution_v2_vw_nm = f"Y{inventory_year}_COUNT_COND_BY_SOLUTION_V2_VW"
         count_cond_by_solution_v2_vw_desc = f"View containing frequency of group-level terminal node classifications [{inventory_year} plots only]"
         count_cond_by_solution_v2_vw_definition = (
@@ -196,13 +167,9 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "WHERE (((RNAN.nvc_level)='group' OR (RNAN.nvc_level)='unclassified')) "
             "ORDER BY RNAN.ident;"
         )
-        plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_cond_by_solution_v2_vw_nm))
-        plot_io.execute_sqlite(out_Options["output_db"], count_cond_by_solution_v2_vw_definition)
-        print(f"Successfully generated '{count_cond_by_solution_v2_vw_nm}' at: {out_Options['output_db']}")
-        count_cond_by_solution_v2_vw_metadata = [[count_cond_by_solution_v2_vw_nm, str(date.today()), count_cond_by_solution_v2_vw_desc]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  count_cond_by_solution_v2_vw_metadata, ref_key_output_table_columns)
-    
+        plot_io.create_view(out_Options["output_db"], count_cond_by_solution_v2_vw_nm, count_cond_by_solution_v2_vw_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], count_cond_by_solution_v2_vw_nm, count_cond_by_solution_v2_vw_desc)
+
         count_unclass_cond_by_last_node_vw_nm = f"Y{inventory_year}_COUNT_UNCLASS_COND_BY_LAST_NODE_VW"
         count_unclass_cond_by_last_node_vw_desc = f"View containing frequency of last internal nodes accessed before becoming unclassified [{inventory_year} plots only]"
         count_unclass_cond_by_last_node_vw_definition = (
@@ -211,12 +178,16 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             f"FROM {key_output_nm} AS 'KEY_OUTPUT' WHERE (((KEY_OUTPUT.solution_id)=-1)) "
             "GROUP BY KEY_OUTPUT.last_node_desc ORDER BY Count(KEY_OUTPUT.ident) DESC;"
         )
-        plot_io.execute_sqlite(out_Options["output_db"], drop_view_sql.format(count_unclass_cond_by_last_node_vw_nm))
-        plot_io.execute_sqlite(out_Options["output_db"], count_unclass_cond_by_last_node_vw_definition)
-        print(f"Successfully generated '{count_unclass_cond_by_last_node_vw_nm}' at: {out_Options['output_db']}")
-        count_unclass_cond_by_last_node_vw_metadata = [[count_unclass_cond_by_last_node_vw_nm, str(date.today()), count_unclass_cond_by_last_node_vw_desc]]
-        plot_io.write_rows_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"],
-                                  count_unclass_cond_by_last_node_vw_metadata, ref_key_output_table_columns)
+        plot_io.create_view(out_Options["output_db"], count_unclass_cond_by_last_node_vw_nm, count_unclass_cond_by_last_node_vw_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], count_unclass_cond_by_last_node_vw_nm, count_unclass_cond_by_last_node_vw_desc)
+
+    # Conclusion
+    inv_yrs_comma = ', '.join(str(x) for x in out_Options['inventory_years'])
+
+    print("-" * 50)
+    print("Full output program has finished")
+    print(f" - Result Path: {out_Options['output_db']}")
+    print(f" - Inventory Years Added: {inv_yrs_comma}")
 
 
 def export_node_table(classification_key):
@@ -231,6 +202,16 @@ def export_node_table(classification_key):
             rows.append([node.ident, node.parent, node.description, node.level, node.code])
 
     return rows
+
+
+def write_metadata(db, metadata_tbl, name, description):
+    metadata = [[name, get_formatted_date(), description]]
+    plot_io.write_rows_sqlite(db, metadata_tbl, metadata, ref_key_output_table_columns)
+
+
+def get_formatted_date():
+    current_time = datetime.datetime.now()
+    return current_time.strftime("%Y-%m-%d %H:%M:%S %z")
 
 
 def usage():

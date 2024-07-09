@@ -104,6 +104,11 @@ def table_info_sqlite(dbfile, tbl, new_tbl):
     table_creation_sql = f"CREATE TABLE '{table_name}' ({table_definition});"
     return table_creation_sql, table_columns
 
+def create_view(dbfile, view, view_definition):
+    drop_view_sql = f"DROP VIEW IF EXISTS {view}"
+    execute_sqlite(dbfile, drop_view_sql)
+    execute_sqlite(dbfile, view_definition)
+    print(f"Successfully created view {view} at: {dbfile}")
 
 def write_rows_sqlite(dbfile, tbl, dataRows, columns, cur=None):
     con = None
