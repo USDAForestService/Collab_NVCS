@@ -54,6 +54,8 @@ def read_sqlite(dbfile, tbl):
         sql = 'SELECT ' + tree_fields + ' FROM ' + tbl + ' WHERE IDENT == "' + row[0] + '"'
         for tree_row in tree_cur.execute(sql):
             tree_row = list(tree_row)
+            if tree_row[0] is None:
+                continue
             if tree_row[1] is None:
                 tree_row[1] = 0
             if tree_row[8] is None:
