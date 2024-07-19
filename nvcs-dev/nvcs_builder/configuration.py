@@ -8,6 +8,7 @@ class DebugConfig:
         self.config = configparser.ConfigParser(interpolation=configparser.ExtendedInterpolation(), allow_no_value=True)
         self.config.read(self.configPath)
         self.base = "Config"
+        self.fullOutputSection = "FullOutputConfig"
         self.westSection = "WestConfig"
         self.eastSection = "EastConfig"
         self.alaskaSection = "AlaskaSection"
