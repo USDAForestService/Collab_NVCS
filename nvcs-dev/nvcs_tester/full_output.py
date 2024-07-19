@@ -236,49 +236,49 @@ if __name__ == '__main__':
         import key_alaska_us as classification_key
 
     in_KeyTestData = {
-        "source": config.get(config.target, "In_DbPath"),
-        "source_tbl_nm": config.get(config.target, "In_DbTable"),
-        "source_out": config.get(config.target, "Out_TesterResultsPath"),
-        "source_debug": config.get(config.target, "Out_DebugLogPath"),
-        "new_tbl_nm": config.get(config.base, "Out_FullOutput_KeyTestDataName"),
-        "description": config.get(config.base, "Out_FullOutput_KeyTestDataDesc")
+        "source": config.get(config.fullOutputSection, "In_DbPath"),
+        "source_tbl_nm": config.get(config.fullOutputSection, "In_TestDbTable"),
+        "source_out": config.get(config.fullOutputSection, "Out_TesterResultsPath"),
+        "source_debug": config.get(config.fullOutputSection, "Out_DebugLogPath"),
+        "new_tbl_nm": config.get(config.fullOutputSection, "KeyTestDataName"),
+        "description": config.get(config.fullOutputSection, "KeyTestDataDesc")
     }
 
     in_AnlyTestData = {
-        "source": config.get(config.target, "In_AnlyDbPath"),
-        "source_tbl_nm": config.get(config.target, "In_AnlyDbTable"),
-        "new_tbl_nm": config.get(config.base, "Out_FullOutput_AnlyTestDataName"),
-        "description": config.get(config.base, "Out_FullOutput_AnlyTestDataDesc")
+        "source": config.get(config.fullOutputSection, "In_DbPath"),
+        "source_tbl_nm": config.get(config.fullOutputSection, "In_AnlyDbTable"),
+        "new_tbl_nm": config.get(config.fullOutputSection, "AnlyTestDataName"),
+        "description": config.get(config.fullOutputSection, "AnlyTestDataDesc")
     }
 
     in_RefForestType = {
-        "source": config.get(config.target, "In_RefForestTypeDbPath"),
-        "new_tbl_nm": config.get(config.base, "Out_FullOutput_RefForestTypeName"),
-        "description": config.get(config.base, "Out_FullOutput_RefForestTypeDesc")
+        "source": config.get(config.fullOutputSection, "In_RefForestTypeDataPath"),
+        "new_tbl_nm": config.get(config.fullOutputSection, "RefForestTypeName"),
+        "description": config.get(config.fullOutputSection, "RefForestTypeDesc")
     }
 
     in_RefAlgNode = {
-        "new_tbl_nm": config.get(config.base, "Out_FullOutput_RefAlgNodeName"),
-        "description": config.get(config.base, "Out_FullOutput_RefAlgNodeDesc")
+        "new_tbl_nm": config.get(config.fullOutputSection, "RefAlgNodeName"),
+        "description": config.get(config.fullOutputSection, "RefAlgNodeDesc")
     }
 
     in_RefKeyOutput = {
-        "new_tbl_nm": config.get(config.base, "Out_FullOutput_RefKeyOutputName"),
-        "description": config.get(config.base, "Out_FullOutput_RefKeyOutputDesc")
+        "new_tbl_nm": config.get(config.fullOutputSection, "RefKeyOutputName"),
+        "description": config.get(config.fullOutputSection, "RefKeyOutputDesc")
     }
     
     in_KeyOutput = {
-        "source": config.get(config.target, "Out_TesterResultsPath"),
-        "new_tbl_nm": config.get(config.base, "Out_FullOutput_KeyOutputName"),
-        "description": config.get(config.base, "Out_FullOutput_KeyOutputDesc"),
-        "csv_output": config.get(config.target, "Out_FixupCsvPath")
+        "source": config.get(config.fullOutputSection, "Out_TesterResultsPath"),
+        "new_tbl_nm": config.get(config.fullOutputSection, "KeyOutputName"),
+        "description": config.get(config.fullOutputSection, "KeyOutputDesc"),
+        "csv_output": config.get(config.fullOutputSection, "Out_FixupCsvPath")
     }
 
     out_Options = {
-        "inventory_years": config.get_literal(config.base, "Out_FullOutput_InventoryYears"),
-        "additional_where_clause": config.get(config.base, "Out_FullOutput_WhereClause"),
-        "output_db": config.get(config.target, "Out_FullOutput_DbPath"),
-        "skip_shared_tables": config.get_literal(config.base, "Out_FullOutput_SkipSharedTables")
+        "inventory_years": config.get_literal(config.fullOutputSection, "InventoryYears"),
+        "additional_where_clause": config.get(config.fullOutputSection, "AdditionalWhereClause"),
+        "output_db": config.get(config.fullOutputSection, "Out_DbPath"),
+        "skip_shared_tables": config.get_literal(config.fullOutputSection, "SkipSharedTables")
     }
 
     generateFullOutput(classification_key, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_RefAlgNode,
