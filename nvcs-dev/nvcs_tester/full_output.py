@@ -94,7 +94,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         python_key_input_vw_definition = (
             f"CREATE VIEW '{python_key_input_vw_name}' AS "
             "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
-            "ELEVATION, COALESCE(SPECIES, '') AS 'SPECIES', RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
+            "ELEVATION, SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
             f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
             f"WHERE INVYR = {inventory_year} {out_Options['additional_where_clause']};"
         )
