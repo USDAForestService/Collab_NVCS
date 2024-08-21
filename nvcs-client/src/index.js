@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
+const fs = require('fs');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -27,6 +28,7 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  ipcMain.handle('fetch-existing-json', fetchExistingJson);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -49,3 +51,23 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+async function fetchExistingJson(event) {
+  console.log('INVOKED: fetxhExistingJson');
+
+  let fileData = [];
+  const jsonDirectory = __dirname + '../../../nvcs-dev/nvcs_config/west/key-nodes/';
+  console.log(`- Target JSON Directory: ${jsonDirectory}`);
+
+  var jsonFiles = fs.readdirSync(jsonDirectory).filter(file => path.extname(file) === '.json');
+  jsonFiles.forEach(file => {
+    let jsonPath = path.join(jsonDirectory, file);
+    let data = fs.readFileSync(jsonPath);
+    let stringData = data.toString();
+    let cleanedData = stringData.trim();
+    fileData.push(cleanedData);
+  })
+
+  returnData = `[${fileData.join(',')}]`;
+  return returnData;
+}

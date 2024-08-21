@@ -2,11 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>NVCS: JSON Generator</title>
     <link rel="stylesheet" href="index.css" />
+    <script defer src="renderer.js"></script>
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <h1>NVCS: JSON Generator</h1>
+    <p>This application will allow users to generate JSON couplets using a frontend tool.</p>
+    <button id="btn-fetch-existing-json">Fetch Existing JSON</button>
+    <div id="detected-json-container">
+      No JSON Detected
+    </div>
   </body>
 </html>
