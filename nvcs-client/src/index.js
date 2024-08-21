@@ -55,19 +55,35 @@ app.on('window-all-closed', () => {
 async function fetchExistingJson(event) {
   console.log('INVOKED: fetxhExistingJson');
 
-  let fileData = [];
+  // Retrieve Key Node JSON files
   const jsonDirectory = __dirname + '../../../nvcs-dev/nvcs_config/west/key-nodes/';
   console.log(`- Target JSON Directory: ${jsonDirectory}`);
 
-  var jsonFiles = fs.readdirSync(jsonDirectory).filter(file => path.extname(file) === '.json');
+  let cleanedJsonData = [];
+  let jsonFiles = fs.readdirSync(jsonDirectory).filter(file => path.extname(file) === '.json');
   jsonFiles.forEach(file => {
     let jsonPath = path.join(jsonDirectory, file);
     let data = fs.readFileSync(jsonPath);
     let stringData = data.toString();
     let cleanedData = stringData.trim();
-    fileData.push(cleanedData);
+    cleanedJsonData.push(cleanedData);
   })
 
-  returnData = `[${fileData.join(',')}]`;
+  allJsonData = `[${cleanedJsonData.join(',')}]`;
+
+  // Retrieve Key Hierarchy TXT file
+  const hierarchyPath = __dirname + '../../../nvcs-dev/nvcs_config/west/key-hierarchy.txt';
+  console.log(`- Target Hierarchy Path: ${hierarchyPath}`);
+
+  let hierarchyData = fs.readFileSync(hierarchyPath);
+  let hierarchyString = hierarchyData.toString();
+
+  // Combine and return data
+  returnData = {
+    json: allJsonData,
+    hierarchy: hierarchyString
+  }
+
+  console.log("- RETURNING RESULTS");
   return returnData;
 }
