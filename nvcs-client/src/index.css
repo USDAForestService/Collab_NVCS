@@ -5,3 +5,7 @@ body {
   max-width: 38rem;
   padding: 2rem;
 }
+
+#detected-json-container {
+  white-space: nowrap;
+}
