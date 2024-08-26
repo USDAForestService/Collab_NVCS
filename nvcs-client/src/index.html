@@ -13,5 +13,45 @@
     <div id="detected-json-container">
       No JSON Detected
     </div>
+    <div id='json-dialog' class="dialog hidden">
+      <h2>JSON Editor</h2>
+      <div class="input-container">
+        <label for="node-hierarchyName">Node Name</label>
+        <textarea id="node-hierarchyName"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="node-nodeDescription">Node Description</label>
+        <textarea id="node-nodeDescription"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="node-hierarchyLevel">Hierarchy Level</label>
+        <textarea id="node-hierarchyLevel"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="node-hierarchyLineNumber">Hierarchy Line Number</label>
+        <textarea id="node-hierarchyLineNumber"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="node-nodeID">Node ID</label>
+        <textarea id="node-nodeID"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="node-nodeLevel">Node Level</label>
+        <textarea id="node-nodeLevel"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="node-nodeTrigger">Node Trigger</label>
+        <textarea id="node-nodeTrigger"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="node-nodeFilters">Node Filters</label>
+        <textarea id="node-nodeFilters"></textarea>
+      </div>
+      <div class="button-container">
+        <button disabled>Save All</button>
+        <button disabled>Undo All</button>
+        <button onclick="closeJsonDialog()">Close</button>
+      </div>
+    </div>
   </body>
 </html>

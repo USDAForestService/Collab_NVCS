@@ -3,7 +3,7 @@ let detectedJsonContainer = document.getElementById("detected-json-container");
 
 var nodeJson;
 var nodeHierarchy;
-var hierachy;
+var hierarchy;
 
 btnFetchExistingJson.addEventListener('click', async (event) => {
     // Query for JSON and TXT data
@@ -52,11 +52,33 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
 
 function generateListEntry(element) {
     returnString = "<li class='hierarchyNode'>";
-    returnString += `<a class='hierarchyNodeLink' href="#">${element.hierarchyName}</a>`;
+    returnString += `<button class='hierarchyNodeLink' onclick='openJsonDialog(${element.hierarchyLineNumber})'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
     returnString += "</ul>";
     returnString += "</li>";
     return returnString;
+}
+
+function openJsonDialog(hierarchyLineNumber) {
+    const dialog = document.getElementById("json-dialog");
+    dialog.classList.remove("hidden");
+
+    const hierarchyElement = hierarchy.filter(i => i.hierarchyLineNumber == hierarchyLineNumber)[0];
+    console.log(hierarchyElement);
+
+    document.getElementById("node-hierarchyName").value = hierarchyElement.hierarchyName;
+    document.getElementById("node-nodeDescription").value = hierarchyElement.node.description;
+    document.getElementById("node-hierarchyLevel").value = hierarchyElement.hierarchyLevel;
+    document.getElementById("node-hierarchyLineNumber").value = hierarchyElement.hierarchyLineNumber;
+    document.getElementById("node-nodeID").value = hierarchyElement.node.id;
+    document.getElementById("node-nodeLevel").value = hierarchyElement.node.level;
+    document.getElementById("node-nodeTrigger").value = hierarchyElement.node.trigger;
+    document.getElementById("node-nodeFilters").value = hierarchyElement.node.filters;
+}
+
+function closeJsonDialog() {
+    const dialog = document.getElementById("json-dialog");
+    dialog.classList.add("hidden");
 }
