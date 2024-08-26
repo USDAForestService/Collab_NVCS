@@ -3,14 +3,17 @@ let detectedJsonContainer = document.getElementById("detected-json-container");
 
 var nodeJson;
 var nodeHierarchy;
+var hierachy;
 
 btnFetchExistingJson.addEventListener('click', async (event) => {
+    // Query for JSON and TXT data
     const returnedData = await window.electronAPI.fetchExistingJson();
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
 
+    // Generate objects from returned JSON and TXT data
     let hierarchySplit = nodeHierarchy.split('\r\n');
-    let hierarchy = [] 
+    hierarchy = [];
     for (let split of hierarchySplit) {
         let tabCount = (split.match(/\t/g) || []).length;
         let tablessSplit = split.replaceAll('\t', '');
@@ -36,15 +39,24 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
     }
     console.log(hierarchy);
 
-    nodeDisplay = "";
-    const tabSpace = "&nbsp;&nbsp;";
-    for (let element of hierarchy) {
-        for (let i = 0; i < element.hierarchyLevel; i++)
-            nodeDisplay += tabSpace;
+    // Generate HTML tree
+    nodeDisplay = "<ul>";
+    let rootElements = hierarchy.filter(i => i.hierarchyLevel == 0);
+    for (let rootElement of rootElements)
+        nodeDisplay += generateListEntry(rootElement);
+    nodeDisplay += "<ul>";
 
-        nodeDisplay += element.hierarchyName;
-        nodeDisplay += "<br>";
-    }
-
+    // Display results
     detectedJsonContainer.innerHTML = nodeDisplay;
 });
+
+function generateListEntry(element) {
+    returnString = "<li class='hierarchyNode'>";
+    returnString += `<a class='hierarchyNodeLink' href="#">${element.hierarchyName}</a>`;
+    returnString += "<ul>";
+    for (let child of element.children)
+        returnString += generateListEntry(child);
+    returnString += "</ul>";
+    returnString += "</li>";
+    return returnString;
+}

@@ -9,3 +9,8 @@ body {
 #detected-json-container {
   white-space: nowrap;
 }
+
+.hierarchyNode > ul {
+  width: fit-content;
+  border-left: 1px solid black;
+}
