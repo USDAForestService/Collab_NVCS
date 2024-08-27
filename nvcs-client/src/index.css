@@ -15,6 +15,20 @@ body {
   border-left: 1px solid black;
 }
 
+.hierarchyNodeButton {
+  background: none;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+}
+
+.hierarchyNodeButton:hover {
+  background: lightgray;
+}
+
 .hidden {
   display: none;
 }

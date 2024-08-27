@@ -52,7 +52,7 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
 
 function generateListEntry(element) {
     returnString = "<li class='hierarchyNode'>";
-    returnString += `<button class='hierarchyNodeLink' onclick='openJsonDialog(${element.hierarchyLineNumber})'>${element.hierarchyName}</button>`;
+    returnString += `<button class='hierarchyNodeButton' onclick='openJsonDialog(${element.hierarchyLineNumber})'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
