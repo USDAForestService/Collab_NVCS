@@ -75,7 +75,38 @@ function openJsonDialog(hierarchyLineNumber) {
     document.getElementById("node-nodeID").value = hierarchyElement.node.id;
     document.getElementById("node-nodeLevel").value = hierarchyElement.node.level;
     document.getElementById("node-nodeTrigger").value = hierarchyElement.node.trigger;
-    document.getElementById("node-nodeFilters").value = hierarchyElement.node.filters;
+
+    let nodeFilterContent = "";
+    const filterKeys = Object.keys(hierarchyElement.node.filters);
+    for (const filterKey of filterKeys) {
+        
+        nodeFilterContent += "<div>"
+        nodeFilterContent += `
+            <h3>
+                ${filterKey}
+            </h3>
+        `;
+        
+        const filterValueArray = hierarchyElement.node.filters[filterKey];
+        for (const filterValueArrayElement of filterValueArray) {
+
+            const inputFilterKeys = Object.keys(filterValueArrayElement);
+            for (const inputFilterKey of inputFilterKeys) {
+                
+                const inputFilterValue = filterValueArrayElement[inputFilterKey];
+                nodeFilterContent += `
+                <div class='sub-content-container'>
+                    <input type="text" class='sub-key-holder' value="${inputFilterKey}"/>
+                    <input type="text" class='sub-value-holder' value="${inputFilterValue}"/>
+                </div>
+                `;
+            }
+        }
+        
+        nodeFilterContent += "</div>";
+    }
+
+    document.getElementById("node-nodeFilters").innerHTML = nodeFilterContent;
 }
 
 function closeJsonDialog() {

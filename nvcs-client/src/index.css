@@ -40,6 +40,8 @@ body {
   transform: translate(-50%, -50%);
   width: 50%;
   height: fit-content;
+  max-height: 90%;
+  overflow: auto;
   border: 1px solid black;
   background-color: white;
   padding: 20px;
@@ -56,14 +58,30 @@ body {
   padding: 5px;
 }
 
-.dialog .input-container label {
+.dialog .input-container .key-holder {
   flex-grow: 1;
+}
+
+.dialog .input-container .value-holder {
+  width: 75%;
+}
+
+
+.dialog .input-container .sub-content-container {
+  display: flex;
+  gap: 5px;
+}
+
+.dialog .input-container .sub-value-holder {
+  flex-grow: 1;
+}
+
+.dialog .input-container label {
   align-content: center;
 }
 
 .dialog .input-container textarea,
 .dialog .input-container input {
-  width: 75%;
   border: 1px solid grey;
   resize: vertical;
   height: fit-content;
