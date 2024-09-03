@@ -114,9 +114,22 @@ function openJsonDialog(hierarchyLineNumber) {
             for (const inputFilterKey of inputFilterKeys) {
 
                 const inputFilterValue = filterValueArrayElement[inputFilterKey];
+
+                let filterSelectBoxOptions;
+                for (const filterType of filterTypes) {
+                    const selected = filterType == inputFilterKey ? "selected" : "";
+                    filterSelectBoxOptions += `
+                        <option value="${filterType}" ${selected}>
+                            ${filterType}
+                        </option>
+                    `;
+                }
+
                 nodeFilterContent += `
                 <div class='sub-content-container'>
-                    <input type="text" class='sub-key-holder' value="${inputFilterKey}"/>
+                    <select class='sub-key-holder' value="${inputFilterKey}">
+                    ${filterSelectBoxOptions}
+                    </select>
                     <input type="text" class='sub-value-holder' value="${inputFilterValue}"/>
                 </div>
                 `;
