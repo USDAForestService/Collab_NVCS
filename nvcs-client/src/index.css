@@ -58,26 +58,46 @@ body {
   padding: 5px;
 }
 
-.dialog .input-container .key-holder {
+.dialog .key-holder {
   flex-grow: 1;
 }
 
-.dialog .input-container .value-holder {
+.dialog .value-holder {
   width: 75%;
 }
 
+.dialog .filter-container {
+  padding: 5px 0;
+}
 
-.dialog .input-container .sub-content-container {
+.dialog .sub-content-header-container {
   display: flex;
   gap: 5px;
+  margin: 10px 0;
 }
 
-.dialog .input-container .sub-value-holder {
-  flex-grow: 1;
-}
-
-.dialog .input-container label {
+.dialog .sub-content-header-container label {
   align-content: center;
+}
+
+.dialog .sub-content-header-container input {
+  flex-grow: 1;
+  font-weight: bold;
+  font-size: large;
+}
+
+.dialog .sub-content-container {
+  display: flex;
+  gap: 5px;
+  margin: 3px 0;
+}
+
+.dialog .sub-key-holder {
+  width: 25%;
+}
+
+.dialog .sub-value-holder {
+  flex-grow: 1;
 }
 
 .dialog .input-container textarea,
@@ -85,6 +105,8 @@ body {
   border: 1px solid grey;
   resize: vertical;
   height: fit-content;
+  margin: 0;
+  padding: 5px;
 }
 
 .dialog .button-container {

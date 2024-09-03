@@ -1,6 +1,21 @@
 let btnFetchExistingJson = document.getElementById("btn-fetch-existing-json");
 let detectedJsonContainer = document.getElementById("detected-json-container");
 
+var filterTypes = [
+    "state",
+    "ecoregion",
+    "plantation",
+    "hydric",
+    "riverine",
+    "species",
+    "wetland",
+    "ruderal",
+    "exotic",
+    "softwoodhardwood",
+    "planted",
+    "tallytree"
+];
+
 var nodeJson;
 var nodeHierarchy;
 var hierarchy;
@@ -44,7 +59,7 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
     let rootElements = hierarchy.filter(i => i.hierarchyLevel == 0);
     for (let rootElement of rootElements)
         nodeDisplay += generateListEntry(rootElement);
-    nodeDisplay += "<ul>";
+    nodeDisplay += "</ul>";
 
     // Display results
     detectedJsonContainer.innerHTML = nodeDisplay;
@@ -80,11 +95,16 @@ function openJsonDialog(hierarchyLineNumber) {
     const filterKeys = Object.keys(hierarchyElement.node.filters);
     for (const filterKey of filterKeys) {
         
-        nodeFilterContent += "<div>"
+        nodeFilterContent += "<div class='filter-container'>"
         nodeFilterContent += `
-            <h3>
-                ${filterKey}
-            </h3>
+            <div class='sub-content-header-container'>
+                <label for="filter-${filterKey}">Name:</label>
+                <input type="text" id="filter-${filterKey}" value="${filterKey}" />
+            </div>
+            <div class='sub-content-container'>
+                <div class='sub-key-holder'>Input Type</div>
+                <div class='sub-value-holder'>Value</div>
+            </div>
         `;
         
         const filterValueArray = hierarchyElement.node.filters[filterKey];
@@ -92,7 +112,7 @@ function openJsonDialog(hierarchyLineNumber) {
 
             const inputFilterKeys = Object.keys(filterValueArrayElement);
             for (const inputFilterKey of inputFilterKeys) {
-                
+
                 const inputFilterValue = filterValueArrayElement[inputFilterKey];
                 nodeFilterContent += `
                 <div class='sub-content-container'>
