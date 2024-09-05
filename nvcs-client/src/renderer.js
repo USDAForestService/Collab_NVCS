@@ -34,6 +34,7 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
         let tablessSplit = split.replaceAll('\t', '');
         let associatedNode = nodeJson.filter(i => i.node.name === tablessSplit)[0];
         hierarchy.push({
+            fileName: associatedNode.node.fileName,
             hierarchyName: associatedNode.node.name,
             hierarchyLevel: tabCount,
             hierarchyLineNumber: hierarchy.length + 1,

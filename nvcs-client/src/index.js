@@ -64,7 +64,9 @@ async function fetchExistingJson(event) {
   jsonFiles.forEach(file => {
     let jsonPath = path.join(jsonDirectory, file);
     let data = fs.readFileSync(jsonPath);
-    let stringData = data.toString();
+    let jsonData = JSON.parse(data);
+    jsonData["node"]["fileName"] = path.basename(file);
+    let stringData = JSON.stringify(jsonData);
     let cleanedData = stringData.trim();
     cleanedJsonData.push(cleanedData);
   })
