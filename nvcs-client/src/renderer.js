@@ -140,21 +140,28 @@ function addFilter() {
     filterContainer.insertBefore(newFilterElement, addFilterButton);
 }
 
-function addInputFilter(filterKey) {
-    const inputFiltersSelector = `.filter-container[data-filter-name="${filterKey}"] .input-filters-container`;
-    const inputFiltersContainer = document.querySelector(inputFiltersSelector);
+function addInputFilter(identifier) {
+    const filterContainer = document.getElementById(identifier);
+    const inputFiltersContainer = filterContainer.querySelector(".input-filters-container")
     const newInputFilterHtml = createInputFilter(null, null, null);
     inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
 }
 
 function createFilter(filterKey, inputFilters) {
+    if (!filterKey)
+        filterKey = "";
 
+    if (!inputFilters)
+        inputFilters = "";
+
+
+    let identifier = newGuid();
     let html = `
-    <div class='filter-container' data-filter-name="${filterKey}">
+    <div class='filter-container' id="${identifier}">
         <div class='sub-content-header-container'>
             <label for="filter-${filterKey}">Name:</label>
             <input type="text" id="filter-${filterKey}" value="${filterKey}" />
-            <button onclick="deleteFilter('${filterKey}')">Delete Filter</button>
+            <button onclick="deleteElement('${identifier}')">Delete Filter</button>
         </div>
         <div class='sub-content-container'>
             <div class='sub-key-holder'>
@@ -168,7 +175,7 @@ function createFilter(filterKey, inputFilters) {
             ${inputFilters}
         </div>
         <div class='sub-content-button-container'>
-            <button onclick="addInputFilter('${filterKey}')">
+            <button onclick="addInputFilter('${identifier}')">
                 Add
             </button>
         </div>
@@ -179,6 +186,15 @@ function createFilter(filterKey, inputFilters) {
 }
 
 function createInputFilter(filterKey, inputFilterKey, inputFilterValue) {
+    if (!filterKey)
+        filterKey = "";
+    
+    if (!inputFilterKey)
+        inputFilterKey = "";
+
+    if (!inputFilterValue)
+        inputFilterValue = "";
+
     let filterSelectBoxOptions;
     for (const filterType of InputFilterTypes) {
         const selected = filterType == inputFilterKey ? "selected" : "";
@@ -189,28 +205,25 @@ function createInputFilter(filterKey, inputFilterKey, inputFilterValue) {
         `;
     }
 
-    const subContentIdentifier = `${filterKey}~${inputFilterKey}~${inputFilterValue}`;
+    const identifier = newGuid();
     let html = `
-    <div class='sub-content-container' data-input-filter-name="${subContentIdentifier}" >
+    <div class='sub-content-container' id="${identifier}" >
         <select class='sub-key-holder' value="${inputFilterKey}">
         ${filterSelectBoxOptions}
         </select>
         <input type="text" class='sub-value-holder' value="${inputFilterValue}"/>
-        <button onclick="deleteInputFilter('${subContentIdentifier}')">Delete</button>
+        <button onclick="deleteElement('${identifier}')">Delete</button>
     </div>
     `
 
     return html;
 }
 
-function deleteFilter(identifier) {
-    const selector = `.filter-container[data-filter-name='${identifier}']`;
-    const container = document.querySelector(selector);
+function deleteElement(identifier) {
+    const container = document.getElementById(identifier);
     container.remove();
 }
 
-function deleteInputFilter(identifier) {
-    const selector = `.sub-content-container[data-input-filter-name='${identifier}']`;
-    const container = document.querySelector(selector);
-    container.remove();
+function newGuid() {
+    return "id" + Math.random().toString(16).slice(2);
 }
