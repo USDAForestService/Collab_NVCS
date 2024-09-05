@@ -95,11 +95,12 @@ function openJsonDialog(hierarchyLineNumber) {
     const filterKeys = Object.keys(hierarchyElement.node.filters);
     for (const filterKey of filterKeys) {
         
-        nodeFilterContent += "<div class='filter-container'>"
+        nodeFilterContent += `<div class='filter-container' data-filter-name="${filterKey}" >`
         nodeFilterContent += `
             <div class='sub-content-header-container'>
                 <label for="filter-${filterKey}">Name:</label>
                 <input type="text" id="filter-${filterKey}" value="${filterKey}" />
+                <button onclick="deleteFilter('${filterKey}')">Delete Filter</button>
             </div>
             <div class='sub-content-container'>
                 <div class='sub-key-holder'>Input Type</div>
@@ -125,19 +126,37 @@ function openJsonDialog(hierarchyLineNumber) {
                     `;
                 }
 
+                const subContentIdentifier = `${filterKey}~${inputFilterKey}~${inputFilterValue}`;
                 nodeFilterContent += `
-                <div class='sub-content-container'>
+                <div class='sub-content-container' data-input-filter-name="${subContentIdentifier}" >
                     <select class='sub-key-holder' value="${inputFilterKey}">
                     ${filterSelectBoxOptions}
                     </select>
                     <input type="text" class='sub-value-holder' value="${inputFilterValue}"/>
+                    <button onclick="deleteInputFilter('${subContentIdentifier}')">Delete</button>
                 </div>
                 `;
             }
         }
-        
+
+        nodeFilterContent += `
+            <div class='sub-content-button-container'>
+                <button>
+                    Add
+                </button>
+            </div>
+        `;
+
         nodeFilterContent += "</div>";
     }
+
+    nodeFilterContent += `
+        <div>
+            <button>
+                Add Filter
+            </button>
+        </div>
+    `;
 
     document.getElementById("node-nodeFilters").innerHTML = nodeFilterContent;
 }
@@ -145,4 +164,16 @@ function openJsonDialog(hierarchyLineNumber) {
 function closeJsonDialog() {
     const dialog = document.getElementById("json-dialog");
     dialog.classList.add("hidden");
+}
+
+function deleteFilter(identifier) {
+    const selector = `.filter-container[data-filter-name='${identifier}']`;
+    const container = document.querySelector(selector);
+    container.remove();
+}
+
+function deleteInputFilter(identifier) {
+    const selector = `.sub-content-container[data-input-filter-name='${identifier}']`;
+    const container = document.querySelector(selector);
+    container.remove();
 }

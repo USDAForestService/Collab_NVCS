@@ -100,6 +100,12 @@ body {
   flex-grow: 1;
 }
 
+.dialog .sub-content-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .dialog .input-container textarea,
 .dialog .input-container input {
   border: 1px solid grey;
@@ -114,4 +120,9 @@ body {
   display: flex;
   gap: 5px;
   justify-content: flex-end;
+}
+
+.dialog button {
+  width: fit-content;
+  height: fit-content;
 }
