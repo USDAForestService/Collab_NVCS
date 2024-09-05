@@ -1,7 +1,7 @@
 let btnFetchExistingJson = document.getElementById("btn-fetch-existing-json");
 let detectedJsonContainer = document.getElementById("detected-json-container");
 
-var filterTypes = [
+var InputFilterTypes = [
     "state",
     "ecoregion",
     "plantation",
@@ -95,19 +95,7 @@ function openJsonDialog(hierarchyLineNumber) {
     const filterKeys = Object.keys(hierarchyElement.node.filters);
     for (const filterKey of filterKeys) {
         
-        nodeFilterContent += `<div class='filter-container' data-filter-name="${filterKey}" >`
-        nodeFilterContent += `
-            <div class='sub-content-header-container'>
-                <label for="filter-${filterKey}">Name:</label>
-                <input type="text" id="filter-${filterKey}" value="${filterKey}" />
-                <button onclick="deleteFilter('${filterKey}')">Delete Filter</button>
-            </div>
-            <div class='sub-content-container'>
-                <div class='sub-key-holder'>Input Type</div>
-                <div class='sub-value-holder'>Value</div>
-            </div>
-        `;
-        
+        let inputFilterContent = "";
         const filterValueArray = hierarchyElement.node.filters[filterKey];
         for (const filterValueArrayElement of filterValueArray) {
 
@@ -115,44 +103,16 @@ function openJsonDialog(hierarchyLineNumber) {
             for (const inputFilterKey of inputFilterKeys) {
 
                 const inputFilterValue = filterValueArrayElement[inputFilterKey];
-
-                let filterSelectBoxOptions;
-                for (const filterType of filterTypes) {
-                    const selected = filterType == inputFilterKey ? "selected" : "";
-                    filterSelectBoxOptions += `
-                        <option value="${filterType}" ${selected}>
-                            ${filterType}
-                        </option>
-                    `;
-                }
-
-                const subContentIdentifier = `${filterKey}~${inputFilterKey}~${inputFilterValue}`;
-                nodeFilterContent += `
-                <div class='sub-content-container' data-input-filter-name="${subContentIdentifier}" >
-                    <select class='sub-key-holder' value="${inputFilterKey}">
-                    ${filterSelectBoxOptions}
-                    </select>
-                    <input type="text" class='sub-value-holder' value="${inputFilterValue}"/>
-                    <button onclick="deleteInputFilter('${subContentIdentifier}')">Delete</button>
-                </div>
-                `;
+                inputFilterContent += createInputFilter(filterKey, inputFilterKey, inputFilterValue);
             }
         }
 
-        nodeFilterContent += `
-            <div class='sub-content-button-container'>
-                <button>
-                    Add
-                </button>
-            </div>
-        `;
-
-        nodeFilterContent += "</div>";
+        nodeFilterContent += createFilter(filterKey, inputFilterContent);
     }
 
     nodeFilterContent += `
-        <div>
-            <button>
+        <div class='add-filter-container'>
+            <button onclick="addFilter()">
                 Add Filter
             </button>
         </div>
@@ -164,6 +124,83 @@ function openJsonDialog(hierarchyLineNumber) {
 function closeJsonDialog() {
     const dialog = document.getElementById("json-dialog");
     dialog.classList.add("hidden");
+}
+
+function createElementFromString(htmlString) {
+    const template = document.createElement("template");
+    template.innerHTML = htmlString.trim();
+    return template.content.firstChild;
+}
+
+function addFilter() {
+    const addFilterButton = document.querySelector(".add-filter-container");
+    const filterContainer = addFilterButton.parentElement;
+    const newFilterHtml = createFilter(null, null);
+    const newFilterElement = createElementFromString(newFilterHtml);
+    filterContainer.insertBefore(newFilterElement, addFilterButton);
+}
+
+function addInputFilter(filterKey) {
+    const inputFiltersSelector = `.filter-container[data-filter-name="${filterKey}"] .input-filters-container`;
+    const inputFiltersContainer = document.querySelector(inputFiltersSelector);
+    const newInputFilterHtml = createInputFilter(null, null, null);
+    inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
+}
+
+function createFilter(filterKey, inputFilters) {
+
+    let html = `
+    <div class='filter-container' data-filter-name="${filterKey}">
+        <div class='sub-content-header-container'>
+            <label for="filter-${filterKey}">Name:</label>
+            <input type="text" id="filter-${filterKey}" value="${filterKey}" />
+            <button onclick="deleteFilter('${filterKey}')">Delete Filter</button>
+        </div>
+        <div class='sub-content-container'>
+            <div class='sub-key-holder'>
+                Input Type
+            </div>
+            <div class='sub-value-holder'>
+                Value
+            </div>
+        </div>
+        <div class='input-filters-container'>
+            ${inputFilters}
+        </div>
+        <div class='sub-content-button-container'>
+            <button onclick="addInputFilter('${filterKey}')">
+                Add
+            </button>
+        </div>
+    </div>
+    `;
+
+    return html;
+}
+
+function createInputFilter(filterKey, inputFilterKey, inputFilterValue) {
+    let filterSelectBoxOptions;
+    for (const filterType of InputFilterTypes) {
+        const selected = filterType == inputFilterKey ? "selected" : "";
+        filterSelectBoxOptions += `
+            <option value="${filterType}" ${selected}>
+                ${filterType}
+            </option>
+        `;
+    }
+
+    const subContentIdentifier = `${filterKey}~${inputFilterKey}~${inputFilterValue}`;
+    let html = `
+    <div class='sub-content-container' data-input-filter-name="${subContentIdentifier}" >
+        <select class='sub-key-holder' value="${inputFilterKey}">
+        ${filterSelectBoxOptions}
+        </select>
+        <input type="text" class='sub-value-holder' value="${inputFilterValue}"/>
+        <button onclick="deleteInputFilter('${subContentIdentifier}')">Delete</button>
+    </div>
+    `
+
+    return html;
 }
 
 function deleteFilter(identifier) {
