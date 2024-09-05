@@ -115,6 +115,10 @@ body {
   padding: 5px;
 }
 
+.dialog input:read-only {
+  background: lightgrey;
+}
+
 .dialog .button-container {
   padding-top: 10px;
   display: flex;
