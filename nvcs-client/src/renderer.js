@@ -87,16 +87,27 @@ function openJsonDialog(hierarchyLineNumber) {
     const dialog = document.getElementById("json-dialog");
     dialog.classList.remove("hidden");
 
+    const dialogBody = dialog.querySelector(".body-container");
+    dialogBody.scroll({ top: 0 });
+
     const hierarchyElement = hierarchy.filter(i => i.hierarchyLineNumber == hierarchyLineNumber)[0];
     console.log(hierarchyElement);
 
     document.getElementById("node-hierarchyName").value = hierarchyElement.hierarchyName;
     document.getElementById("node-hierarchyName").setAttribute("data-opened-name", hierarchyElement.hierarchyName);
-    document.getElementById("node-nodeDescription").value = hierarchyElement.node.description;
     document.getElementById("node-hierarchyLevel").value = hierarchyElement.hierarchyLevel;
     document.getElementById("node-hierarchyLineNumber").value = hierarchyElement.hierarchyLineNumber;
     document.getElementById("node-nodeID").value = hierarchyElement.node.id;
     document.getElementById("node-nodeLevel").value = hierarchyElement.node.level;
+
+    // Update node description data
+    let lineBrokenDescription = hierarchyElement.node.description.join('\n');
+    document.getElementById("node-nodeDescription").value = lineBrokenDescription;
+
+    // Resize textarea height for description content
+    document.getElementById("node-nodeDescription").style.height = "1px";
+    let descriptionScrollHeight = document.getElementById("node-nodeDescription").scrollHeight;
+    document.getElementById("node-nodeDescription").style.height = descriptionScrollHeight + "px";
 
     // Update node trigger data
     let lineBrokenTrigger = hierarchyElement.node.trigger.join('\n');
@@ -263,11 +274,16 @@ function saveJsonChanges() {
     newHierarchyElement.parent = newHierarchyElement.parent;
 
     // Update node data
-    newHierarchyElement.node.description = nodeDescription;
     newHierarchyElement.node.fileName = newHierarchyElement.node.fileName;
     newHierarchyElement.node.id = nodeID;
     newHierarchyElement.node.level = nodeLevel;
     newHierarchyElement.node.name = hierarchyName;
+
+    // Update node description data
+    newHierarchyElement.node.description = [];
+    let splitNodeDescriptions = nodeDescription.split('\n');
+    for (const splitNodeDescription of splitNodeDescriptions)
+        newHierarchyElement.node.description.push(splitNodeDescription);
 
     // Update node trigger data
     newHierarchyElement.node.trigger = [];

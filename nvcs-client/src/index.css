@@ -30,7 +30,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .dialog {
@@ -41,15 +41,33 @@ body {
   width: 50%;
   height: fit-content;
   max-height: 90%;
-  overflow: auto;
   border: 1px solid black;
   background-color: white;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.dialog h2 {
+.dialog .header-container {
+  padding: 20px;
+  border-bottom: 1px solid black;
+}
+
+.dialog .button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialog .header-container h2 {
   width: 100%;
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.dialog .body-container {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 20px;
 }
 
 .dialog .input-container {
@@ -119,8 +137,12 @@ body {
   background: lightgrey;
 }
 
+.dialog .footer-container {
+  padding: 20px;
+  border-top: 1px solid black;
+}
+
 .dialog .button-container {
-  padding-top: 10px;
   display: flex;
   gap: 5px;
   justify-content: flex-end;

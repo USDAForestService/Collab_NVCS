@@ -14,43 +14,53 @@
       No JSON Detected
     </div>
     <div id='json-dialog' class="dialog hidden">
-      <h2>JSON Editor</h2>
-      <div class="input-container">
-        <label for="node-hierarchyName" class="key-holder">Node Name</label>
-        <textarea id="node-hierarchyName" class="value-holder" data-opened-name></textarea>
+      <div class="header-container">
+        <div class="button-container">
+          <button onclick="closeJsonDialog()">Close</button>
+        </div>
+        <h2>JSON Editor</h2>
       </div>
-      <div class="input-container">
-        <label for="node-nodeDescription" class="key-holder">Node Description</label>
-        <textarea id="node-nodeDescription" class="value-holder"></textarea>
+      <div class="body-container">
+        <div class="input-container">
+          <label for="node-hierarchyName" class="key-holder">Node Name</label>
+          <textarea id="node-hierarchyName" class="value-holder" data-opened-name></textarea>
+        </div>
+        <div class="input-container">
+          <label for="node-nodeDescription" class="key-holder">Node Description</label>
+          <textarea id="node-nodeDescription" class="value-holder"></textarea>
+        </div>
+        <div class="input-container">
+          <label for="node-hierarchyLevel" class="key-holder">Hierarchy Level</label>
+          <input id="node-hierarchyLevel" class="value-holder" readonly />
+        </div>
+        <div class="input-container">
+          <label for="node-hierarchyLineNumber" class="key-holder">Hierarchy Line Number</label>
+          <input id="node-hierarchyLineNumber" class="value-holder" readonly />
+        </div>
+        <div class="input-container">
+          <label for="node-nodeID" class="key-holder">Node ID</label>
+          <textarea id="node-nodeID" class="value-holder"></textarea>
+        </div>
+        <div class="input-container">
+          <label for="node-nodeLevel" class="key-holder">Node Level</label>
+          <textarea id="node-nodeLevel" class="value-holder"></textarea>
+        </div>
+        <div class="input-container">
+          <label for="node-nodeTrigger" class="key-holder">Node Trigger</label>
+          <textarea id="node-nodeTrigger" class="value-holder"></textarea>
+        </div>
+        <div class="input-container">
+          <label for="node-nodeFilters" class="key-holder">Node Filters</label>
+          <div id="node-nodeFilters" class="value-holder"></div>
+        </div>
+        
       </div>
-      <div class="input-container">
-        <label for="node-hierarchyLevel" class="key-holder">Hierarchy Level</label>
-        <input id="node-hierarchyLevel" class="value-holder" readonly />
-      </div>
-      <div class="input-container">
-        <label for="node-hierarchyLineNumber" class="key-holder">Hierarchy Line Number</label>
-        <input id="node-hierarchyLineNumber" class="value-holder" readonly />
-      </div>
-      <div class="input-container">
-        <label for="node-nodeID" class="key-holder">Node ID</label>
-        <textarea id="node-nodeID" class="value-holder"></textarea>
-      </div>
-      <div class="input-container">
-        <label for="node-nodeLevel" class="key-holder">Node Level</label>
-        <textarea id="node-nodeLevel" class="value-holder"></textarea>
-      </div>
-      <div class="input-container">
-        <label for="node-nodeTrigger" class="key-holder">Node Trigger</label>
-        <textarea id="node-nodeTrigger" class="value-holder"></textarea>
-      </div>
-      <div class="input-container">
-        <label for="node-nodeFilters" class="key-holder">Node Filters</label>
-        <div id="node-nodeFilters" class="value-holder"></div>
-      </div>
-      <div class="button-container">
-        <button onclick="saveJsonChanges()">Save All</button>
-        <button disabled>Undo All</button>
-        <button onclick="closeJsonDialog()">Close</button>
+      <div class="footer-container">
+        <div class="button-container">
+          <button onclick="saveJsonChanges()">Save All</button>
+          <button disabled>Undo All</button>
+          <button onclick="closeJsonDialog()">Close</button>
+        </div>
       </div>
     </div>
   </body>
