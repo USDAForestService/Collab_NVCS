@@ -17,7 +17,7 @@
       <h2>JSON Editor</h2>
       <div class="input-container">
         <label for="node-hierarchyName" class="key-holder">Node Name</label>
-        <textarea id="node-hierarchyName" class="value-holder"></textarea>
+        <textarea id="node-hierarchyName" class="value-holder" data-opened-name></textarea>
       </div>
       <div class="input-container">
         <label for="node-nodeDescription" class="key-holder">Node Description</label>
@@ -48,7 +48,7 @@
         <div id="node-nodeFilters" class="value-holder"></div>
       </div>
       <div class="button-container">
-        <button disabled>Save All</button>
+        <button onclick="saveJsonChanges()">Save All</button>
         <button disabled>Undo All</button>
         <button onclick="closeJsonDialog()">Close</button>
       </div>
