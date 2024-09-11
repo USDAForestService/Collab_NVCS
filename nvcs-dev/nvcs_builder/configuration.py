@@ -1,10 +1,11 @@
 import configparser
 import ast
-
+import os
 
 class DebugConfig:
     def __init__(self):
-        self.configPath = "C:/Users/kelvynmeyers/Documents/GitHub/FS-Enterprise/NVCS/nvcs-dev/nvcs_builder/debug_config.ini"
+        self.fileDirectoryPath = os.path.dirname(__file__)
+        self.configPath = os.path.join(self.fileDirectoryPath, "debug_config.ini")
         self.config = configparser.ConfigParser(interpolation=configparser.ExtendedInterpolation(), allow_no_value=True)
         self.config.read(self.configPath)
         self.base = "Config"
