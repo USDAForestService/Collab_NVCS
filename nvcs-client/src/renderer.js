@@ -104,7 +104,7 @@ function openJsonDialog(hierarchyLineNumber) {
     let lineBrokenDescription = hierarchyElement.node.description.join('\n');
     document.getElementById("node-nodeDescription").value = lineBrokenDescription;
 
-    // Resize textarea height for description content
+    // Resize description height for its content
     document.getElementById("node-nodeDescription").style.height = "1px";
     let descriptionScrollHeight = document.getElementById("node-nodeDescription").scrollHeight;
     document.getElementById("node-nodeDescription").style.height = descriptionScrollHeight + "px";
@@ -112,6 +112,11 @@ function openJsonDialog(hierarchyLineNumber) {
     // Update node trigger data
     let lineBrokenTrigger = hierarchyElement.node.trigger.join('\n');
     document.getElementById("node-nodeTrigger").value = lineBrokenTrigger;
+
+    // Resize trigger height for its content
+    document.getElementById("node-nodeTrigger").style.height = "1px";
+    let triggerScrollHeight = document.getElementById("node-nodeTrigger").scrollHeight;
+    document.getElementById("node-nodeTrigger").style.height = triggerScrollHeight + "px";
 
     let nodeFilterContent = "";
     const filterKeys = Object.keys(hierarchyElement.node.filters);
@@ -253,13 +258,13 @@ function newGuid() {
 function saveJsonChanges() {
     // Extract dialog values
     let openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
-    let hierarchyName = document.getElementById("node-hierarchyName").value;
-    let nodeDescription = document.getElementById("node-nodeDescription").value;
-    let hierarchyLevel = document.getElementById("node-hierarchyLevel").value;
-    let hierarchyLineNumber = document.getElementById("node-hierarchyLineNumber").value;
-    let nodeID = document.getElementById("node-nodeID").value;
-    let nodeLevel = document.getElementById("node-nodeLevel").value;
-    let nodeTrigger = document.getElementById("node-nodeTrigger").value;
+    let hierarchyName = document.getElementById("node-hierarchyName").value.trim();
+    let nodeDescription = document.getElementById("node-nodeDescription").value.trim();
+    let hierarchyLevel = document.getElementById("node-hierarchyLevel").value.trim();
+    let hierarchyLineNumber = document.getElementById("node-hierarchyLineNumber").value.trim();
+    let nodeID = document.getElementById("node-nodeID").value.trim();
+    let nodeLevel = document.getElementById("node-nodeLevel").value.trim();
+    let nodeTrigger = document.getElementById("node-nodeTrigger").value.trim();
 
     // Find hierarchy element to change
     let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
@@ -295,13 +300,13 @@ function saveJsonChanges() {
     let filterObject = {};
     let filterContainers = document.querySelectorAll(".filter-container");
     for (const filterContainer of filterContainers) {
-        let filterName = filterContainer.querySelector(".sub-content-header-container input").value;
+        let filterName = filterContainer.querySelector(".sub-content-header-container input").value.trim();
         filterObject[filterName] = [];
 
         let subFilterContainers = filterContainer.querySelectorAll(".input-filters-container .sub-content-container");
         for (const subFilterContainer of subFilterContainers) {
-            let subFilterKey = subFilterContainer.querySelector(".sub-key-holder").value;
-            let subFilterValue = subFilterContainer.querySelector(".sub-value-holder").value;
+            let subFilterKey = subFilterContainer.querySelector(".sub-key-holder").value.trim();
+            let subFilterValue = subFilterContainer.querySelector(".sub-value-holder").value.trim();
             
             let subFilterObject = {};
             subFilterObject[subFilterKey] = subFilterValue;
