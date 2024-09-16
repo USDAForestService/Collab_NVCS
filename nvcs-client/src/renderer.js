@@ -42,6 +42,7 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
             parent: null,
             children: [],
         });
+        delete associatedNode.node.fileName;
 
         let latestEntry = hierarchy[hierarchy.length - 1];
         for (let i = hierarchy.length - 2; i >= 0; i--) {
@@ -255,7 +256,7 @@ function newGuid() {
     return "id" + Math.random().toString(16).slice(2);
 }
 
-function saveJsonChanges() {
+async function saveJsonChanges() {
     // Extract dialog values
     let openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     let hierarchyName = document.getElementById("node-hierarchyName").value.trim();
@@ -319,4 +320,10 @@ function saveJsonChanges() {
     console.log(newHierarchyElement);
     closeJsonDialog();
     generateHierarchyHTML(hierarchy);
+}
+
+async function updateJson() {
+    const newDirectoryName = document.getElementById("json-directory-name").value;
+    const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
+    console.log(updateDataResponse);
 }
