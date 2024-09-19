@@ -295,6 +295,14 @@ async function saveJsonChanges() {
     for (const splitNodeDescription of splitNodeDescriptions)
         newHierarchyElement.node.description.push(splitNodeDescription);
 
+    // Update node parent relationship
+    let newParentName = document.getElementById("node-parentNode").value;
+    let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
+    let previousParent = newHierarchyElement.parent;
+    previousParent.children = previousParent.children.filter(i => i.hierarchyName != newHierarchyElement.hierarchyName);
+    newParentElement.children.push(newHierarchyElement);
+    newHierarchyElement.parent = newParentElement;
+
     // Update node trigger data
     newHierarchyElement.node.trigger = [];
     let splitNodeTriggers = nodeTrigger.split('\n');
