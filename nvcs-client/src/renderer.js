@@ -303,6 +303,9 @@ async function saveJsonChanges() {
     newParentElement.children.push(newHierarchyElement);
     newHierarchyElement.parent = newParentElement;
 
+    // Adjust hierarchy level based on parent
+    newHierarchyElement.hierarchyLevel = newHierarchyElement.parent.hierarchyLevel + 1;
+
     // Update node trigger data
     newHierarchyElement.node.trigger = [];
     let splitNodeTriggers = nodeTrigger.split('\n');
