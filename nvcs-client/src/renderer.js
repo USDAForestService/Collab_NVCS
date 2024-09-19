@@ -110,6 +110,10 @@ function openJsonDialog(hierarchyLineNumber) {
     let descriptionScrollHeight = document.getElementById("node-nodeDescription").scrollHeight;
     document.getElementById("node-nodeDescription").style.height = descriptionScrollHeight + "px";
 
+    // Populate node parent options
+    let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
+    document.getElementById("node-parentNode").innerHTML = nodeParentOptions;
+
     // Update node trigger data
     let lineBrokenTrigger = hierarchyElement.node.trigger.join('\n');
     document.getElementById("node-nodeTrigger").value = lineBrokenTrigger;
@@ -326,4 +330,20 @@ async function updateJson() {
     const newDirectoryName = document.getElementById("json-directory-name").value;
     const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
     console.log(updateDataResponse);
+}
+
+
+function generateParentNodeOptions(excludedElement) {
+    const otherNodes = hierarchy.filter(i => i.hierarchyName != excludedElement.hierarchyName);
+
+    let optionsHtml = ""
+    for (const otherNode of otherNodes) {
+        const otherNodeName = otherNode.hierarchyName;
+        const levelIndicator = `[L${otherNode.hierarchyLevel}]`;
+        const tabSpaces = "&nbsp;".repeat(otherNode.hierarchyLevel);
+        const selected = otherNodeName == excludedElement.parent.hierarchyName ? "selected" : "";
+        optionsHtml += `<option value="${otherNodeName}" ${selected}>${levelIndicator} ${tabSpaces}${otherNodeName}</option>`;
+    }
+
+    return optionsHtml;
 }

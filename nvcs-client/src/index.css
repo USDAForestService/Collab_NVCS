@@ -77,11 +77,11 @@ body {
 }
 
 .dialog .key-holder {
-  flex-grow: 1;
+  width: 25%;
 }
 
 .dialog .value-holder {
-  width: 75%;
+  flex-grow: 1;
 }
 
 .dialog .filter-container {
@@ -124,6 +124,7 @@ body {
   align-items: flex-end;
 }
 
+.dialog .input-container select,
 .dialog .input-container textarea,
 .dialog .input-container input {
   border: 1px solid grey;
