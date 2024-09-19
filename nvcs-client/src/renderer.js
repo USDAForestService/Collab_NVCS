@@ -54,6 +54,22 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
             }
         }
     }
+
+    // Generate root element and push level 0 elements as children
+    const levelZeroElements = hierarchy.filter(i => i.hierarchyLevel == 0);
+    const rootElement = {
+        hierarchyName: "ROOT",
+        hierarchyLevel: -1,
+        hierarchyLineNumber: -1,
+        children: levelZeroElements
+    };
+    hierarchy.push(rootElement);
+    for (const child of rootElement.children)
+        child.parent = rootElement;
+
+    // Sort hierarchy elements by line number
+    hierarchy.sort((a, b) => a.hierarchyLevel - b.hierarchyLevel);
+
     console.log(hierarchy);
     initialHierarchy = structuredClone(hierarchy);
 
@@ -63,9 +79,9 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
 function generateHierarchyHTML(hierarchy) {
     // Generate HTML tree
     nodeDisplay = "<ul>";
-    let rootElements = hierarchy.filter(i => i.hierarchyLevel == 0);
-    for (let rootElement of rootElements)
-        nodeDisplay += generateListEntry(rootElement);
+    let rootElement = hierarchy.filter(i => i.hierarchyName == "ROOT")[0];
+    for (let rootChildElement of rootElement.children)
+        nodeDisplay += generateListEntry(rootChildElement);
     nodeDisplay += "</ul>";
 
     // Display results
@@ -349,11 +365,12 @@ function generateParentNodeOptions(excludedElement) {
 
     let optionsHtml = ""
     for (const otherNode of otherNodes) {
+        const blankSpace = "&nbsp;";
         const otherNodeName = otherNode.hierarchyName;
         const levelIndicator = `[L${otherNode.hierarchyLevel}]`;
-        const tabSpaces = "&nbsp;".repeat(otherNode.hierarchyLevel);
+        const tabSpaces = otherNode.hierarchyLevel >= 0 ? blankSpace.repeat(otherNode.hierarchyLevel) : "";
         const selected = otherNodeName == excludedElement.parent.hierarchyName ? "selected" : "";
-        optionsHtml += `<option value="${otherNodeName}" ${selected}>${levelIndicator} ${tabSpaces}${otherNodeName}</option>`;
+        optionsHtml += `<option value="${otherNodeName}" ${selected}>${levelIndicator}${blankSpace}${tabSpaces}${otherNodeName}</option>`;
     }
 
     return optionsHtml;

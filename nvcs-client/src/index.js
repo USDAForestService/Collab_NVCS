@@ -108,6 +108,9 @@ async function updateJson(event, directory, json) {
     const hierarchyPath = path.join(newJsonDirectoryPath, "key-hierarchy.txt");
     let hierarchyContent = "";
 
+    // Filter away the root
+    json = json.filter(i => i.hierarchyName != "ROOT");
+
     // Sort JSON on hierarchy line number
     json.sort((a, b) => { return a.hierarchyLineNumber - b.hierarchyLineNumber });
 
