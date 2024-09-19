@@ -362,6 +362,7 @@ async function updateJson() {
 
 function generateParentNodeOptions(excludedElement) {
     const otherNodes = hierarchy.filter(i => i.hierarchyName != excludedElement.hierarchyName);
+    otherNodes.sort((a, b) => a.hierarchyLineNumber - b.hierarchyLineNumber);
 
     let optionsHtml = ""
     for (const otherNode of otherNodes) {
@@ -370,8 +371,23 @@ function generateParentNodeOptions(excludedElement) {
         const levelIndicator = `[L${otherNode.hierarchyLevel}]`;
         const tabSpaces = otherNode.hierarchyLevel >= 0 ? blankSpace.repeat(otherNode.hierarchyLevel) : "";
         const selected = otherNodeName == excludedElement.parent.hierarchyName ? "selected" : "";
-        optionsHtml += `<option value="${otherNodeName}" ${selected}>${levelIndicator}${blankSpace}${tabSpaces}${otherNodeName}</option>`;
+        const disabled = isElementDescendant(excludedElement, otherNode) ? "disabled" : "";
+        optionsHtml += `<option value="${otherNodeName}" ${selected} ${disabled}>${levelIndicator}${blankSpace}${tabSpaces}${otherNodeName}</option>`;
     }
 
     return optionsHtml;
+}
+
+function isElementDescendant(ancestorElement, descendantElement) {
+    // Base case - is a descendant
+    if (ancestorElement.hierarchyName == descendantElement.hierarchyName)
+        return true;
+
+    // Recursively check children
+    for (const child of ancestorElement.children)
+        if (isElementDescendant(child, descendantElement))
+            return true;
+    
+    // Not a descendant
+    return false;
 }

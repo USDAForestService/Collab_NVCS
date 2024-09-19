@@ -134,6 +134,7 @@ body {
   padding: 5px;
 }
 
+.dialog option:disabled,
 .dialog input:read-only {
   background: lightgrey;
 }
