@@ -130,6 +130,10 @@ function openJsonDialog(hierarchyLineNumber) {
     let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
     document.getElementById("node-parentNode").innerHTML = nodeParentOptions;
 
+    // Populate node children inputs
+    let nodeChildrenInputs = generateChildNodeInputs(hierarchyElement);
+    document.getElementById("node-childrenNodes").innerHTML = nodeChildrenInputs;
+
     // Update node trigger data
     let lineBrokenTrigger = hierarchyElement.node.trigger.join('\n');
     document.getElementById("node-nodeTrigger").value = lineBrokenTrigger;
@@ -315,9 +319,11 @@ async function saveJsonChanges() {
     let newParentName = document.getElementById("node-parentNode").value;
     let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
     let previousParent = newHierarchyElement.parent;
-    previousParent.children = previousParent.children.filter(i => i.hierarchyName != newHierarchyElement.hierarchyName);
-    newParentElement.children.push(newHierarchyElement);
-    newHierarchyElement.parent = newParentElement;
+    if (previousParent != newParentElement) {
+        previousParent.children = previousParent.children.filter(i => i.hierarchyName != newHierarchyElement.hierarchyName);
+        newParentElement.children.push(newHierarchyElement);
+        newHierarchyElement.parent = newParentElement;
+    }
 
     // Adjust hierarchy level based on parent
     newHierarchyElement.hierarchyLevel = newHierarchyElement.parent.hierarchyLevel + 1;
@@ -364,7 +370,7 @@ function generateParentNodeOptions(excludedElement) {
     const otherNodes = hierarchy.filter(i => i.hierarchyName != excludedElement.hierarchyName);
     otherNodes.sort((a, b) => a.hierarchyLineNumber - b.hierarchyLineNumber);
 
-    let optionsHtml = ""
+    let html = ""
     for (const otherNode of otherNodes) {
         const blankSpace = "&nbsp;";
         const otherNodeName = otherNode.hierarchyName;
@@ -372,10 +378,54 @@ function generateParentNodeOptions(excludedElement) {
         const tabSpaces = otherNode.hierarchyLevel >= 0 ? blankSpace.repeat(otherNode.hierarchyLevel) : "";
         const selected = otherNodeName == excludedElement.parent.hierarchyName ? "selected" : "";
         const disabled = isElementDescendant(excludedElement, otherNode) ? "disabled" : "";
-        optionsHtml += `<option value="${otherNodeName}" ${selected} ${disabled}>${levelIndicator}${blankSpace}${tabSpaces}${otherNodeName}</option>`;
+        html += `<option value="${otherNodeName}" ${selected} ${disabled}>${levelIndicator}${blankSpace}${tabSpaces}${otherNodeName}</option>`;
     }
 
-    return optionsHtml;
+    return html;
+}
+
+function generateChildNodeInputs(element) {
+    let html = "";
+
+    if (element.children == null || element.children.length == 0) {
+        html += `
+        <div>
+            No children assigned
+        </div>
+        `
+    }
+    else {
+        html += `
+            <div class="sub-content-container">
+                <div class="sub-key-holder-sm">
+                    Order
+                </div>
+                <div class="sub-value-holder">
+                    Element Name
+                </div>
+            </div>
+        `
+
+        for (let i = 0; i < element.children.length; i++) {
+            const child = element.children[i];
+            const childName = child.hierarchyName;
+            const identifier = newGuid();
+            const upDisabled = i == 0 ? "disabled" : "";
+            const downDisabled = i == element.children.length - 1 ? "disabled" : "";
+            html += `
+                <div id="${identifier}" class="sub-content-container">
+                    <label for="${identifier}_input" class="sub-key-holder-sm">Position ${i}:</label>
+                    <input id="${identifier}_input" type="text" value="${childName}" readonly class='sub-value-holder' />
+                    <div>
+                        <button onclick="moveChildUp('${identifier}')" ${upDisabled} >Up</button>
+                        <button onclick="moveChildDown('${identifier}')" ${downDisabled} >Down</button>
+                    </div>
+                </div>
+            `
+        }
+    }
+
+    return html;
 }
 
 function isElementDescendant(ancestorElement, descendantElement) {
