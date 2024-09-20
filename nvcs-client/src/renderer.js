@@ -398,7 +398,6 @@ function generateChildNodeInputs(element) {
         html += `
             <div class="sub-content-container">
                 <div class="sub-key-holder-sm">
-                    Order
                 </div>
                 <div class="sub-value-holder">
                     Element Name
@@ -410,15 +409,13 @@ function generateChildNodeInputs(element) {
             const child = element.children[i];
             const childName = child.hierarchyName;
             const identifier = newGuid();
-            const upDisabled = i == 0 ? "disabled" : "";
-            const downDisabled = i == element.children.length - 1 ? "disabled" : "";
             html += `
-                <div id="${identifier}" class="sub-content-container">
-                    <label for="${identifier}_input" class="sub-key-holder-sm">Position ${i}:</label>
+                <div id="${identifier}" class="sub-content-container child-node-container">
+                    <label for="${identifier}_input" class="sub-key-holder-sm">${i}</label>
                     <input id="${identifier}_input" type="text" value="${childName}" readonly class='sub-value-holder' />
                     <div>
-                        <button onclick="moveChildUp('${identifier}')" ${upDisabled} >Up</button>
-                        <button onclick="moveChildDown('${identifier}')" ${downDisabled} >Down</button>
+                        <button class='btn-up' onclick="moveChildUp('${identifier}')" >Up</button>
+                        <button class='btn-down' onclick="moveChildDown('${identifier}')" >Down</button>
                     </div>
                 </div>
             `
@@ -440,4 +437,52 @@ function isElementDescendant(ancestorElement, descendantElement) {
     
     // Not a descendant
     return false;
+}
+
+function moveChildUp(identifier) {
+    // Identify containers
+    const container = document.getElementById(identifier);
+    const parentContainer = container.parentElement;
+    const pivotContainer = container.previousElementSibling;
+    if (!pivotContainer.classList.contains("child-node-container"))
+        return;
+
+    // Perform move
+    container.remove();
+    parentContainer.insertBefore(container, pivotContainer);
+
+    // Swap postiional label text
+    const containerLabel = container.querySelector("label");
+    const containerLabelText = containerLabel.innerText;
+    const pivotContainerLabel = pivotContainer.querySelector("label");
+    const pivotContainerLabelText = pivotContainerLabel.innerText;
+    containerLabel.innerText = pivotContainerLabelText;
+    pivotContainerLabel.innerText = containerLabelText;
+}
+
+function moveChildDown(identifier) {
+    // Identify containers
+    const container = document.getElementById(identifier);
+    const parentContainer = container.parentElement;
+    const pivotContainer = container.nextElementSibling;
+    if (!pivotContainer.classList.contains("child-node-container"))
+        return;
+
+    // Perform move
+    container.remove();
+    if (pivotContainer == parentContainer.children[parentContainer.children.length - 1]) {
+        parentContainer.appendChild(container);
+    }
+    else {
+        parentContainer.insertBefore(container, pivotContainer.nextElementSibling);
+    }
+
+
+    // Swap postiional label text
+    const containerLabel = container.querySelector("label");
+    const containerLabelText = containerLabel.innerText;
+    const pivotContainerLabel = pivotContainer.querySelector("label");
+    const pivotContainerLabelText = pivotContainerLabel.innerText;
+    containerLabel.innerText = pivotContainerLabelText;
+    pivotContainerLabel.innerText = containerLabelText;
 }
