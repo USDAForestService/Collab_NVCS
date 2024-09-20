@@ -327,6 +327,17 @@ async function saveJsonChanges() {
 
     // Adjust hierarchy level based on parent
     newHierarchyElement.hierarchyLevel = newHierarchyElement.parent.hierarchyLevel + 1;
+    
+    // Re-assign children nodes based on dialog positioning
+    let newChildNodes = [];
+    let childNodeInputs = document.querySelectorAll(".child-node-container input");
+    for (let i = 0; i < childNodeInputs.length; i++) {
+        const childNodeInput = childNodeInputs[i];
+        const childName = childNodeInput.value;
+        const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName)[0];
+        newChildNodes.push(associatedChildNode);
+    }
+    newHierarchyElement.children = newChildNodes;
 
     // Update node trigger data
     newHierarchyElement.node.trigger = [];
