@@ -14,6 +14,7 @@ var InputFilterTypes = [
     "planted",
     "tallytree"
 ];
+var lineNumberCounter = 0;
 
 var nodeJson;
 var nodeHierarchy;
@@ -91,7 +92,7 @@ function generateHierarchyHTML(hierarchy) {
 
 function generateListEntry(element) {
     returnString = "<li class='hierarchyNode'>";
-    returnString += `<button class='hierarchyNodeButton' onclick='openJsonDialog(${element.hierarchyLineNumber})'>${element.hierarchyName}</button>`;
+    returnString += `<button class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
@@ -100,14 +101,14 @@ function generateListEntry(element) {
     return returnString;
 }
 
-function openJsonDialog(hierarchyLineNumber) {
+function openJsonDialog(hierarchyName) {
     const dialog = document.getElementById("json-dialog");
     dialog.classList.remove("hidden");
 
     const dialogBody = dialog.querySelector(".body-container");
     dialogBody.scroll({ top: 0 });
 
-    const hierarchyElement = hierarchy.filter(i => i.hierarchyLineNumber == hierarchyLineNumber)[0];
+    const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     console.log(hierarchyElement);
 
     document.getElementById("node-hierarchyName").value = hierarchyElement.hierarchyName;
@@ -285,8 +286,6 @@ async function saveJsonChanges() {
     let openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     let hierarchyName = document.getElementById("node-hierarchyName").value.trim();
     let nodeDescription = document.getElementById("node-nodeDescription").value.trim();
-    let hierarchyLevel = document.getElementById("node-hierarchyLevel").value.trim();
-    let hierarchyLineNumber = document.getElementById("node-hierarchyLineNumber").value.trim();
     let nodeID = document.getElementById("node-nodeID").value.trim();
     let nodeLevel = document.getElementById("node-nodeLevel").value.trim();
     let nodeTrigger = document.getElementById("node-nodeTrigger").value.trim();
@@ -296,8 +295,6 @@ async function saveJsonChanges() {
 
     // Update hierarchy data
     newHierarchyElement.hierarchyName = hierarchyName;
-    newHierarchyElement.hierarchyLevel = hierarchyLevel;
-    newHierarchyElement.hierarchyLineNumber = hierarchyLineNumber;
     
     // Update connection data
     newHierarchyElement.children = newHierarchyElement.children;
@@ -324,9 +321,6 @@ async function saveJsonChanges() {
         newParentElement.children.push(newHierarchyElement);
         newHierarchyElement.parent = newParentElement;
     }
-
-    // Adjust hierarchy level based on parent
-    newHierarchyElement.hierarchyLevel = newHierarchyElement.parent.hierarchyLevel + 1;
     
     // Re-assign children nodes based on dialog positioning
     let newChildNodes = [];
@@ -363,6 +357,9 @@ async function saveJsonChanges() {
         }
     }
     newHierarchyElement.node.filters = filterObject;
+
+    // Re-calculate hierarchy line numbers & levels
+    recalculateHierarchyPositionalData(hierarchy);
 
     // Close dialog & render new changes
     console.log(newHierarchyElement);
@@ -488,7 +485,6 @@ function moveChildDown(identifier) {
         parentContainer.insertBefore(container, pivotContainer.nextElementSibling);
     }
 
-
     // Swap postiional label text
     const containerLabel = container.querySelector("label");
     const containerLabelText = containerLabel.innerText;
@@ -496,4 +492,21 @@ function moveChildDown(identifier) {
     const pivotContainerLabelText = pivotContainerLabel.innerText;
     containerLabel.innerText = pivotContainerLabelText;
     pivotContainerLabel.innerText = containerLabelText;
+}
+
+function recalculateHierarchyPositionalData(hierarchy) {
+    lineNumberCounter = 0;
+    const root = hierarchy.filter(i => i.hierarchyName == "ROOT")[0];
+    recursivelyUpdatePositionalData(root);
+}
+
+function recursivelyUpdatePositionalData(element) {
+    element.hierarchyLineNumber = lineNumberCounter;
+    lineNumberCounter++;
+
+    if (element.parent)
+        element.hierarchyLevel = element.parent.hierarchyLevel + 1;
+
+    for (const child of element.children)
+        recursivelyUpdatePositionalData(child);
 }
