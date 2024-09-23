@@ -29,6 +29,8 @@
       " OR",
       " iid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
       " Do not include exotic species.",
+      " OR"
+      " iie. RIV Populus fremontii > 20%",
       "OR",
       "iii. If physiographic class code is HYDRIC = Y, OR if the physiographic class code is RIVERINE = Y, AND EITHER",
       " iiia. Facultative wet (W2) tree species have at least a combined RIV =>10%,",
@@ -37,15 +39,19 @@
       " iiib. Facultative wet (W2) tree species have at least a combined RIV => 10%,",
       " and the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 50%,",
       " OR",
-      " iiic. Facultative (W3) tree species have at least a combined RIV => 10%,",
+      " iiic. Facultative (W3) tree species have at least a combined RIV => 10%, and",
       " The combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,",
       " OR",
       " iiid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
       " Do not include exotic species.",
-	  " OR",
+      " OR",
+      " iiie. RIV Populus fremontii > 20%",
+	  "OR",
 	  "iv. If the ecoregion (ECOREGION ) is 242 AND",
 	  " iva. The facultative wet (W2) tree species have at least a combined RIV =>20%, and the combination of",
-	  "obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%"
+	  "obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%",
+      "OR",
+      "v. If the “physiographic class code” is RIVERINE = Y"
    ],
 
    "trigger": [
@@ -53,12 +59,15 @@
       "or (match(RIVERINE) and ( (riv(W2) >= 20 and spcov(W1_UNDERSTORY) >= 10)",
       "                          or (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
       "                          or (riv(W3) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
-      "                          or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
+      "                          or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY))",
+      "                          or (riv(POPULUS_FREMONTII) > 20) ))",
       "or (match(HYDRIC_OR_RIVERINE) and ( (riv(W2) >= 10 and spcov(W1_UNDERSTORY) >= 10)",
       "                                     or (riv(W2) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
       "                                     or (riv(W3) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
-      "                                     or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
-	  "or (match(ECOREGIONS_IV) and (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50))"
+      "                                     or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY))",
+      "                                     or (riv(POPULUS_FREMONTII) > 20) ))",
+	  "or (match(ECOREGIONS_IV) and (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50))",
+      "or match(RIVERINE)"
    ],
 
    "filters": {
@@ -101,6 +110,9 @@
       ],
       "UI_UNDERSTORY": [
         {"wetland": "UPL", "exotic": "no", "tallytree": "no"}
+      ],
+      "POPULUS_FREMONTII": [
+        {"species": "Populus fremontii"}
       ]
    }
 

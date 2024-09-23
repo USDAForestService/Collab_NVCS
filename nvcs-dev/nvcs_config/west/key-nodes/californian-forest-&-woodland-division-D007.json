@@ -13,8 +13,8 @@
       "Tree composition and ecology matching one of the following options:",
       "i. EITHER", 
         "a. Tree composition contains one or more of STRONG diagnostic tree",
-		"species Aesculus californica, Arbutus menziesii, Calocedrus decurrens,",
-		"Chamaecyparis lawsoniana, Chrysolepis chrysophylla,",
+		"species Abies concolor, Aesculus californica, Arbutus menziesii, Calocedrus decurrens,",
+		"Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Fraxinus latifolia,",
 		"Hesperocyparis bakeri, Hesperocyparis forbesii,",
 		"Hesperocyparis macnabiana, Hesperocyparis macrocarpa,",
 		"Hesperocyparis pigmaea, Hesperocyparis sargentii, Juglans californica,",
@@ -33,7 +33,7 @@
 		"b. The above tree species, but with =>20% RIV AND other MODERATE",
 		"diagnostic species any combination of Pinus lambertiana,",
 		"Pinus monophylla, Pinus ponderosa, Pseudotsuga macrocarpa,",
-		"or Pseudotsuga menziesii",
+		"or Pseudotsuga menziesii, Sequoia sempervirens,",
 		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
 	  "OR",
 		"c. Any EXOTIC = yes tree species =>80% RIV",
@@ -53,11 +53,13 @@
         {"ecoregion": "M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262"}
       ],
       "STRONG_DIAGNOSTIC_SPECIES": [
+        {"species": "Abies concolor"},
         {"species": "Aesculus californica"},
 		{"species": "Arbutus menziesii"},
 		{"species": "Calocedrus decurrens"},
 		{"species": "Chamaecyparis lawsoniana"},
 		{"species": "Chrysolepis chrysophylla"},
+        {"species": "Fraxinus latifolia"},
 		{"species": "Hesperocyparis bakeri"},
 		{"species": "Hesperocyparis forbesii"},
 		{"species": "Hesperocyparis macnabiana"},
@@ -88,7 +90,8 @@
 		{"species": "Pinus monophylla"},
 		{"species": "Pinus ponderosa"},
 		{"species": "Pseudotsuga macrocarpa"},
-		{"species": "Pseudotsuga menziesii"}
+		{"species": "Pseudotsuga menziesii"},
+        {"species": "Sequoia sempervirens"}
       ],
 	  "EXOTIC_TREE_SPP": [
 	    {"exotic": "yes"}
@@ -96,4 +99,3 @@
    }
 
 }}
-

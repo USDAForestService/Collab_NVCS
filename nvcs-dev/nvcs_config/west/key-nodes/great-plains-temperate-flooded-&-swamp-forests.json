@@ -11,10 +11,10 @@
 
    "description": [
       "Forests found in ECOREGION 315, 331, 332, M334, AND",
-      "tree composition is dominated by one or more of Acer negundo,",
+      "tree composition is dominated by one or more of Acer negundo, Betula occidentalis,",
 	  "Carya illinoinensis, Celtis laevigata, Celtis laevigata var. reticulata,",
 	  "Celtis occidentalis, Fraxinus pennsylvanica, Juglans microcarpa,",
-	  "Juglans nigra, Juglans major, Platanus occidentalis, Populus deltoides,",
+	  "Juglans nigra, Juglans major, Platanus occidentalis, Populus angustifolia, Populus deltoides,",
 	  "Quercus macrocarpa, Quercus shumardii, Quercus virginiana, Salix nigra,",
 	  "Salix amygdaloides, Sapindus saponaria var. drummondii,",
 	  "Sideroxylon lanuginosum, Taxodium distichum, or Ulmus americana",
@@ -31,6 +31,7 @@
       ],
       "DIAGNOSTIC_SPECIES": [
         {"species": "Acer negundo"},
+        {"species": "Betula occidentalis"},
 		{"species": "Carya illinoinensis"},
 		{"species": "Celtis laevigata"},
 		{"species": "Celtis laevigata var. reticulata"},
@@ -39,6 +40,7 @@
 		{"species": "Juglans microcarpa"},
 	    {"species": "Juglans nigra"},
 		{"species": "Juglans major"},
+        {"species": "Populus angustifolia"},
 		{"species": "Platanus occidentalis"},
 		{"species": "Populus deltoides"},
 	    {"species": "Quercus macrocarpa"},
