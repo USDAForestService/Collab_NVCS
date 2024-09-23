@@ -125,11 +125,13 @@ async function updateJson(event, directory, json) {
       // Stringify & write JSON content
       const jsonNode = { node: entry.node };
       const jsonFilePath = path.join(newKeyNodesDirectoryPath, entry.fileName);
-      const jsonAsText = JSON.stringify(jsonNode, null, 4);
+      let jsonAsText = JSON.stringify(jsonNode, null, 4);
+      jsonAsText = jsonAsText.trim();
       fs.writeFileSync(jsonFilePath, jsonAsText);
     }
 
     // Write hierarchy file content
+    hierarchyContent = hierarchyContent.trim();
     fs.writeFileSync(hierarchyPath, hierarchyContent);
     return true;
   }
