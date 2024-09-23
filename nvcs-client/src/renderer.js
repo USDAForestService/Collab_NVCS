@@ -59,9 +59,22 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
     // Generate root element and push level 0 elements as children
     const levelZeroElements = hierarchy.filter(i => i.hierarchyLevel == 0);
     const rootElement = {
+        fileName: null,
         hierarchyName: "ROOT",
         hierarchyLevel: -1,
         hierarchyLineNumber: -1,
+        node: {
+            description: [
+                "Root element to host hierarchy elements. Unused in the actual JSON or hierarchy."
+            ],
+            fileName: null,
+            filters: [],
+            id: "",
+            level: "",
+            name: "ROOT",
+            trigger: []
+        },
+        parent: null,
         children: levelZeroElements
     };
     hierarchy.push(rootElement);
@@ -81,8 +94,7 @@ function generateHierarchyHTML(hierarchy) {
     // Generate HTML tree
     nodeDisplay = "<ul>";
     let rootElement = hierarchy.filter(i => i.hierarchyName == "ROOT")[0];
-    for (let rootChildElement of rootElement.children)
-        nodeDisplay += generateListEntry(rootChildElement);
+    nodeDisplay += generateListEntry(rootElement);
     nodeDisplay += "</ul>";
 
     // Display results
@@ -109,6 +121,7 @@ function openJsonDialog(hierarchyName) {
     dialogBody.scroll({ top: 0 });
 
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
+    const isRoot = hierarchyElement.hierarchyName == "ROOT";
     console.log(hierarchyElement);
 
     document.getElementById("node-hierarchyName").value = hierarchyElement.hierarchyName;
@@ -128,8 +141,10 @@ function openJsonDialog(hierarchyName) {
     document.getElementById("node-nodeDescription").style.height = descriptionScrollHeight + "px";
 
     // Populate node parent options
-    let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
-    document.getElementById("node-parentNode").innerHTML = nodeParentOptions;
+    if (!isRoot) {
+        let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
+        document.getElementById("node-parentNode").innerHTML = nodeParentOptions;
+    }
 
     // Populate node children inputs
     let nodeChildrenInputs = generateChildNodeInputs(hierarchyElement);
@@ -284,6 +299,7 @@ function newGuid() {
 async function saveJsonChanges() {
     // Extract dialog values
     let openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
+    let isRoot = openedHierarchyName == "ROOT";
     let hierarchyName = document.getElementById("node-hierarchyName").value.trim();
     let nodeDescription = document.getElementById("node-nodeDescription").value.trim();
     let nodeID = document.getElementById("node-nodeID").value.trim();
@@ -313,13 +329,15 @@ async function saveJsonChanges() {
         newHierarchyElement.node.description.push(splitNodeDescription);
 
     // Update node parent relationship
-    let newParentName = document.getElementById("node-parentNode").value;
-    let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
-    let previousParent = newHierarchyElement.parent;
-    if (previousParent != newParentElement) {
-        previousParent.children = previousParent.children.filter(i => i.hierarchyName != newHierarchyElement.hierarchyName);
-        newParentElement.children.push(newHierarchyElement);
-        newHierarchyElement.parent = newParentElement;
+    if (!isRoot) {
+        let newParentName = document.getElementById("node-parentNode").value;
+        let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
+        let previousParent = newHierarchyElement.parent;
+        if (previousParent != newParentElement) {
+            previousParent.children = previousParent.children.filter(i => i.hierarchyName != newHierarchyElement.hierarchyName);
+            newParentElement.children.push(newHierarchyElement);
+            newHierarchyElement.parent = newParentElement;
+        }
     }
     
     // Re-assign children nodes based on dialog positioning
