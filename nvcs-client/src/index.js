@@ -99,10 +99,11 @@ async function updateJson(event, directory, json) {
     if (!fs.existsSync(newJsonDirectoryPath))
       fs.mkdirSync(newJsonDirectoryPath);
 
-    // Attempt to make new key-nodes directory
+    // Attempt to delete & recreate new key-nodes directory
     const newKeyNodesDirectoryPath = path.join(newJsonDirectoryPath, "key-nodes");
-    if (!fs.existsSync(newKeyNodesDirectoryPath))
-      fs.mkdirSync(newKeyNodesDirectoryPath);
+    if (fs.existsSync(newKeyNodesDirectoryPath))
+      fs.rmSync(newKeyNodesDirectoryPath, { recursive: true, force: true });
+    fs.mkdirSync(newKeyNodesDirectoryPath);
 
     // Prepare hierarchy content
     const hierarchyPath = path.join(newJsonDirectoryPath, "key-hierarchy.txt");
