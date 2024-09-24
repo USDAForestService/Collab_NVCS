@@ -1,5 +1,3 @@
-let btnFetchExistingJson = document.getElementById("btn-fetch-existing-json");
-
 var InputFilterTypes = [
     "state",
     "ecoregion",
@@ -21,7 +19,7 @@ var nodeHierarchy;
 var hierarchy;
 var initialHierarchy;
 
-btnFetchExistingJson.addEventListener('click', async (event) => {
+async function fetchJson(event) {
     // Query for JSON and TXT data
     const returnedData = await window.electronAPI.fetchExistingJson();
     nodeJson = JSON.parse(returnedData.json);
@@ -88,7 +86,7 @@ btnFetchExistingJson.addEventListener('click', async (event) => {
     initialHierarchy = structuredClone(hierarchy);
 
     generateHierarchyHTML(hierarchy);
-});
+}
 
 function generateHierarchyHTML(hierarchy) {
     // Generate HTML tree
@@ -159,34 +157,9 @@ function openJsonDialog(hierarchyName) {
     let triggerScrollHeight = document.getElementById("node-nodeTrigger").scrollHeight;
     document.getElementById("node-nodeTrigger").style.height = triggerScrollHeight + "px";
 
-    let nodeFilterContent = "";
-    const filterKeys = Object.keys(hierarchyElement.node.filters);
-    for (const filterKey of filterKeys) {
-        
-        let inputFilterContent = "";
-        const filterValueArray = hierarchyElement.node.filters[filterKey];
-        for (const filterValueArrayElement of filterValueArray) {
-
-            const inputFilterKeys = Object.keys(filterValueArrayElement);
-            for (const inputFilterKey of inputFilterKeys) {
-
-                const inputFilterValue = filterValueArrayElement[inputFilterKey];
-                inputFilterContent += createInputFilter(filterKey, inputFilterKey, inputFilterValue);
-            }
-        }
-
-        nodeFilterContent += createFilter(filterKey, inputFilterContent);
-    }
-
-    nodeFilterContent += `
-        <div class='add-filter-container'>
-            <button onclick="addFilter()">
-                Add Filter
-            </button>
-        </div>
-    `;
-
-    document.getElementById("node-nodeFilters").innerHTML = nodeFilterContent;
+    // Populate filters
+    let nodeFilters = generateFilters(hierarchyElement);
+    document.getElementById("node-nodeFilters").innerHTML = nodeFilters;
 }
 
 function closeJsonDialog() {
@@ -451,6 +424,40 @@ function generateChildNodeInputs(element) {
     return html;
 }
 
+function generateFilters(element) {
+    let nodeFilterContent = "";
+
+    if (element) {
+        const filterKeys = Object.keys(element.node.filters);
+        for (const filterKey of filterKeys) {
+            
+            let inputFilterContent = "";
+            const filterValueArray = element.node.filters[filterKey];
+            for (const filterValueArrayElement of filterValueArray) {
+    
+                const inputFilterKeys = Object.keys(filterValueArrayElement);
+                for (const inputFilterKey of inputFilterKeys) {
+    
+                    const inputFilterValue = filterValueArrayElement[inputFilterKey];
+                    inputFilterContent += createInputFilter(filterKey, inputFilterKey, inputFilterValue);
+                }
+            }
+    
+            nodeFilterContent += createFilter(filterKey, inputFilterContent);
+        }
+    }
+
+    nodeFilterContent += `
+        <div class='add-filter-container'>
+            <button onclick="addFilter()">
+                Add Filter
+            </button>
+        </div>
+    `;
+
+    return nodeFilterContent;
+}
+
 function isElementDescendant(ancestorElement, descendantElement) {
     // Base case - is a descendant
     if (ancestorElement.hierarchyName == descendantElement.hierarchyName)
@@ -529,7 +536,7 @@ function recursivelyUpdatePositionalData(element) {
         recursivelyUpdatePositionalData(child);
 }
 
-function deleteElement() {
+function deleteHierarchyElement() {
     // Get associated element
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     const element = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
