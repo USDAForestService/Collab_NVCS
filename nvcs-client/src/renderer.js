@@ -528,3 +528,34 @@ function recursivelyUpdatePositionalData(element) {
     for (const child of element.children)
         recursivelyUpdatePositionalData(child);
 }
+
+function deleteElement() {
+    // Get associated element
+    const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
+    const element = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
+
+    // Only allow deleting if children elements are empty
+    if (element.children.length > 0) {
+        const message = "Unable to delete nodes with children. Please delete or reassign all children before attempting to delete this element again.";
+        alert(message);
+        return;
+    }
+
+    // Delete the element from parent's children list
+    const indexAsChild = element.parent.children.indexOf(element);
+    element.parent.children.splice(indexAsChild, 1);
+
+    // Delete the element from hierarchy element list
+    const indexAsHierarchy = hierarchy.indexOf(element);
+    hierarchy.splice(indexAsHierarchy, 1);
+    
+    // Delete the element
+    delete element;
+
+    // Re-calculate hierarchy line numbers & levels
+    recalculateHierarchyPositionalData(hierarchy);
+
+    // Close dialog & render new changes
+    closeJsonDialog();
+    generateHierarchyHTML(hierarchy);
+}
