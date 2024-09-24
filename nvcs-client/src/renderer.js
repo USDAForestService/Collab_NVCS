@@ -36,7 +36,7 @@ async function fetchJson(event) {
             fileName: associatedNode.node.fileName,
             hierarchyName: associatedNode.node.name,
             hierarchyLevel: tabCount,
-            hierarchyLineNumber: hierarchy.length + 1,
+            hierarchyLineNumber: hierarchy.length,
             node: associatedNode.node,
             parent: null,
             children: [],
@@ -56,25 +56,13 @@ async function fetchJson(event) {
 
     // Generate root element and push level 0 elements as children
     const levelZeroElements = hierarchy.filter(i => i.hierarchyLevel == 0);
-    const rootElement = {
-        fileName: null,
-        hierarchyName: "ROOT",
-        hierarchyLevel: -1,
-        hierarchyLineNumber: -1,
-        node: {
-            description: [
-                "Root element to host hierarchy elements. Unused in the actual JSON or hierarchy."
-            ],
-            fileName: null,
-            filters: [],
-            id: "",
-            level: "",
-            name: "ROOT",
-            trigger: []
-        },
-        parent: null,
-        children: levelZeroElements
-    };
+    let rootElement = createEmptyHierarchyElement();
+    rootElement.hierarchyName = "ROOT";
+    rootElement.hierarchyLevel = -1;
+    rootElement.hierarchyLineNumber = -1;
+    rootElement.node.name = "ROOT";
+    rootElement.node.description.push("Root element to host hierarchy elements. Unused in the actual JSON or hierarchy.");
+    rootElement.children = levelZeroElements;
     hierarchy.push(rootElement);
     for (const child of rootElement.children)
         child.parent = rootElement;
@@ -82,10 +70,35 @@ async function fetchJson(event) {
     // Sort hierarchy elements by line number
     hierarchy.sort((a, b) => a.hierarchyLevel - b.hierarchyLevel);
 
+    // Clone hierarchy
     console.log(hierarchy);
     initialHierarchy = structuredClone(hierarchy);
 
+    // Update HTML elements
     generateHierarchyHTML(hierarchy);
+    document.getElementById("btn-update-json").disabled = false;
+    document.getElementById("btn-add-element").disabled = false;
+}
+
+function createEmptyHierarchyElement() {
+    const element = {
+        fileName: "",
+        hierarchyName: "",
+        hierarchyLevel: null,
+        hierarchyLineNumber: null,
+        node: {
+            name: "",
+            id: "",
+            level: "",
+            description: [],
+            trigger: [],
+            filters: []
+        },
+        parent: null,
+        children: []
+    };
+
+    return element;
 }
 
 function generateHierarchyHTML(hierarchy) {
@@ -112,11 +125,7 @@ function generateListEntry(element) {
 }
 
 function openJsonDialog(hierarchyName) {
-    const dialog = document.getElementById("json-dialog");
-    dialog.classList.remove("hidden");
-
-    const dialogBody = dialog.querySelector(".body-container");
-    dialogBody.scroll({ top: 0 });
+    showJsonDialog();
 
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
@@ -124,6 +133,7 @@ function openJsonDialog(hierarchyName) {
 
     document.getElementById("node-hierarchyName").value = hierarchyElement.hierarchyName;
     document.getElementById("node-hierarchyName").setAttribute("data-opened-name", hierarchyElement.hierarchyName);
+    document.getElementById("node-fileName").value = hierarchyElement.fileName;
     document.getElementById("node-hierarchyLevel").value = hierarchyElement.hierarchyLevel;
     document.getElementById("node-hierarchyLineNumber").value = hierarchyElement.hierarchyLineNumber;
     document.getElementById("node-nodeID").value = hierarchyElement.node.id;
@@ -142,6 +152,13 @@ function openJsonDialog(hierarchyName) {
     if (!isRoot) {
         let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
         document.getElementById("node-parentNode").innerHTML = nodeParentOptions;
+        document.getElementById("node-parentNode").disabled = false;
+    }
+    else  {
+        document.getElementById("node-parentNode").innerHTML = `
+            <option selected disabled>Cannot be assigned to a parent</option>
+        `;
+        document.getElementById("node-parentNode").disabled = true;
     }
 
     // Populate node children inputs
@@ -162,9 +179,30 @@ function openJsonDialog(hierarchyName) {
     document.getElementById("node-nodeFilters").innerHTML = nodeFilters;
 }
 
-function closeJsonDialog() {
+function showJsonDialog() {
+    const dialog = document.getElementById("json-dialog");
+    dialog.classList.remove("hidden");
+
+    const dialogBody = dialog.querySelector(".body-container");
+    dialogBody.scroll({ top: 0 });
+}
+
+function hideJsonDialog() {
     const dialog = document.getElementById("json-dialog");
     dialog.classList.add("hidden");
+}
+
+function closeJsonDialog() {
+    hideJsonDialog();
+
+    const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
+    const isNew = openedHierarchyName == "";
+
+    // Delete newly-added but unsaved hierarchy elements
+    if (isNew) {
+        hierarchy = hierarchy.filter(i => i.hierarchyName != openedHierarchyName);
+    }
+
 }
 
 function createElementFromString(htmlString) {
@@ -274,23 +312,31 @@ async function saveJsonChanges() {
     let openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     let isRoot = openedHierarchyName == "ROOT";
     let hierarchyName = document.getElementById("node-hierarchyName").value.trim();
+    let fileName = document.getElementById("node-fileName").value.trim();
     let nodeDescription = document.getElementById("node-nodeDescription").value.trim();
     let nodeID = document.getElementById("node-nodeID").value.trim();
     let nodeLevel = document.getElementById("node-nodeLevel").value.trim();
     let nodeTrigger = document.getElementById("node-nodeTrigger").value.trim();
 
+    // TODO: Implement validations
+    if (!fileName.endsWith(".json")){
+        const message = "File name must end with the '.json' file type";
+        alert(message);
+        return;
+    }
+
     // Find hierarchy element to change
     let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
 
-    // Update hierarchy data
+    // Update hierarchy name
     newHierarchyElement.hierarchyName = hierarchyName;
+    newHierarchyElement.fileName = fileName;
     
     // Update connection data
     newHierarchyElement.children = newHierarchyElement.children;
     newHierarchyElement.parent = newHierarchyElement.parent;
 
     // Update node data
-    newHierarchyElement.node.fileName = newHierarchyElement.node.fileName;
     newHierarchyElement.node.id = nodeID;
     newHierarchyElement.node.level = nodeLevel;
     newHierarchyElement.node.name = hierarchyName;
@@ -300,29 +346,6 @@ async function saveJsonChanges() {
     let splitNodeDescriptions = nodeDescription.split('\n');
     for (const splitNodeDescription of splitNodeDescriptions)
         newHierarchyElement.node.description.push(splitNodeDescription);
-
-    // Update node parent relationship
-    if (!isRoot) {
-        let newParentName = document.getElementById("node-parentNode").value;
-        let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
-        let previousParent = newHierarchyElement.parent;
-        if (previousParent != newParentElement) {
-            previousParent.children = previousParent.children.filter(i => i.hierarchyName != newHierarchyElement.hierarchyName);
-            newParentElement.children.push(newHierarchyElement);
-            newHierarchyElement.parent = newParentElement;
-        }
-    }
-    
-    // Re-assign children nodes based on dialog positioning
-    let newChildNodes = [];
-    let childNodeInputs = document.querySelectorAll(".child-node-container input");
-    for (let i = 0; i < childNodeInputs.length; i++) {
-        const childNodeInput = childNodeInputs[i];
-        const childName = childNodeInput.value;
-        const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName)[0];
-        newChildNodes.push(associatedChildNode);
-    }
-    newHierarchyElement.children = newChildNodes;
 
     // Update node trigger data
     newHierarchyElement.node.trigger = [];
@@ -349,6 +372,30 @@ async function saveJsonChanges() {
     }
     newHierarchyElement.node.filters = filterObject;
 
+    // Update node parent relationship
+    if (!isRoot) {
+        let newParentName = document.getElementById("node-parentNode").value;
+        let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
+        let previousParent = newHierarchyElement.parent;
+        if (previousParent != newParentElement) {
+            if (previousParent)
+                previousParent.children = previousParent.children.filter(i => i.hierarchyName != newHierarchyElement.hierarchyName);
+            newParentElement.children.push(newHierarchyElement);
+            newHierarchyElement.parent = newParentElement;
+        }
+    }
+    
+    // Re-assign children nodes based on dialog positioning
+    let newChildNodes = [];
+    let childNodeInputs = document.querySelectorAll(".child-node-container input");
+    for (let i = 0; i < childNodeInputs.length; i++) {
+        const childNodeInput = childNodeInputs[i];
+        const childName = childNodeInput.value;
+        const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName)[0];
+        newChildNodes.push(associatedChildNode);
+    }
+    newHierarchyElement.children = newChildNodes;
+
     // Re-calculate hierarchy line numbers & levels
     recalculateHierarchyPositionalData(hierarchy);
 
@@ -360,6 +407,12 @@ async function saveJsonChanges() {
 
 async function updateJson() {
     const newDirectoryName = document.getElementById("json-directory-name").value;
+    if (!newDirectoryName) {
+        const message = "Please provide a directory name for your updated JSON files";
+        alert(message);
+        return;
+    }
+
     const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
     console.log(updateDataResponse);
 }
@@ -375,7 +428,7 @@ function generateParentNodeOptions(excludedElement) {
         const otherNodeName = otherNode.hierarchyName;
         const levelIndicator = `[L${otherNode.hierarchyLevel}]`;
         const tabSpaces = otherNode.hierarchyLevel >= 0 ? blankSpace.repeat(otherNode.hierarchyLevel) : "";
-        const selected = otherNodeName == excludedElement.parent.hierarchyName ? "selected" : "";
+        const selected = otherNodeName == excludedElement.parent?.hierarchyName ? "selected" : "";
         const disabled = isElementDescendant(excludedElement, otherNode) ? "disabled" : "";
         html += `<option value="${otherNodeName}" ${selected} ${disabled}>${levelIndicator}${blankSpace}${tabSpaces}${otherNodeName}</option>`;
     }
@@ -520,7 +573,7 @@ function moveChildDown(identifier) {
 }
 
 function recalculateHierarchyPositionalData(hierarchy) {
-    lineNumberCounter = 0;
+    lineNumberCounter = -1;
     const root = hierarchy.filter(i => i.hierarchyName == "ROOT")[0];
     recursivelyUpdatePositionalData(root);
 }
@@ -565,4 +618,10 @@ function deleteHierarchyElement() {
     // Close dialog & render new changes
     closeJsonDialog();
     generateHierarchyHTML(hierarchy);
+}
+
+function addHierarchyElement() {
+    const element = createEmptyHierarchyElement();
+    hierarchy.push(element);
+    openJsonDialog(element.hierarchyName);
 }

@@ -10,11 +10,12 @@
     <h1>NVCS: JSON Generator</h1>
     <p>This application will allow users to generate JSON couplets using a frontend tool.</p>
     <button id="btn-fetch-existing-json" onclick="fetchJson()">Fetch Existing JSON</button>
-    <button id="btn-update-json" onclick="updateJson()">Update JSON</button>
+    <button id="btn-update-json" onclick="updateJson()" disabled>Update JSON</button>
     <label>
       JSON Directory Name:
       <input id="json-directory-name" type="text" />
     </label>
+    <button id="btn-add-element" onclick="addHierarchyElement()" disabled>Add Element</button>
     <div id="detected-json-container">
       No JSON Detected
     </div>
@@ -29,6 +30,10 @@
         <div class="input-container">
           <label for="node-hierarchyName" class="key-holder">Node Name</label>
           <textarea id="node-hierarchyName" class="value-holder" data-opened-name></textarea>
+        </div>
+        <div class="input-container">
+          <label for="node-fileName" class="key-holder">File Name</label>
+          <textarea id="node-fileName" class="value-holder"></textarea>
         </div>
         <div class="input-container">
           <label for="node-nodeDescription" class="key-holder">Node Description</label>

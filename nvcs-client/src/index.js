@@ -92,6 +92,8 @@ async function fetchExistingJson(event) {
 }
 
 async function updateJson(event, directory, json) {
+  console.log('INVOKED: updateJson');
+
   try {
     // Attempt to make new config directory
     const existingJsonConfigDirectory = __dirname + "../../../nvcs-dev/nvcs_config/";
@@ -134,6 +136,7 @@ async function updateJson(event, directory, json) {
     // Write hierarchy file content
     hierarchyContent = hierarchyContent.trim();
     fs.writeFileSync(hierarchyPath, hierarchyContent);
+    console.log("- RETURNING RESULTS");
     return true;
   }
   catch (error) {
