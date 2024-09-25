@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Vancouverian Ruderal Forest (M405)",
-
-   "id":
-      "M405",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Only one Macrogroup "
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Vancouverian Ruderal Forest (M405)",
+        "id": "M405",
+        "level": "macrogroup",
+        "description": [
+            "Only one Macrogroup "
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

@@ -1,54 +1,66 @@
-{"node": {
-
-   "name":
-      "Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)",
-
-   "id":
-      "G211",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION M242C, 331D, 331G, 331N, 342A, 342D, 342E,",
-		"342F, 342G, 342I, M331J, M242D - only eastern ecosubsections M242Dd,",
-		"M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B,",
-		"M331D, M333 and tree",
-		"composition dominated by one or more of STRONG MESIC DIAGNOSTIC",
-		"species Abies grandis, Pseudotsuga menziesii, or Larix occidentalis",
-		"(RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE MESIC DIAGNOSTIC species in any",
-		"combination of Abies lasiocarpa, Picea engelmannii, Pinus contorta,",
-		"Pinus monticola, Thuja plicata or Tsuga heterophylla (>=30% RIV; i.e.,",
-		"together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M242C, 331D, 331G, 331N, 342A, 342D, 342E, 342F, 342G, 342I, M331J, M242Dd, M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B, M331D, M333"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies grandis"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Larix occidentalis"}
-	  ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies lasiocarpa"},
-		{"species": "Picea engelmannii"},
-		{"species": "Pinus contorta"},
-		{"species": "Pinus monticola"},
-		{"species": "Thuja plicata"},
-		{"species": "Tsuga heterophylla"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)",
+        "id": "G211",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION M242C, 331D, 331G, 331N, 342A, 342D, 342E,",
+            "342F, 342G, 342I, M331J, M242D - only eastern ecosubsections M242Dd,",
+            "M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B,",
+            "M331D, M333 and tree",
+            "composition dominated by one or more of STRONG MESIC DIAGNOSTIC",
+            "species Abies grandis, Pseudotsuga menziesii, or Larix occidentalis",
+            "(RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE MESIC DIAGNOSTIC species in any",
+            "combination of Abies lasiocarpa, Picea engelmannii, Pinus contorta,",
+            "Pinus monticola, Thuja plicata or Tsuga heterophylla (>=30% RIV; i.e.,",
+            "together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M242C, 331D, 331G, 331N, 342A, 342D, 342E, 342F, 342G, 342I, M331J, M242Dd, M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B, M331D, M333"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Larix occidentalis"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Thuja plicata"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                }
+            ]
+        }
+    }
+}

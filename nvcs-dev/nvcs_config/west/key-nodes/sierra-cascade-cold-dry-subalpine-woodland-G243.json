@@ -1,49 +1,57 @@
-{"node": {
-
-   "name":
-      "Sierra-Cascade Cold-Dry Subalpine Woodland (G243)",
-
-   "id":
-      "G243",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 342B, M242D, M242B, M242C, M261, 341D",
-		"and tree composition dominated by one or more of",
-		"STRONG DIAGNOSTIC species Juniperus grandis, Pinus albicaulis, or",
-		"Pinus contorta (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Abies lasiocarpa, Pinus balfouriana, Pinus flexilis,",
-		"or Pinus monticola (>=30% RIV; i.e., together STRONG and MODERATE",
-		"diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "342B, M242D, M242B, M242C, M261, 341D"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus grandis"},
-		{"species": "Pinus albicaulis"},
-		{"species": "Pinus contorta var. murrayana"}
-	  ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-	    {"species": "Abies lasiocarpa"},
-        {"species": "Pinus balfouriana"},
-		{"species": "Pinus flexilis"},
-		{"species": "Pinus monticola"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Sierra-Cascade Cold-Dry Subalpine Woodland (G243)",
+        "id": "G243",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 342B, M242D, M242B, M242C, M261, 341D",
+            "and tree composition dominated by one or more of",
+            "STRONG DIAGNOSTIC species Juniperus grandis, Pinus albicaulis, or",
+            "Pinus contorta (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Abies lasiocarpa, Pinus balfouriana, Pinus flexilis,",
+            "or Pinus monticola (>=30% RIV; i.e., together STRONG and MODERATE",
+            "diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "342B, M242D, M242B, M242C, M261, 341D"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Pinus contorta var. murrayana"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Pinus balfouriana"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus monticola"
+                }
+            ]
+        }
+    }
+}

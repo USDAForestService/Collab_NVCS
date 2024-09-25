@@ -1,49 +1,57 @@
-{"node": {
-
-   "name":
-      "Vancouverian Dry Coastal Beach Pine Forest & Woodland (G205)",
-
-   "id":
-      "G205",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 242A, M242A, M261A, 263",
-		"and tree composition dominated by one or more of STRONG",
-		"DIAGNOSTIC species Picea sitchensis, Pinus contorta,",
-		"or Pseudotsuga menziesii (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Abies grandis, Arbutus menziesii, Pinus muricata, or",
-		"Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,",
-		"together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "242A, M242A, M261A, 263"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Picea sitchensis"},
-		{"species": "Pinus contorta"},
-		{"species": "Pseudotsuga menziesii"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies grandis"},
-		{"species": "Arbutus menziesii"},
-		{"species": "Pinus muricata"},
-		{"species": "Tsuga heterophylla"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Vancouverian Dry Coastal Beach Pine Forest & Woodland (G205)",
+        "id": "G205",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 242A, M242A, M261A, 263",
+            "and tree composition dominated by one or more of STRONG",
+            "DIAGNOSTIC species Picea sitchensis, Pinus contorta,",
+            "or Pseudotsuga menziesii (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Abies grandis, Arbutus menziesii, Pinus muricata, or",
+            "Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,",
+            "together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "242A, M242A, M261A, 263"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Picea sitchensis"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Pinus muricata"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                }
+            ]
+        }
+    }
+}

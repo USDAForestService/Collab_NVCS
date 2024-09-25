@@ -1,48 +1,53 @@
-{"node": {
-
-   "name":
-      "Northeastern Great Plains Aspen Woodland (G146)",
-
-   "id":
-      "G146",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 331E, 332A, 332B",
-		"and tree composition dominated by one or more of STRONG DIAGNOSTIC",
-		"species Populus tremuloides (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Betula papyrifera, Populus grandidentata,",
-		"Populus balsamifera, Quercus macrocarpa, or Ulmus americana (>=30% RIV;",
-		"i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "331E, 332A, 332B"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Populus tremuloides"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Betula papyrifera"},
-		{"species": "Populus grandidentata"},
-		{"species": "Populus balsamifera"},
-		{"species": "Quercus macrocarpa"},
-		{"species": "Ulmus americana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Northeastern Great Plains Aspen Woodland (G146)",
+        "id": "G146",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 331E, 332A, 332B",
+            "and tree composition dominated by one or more of STRONG DIAGNOSTIC",
+            "species Populus tremuloides (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Betula papyrifera, Populus grandidentata,",
+            "Populus balsamifera, Quercus macrocarpa, or Ulmus americana (>=30% RIV;",
+            "i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "331E, 332A, 332B"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Populus tremuloides"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Ulmus americana"
+                }
+            ]
+        }
+    }
+}

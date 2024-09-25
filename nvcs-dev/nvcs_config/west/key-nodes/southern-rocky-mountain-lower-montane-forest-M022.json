@@ -1,66 +1,96 @@
-{"node": {
-
-   "name":
-      "Southern Rocky Mountain Lower Montane Forest (M022)",
-
-   "id":
-      "M022",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 315A, 315B, 315F, 315H, 313A, 313B, 313C, 313D,",
-		"M313, 342J, 342G, 342E, 342F, M331D, M331F, M331G, M331H, M331E,",
-		"M331I, 331H, 331C, 331B, 331I, 331J, 341, M341, 322A,",
-		"AND tree composition dominated by one or more of STRONG DIAGNOSTIC",
-		"species Abies concolor, Acer grandidentatum, Juniperus scopulorum,",
-		"Pinus aristata, Pinus longaeva",
-		"Pinus ponderosa, Pinus strobiformis, Pseudotsuga menziesii,",
-		"Picea pungens, or Quercus gambelii (RIV=>50%),",
-      "OR",
-        "ii. Located in above ECOREGION, and tree composition as above,",
-		"but with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Abies lasiocarpa var. arizonica,",
-		"Abies lasiocarpa var. lasiocarpa, Juniperus deppeana,",
-		"Picea engelmannii, Pinus contorta, Pinus edulis, Pinus flexilis,",
-		"Populus tremuloides",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "315A, 315B, 315F, 315H, 313A, 313B, 313C, 313D, M313, 342J, 342G, 342E, 342F, M331D, M331F, M331G, M331H, M331E, M331I, 331H, 331C, 331B, 331I, 331J, 341, M341, 322A"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies concolor"},
-		{"species": "Acer grandidentatum"},
-		{"species": "Juniperus scopulorum"},
-		{"species": "Pinus aristata"},
-		{"species": "Pinus longaeva"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pinus strobiformis"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Picea pungens"},
-		{"species": "Quercus gambelii"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies lasiocarpa var. arizonica"},
-		{"species": "Abies lasiocarpa var. lasiocarpa"},
-		{"species": "Juniperus deppeana"},
-		{"species": "Picea engelmannii"},
-		{"species": "Pinus contorta"},
-		{"species": "Pinus edulis"},
-		{"species": "Pinus flexilis"},
-		{"species": "Populus tremuloides"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Southern Rocky Mountain Lower Montane Forest (M022)",
+        "id": "M022",
+        "level": "macrogroup",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 315A, 315B, 315F, 315H, 313A, 313B, 313C, 313D,",
+            "M313, 342J, 342G, 342E, 342F, M331D, M331F, M331G, M331H, M331E,",
+            "M331I, 331H, 331C, 331B, 331I, 331J, 341, M341, 322A,",
+            "AND tree composition dominated by one or more of STRONG DIAGNOSTIC",
+            "species Abies concolor, Acer grandidentatum, Juniperus scopulorum,",
+            "Pinus aristata, Pinus longaeva",
+            "Pinus ponderosa, Pinus strobiformis, Pseudotsuga menziesii,",
+            "Picea pungens, or Quercus gambelii (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above,",
+            "but with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Abies lasiocarpa var. arizonica,",
+            "Abies lasiocarpa var. lasiocarpa, Juniperus deppeana,",
+            "Picea engelmannii, Pinus contorta, Pinus edulis, Pinus flexilis,",
+            "Populus tremuloides",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "315A, 315B, 315F, 315H, 313A, 313B, 313C, 313D, M313, 342J, 342G, 342E, 342F, M331D, M331F, M331G, M331H, M331E, M331I, 331H, 331C, 331B, 331I, 331J, 341, M341, 322A"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Acer grandidentatum"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Pinus aristata"
+                },
+                {
+                    "species": "Pinus longaeva"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pinus strobiformis"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Picea pungens"
+                },
+                {
+                    "species": "Quercus gambelii"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies lasiocarpa var. arizonica"
+                },
+                {
+                    "species": "Abies lasiocarpa var. lasiocarpa"
+                },
+                {
+                    "species": "Juniperus deppeana"
+                },
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus edulis"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Populus tremuloides"
+                }
+            ]
+        }
+    }
+}

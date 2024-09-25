@@ -1,72 +1,114 @@
-{"node": {
-
-   "name":
-      "Madrean Montane Forest & Woodland (M011)",
-
-   "id":
-      "M011",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 322, 313C, M313, 321, 315, AND tree composition",
-		"dominated by one or more of STRONG DIAGNOSTIC species",
-		"Juniperus deppeana, Pinus arizonica, Pinus engelmannii, Pinus leiophylla,",
-		"Pinus strobiformis,",
-		"Quercus albocincta, Quercus arizonica, Quercus chrysolepis, Quercus emoryi,",
-		"Quercus grisea, Quercus hypoleucoides, or Quercus rugosa (RIV=>20%),",
-		"[Additional tree species not tracked by FIA include Abies coahuilensis,",
-		"Hesperocyparis arizonica, Quercus fulva, Quercus viminea]",
-      "OR",
-        "ii. Located in above ECOREGION, and tree composition as above,",
-		"but with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Abies concolor, Acer grandidentatum, Arbutus arizonica,",
-		"Arbutus xalapensis, Juniperus flaccida, Pinus cembroides,",
-		"Pinus discolor, Pinus edulis, Pinus ponderosa, Pseudotsuga menziesii",
-		"Quercus gravesii and Quercus muehlenbergii",
-		"(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "322, 313C, M313, 321, 315"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-		{"species": "Juniperus deppeana"},
-        {"species": "Pinus arizonica"},
-		{"species": "Pinus engelmannii"},
-		{"species": "Pinus leiophylla"},
-		{"species": "Pinus strobiformis"},
-		{"species": "Quercus albocincta"},
-		{"species": "Quercus arizonica"},
-		{"species": "Quercus chrysolepis"},
-		{"species": "Quercus emoryi"},
-		{"species": "Quercus grisea"},
-		{"species": "Quercus hypoleucoides"},
-		{"species": "Quercus rugosa"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies concolor"},
-		{"species": "Acer grandidentatum"},
-		{"species": "Arbutus arizonica"},
-		{"species": "Arbutus xalapensis"},
-		{"species": "Juniperus flaccida"},
-		{"species": "Pinus cembroides"},
-		{"species": "Pinus discolor"},
-		{"species": "Pinus edulis"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Quercus gravesii"},
-		{"species": "Quercus muehlenbergii"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Madrean Montane Forest & Woodland (M011)",
+        "id": "M011",
+        "level": "macrogroup",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 322, 313C, M313, 321, 315, AND tree composition",
+            "dominated by one or more of STRONG DIAGNOSTIC species",
+            "Juniperus deppeana, Pinus arizonica, Pinus engelmannii, Pinus leiophylla,",
+            "Pinus strobiformis,",
+            "Quercus albocincta, Quercus arizonica, Quercus chrysolepis, Quercus emoryi,",
+            "Quercus grisea, Quercus hypoleucoides, or Quercus rugosa (RIV=>20%),",
+            "[Additional tree species not tracked by FIA include Abies coahuilensis,",
+            "Hesperocyparis arizonica, Quercus fulva, Quercus viminea]",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above,",
+            "but with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Abies concolor, Acer grandidentatum, Arbutus arizonica,",
+            "Arbutus xalapensis, Juniperus flaccida, Pinus cembroides,",
+            "Pinus discolor, Pinus edulis, Pinus ponderosa, Pseudotsuga menziesii",
+            "Quercus gravesii and Quercus muehlenbergii",
+            "(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "322, 313C, M313, 321, 315"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus deppeana"
+                },
+                {
+                    "species": "Pinus arizonica"
+                },
+                {
+                    "species": "Pinus engelmannii"
+                },
+                {
+                    "species": "Pinus leiophylla"
+                },
+                {
+                    "species": "Pinus strobiformis"
+                },
+                {
+                    "species": "Quercus albocincta"
+                },
+                {
+                    "species": "Quercus arizonica"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus emoryi"
+                },
+                {
+                    "species": "Quercus grisea"
+                },
+                {
+                    "species": "Quercus hypoleucoides"
+                },
+                {
+                    "species": "Quercus rugosa"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Acer grandidentatum"
+                },
+                {
+                    "species": "Arbutus arizonica"
+                },
+                {
+                    "species": "Arbutus xalapensis"
+                },
+                {
+                    "species": "Juniperus flaccida"
+                },
+                {
+                    "species": "Pinus cembroides"
+                },
+                {
+                    "species": "Pinus discolor"
+                },
+                {
+                    "species": "Pinus edulis"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Quercus gravesii"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                }
+            ]
+        }
+    }
+}

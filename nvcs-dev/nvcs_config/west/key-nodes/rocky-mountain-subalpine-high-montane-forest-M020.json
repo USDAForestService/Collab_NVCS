@@ -1,59 +1,81 @@
-{"node": {
-
-   "name":
-      "Rocky Mountain Subalpine-High Montane Forest (M020)",
-
-   "id":
-      "M020",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh,",
-		"M333, M334, 331, M331, 342, M332, 313A,",
-		"313B, M313, M341, 341, 322A, 315A, 315B, 315H, AND",
-		"tree composition dominated by one or more of STRONG DIAGNOSTIC species",
-		"Abies lasiocarpa, Larix lyallii, Picea engelmannii, Pinus albicaulis,",
-		"Pinus contorta, Pinus flexilis,",
-		"Betula papyrifera, Populus tremuloides, or Tsuga mertensiana (RIV=>50%),",
-      "OR",
-        "ii. Located in above ECOREGION, and tree composition as above,",
-		"but with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Abies concolor, Juniperus scopulorum, Picea pungens,",
-		"Pinus ponderosa, or Pseudotsuga menziesii",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, M333, M334, 331, M331, 342, M332, 313A, 313B, M313, M341, 341, 322A, 315A, 315B, 315H"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies lasiocarpa"},
-		{"species": "Larix lyallii"},
-		{"species": "Picea engelmannii"},
-		{"species": "Pinus albicaulis"},
-		{"species": "Pinus contorta"},
-		{"species": "Pinus flexilis"},
-		{"species": "Betula papyrifera"},
-		{"species": "Populus tremuloides"},
-		{"species": "Tsuga mertensiana"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies concolor"},
-		{"species": "Juniperus scopulorum"},
-		{"species": "Picea pungens"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pseudotsuga menziesii"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Rocky Mountain Subalpine-High Montane Forest (M020)",
+        "id": "M020",
+        "level": "macrogroup",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh,",
+            "M333, M334, 331, M331, 342, M332, 313A,",
+            "313B, M313, M341, 341, 322A, 315A, 315B, 315H, AND",
+            "tree composition dominated by one or more of STRONG DIAGNOSTIC species",
+            "Abies lasiocarpa, Larix lyallii, Picea engelmannii, Pinus albicaulis,",
+            "Pinus contorta, Pinus flexilis,",
+            "Betula papyrifera, Populus tremuloides, or Tsuga mertensiana (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above,",
+            "but with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Abies concolor, Juniperus scopulorum, Picea pungens,",
+            "Pinus ponderosa, or Pseudotsuga menziesii",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, M333, M334, 331, M331, 342, M332, 313A, 313B, M313, M341, 341, 322A, 315A, 315B, 315H"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Larix lyallii"
+                },
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Tsuga mertensiana"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Picea pungens"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                }
+            ]
+        }
+    }
+}

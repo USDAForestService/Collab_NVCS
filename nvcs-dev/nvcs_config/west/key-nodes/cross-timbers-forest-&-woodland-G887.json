@@ -1,45 +1,46 @@
-{"node": {
-
-   "name":
-      "Cross Timbers Forest & Woodland (G887)",
-
-   "id":
-      "G887",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 315F, 315C, 315G, 315D, 315E, 332F",
-		"and tree composition dominated by one or",
-		"more of STRONG DIAGNOSTIC species (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above,",
-		"but with =>20% RIV AND with other MODERATE DIAGNOSTIC species",
-		"in any combination of (>=30% RIV; i.e., together STRONG and",
-		"MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "315F, 315C, 315G, 315D, 315E, 332F"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Quercus marilandica"},
-		{"species": "Quercus stellata"},
-		{"species": "Ulmus crassifolia"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Ulmus alata"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Cross Timbers Forest & Woodland (G887)",
+        "id": "G887",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 315F, 315C, 315G, 315D, 315E, 332F",
+            "and tree composition dominated by one or",
+            "more of STRONG DIAGNOSTIC species (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above,",
+            "but with =>20% RIV AND with other MODERATE DIAGNOSTIC species",
+            "in any combination of (>=30% RIV; i.e., together STRONG and",
+            "MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "315F, 315C, 315G, 315D, 315E, 332F"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Quercus marilandica"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Ulmus alata"
+                }
+            ]
+        }
+    }
+}

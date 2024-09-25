@@ -1,27 +1,17 @@
-{"node": {
-
-   "name":
-      "Cool Temperate Forest & Woodland Formation",
-
-   "id":
-      "F008",
-
-   "level":
-      "formation",
-
-   "description": [
-      "Not as above, Temperate deciduous forests and woodlands, temperate",
-	  "needle-leaved forests and woodlands, and temperate rainforests,",
-	  "dominated by broad-leaved or needle-leaved tree growth forms found",
-	  "in cool temperate regions of the western U.S. and southeast Alaska"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Cool Temperate Forest & Woodland Formation",
+        "id": "F008",
+        "level": "formation",
+        "description": [
+            "Not as above, Temperate deciduous forests and woodlands, temperate",
+            "needle-leaved forests and woodlands, and temperate rainforests,",
+            "dominated by broad-leaved or needle-leaved tree growth forms found",
+            "in cool temperate regions of the western U.S. and southeast Alaska"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

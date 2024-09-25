@@ -1,47 +1,51 @@
-{"node": {
-
-   "name":
-      "North Pacific Maritime Douglas-fir - Western Hemlock Rainforest (G240)",
-
-   "id":
-      "G240",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 261A, M242A, M261A, M261B, 263, 242A, 242B,",
-		"M242B, M242D and tree composition",
-		"dominated by one or more of STRONG DIAGNOSTIC species",
-		"Pseudotsuga menziesii, Tsuga heterophylla, or Thuja plicata",
-		"(RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Acer macrophyllum or Alnus rubra (>=30% RIV; i.e.,",
-		"together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "261A, M242A, M261A, M261B, 263, 242A, 242B, M242B, M242D"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Pseudotsuga menziesii"},
-		{"species": "Tsuga heterophylla"},
-		{"species": "Thuja plicata"}
-	  ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Acer macrophyllum"},
-		{"species": "Alnus rubra"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "North Pacific Maritime Douglas-fir - Western Hemlock Rainforest (G240)",
+        "id": "G240",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 261A, M242A, M261A, M261B, 263, 242A, 242B,",
+            "M242B, M242D and tree composition",
+            "dominated by one or more of STRONG DIAGNOSTIC species",
+            "Pseudotsuga menziesii, Tsuga heterophylla, or Thuja plicata",
+            "(RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Acer macrophyllum or Alnus rubra (>=30% RIV; i.e.,",
+            "together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "261A, M242A, M261A, M261B, 263, 242A, 242B, M242B, M242D"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                },
+                {
+                    "species": "Thuja plicata"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Acer macrophyllum"
+                },
+                {
+                    "species": "Alnus rubra"
+                }
+            ]
+        }
+    }
+}

@@ -1,98 +1,173 @@
-{"node": {
-
-   "name":
-      "Eastern North American Forest & Woodland Division (D008)",
-
-   "id":
-      "D008",
-
-   "level":
-      "division",
-
-   "description": [
-		"Tree composition and ecology matching one of the following options:",
-		"i. Located in ECOREGION 315, 332",
-		"AND",
-		"ii. EITHER",
-        "a. Tree composition dominated by one or more of STRONG diagnostic",
-		"species Acer saccharum, Aesculus glabra, Carya texana,",
-		"Celtis occidentalis, Fraxinus pennsylvanica, Gymnocladus dioicus,",
-		"Platanus occidentalis, Populus tremuloides, Quercus falcata,",
-		"Quercus macrocarpa, Quercus muehlenbergii,",
-		"Quercus rubra, Quercus velutina, Tilia americana,",
-		"Ulmus rubra, or Ulmus americana (=>50% RIV)",
-        "OR",
-        "b. The above tree species, but with =>20% RIV AND other MODERATE",
-		"diagnostic species Acer negundo, Amelanchier spp., Betula papyrifera,",
-		"Carya cordiformis, Cercis canadensis, Diospyros virginiana,",
-		"Gleditsia triacanthos, Juglans nigra, Juniperus ashei,",
-		"Juniperus virginiana, Morus rubra, Ostrya virginiana,",
-		"Populus balsamifera, Populus deltoides, Prunus pensylvanica,",
-		"Prunus serotina, Prunus virginiana, Quercus fusiformis,",
-		"Quercus marilandica, Quercus stellata,",
-		"Quercus shumardii, Ulmus alata, or Ulmus crassifolia",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
-	    "OR",
-		"c. Any EXOTIC = yes tree species =>80% RIV"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or",
-	  "riv(EXOTIC_TREE_SPP) >=80 )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "315, 332"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Acer saccharum"},
-		{"species": "Aesculus glabra"},
-		{"species": "Carya texana"},
-		{"species": "Celtis occidentalis"},
-		{"species": "Fraxinus pennsylvanica"},
-		{"species": "Gymnocladus dioicus"},
-		{"species": "Platanus occidentalis"},
-		{"species": "Populus tremuloides"},
-		{"species": "Quercus falcata"},
-		{"species": "Quercus macrocarpa"},
-		{"species": "Quercus muehlenbergii"},
-		{"species": "Quercus rubra"},
-		{"species": "Quercus velutina"},
-		{"species": "Tilia americana"},
-		{"species": "Ulmus rubra"},
-		{"species": "Ulmus americana"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Acer negundo"},
-		{"species": "Amelanchier"},
-		{"species": "Betula papyrifera"},
-		{"species": "Carya cordiformis"},
-		{"species": "Cercis canadensis"},
-		{"species": "Diospyros virginiana"},
-		{"species": "Gleditsia triacanthos"},
-		{"species": "Juglans nigra"},
-		{"species": "Juniperus ashei"},
-		{"species": "Juniperus virginiana"},
-		{"species": "Morus rubra"},
-		{"species": "Ostrya virginiana"},
-		{"species": "Populus balsamifera"},
-		{"species": "Populus deltoides"},
-		{"species": "Prunus pensylvanica"},
-		{"species": "Prunus serotina"},
-		{"species": "Prunus virginiana"},
-		{"species": "Quercus fusiformis"},
-		{"species": "Quercus marilandica"},
-		{"species": "Quercus stellata"},
-		{"species": "Quercus shumardii"},
-		{"species": "Ulmus alata"},
-		{"species": "Ulmus crassifolia"}
-      ],
-	  "EXOTIC_TREE_SPP": [
-	    {"exotic": "yes", "tallytree": "yes"}
-      ]
-   }
-}}
-
+{
+    "node": {
+        "name": "Eastern North American Forest & Woodland Division (D008)",
+        "id": "D008",
+        "level": "division",
+        "description": [
+            "Tree composition and ecology matching one of the following options:",
+            "i. Located in ECOREGION 315, 332",
+            "AND",
+            "ii. EITHER",
+            "a. Tree composition dominated by one or more of STRONG diagnostic",
+            "species Acer saccharum, Aesculus glabra, Carya texana,",
+            "Celtis occidentalis, Fraxinus pennsylvanica, Gymnocladus dioicus,",
+            "Platanus occidentalis, Populus tremuloides, Quercus falcata,",
+            "Quercus macrocarpa, Quercus muehlenbergii,",
+            "Quercus rubra, Quercus velutina, Tilia americana,",
+            "Ulmus rubra, or Ulmus americana (=>50% RIV)",
+            "OR",
+            "b. The above tree species, but with =>20% RIV AND other MODERATE",
+            "diagnostic species Acer negundo, Amelanchier spp., Betula papyrifera,",
+            "Carya cordiformis, Cercis canadensis, Diospyros virginiana,",
+            "Gleditsia triacanthos, Juglans nigra, Juniperus ashei,",
+            "Juniperus virginiana, Morus rubra, Ostrya virginiana,",
+            "Populus balsamifera, Populus deltoides, Prunus pensylvanica,",
+            "Prunus serotina, Prunus virginiana, Quercus fusiformis,",
+            "Quercus marilandica, Quercus stellata,",
+            "Quercus shumardii, Ulmus alata, or Ulmus crassifolia",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+            "OR",
+            "c. Any EXOTIC = yes tree species =>80% RIV"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or",
+            "riv(EXOTIC_TREE_SPP) >=80 )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "315, 332"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Acer saccharum"
+                },
+                {
+                    "species": "Aesculus glabra"
+                },
+                {
+                    "species": "Carya texana"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Gymnocladus dioicus"
+                },
+                {
+                    "species": "Platanus occidentalis"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Quercus falcata"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus velutina"
+                },
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Ulmus rubra"
+                },
+                {
+                    "species": "Ulmus americana"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Cercis canadensis"
+                },
+                {
+                    "species": "Diospyros virginiana"
+                },
+                {
+                    "species": "Gleditsia triacanthos"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Juniperus ashei"
+                },
+                {
+                    "species": "Juniperus virginiana"
+                },
+                {
+                    "species": "Morus rubra"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Populus deltoides"
+                },
+                {
+                    "species": "Prunus pensylvanica"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Prunus virginiana"
+                },
+                {
+                    "species": "Quercus fusiformis"
+                },
+                {
+                    "species": "Quercus marilandica"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Quercus shumardii"
+                },
+                {
+                    "species": "Ulmus alata"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes",
+                    "tallytree": "yes"
+                }
+            ]
+        }
+    }
+}

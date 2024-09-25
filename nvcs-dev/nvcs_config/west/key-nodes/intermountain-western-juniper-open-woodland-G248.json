@@ -1,47 +1,49 @@
-{"node": {
-
-   "name":
-      "Intermountain Western Juniper Open Woodland (G248)",
-
-   "id":
-      "G248",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 341E, 341G, 342D, M242B, M332A, M261A,",
-		"M261F, M242C, 342H, 342I, 342B, 342C, M332G, M261D, M261E, M261G",
-		"and tree composition dominated",
-		"by one or more of STRONG DIAGNOSTIC species Juniperus occidentalis",
-		"(RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Cercocarpus ledifolius, Pinus jeffreyi or",
-		"Pinus ponderosa (>=30% RIV; i.e., together STRONG and MODERATE",
-		"diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "341E, 341G, 342D, M242B, M332A, M261A, M261F, M242C, 342H, 342I, 342B, 342C, M332G, M261D, M261E, M261G"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus occidentalis"}
-	  ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Cercocarpus ledifolius"},
-		{"species": "Pinus jeffreyi"},
-		{"species": "Pinus ponderosa"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Intermountain Western Juniper Open Woodland (G248)",
+        "id": "G248",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 341E, 341G, 342D, M242B, M332A, M261A,",
+            "M261F, M242C, 342H, 342I, 342B, 342C, M332G, M261D, M261E, M261G",
+            "and tree composition dominated",
+            "by one or more of STRONG DIAGNOSTIC species Juniperus occidentalis",
+            "(RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Cercocarpus ledifolius, Pinus jeffreyi or",
+            "Pinus ponderosa (>=30% RIV; i.e., together STRONG and MODERATE",
+            "diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "341E, 341G, 342D, M242B, M332A, M261A, M261F, M242C, 342H, 342I, 342B, 342C, M332G, M261D, M261E, M261G"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus occidentalis"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Cercocarpus ledifolius"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                }
+            ]
+        }
+    }
+}

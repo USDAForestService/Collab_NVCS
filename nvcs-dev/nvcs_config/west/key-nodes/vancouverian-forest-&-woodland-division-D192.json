@@ -1,193 +1,374 @@
-{"node": {
-
-   "name":
-      "Vancouverian Forest & Woodland Division (D192)",
-
-   "id":
-      "D192",
-
-   "level":
-      "division",
-
-   "description": [
-		"NO EXCLUSIONS",
-        "Tree composition and ecology matching one of the following options:",
-        "i. Located in ECOREGION 242, M242C, M242D, M261, 261A, 262, 263, 341D",
-        "AND",
-		"ii. EITHER",
-		"a. Tree composition dominated by one or more of STRONG diagnostic tree",
-		"species Abies amabilis,  Abies concolor, Abies grandis, Abies lasiocarpa,",
-		"Abies magnifica, Abies shastensis [Abies magnifica var. shastensis],",
-		"Abies procera, Alnus rubra, Callitropsis nootkatensis, Calocedrus decurrens,",
-		"Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Juniperus grandis,",
-		"Notholithocarpus densiflorus, Picea sitchensis, Pinus albicaulis,",
-		"Pinus balfouriana, Pinus lambertiana, Pinus jeffreyi, Pinus monticola,",
-		"Quercus chrysolepis, Quercus garryana, Quercus kelloggii,",
-		"Sequoia sempervirens, Sequoiadendron giganteum, Taxus brevifolia,",
-		"Thuja plicata, Tsuga heterophylla, Tsuga mertensiana,",
-		"or Umbellularia californica (=>20% RIV)",
-		"OR",
-		"b. The above tree species, but with =>10% RIV AND other MODERATE diagnostic",
-		"species, any combination of Abies bracteata, Abies concolor var. lowiana,",
-		"Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii,",
-		"Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis,",
-		"Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa,",
-		"Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and MODERATE",
-		"diagnostic species =>50% RIV)",
-		"OR",
-		"c. Any EXOTIC = yes tree species =>80% RIV",
-		"OR",
-		"M242C and M242D Exclusion/Exception for",
-		"Pinus contorta, Pinus ponderosa, and Pseudotsuga menziesii",
-        "Tree composition and ecology matching one of the following options:",
-		"iii. Located in ECOREGION 242, M242A, M242B, M261, 261A, 262, 263, 341D",
-		"AND",
-		"iv. EITHER",
-		"a. Tree composition dominated by one or more of STRONG diagnostic tree",
-		"species Abies amabilis, Abies concolor, Abies grandis, Abies lasiocarpa,",
-		"Abies magnifica, Abies shastensis [Abies magnifica var. shastensis],",
-		"Abies procera, Alnus rubra, Callitropsis nootkatensis, Calocedrus decurrens,",
-		"Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Juniperus grandis,",
-		"Notholithocarpus densiflorus, Pinus contorta, Picea sitchensis,",
-		"Pinus albicaulis, Pinus balfouriana, Pinus lambertiana, Pinus jeffreyi,",
-		"Pinus monticola, Pinus ponderosa, Pseudotsuga menziesii, Quercus chrysolepis,",
-		"Quercus garryana, Quercus kelloggii, Sequoia sempervirens,",
-		"Sequoiadendron giganteum, Taxus brevifolia, Thuja plicata, Tsuga heterophylla,",
-		"Tsuga mertensiana, or Umbellularia californica (=>20% RIV)",
-		"OR",
-		"b. The above tree species, but with =>10% RIV AND other MODERATE diagnostic",
-		"species, any combination of Abies bracteata, Abies concolor var. lowiana,",
-		"Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii,",
-		"Frangula purshiana, Picea breweriana, Pinus coulteri, Picea engelmannii,",
-		"Pinus flexilis, Pinus muricata, Pinus washoensis,",
-		"Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e.,",
-		"together STRONG and MODERATE diagnostic species =>50% RIV)",
-		"OR",
-		"c. Any EXOTIC = yes tree species =>80% RIV"
-   ],
-
-   "trigger": [
-      "(match(ECOREGIONS_1) and",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES_1) >=40) or",
-	  "riv(EXOTIC_TREE_SPP) >=80 )) or",
-	  "(match(ECOREGIONS_2) and",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 20 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES_2) >=40) or",
-	  "riv(EXOTIC_TREE_SPP) >=80 ))"
-   ],
-
-   "filters": {
-      "ECOREGIONS_1": [
-        {"ecoregion": "242, M242C, M242D, M261, 261A, 262, 263, 341D"}
-      ],
-      "ECOREGIONS_2": [
-        {"ecoregion": "242, M242A, M242B, M261, 261A, 262, 263, 341D"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES_1": [
-        {"species": "Abies amabilis"},
-		{"species": "Abies concolor"},
-		{"species": "Abies grandis"},
-		{"species": "Abies lasiocarpa"},
-		{"species": "Abies magnifica"},
-		{"species": "Abies shastensis"},
-		{"species": "Abies procera"},
-		{"species": "Alnus rubra"},
-		{"species": "Callitropsis nootkatensis"},
-		{"species": "Calocedrus decurrens"},
-		{"species": "Chamaecyparis lawsoniana"},
-		{"species": "Chrysolepis chrysophylla"},
-		{"species": "Juniperus grandis"},
-		{"species": "Notholithocarpus densiflorus"},
-		{"species": "Picea sitchensis"},
-		{"species": "Pinus albicaulis"},
-		{"species": "Pinus balfouriana"},
-		{"species": "Pinus lambertiana"},
-		{"species": "Pinus jeffreyi"},
-		{"species": "Pinus monticola"},
-		{"species": "Quercus chrysolepis"},
-		{"species": "Quercus garryana"},
-		{"species": "Quercus kelloggii"},
-		{"species": "Sequoia sempervirens"},
-		{"species": "Sequoiadendron giganteum"},
-		{"species": "Taxus brevifolia"},
-		{"species": "Thuja plicata"},
-		{"species": "Tsuga heterophylla"},
-		{"species": "Tsuga mertensiana"},
-		{"species": "Umbellularia californica"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES_2": [
-        {"species": "Abies amabilis"},
-		{"species": "Abies concolor"},
-		{"species": "Abies grandis"},
-		{"species": "Abies lasiocarpa"},
-		{"species": "Abies magnifica"},
-		{"species": "Abies shastensis"},
-		{"species": "Abies procera"},
-		{"species": "Alnus rubra"},
-		{"species": "Callitropsis nootkatensis"},
-		{"species": "Calocedrus decurrens"},
-		{"species": "Chamaecyparis lawsoniana"},
-		{"species": "Chrysolepis chrysophylla"},
-		{"species": "Juniperus grandis"},
-		{"species": "Notholithocarpus densiflorus"},
-		{"species": "Pinus contorta"},
-		{"species": "Picea sitchensis"},
-		{"species": "Pinus albicaulis"},
-		{"species": "Pinus balfouriana"},
-		{"species": "Pinus lambertiana"},
-		{"species": "Pinus jeffreyi"},
-		{"species": "Pinus monticola"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Quercus chrysolepis"},
-		{"species": "Quercus garryana"},
-		{"species": "Quercus kelloggii"},
-		{"species": "Sequoia sempervirens"},
-		{"species": "Sequoiadendron giganteum"},
-		{"species": "Taxus brevifolia"},
-		{"species": "Thuja plicata"},
-		{"species": "Tsuga heterophylla"},
-		{"species": "Tsuga mertensiana"},
-		{"species": "Umbellularia californica"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES_1": [
-        {"species": "Abies bracteata"},
-		{"species": "Abies concolor var. lowiana"},
-		{"species": "Acer circinatum"},
-		{"species": "Acer macrophyllum"},
-		{"species": "Arbutus menziesii"},
-		{"species": "Cornus nuttallii"},
-		{"species": "Frangula purshiana"},
-		{"species": "Picea breweriana"},
-		{"species": "Pinus coulteri"},
-		{"species": "Pinus flexilis"},
-		{"species": "Pinus muricata"},
-		{"species": "Pinus washoensis"},
-		{"species": "Populus balsamifera ssp. trichocarpa"},
-		{"species": "Pseudotsuga macrocarpa"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES_2": [
-        {"species": "Abies bracteata"},
-		{"species": "Abies concolor var. lowiana"},
-		{"species": "Acer circinatum"},
-		{"species": "Acer macrophyllum"},
-		{"species": "Arbutus menziesii"},
-		{"species": "Cornus nuttallii"},
-		{"species": "Frangula purshiana"},
-		{"species": "Picea breweriana"},
-		{"species": "Pinus coulteri"},
-		{"species": "Picea engelmannii"},
-		{"species": "Pinus flexilis"},
-		{"species": "Pinus muricata"},
-		{"species": "Pinus washoensis"},
-		{"species": "Populus balsamifera ssp. trichocarpa"},
-		{"species": "Pseudotsuga macrocarpa"}
-      ],
-	  "EXOTIC_TREE_SPP": [
-	    {"exotic": "yes"}
-	  ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Vancouverian Forest & Woodland Division (D192)",
+        "id": "D192",
+        "level": "division",
+        "description": [
+            "NO EXCLUSIONS",
+            "Tree composition and ecology matching one of the following options:",
+            "i. Located in ECOREGION 242, M242C, M242D, M261, 261A, 262, 263, 341D",
+            "AND",
+            "ii. EITHER",
+            "a. Tree composition dominated by one or more of STRONG diagnostic tree",
+            "species Abies amabilis,  Abies concolor, Abies grandis, Abies lasiocarpa,",
+            "Abies magnifica, Abies shastensis [Abies magnifica var. shastensis],",
+            "Abies procera, Alnus rubra, Callitropsis nootkatensis, Calocedrus decurrens,",
+            "Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Juniperus grandis,",
+            "Notholithocarpus densiflorus, Picea sitchensis, Pinus albicaulis,",
+            "Pinus balfouriana, Pinus lambertiana, Pinus jeffreyi, Pinus monticola,",
+            "Quercus chrysolepis, Quercus garryana, Quercus kelloggii,",
+            "Sequoia sempervirens, Sequoiadendron giganteum, Taxus brevifolia,",
+            "Thuja plicata, Tsuga heterophylla, Tsuga mertensiana,",
+            "or Umbellularia californica (=>20% RIV)",
+            "OR",
+            "b. The above tree species, but with =>10% RIV AND other MODERATE diagnostic",
+            "species, any combination of Abies bracteata, Abies concolor var. lowiana,",
+            "Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii,",
+            "Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis,",
+            "Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa,",
+            "Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and MODERATE",
+            "diagnostic species =>50% RIV)",
+            "OR",
+            "c. Any EXOTIC = yes tree species =>80% RIV",
+            "OR",
+            "M242C and M242D Exclusion/Exception for",
+            "Pinus contorta, Pinus ponderosa, and Pseudotsuga menziesii",
+            "Tree composition and ecology matching one of the following options:",
+            "iii. Located in ECOREGION 242, M242A, M242B, M261, 261A, 262, 263, 341D",
+            "AND",
+            "iv. EITHER",
+            "a. Tree composition dominated by one or more of STRONG diagnostic tree",
+            "species Abies amabilis, Abies concolor, Abies grandis, Abies lasiocarpa,",
+            "Abies magnifica, Abies shastensis [Abies magnifica var. shastensis],",
+            "Abies procera, Alnus rubra, Callitropsis nootkatensis, Calocedrus decurrens,",
+            "Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Juniperus grandis,",
+            "Notholithocarpus densiflorus, Pinus contorta, Picea sitchensis,",
+            "Pinus albicaulis, Pinus balfouriana, Pinus lambertiana, Pinus jeffreyi,",
+            "Pinus monticola, Pinus ponderosa, Pseudotsuga menziesii, Quercus chrysolepis,",
+            "Quercus garryana, Quercus kelloggii, Sequoia sempervirens,",
+            "Sequoiadendron giganteum, Taxus brevifolia, Thuja plicata, Tsuga heterophylla,",
+            "Tsuga mertensiana, or Umbellularia californica (=>20% RIV)",
+            "OR",
+            "b. The above tree species, but with =>10% RIV AND other MODERATE diagnostic",
+            "species, any combination of Abies bracteata, Abies concolor var. lowiana,",
+            "Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii,",
+            "Frangula purshiana, Picea breweriana, Pinus coulteri, Picea engelmannii,",
+            "Pinus flexilis, Pinus muricata, Pinus washoensis,",
+            "Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e.,",
+            "together STRONG and MODERATE diagnostic species =>50% RIV)",
+            "OR",
+            "c. Any EXOTIC = yes tree species =>80% RIV"
+        ],
+        "trigger": [
+            "(match(ECOREGIONS_1) and",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES_1) >=40) or",
+            "riv(EXOTIC_TREE_SPP) >=80 )) or",
+            "(match(ECOREGIONS_2) and",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 20 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES_2) >=40) or",
+            "riv(EXOTIC_TREE_SPP) >=80 ))"
+        ],
+        "filters": {
+            "ECOREGIONS_1": [
+                {
+                    "ecoregion": "242, M242C, M242D, M261, 261A, 262, 263, 341D"
+                }
+            ],
+            "ECOREGIONS_2": [
+                {
+                    "ecoregion": "242, M242A, M242B, M261, 261A, 262, 263, 341D"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES_1": [
+                {
+                    "species": "Abies amabilis"
+                },
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies magnifica"
+                },
+                {
+                    "species": "Abies shastensis"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Alnus rubra"
+                },
+                {
+                    "species": "Callitropsis nootkatensis"
+                },
+                {
+                    "species": "Calocedrus decurrens"
+                },
+                {
+                    "species": "Chamaecyparis lawsoniana"
+                },
+                {
+                    "species": "Chrysolepis chrysophylla"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Notholithocarpus densiflorus"
+                },
+                {
+                    "species": "Picea sitchensis"
+                },
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Pinus balfouriana"
+                },
+                {
+                    "species": "Pinus lambertiana"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus garryana"
+                },
+                {
+                    "species": "Quercus kelloggii"
+                },
+                {
+                    "species": "Sequoia sempervirens"
+                },
+                {
+                    "species": "Sequoiadendron giganteum"
+                },
+                {
+                    "species": "Taxus brevifolia"
+                },
+                {
+                    "species": "Thuja plicata"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                },
+                {
+                    "species": "Tsuga mertensiana"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES_2": [
+                {
+                    "species": "Abies amabilis"
+                },
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies magnifica"
+                },
+                {
+                    "species": "Abies shastensis"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Alnus rubra"
+                },
+                {
+                    "species": "Callitropsis nootkatensis"
+                },
+                {
+                    "species": "Calocedrus decurrens"
+                },
+                {
+                    "species": "Chamaecyparis lawsoniana"
+                },
+                {
+                    "species": "Chrysolepis chrysophylla"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Notholithocarpus densiflorus"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Picea sitchensis"
+                },
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Pinus balfouriana"
+                },
+                {
+                    "species": "Pinus lambertiana"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus garryana"
+                },
+                {
+                    "species": "Quercus kelloggii"
+                },
+                {
+                    "species": "Sequoia sempervirens"
+                },
+                {
+                    "species": "Sequoiadendron giganteum"
+                },
+                {
+                    "species": "Taxus brevifolia"
+                },
+                {
+                    "species": "Thuja plicata"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                },
+                {
+                    "species": "Tsuga mertensiana"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES_1": [
+                {
+                    "species": "Abies bracteata"
+                },
+                {
+                    "species": "Abies concolor var. lowiana"
+                },
+                {
+                    "species": "Acer circinatum"
+                },
+                {
+                    "species": "Acer macrophyllum"
+                },
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Cornus nuttallii"
+                },
+                {
+                    "species": "Frangula purshiana"
+                },
+                {
+                    "species": "Picea breweriana"
+                },
+                {
+                    "species": "Pinus coulteri"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus muricata"
+                },
+                {
+                    "species": "Pinus washoensis"
+                },
+                {
+                    "species": "Populus balsamifera ssp. trichocarpa"
+                },
+                {
+                    "species": "Pseudotsuga macrocarpa"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES_2": [
+                {
+                    "species": "Abies bracteata"
+                },
+                {
+                    "species": "Abies concolor var. lowiana"
+                },
+                {
+                    "species": "Acer circinatum"
+                },
+                {
+                    "species": "Acer macrophyllum"
+                },
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Cornus nuttallii"
+                },
+                {
+                    "species": "Frangula purshiana"
+                },
+                {
+                    "species": "Picea breweriana"
+                },
+                {
+                    "species": "Pinus coulteri"
+                },
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus muricata"
+                },
+                {
+                    "species": "Pinus washoensis"
+                },
+                {
+                    "species": "Populus balsamifera ssp. trichocarpa"
+                },
+                {
+                    "species": "Pseudotsuga macrocarpa"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
+    }
+}

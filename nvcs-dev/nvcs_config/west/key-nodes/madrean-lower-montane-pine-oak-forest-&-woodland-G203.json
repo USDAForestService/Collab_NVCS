@@ -1,66 +1,98 @@
-{"node": {
-
-   "name":
-      "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
-
-   "id":
-      "G203",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 315A, 315H, 313D, 322B, M313A, M313B, 321,",
-		"322A, 313C and tree",
-		"composition dominated by one or more of STRONG DIAGNOSTIC species",
-		"Hesperocyparis arizonica, Juniperus deppeana, Pinus arizonica,",
-		"Pinus engelmannii,",
-		"Pinus leiophylla, or Pinus ponderosa var. scopulorum (RIV=>20%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Arbutus arizonica, Arbutus xalapensis,",
-		"Juniperus flaccida, Pinus cembroides,",
-		"Pinus discolor, Quercus arizonica, Quercus emoryi, Quercus fulva,",
-		"Quercus gravesii, Quercus grisea, Quercus hypoleucoides,",
-		"Quercus rugosa, or Quercus viminea (>=30% RIV; i.e., together STRONG",
-		"and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "315A, 315H, 313D, 322B, M313A, M313B, 321, 322A, 313C"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Hesperocyparis arizonica"},
-		{"species": "Juniperus deppeana"},
-		{"species": "Pinus arizonica"},
-		{"species": "Pinus engelmannii"},
-		{"species": "Pinus leiophylla"},
-		{"species": "Pinus ponderosa var. scopulorum"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Arbutus arizonica"},
-		{"species": "Arbutus xalapensis"},
-		{"species": "Juniperus flaccida"},
-		{"species": "Pinus cembroides"},
-		{"species": "Pinus discolor"},
-		{"species": "Quercus arizonica"},
-		{"species": "Quercus emoryi"},
-		{"species": "Quercus fulva"},
-		{"species": "Quercus gravesii"},
-		{"species": "Quercus grisea"},
-		{"species": "Quercus hypoleucoides"},
-		{"species": "Quercus rugosa"},
-		{"species": "Quercus viminea"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
+        "id": "G203",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 315A, 315H, 313D, 322B, M313A, M313B, 321,",
+            "322A, 313C and tree",
+            "composition dominated by one or more of STRONG DIAGNOSTIC species",
+            "Hesperocyparis arizonica, Juniperus deppeana, Pinus arizonica,",
+            "Pinus engelmannii,",
+            "Pinus leiophylla, or Pinus ponderosa var. scopulorum (RIV=>20%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Arbutus arizonica, Arbutus xalapensis,",
+            "Juniperus flaccida, Pinus cembroides,",
+            "Pinus discolor, Quercus arizonica, Quercus emoryi, Quercus fulva,",
+            "Quercus gravesii, Quercus grisea, Quercus hypoleucoides,",
+            "Quercus rugosa, or Quercus viminea (>=30% RIV; i.e., together STRONG",
+            "and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "315A, 315H, 313D, 322B, M313A, M313B, 321, 322A, 313C"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Hesperocyparis arizonica"
+                },
+                {
+                    "species": "Juniperus deppeana"
+                },
+                {
+                    "species": "Pinus arizonica"
+                },
+                {
+                    "species": "Pinus engelmannii"
+                },
+                {
+                    "species": "Pinus leiophylla"
+                },
+                {
+                    "species": "Pinus ponderosa var. scopulorum"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Arbutus arizonica"
+                },
+                {
+                    "species": "Arbutus xalapensis"
+                },
+                {
+                    "species": "Juniperus flaccida"
+                },
+                {
+                    "species": "Pinus cembroides"
+                },
+                {
+                    "species": "Pinus discolor"
+                },
+                {
+                    "species": "Quercus arizonica"
+                },
+                {
+                    "species": "Quercus emoryi"
+                },
+                {
+                    "species": "Quercus fulva"
+                },
+                {
+                    "species": "Quercus gravesii"
+                },
+                {
+                    "species": "Quercus grisea"
+                },
+                {
+                    "species": "Quercus hypoleucoides"
+                },
+                {
+                    "species": "Quercus rugosa"
+                },
+                {
+                    "species": "Quercus viminea"
+                }
+            ]
+        }
+    }
+}

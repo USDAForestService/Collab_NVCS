@@ -1,66 +1,90 @@
-{"node": {
-
-   "name":
-      "Madrean Pinyon - Juniper Woodland (G200)",
-
-   "id":
-      "G200",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 313D?, 315H?, 315A, 313B, M313A, M313B, 321,",
-		"313A, 322A, 313C, 322B and tree composition dominated by one or more",
-		"of STRONG DIAGNOSTIC species Juniperus coahuilensis,",
-		"Juniperus flaccida, Juniperus pinchotii, Pinus cembroides,",
-		"Pinus discolor, Pinus edulis, or Pinus remota (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Juniperus deppeana, Prosopis glandulosa,",
-		"Prosopis velutina (>=30% RIV; i.e., together STRONG and MODERATE",
-		"diagnostic species RIV =>50%),",
-      "OR",
-        "iii. Located in above ECOREGION, and tree composition as i. above,",
-		"but with =>20% RIV AND with other INDICATOR species",
-		"Quercus arizonica, Quercus emoryi, Quercus grisea,",
-		"Quercus hypoleucoides, or Quercus rugosa (RIV >=1%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or",
-	  "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(OTHER_INDICATOR_SPECIES) >= 1) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "ECOREGION 313D, 315H, 315A, 313B, M313A, M313B, 321, 313A, 322A, 313C, 322B"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus coahuilensis"},
-		{"species": "Juniperus flaccida"},
-		{"species": "Juniperus pinchotii"},
-		{"species": "Pinus cembroides"},
-		{"species": "Pinus discolor"},
-		{"species": "Pinus edulis"},
-		{"species": "Pinus remota"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus deppeana"},
-		{"species": "Prosopis glandulosa"},
-		{"species": "Prosopis velutina"}
-      ],
-      "OTHER_INDICATOR_SPECIES": [
-        {"species": "Quercus arizonica"},
-		{"species": "Quercus emoryi"},
-		{"species": "Quercus grisea"},
-		{"species": "Quercus hypoleucoides"},
-		{"species": "Quercus rugosa"}
-      ]	  
-   }
-
-}}
+{
+    "node": {
+        "name": "Madrean Pinyon - Juniper Woodland (G200)",
+        "id": "G200",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 313D?, 315H?, 315A, 313B, M313A, M313B, 321,",
+            "313A, 322A, 313C, 322B and tree composition dominated by one or more",
+            "of STRONG DIAGNOSTIC species Juniperus coahuilensis,",
+            "Juniperus flaccida, Juniperus pinchotii, Pinus cembroides,",
+            "Pinus discolor, Pinus edulis, or Pinus remota (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Juniperus deppeana, Prosopis glandulosa,",
+            "Prosopis velutina (>=30% RIV; i.e., together STRONG and MODERATE",
+            "diagnostic species RIV =>50%),",
+            "OR",
+            "iii. Located in above ECOREGION, and tree composition as i. above,",
+            "but with =>20% RIV AND with other INDICATOR species",
+            "Quercus arizonica, Quercus emoryi, Quercus grisea,",
+            "Quercus hypoleucoides, or Quercus rugosa (RIV >=1%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(OTHER_INDICATOR_SPECIES) >= 1) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "ECOREGION 313D, 315H, 315A, 313B, M313A, M313B, 321, 313A, 322A, 313C, 322B"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus coahuilensis"
+                },
+                {
+                    "species": "Juniperus flaccida"
+                },
+                {
+                    "species": "Juniperus pinchotii"
+                },
+                {
+                    "species": "Pinus cembroides"
+                },
+                {
+                    "species": "Pinus discolor"
+                },
+                {
+                    "species": "Pinus edulis"
+                },
+                {
+                    "species": "Pinus remota"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus deppeana"
+                },
+                {
+                    "species": "Prosopis glandulosa"
+                },
+                {
+                    "species": "Prosopis velutina"
+                }
+            ],
+            "OTHER_INDICATOR_SPECIES": [
+                {
+                    "species": "Quercus arizonica"
+                },
+                {
+                    "species": "Quercus emoryi"
+                },
+                {
+                    "species": "Quercus grisea"
+                },
+                {
+                    "species": "Quercus hypoleucoides"
+                },
+                {
+                    "species": "Quercus rugosa"
+                }
+            ]
+        }
+    }
+}

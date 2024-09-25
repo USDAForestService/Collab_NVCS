@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Natural (including ruderal) Forests",
-
-   "id":
-      "C01",
-
-   "level":
-      "class",
-
-   "description": [
-      "Natural (including ruderal) forests"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Natural (including ruderal) Forests",
+        "id": "C01",
+        "level": "class",
+        "description": [
+            "Natural (including ruderal) forests"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}
