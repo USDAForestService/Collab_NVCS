@@ -12,7 +12,7 @@
         ],
         "trigger": [
             "match(PLANTATION)",
-            "and riv(PLANTED_EXOTIC_OR_POPULUS) > 0"
+            "and (riv(PLANTED_EXOTIC) > 0 or riv(PLANTED_POPULUS) > 0)"
         ],
         "filters": {
             "PLANTATION": [
@@ -20,13 +20,19 @@
                     "plantation": "yes"
                 }
             ],
-            "PLANTED_EXOTIC_OR_POPULUS": [
+            "PLANTED_EXOTIC": [
                 {
-                    "planted": "yes",
-                    "exotic": "yes"
+                    "planted": "yes"
                 },
                 {
-                    "planted": "yes",
+                    "exotic": "yes"
+                }
+            ],
+            "PLANTED_POPULUS": [
+                {
+                    "planted": "yes"
+                },
+                {
                     "species": "Populus"
                 }
             ]

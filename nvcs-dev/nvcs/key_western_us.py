@@ -300,15 +300,20 @@ def element_001():
         {'plantation': 'yes'}
     )
 
-    PLANTED_EXOTIC_OR_POPULUS = PatternList('PLANTED_EXOTIC_OR_POPULUS',
-        {'planted': 'yes', 'exotic': 'yes'},
-        {'planted': 'yes', 'species': 'Populus'}
+    PLANTED_EXOTIC = PatternList('PLANTED_EXOTIC',
+        {'planted': 'yes'},
+        {'exotic': 'yes'}
+    )
+
+    PLANTED_POPULUS = PatternList('PLANTED_POPULUS',
+        {'planted': 'yes'},
+        {'species': 'Populus'}
     )
 
     def match(plot):
         logging.debug('%s|NODE=001|Forest Plantations', plot.ident)
         result = (plot.match(PLANTATION)
-               and plot.riv(PLANTED_EXOTIC_OR_POPULUS) > 0)
+               and (plot.riv(PLANTED_EXOTIC) > 0 or plot.riv(PLANTED_POPULUS) > 0))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
