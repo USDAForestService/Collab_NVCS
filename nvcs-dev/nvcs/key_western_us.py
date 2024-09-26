@@ -5005,8 +5005,7 @@ def element_091():
         {'species': 'Pseudotsuga menziesii'},
         {'species': 'Quercus chrysolepis'},
         {'species': 'Quercus kelloggii'},
-        {'species': 'Pinus washoensis'},
-        {'species': 'Pseudotsuga macrocarpa'}
+        {'species': 'Pinus washoensis'}
     )
 
     def match(plot):
