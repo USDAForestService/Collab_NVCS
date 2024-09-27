@@ -430,7 +430,7 @@ function generateParentNodeOptions(excludedElement) {
         const tabSpaces = otherNode.hierarchyLevel >= 0 ? blankSpace.repeat(otherNode.hierarchyLevel) : "";
         const selected = otherNodeName == excludedElement.parent?.hierarchyName ? "selected" : "";
         const disabled = isElementDescendant(excludedElement, otherNode) ? "disabled" : "";
-        html += `<option value="${otherNodeName}" ${selected} ${disabled}>${levelIndicator}${blankSpace}${tabSpaces}${otherNodeName}</option>`;
+        html += `<option value="${otherNodeName}" ${selected} ${disabled}>${tabSpaces}${otherNodeName} ${levelIndicator}</option>`;
     }
 
     return html;
