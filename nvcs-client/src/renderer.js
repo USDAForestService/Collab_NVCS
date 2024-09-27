@@ -76,8 +76,11 @@ async function fetchJson(event) {
 
     // Update HTML elements
     generateHierarchyHTML(hierarchy);
+    document.getElementById("json-directory-name").disabled = false;
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-add-element").disabled = false;
+    document.getElementById("search-hierarchy").disabled = false;
+    document.getElementById("btn-search-hierarchy").disabled = false;
 }
 
 function createEmptyHierarchyElement() {
@@ -434,13 +437,10 @@ function cleanUpWhitespace() {
 
 function generateParentNodeOptions(excludedElement) {
     const otherNodes = hierarchy.filter(i => i.hierarchyName != excludedElement.hierarchyName);
-    otherNodes.sort((a, b) => a.hierarchyLineNumber - b.hierarchyLineNumber);
-
     const selectedElement = excludedElement.parent;
     const disabledElements = otherNodes.filter(i => isElementDescendant(excludedElement, i));
 
     let html = generateElementOptions(otherNodes, selectedElement, disabledElements)
-
     return html;
 }
 
@@ -450,6 +450,8 @@ function generateFullHierarchyOptions() {
 }
 
 function generateElementOptions(elements, selectedElement = null, disabledElements = null) {
+    elements.sort((a, b) => a.hierarchyLineNumber - b.hierarchyLineNumber);
+
     let html = "";
     for (const element of elements) {
         const blankSpace = "&nbsp;";
@@ -676,6 +678,18 @@ function suggestFileName() {
 
 function searchHierarchy() {
     const searchId = document.getElementById("search-hierarchy").value;
-    if (searchId)
-        document.getElementById(searchId)?.focus();
+    if (!searchId) {
+        const message = "Please use the available options to select an existing hierarchy element"
+        alert(message);
+        return;
+    }
+
+    let element = document.getElementById(searchId);
+    if (!element) {
+        const message = "Provided hierarchy element does not exist";
+        alert(message);
+        return
+    }
+
+    element.focus();
 }

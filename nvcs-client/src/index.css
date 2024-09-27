@@ -6,6 +6,32 @@ body {
   padding: 2rem;
 }
 
+.top-action-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: beige;
+  padding: 10px;
+  border: 1px solid lightgrey;
+}
+
+.label-input-button-container {
+  display: flex;
+  gap: 5px;
+}
+
+.label-input-button-container label {
+  width: 30%;
+}
+
+.label-input-button-container input {
+  flex-grow: 1;
+}
+
+.label-input-button-container button {
+  width: 20%;
+}
+
 #detected-json-container {
   white-space: nowrap;
 }
