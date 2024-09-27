@@ -434,15 +434,24 @@ function generateParentNodeOptions(excludedElement) {
     const otherNodes = hierarchy.filter(i => i.hierarchyName != excludedElement.hierarchyName);
     otherNodes.sort((a, b) => a.hierarchyLineNumber - b.hierarchyLineNumber);
 
-    let html = ""
-    for (const otherNode of otherNodes) {
+    const selectedElement = excludedElement.parent;
+    const disabledElements = otherNodes.filter(i => isElementDescendant(excludedElement, i));
+
+    let html = generateElementOptions(otherNodes, selectedElement, disabledElements)
+
+    return html;
+}
+
+function generateElementOptions(elements, selectedElement = null, disabledElements = null) {
+    let html = "";
+    for (const element of elements) {
         const blankSpace = "&nbsp;";
-        const otherNodeName = otherNode.hierarchyName;
-        const levelIndicator = `[L${otherNode.hierarchyLevel}]`;
-        const tabSpaces = otherNode.hierarchyLevel >= 0 ? blankSpace.repeat(otherNode.hierarchyLevel) : "";
-        const selected = otherNodeName == excludedElement.parent?.hierarchyName ? "selected" : "";
-        const disabled = isElementDescendant(excludedElement, otherNode) ? "disabled" : "";
-        html += `<option value="${otherNodeName}" ${selected} ${disabled}>${tabSpaces}${otherNodeName} ${levelIndicator}</option>`;
+        const name = element.hierarchyName;
+        const levelIndicator = `[L${element.hierarchyLevel}]`;
+        const tabSpaces = element.hierarchyLevel >= 0 ? blankSpace.repeat(element.hierarchyLevel) : "";
+        const selected = element == selectedElement ? "selected" : "";
+        const disabled = disabledElements.includes(element) ? "disabled" : "";
+        html += `<option value="${name}" ${selected} ${disabled}>${tabSpaces}${name} ${levelIndicator}</option>`;
     }
 
     return html;
