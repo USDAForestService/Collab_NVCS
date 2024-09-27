@@ -413,8 +413,20 @@ async function updateJson() {
         return;
     }
 
+    cleanUpWhitespace();
+
     const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
     console.log(updateDataResponse);
+}
+
+function cleanUpWhitespace() {
+    const tabReplace = "  ";
+    for (const element of hierarchy) {
+        const description = element.node.description;
+        for (let i = 0; i < description.length; i++) {
+            description[i] = description[i].replaceAll('\t', tabReplace);
+        }
+    }
 }
 
 
