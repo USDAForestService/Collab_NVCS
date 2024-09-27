@@ -1,0 +1,76 @@
+{
+    "node": {
+        "name": "Pacific Coast Temperate Rainforest Division (D338)",
+        "id": "D338",
+        "level": "division",
+        "description": [
+            "TODO: Revisit the ELEVATION exclusions below",
+            "",
+            "Tree composition and ecology matching one of the following options: ",
+            "i.\tLocated in ECOREGION 242A, M242, 261A, M261A, M261B, 263",
+            "AND",
+            "ii.\tEITHER ",
+            "\ta.\tTree composition dominated by one or more of STRONG DIAGNOSTIC ",
+            "\t\tspecies Abies amabilis, Acer macrophyllum, Alnus rubra, ",
+            "\t\tChamaecyparis lawsoniana, Picea sitchensis, Pinus contorta ",
+            "\t\t[exclude from M242C and M242D, and exclude plots >500m in ",
+            "\t\tELEVATION], Pseudotsuga menziesii [exclude from M242C and M242D],",
+            "\t\tSequoia sempervirens, Thuja plicata, or Tsuga heterophylla",
+            "\t\t(RIV=>50%)",
+            "\tOR",
+            "\tb.\tTree composition as above, but with =>20% RIV AND with other ",
+            "\t\tMODERATE DIAGNOSTIC species in any combination of Abies grandis,",
+            "\t\tAbies lasiocarpa, Abies procera, Acer circinatum, ",
+            "\t\tArbutus menziesii, Callitropsis nootkatensis, Cornus nuttallii,",
+            "\t\tFrangula purshiana, Notholithocarpus densiflorus,",
+            "\t\tPinus monticola, Pinus muricata, Quercus garryana, or ",
+            "\t\tUmbellularia californica (>=30% RIV; i.e., together STRONG and",
+            "\t\tMODERATE diagnostic species RIV =>50%) ",
+            "\tOR ",
+            "\tc.\tAny EXOTIC = yes tree species =>80% RIV"
+        ],
+        "trigger": [
+            "match (ECOREGIONS)",
+            "and riv(STRONG_DIAGNOSTIC_SPECIES) >= 50"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "242A, M242, 261A, M261A, M261B, 263"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "state": "Abies amabilis"
+                },
+                {
+                    "state": "Acer macrophyllum"
+                },
+                {
+                    "state": "Alnus rubra"
+                },
+                {
+                    "state": "Chamaecyparis lawsoniana"
+                },
+                {
+                    "state": "Picea sitchensis"
+                },
+                {
+                    "state": "Pinus contorta"
+                },
+                {
+                    "state": "Pseudotsuga menziesii"
+                },
+                {
+                    "state": "Sequoia sempervirens"
+                },
+                {
+                    "state": "Thuja plicata"
+                },
+                {
+                    "state": "Tsuga heterophylla"
+                }
+            ]
+        }
+    }
+}

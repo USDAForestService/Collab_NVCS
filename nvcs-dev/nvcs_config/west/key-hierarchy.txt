@@ -134,3 +134,4 @@ Natural (including ruderal) Forests
 								Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)
 								Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)
 						Western North American Ruderal Forests - Rocky Mountain
+					Pacific Coast Temperate Rainforest Division (D338)
