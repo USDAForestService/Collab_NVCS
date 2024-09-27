@@ -108,6 +108,9 @@ function generateHierarchyHTML(hierarchy) {
     nodeDisplay += generateListEntry(rootElement);
     nodeDisplay += "</ul>";
 
+    // Generate full-hierarchy datalist
+    generateFullHierarchyOptions();
+
     // Display results
     let detectedJsonContainer = document.getElementById("detected-json-container");
     detectedJsonContainer.innerHTML = nodeDisplay;
@@ -115,7 +118,7 @@ function generateHierarchyHTML(hierarchy) {
 
 function generateListEntry(element) {
     returnString = "<li class='hierarchyNode'>";
-    returnString += `<button class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
+    returnString += `<button id='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
@@ -429,7 +432,6 @@ function cleanUpWhitespace() {
     }
 }
 
-
 function generateParentNodeOptions(excludedElement) {
     const otherNodes = hierarchy.filter(i => i.hierarchyName != excludedElement.hierarchyName);
     otherNodes.sort((a, b) => a.hierarchyLineNumber - b.hierarchyLineNumber);
@@ -442,6 +444,11 @@ function generateParentNodeOptions(excludedElement) {
     return html;
 }
 
+function generateFullHierarchyOptions() {
+    let html = generateElementOptions(hierarchy);
+    document.getElementById("full-hierarchy-list").innerHTML = html;
+}
+
 function generateElementOptions(elements, selectedElement = null, disabledElements = null) {
     let html = "";
     for (const element of elements) {
@@ -450,7 +457,7 @@ function generateElementOptions(elements, selectedElement = null, disabledElemen
         const levelIndicator = `[L${element.hierarchyLevel}]`;
         const tabSpaces = element.hierarchyLevel >= 0 ? blankSpace.repeat(element.hierarchyLevel) : "";
         const selected = element == selectedElement ? "selected" : "";
-        const disabled = disabledElements.includes(element) ? "disabled" : "";
+        const disabled = disabledElements?.includes(element) ? "disabled" : "";
         html += `<option value="${name}" ${selected} ${disabled}>${tabSpaces}${name} ${levelIndicator}</option>`;
     }
 
@@ -665,4 +672,10 @@ function suggestFileName() {
     suggestedName = suggestedName + ".json";
 
     document.getElementById("node-fileName").value = suggestedName;
+}
+
+function searchHierarchy() {
+    const searchId = document.getElementById("search-hierarchy").value;
+    if (searchId)
+        document.getElementById(searchId)?.focus();
 }
