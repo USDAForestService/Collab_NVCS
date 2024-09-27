@@ -625,3 +625,23 @@ function addHierarchyElement() {
     hierarchy.push(element);
     openJsonDialog(element.hierarchyName);
 }
+
+function suggestFileName() {
+    const nodeName = document.getElementById("node-hierarchyName").value;
+    if (!nodeName) {
+        const message = "Please provide a node name to allow for file name suggestions to generate";
+        alert(message);
+        return;
+    }
+
+    let suggestedName = nodeName.toLowerCase().trim();
+
+    const whiteSpace = /\s+/g;
+    suggestedName = suggestedName.replace(whiteSpace, "-");
+
+    const parantheses = /\(|\)/g;
+    suggestedName = suggestedName.replace(parantheses, "");
+    suggestedName = suggestedName + ".json";
+
+    document.getElementById("node-fileName").value = suggestedName;
+}
