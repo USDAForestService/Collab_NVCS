@@ -157,13 +157,16 @@ function openJsonDialog(hierarchyName) {
     // Populate node parent options
     if (!isRoot) {
         let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
-        document.getElementById("node-parentNode").innerHTML = nodeParentOptions;
+        document.getElementById("parent-hierarchy-list").innerHTML = nodeParentOptions;
+        document.getElementById("node-parentNode").value = hierarchyElement.parent.hierarchyName;
         document.getElementById("node-parentNode").disabled = false;
     }
     else  {
-        document.getElementById("node-parentNode").innerHTML = `
-            <option selected disabled>Cannot be assigned to a parent</option>
+        const unavailableMessage = "Cannot be assigned to a parent";
+        document.getElementById("parent-hierarchy-list").innerHTML = `
+            <option selected disabled>${unavailableMessage}</option>
         `;
+        document.getElementById("node-parentNode").value = unavailableMessage;
         document.getElementById("node-parentNode").disabled = true;
     }
 
@@ -325,7 +328,7 @@ async function saveJsonChanges() {
     let nodeTrigger = document.getElementById("node-nodeTrigger").value.trim();
 
     // TODO: Implement validations
-    if (!fileName.endsWith(".json")){
+    if (!isRoot && !fileName.endsWith(".json")){
         const message = "File name must end with the '.json' file type";
         alert(message);
         return;
