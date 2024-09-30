@@ -4,7 +4,7 @@
         "id": "M405",
         "level": "macrogroup",
         "description": [
-            "Only one Macrogroup "
+            "Only one Macrogroup"
         ],
         "trigger": [
             "true"
