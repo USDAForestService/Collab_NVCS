@@ -137,3 +137,4 @@ Natural (including ruderal) Forests
 					Pacific Coast Temperate Rainforest Division (D338)
 					Pacific Mountains Forest & Woodland Division (D339)
 					Rocky Mountain Foothills & Montane Forest & Woodland (D337)
+					Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)

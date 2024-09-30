@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)",
+        "id": "D336",
+        "level": "division",
+        "description": [
+            ""
+        ],
+        "trigger": [
+            ""
+        ],
+        "filters": {}
+    }
+}
