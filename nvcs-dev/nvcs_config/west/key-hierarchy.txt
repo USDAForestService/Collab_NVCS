@@ -136,3 +136,4 @@ Natural (including ruderal) Forests
 						Western North American Ruderal Forests - Rocky Mountain
 					Pacific Coast Temperate Rainforest Division (D338)
 					Pacific Mountains Forest & Woodland Division (D339)
+					Rocky Mountain Foothills & Montane Forest & Woodland (D337)
