@@ -158,7 +158,7 @@ function openJsonDialog(hierarchyName) {
     if (!isRoot) {
         let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
         document.getElementById("parent-hierarchy-list").innerHTML = nodeParentOptions;
-        document.getElementById("node-parentNode").value = hierarchyElement.parent.hierarchyName;
+        document.getElementById("node-parentNode").value = hierarchyElement.parent?.hierarchyName ?? "";
         document.getElementById("node-parentNode").disabled = false;
     }
     else  {
