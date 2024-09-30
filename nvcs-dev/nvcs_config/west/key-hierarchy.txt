@@ -101,6 +101,7 @@ Natural (including ruderal) Forests
 						Southern Vancouverian Montane-Foothill Forest (M023)
 							Californian Montane Conifer Forest & Woodland (G344)
 						Vancouverian Ruderal Forest (M405)
+							Vancouverian Ruderal Forest (G801)
 					Rocky Mountain Foothills & Montane Forest & Woodland (D337)
 						Southern Rocky Mountain Lower Montane Forest (M022)
 							Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)
