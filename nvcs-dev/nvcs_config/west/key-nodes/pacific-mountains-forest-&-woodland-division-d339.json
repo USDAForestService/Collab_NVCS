@@ -74,6 +74,237 @@
                 {
                     "state": "242, M242, M261, 261A, 262, 263, 341D"
                 }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES_I": [
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies magnifica"
+                },
+                {
+                    "species": "Abies shastensis"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Calocedrus decurrens"
+                },
+                {
+                    "species": "Chrysolepis chrysophylla"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Notholithocarpus densiflorus"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus garryana"
+                },
+                {
+                    "species": "Quercus kelloggii"
+                },
+                {
+                    "species": "Sequoiadendron giganteum"
+                },
+                {
+                    "species": "Taxus brevifolia"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES_I": [
+                {
+                    "species": "Abies bracteata"
+                },
+                {
+                    "species": "Abies concolor var. lowiana"
+                },
+                {
+                    "species": "Acer circinatum"
+                },
+                {
+                    "species": "Acer macrophyllum"
+                },
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Cornus nuttallii"
+                },
+                {
+                    "species": "Frangula purshiana"
+                },
+                {
+                    "species": "Picea breweriana"
+                },
+                {
+                    "species": "Pinus coulteri"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus lambertiana"
+                },
+                {
+                    "species": "Pinus muricata"
+                },
+                {
+                    "species": "Pinus washoensis"
+                },
+                {
+                    "species": "Populus balsamifera ssp. trichocarpa"
+                },
+                {
+                    "species": "Pseudotsuga macrocarpa"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ],
+            "ECOREGIONS_II": [
+                {
+                    "ecoregion": "242, M242A, M242B, M261, 261A, 262, 263, 341D"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES_II": [
+                {
+                    "species": "Abies amabilis"
+                },
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies magnifica"
+                },
+                {
+                    "species": "Abies shastensis"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Calocedrus decurrens"
+                },
+                {
+                    "species": "Chrysolepis chrysophylla"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Notholithocarpus densiflorus"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Picea sitchensis"
+                },
+                {
+                    "species": "Pinus lambertiana"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus garryana"
+                },
+                {
+                    "species": "Quercus kelloggii"
+                },
+                {
+                    "species": "Sequoiadendron giganteum"
+                },
+                {
+                    "species": "Taxus brevifolia"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES_II": [
+                {
+                    "species": "Abies bracteata"
+                },
+                {
+                    "species": "Abies concolor var. lowiana"
+                },
+                {
+                    "species": "Acer circinatum"
+                },
+                {
+                    "species": "Acer macrophyllum"
+                },
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Cornus nuttallii"
+                },
+                {
+                    "species": "Frangula purshiana"
+                },
+                {
+                    "species": "Picea breweriana"
+                },
+                {
+                    "species": "Pinus coulteri"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus muricata"
+                },
+                {
+                    "species": "Pinus washoensis"
+                },
+                {
+                    "species": "Populus balsamifera ssp. trichocarpa"
+                },
+                {
+                    "species": "Pseudotsuga macrocarpa"
+                }
             ]
         }
     }
