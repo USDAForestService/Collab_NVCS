@@ -157,6 +157,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  gap: 3px;
 }
 
 .dialog .input-container select,

@@ -228,10 +228,23 @@ function addFilter() {
     filterContainer.insertBefore(newFilterElement, addFilterButton);
 }
 
-function addInputFilter(identifier) {
+function addInputFilter(identifier, bulkAdd = false) {
     const filterContainer = document.getElementById(identifier);
     const inputFiltersContainer = filterContainer.querySelector(".input-filters-container")
-    const newInputFilterHtml = createInputFilter(null, null, null);
+    const singleInputType = document.getElementById("input_type_add_" + identifier).value;
+    const singleInputValue = document.getElementById("input_value_add_" + identifier).value;
+    let newInputFilterHtml = "";
+    if (bulkAdd) {
+        const separatedInputValues = singleInputValue.split(",");
+        for (const separatedInputValue of separatedInputValues) {
+            const cleanedInputValue = separatedInputValue.trim();
+            newInputFilterHtml += createInputFilter(singleInputType, cleanedInputValue);
+        }
+
+    }
+    else {
+        newInputFilterHtml = createInputFilter(singleInputType, singleInputValue);
+    }
     inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
 }
 
@@ -242,7 +255,7 @@ function createFilter(filterKey, inputFilters) {
     if (!inputFilters)
         inputFilters = "";
 
-
+    let inputFilterOptions = createInputFilterOptions();
     let identifier = newGuid();
     let html = `
     <div class='filter-container' id="${identifier}">
@@ -263,9 +276,24 @@ function createFilter(filterKey, inputFilters) {
             ${inputFilters}
         </div>
         <div class='sub-content-button-container'>
-            <button onclick="addInputFilter('${identifier}')">
-                Add
-            </button>
+            <div class='add-single-container'>
+                <label for="input_type_add_${identifier}">
+                    Type:
+                </label>
+                <select id="input_type_add_${identifier}">
+                    ${inputFilterOptions}
+                </select>
+                <label for="input_value_add_${identifier}">
+                    Value:
+                </label>
+                <input id="input_value_add_${identifier}" type="text" />
+                <button onclick="addInputFilter('${identifier}', false)">
+                    Add Single
+                </button>
+                <button onclick="addInputFilter('${identifier}', true)">
+                    Add Bulk
+                </button>
+            </div>
         </div>
     </div>
     `;
@@ -273,25 +301,14 @@ function createFilter(filterKey, inputFilters) {
     return html;
 }
 
-function createInputFilter(filterKey, inputFilterKey, inputFilterValue) {
-    if (!filterKey)
-        filterKey = "";
-    
+function createInputFilter(inputFilterKey, inputFilterValue) {    
     if (!inputFilterKey)
         inputFilterKey = "";
 
     if (!inputFilterValue)
         inputFilterValue = "";
 
-    let filterSelectBoxOptions;
-    for (const filterType of InputFilterTypes) {
-        const selected = filterType == inputFilterKey ? "selected" : "";
-        filterSelectBoxOptions += `
-            <option value="${filterType}" ${selected}>
-                ${filterType}
-            </option>
-        `;
-    }
+    let filterSelectBoxOptions = createInputFilterOptions(inputFilterKey);
 
     const identifier = newGuid();
     let html = `
@@ -304,6 +321,19 @@ function createInputFilter(filterKey, inputFilterKey, inputFilterValue) {
     </div>
     `
 
+    return html;
+}
+
+function createInputFilterOptions(inputFilterKey) {
+    let html;
+    for (const filterType of InputFilterTypes) {
+        const selected = filterType == inputFilterKey ? "selected" : "";
+        html += `
+            <option value="${filterType}" ${selected}>
+                ${filterType}
+            </option>
+        `;
+    }
     return html;
 }
 
@@ -525,7 +555,7 @@ function generateFilters(element) {
                 for (const inputFilterKey of inputFilterKeys) {
     
                     const inputFilterValue = filterValueArrayElement[inputFilterKey];
-                    inputFilterContent += createInputFilter(filterKey, inputFilterKey, inputFilterValue);
+                    inputFilterContent += createInputFilter(inputFilterKey, inputFilterValue);
                 }
             }
     
