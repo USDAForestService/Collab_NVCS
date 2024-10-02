@@ -90,6 +90,10 @@ async function fetchJson(event) {
 async function updateAvailableSpecies() {
     const returnedData = await window.electronAPI.fetchSpecies();
     availableSpecies = returnedData;
+
+    const speciesOptions = createOptions(availableSpecies);
+    document.getElementById("species-list").innerHTML = speciesOptions;
+
     console.log(`Updated available species with ${availableSpecies.length} elements`);
 }
 
@@ -267,6 +271,7 @@ function createFilter(filterKey, inputFilters) {
 
     let inputFilterOptions = createInputFilterOptions();
     let identifier = newGuid();
+    const inputValueList = getInputValueListForType(InputFilterTypes[0]);
     let html = `
     <div class='filter-container' id="${identifier}">
         <div class='sub-content-header-container'>
@@ -290,13 +295,13 @@ function createFilter(filterKey, inputFilters) {
                 <label for="input_type_add_${identifier}">
                     Type:
                 </label>
-                <select id="input_type_add_${identifier}">
+                <select id="input_type_add_${identifier}" class="input-type" onchange="swapInputType(this)">
                     ${inputFilterOptions}
                 </select>
                 <label for="input_value_add_${identifier}">
                     Value:
                 </label>
-                <input id="input_value_add_${identifier}" type="text" />
+                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}"/>
                 <button onclick="addInputFilter('${identifier}', false)">
                     Add Single
                 </button>
@@ -321,12 +326,13 @@ function createInputFilter(inputFilterKey, inputFilterValue) {
     let filterSelectBoxOptions = createInputFilterOptions(inputFilterKey);
 
     const identifier = newGuid();
+    const inputValueList = getInputValueListForType(inputFilterKey);
     let html = `
     <div class='sub-content-container' id="${identifier}" >
-        <select class='sub-key-holder' value="${inputFilterKey}">
+        <select class='sub-key-holder input-type' value="${inputFilterKey}" onchange="swapInputType(this)">
         ${filterSelectBoxOptions}
         </select>
-        <input type="text" class='sub-value-holder' value="${inputFilterValue}"/>
+        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}"/>
         <button onclick="deleteElement('${identifier}')">Delete</button>
     </div>
     `
@@ -335,12 +341,16 @@ function createInputFilter(inputFilterKey, inputFilterValue) {
 }
 
 function createInputFilterOptions(inputFilterKey) {
-    let html;
-    for (const filterType of InputFilterTypes) {
-        const selected = filterType == inputFilterKey ? "selected" : "";
+    return createOptions(InputFilterTypes, inputFilterKey);
+}
+
+function createOptions(options, selectedOption = null) {
+    let html = "";
+    for (const option of options) {
+        const selected = option == selectedOption ? "selected" : "";
         html += `
-            <option value="${filterType}" ${selected}>
-                ${filterType}
+            <option value="${option}" ${selected}>
+                ${option}
             </option>
         `;
     }
@@ -735,4 +745,17 @@ function searchHierarchy() {
     }
 
     element.focus();
+}
+
+function swapInputType(element) {
+    const inputValue = element.parentElement.querySelector(".input-value");
+    const inputValueListName = getInputValueListForType(element.value);
+    inputValue.setAttribute("list", inputValueListName);
+}
+
+function getInputValueListForType(type) {
+    switch (type) {
+        case "species": return "species-list";
+        default: return "";
+    }
 }
