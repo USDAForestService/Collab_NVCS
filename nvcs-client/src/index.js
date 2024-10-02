@@ -30,6 +30,7 @@ const createWindow = () => {
 app.whenReady().then(() => {
   ipcMain.handle('fetch-existing-json', fetchExistingJson);
   ipcMain.handle('update-json', updateJson);
+  ipcMain.handle('fetch-species', fetchSpecies);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -142,5 +143,26 @@ async function updateJson(event, directory, json) {
   catch (error) {
     console.error(error);
     return false;
+  }
+}
+
+async function fetchSpecies(event) {
+  console.log("INVOKED: fetchSpecies")
+  try {
+    // Find species file
+    const speciesPath = __dirname + '../../../nvcs-dev/nvcs_config/west/species.csv';
+    console.log(`- Target Species File: ${speciesPath}`);
+
+    // Extract species from file
+    const fileContent = fs.readFileSync(speciesPath, 'utf-8');
+    const species = fileContent.split("\r\n");
+
+    // Return species
+    console.log("- RETURNING RESULTS");
+    return species;
+  }
+  catch (error) {
+    console.error(error);
+    return null;
   }
 }

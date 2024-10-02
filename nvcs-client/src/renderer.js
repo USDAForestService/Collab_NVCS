@@ -18,6 +18,7 @@ var nodeJson;
 var nodeHierarchy;
 var hierarchy;
 var initialHierarchy;
+var availableSpecies;
 
 async function fetchJson(event) {
     // Query for JSON and TXT data
@@ -74,6 +75,9 @@ async function fetchJson(event) {
     console.log(hierarchy);
     initialHierarchy = structuredClone(hierarchy);
 
+    // Fetch latest species list
+    await updateAvailableSpecies();
+
     // Update HTML elements
     generateHierarchyHTML(hierarchy);
     document.getElementById("json-directory-name").disabled = false;
@@ -81,6 +85,12 @@ async function fetchJson(event) {
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
+}
+
+async function updateAvailableSpecies() {
+    const returnedData = await window.electronAPI.fetchSpecies();
+    availableSpecies = returnedData;
+    console.log(`Updated available species with ${availableSpecies.length} elements`);
 }
 
 function createEmptyHierarchyElement() {
