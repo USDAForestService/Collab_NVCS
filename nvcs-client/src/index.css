@@ -2,8 +2,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
-  max-width: 38rem;
+  max-width: 60em;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .top-action-container {
@@ -21,7 +24,7 @@ body {
 }
 
 .label-input-button-container label {
-  width: 30%;
+  width: 20%;
 }
 
 .label-input-button-container input {
@@ -29,7 +32,7 @@ body {
 }
 
 .label-input-button-container button {
-  width: 20%;
+  width: 15%;
 }
 
 #detected-json-container {
@@ -191,3 +194,41 @@ body {
   width: fit-content;
   height: fit-content;
 }
+
+.warning-container {
+  border: 3px solid black;
+  background-color: #fbfb88;
+  padding: 10px;
+}
+
+.warning-container h2 {
+  margin: 15px;
+}
+
+.border-box-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  column-width: 18em;
+  column-gap: 1em;
+}
+
+.border-box-list-item {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+}
+
+.invalid-species-container {
+  margin: none;
+}
+
+.invalid-filter-name {
+  margin: 0;
+  font-weight: bold;
+}
+

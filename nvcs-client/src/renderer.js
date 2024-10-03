@@ -131,6 +131,9 @@ function generateHierarchyHTML(hierarchy) {
     // Display results
     let detectedJsonContainer = document.getElementById("detected-json-container");
     detectedJsonContainer.innerHTML = nodeDisplay;
+
+    // Display warnings if any
+    createInvalidSpeciesWarning();
 }
 
 function generateListEntry(element) {
@@ -472,6 +475,7 @@ async function updateJson() {
         return;
     }
 
+    createInvalidSpeciesWarning();
     cleanUpWhitespace();
 
     const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
@@ -758,4 +762,147 @@ function getInputValueListForType(type) {
         case "species": return "species-list";
         default: return "";
     }
+}
+
+function createWarning(content) {
+    const alertContainer = document.querySelector(".alert-container");
+    const warningContainer = document.querySelector(".warning-container");
+    const warningList = document.querySelector(".warning-list");
+
+    warningList.innerHTML += content;
+
+    warningContainer.removeAttribute("hidden");
+    alertContainer.removeAttribute("hidden");
+}
+
+function toggleNestedSpeciesWarnings() {
+    const button = document.getElementById("btn-toggle-nested-species-warnings");
+    const warnings = document.getElementById("nested-species-warnings");
+
+    if (warnings.getAttribute("aria-expanded") === "true") {
+        warnings.setAttribute("hidden", "");
+        warnings.setAttribute("aria-expanded", false);
+        button.innerText = "Show Nested Warnings";
+    }
+    else {
+        warnings.removeAttribute("hidden");
+        warnings.setAttribute("aria-expanded", true);
+        button.innerText = "Hide Nested Warnings";
+    }
+}
+
+function createInvalidSpeciesWarning() {
+    const invalidSpeciesInfo = findInvalidSpecies();
+    if (invalidSpeciesInfo.length == 0)
+        return;
+    console.warn("Invalid species info", invalidSpeciesInfo);
+
+    let existingSpeciesWarning = document.getElementById("invalid-species-warning");
+    if (existingSpeciesWarning)
+        existingSpeciesWarning.remove();
+
+    let html = `
+        <li id='invalid-species-warning' class='warning-list-item'>
+            <p>
+                Non-tracked FIA species filters have been detected within ${invalidSpeciesInfo.length} hierarchy elements!
+                These species filters will simply catch no conditions while running the classification key.
+                <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warning' onclick="toggleNestedSpeciesWarnings()">
+                    Show Nested Warnings
+                </button>
+            </p>
+            <ul id='nested-species-warnings' class='border-box-list' aria-expanded='false' hidden>
+    `;
+
+    for (const info of invalidSpeciesInfo) {
+        const elementName = info.hierarchyName;
+        const elementId = info.treeLink.getAttribute("id");
+
+        let elementFilters = [];
+        for (const entry of info.species)
+            elementFilters.push(entry.filter);
+        elementFilters = [...new Set(elementFilters)];
+
+        html += `
+            <li class='border-box-list-item'>
+                <a href='#${elementId}'>
+                    ${elementName}
+                </a>
+                <ul>
+        `;
+
+        for (const elementFilter of elementFilters) {
+            html += `
+                <li class='invalid-species-filter-container'>
+                    <p class='invalid-filter-name'>
+                        ${elementFilter}
+                    </p>
+                    <ul class='invalid-species-container'>
+            `;
+
+            for (const entry of info.species) {
+                if (entry.filter != elementFilter) 
+                    continue;
+
+                const invalidSpeciesName = entry.value;
+                html += `
+                    <li>
+                        ${invalidSpeciesName}
+                    </li>
+                `;
+            }
+
+            html += `
+                    </ul>
+                </li>
+            `;
+        }
+
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+            </ul>
+        </li>
+    `;
+
+    createWarning(html);
+}
+
+function findInvalidSpecies() {
+    let invalidSpecies = [];
+    for (const element of hierarchy) {
+        const filters = element.node.filters;
+        for (const [filterKey, filterValues] of Object.entries(filters)) {
+            for (const filterValue of filterValues) {
+                for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
+                    if (subFilterKey != "species") continue;
+                    if (availableSpecies.includes(subFilterValue)) continue;
+
+                    let existingInvaidSpecies = invalidSpecies.filter(i => i.element == element)[0];
+                    if (!existingInvaidSpecies) {
+                        invalidSpecies.push({
+                            hierarchyName: element.hierarchyName,
+                            species: [{
+                                filter: filterKey,
+                                value: subFilterValue
+                            }],
+                            element: element,
+                            treeLink: document.getElementById(element.hierarchyName)
+                        });
+                    }
+                    else {
+                        existingInvaidSpecies.species.push({
+                            filter: filterKey,
+                            value: subFilterValue
+                        });
+                    }
+                }
+            }
+        }
+    }
+    return invalidSpecies;
 }
