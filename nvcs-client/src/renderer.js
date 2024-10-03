@@ -810,12 +810,11 @@ function createInvalidSpeciesWarning() {
                     Show Nested Warnings
                 </button>
             </p>
-            <ul id='nested-species-warnings' class='border-box-list' aria-expanded='false' hidden>
+            <ul id='nested-species-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Species Filters" hidden>
     `;
 
     for (const info of invalidSpeciesInfo) {
-        const elementName = info.hierarchyName;
-        const elementId = info.treeLink.getAttribute("id");
+        const elementButton = info.button.outerHTML;
 
         let elementFilters = [];
         for (const entry of info.species)
@@ -824,9 +823,7 @@ function createInvalidSpeciesWarning() {
 
         html += `
             <li class='border-box-list-item'>
-                <a href='#${elementId}'>
-                    ${elementName}
-                </a>
+                ${elementButton}
                 <ul>
         `;
 
@@ -891,7 +888,7 @@ function findInvalidSpecies() {
                                 value: subFilterValue
                             }],
                             element: element,
-                            treeLink: document.getElementById(element.hierarchyName)
+                            button: document.getElementById(element.hierarchyName)
                         });
                     }
                     else {
