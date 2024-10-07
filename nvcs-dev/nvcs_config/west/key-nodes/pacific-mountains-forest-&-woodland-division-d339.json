@@ -67,7 +67,7 @@
             "(riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 20 or",
             "(riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 10 and ",
             "riv(MODERATE_DIAGNOSTIC_SPECIES_II) >= 40) or ",
-            "riv(EXOTIC_TREE_SPP) >= 80)"
+            "riv(EXOTIC_TREE_SPP) >= 80))"
         ],
         "filters": {
             "ECOREGIONS_I": [
