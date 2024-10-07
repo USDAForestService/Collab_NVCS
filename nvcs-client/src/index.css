@@ -195,13 +195,26 @@ body {
   height: fit-content;
 }
 
-.warning-container {
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.alert-type {
   border: 3px solid black;
-  background-color: #fbfb88;
   padding: 10px;
 }
 
-.warning-container h2 {
+.error-container {
+  background-color: #f2c9c9;
+}
+
+.warning-container {
+  background-color: #fbfb88;
+}
+
+.alert-type h2 {
   margin: 15px;
 }
 

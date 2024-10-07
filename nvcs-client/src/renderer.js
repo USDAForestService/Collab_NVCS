@@ -132,7 +132,25 @@ function generateHierarchyHTML(hierarchy) {
     let detectedJsonContainer = document.getElementById("detected-json-container");
     detectedJsonContainer.innerHTML = nodeDisplay;
 
-    // Display warnings if any
+    // Display alerts if any
+    generateAlerts();
+}
+
+function generateAlerts() {
+    // Wipe & hide existing alerts
+    const errorContainer = document.querySelector(".error-container");
+    const errorList = document.querySelector(".error-list");
+    const warningContainer = document.querySelector(".warning-container");
+    const warningList = document.querySelector(".warning-list");
+    errorContainer.setAttribute("hidden", "");
+    warningContainer.setAttribute("hidden", "");
+    errorList.replaceChildren([]);
+    warningList.replaceChildren([]);
+
+    // Show Errors
+    createMissingTriggerParenthesesError();
+
+    // Show Warnings
     createInvalidSpeciesWarning();
 }
 
@@ -764,6 +782,17 @@ function getInputValueListForType(type) {
     }
 }
 
+function createError(content) {
+    const alertContainer = document.querySelector(".alert-container");
+    const errorContainer = document.querySelector(".error-container");
+    const errorList = document.querySelector(".error-list");
+
+    errorList.innerHTML += content;
+
+    errorContainer.removeAttribute("hidden");
+    alertContainer.removeAttribute("hidden");
+}
+
 function createWarning(content) {
     const alertContainer = document.querySelector(".alert-container");
     const warningContainer = document.querySelector(".warning-container");
@@ -773,6 +802,22 @@ function createWarning(content) {
 
     warningContainer.removeAttribute("hidden");
     alertContainer.removeAttribute("hidden");
+}
+
+function toggleNestedParenthesesErrors() {
+    const button = document.getElementById("btn-toggle-nested-parentheses-errors");
+    const errors = document.getElementById("nested-parentheses-errors");
+
+    if (errors.getAttribute("aria-expanded") === "true") {
+        errors.setAttribute("hidden", "");
+        errors.setAttribute("aria-expanded", false);
+        button.innerText = "Show Nested Errors";
+    }
+    else {
+        errors.removeAttribute("hidden");
+        errors.setAttribute("aria-expanded", true);
+        button.innerText = "Hide Nested Errors";
+    }
 }
 
 function toggleNestedSpeciesWarnings() {
@@ -791,15 +836,45 @@ function toggleNestedSpeciesWarnings() {
     }
 }
 
+function createMissingTriggerParenthesesError() {
+    const invalidParentheses = findMissingTriggerParentheses();
+    if (invalidParentheses.length == 0)
+        return;
+    console.error("Invalid parentheses counts", invalidParentheses);
+
+    let html = `
+        <li id='invalid-parentheses-error' class='error-list-item'>
+        <p>
+            Mismatched left and right parentheses counts detected within ${invalidParentheses.length} hierarchy element triggers!
+            These triggers should be revisited or the classification key will fail to build.
+            <button id='btn-toggle-nested-parentheses-errors' aria-controls='nested-parentheses-errors' onclick="toggleNestedParenthesesErrors()">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-parentheses-errors' aria-expanded='false' aria-label="Nested Invalid Triggers" hidden>
+    `;
+
+    for (const info of invalidParentheses) {
+        const elementButton = info.button.outerHTML;
+        html += `
+            <li>
+                ${elementButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `
+
+    createError(html);
+}
+
 function createInvalidSpeciesWarning() {
     const invalidSpeciesInfo = findInvalidSpecies();
     if (invalidSpeciesInfo.length == 0)
         return;
     console.warn("Invalid species info", invalidSpeciesInfo);
-
-    let existingSpeciesWarning = document.getElementById("invalid-species-warning");
-    if (existingSpeciesWarning)
-        existingSpeciesWarning.remove();
 
     let html = `
         <li id='invalid-species-warning' class='warning-list-item'>
@@ -867,6 +942,25 @@ function createInvalidSpeciesWarning() {
     `;
 
     createWarning(html);
+}
+
+function findMissingTriggerParentheses() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        const trigger = element.node.trigger;
+        const joinedTrigger = trigger.join("\n");
+        const leftCount = (joinedTrigger.match(/\(/g) || []).length
+        const rightCount = (joinedTrigger.match(/\)/g) || []).length
+        if (leftCount == rightCount) continue;
+
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName)
+        });
+    }
+
+    return invalid;
 }
 
 function findInvalidSpecies() {
