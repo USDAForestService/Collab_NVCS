@@ -138,7 +138,7 @@ function generateHierarchyHTML(hierarchy) {
 
 function generateListEntry(element) {
     returnString = "<li class='hierarchyNode'>";
-    returnString += `<button id='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
+    returnString += `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
@@ -741,7 +741,7 @@ function searchHierarchy() {
         return;
     }
 
-    let element = document.getElementById(searchId);
+    let element = findHierarchyButton(searchId);
     if (!element) {
         const message = "Provided hierarchy element does not exist";
         alert(message);
@@ -806,7 +806,7 @@ function createInvalidSpeciesWarning() {
             <p>
                 Non-tracked FIA species filters have been detected within ${invalidSpeciesInfo.length} hierarchy elements!
                 These species filters will simply catch no conditions while running the classification key.
-                <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warning' onclick="toggleNestedSpeciesWarnings()">
+                <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warnings' onclick="toggleNestedSpeciesWarnings()">
                     Show Nested Warnings
                 </button>
             </p>
@@ -888,7 +888,7 @@ function findInvalidSpecies() {
                                 value: subFilterValue
                             }],
                             element: element,
-                            button: document.getElementById(element.hierarchyName)
+                            button: findHierarchyButton(element.hierarchyName)
                         });
                     }
                     else {
@@ -902,4 +902,10 @@ function findInvalidSpecies() {
         }
     }
     return invalidSpecies;
+}
+
+function findHierarchyButton(hierarchyName) {
+    let selector = `#detected-json-container button[data-hierarchy-name='${hierarchyName}']`;
+    let element = document.querySelector(selector);
+    return element;   
 }
