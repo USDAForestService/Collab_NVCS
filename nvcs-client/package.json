@@ -1,8 +1,8 @@
 {
-  "name": "nvcs-client",
-  "productName": "nvcs-client",
+  "name": "nvcs-configuration-tool",
+  "productName": "NVCS Configuration Tool",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "NVCS Configuration Tool",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",

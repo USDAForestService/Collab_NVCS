@@ -21,7 +21,8 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (!app.isPackaged)
+    mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -58,7 +59,7 @@ async function fetchExistingJson(event) {
   console.log('INVOKED: fetxhExistingJson');
 
   // Retrieve Key Node JSON files
-  const jsonDirectory = __dirname + '../../../nvcs-dev/nvcs_config/west/key-nodes/';
+  const jsonDirectory = getConfigurationPath() + '/west/key-nodes/';
   console.log(`- Target JSON Directory: ${jsonDirectory}`);
 
   let cleanedJsonData = [];
@@ -76,7 +77,7 @@ async function fetchExistingJson(event) {
   allJsonData = `[${cleanedJsonData.join(',')}]`;
 
   // Retrieve Key Hierarchy TXT file
-  const hierarchyPath = __dirname + '../../../nvcs-dev/nvcs_config/west/key-hierarchy.txt';
+  const hierarchyPath = getConfigurationPath() + '/west/key-hierarchy.txt';
   console.log(`- Target Hierarchy Path: ${hierarchyPath}`);
 
   let hierarchyData = fs.readFileSync(hierarchyPath);
@@ -97,7 +98,7 @@ async function updateJson(event, directory, json) {
 
   try {
     // Attempt to make new config directory
-    const existingJsonConfigDirectory = __dirname + "../../../nvcs-dev/nvcs_config/";
+    const existingJsonConfigDirectory = getConfigurationPath();
     const newJsonDirectoryPath = path.join(existingJsonConfigDirectory, directory);
     if (!fs.existsSync(newJsonDirectoryPath))
       fs.mkdirSync(newJsonDirectoryPath);
@@ -150,7 +151,7 @@ async function fetchSpecies(event) {
   console.log("INVOKED: fetchSpecies")
   try {
     // Find species file
-    const speciesPath = __dirname + '../../../nvcs-dev/nvcs_config/west/species.csv';
+    const speciesPath = getConfigurationPath() + '/west/species.csv';
     console.log(`- Target Species File: ${speciesPath}`);
 
     // Extract species from file
@@ -165,4 +166,8 @@ async function fetchSpecies(event) {
     console.error(error);
     return null;
   }
+}
+
+function getConfigurationPath() {
+  return app.isPackaged ? process.resourcesPath : __dirname + '../../../nvcs-dev/nvcs_config';
 }
