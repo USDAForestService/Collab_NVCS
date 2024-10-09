@@ -1,6 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
+let mainWindow;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -9,7 +10,7 @@ if (require('electron-squirrel-startup')) {
 
 const createWindow = () => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -32,6 +33,7 @@ app.whenReady().then(() => {
   ipcMain.handle('fetch-existing-json', fetchExistingJson);
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
+  ipcMain.handle('open-browse', openBrowseDialog);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -158,4 +160,19 @@ async function fetchSpecies(event) {
 
 function getConfigurationPath() {
   return app.isPackaged ? process.resourcesPath : __dirname + '../../../nvcs-dev/nvcs_config/west';
+}
+
+async function openBrowseDialog(event, targetPath) {
+  console.log("INVOKED: openBrowseDialog");
+
+  console.log(`- Target Browse Path: ${targetPath}`);
+  const { cancelled, filePaths } = await dialog.showOpenDialog(mainWindow, {
+    defaultPath: targetPath,
+    properties: ['openDirectory'],
+    promptToCreate: true
+  });
+
+  console.log("- RETURNING RESULTS");
+  const path = !cancelled ? filePaths[0] : null;
+  return path;
 }

@@ -36,6 +36,10 @@ body {
   width: 18%;
 }
 
+.browse {
+  width: fit-content !important;
+}
+
 #detected-json-container {
   white-space: nowrap;
 }

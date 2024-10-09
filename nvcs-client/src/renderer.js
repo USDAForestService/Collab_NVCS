@@ -102,6 +102,7 @@ async function fetchJson(targetPath) {
     // Update HTML elements
     generateHierarchyHTML(hierarchy);
     document.getElementById("json-directory-name").disabled = false;
+    document.getElementById("btn-browse-update-json").disabled = false;
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
@@ -1064,4 +1065,25 @@ function findHierarchyButton(hierarchyName) {
     let selector = `#detected-json-container button[data-hierarchy-name='${hierarchyName}']`;
     let element = document.querySelector(selector);
     return element;   
+}
+
+async function browseCustomJsonPath() {
+    const inputPath = document.getElementById("source-json-directory");
+    inputPath.value = await openBrowseDialog(inputPath.value);
+}
+
+async function browseUpdateJsonPath() {
+    const inputPath = document.getElementById("json-directory-name");
+    inputPath.value = await openBrowseDialog(inputPath.value);
+}
+
+async function openBrowseDialog(targetPath = "") {
+    try {
+        const returnedData = await window.electronAPI.openBrowse(targetPath);
+        return returnedData ?? targetPath;
+    }
+    catch (error) {
+        alert(error);
+        return targetPath;
+    }
 }
