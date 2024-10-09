@@ -27,12 +27,13 @@ body {
   width: 20%;
 }
 
+.label-input-button-container select,
 .label-input-button-container input {
   flex-grow: 1;
 }
 
 .label-input-button-container button {
-  width: 15%;
+  width: 18%;
 }
 
 #detected-json-container {

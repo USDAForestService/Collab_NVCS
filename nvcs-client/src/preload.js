@@ -3,7 +3,7 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    fetchExistingJson: () => ipcRenderer.invoke('fetch-existing-json'),
+    fetchExistingJson: (targetPath) => ipcRenderer.invoke('fetch-existing-json', targetPath),
     updateJson: (directory, json) => ipcRenderer.invoke('update-json', directory, json),
     fetchSpecies: () => ipcRenderer.invoke('fetch-species'),
 });

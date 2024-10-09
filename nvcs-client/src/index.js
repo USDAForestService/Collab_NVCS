@@ -55,17 +55,17 @@ app.on('window-all-closed', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-async function fetchExistingJson(event) {
+async function fetchExistingJson(event, targetPath) {
   console.log('INVOKED: fetxhExistingJson');
 
   // Retrieve Key Node JSON files
-  const jsonDirectory = getConfigurationPath() + '/west/key-nodes/';
+  const jsonDirectory = path.resolve((targetPath ?? getConfigurationPath()) + '/key-nodes/');
   console.log(`- Target JSON Directory: ${jsonDirectory}`);
 
   let cleanedJsonData = [];
   let jsonFiles = fs.readdirSync(jsonDirectory).filter(file => path.extname(file) === '.json');
   jsonFiles.forEach(file => {
-    let jsonPath = path.join(jsonDirectory, file);
+    let jsonPath = path.resolve(path.join(jsonDirectory, file));
     let data = fs.readFileSync(jsonPath);
     let jsonData = JSON.parse(data);
     jsonData["node"]["fileName"] = path.basename(file);
@@ -77,7 +77,7 @@ async function fetchExistingJson(event) {
   allJsonData = `[${cleanedJsonData.join(',')}]`;
 
   // Retrieve Key Hierarchy TXT file
-  const hierarchyPath = getConfigurationPath() + '/west/key-hierarchy.txt';
+  const hierarchyPath = path.resolve((targetPath ?? getConfigurationPath()) + '/key-hierarchy.txt');
   console.log(`- Target Hierarchy Path: ${hierarchyPath}`);
 
   let hierarchyData = fs.readFileSync(hierarchyPath);
@@ -96,78 +96,66 @@ async function fetchExistingJson(event) {
 async function updateJson(event, directory, json) {
   console.log('INVOKED: updateJson');
 
-  try {
-    // Attempt to make new config directory
-    const existingJsonConfigDirectory = getConfigurationPath();
-    const newJsonDirectoryPath = path.join(existingJsonConfigDirectory, directory);
-    if (!fs.existsSync(newJsonDirectoryPath))
-      fs.mkdirSync(newJsonDirectoryPath);
+  // Attempt to make new config directory
+  const newJsonDirectoryPath = path.resolve(directory);
+  if (!fs.existsSync(newJsonDirectoryPath))
+    fs.mkdirSync(newJsonDirectoryPath);
 
-    // Attempt to delete & recreate new key-nodes directory
-    const newKeyNodesDirectoryPath = path.join(newJsonDirectoryPath, "key-nodes");
-    if (fs.existsSync(newKeyNodesDirectoryPath))
-      fs.rmSync(newKeyNodesDirectoryPath, { recursive: true, force: true });
-    fs.mkdirSync(newKeyNodesDirectoryPath);
+  // Attempt to delete & recreate new key-nodes directory
+  const newKeyNodesDirectoryPath = path.resolve(path.join(newJsonDirectoryPath, "key-nodes"));
+  if (fs.existsSync(newKeyNodesDirectoryPath))
+    fs.rmSync(newKeyNodesDirectoryPath, { recursive: true, force: true });
+  fs.mkdirSync(newKeyNodesDirectoryPath);
 
-    // Prepare hierarchy content
-    const hierarchyPath = path.join(newJsonDirectoryPath, "key-hierarchy.txt");
-    let hierarchyContent = "";
+  // Prepare hierarchy content
+  const hierarchyPath = path.resolve(path.join(newJsonDirectoryPath, "key-hierarchy.txt"));
+  let hierarchyContent = "";
 
-    // Filter away the root
-    json = json.filter(i => i.hierarchyName != "ROOT");
+  // Filter away the root
+  json = json.filter(i => i.hierarchyName != "ROOT");
 
-    // Sort JSON on hierarchy line number
-    json.sort((a, b) => { return a.hierarchyLineNumber - b.hierarchyLineNumber });
+  // Sort JSON on hierarchy line number
+  json.sort((a, b) => { return a.hierarchyLineNumber - b.hierarchyLineNumber });
 
-    for (const entry of json) {
-      // Store hierarchy element content
-      const hierarchyName = entry.hierarchyName;
-      const hierarchyLevel = entry.hierarchyLevel;
-      const hierarchyTabs = "\t".repeat(hierarchyLevel);
-      const hierarchyNewLine = hierarchyTabs + hierarchyName + "\r\n";
-      hierarchyContent += hierarchyNewLine
+  for (const entry of json) {
+    // Store hierarchy element content
+    const hierarchyName = entry.hierarchyName;
+    const hierarchyLevel = entry.hierarchyLevel;
+    const hierarchyTabs = "\t".repeat(hierarchyLevel);
+    const hierarchyNewLine = hierarchyTabs + hierarchyName + "\r\n";
+    hierarchyContent += hierarchyNewLine
 
-      // Stringify & write JSON content
-      const jsonNode = { node: entry.node };
-      const jsonFilePath = path.join(newKeyNodesDirectoryPath, entry.fileName);
-      let jsonAsText = JSON.stringify(jsonNode, null, 4);
-      jsonAsText = jsonAsText.trim();
-      fs.writeFileSync(jsonFilePath, jsonAsText);
-    }
-
-    // Write hierarchy file content
-    hierarchyContent = hierarchyContent.trim();
-    fs.writeFileSync(hierarchyPath, hierarchyContent);
-    console.log("- RETURNING RESULTS");
-    return true;
+    // Stringify & write JSON content
+    const jsonNode = { node: entry.node };
+    const jsonFilePath = path.resolve(path.join(newKeyNodesDirectoryPath, entry.fileName));
+    let jsonAsText = JSON.stringify(jsonNode, null, 4);
+    jsonAsText = jsonAsText.trim();
+    fs.writeFileSync(jsonFilePath, jsonAsText);
   }
-  catch (error) {
-    console.error(error);
-    return false;
-  }
+
+  // Write hierarchy file content
+  hierarchyContent = hierarchyContent.trim();
+  fs.writeFileSync(hierarchyPath, hierarchyContent);
+  console.log("- RETURNING RESULTS");
+  return true;
 }
 
 async function fetchSpecies(event) {
   console.log("INVOKED: fetchSpecies")
-  try {
-    // Find species file
-    const speciesPath = getConfigurationPath() + '/west/species.csv';
-    console.log(`- Target Species File: ${speciesPath}`);
 
-    // Extract species from file
-    const fileContent = fs.readFileSync(speciesPath, 'utf-8');
-    const species = fileContent.split("\r\n");
+  // Find species file
+  const speciesPath = path.resolve(getConfigurationPath() + '/species.csv');
+  console.log(`- Target Species File: ${speciesPath}`);
 
-    // Return species
-    console.log("- RETURNING RESULTS");
-    return species;
-  }
-  catch (error) {
-    console.error(error);
-    return null;
-  }
+  // Extract species from file
+  const fileContent = fs.readFileSync(speciesPath, 'utf-8');
+  const species = fileContent.split("\r\n");
+
+  // Return species
+  console.log("- RETURNING RESULTS");
+  return species;
 }
 
 function getConfigurationPath() {
-  return app.isPackaged ? process.resourcesPath : __dirname + '../../../nvcs-dev/nvcs_config';
+  return app.isPackaged ? process.resourcesPath : __dirname + '../../../nvcs-dev/nvcs_config/west';
 }

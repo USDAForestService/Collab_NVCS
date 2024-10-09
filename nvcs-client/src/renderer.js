@@ -20,9 +20,28 @@ var hierarchy;
 var initialHierarchy;
 var availableSpecies;
 
-async function fetchJson(event) {
+async function fetchCustomJson() {
+    const targetPath = document.getElementById("source-json-directory").value;
+    if (!targetPath) {
+        const message = "When loading custom JSON, please ensure a valid path is provided to the directory " +
+            "containing the key nodes and hierarchy file that you wish to load";
+        alert(message);
+        return;
+    }
+
+    return await fetchJson(targetPath);
+}
+
+async function fetchJson(targetPath) {
     // Query for JSON and TXT data
-    const returnedData = await window.electronAPI.fetchExistingJson();
+    let returnedData;
+    try {
+        returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+    }
+    catch (error) {
+        alert(error);
+        return;
+    }
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
 
@@ -88,7 +107,14 @@ async function fetchJson(event) {
 }
 
 async function updateAvailableSpecies() {
-    const returnedData = await window.electronAPI.fetchSpecies();
+    let returnedData;
+    try {
+        returnedData = await window.electronAPI.fetchSpecies();
+    }
+    catch (error) {
+        alert(error);
+        return;
+    }
     availableSpecies = returnedData;
 
     const speciesOptions = createOptions(availableSpecies);
@@ -488,7 +514,7 @@ async function saveJsonChanges() {
 async function updateJson() {
     const newDirectoryName = document.getElementById("json-directory-name").value;
     if (!newDirectoryName) {
-        const message = "Please provide a directory name for your updated JSON files";
+        const message = "Please provide a directory to store your updated JSON files";
         alert(message);
         return;
     }
@@ -496,8 +522,15 @@ async function updateJson() {
     createInvalidSpeciesWarning();
     cleanUpWhitespace();
 
-    const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
-    console.log(updateDataResponse);
+    try {
+        const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
+        console.log(updateDataResponse);
+    }
+    catch (error) {
+        alert(error);
+        return;
+    }
+    
 }
 
 function cleanUpWhitespace() {

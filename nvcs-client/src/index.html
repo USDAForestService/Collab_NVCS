@@ -16,9 +16,18 @@
     </div>
     <div class="top-action-container">
       <div class="label-input-button-container">
+        <label for="packaged-json-type">Packaged JSON Type:</label>
+        <select id="packaged-json-type">
+          <option disabled>alaska</option>
+          <option disabled>east</option>
+          <option selected>west</option>
+        </select>
+        <button id="btn-fetch-packaged-json" onclick="fetchJson()">Load Packaged JSON</button>
+      </div>
+      <div class="label-input-button-container">
         <label for="source-json-directory">Source JSON Directory:</label>
-        <input id="source-json-directory" type="text" disabled/>
-        <button id="btn-fetch-existing-json" onclick="fetchJson()">Load JSON</button>
+        <input id="source-json-directory" type="text"/>
+        <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load Custom JSON</button>
       </div>
       <div class="label-input-button-container">
         <label for="json-directory-name">Target JSON Directory:</label>
