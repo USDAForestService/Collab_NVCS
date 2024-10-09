@@ -13,6 +13,8 @@ var InputFilterTypes = [
     "tallytree"
 ];
 var lineNumberCounter = 0;
+var warnings = [];
+var errors = [];
 
 var nodeJson;
 var nodeHierarchy;
@@ -159,7 +161,7 @@ function generateHierarchyHTML(hierarchy) {
     detectedJsonContainer.innerHTML = nodeDisplay;
 
     // Display alerts if any
-    generateAlerts();
+    checkForProblems();
 }
 
 function generateAlerts() {
@@ -174,10 +176,26 @@ function generateAlerts() {
     warningList.replaceChildren([]);
 
     // Show Errors
-    createMissingTriggerParenthesesError();
+    if (errors.length > 0)
+        errorContainer.removeAttribute("hidden");
+    for (const error of errors) {
+        errorList.innerHTML += `
+            <li id='${error.name}' class='error-list-item'>
+                ${error.content}
+            </li>
+        `;
+    }
 
     // Show Warnings
-    createInvalidSpeciesWarning();
+    if (warnings.length > 0)
+        warningContainer.removeAttribute("hidden");
+    for (const warning of warnings) {
+        warningList.innerHTML += `
+            <li id='${warning.name}' class='warning-list-item'>
+                ${warning.content}
+            </li>
+        `;
+    }
 }
 
 function generateListEntry(element) {
@@ -519,7 +537,6 @@ async function updateJson() {
         return;
     }
 
-    createInvalidSpeciesWarning();
     cleanUpWhitespace();
 
     try {
@@ -815,26 +832,41 @@ function getInputValueListForType(type) {
     }
 }
 
-function createError(content) {
-    const alertContainer = document.querySelector(".alert-container");
-    const errorContainer = document.querySelector(".error-container");
-    const errorList = document.querySelector(".error-list");
+function checkForProblems() {
+    // Wipe existing lists
+    errors = [];
+    warnings = [];
 
-    errorList.innerHTML += content;
+    // Check errors
+    checkMissingTriggerParenthesesError();
 
-    errorContainer.removeAttribute("hidden");
-    alertContainer.removeAttribute("hidden");
+    // Check warnings
+    checkInvalidSpeciesWarning();
+
+    // Update alerts
+    generateAlerts();
 }
 
-function createWarning(content) {
-    const alertContainer = document.querySelector(".alert-container");
-    const warningContainer = document.querySelector(".warning-container");
-    const warningList = document.querySelector(".warning-list");
+function createError(name, content) {
+    errors = errors.filter(i => i.name != name);
 
-    warningList.innerHTML += content;
+    errors.push({
+        name: name,
+        content: content
+    });
 
-    warningContainer.removeAttribute("hidden");
-    alertContainer.removeAttribute("hidden");
+    errors.sort((a,b) => a.name - b.name);
+}
+
+function createWarning(name, content) {
+    warnings = warnings.filter(i => i.name != name);
+    
+    warnings.push({
+        name: name,
+        content: content
+    });
+
+    warnings.sort((a,b) => a.name - b.name);
 }
 
 function toggleNestedParenthesesErrors() {
@@ -869,14 +901,13 @@ function toggleNestedSpeciesWarnings() {
     }
 }
 
-function createMissingTriggerParenthesesError() {
+function checkMissingTriggerParenthesesError() {
     const invalidParentheses = findMissingTriggerParentheses();
     if (invalidParentheses.length == 0)
         return;
     console.error("Invalid parentheses counts", invalidParentheses);
 
     let html = `
-        <li id='invalid-parentheses-error' class='error-list-item'>
         <p>
             Mismatched left and right parentheses counts detected within ${invalidParentheses.length} hierarchy element triggers!
             These triggers should be revisited or the classification key will fail to build.
@@ -900,25 +931,24 @@ function createMissingTriggerParenthesesError() {
         </ul>
     `
 
-    createError(html);
+    createError("invalid-parentheses", html);
 }
 
-function createInvalidSpeciesWarning() {
+function checkInvalidSpeciesWarning() {
     const invalidSpeciesInfo = findInvalidSpecies();
     if (invalidSpeciesInfo.length == 0)
         return;
     console.warn("Invalid species info", invalidSpeciesInfo);
 
     let html = `
-        <li id='invalid-species-warning' class='warning-list-item'>
-            <p>
-                Non-tracked FIA species filters have been detected within ${invalidSpeciesInfo.length} hierarchy elements!
-                These species filters will simply catch no conditions while running the classification key.
-                <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warnings' onclick="toggleNestedSpeciesWarnings()">
-                    Show Nested Warnings
-                </button>
-            </p>
-            <ul id='nested-species-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Species Filters" hidden>
+        <p>
+            Non-tracked FIA species filters have been detected within ${invalidSpeciesInfo.length} hierarchy elements!
+            These species filters will simply catch no conditions while running the classification key.
+            <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warnings' onclick="toggleNestedSpeciesWarnings()">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-species-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Species Filters" hidden>
     `;
 
     for (const info of invalidSpeciesInfo) {
@@ -970,11 +1000,10 @@ function createInvalidSpeciesWarning() {
     }
 
     html += `
-            </ul>
-        </li>
+        </ul>
     `;
 
-    createWarning(html);
+    createWarning("invalid-species", html);
 }
 
 function findMissingTriggerParentheses() {
