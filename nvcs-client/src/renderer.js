@@ -319,18 +319,30 @@ function addInputFilter(identifier, bulkAdd = false) {
     const singleInputType = document.getElementById("input_type_add_" + identifier).value;
     const singleInputValue = document.getElementById("input_value_add_" + identifier).value;
     let newInputFilterHtml = "";
+    let newInputFilterIdentifiers = [];
     if (bulkAdd) {
         const separatedInputValues = singleInputValue.split(",");
         for (const separatedInputValue of separatedInputValues) {
             const cleanedInputValue = separatedInputValue.trim();
-            newInputFilterHtml += createInputFilter(singleInputType, cleanedInputValue);
+            const [html, identifier] = createInputFilter(singleInputType, cleanedInputValue)
+            newInputFilterHtml += html;
+            newInputFilterIdentifiers.push(identifier);
         }
 
     }
     else {
-        newInputFilterHtml = createInputFilter(singleInputType, singleInputValue);
+        const [html, identifier] = createInputFilter(singleInputType, singleInputValue);
+        newInputFilterHtml += html;
+        newInputFilterIdentifiers.push(identifier);
     }
     inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
+
+    // Mark new entries if invalid
+    for (const identifier of newInputFilterIdentifiers) {
+        const inputFilterContainer = document.getElementById(identifier);
+        const inputFilterInput = inputFilterContainer.querySelector(".input-value");
+        checkInputInList(inputFilterInput);
+    }
 }
 
 function createFilter(filterKey, inputFilters) {
@@ -366,17 +378,17 @@ function createFilter(filterKey, inputFilters) {
                 <label for="input_type_add_${identifier}">
                     Type:
                 </label>
-                <select id="input_type_add_${identifier}" class="input-type" onchange="swapInputType(this)">
+                <select id="input_type_add_${identifier}" class="input-type" onchange="swapInputType(this, false)">
                     ${inputFilterOptions}
                 </select>
                 <label for="input_value_add_${identifier}">
                     Value:
                 </label>
-                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}" onblur="checkInputInList(this)"/>
-                <button onclick="addInputFilter('${identifier}', false)">
+                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}"/>
+                <button onclick="addInputFilter('${identifier}', false)" title='The full input will be added as a single filter'>
                     Add Single
                 </button>
-                <button onclick="addInputFilter('${identifier}', true)">
+                <button onclick="addInputFilter('${identifier}', true)" title='Comma-separate the individual values to add multiple filters'>
                     Add Bulk
                 </button>
             </div>
@@ -408,7 +420,7 @@ function createInputFilter(inputFilterKey, inputFilterValue) {
     </div>
     `
 
-    return html;
+    return [html, identifier];
 }
 
 function createInputFilterOptions(inputFilterKey) {
@@ -651,9 +663,9 @@ function generateFilters(element) {
     
                 const inputFilterKeys = Object.keys(filterValueArrayElement);
                 for (const inputFilterKey of inputFilterKeys) {
-    
                     const inputFilterValue = filterValueArrayElement[inputFilterKey];
-                    inputFilterContent += createInputFilter(inputFilterKey, inputFilterValue);
+                    const [html, identifier] = createInputFilter(inputFilterKey, inputFilterValue);
+                    inputFilterContent += html;
                 }
             }
     
@@ -825,10 +837,11 @@ function searchHierarchy() {
     element.focus();
 }
 
-function swapInputType(element) {
+function swapInputType(element, validateInput = true) {
     const inputValue = element.parentElement.querySelector(".input-value");
     const inputValueListName = getInputValueListForType(element.value);
     inputValue.setAttribute("list", inputValueListName);
+    if (validateInput) checkInputInList(inputValue);
 }
 
 function getInputValueListForType(type) {
@@ -1176,7 +1189,11 @@ function checkInputInList(element) {
     const input = element.value;
     const listId = element.getAttribute("list");
     const list = document.getElementById(listId);
-    if (!list) return;
+    if (!list) {
+        element.classList.remove(mapTypeToClass("error"))
+        element.classList.remove(mapTypeToClass("warning"))
+        return;
+    }
 
     const listType = list.getAttribute("data-type");
     const listTypeClass = mapTypeToClass(listType);
