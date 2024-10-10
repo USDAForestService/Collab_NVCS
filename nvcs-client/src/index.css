@@ -211,11 +211,11 @@ body {
   padding: 10px;
 }
 
-.error-container {
+.error-bg-color {
   background-color: #f2c9c9;
 }
 
-.warning-container {
+.warning-bg-color {
   background-color: #fbfb88;
 }
 

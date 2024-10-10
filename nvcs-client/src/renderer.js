@@ -167,9 +167,9 @@ function generateHierarchyHTML(hierarchy) {
 
 function generateAlerts() {
     // Wipe & hide existing alerts
-    const errorContainer = document.querySelector(".error-container");
+    const errorContainer = document.getElementById("error-container");
     const errorList = document.querySelector(".error-list");
-    const warningContainer = document.querySelector(".warning-container");
+    const warningContainer = document.getElementById("warning-container");
     const warningList = document.querySelector(".warning-list");
     errorContainer.setAttribute("hidden", "");
     warningContainer.setAttribute("hidden", "");
@@ -266,6 +266,11 @@ function openJsonDialog(hierarchyName) {
     // Populate filters
     let nodeFilters = generateFilters(hierarchyElement);
     document.getElementById("node-nodeFilters").innerHTML = nodeFilters;
+
+    // Mark invalid filter values
+    const inputTypes = document.querySelectorAll(".input-value");
+    for (const inputType of inputTypes)
+        checkInputInList(inputType);
 }
 
 function showJsonDialog() {
@@ -342,7 +347,7 @@ function createFilter(filterKey, inputFilters) {
     <div class='filter-container' id="${identifier}">
         <div class='sub-content-header-container'>
             <label for="filter-${filterKey}">Name:</label>
-            <input type="text" id="filter-${filterKey}" value="${filterKey}" />
+            <input type="text" id="filter-${filterKey}" value="${filterKey}"/>
             <button onclick="deleteElement('${identifier}')">Delete Filter</button>
         </div>
         <div class='sub-content-container'>
@@ -367,7 +372,7 @@ function createFilter(filterKey, inputFilters) {
                 <label for="input_value_add_${identifier}">
                     Value:
                 </label>
-                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}"/>
+                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}" onblur="checkInputInList(this)"/>
                 <button onclick="addInputFilter('${identifier}', false)">
                     Add Single
                 </button>
@@ -398,7 +403,7 @@ function createInputFilter(inputFilterKey, inputFilterValue) {
         <select class='sub-key-holder input-type' value="${inputFilterKey}" onchange="swapInputType(this)">
         ${filterSelectBoxOptions}
         </select>
-        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}"/>
+        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}" onblur="checkInputInList(this)"/>
         <button onclick="deleteElement('${identifier}')">Delete</button>
     </div>
     `
@@ -1085,5 +1090,39 @@ async function openBrowseDialog(targetPath = "") {
     catch (error) {
         alert(error);
         return targetPath;
+    }
+}
+
+function checkInputInList(element) {
+    const input = element.value;
+    const listId = element.getAttribute("list");
+    const list = document.getElementById(listId);
+    if (!list) return;
+
+    const listType = list.getAttribute("data-type");
+    const listTypeClass = mapTypeToClass(listType);
+    const listMessage = list.getAttribute("data-missing-message");
+    const listOptions = list.querySelectorAll("option");
+    const listValues = [...listOptions].map(i => i.value);
+    
+    if (listValues.includes(input)) {
+        element.classList.remove(listTypeClass);
+        element.removeAttribute("title");
+    }
+    else {
+        element.classList.add(listTypeClass);
+        element.title = listMessage;
+    }
+}
+
+function mapTypeToClass(type) {
+    switch (type) {
+        case "warning":
+            return "warning-bg-color";
+        case "error":
+            return "error-bg-color";
+        default:
+            console.error("Invalid type provided for class mapping", type);
+            return;
     }
 }

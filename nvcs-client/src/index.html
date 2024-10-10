@@ -47,12 +47,12 @@
       </div>
     </div>
     <div class="alert-container" role="alert">
-      <div class="error-container alert-type" hidden>
+      <div id="error-container" class="alert-type error-bg-color" hidden>
         <h2>ERROR</h2>
         <ul class="error-list" aria-label="Error List">
         </ul>
       </div>
-      <div class="warning-container alert-type" hidden>
+      <div id="warning-container" class="alert-type warning-bg-color" hidden>
         <h2>WARNING</h2>
         <ul class="warning-list" aria-label="Warning List">
         </ul>
@@ -126,7 +126,7 @@
       </div>
     </div>
     <div class="data-list-container">
-      <datalist id="species-list"></datalist>
+      <datalist id="species-list" data-type="warning" data-missing-message="This species is not tracked"></datalist>
     </div>
   </body>
 </html>
