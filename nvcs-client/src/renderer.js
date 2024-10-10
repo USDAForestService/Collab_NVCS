@@ -378,13 +378,13 @@ function createFilter(filterKey, inputFilters) {
                 <label for="input_type_add_${identifier}">
                     Type:
                 </label>
-                <select id="input_type_add_${identifier}" class="input-type" onchange="swapInputType(this, false)">
+                <select id="input_type_add_${identifier}" class="input-type" onchange="swapInputType(this, false)"  aria-label="Add Input Filter Type">
                     ${inputFilterOptions}
                 </select>
                 <label for="input_value_add_${identifier}">
                     Value:
                 </label>
-                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}"/>
+                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}" aria-label="Add Input Filter Value"/>
                 <button onclick="addInputFilter('${identifier}', false)" title='The full input will be added as a single filter'>
                     Add Single
                 </button>
@@ -412,10 +412,10 @@ function createInputFilter(inputFilterKey, inputFilterValue) {
     const inputValueList = getInputValueListForType(inputFilterKey);
     let html = `
     <div class='sub-content-container' id="${identifier}" >
-        <select class='sub-key-holder input-type' value="${inputFilterKey}" onchange="swapInputType(this)">
+        <select class='sub-key-holder input-type' value="${inputFilterKey}" onchange="swapInputType(this)" aria-label="Input Filter Type">
         ${filterSelectBoxOptions}
         </select>
-        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}" onblur="checkInputInList(this)"/>
+        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}" onblur="checkInputInList(this)" aria-label="Input Filter Value"/>
         <button onclick="deleteElement('${identifier}')">Delete</button>
     </div>
     `
