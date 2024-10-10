@@ -559,7 +559,12 @@ async function updateJson() {
 
     try {
         const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
-        console.log(updateDataResponse);
+        if (!updateDataResponse)
+            throw new Error("updateJson() failed to return a successful response");
+
+        const message = `Successfully saved changes to: ${newDirectoryName}`;
+        alert(message);
+        return;
     }
     catch (error) {
         alert(error);
