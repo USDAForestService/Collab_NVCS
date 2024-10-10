@@ -833,8 +833,18 @@ function swapInputType(element) {
 
 function getInputValueListForType(type) {
     switch (type) {
-        case "species": return "species-list";
-        default: return "";
+        case "species": 
+            return "species-list";
+        case "plantation":
+        case "hydric":
+        case "riverine":
+        case "ruderal":
+        case "exotic":
+        case "planted":
+        case "tallytree":
+            return "binary-list";
+        default: 
+            return "";
     }
 }
 
@@ -845,6 +855,7 @@ function checkForProblems() {
 
     // Check errors
     checkMissingTriggerParenthesesError();
+    checkInvalidBinaryValueError();
 
     // Check warnings
     checkInvalidSpeciesWarning();
@@ -875,37 +886,22 @@ function createWarning(name, content) {
     warnings.sort((a,b) => a.name - b.name);
 }
 
-function toggleNestedParenthesesErrors() {
-    const button = document.getElementById("btn-toggle-nested-parentheses-errors");
-    const errors = document.getElementById("nested-parentheses-errors");
-
-    if (errors.getAttribute("aria-expanded") === "true") {
-        errors.setAttribute("hidden", "");
-        errors.setAttribute("aria-expanded", false);
-        button.innerText = "Show Nested Errors";
+function toggleNestedContent(button, type) {
+    const ariaControls = button.getAttribute("aria-controls");
+    const content = document.getElementById(ariaControls);
+    const typeMessage = type == "error" ? "Errors" : "Warnings";
+    
+    if (content.getAttribute("aria-expanded") === "true") {
+        content.setAttribute("hidden", "");
+        content.setAttribute("aria-expanded", false);
+        button.innerText = `Show Nested ${typeMessage}`;
     }
     else {
-        errors.removeAttribute("hidden");
-        errors.setAttribute("aria-expanded", true);
-        button.innerText = "Hide Nested Errors";
+        content.removeAttribute("hidden");
+        content.setAttribute("aria-expanded", true);
+        button.innerText = `Hide Nested ${typeMessage}`;
     }
-}
-
-function toggleNestedSpeciesWarnings() {
-    const button = document.getElementById("btn-toggle-nested-species-warnings");
-    const warnings = document.getElementById("nested-species-warnings");
-
-    if (warnings.getAttribute("aria-expanded") === "true") {
-        warnings.setAttribute("hidden", "");
-        warnings.setAttribute("aria-expanded", false);
-        button.innerText = "Show Nested Warnings";
-    }
-    else {
-        warnings.removeAttribute("hidden");
-        warnings.setAttribute("aria-expanded", true);
-        button.innerText = "Hide Nested Warnings";
-    }
-}
+} 
 
 function checkMissingTriggerParenthesesError() {
     const invalidParentheses = findMissingTriggerParentheses();
@@ -917,7 +913,7 @@ function checkMissingTriggerParenthesesError() {
         <p>
             Mismatched left and right parentheses counts detected within ${invalidParentheses.length} hierarchy element triggers!
             These triggers should be revisited or the classification key will fail to build.
-            <button id='btn-toggle-nested-parentheses-errors' aria-controls='nested-parentheses-errors' onclick="toggleNestedParenthesesErrors()">
+            <button id='btn-toggle-nested-parentheses-errors' aria-controls='nested-parentheses-errors' onclick="toggleNestedContent(this, 'errors')">
                 Show Nested Errors
             </button>
         </p>
@@ -940,6 +936,77 @@ function checkMissingTriggerParenthesesError() {
     createError("invalid-parentheses", html);
 }
 
+function checkInvalidBinaryValueError() {
+    const invalidBinaryValues = findInvalidBinaryValues();
+    if (invalidBinaryValues.length == 0)
+        return;
+    console.error("Invalid binary values", invalidBinaryValues);
+
+    let html = `
+        <p>
+            Invalid binary values have been detected within ${invalidBinaryValues.length} hierarchy elements!
+            These binary filters should only have their inputs set to "yes" or "no".
+            <button id='btn-toggle-invalid-binary-errors' aria-controls='nested-binary-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-binary-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Binary Filters" hidden>
+    `;
+
+    for (const info of invalidBinaryValues) {
+        const elementButton = info.button.outerHTML;
+
+        let elementFilters = [];
+        for (const entry of info.invalids)
+            elementFilters.push(entry.filter);
+        elementFilters = [...new Set(elementFilters)];
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of elementFilters) {
+            html += `
+                <li class='invalid-binary-filter-container'>
+                    <p class='invalid-filter-name'>
+                        ${elementFilter}
+                    </p>
+                    <ul class='invalid-binary-container'>
+            `;
+
+            for (const entry of info.invalids) {
+                if (entry.filter != elementFilter) 
+                    continue;
+
+                html += `
+                    <li>
+                        ${entry.value}
+                    </li>
+                `;
+            }
+
+            html += `
+                    </ul>
+                </li>
+            `;
+        }
+
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-binary", html);
+}
+
 function checkInvalidSpeciesWarning() {
     const invalidSpeciesInfo = findInvalidSpecies();
     if (invalidSpeciesInfo.length == 0)
@@ -950,7 +1017,7 @@ function checkInvalidSpeciesWarning() {
         <p>
             Non-tracked FIA species filters have been detected within ${invalidSpeciesInfo.length} hierarchy elements!
             These species filters will simply catch no conditions while running the classification key.
-            <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warnings' onclick="toggleNestedSpeciesWarnings()">
+            <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warnings' onclick="toggleNestedContent(this, 'warning')">
                 Show Nested Warnings
             </button>
         </p>
@@ -961,7 +1028,7 @@ function checkInvalidSpeciesWarning() {
         const elementButton = info.button.outerHTML;
 
         let elementFilters = [];
-        for (const entry of info.species)
+        for (const entry of info.invalids)
             elementFilters.push(entry.filter);
         elementFilters = [...new Set(elementFilters)];
 
@@ -980,7 +1047,7 @@ function checkInvalidSpeciesWarning() {
                     <ul class='invalid-species-container'>
             `;
 
-            for (const entry of info.species) {
+            for (const entry of info.invalids) {
                 if (entry.filter != elementFilter) 
                     continue;
 
@@ -1031,39 +1098,51 @@ function findMissingTriggerParentheses() {
     return invalid;
 }
 
+function findInvalidBinaryValues() {
+    let availableKeys = ["plantation", "hydric", "riverine", "ruderal", "exotic", "planted", "tallytree"];
+    let availableValues = getOptionValuesFromDataList(document.getElementById("binary-list"));
+    return findInvalidFilters(availableKeys, availableValues);
+}
+
 function findInvalidSpecies() {
-    let invalidSpecies = [];
+    let availableKeys = ["species"];
+    let availableValues = availableSpecies;
+    return findInvalidFilters(availableKeys, availableValues);
+}
+
+function findInvalidFilters(availableKeys, availableValues) {
+    let invalidInfo = [];
     for (const element of hierarchy) {
         const filters = element.node.filters;
         for (const [filterKey, filterValues] of Object.entries(filters)) {
             for (const filterValue of filterValues) {
                 for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
-                    if (subFilterKey != "species") continue;
-                    if (availableSpecies.includes(subFilterValue)) continue;
-
-                    let existingInvaidSpecies = invalidSpecies.filter(i => i.element == element)[0];
-                    if (!existingInvaidSpecies) {
-                        invalidSpecies.push({
+                    if (!availableKeys.includes(subFilterKey)) continue;
+                    if (availableValues.includes(subFilterValue)) continue;
+                    const subFilterCombo = `${subFilterKey}: ${subFilterValue}`;
+                    let existingInvalid = invalidInfo.filter(i => i.element == element)[0];
+                    if (!existingInvalid) {
+                        invalidInfo.push({
                             hierarchyName: element.hierarchyName,
-                            species: [{
+                            invalids: [{
                                 filter: filterKey,
-                                value: subFilterValue
+                                value: subFilterCombo
                             }],
                             element: element,
                             button: findHierarchyButton(element.hierarchyName)
                         });
                     }
                     else {
-                        existingInvaidSpecies.species.push({
+                        existingInvalid.invalids.push({
                             filter: filterKey,
-                            value: subFilterValue
+                            value: subFilterCombo
                         });
                     }
                 }
             }
         }
     }
-    return invalidSpecies;
+    return invalidInfo;
 }
 
 function findHierarchyButton(hierarchyName) {
@@ -1102,8 +1181,7 @@ function checkInputInList(element) {
     const listType = list.getAttribute("data-type");
     const listTypeClass = mapTypeToClass(listType);
     const listMessage = list.getAttribute("data-missing-message");
-    const listOptions = list.querySelectorAll("option");
-    const listValues = [...listOptions].map(i => i.value);
+    const listValues = getOptionValuesFromDataList(list);
     
     if (listValues.includes(input)) {
         element.classList.remove(listTypeClass);
@@ -1125,4 +1203,10 @@ function mapTypeToClass(type) {
             console.error("Invalid type provided for class mapping", type);
             return;
     }
+}
+
+function getOptionValuesFromDataList(list) {
+    const listOptions = list.querySelectorAll("option");
+    const listValues = [...listOptions].map(i => i.value);
+    return listValues;
 }
