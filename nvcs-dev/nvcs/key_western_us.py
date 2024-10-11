@@ -4136,27 +4136,83 @@ def element_078():
     #   OR 
     #   c.  Any EXOTIC = yes tree species =>80% RIV
 
-    ECOREGIONS = PatternList('ECOREGIONS',
+    ECOREGIONS_I = PatternList('ECOREGIONS_I',
         {'ecoregion': '242A, M242, 261A, M261A, M261B, 263'}
     )
 
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'state': 'Abies amabilis'},
-        {'state': 'Acer macrophyllum'},
-        {'state': 'Alnus rubra'},
-        {'state': 'Chamaecyparis lawsoniana'},
-        {'state': 'Picea sitchensis'},
-        {'state': 'Pinus contorta'},
-        {'state': 'Pseudotsuga menziesii'},
-        {'state': 'Sequoia sempervirens'},
-        {'state': 'Thuja plicata'},
-        {'state': 'Tsuga heterophylla'}
+    STRONG_DIAGNOSTICS_I_NoExclusions = PatternList('STRONG_DIAGNOSTICS_I_NoExclusions',
+        {'species': 'Abies amabilis'},
+        {'species': 'Acer macrophyllum'},
+        {'species': 'Alnus rubra'},
+        {'species': 'Chamaecyparis lawsoniana'},
+        {'species': 'Picea sitchensis'},
+        {'species': 'Sequoia sempervirens'},
+        {'species': 'Thuja plicata'},
+        {'species': 'Tsuga heterophylla'}
+    )
+
+    ECOREGIONS_II_NoM242CD = PatternList('ECOREGIONS_II_NoM242CD',
+        {'ecoregion': '242A, M242A, M242B, 261A, M261A, M261B, 263'}
+    )
+
+    STRONG_DIAGNOSTICS_II_NoElevationExclusions = PatternList('STRONG_DIAGNOSTICS_II_NoElevationExclusions',
+        {'species': 'Abies amabilis'},
+        {'species': 'Acer macrophyllum'},
+        {'species': 'Alnus rubra'},
+        {'species': 'Chamaecyparis lawsoniana'},
+        {'species': 'Picea sitchensis'},
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Sequoia sempervirens'},
+        {'species': 'Thuja plicata'},
+        {'species': 'Tsuga heterophylla'}
+    )
+
+    STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions = PatternList('STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions',
+        {'species': 'Abies amabilis'},
+        {'species': 'Acer macrophyllum'},
+        {'species': 'Alnus rubra'},
+        {'species': 'Chamaecyparis lawsoniana'},
+        {'species': 'Picea sitchensis'},
+        {'species': 'Pinus contorta'},
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Sequoia sempervirens'},
+        {'species': 'Thuja plicata'},
+        {'species': 'Tsuga heterophylla'}
+    )
+
+    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
+        {'species': 'Abies grandis'},
+        {'species': 'Abies lasiocarpa'},
+        {'species': 'Abies procera'},
+        {'species': 'Acer circinatum'},
+        {'species': 'Arbutus menziesii'},
+        {'species': 'Callitropsis nootkatensis'},
+        {'species': 'Cornus nuttallii'},
+        {'species': 'Frangula purshiana'},
+        {'species': 'Notholithocarpus densiflorus'},
+        {'species': 'Pinus monticola'},
+        {'species': 'Pinus muricata'},
+        {'species': 'Quercus garryana'},
+        {'species': 'Umbellularia californica'}
+    )
+
+    EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
+        {'exotic': 'yes'}
     )
 
     def match(plot):
         logging.debug('%s|NODE=078|Pacific Coast Temperate Rainforest Division (D338)', plot.ident)
-        result = (plot.match(ECOREGIONS)
-               and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50)
+        result = ((plot.match(ECOREGIONS_I) and plot.riv(STRONG_DIAGNOSTICS_I_NoExclusions) >= 50) or 
+               (plot.match(ECOREGIONS_II_NoM242CD) and plot.riv(STRONG_DIAGNOSTICS_II_NoElevationExclusions) >= 50) or 
+               (plot.match(ECOREGIONS_II_NoM242CD) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions) >= 50) 
+               or 
+               (((plot.match(ECOREGIONS_I) and plot.riv(STRONG_DIAGNOSTICS_I_NoExclusions) >= 20) or
+               (plot.match(ECOREGIONS_II_NoM242CD) and plot.riv(STRONG_DIAGNOSTICS_II_NoElevationExclusions) >= 20) or
+               (plot.match(ECOREGIONS_II_NoM242CD) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions) >= 20)) 
+               and 
+               (plot.match(ECOREGIONS_I) and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30)) 
+               or 
+               plot.riv(EXOTIC_TREE_SPP) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match

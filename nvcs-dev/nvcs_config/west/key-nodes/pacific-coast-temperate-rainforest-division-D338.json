@@ -30,45 +30,160 @@
             "  c.  Any EXOTIC = yes tree species =>80% RIV"
         ],
         "trigger": [
-            "match (ECOREGIONS)",
-            "and riv(STRONG_DIAGNOSTIC_SPECIES) >= 50"
+            "(match(ECOREGIONS_I) and riv(STRONG_DIAGNOSTICS_I_NoExclusions) >= 50) or ",
+            "(match(ECOREGIONS_II_NoM242CD) and riv(STRONG_DIAGNOSTICS_II_NoElevationExclusions) >= 50) or ",
+            "(match(ECOREGIONS_II_NoM242CD) and elevation() < 500 and riv(STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions) >= 50) ",
+            "or ",
+            "(((match(ECOREGIONS_I) and riv(STRONG_DIAGNOSTICS_I_NoExclusions) >= 20) or",
+            "(match(ECOREGIONS_II_NoM242CD) and riv(STRONG_DIAGNOSTICS_II_NoElevationExclusions) >= 20) or",
+            "(match(ECOREGIONS_II_NoM242CD) and elevation() < 500 and riv(STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions) >= 20)) ",
+            "and ",
+            "(match(ECOREGIONS_I) and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30)) ",
+            "or ",
+            "riv(EXOTIC_TREE_SPP) >= 80"
         ],
         "filters": {
-            "ECOREGIONS": [
+            "ECOREGIONS_I": [
                 {
                     "ecoregion": "242A, M242, 261A, M261A, M261B, 263"
                 }
             ],
-            "STRONG_DIAGNOSTIC_SPECIES": [
+            "STRONG_DIAGNOSTICS_I_NoExclusions": [
                 {
-                    "state": "Abies amabilis"
+                    "species": "Abies amabilis"
                 },
                 {
-                    "state": "Acer macrophyllum"
+                    "species": "Acer macrophyllum"
                 },
                 {
-                    "state": "Alnus rubra"
+                    "species": "Alnus rubra"
                 },
                 {
-                    "state": "Chamaecyparis lawsoniana"
+                    "species": "Chamaecyparis lawsoniana"
                 },
                 {
-                    "state": "Picea sitchensis"
+                    "species": "Picea sitchensis"
                 },
                 {
-                    "state": "Pinus contorta"
+                    "species": "Sequoia sempervirens"
                 },
                 {
-                    "state": "Pseudotsuga menziesii"
+                    "species": "Thuja plicata"
                 },
                 {
-                    "state": "Sequoia sempervirens"
+                    "species": "Tsuga heterophylla"
+                }
+            ],
+            "ECOREGIONS_II_NoM242CD": [
+                {
+                    "ecoregion": "242A, M242A, M242B, 261A, M261A, M261B, 263"
+                }
+            ],
+            "STRONG_DIAGNOSTICS_II_NoElevationExclusions": [
+                {
+                    "species": "Abies amabilis"
                 },
                 {
-                    "state": "Thuja plicata"
+                    "species": "Acer macrophyllum"
                 },
                 {
-                    "state": "Tsuga heterophylla"
+                    "species": "Alnus rubra"
+                },
+                {
+                    "species": "Chamaecyparis lawsoniana"
+                },
+                {
+                    "species": "Picea sitchensis"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Sequoia sempervirens"
+                },
+                {
+                    "species": "Thuja plicata"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions": [
+                {
+                    "species": "Abies amabilis"
+                },
+                {
+                    "species": "Acer macrophyllum"
+                },
+                {
+                    "species": "Alnus rubra"
+                },
+                {
+                    "species": "Chamaecyparis lawsoniana"
+                },
+                {
+                    "species": "Picea sitchensis"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Sequoia sempervirens"
+                },
+                {
+                    "species": "Thuja plicata"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Acer circinatum"
+                },
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Callitropsis nootkatensis"
+                },
+                {
+                    "species": "Cornus nuttallii"
+                },
+                {
+                    "species": "Frangula purshiana"
+                },
+                {
+                    "species": "Notholithocarpus densiflorus"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Pinus muricata"
+                },
+                {
+                    "species": "Quercus garryana"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
                 }
             ]
         }
