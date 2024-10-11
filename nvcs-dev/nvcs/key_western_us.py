@@ -1821,12 +1821,13 @@ def element_033():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division
 
     RUDERAL_OR_EXOTIC = PatternList('RUDERAL_OR_EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'yes'},
+        {'ruderal': 'yes'}
     )
 
     def match(plot):
         logging.debug('%s|NODE=033|Interior West Ruderal Flooded & Swamp Forest & Woodland (M298)', plot.ident)
-        result = (plot.riv(EXOTIC) >= 80)
+        result = (plot.riv(RUDERAL_OR_EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match

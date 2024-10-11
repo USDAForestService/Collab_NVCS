@@ -13,12 +13,15 @@
             "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division"
         ],
         "trigger": [
-            "riv(EXOTIC) >= 80"
+            "riv(RUDERAL_OR_EXOTIC) >= 80"
         ],
         "filters": {
             "RUDERAL_OR_EXOTIC": [
                 {
                     "exotic": "yes"
+                },
+                {
+                    "ruderal": "yes"
                 }
             ]
         }
