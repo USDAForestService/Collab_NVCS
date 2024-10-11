@@ -4112,8 +4112,6 @@ def element_078():
     level = 'division'
     code = 'D338'
 
-    # TODO: Revisit the ELEVATION exclusions below
-    # 
     # Tree composition and ecology matching one of the following options: 
     # i.  Located in ECOREGION 242A, M242, 261A, M261A, M261B, 263
     # AND
@@ -4136,160 +4134,76 @@ def element_078():
     #   MODERATE diagnostic species RIV =>50%) 
     #   OR 
     #   c.  Any EXOTIC = yes tree species =>80% RIV
-
-    ECOREGIONS_I = PatternList('ECOREGIONS_I',
-        {'ecoregion': '242A, M242, 261A, M261A, M261B, 263'}
-    )
-
-    STRONG_DIAGNOSTICS_I_NoExclusions = PatternList('STRONG_DIAGNOSTICS_I_NoExclusions',
-        {'species': 'Abies amabilis'},
-        {'species': 'Acer macrophyllum'},
-        {'species': 'Alnus rubra'},
-        {'species': 'Chamaecyparis lawsoniana'},
-        {'species': 'Picea sitchensis'},
-        {'species': 'Sequoia sempervirens'},
-        {'species': 'Thuja plicata'},
-        {'species': 'Tsuga heterophylla'}
-    )
-
-    ECOREGIONS_II_NoM242CD = PatternList('ECOREGIONS_II_NoM242CD',
-        {'ecoregion': '242A, M242A, M242B, 261A, M261A, M261B, 263'}
-    )
-
-    STRONG_DIAGNOSTICS_II_NoElevationExclusions = PatternList('STRONG_DIAGNOSTICS_II_NoElevationExclusions',
-        {'species': 'Abies amabilis'},
-        {'species': 'Acer macrophyllum'},
-        {'species': 'Alnus rubra'},
-        {'species': 'Chamaecyparis lawsoniana'},
-        {'species': 'Picea sitchensis'},
-        {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Sequoia sempervirens'},
-        {'species': 'Thuja plicata'},
-        {'species': 'Tsuga heterophylla'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions = PatternList('STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions',
-        {'species': 'Abies amabilis'},
-        {'species': 'Acer macrophyllum'},
-        {'species': 'Alnus rubra'},
-        {'species': 'Chamaecyparis lawsoniana'},
-        {'species': 'Picea sitchensis'},
-        {'species': 'Pinus contorta'},
-        {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Sequoia sempervirens'},
-        {'species': 'Thuja plicata'},
-        {'species': 'Tsuga heterophylla'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies grandis'},
-        {'species': 'Abies lasiocarpa'},
-        {'species': 'Abies procera'},
-        {'species': 'Acer circinatum'},
-        {'species': 'Arbutus menziesii'},
-        {'species': 'Callitropsis nootkatensis'},
-        {'species': 'Cornus nuttallii'},
-        {'species': 'Frangula purshiana'},
-        {'species': 'Notholithocarpus densiflorus'},
-        {'species': 'Pinus monticola'},
-        {'species': 'Pinus muricata'},
-        {'species': 'Quercus garryana'},
-        {'species': 'Umbellularia californica'}
-    )
-
-    EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=078|Pacific Coast Temperate Rainforest Division (D338)', plot.ident)
-        result = ((plot.match(ECOREGIONS_I) and plot.riv(STRONG_DIAGNOSTICS_I_NoExclusions) >= 50) or 
-               (plot.match(ECOREGIONS_II_NoM242CD) and plot.riv(STRONG_DIAGNOSTICS_II_NoElevationExclusions) >= 50) or 
-               (plot.match(ECOREGIONS_II_NoM242CD) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions) >= 50) 
-               or 
-               (((plot.match(ECOREGIONS_I) and plot.riv(STRONG_DIAGNOSTICS_I_NoExclusions) >= 20) or
-               (plot.match(ECOREGIONS_II_NoM242CD) and plot.riv(STRONG_DIAGNOSTICS_II_NoElevationExclusions) >= 20) or
-               (plot.match(ECOREGIONS_II_NoM242CD) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_III_FullExclusions) >= 20)) 
-               and 
-               (plot.match(ECOREGIONS_I) and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30)) 
-               or 
-               plot.riv(EXOTIC_TREE_SPP) >= 80)
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_079():
-
-    """Vancouverian Coastal Rainforest (M024)"""
-    """M024"""
-    level = 'macrogroup'
-    code = 'M024'
-
+    # 
+    # TRANSLATES TO:
+    # 
     # Plot location and tree composition are as follows:
     # STRONG DIAGNOSTICS RIV 50% or more
     # NO EXCLUSIONS
-    # i. Located in ECOREGION 242A, M242, 261A, M261A, M261B, 263, AND tree
-    # composition dominated by one or more of STRONG DIAGNOSTIC_1 species
-    # Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
-    # Picea sitchensis,, Sequoia sempervirens, Thuja plicata, or
-    # Tsuga heterophylla (RIV=>50%),
+    #   i. Located in ECOREGION 242A, M242, 261A, M261A, M261B, 263, AND tree
+    #   composition dominated by one or more of STRONG DIAGNOSTIC_1 species
+    #   Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
+    #   Picea sitchensis, Sequoia sempervirens, Thuja plicata, or
+    #   Tsuga heterophylla (RIV=>50%),
     # OR
     # ELEVATION <500m + ECOREGION EXCLUSIONS
-    # ii. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
-    # AND elevation <500m
-    # AND tree composition dominated by one or more of STRONG DIAGNOSTIC_2 species
-    # Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
-    # Picea sitchensis, Pinus contorta, Pseudotsuga menziesii, Sequoia sempervirens,
-    # Thuja plicata, or Tsuga heterophylla (RIV=>50%),
+    #   ii. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
+    #   AND elevation <500m
+    #   AND tree composition dominated by one or more of STRONG DIAGNOSTIC_2 species
+    #   Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
+    #   Picea sitchensis, Pinus contorta, Pseudotsuga menziesii, Sequoia sempervirens,
+    #   Thuja plicata, or Tsuga heterophylla (RIV=>50%),
     # OR
     # ELEVATION =>500m + ECOREGION EXCLUSIONS
-    # iii. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
-    # AND elevation =>500m
-    # AND tree composition dominated by one or more of STRONG DIAGNOSTIC_3 species
-    # Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
-    # Picea sitchensis, Pseudotsuga menziesii, Sequoia sempervirens, Thuja plicata,
-    # or Tsuga heterophylla (RIV=>50%),
+    #   iii. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
+    #   AND elevation =>500m
+    #   AND tree composition dominated by one or more of STRONG DIAGNOSTIC_3 species
+    #   Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
+    #   Picea sitchensis, Pseudotsuga menziesii, Sequoia sempervirens, Thuja plicata,
+    #   or Tsuga heterophylla (RIV=>50%),
     # OR
     # STRONG DIAGNOSTICS RIV 20% or more + MODERATE DIAGNOSTICS RIV 30% or more
     # NO EXCLUSIONS
-    # iv. Located in ECOREGION 242A, M242, 261A, M261A, M261B, 263, AND tree composition
-    # dominated by one or more of STRONG DIAGNOSTIC_1 species Abies amabilis,
-    # Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana, Picea sitchensis,
-    # Sequoia sempervirens, Thuja plicata, or Tsuga heterophylla (RIV=>20%),
-    # AND with other MODERATE DIAGNOSTIC species in any combination of Abies grandis,
-    # Abies lasiocarpa, Abies procera, Acer circinatum, Arbutus menziesii,
-    # Callitropsis nootkatensis, Cornus nuttallii, Frangula purshiana,
-    # Notholithocarpus densiflorus, Pinus monticola, Pinus muricata, Quercus garryana,
-    # or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
-    # diagnostic species RIV =>50%)
+    #   iv. Located in ECOREGION 242A, M242, 261A, M261A, M261B, 263, AND tree composition
+    #   dominated by one or more of STRONG DIAGNOSTIC_1 species Abies amabilis,
+    #   Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana, Picea sitchensis,
+    #   Sequoia sempervirens, Thuja plicata, or Tsuga heterophylla (RIV=>20%),
+    #   AND with other MODERATE DIAGNOSTIC species in any combination of Abies grandis,
+    #   Abies lasiocarpa, Abies procera, Acer circinatum, Arbutus menziesii,
+    #   Callitropsis nootkatensis, Cornus nuttallii, Frangula purshiana,
+    #   Notholithocarpus densiflorus, Pinus monticola, Pinus muricata, Quercus garryana,
+    #   or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
+    #   diagnostic species RIV =>50%)
     # OR
     # ELEVATION <500m + ECOREGION EXCLUSIONS
-    # v. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
-    # AND elevation <500m
-    # AND tree composition dominated by one or more of STRONG DIAGNOSTIC_2 species
-    # Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
-    # Picea sitchensis, Pinus contorta, Pseudotsuga menziesii, Sequoia sempervirens,
-    # Thuja plicata, or Tsuga heterophylla (RIV=>20%),
-    # AND with other MODERATE DIAGNOSTIC species in any combination of Abies grandis,
-    # Abies lasiocarpa, Abies procera, Acer circinatum, Arbutus menziesii,
-    # Callitropsis nootkatensis, Cornus nuttallii, Frangula purshiana,
-    # Notholithocarpus densiflorus, Pinus monticola, Pinus muricata, Quercus garryana,
-    # or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
-    # diagnostic species RIV =>50%)
+    #   v. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
+    #   AND elevation <500m
+    #   AND tree composition dominated by one or more of STRONG DIAGNOSTIC_2 species
+    #   Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
+    #   Picea sitchensis, Pinus contorta, Pseudotsuga menziesii, Sequoia sempervirens,
+    #   Thuja plicata, or Tsuga heterophylla (RIV=>20%),
+    #   AND with other MODERATE DIAGNOSTIC species in any combination of Abies grandis,
+    #   Abies lasiocarpa, Abies procera, Acer circinatum, Arbutus menziesii,
+    #   Callitropsis nootkatensis, Cornus nuttallii, Frangula purshiana,
+    #   Notholithocarpus densiflorus, Pinus monticola, Pinus muricata, Quercus garryana,
+    #   or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
+    #   diagnostic species RIV =>50%)
     # OR
     # ELEVATION =>500m + ECOREGION EXCLUSIONS
-    # vi. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
-    # AND elevation =>500m
-    # AND tree composition dominated by one or more of STRONG DIAGNOSTIC_3 species
-    # Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
-    # Picea sitchensis, Pseudotsuga menziesii, Sequoia sempervirens, Thuja plicata,
-    # or Tsuga heterophylla (RIV=>20%),
-    # AND with other MODERATE DIAGNOSTIC species in any combination of Abies grandis,
-    # Abies lasiocarpa, Abies procera, Acer circinatum, Arbutus menziesii,
-    # Callitropsis nootkatensis, Cornus nuttallii, Frangula purshiana,
-    # Notholithocarpus densiflorus, Pinus monticola, Pinus muricata, Quercus garryana,
-    # or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
-    # diagnostic species RIV =>50%)
+    #   vi. Located in ECOREGION 242A, M242A, M242B, 261A, M261A, M261B, 263,
+    #   AND elevation =>500m
+    #   AND tree composition dominated by one or more of STRONG DIAGNOSTIC_3 species
+    #   Abies amabilis, Acer macrophyllum, Alnus rubra, Chamaecyparis lawsoniana,
+    #   Picea sitchensis, Pseudotsuga menziesii, Sequoia sempervirens, Thuja plicata,
+    #   or Tsuga heterophylla (RIV=>20%),
+    #   AND with other MODERATE DIAGNOSTIC species in any combination of Abies grandis,
+    #   Abies lasiocarpa, Abies procera, Acer circinatum, Arbutus menziesii,
+    #   Callitropsis nootkatensis, Cornus nuttallii, Frangula purshiana,
+    #   Notholithocarpus densiflorus, Pinus monticola, Pinus muricata, Quercus garryana,
+    #   or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
+    #   diagnostic species RIV =>50%)
+    # OR
+    #   vii. Any EXOTIC = yes tree species >= 80%
 
     ECOREGIONS_1 = PatternList('ECOREGIONS_1',
         {'ecoregion': '242A, M242, 261A, M261A, M261B, 263'}
@@ -4351,14 +4265,35 @@ def element_079():
         {'species': 'Umbellularia californica'}
     )
 
+    EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
+        {'exotic': 'yes'}
+    )
+
     def match(plot):
-        logging.debug('%s|NODE=079|Vancouverian Coastal Rainforest (M024)', plot.ident)
+        logging.debug('%s|NODE=078|Pacific Coast Temperate Rainforest Division (D338)', plot.ident)
         result = ((plot.match(ECOREGIONS_1) and plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) or
                (plot.match(ECOREGIONS_2) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 50) or
                (plot.match(ECOREGIONS_2) and plot.get_elevation() >= 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_3) >= 50) or
                (plot.match(ECOREGIONS_1) and plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
                (plot.match(ECOREGIONS_2) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
-               (plot.match(ECOREGIONS_2) and plot.get_elevation() >= 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_3) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30))
+               (plot.match(ECOREGIONS_2) and plot.get_elevation() >= 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_3) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
+               plot.riv(EXOTIC_TREE_SPP) >= 80)
+        logging.debug('%s|RESULT|%s', plot.ident, result)
+        return result
+    return level, code, match
+
+def element_079():
+
+    """Vancouverian Coastal Rainforest (M024)"""
+    """M024"""
+    level = 'macrogroup'
+    code = 'M024'
+
+    # Only macrogroup
+
+    def match(plot):
+        logging.debug('%s|NODE=079|Vancouverian Coastal Rainforest (M024)', plot.ident)
+        result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
