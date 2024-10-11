@@ -59,10 +59,10 @@
         ],
         "trigger": [
             "elevation() < 1600 and match(ECOREGIONS_I) and",
-            "(riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 20 or",
+            "((riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 20 or",
             "(riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 10 and ",
             "riv(MODERATE_DIAGNOSTIC_SPECIES_I) >= 40) or ",
-            "riv(EXOTIC_TREE_SPP) >= 80) or",
+            "riv(EXOTIC_TREE_SPP) >= 80)) or",
             "(match(ECOREGIONS_II) and ",
             "(riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 20 or",
             "(riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 10 and ",

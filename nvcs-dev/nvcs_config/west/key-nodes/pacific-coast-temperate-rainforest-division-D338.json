@@ -104,7 +104,7 @@
             "(match(ECOREGIONS_1) and riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or",
             "(match(ECOREGIONS_2) and elevation() < 500 and riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or",
             "(match(ECOREGIONS_2) and elevation() >= 500 and riv(STRONG_DIAGNOSTIC_SPECIES_3) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or",
-            "riv(EXOTIC_TREE_SPP) >= 80"
+            "(match(ECOREGIONS_1) and riv(EXOTIC_TREE_SPP) >= 80)"
         ],
         "filters": {
             "ECOREGIONS_1": [

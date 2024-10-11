@@ -4277,7 +4277,7 @@ def element_078():
                (plot.match(ECOREGIONS_1) and plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
                (plot.match(ECOREGIONS_2) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
                (plot.match(ECOREGIONS_2) and plot.get_elevation() >= 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_3) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
-               plot.riv(EXOTIC_TREE_SPP) >= 80)
+               (plot.match(ECOREGIONS_1) and plot.riv(EXOTIC_TREE_SPP) >= 80))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -4632,9 +4632,9 @@ def element_086():
     def match(plot):
         logging.debug('%s|NODE=086|Western North American Pinyon-Juniper Woodland & Scrub Division (D010)', plot.ident)
         result = (plot.match(ECOREGIONS)
-               and (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
+               and ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
                or (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30)
-               or plot.riv(EXOTIC_TREE_SPP) >= 80))
+               or plot.riv(EXOTIC_TREE_SPP) >= 80)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -5187,10 +5187,10 @@ def element_096():
     def match(plot):
         logging.debug('%s|NODE=096|Pacific Mountains Forest & Woodland Division (D339)', plot.ident)
         result = (plot.get_elevation() < 1600 and plot.match(ECOREGIONS_I) and
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 20 or
+               ((plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 10 and 
                plot.riv(MODERATE_DIAGNOSTIC_SPECIES_I) >= 40) or 
-               plot.riv(EXOTIC_TREE_SPP) >= 80) or
+               plot.riv(EXOTIC_TREE_SPP) >= 80)) or
                (plot.match(ECOREGIONS_II) and 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 10 and 
@@ -5640,10 +5640,10 @@ def element_105():
     def match(plot):
         logging.debug('%s|NODE=105|Rocky Mountain Foothills & Montane Forest & Woodland (D337)', plot.ident)
         result = (plot.get_elevation() < 1600 and plot.match(ECOREGIONS) and 
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
+               ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and 
                plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
-               plot.riv(EXOTIC_TREE_SPP) >= 80))
+               plot.riv(EXOTIC_TREE_SPP) >= 80)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -6521,10 +6521,10 @@ def element_122():
     def match(plot):
         logging.debug('%s|NODE=122|Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)', plot.ident)
         result = (plot.get_elevation() > 1600 and plot.match(ECOREGIONS) and 
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
+               ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and 
                plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or 
-               plot.riv(EXOTIC_TREE_SPP) >= 80))
+               plot.riv(EXOTIC_TREE_SPP) >= 80)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match

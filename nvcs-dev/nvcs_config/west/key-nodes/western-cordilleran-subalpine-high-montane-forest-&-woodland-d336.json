@@ -26,10 +26,10 @@
         ],
         "trigger": [
             "elevation() > 1600 and match(ECOREGIONS) and ",
-            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
+            "((riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
             "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and ",
             "riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or ",
-            "riv(EXOTIC_TREE_SPP) >= 80)"
+            "riv(EXOTIC_TREE_SPP) >= 80))"
         ],
         "filters": {
             "ECOREGIONS": [
