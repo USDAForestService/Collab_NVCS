@@ -22,7 +22,21 @@ var hierarchy;
 var initialHierarchy;
 var availableSpecies;
 
+async function fetchPackagedJson() {
+    const loadMessage = "Are you sure you want to load the selected packaged content? " +
+        "All currently loaded modifications will be lost unless they were saved to another directory.";
+    if (hierarchy?.length > 0 && !confirm(loadMessage))
+        return;
+
+    return await fetchJson();
+}
+
 async function fetchCustomJson() {
+    const loadMessage = "Are you sure you want to load from this directory? " +
+        "All currently loaded modifications will be  lost unless they were saved to another directory.";
+    if (hierarchy?.length > 0 && !confirm(loadMessage))
+        return;
+
     const targetPath = document.getElementById("source-json-directory").value;
     if (!targetPath) {
         const message = "When loading custom JSON, please ensure a valid path is provided to the directory " +
@@ -314,6 +328,14 @@ function addFilter() {
 }
 
 function addInputFilter(identifier, bulkAdd = false) {
+    if (bulkAdd) {
+        const message = "Are you sure you want to bulk-add these filters? " +
+        "Unique values will be extracted from the comma-separated 'Value' field and assigned the " +
+        "selected 'Type' field. These can all be modified or removed afterwards if necessary.";
+        if (!confirm(message))
+            return;
+    }
+
     const filterContainer = document.getElementById(identifier);
     const inputFiltersContainer = filterContainer.querySelector(".input-filters-container")
     const singleInputType = document.getElementById("input_type_add_" + identifier).value;
@@ -360,7 +382,7 @@ function createFilter(filterKey, inputFilters) {
         <div class='sub-content-header-container'>
             <label for="filter-${filterKey}">Name:</label>
             <input type="text" id="filter-${filterKey}" value="${filterKey}"/>
-            <button onclick="deleteElement('${identifier}')">Delete Filter</button>
+            <button onclick="deleteElement('${identifier}', true)">Delete Filter</button>
         </div>
         <div class='sub-content-container'>
             <div class='sub-key-holder'>
@@ -440,7 +462,11 @@ function createOptions(options, selectedOption = null) {
     return html;
 }
 
-function deleteElement(identifier) {
+function deleteElement(identifier, confirmation = false) {
+    const message = "Are you sure you want to delete this element?";
+    if (confirmation && !confirm(message))
+        return;
+
     const container = document.getElementById(identifier);
     container.remove();
 }
@@ -548,9 +574,14 @@ async function saveJsonChanges() {
 }
 
 async function updateJson() {
+    const updateWarning = "Are you sure you want to save changes to this directory? " +
+        "Any previously saved changes within this directory will be overwritten.";
+    if (!confirm(updateWarning))
+        return;
+
     const newDirectoryName = document.getElementById("json-directory-name").value;
     if (!newDirectoryName) {
-        const message = "Please provide a directory to store your updated JSON files";
+        const message = "Please provide an exact directory path to store your updated JSON files";
         alert(message);
         return;
     }
@@ -768,6 +799,11 @@ function recursivelyUpdatePositionalData(element) {
 }
 
 function deleteHierarchyElement() {
+    // Confirm before deleting
+    const message = "Are you sure you want to delete this hierarchy element?";
+    if (!confirm(message))
+        return;
+
     // Get associated element
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     const element = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
