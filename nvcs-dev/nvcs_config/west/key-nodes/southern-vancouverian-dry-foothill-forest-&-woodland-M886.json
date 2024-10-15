@@ -1,66 +1,100 @@
-{"node": {
-
-   "name":
-      "Southern Vancouverian Dry Foothill Forest & Woodland (M886)",
-
-   "id":
-      "M886",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION M242, 242, M261, 263, 262,",
-		"AND tree composition dominated by one or more of STRONG DRY",
-		"DIAGNOSTIC species Arbutus menziesii, Notholithocarpus densiflorus, Pinus ponderosa,",
-		"Chrysolepis chrysophylla, Pseudotsuga macrocarpa ",
-		"Pseudotsuga menziesii, or Quercus garryana (RIV=>50%),",
-      "OR",
-        "ii. Located in above ECOREGION, and tree composition as above,",
-		"but with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Abies grandis, Acer macrophyllum,",
-		"Abies bracteata, Calocedrus decurrens, Chamaecyparis lawsoniana, Pinus coulteri ",
-		"Juniperus occidentalis, Juniperus scopulorum, Pinus contorta,",
-		"Quercus chrysolepis, Quercus kelloggii, Taxus brevifolia, or",
-		"Umbellularia californica",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M242, 242, M261, 263, 262"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Arbutus menziesii"},
-        {"species": "Notholithocarpus densiflorus"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Chrysolepis chrysophylla"},
-		{"species": "Pseudotsuga macrocarpa"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Quercus garryana"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies grandis"},
-		{"species": "Acer macrophyllum"},
-		{"species": "Abies bracteata"},
-		{"species": "Calocedrus decurrens"},
-		{"species": "Chamaecyparis lawsoniana"},
-		{"species": "Pinus coulteri"},
-		{"species": "Juniperus occidentalis"},
-		{"species": "Juniperus scopulorum"},
-		{"species": "Pinus contorta"},
-		{"species": "Quercus chrysolepis"},
-		{"species": "Quercus kelloggii"},
-		{"species": "Taxus brevifolia"},
-		{"species": "Umbellularia californica"}		
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Southern Vancouverian Dry Foothill Forest & Woodland (M886)",
+        "id": "M886",
+        "level": "macrogroup",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION M242, 242, M261, 263, 262,",
+            "AND tree composition dominated by one or more of STRONG DRY",
+            "DIAGNOSTIC species Arbutus menziesii, Notholithocarpus densiflorus, Pinus ponderosa,",
+            "Chrysolepis chrysophylla, Pseudotsuga macrocarpa ",
+            "Pseudotsuga menziesii, or Quercus garryana (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above,",
+            "but with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Abies grandis, Acer macrophyllum,",
+            "Abies bracteata, Calocedrus decurrens, Chamaecyparis lawsoniana, Pinus coulteri ",
+            "Juniperus occidentalis, Juniperus scopulorum, Pinus contorta,",
+            "Quercus chrysolepis, Quercus kelloggii, Taxus brevifolia, or",
+            "Umbellularia californica",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M242, 242, M261, 263, 262"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Notholithocarpus densiflorus"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Chrysolepis chrysophylla"
+                },
+                {
+                    "species": "Pseudotsuga macrocarpa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Quercus garryana"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Acer macrophyllum"
+                },
+                {
+                    "species": "Abies bracteata"
+                },
+                {
+                    "species": "Calocedrus decurrens"
+                },
+                {
+                    "species": "Chamaecyparis lawsoniana"
+                },
+                {
+                    "species": "Pinus coulteri"
+                },
+                {
+                    "species": "Juniperus occidentalis"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus kelloggii"
+                },
+                {
+                    "species": "Taxus brevifolia"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ]
+        }
+    }
+}

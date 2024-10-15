@@ -1,55 +1,67 @@
-{"node": {
-
-   "name":
-      "Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)",
-
-   "id":
-      "G102",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 342D, 342C, 313A, 313B, 313D, 322A, 331H,",
-		"331I, 331J, 341, 342B, 342E, 342F, 342G, 342J, M261E, M331D, M331E,",
-		"M331F, M331G, M331H, M331I, M341",
-		"and tree composition dominated by one or more of STRONG DIAGNOSTIC",
-		"species Pinus longaeva (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV, AND with other MODERATE DIAGNOSTIC species",
-		"Abies concolor, Picea engelmannii,",
-		"Pinus contorta, Pinus flexilis,",
-		"Juniperus scopulorum, Pinus ponderosa",
-		"Pseudotsuga menziesii, or Populus tremuloides in any combination of",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species",
-		"RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "342D, 342C, 313A, 313B, 313D, 322A, 331H, 331I, 331J, 341, 342B, 342E, 342F, 342G, 342J, M261E, M331D, M331E, M331F, M331G, M331H, M331I, M341"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-		{"species": "Pinus longaeva"}
-	  ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies concolor"},
-		{"species": "Picea engelmannii"},
-		{"species": "Pinus contorta"},
-        {"species": "Pinus flexilis"},
-		{"species": "Juniperus scopulorum"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Populus tremuloides"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)",
+        "id": "G102",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 342D, 342C, 313A, 313B, 313D, 322A, 331H,",
+            "331I, 331J, 341, 342B, 342E, 342F, 342G, 342J, M261E, M331D, M331E,",
+            "M331F, M331G, M331H, M331I, M341",
+            "and tree composition dominated by one or more of STRONG DIAGNOSTIC",
+            "species Pinus longaeva (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species",
+            "Abies concolor, Picea engelmannii,",
+            "Pinus contorta, Pinus flexilis,",
+            "Juniperus scopulorum, Pinus ponderosa",
+            "Pseudotsuga menziesii, or Populus tremuloides in any combination of",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species",
+            "RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "342D, 342C, 313A, 313B, 313D, 322A, 331H, 331I, 331J, 341, 342B, 342E, 342F, 342G, 342J, M261E, M331D, M331E, M331F, M331G, M331H, M331I, M341"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Pinus longaeva"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Populus tremuloides"
+                }
+            ]
+        }
+    }
+}

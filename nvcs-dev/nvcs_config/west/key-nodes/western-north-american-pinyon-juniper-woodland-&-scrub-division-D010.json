@@ -1,66 +1,87 @@
-{"node": {
-
-   "name":
-      "Western North American Pinyon-Juniper Woodland & Scrub Division (D010)",
-
-   "id":
-      "D010",
-
-   "level":
-      "division",
-
-   "description": [
-		"Tree composition and ecology matching one of the following options:",
-        "i. Located in ECOREGION M242C, M261D, M261E, M261G, M262B, 313, M313,",
-		"315, 321, 322, 331, M331, M332, 341, M341, 342",
-        "AND",
-        "ii. EITHER",
-          "a. Tree composition dominated by one or more of STRONG diagnostic",
-		  "tree species Cercocarpus ledifolius, Juniperus monosperma,",
-		  "Juniperus occidentalis, Juniperus osteosperma, Pinus edulis,",
-		  "or Pinus monophylla (=>50% RIV),",
-        "OR",
-          "b. The above tree species, but with =>20% RIV AND other MODERATE",
-		  "diagnostic species of Juniperus californica, Juniperus deppeana,",
-		  "Juniperus grandis, Juniperus scopulorum, Pinus jeffreyi,",
-		  "Pinus ponderosa, or Quercus gambelii",
-		  "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
-		"OR",
-		  "c. Any EXOTIC = yes tree species =>80% RIV"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or",
-	  "riv(EXOTIC_TREE_SPP) >=80 )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M242C, M261D, M261E, M261G, M262B, 313, M313, 315, 321, 322, 331, M331, M332, 341, M341, 342"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Cercocarpus ledifolius"},
-		{"species": "Juniperus monosperma"},
-		{"species": "Juniperus occidentalis"},
-		{"species": "Juniperus osteosperma"},
-		{"species": "Pinus edulis"},
-		{"species": "Pinus monophylla"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus californica"},
-		{"species": "Juniperus deppeana"},
-		{"species": "Juniperus grandis"},
-		{"species": "Juniperus scopulorum"},
-		{"species": "Pinus jeffreyi"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Quercus gambelii"}
-      ],
-	  "EXOTIC_TREE_SPP": [
-	    {"exotic": "yes"}
-	  ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Western North American Pinyon-Juniper Woodland & Scrub Division (D010)",
+        "id": "D010",
+        "level": "division",
+        "description": [
+            "Tree composition and ecology matching one of the following options:",
+            "i.  Located in ECOREGION M242C, M261D, M261E, M261G, M262B, 313, M313, 315,",
+            "  321, 322, 331I, 331J, M331, M332, 341, M341, 342",
+            "AND",
+            "ii.  EITHER",
+            "  a.  Tree composition dominated by one or more of STRONG diagnostic",
+            "  tree species Cercocarpus ledifolius, Juniperus monosperma,",
+            "  Juniperus occidentalis, Juniperus osteosperma, Pinus edulis, or",
+            "  Pinus monophylla (=>50% RIV),",
+            "  OR",
+            "  b.  The above tree species, but with =>20% RIV AND other MODERATE ",
+            "  diagnostic species of Juniperus californica, Juniperus deppeana,",
+            "  Juniperus grandis, Juniperus scopulorum, Pinus jeffreyi,",
+            "  Pinus ponderosa, or Quercus gambelii (>=30% RIV; i.e.,",
+            "  together STRONG and MODERATE diagnostic species =>50% RIV)",
+            "  OR",
+            "  c.  Any EXOTIC = yes tree species =>80% RIV"
+        ],
+        "trigger": [
+            "match(ECOREGIONS)",
+            "and ((riv(STRONG_DIAGNOSTIC_SPECIES) >= 50",
+            "or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30)",
+            "or riv(EXOTIC_TREE_SPP) >= 80))"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M242C, M261D, M261E, M261G, M262B, 313, M313, 315, 321, 322, 331I, 331J, M331, M332, 341, M341, 342"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Cercocarpus ledifolius"
+                },
+                {
+                    "species": "Juniperus monosperma"
+                },
+                {
+                    "species": "Juniperus occidentalis"
+                },
+                {
+                    "species": "Juniperus osteosperma"
+                },
+                {
+                    "species": "Pinus edulis"
+                },
+                {
+                    "species": "Pinus monophylla"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus californica"
+                },
+                {
+                    "species": "Juniperus deppeana"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Quercus gambelii"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
+    }
+}

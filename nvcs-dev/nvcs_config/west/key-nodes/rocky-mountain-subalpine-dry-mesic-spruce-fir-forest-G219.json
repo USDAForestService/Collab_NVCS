@@ -1,47 +1,49 @@
-{"node": {
-
-   "name":
-      "Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)",
-
-   "id":
-      "G219",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION M242B, M261D, M313B, 313C, 315H, 322A,",
-		"M242C, M242D – only eastern ecosubsections M242Dd, M242De, M242Df,",
-		"M242Dg, M242Dh, 313A, 313B, M313A, 342, 341, M331, 331, M332, M333,",
-		"M341 and tree composition dominated by one or more of STRONG DRY",
-		"TO MESIC DIAGNOSTIC species Abies lasiocarpa or Picea engelmannii",
-		"(RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DRY TO MESIC DIAGNOSTIC species",
-		"in any combination of Pinus contorta or Populus tremuloides",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M242B, M261D, M313B, 313C, 315H, 322A, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 313A, 313B, M313A, 342, 341, M331, 331, M332, M333, M341"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies lasiocarpa"},
-		{"species": "Picea engelmannii"}
-	  ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Pinus contorta"},
-		{"species": "Populus tremuloides"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)",
+        "id": "G219",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION M242B, M261D, M313B, 313C, 315H, 322A,",
+            "M242C, M242D – only eastern ecosubsections M242Dd, M242De, M242Df,",
+            "M242Dg, M242Dh, 313A, 313B, M313A, 342, 341, M331, 331, M332, M333,",
+            "M341 and tree composition dominated by one or more of STRONG DRY",
+            "TO MESIC DIAGNOSTIC species Abies lasiocarpa or Picea engelmannii",
+            "(RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DRY TO MESIC DIAGNOSTIC species",
+            "in any combination of Pinus contorta or Populus tremuloides",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M242B, M261D, M313B, 313C, 315H, 322A, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 313A, 313B, M313A, 342, 341, M331, 331, M332, M333, M341"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Picea engelmannii"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Populus tremuloides"
+                }
+            ]
+        }
+    }
+}

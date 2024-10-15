@@ -1,99 +1,162 @@
-{"node": {
-
-   "name":
-      "Californian Forest & Woodland Division (D007)",
-
-   "id":
-      "D007",
-
-   "level":
-      "division",
-
-   "description": [
-      "Tree composition and ecology matching one of the following options:",
-      "i. EITHER", 
-        "a. Tree composition contains one or more of STRONG diagnostic tree",
-		"species Aesculus californica, Arbutus menziesii, Calocedrus decurrens,",
-		"Chamaecyparis lawsoniana, Chrysolepis chrysophylla,",
-		"Hesperocyparis bakeri, Hesperocyparis forbesii,",
-		"Hesperocyparis macnabiana, Hesperocyparis macrocarpa,",
-		"Hesperocyparis pigmaea, Hesperocyparis sargentii, Juglans californica,",
-		"Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata,",
-		"Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata,",
-		"Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis,",
-		"Quercus douglasii, Quercus engelmannii, Quercus kelloggii,",
-		"Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei",
-		"or Umbellularia californica (=>50% RIV),",
-		"[Additional tree species not tracked by FIA include",
-		"Hesperocyparis abramsiana, Hesperocyparis goveniana,",
-		"Hesperocyparis nevadensis, Hesperocyparis stephensonii,",
-		"Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis,",
-		"Quercus tomentella]",
-	  "OR", 
-		"b. The above tree species, but with =>20% RIV AND other MODERATE",
-		"diagnostic species any combination of Pinus lambertiana,",
-		"Pinus monophylla, Pinus ponderosa, Pseudotsuga macrocarpa,",
-		"or Pseudotsuga menziesii",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
-	  "OR",
-		"c. Any EXOTIC = yes tree species =>80% RIV",
-	  "AND",
-		"ii. Located in ECOREGION M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262"
-   ],
-
-   "trigger": [
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or ",
-	  "riv(EXOTIC_TREE_SPP) >=80 )",
-      "and match(ECOREGIONS)"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Aesculus californica"},
-		{"species": "Arbutus menziesii"},
-		{"species": "Calocedrus decurrens"},
-		{"species": "Chamaecyparis lawsoniana"},
-		{"species": "Chrysolepis chrysophylla"},
-		{"species": "Hesperocyparis bakeri"},
-		{"species": "Hesperocyparis forbesii"},
-		{"species": "Hesperocyparis macnabiana"},
-		{"species": "Hesperocyparis macrocarpa"},
-		{"species": "Hesperocyparis pigmaea"},
-		{"species": "Hesperocyparis sargentii"},
-		{"species": "Juglans californica"},
-		{"species": "Juniperus californica"},
-		{"species": "Notholithocarpus densiflorus"},
-		{"species": "Pinus attenuata"},
-		{"species": "Pinus coulteri"},
-		{"species": "Pinus jeffreyi"},
-		{"species": "Pinus muricata"},
-		{"species": "Pinus radiata"},
-		{"species": "Pinus sabiniana"},
-		{"species": "Quercus agrifolia"},
-		{"species": "Quercus chrysolepis"},
-		{"species": "Quercus douglasii"},
-		{"species": "Quercus engelmannii"},
-		{"species": "Quercus kelloggii"},
-		{"species": "Quercus lobata"},
-		{"species": "Quercus wislizeni"},
-		{"species": "Quercus parvula var. shrevei"},
-		{"species": "Umbellularia californica"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Pinus lambertiana"},
-		{"species": "Pinus monophylla"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pseudotsuga macrocarpa"},
-		{"species": "Pseudotsuga menziesii"}
-      ],
-	  "EXOTIC_TREE_SPP": [
-	    {"exotic": "yes"}
-	  ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Californian Forest & Woodland Division (D007)",
+        "id": "D007",
+        "level": "division",
+        "description": [
+            "Tree composition and ecology matching one of the following options:",
+            "i. EITHER",
+            "a. Tree composition contains one or more of STRONG diagnostic tree",
+            "species Aesculus californica, Arbutus menziesii, Calocedrus decurrens,",
+            "Chamaecyparis lawsoniana, Chrysolepis chrysophylla,",
+            "Hesperocyparis bakeri, Hesperocyparis forbesii,",
+            "Hesperocyparis macnabiana, Hesperocyparis macrocarpa,",
+            "Hesperocyparis pigmaea, Hesperocyparis sargentii, Juglans californica,",
+            "Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata,",
+            "Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata,",
+            "Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis,",
+            "Quercus douglasii, Quercus engelmannii, Quercus kelloggii,",
+            "Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei",
+            "or Umbellularia californica (=>50% RIV),",
+            "[Additional tree species not tracked by FIA include",
+            "Hesperocyparis abramsiana, Hesperocyparis goveniana,",
+            "Hesperocyparis nevadensis, Hesperocyparis stephensonii,",
+            "Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis,",
+            "Quercus tomentella]",
+            "OR",
+            "b. The above tree species, but with =>20% RIV AND other MODERATE",
+            "diagnostic species any combination of Pinus lambertiana,",
+            "Pinus monophylla, Pinus ponderosa, Pseudotsuga macrocarpa,",
+            "or Pseudotsuga menziesii",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+            "OR",
+            "c. Any EXOTIC = yes tree species =>80% RIV",
+            "AND",
+            "ii. Located in ECOREGION M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262"
+        ],
+        "trigger": [
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or ",
+            "riv(EXOTIC_TREE_SPP) >=80 )",
+            "and match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Aesculus californica"
+                },
+                {
+                    "species": "Arbutus menziesii"
+                },
+                {
+                    "species": "Calocedrus decurrens"
+                },
+                {
+                    "species": "Chamaecyparis lawsoniana"
+                },
+                {
+                    "species": "Chrysolepis chrysophylla"
+                },
+                {
+                    "species": "Hesperocyparis bakeri"
+                },
+                {
+                    "species": "Hesperocyparis forbesii"
+                },
+                {
+                    "species": "Hesperocyparis macnabiana"
+                },
+                {
+                    "species": "Hesperocyparis macrocarpa"
+                },
+                {
+                    "species": "Hesperocyparis pigmaea"
+                },
+                {
+                    "species": "Hesperocyparis sargentii"
+                },
+                {
+                    "species": "Juglans californica"
+                },
+                {
+                    "species": "Juniperus californica"
+                },
+                {
+                    "species": "Notholithocarpus densiflorus"
+                },
+                {
+                    "species": "Pinus attenuata"
+                },
+                {
+                    "species": "Pinus coulteri"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus muricata"
+                },
+                {
+                    "species": "Pinus radiata"
+                },
+                {
+                    "species": "Pinus sabiniana"
+                },
+                {
+                    "species": "Quercus agrifolia"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus douglasii"
+                },
+                {
+                    "species": "Quercus engelmannii"
+                },
+                {
+                    "species": "Quercus kelloggii"
+                },
+                {
+                    "species": "Quercus lobata"
+                },
+                {
+                    "species": "Quercus wislizeni"
+                },
+                {
+                    "species": "Quercus parvula var. shrevei"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Pinus lambertiana"
+                },
+                {
+                    "species": "Pinus monophylla"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pseudotsuga macrocarpa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
+    }
+}

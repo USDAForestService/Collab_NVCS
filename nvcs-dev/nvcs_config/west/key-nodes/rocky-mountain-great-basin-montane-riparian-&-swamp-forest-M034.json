@@ -1,32 +1,25 @@
-{"node": {
-
-   "name":
-      "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
-
-   "id":
-      "M034",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Vegetation in a relatively natural state, dominated by native species,",
-	  "little or no evidence of trees in a row, no very recent logging,",
-	  "understory mowing, etc. (trees may be early successional pole-sized",
-	  "trees following logging or blowdowns). Tree composition is dominated by",
-	  "ruderal native or EXOTIC = yes (< 20% RIV)",
-	  "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)"
-   ],
-
-   "trigger": [
-      "riv(EXOTIC) < 20"
-   ],
-
-   "filters": {
-      "EXOTIC": [
-        {"exotic": "yes"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
+        "id": "M034",
+        "level": "macrogroup",
+        "description": [
+            "Vegetation in a relatively natural state, dominated by native species,",
+            "little or no evidence of trees in a row, no very recent logging,",
+            "understory mowing, etc. (trees may be early successional pole-sized",
+            "trees following logging or blowdowns). Tree composition is dominated by",
+            "ruderal native or EXOTIC = yes (< 20% RIV)",
+            "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)"
+        ],
+        "trigger": [
+            "riv(EXOTIC) < 20"
+        ],
+        "filters": {
+            "EXOTIC": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
+    }
+}

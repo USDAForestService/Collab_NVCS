@@ -1,105 +1,165 @@
-{"node": {
-
-   "name":
-      "Vancouverian Subalpine-High Montane Forest (M025)",
-
-   "id":
-      "M025",
-
-   "level":
-      "macrogroup",
-
-  "description": [
-      "Plot location and tree composition are as follows:",
-	  "STRONG DIAGNOSTICS RIV 50% or more",
-	  "NO EXCLUSIONS",
-	  "i. Located in ECOREGION M242A, M242B, M242C, M242Dd, M242De, M242Df, M242Dg,",
-	  "M242Dh, 242, M261, 263, 341D, AND tree composition dominated by one or more of",
-	  "STRONG MESIC DIAGNOSTIC species Abies amabilis, Abies magnifica, Abies shastensis,",
-	  "Abies magnifica var. shastensis], Abies procera, Callitropsis nootkatensis,",
-	  "Juniperus grandis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,",
-	  "Pinus monticola, or Tsuga mertensiana (RIV=>50%),",
-	  "OR",
-	  "STRONG DIAGNOSTICS RIV 20% or more + MODERATE DIAGNOSTICS RIV 30% or more",
-	  "NO EXCLUSIONS",
-	  "ii. Located in above ECOREGION, and tree composition as above, but with =>20% RIV,",
-	  "AND with other MODERATE MESIC DIAGNOSTIC  species in any combination of",
-	  "Pinus flexilis, Pinus jeffreyi or Tsuga heterophylla [PLACEHOLDER - INSERT P2",
-	  "DIAGNOSTIC SPECIES] (>=30% RIV; i.e., together STRONG and MODERATE diagnostic",
-	  "species RIV =>50%)",
-	  "OR",
-	  "M242Dd, M242De, M242Df, M242Dg, M242Dh subsections Exclusion/Exception for",
-	  "Abies lasiocarpa and  Picea engelmannii",
-	  "Tree composition and ecology matching one of the following options:",
-	  "iii. Located in ECOREGION M242A, M242B, M242C, M242Da, M242Db, 242, M261, 263, 341D,",
-	  "AND",
-	  "iv. EITHER",
-	  "a. Tree composition dominated by one or more of STRONG MESIC DIAGNOSTIC species",
-	  "Abies amabilis,  Abies lasiocarpa, Abies magnifica, Abies shastensis,",
-	  "Abies magnifica var. shastensis, Abies procera, Callitropsis nootkatensis,",
-	  "Juniperus grandis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,",
-	  "Pinus monticola, or Tsuga mertensiana (RIV=>50%),",
-	  "OR",
-	  "b. The above tree species, but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC",
-	  "species in any combination of  Picea engelmannii, Pinus flexilis, Pinus jeffreyi or",
-	  "Tsuga heterophylla [PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES] (>=30% RIV; i.e.,",
-	  "together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "(match(ECOREGIONS_1) and riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) or",
-	  "(match(ECOREGIONS_1) and riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES_1) >= 30) or",
-	  "(match(ECOREGIONS_2) and riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 50) or",
-	  "(match(ECOREGIONS_2) and riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES_2) >= 30)"
-   ],
-
-   "filters": {
-      "ECOREGIONS_1": [
-        {"ecoregion": "M242A, M242B, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 242, M261, 263, 341D"}
-      ],
-      "ECOREGIONS_2": [
-        {"ecoregion": "M242A, M242B, M242C, M242Da, M242Db, 242, M261, 263, 341D"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES_1": [
-        {"species": "Abies amabilis"},
-		{"species": "Abies magnifica"},
-		{"species": "Abies shastensis"},
-		{"species": "Abies magnifica var. shastensis"},
-		{"species": "Abies procera"},
-		{"species": "Callitropsis nootkatensis"},
-	    {"species": "Juniperus grandis"},
-		{"species": "Pinus albicaulis"},
-		{"species": "Pinus balfouriana"},
-		{"species": "Pinus contorta"},
-	    {"species": "Pinus monticola"},
-		{"species": "Tsuga mertensiana"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES_2": [
-        {"species": "Abies amabilis"},
-		{"species": "Abies lasiocarpa"},
-		{"species": "Abies magnifica"},
-		{"species": "Abies shastensis"},
-	    {"species": "Abies magnifica var. shastensis"},
-		{"species": "Abies procera"},
-		{"species": "Callitropsis nootkatensis"},
-	    {"species": "Juniperus grandis"},
-		{"species": "Pinus albicaulis"},
-		{"species": "Pinus balfouriana"},
-		{"species": "Pinus contorta"},
-	    {"species": "Pinus monticola"},
-		{"species": "Tsuga mertensiana"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES_1": [
-        {"species": "Pinus flexilis"},
-		{"species": "Pinus jeffreyi"},
-		{"species": "Tsuga heterophylla"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES_2": [
-	    {"species": "Picea engelmannii"},
-        {"species": "Pinus flexilis"},
-		{"species": "Pinus jeffreyi"},
-		{"species": "Tsuga heterophylla"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Vancouverian Subalpine-High Montane Forest (M025)",
+        "id": "M025",
+        "level": "macrogroup",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "STRONG DIAGNOSTICS RIV 50% or more",
+            "NO EXCLUSIONS",
+            "i. Located in ECOREGION M242A, M242B, M242C, M242Dd, M242De, M242Df, M242Dg,",
+            "M242Dh, 242, M261, 263, 341D, AND tree composition dominated by one or more of",
+            "STRONG MESIC DIAGNOSTIC species Abies amabilis, Abies magnifica, Abies shastensis,",
+            "Abies magnifica var. shastensis], Abies procera, Callitropsis nootkatensis,",
+            "Juniperus grandis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,",
+            "Pinus monticola, or Tsuga mertensiana (RIV=>50%),",
+            "OR",
+            "STRONG DIAGNOSTICS RIV 20% or more + MODERATE DIAGNOSTICS RIV 30% or more",
+            "NO EXCLUSIONS",
+            "ii. Located in above ECOREGION, and tree composition as above, but with =>20% RIV,",
+            "AND with other MODERATE MESIC DIAGNOSTIC  species in any combination of",
+            "Pinus flexilis, Pinus jeffreyi or Tsuga heterophylla [PLACEHOLDER - INSERT P2",
+            "DIAGNOSTIC SPECIES] (>=30% RIV; i.e., together STRONG and MODERATE diagnostic",
+            "species RIV =>50%)",
+            "OR",
+            "M242Dd, M242De, M242Df, M242Dg, M242Dh subsections Exclusion/Exception for",
+            "Abies lasiocarpa and  Picea engelmannii",
+            "Tree composition and ecology matching one of the following options:",
+            "iii. Located in ECOREGION M242A, M242B, M242C, M242Da, M242Db, 242, M261, 263, 341D,",
+            "AND",
+            "iv. EITHER",
+            "a. Tree composition dominated by one or more of STRONG MESIC DIAGNOSTIC species",
+            "Abies amabilis,  Abies lasiocarpa, Abies magnifica, Abies shastensis,",
+            "Abies magnifica var. shastensis, Abies procera, Callitropsis nootkatensis,",
+            "Juniperus grandis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,",
+            "Pinus monticola, or Tsuga mertensiana (RIV=>50%),",
+            "OR",
+            "b. The above tree species, but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC",
+            "species in any combination of  Picea engelmannii, Pinus flexilis, Pinus jeffreyi or",
+            "Tsuga heterophylla [PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES] (>=30% RIV; i.e.,",
+            "together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "(match(ECOREGIONS_1) and riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) or",
+            "(match(ECOREGIONS_1) and riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES_1) >= 30) or",
+            "(match(ECOREGIONS_2) and riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 50) or",
+            "(match(ECOREGIONS_2) and riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES_2) >= 30)"
+        ],
+        "filters": {
+            "ECOREGIONS_1": [
+                {
+                    "ecoregion": "M242A, M242B, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 242, M261, 263, 341D"
+                }
+            ],
+            "ECOREGIONS_2": [
+                {
+                    "ecoregion": "M242A, M242B, M242C, M242Da, M242Db, 242, M261, 263, 341D"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES_1": [
+                {
+                    "species": "Abies amabilis"
+                },
+                {
+                    "species": "Abies magnifica"
+                },
+                {
+                    "species": "Abies shastensis"
+                },
+                {
+                    "species": "Abies magnifica var. shastensis"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Callitropsis nootkatensis"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Pinus balfouriana"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Tsuga mertensiana"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES_2": [
+                {
+                    "species": "Abies amabilis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies magnifica"
+                },
+                {
+                    "species": "Abies shastensis"
+                },
+                {
+                    "species": "Abies magnifica var. shastensis"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Callitropsis nootkatensis"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Pinus balfouriana"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Tsuga mertensiana"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES_1": [
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES_2": [
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                }
+            ]
+        }
+    }
+}

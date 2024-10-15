@@ -1,27 +1,17 @@
-{"node": {
-
-   "name":
-      "Temperate Flooded & Swamp Forest Formation",
-
-   "id":
-      "F026",
-
-   "level":
-      "formation",
-
-   "description": [
-      "  Tree-dominated wetlands in a temperate climate that is influenced by minerotrophic",
-      "  groundwater, either on mineral or organic soils. The vegetation is dominated by broad-leaved",
-      "  or needle-leaved trees, generally over 10% tree cover, and the substrate is either a",
-      "  wood-rich peat or a mineral soil on floodplains."
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Temperate Flooded & Swamp Forest Formation",
+        "id": "F026",
+        "level": "formation",
+        "description": [
+            "  Tree-dominated wetlands in a temperate climate that is influenced by minerotrophic",
+            "  groundwater, either on mineral or organic soils. The vegetation is dominated by broad-leaved",
+            "  or needle-leaved trees, generally over 10% tree cover, and the substrate is either a",
+            "  wood-rich peat or a mineral soil on floodplains."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

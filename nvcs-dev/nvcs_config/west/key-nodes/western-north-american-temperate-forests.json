@@ -1,29 +1,21 @@
-{"node": {
-
-   "name":
-      "Western North American Temperate Forests",
-
-   "id":
-      "",
-
-   "level":
-      "subclass",
-
-   "description": [
-      "Forests found in ECOREGION 242, M242, 261, M261, 262, M262, 263, 313, M313,",
-	  "315, 321, 322, 331, M331, M332, M333, M334, 341, M341, 342"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS)"
-   ],
-
-   "filters": {
-
-      "ECOREGIONS": [
-      	{"ecoregion": "242, M242, 261, M261, 262, M262, 263, 313, M313, 315, 321, 322, 331, M331, M332, M333, M334, 341, M341, 342"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Western North American Temperate Forests",
+        "id": "",
+        "level": "subclass",
+        "description": [
+            "Forests found in ECOREGION 242, M242, 261, M261, 262, M262, 263, 313, M313,",
+            "315, 321, 322, 331, M331, M332, M333, M334, 341, M341, 342"
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "242, M242, 261, M261, 262, M262, 263, 313, M313, 315, 321, 322, 331, M331, M332, M333, M334, 341, M341, 342"
+                }
+            ]
+        }
+    }
+}

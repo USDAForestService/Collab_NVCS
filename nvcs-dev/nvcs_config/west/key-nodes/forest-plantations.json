@@ -1,35 +1,41 @@
-{"node": {
-
-   "name":
-      "Forest Plantations",
-
-   "id":
-      "",
-
-   "level":
-      "",
-
-   "description": [
-      "Vegetation shows evidence of intensive human management as planted vegetation,",
-      "such as trees being planted in rows, often dominated by single-species, and even",
-      "aged.  The stand is identified as planted in the FIA database (Stand Origin Code",
-      "= 1 \"Clear evidence of artificial regeneration,\" Condition Table, Miles et al. 2001).",
-      "AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic."
-   ],
-
-   "trigger": [
-      "match(PLANTATION)",
-      "and riv(PLANTED_EXOTIC_OR_POPULUS) > 0"
-   ],
-
-   "filters": {
-      "PLANTATION": [
-        {"plantation": "yes"}
-      ],
-      "PLANTED_EXOTIC_OR_POPULUS": [
-        {"planted": "yes", "exotic": "yes"},
-        {"planted": "yes", "species": "Populus"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Forest Plantations",
+        "id": "",
+        "level": "",
+        "description": [
+            "Vegetation shows evidence of intensive human management as planted vegetation,",
+            "such as trees being planted in rows, often dominated by single-species, and even",
+            "aged.  The stand is identified as planted in the FIA database (Stand Origin Code",
+            "= 1 \"Clear evidence of artificial regeneration,\" Condition Table, Miles et al. 2001).",
+            "AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic."
+        ],
+        "trigger": [
+            "match(PLANTATION)",
+            "and (riv(PLANTED_EXOTIC) > 0 or riv(PLANTED_POPULUS) > 0)"
+        ],
+        "filters": {
+            "PLANTATION": [
+                {
+                    "plantation": "yes"
+                }
+            ],
+            "PLANTED_EXOTIC": [
+                {
+                    "planted": "yes"
+                },
+                {
+                    "exotic": "yes"
+                }
+            ],
+            "PLANTED_POPULUS": [
+                {
+                    "planted": "yes"
+                },
+                {
+                    "species": "Populus"
+                }
+            ]
+        }
+    }
+}

@@ -1,47 +1,53 @@
-{"node": {
-
-   "name":
-      "Central Rocky Mountain Montane White Spruce Forest (G345)",
-
-   "id":
-      "G345",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION M334A and tree composition dominated by one",
-		"or more of STRONG DIAGNOSTIC species Picea glauca (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV, AND with other MODERATE DIAGNOSTIC species",
-		"Abies lasiocarpa, Pinus contorta,",
-		"Pinus ponderosa, Pseudotsuga menziesii, or Populus tremuloides in any",
-		"combination of (>=30% RIV; i.e., together STRONG and MODERATE",
-		"diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M334A"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Picea glauca"}
-	  ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies lasiocarpa"},
-		{"species": "Pinus contorta"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Populus tremuloides"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Central Rocky Mountain Montane White Spruce Forest (G345)",
+        "id": "G345",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION M334A and tree composition dominated by one",
+            "or more of STRONG DIAGNOSTIC species Picea glauca (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species",
+            "Abies lasiocarpa, Pinus contorta,",
+            "Pinus ponderosa, Pseudotsuga menziesii, or Populus tremuloides in any",
+            "combination of (>=30% RIV; i.e., together STRONG and MODERATE",
+            "diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M334A"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Picea glauca"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Populus tremuloides"
+                }
+            ]
+        }
+    }
+}

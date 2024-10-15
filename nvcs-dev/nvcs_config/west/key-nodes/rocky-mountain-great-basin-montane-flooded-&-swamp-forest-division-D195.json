@@ -1,81 +1,128 @@
-{"node": {
-
-   "name":
-      "Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)",
-
-   "id":
-      "D195",
-
-   "level":
-      "division",
-
-   "description": [
-      "Tree composition and ecology matching one of the following options:",
-      "i. Located in ECOREGION M242C, M242D, 313, M313, 315, 322, 331A, M331, M332, M333, M334, 341, M341, 342",
-      "AND",
-      "ii. EITHER",
-        "a. Tree composition dominated by one or more of STRONG diagnostic tree species",
-        "Abies lasiocarpa, Abies grandis, Acer grandidentatum, Acer negundo,",
-        "Juniperus scopulorum, Picea engelmannii, Picea pungens, Pinus contorta,",
-        "Pinus ponderosa, Populus angustifolia, Populus balsamifera, Populus tremuloides,",
-        "or Pseudotsuga menziesii (=>50% RIV),",
-      "OR",
-        "b. The above tree species, but with =>20% RIV AND other MODERATE diagnostic species",
-        "any combination of Alnus oblongifolia, Betula papyrifera, Juglans major,",
-		"Larix occidentalis, Pinus flexilis, Thuja plicata,",
-        "Tsuga heterophylla, Tsuga mertensiana",
-		"Abies concolor, Fraxinus latifolia, Juniperus osteosperma, Picea glauca, ",
-		"and Populus deltoides",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
-	  "OR",
-		"c. Any EXOTIC = yes tree species =>80% RIV"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or",
-	  "riv(EXOTIC_TREE_SPP) >=80 )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "M242C, M242D, 313, M313, 315, 322, 331A, M331, M332, M333, M334, 341, M341, 342"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies lasiocarpa"},
-        {"species": "Abies grandis"},
-        {"species": "Acer grandidentatum"},
-        {"species": "Acer negundo"},
-        {"species": "Juniperus scopulorum"},
-        {"species": "Picea engelmannii"},
-        {"species": "Picea pungens"},
-        {"species": "Pinus contorta"},
-        {"species": "Pinus ponderosa"},
-        {"species": "Populus angustifolia"},
-        {"species": "Populus balsamifera"},
-        {"species": "Populus tremuloides"},
-        {"species": "Pseudotsuga menziesii"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Alnus oblongifolia"},
-		{"species": "Betula papyrifera"},
-		{"species": "Juglans major"},
-		{"species": "Larix occidentalis"},
-        {"species": "Pinus flexilis"},
-        {"species": "Thuja plicata"},
-        {"species": "Tsuga heterophylla"},
-        {"species": "Tsuga mertensiana"},
-		{"species": "Abies concolor"},
-		{"species": "Fraxinus latifolia"},
-		{"species": "Juniperus osteosperma"},
-		{"species": "Picea glauca"},
-		{"species": "Populus deltoides"}
-      ],
-	  "EXOTIC_TREE_SPP": [
-	    {"exotic": "yes"}
-	  ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)",
+        "id": "D195",
+        "level": "division",
+        "description": [
+            "Tree composition and ecology matching one of the following options:",
+            "i. Located in ECOREGION M242C, M242D, 313, M313, 315, 322, 331A, M331, M332, M333, M334, 341, M341, 342",
+            "AND",
+            "ii. EITHER",
+            "a. Tree composition dominated by one or more of STRONG diagnostic tree species",
+            "Abies lasiocarpa, Abies grandis, Acer grandidentatum, Acer negundo,",
+            "Juniperus scopulorum, Picea engelmannii, Picea pungens, Pinus contorta,",
+            "Pinus ponderosa, Populus angustifolia, Populus balsamifera, Populus tremuloides,",
+            "or Pseudotsuga menziesii (=>50% RIV),",
+            "OR",
+            "b. The above tree species, but with =>20% RIV AND other MODERATE diagnostic species",
+            "any combination of Alnus oblongifolia, Betula papyrifera, Juglans major,",
+            "Larix occidentalis, Pinus flexilis, Thuja plicata,",
+            "Tsuga heterophylla, Tsuga mertensiana",
+            "Abies concolor, Fraxinus latifolia, Juniperus osteosperma, Picea glauca, ",
+            "and Populus deltoides",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+            "OR",
+            "c. Any EXOTIC = yes tree species =>80% RIV"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or",
+            "riv(EXOTIC_TREE_SPP) >=80 )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "M242C, M242D, 313, M313, 315, 322, 331A, M331, M332, M333, M334, 341, M341, 342"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies grandis"
+                },
+                {
+                    "species": "Acer grandidentatum"
+                },
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Picea pungens"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Populus angustifolia"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Alnus oblongifolia"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Juglans major"
+                },
+                {
+                    "species": "Larix occidentalis"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Thuja plicata"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                },
+                {
+                    "species": "Tsuga mertensiana"
+                },
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Fraxinus latifolia"
+                },
+                {
+                    "species": "Juniperus osteosperma"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Populus deltoides"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
+    }
+}

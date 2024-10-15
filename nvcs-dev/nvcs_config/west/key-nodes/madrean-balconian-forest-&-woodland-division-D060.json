@@ -1,102 +1,175 @@
-{"node": {
-
-   "name":
-      "Madrean-Balconian Forest & Woodland Division (D060)",
-
-   "id":
-      "D060",
-
-   "level":
-      "division",
-
-   "description": [
-      "Tree composition and ecology matching one of the following options:",
-      "i. EITHER",
-        "a. Tree composition contains one or more of STRONG diagnostic tree",
-		"species Juniperus ashei, Juniperus coahuilensis, Juniperus deppeana,",
-		"Juniperus flaccida, Pinus arizonica, Pinus cembroides, Pinus discolor,",
-		"Pinus engelmannii, Pinus leiophylla, Pinus strobiformis,",
-		"Prosopis glandulosa, Prosopis velutina, Quercus albocincta,",
-		"Quercus arizonica, Quercus chrysolepis, Quercus emoryi,",
-		"Quercus grisea, Quercus hypoleucoides, Quercus oblongifolia,",
-		"or Quercus rugosa (=>50% RIV),",
-		"[Additional tree species not tracked by FIA include",
-		"Juniperus arizonica, Quercus buckleyi, Quercus fusiformis,",
-		"Quercus gravesii, Quercus vaseyana, or Ulmus crassifolia]",
-	  "OR",
-		"b. The above tree species, but with =>20% RIV AND other MODERATE",
-		"diagnostic species any combination of Abies concolor,",
-		"Acer grandidentatum, Arbutus arizonica, Arbutus xalapensis,",
-		"Celtis laevigata, Fraxinus albicans, Juglans major, Juglans nigra,",
-		"Juniperus monosperma, Juniperus osteosperma, Juniperus pinchotii, Pinus edulis,",
-		"Pinus ponderosa, Pinus remota, Pseudotsuga menziesii,",
-		"Prunus serotina, Quercus macrocarpa, Quercus muehlenbergii, or Quercus vaseyana",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),",
-		"[Additional tree species not tracked by FIA include Quercus laceyi]",
-	  "OR",
-		"c. Any EXOTIC = yes tree species =>80% RIV",
-	  "AND",
-		"ii. Located in ECOREGION 322, 313C, M313, 321, 315"
-   ],
-
-   "trigger": [
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or ",
-	  "riv(EXOTIC_TREE_SPP) >=80 )",
-      "and match(ECOREGIONS)"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "322, 313C, M313, 321, 315"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus ashei"},
-		{"species": "Juniperus coahuilensis"},
-		{"species": "Juniperus deppeana"},
-		{"species": "Juniperus flaccida"},
-		{"species": "Pinus arizonica"},
-		{"species": "Pinus cembroides"},
-		{"species": "Pinus discolor"},
-		{"species": "Pinus engelmannii"},
-		{"species": "Pinus leiophylla"},
-		{"species": "Pinus strobiformis"},
-		{"species": "Prosopis glandulosa"},
-		{"species": "Prosopis velutina"},
-		{"species": "Quercus albocincta"},
-		{"species": "Quercus arizonica"},
-		{"species": "Quercus chrysolepis"},
-		{"species": "Quercus emoryi"},
-		{"species": "Quercus grisea"},
-		{"species": "Quercus hypoleucoides"},
-		{"species": "Quercus oblongifolia"},
-		{"species": "Quercus rugosa"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Abies concolor"},
-		{"species": "Acer grandidentatum"},
-		{"species": "Arbutus arizonica"},
-		{"species": "Arbutus xalapensis"},
-		{"species": "Celtis laevigata"},
-		{"species": "Fraxinus albicans"},
-		{"species": "Juglans major"},
-		{"species": "Juglans nigra"},
-		{"species": "Juniperus monosperma"},
-		{"species": "Juniperus osteosperma"},
-		{"species": "Juniperus pinchotii"},
-		{"species": "Pinus edulis"},
-		{"species": "Pinus ponderosa"},
-		{"species": "Pinus remota"},
-		{"species": "Pseudotsuga menziesii"},
-		{"species": "Prunus serotina"},
-		{"species": "Quercus macrocarpa"},
-		{"species": "Quercus muehlenbergii"},
-		{"species": "Quercus vaseyana"}
-      ],
-	  "EXOTIC_TREE_SPP": [
-	    {"exotic": "yes"}
-	  ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Madrean-Balconian Forest & Woodland Division (D060)",
+        "id": "D060",
+        "level": "division",
+        "description": [
+            "Tree composition and ecology matching one of the following options:",
+            "i. EITHER",
+            "a. Tree composition contains one or more of STRONG diagnostic tree",
+            "species Juniperus ashei, Juniperus coahuilensis, Juniperus deppeana,",
+            "Juniperus flaccida, Pinus arizonica, Pinus cembroides, Pinus discolor,",
+            "Pinus engelmannii, Pinus leiophylla, Pinus strobiformis,",
+            "Prosopis glandulosa, Prosopis velutina, Quercus albocincta,",
+            "Quercus arizonica, Quercus chrysolepis, Quercus emoryi,",
+            "Quercus grisea, Quercus hypoleucoides, Quercus oblongifolia,",
+            "or Quercus rugosa (=>50% RIV),",
+            "[Additional tree species not tracked by FIA include",
+            "Juniperus arizonica, Quercus buckleyi, Quercus fusiformis,",
+            "Quercus gravesii, Quercus vaseyana, or Ulmus crassifolia]",
+            "OR",
+            "b. The above tree species, but with =>20% RIV AND other MODERATE",
+            "diagnostic species any combination of Abies concolor,",
+            "Acer grandidentatum, Arbutus arizonica, Arbutus xalapensis,",
+            "Celtis laevigata, Fraxinus albicans, Juglans major, Juglans nigra,",
+            "Juniperus monosperma, Juniperus osteosperma, Juniperus pinchotii, Pinus edulis,",
+            "Pinus ponderosa, Pinus remota, Pseudotsuga menziesii,",
+            "Prunus serotina, Quercus macrocarpa, Quercus muehlenbergii, or Quercus vaseyana",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),",
+            "[Additional tree species not tracked by FIA include Quercus laceyi]",
+            "OR",
+            "c. Any EXOTIC = yes tree species =>80% RIV",
+            "AND",
+            "ii. Located in ECOREGION 322, 313C, M313, 321, 315"
+        ],
+        "trigger": [
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or ",
+            "riv(EXOTIC_TREE_SPP) >=80 )",
+            "and match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "322, 313C, M313, 321, 315"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus ashei"
+                },
+                {
+                    "species": "Juniperus coahuilensis"
+                },
+                {
+                    "species": "Juniperus deppeana"
+                },
+                {
+                    "species": "Juniperus flaccida"
+                },
+                {
+                    "species": "Pinus arizonica"
+                },
+                {
+                    "species": "Pinus cembroides"
+                },
+                {
+                    "species": "Pinus discolor"
+                },
+                {
+                    "species": "Pinus engelmannii"
+                },
+                {
+                    "species": "Pinus leiophylla"
+                },
+                {
+                    "species": "Pinus strobiformis"
+                },
+                {
+                    "species": "Prosopis glandulosa"
+                },
+                {
+                    "species": "Prosopis velutina"
+                },
+                {
+                    "species": "Quercus albocincta"
+                },
+                {
+                    "species": "Quercus arizonica"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus emoryi"
+                },
+                {
+                    "species": "Quercus grisea"
+                },
+                {
+                    "species": "Quercus hypoleucoides"
+                },
+                {
+                    "species": "Quercus oblongifolia"
+                },
+                {
+                    "species": "Quercus rugosa"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Acer grandidentatum"
+                },
+                {
+                    "species": "Arbutus arizonica"
+                },
+                {
+                    "species": "Arbutus xalapensis"
+                },
+                {
+                    "species": "Celtis laevigata"
+                },
+                {
+                    "species": "Fraxinus albicans"
+                },
+                {
+                    "species": "Juglans major"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Juniperus monosperma"
+                },
+                {
+                    "species": "Juniperus osteosperma"
+                },
+                {
+                    "species": "Juniperus pinchotii"
+                },
+                {
+                    "species": "Pinus edulis"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Pinus remota"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Quercus vaseyana"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
+    }
+}

@@ -1,112 +1,213 @@
-{"node": {
-
-   "name":
-      "Great Plains Temperate Forests",
-
-   "id":
-      "",
-
-   "level":
-      "subclass",
-
-   "description": [
-      "Tree composition and ecology matching one of the following options",
-		"i. Located in ECOREGION 315 – exclude 315H, 332, 331 – exclude 331A and 331J, AND",
-		"EITHER",
-		"ii. Tree composition is dominated by one or more of Betula papyrifera",
-		"or Populus tremuloides =>20% RIV and Abies concolor,",
-		"Psuedotsuga menziesii, and Pinus ponderosa =<5% RIV",
-		"OR",
-		"iii. Aesculus pavia, Acer negundo, Acer saccharum, Aesculus glabra,",
-		"Amelanchier spp., Carya cordiformis, Carya texana, Celtis laevigata,",
-		"Celtis occidentalis, Cercis canadensis, Crataegus spp.,",
-		"Diospyros virginiana, Fraxinus americana, Fraxinus pennsylvanica,",
-		"Gleditsia triacanthos, Gymnocladus dioicus, Juglans nigra,",
-		"Juniperus ashei, Juniperus virginiana, Morus rubra, Ostrya virginiana",
-		"Persea borbonia, Platanus occidentalis, Populus balsamifera,",
-		"Populus deltoides, Prosopis glandulosa, Prosopis velutina,",
-		"Prunus pensylvanica, Prunus serotina, Prunus virginiana,",
-		"Quercus falcata, Quercus fusiformis, Quercus macrocarpa,",
-		"Quercus margarettiae, Quercus marilandica, Quercus muehlenbergii,",
-		"Quercus rubra, Quercus shumardii, Quercus sinuata var. sinuata,",
-		"Quercus stellata, Quercus velutina, Quercus virginiana, Sabal palmetto,",
-		"Tilia americana, Ulmus alata, Ulmus americana, Ulmus crassifolia,",
-		"or Ulmus rubra (>= 20% RIV)"
-   ],
-
-   "trigger": [
-      "(match(ECOREGIONS_1) and not match(ECOREGIONS_EXCL)) and",
-	  "( (riv(DIAGNOSTIC_SPECIES_1) >= 20 and riv(DIAGNOSTIC_SPECIES_2) <= 5) or",
-	  "riv(DIAGNOSTIC_SPECIES_3) >= 20 )"
-   ],
-
-   "filters": {
-      "ECOREGIONS_1": [
-        {"ecoregion": "315, 331, 332"}
-      ],
-      "ECOREGIONS_EXCL": [
-        {"ecoregion": "315H, 331A, 331J"}
-      ],
-      "DIAGNOSTIC_SPECIES_1": [
-        {"species": "Betula papyrifera"},
-		{"species": "Populus tremuloides"}
-      ],
-      "DIAGNOSTIC_SPECIES_2": [
-		{"species": "Abies concolor"},
-		{"species": "Psuedotsuga menziesii"},
-		{"species": "Pinus ponderosa"}
-      ],
-      "DIAGNOSTIC_SPECIES_3": [
-		{"species": "Aesculus pavia"},
-		{"species": "Acer negundo"},
-		{"species": "Acer saccharum"},
-		{"species": "Aesculus glabra"},
-		{"species": "Amelanchier"},
-		{"species": "Carya cordiformis"},
-		{"species": "Carya texana"},
-		{"species": "Celtis laevigata"},
-		{"species": "Celtis occidentalis"},
-		{"species": "Cercis canadensis"},
-		{"species": "Crataegus"},
-		{"species": "Diospyros virginiana"},
-		{"species": "Fraxinus americana"},
-		{"species": "Fraxinus pennsylvanica"},
-		{"species": "Gleditsia triacanthos"},
-		{"species": "Gymnocladus dioicus"},
-		{"species": "Juglans nigra"},
-		{"species": "Juniperus ashei"},
-		{"species": "Juniperus virginiana"},
-		{"species": "Morus rubra"},
-		{"species": "Ostrya virginiana"},
-		{"species": "Persea borbonia"},
-		{"species": "Platanus occidentalis"},
-		{"species": "Populus balsamifera"},
-		{"species": "Populus deltoides"},
-		{"species": "Prosopis glandulosa"},
-		{"species": "Prosopis velutina"},
-		{"species": "Prunus pensylvanica"},
-		{"species": "Prunus serotina"},
-		{"species": "Prunus virginiana"},
-		{"species": "Quercus falcata"},
-		{"species": "Quercus fusiformis"},
-		{"species": "Quercus macrocarpa"},
-		{"species": "Quercus margarettiae"},
-		{"species": "Quercus marilandica"},
-		{"species": "Quercus muehlenbergii"},
-		{"species": "Quercus rubra"},
-		{"species": "Quercus shumardii"},
-		{"species": "Quercus sinuata var. sinuata"},
-		{"species": "Quercus stellata"},
-		{"species": "Quercus velutina"},
-		{"species": "Quercus virginiana"},
-		{"species": "Sabal palmetto"},
-		{"species": "Tilia americana"},
-		{"species": "Ulmus alata"},
-		{"species": "Ulmus americana"},
-		{"species": "Ulmus crassifolia"},
-		{"species": "Ulmus rubra"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Great Plains Temperate Forests",
+        "id": "",
+        "level": "subclass",
+        "description": [
+            "Tree composition and ecology matching one of the following options",
+            "i. Located in ECOREGION 315 – exclude 315H, 332, 331 – exclude 331A and 331J, AND",
+            "EITHER",
+            "ii. Tree composition is dominated by one or more of Betula papyrifera",
+            "or Populus tremuloides =>20% RIV and Abies concolor,",
+            "Psuedotsuga menziesii, and Pinus ponderosa =<5% RIV",
+            "OR",
+            "iii. Aesculus pavia, Acer negundo, Acer saccharum, Aesculus glabra,",
+            "Amelanchier spp., Carya cordiformis, Carya texana, Celtis laevigata,",
+            "Celtis occidentalis, Cercis canadensis, Crataegus spp.,",
+            "Diospyros virginiana, Fraxinus americana, Fraxinus pennsylvanica,",
+            "Gleditsia triacanthos, Gymnocladus dioicus, Juglans nigra,",
+            "Juniperus ashei, Juniperus virginiana, Morus rubra, Ostrya virginiana",
+            "Persea borbonia, Platanus occidentalis, Populus balsamifera,",
+            "Populus deltoides, Prosopis glandulosa, Prosopis velutina,",
+            "Prunus pensylvanica, Prunus serotina, Prunus virginiana,",
+            "Quercus falcata, Quercus fusiformis, Quercus macrocarpa,",
+            "Quercus margarettiae, Quercus marilandica, Quercus muehlenbergii,",
+            "Quercus rubra, Quercus shumardii, Quercus sinuata var. sinuata,",
+            "Quercus stellata, Quercus velutina, Quercus virginiana, Sabal palmetto,",
+            "Tilia americana, Ulmus alata, Ulmus americana, Ulmus crassifolia,",
+            "or Ulmus rubra (>= 20% RIV)"
+        ],
+        "trigger": [
+            "(match(ECOREGIONS_1) and not match(ECOREGIONS_EXCL)) and",
+            "( (riv(DIAGNOSTIC_SPECIES_1) >= 20 and riv(DIAGNOSTIC_SPECIES_2) <= 5) or",
+            "riv(DIAGNOSTIC_SPECIES_3) >= 20 )"
+        ],
+        "filters": {
+            "ECOREGIONS_1": [
+                {
+                    "ecoregion": "315, 331, 332"
+                }
+            ],
+            "ECOREGIONS_EXCL": [
+                {
+                    "ecoregion": "315H, 331A, 331J"
+                }
+            ],
+            "DIAGNOSTIC_SPECIES_1": [
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Populus tremuloides"
+                }
+            ],
+            "DIAGNOSTIC_SPECIES_2": [
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Psuedotsuga menziesii"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                }
+            ],
+            "DIAGNOSTIC_SPECIES_3": [
+                {
+                    "species": "Aesculus pavia"
+                },
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Acer saccharum"
+                },
+                {
+                    "species": "Aesculus glabra"
+                },
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Carya texana"
+                },
+                {
+                    "species": "Celtis laevigata"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Cercis canadensis"
+                },
+                {
+                    "species": "Crataegus"
+                },
+                {
+                    "species": "Diospyros virginiana"
+                },
+                {
+                    "species": "Fraxinus americana"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Gleditsia triacanthos"
+                },
+                {
+                    "species": "Gymnocladus dioicus"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Juniperus ashei"
+                },
+                {
+                    "species": "Juniperus virginiana"
+                },
+                {
+                    "species": "Morus rubra"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Persea borbonia"
+                },
+                {
+                    "species": "Platanus occidentalis"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Populus deltoides"
+                },
+                {
+                    "species": "Prosopis glandulosa"
+                },
+                {
+                    "species": "Prosopis velutina"
+                },
+                {
+                    "species": "Prunus pensylvanica"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Prunus virginiana"
+                },
+                {
+                    "species": "Quercus falcata"
+                },
+                {
+                    "species": "Quercus fusiformis"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus margarettiae"
+                },
+                {
+                    "species": "Quercus marilandica"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus shumardii"
+                },
+                {
+                    "species": "Quercus sinuata var. sinuata"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Quercus velutina"
+                },
+                {
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Sabal palmetto"
+                },
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Ulmus alata"
+                },
+                {
+                    "species": "Ulmus americana"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                },
+                {
+                    "species": "Ulmus rubra"
+                }
+            ]
+        }
+    }
+}

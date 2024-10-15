@@ -1,45 +1,45 @@
-{"node": {
-
-   "name":
-      "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)",
-
-   "id":
-      "M897",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 315, 313, M313, 321, 342, M331, 341, 322, ",
-		"331B, 331I, 331J, M341B, M341C",
-		"AND tree composition dominated by one or more of STRONG DIAGNOSTIC",
-		"species Juniperus monosperma or Pinus edulis (RIV=>20%),",
-      "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Juniperus scopulorum or",
-		"[PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES]",
-		"(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "315, 313, M313, 321, 342, M331, 341, 322, 331B, 331I, 331J, M341B, M341C"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus monosperma"},
-		{"species": "Pinus edulis"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Juniperus scopulorum"}
-      ]
-   }
-
-}}
+{
+    "node": {
+        "name": "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)",
+        "id": "M897",
+        "level": "macrogroup",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 315, 313, M313, 321, 342, M331, 341, 322, ",
+            "331B, 331I, 331J, M341B, M341C",
+            "AND tree composition dominated by one or more of STRONG DIAGNOSTIC",
+            "species Juniperus monosperma or Pinus edulis (RIV=>20%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Juniperus scopulorum or",
+            "[PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES]",
+            "(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "315, 313, M313, 321, 342, M331, 341, 322, 331B, 331I, 331J, M341B, M341C"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus monosperma"
+                },
+                {
+                    "species": "Pinus edulis"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juniperus scopulorum"
+                }
+            ]
+        }
+    }
+}

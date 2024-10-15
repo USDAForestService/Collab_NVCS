@@ -1,56 +1,71 @@
-{"node": {
-
-   "name":
-      "Californian Broadleaf Forest & Woodland (G195)",
-
-   "id":
-      "G195",
-
-   "level":
-      "group",
-
-   "description": [
-      "Plot location and tree composition are as follows:",
-	    "i. Located in ECOREGION 342B, 322A, 341D, M242B, M261, M262, 261,",
-		"262, 263 and tree composition dominated by one or more of",
-		"STRONG DIAGNOSTIC species Aesculus californica, Juglans californica,",
-		"Quercus agrifolia, Quercus chrysolepis, Quercus douglasii,",
-		"Quercus kelloggii, Quercus lobata, Quercus wislizeni,",
-		"or Umbellularia californica (RIV=>50%),",
-       "OR",
-        "ii. Located in above ECOREGION, and tree composition as above, but",
-		"with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-		"combination of Quercus engelmannii or Quercus parvula var. shrevei,",
-		"(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species",
-		"RIV =>50%)"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and ",
-      "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-      "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "342B, 322A, 341D, M242B, M261, M262, 261, 262, 263"}
-	  ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Aesculus californica"},
-		{"species": "Juglans californica"},
-		{"species": "Quercus agrifolia"},
-		{"species": "Quercus chrysolepis"},
-		{"species": "Quercus douglasii"},
-		{"species": "Quercus kelloggii"},
-		{"species": "Quercus lobata"},
-		{"species": "Quercus wislizeni"},
-		{"species": "Umbellularia californica"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Quercus engelmannii"},
-		{"species": "Quercus parvula var. shrevei"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Californian Broadleaf Forest & Woodland (G195)",
+        "id": "G195",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 342B, 322A, 341D, M242B, M261, M262, 261,",
+            "262, 263 and tree composition dominated by one or more of",
+            "STRONG DIAGNOSTIC species Aesculus californica, Juglans californica,",
+            "Quercus agrifolia, Quercus chrysolepis, Quercus douglasii,",
+            "Quercus kelloggii, Quercus lobata, Quercus wislizeni,",
+            "or Umbellularia californica (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Quercus engelmannii or Quercus parvula var. shrevei,",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species",
+            "RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "342B, 322A, 341D, M242B, M261, M262, 261, 262, 263"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Aesculus californica"
+                },
+                {
+                    "species": "Juglans californica"
+                },
+                {
+                    "species": "Quercus agrifolia"
+                },
+                {
+                    "species": "Quercus chrysolepis"
+                },
+                {
+                    "species": "Quercus douglasii"
+                },
+                {
+                    "species": "Quercus kelloggii"
+                },
+                {
+                    "species": "Quercus lobata"
+                },
+                {
+                    "species": "Quercus wislizeni"
+                },
+                {
+                    "species": "Umbellularia californica"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Quercus engelmannii"
+                },
+                {
+                    "species": "Quercus parvula var. shrevei"
+                }
+            ]
+        }
+    }
+}

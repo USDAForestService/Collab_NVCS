@@ -1,108 +1,135 @@
-{"node": {
-
-   "name":
-      "Wetland Forest & Woodlands",
-
-   "id":
-      "",
-
-   "level":
-      "class",
-
-   "description": [
-      "Vegetation is a Western section wetland forest, where:",
-      "i.  The ecoregion (ECOREGION) is 315C-E, 315G, OR 321B [Southern Great Plains Floodplain Forest & Woodland] AND",
-      " ia. If the physiographic class code is RIVERINE = Y",
-      "    OR",
-      " ib. the combination of facultative wet (W2) and facultative (W3) tree (RIV =>50%) species",
-      " Celtis laevigata var. reticulata, Fraxinus pennsylvanica, Populus deltoides, or Ulmus americana",
-      "OR",
-      "ii. If the physiographic class code is RIVERINE = Y, AND EITHER",
-      " iia.  Facultative wet (W2) tree species have at least a combined RIV =>20%,",
-      " and OBLigate wet (W1) understory species (See Appendix xx) have a combined SPCOV =>10%,",
-      " OR",
-      " iib.  Facultative wet (W2) tree species have at least a combined RIV => 20%,",
-      " and the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,",
-      " OR",
-      " iic.  Facultative (W3) tree species have at least a combined RIV => 20%,",
-      " The combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 50%,",
-      " OR",
-      " iid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
-      " Do not include exotic species.",
-      "OR",
-      "iii. If physiographic class code is HYDRIC = Y, OR if the physiographic class code is RIVERINE = Y, AND EITHER",
-      " iiia. Facultative wet (W2) tree species have at least a combined RIV =>10%,",
-      " and OBLigate wet (W1) understory species (See Appendix xx) have a combined SPCOV =>10%,",
-      " OR",
-      " iiib. Facultative wet (W2) tree species have at least a combined RIV => 10%,",
-      " and the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 50%,",
-      " OR",
-      " iiic. Facultative (W3) tree species have at least a combined RIV => 10%,",
-      " The combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,",
-      " OR",
-      " iiid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
-      " Do not include exotic species.",
-	  " OR",
-	  "iv. If the ecoregion (ECOREGION ) is 242 AND",
-	  " iva. The facultative wet (W2) tree species have at least a combined RIV =>20%, and the combination of",
-	  "obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%"
-   ],
-
-   "trigger": [
-      "(match(ECOREGIONS_SGP) and ( match(RIVERINE) or (riv(W2) + riv(W3) >= 50) ))",
-      "or (match(RIVERINE) and ( (riv(W2) >= 20 and spcov(W1_UNDERSTORY) >= 10)",
-      "                          or (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
-      "                          or (riv(W3) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
-      "                          or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
-      "or (match(HYDRIC_OR_RIVERINE) and ( (riv(W2) >= 10 and spcov(W1_UNDERSTORY) >= 10)",
-      "                                     or (riv(W2) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
-      "                                     or (riv(W3) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
-      "                                     or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
-	  "or (match(ECOREGIONS_IV) and (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50))"
-   ],
-
-   "filters": {
-      "ECOREGIONS_SGP": [
-        {"ecoregion": "315Ce, 315G, 321B"}
-      ],
-      "ECOREGIONS_IV": [
-        {"ecoregion": "242"}
-      ],
-      "RIVERINE": [
-        {"riverine": "yes"}
-      ],
-      "HYDRIC_OR_RIVERINE": [
-        {"hydric": "yes"},
-        {"riverine": "yes"}
-      ],
-      "W1": [
-        {"wetland": "OBL"}
-      ],
-      "W1_UNDERSTORY": [
-        {"wetland": "OBL", "tallytree": "no"}
-      ],
-      "W2": [
-        {"wetland": "FACW"}
-      ],
-      "W2_UNDERSTORY": [
-        {"wetland": "FACW", "tallytree": "no"}
-      ],
-      "W3": [
-        {"wetland": "FAC"}
-      ],
-      "WI": [
-        {"wetland": "OBL, FACW", "exotic": "no"}
-      ],
-      "WI_UNDERSTORY": [
-        {"wetland": "OBL, FACW", "exotic": "no", "tallytree": "no"}
-      ],
-      "UI": [
-        {"wetland": "UPL", "exotic": "no"}
-      ],
-      "UI_UNDERSTORY": [
-        {"wetland": "UPL", "exotic": "no", "tallytree": "no"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Wetland Forest & Woodlands",
+        "id": "",
+        "level": "class",
+        "description": [
+            "Vegetation is a Western section wetland forest, where:",
+            "i.  The ecoregion (ECOREGION) is 315C-E, 315G, OR 321B [Southern Great Plains Floodplain Forest & Woodland] AND",
+            " ia. If the physiographic class code is RIVERINE = Y",
+            "  OR",
+            " ib. the combination of facultative wet (W2) and facultative (W3) tree (RIV =>50%) species",
+            " Celtis laevigata var. reticulata, Fraxinus pennsylvanica, Populus deltoides, or Ulmus americana",
+            "OR",
+            "ii. If the physiographic class code is RIVERINE = Y, AND EITHER",
+            " iia.  Facultative wet (W2) tree species have at least a combined RIV =>20%,",
+            " and OBLigate wet (W1) understory species (See Appendix xx) have a combined SPCOV =>10%,",
+            " OR",
+            " iib.  Facultative wet (W2) tree species have at least a combined RIV => 20%,",
+            " and the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,",
+            " OR",
+            " iic.  Facultative (W3) tree species have at least a combined RIV => 20%,",
+            " The combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 50%,",
+            " OR",
+            " iid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
+            " Do not include exotic species.",
+            "OR",
+            "iii. If physiographic class code is HYDRIC = Y, OR if the physiographic class code is RIVERINE = Y, AND EITHER",
+            " iiia. Facultative wet (W2) tree species have at least a combined RIV =>10%,",
+            " and OBLigate wet (W1) understory species (See Appendix xx) have a combined SPCOV =>10%,",
+            " OR",
+            " iiib. Facultative wet (W2) tree species have at least a combined RIV => 10%,",
+            " and the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 50%,",
+            " OR",
+            " iiic. Facultative (W3) tree species have at least a combined RIV => 10%,",
+            " The combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,",
+            " OR",
+            " iiid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
+            " Do not include exotic species.",
+            " OR",
+            "iv. If the ecoregion (ECOREGION ) is 242 AND",
+            " iva. The facultative wet (W2) tree species have at least a combined RIV =>20%, and the combination of",
+            "obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%"
+        ],
+        "trigger": [
+            "(match(ECOREGIONS_SGP) and ( match(RIVERINE) or (riv(W2) + riv(W3) >= 50) ))",
+            "or (match(RIVERINE) and ( (riv(W2) >= 20 and spcov(W1_UNDERSTORY) >= 10)",
+            "                          or (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
+            "                          or (riv(W3) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
+            "                          or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
+            "or (match(HYDRIC_OR_RIVERINE) and ( (riv(W2) >= 10 and spcov(W1_UNDERSTORY) >= 10)",
+            "                                     or (riv(W2) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
+            "                                     or (riv(W3) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
+            "                                     or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
+            "or (match(ECOREGIONS_IV) and (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50))"
+        ],
+        "filters": {
+            "ECOREGIONS_SGP": [
+                {
+                    "ecoregion": "315Ce, 315G, 321B"
+                }
+            ],
+            "ECOREGIONS_IV": [
+                {
+                    "ecoregion": "242"
+                }
+            ],
+            "RIVERINE": [
+                {
+                    "riverine": "yes"
+                }
+            ],
+            "HYDRIC_OR_RIVERINE": [
+                {
+                    "hydric": "yes"
+                },
+                {
+                    "riverine": "yes"
+                }
+            ],
+            "W1": [
+                {
+                    "wetland": "OBL"
+                }
+            ],
+            "W1_UNDERSTORY": [
+                {
+                    "wetland": "OBL",
+                    "tallytree": "no"
+                }
+            ],
+            "W2": [
+                {
+                    "wetland": "FACW"
+                }
+            ],
+            "W2_UNDERSTORY": [
+                {
+                    "wetland": "FACW",
+                    "tallytree": "no"
+                }
+            ],
+            "W3": [
+                {
+                    "wetland": "FAC"
+                }
+            ],
+            "WI": [
+                {
+                    "wetland": "OBL, FACW",
+                    "exotic": "no"
+                }
+            ],
+            "WI_UNDERSTORY": [
+                {
+                    "wetland": "OBL, FACW",
+                    "exotic": "no",
+                    "tallytree": "no"
+                }
+            ],
+            "UI": [
+                {
+                    "wetland": "UPL",
+                    "exotic": "no"
+                }
+            ],
+            "UI_UNDERSTORY": [
+                {
+                    "wetland": "UPL",
+                    "exotic": "no",
+                    "tallytree": "no"
+                }
+            ]
+        }
+    }
+}

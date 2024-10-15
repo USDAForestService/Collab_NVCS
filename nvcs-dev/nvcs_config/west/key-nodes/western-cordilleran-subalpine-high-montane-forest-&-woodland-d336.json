@@ -1,0 +1,114 @@
+{
+    "node": {
+        "name": "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)",
+        "id": "D336",
+        "level": "division",
+        "description": [
+            "Tree composition and ecology matching one of the following options:",
+            "i.  Elevation above 1600 meters and located in 242A, 242B, 242C, M242A, M242B, M242C,",
+            "  M242D, M261; 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331,",
+            "  M332, M333, M334, 341, M341, 342",
+            "AND",
+            "ii.  EITHER",
+            "    d.  Tree composition dominated by one or more of STRONG diagnostic tree ",
+            "    species Abies amabilis, Abies lasiocarpa, Abies magnifica, Abies procera, ",
+            "    Abies shastensis [Abies magnifica var. shastensis], Betula papyrifera, ",
+            "    Juniperus grandis, Larix lyallii Picea engelmannii, Pinus albicaulis, ",
+            "    Pinus contorta, Pinus flexilis, Populus tremuloides, or Tsuga mertensiana  ",
+            "    (=>50% RIV)",
+            "    OR",
+            "    e.  The above tree species, but with =>20% RIV AND other MODERATE diagnostic",
+            "    species of Callitropsis nootkatensis , Pinus balfouriana, Pinus flexilis,",
+            "    Pinus jeffreyi, Pinus monticola, Pseudotsuga menziesii. or Tsuga heterophylla",
+            "    (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
+            "    OR",
+            "    f.  Any EXOTIC = yes tree species =>80% RIV"
+        ],
+        "trigger": [
+            "elevation() > 1600 and match(ECOREGIONS) and ",
+            "((riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and ",
+            "riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or ",
+            "riv(EXOTIC_TREE_SPP) >= 80))"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "242A, 242B, 242C, M242A, M242B, M242C, M242D, M261; 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331, M332, M333, M334, 341, M341, 342"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies amabilis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Abies magnifica"
+                },
+                {
+                    "species": "Abies procera"
+                },
+                {
+                    "species": "Abies shastensis"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Juniperus grandis"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Tsuga mertensiana"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Callitropsis nootkatensis"
+                },
+                {
+                    "species": "Pinus balfouriana"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus jeffreyi"
+                },
+                {
+                    "species": "Pinus monticola"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Tsuga heterophylla"
+                }
+            ],
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
+    }
+}
