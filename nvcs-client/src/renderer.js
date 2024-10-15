@@ -33,7 +33,7 @@ async function fetchPackagedJson() {
 
 async function fetchCustomJson() {
     const loadMessage = "Are you sure you want to load from this directory? " +
-        "All currently loaded modifications will be  lost unless they were saved to another directory.";
+        "All currently loaded modifications will be lost unless they were saved to another directory.";
     if (hierarchy?.length > 0 && !confirm(loadMessage))
         return;
 

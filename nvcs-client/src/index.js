@@ -159,7 +159,7 @@ async function fetchSpecies(event) {
 }
 
 function getConfigurationPath() {
-  return app.isPackaged ? process.resourcesPath : __dirname + '../../../nvcs-dev/nvcs_config/west';
+  return app.isPackaged ? process.resourcesPath + "/west" : __dirname + '../../../nvcs-dev/nvcs_config/west';
 }
 
 async function openBrowseDialog(event, targetPath) {
