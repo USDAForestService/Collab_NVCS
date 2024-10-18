@@ -165,7 +165,12 @@ async function fetchSpecies(event) {
 }
 
 function getConfigurationPath() {
-  return app.isPackaged ? process.resourcesPath + "/west" : __dirname + '../../../nvcs-dev/nvcs_config/west';
+  if (app.isPackaged) {
+    return path.join(process.resourcesPath, "/nvcs-dev/nvcs_config/west");
+  }
+  else {
+    return path.join(__dirname, '../../nvcs-dev/nvcs_config/west');
+  }
 }
 
 async function openBrowseDialog(event, targetPath) {
@@ -189,7 +194,7 @@ async function executePython_builder(event, targetPath) {
   const pythonPath = path.resolve(getPythonPath());
   console.log("- Target Python Path:", pythonPath);
 
-  const builderPath = path.resolve(__dirname + "../../../nvcs-dev/nvcs_builder/builder.py");
+  const builderPath = path.resolve(getBuilderPyPath());
   console.log("- Target Builder.py Path:", builderPath);
   
   let config = getPythonConfigFile();
@@ -205,7 +210,7 @@ async function executePython_builder(event, targetPath) {
 
 function getPythonPath() {
   if (app.isPackaged) {
-    return process.resourcesPath + "/redist/python/python.exe";
+    return path.join(process.resourcesPath, "/redist/python/python.exe");
   }
   else {
     return path.join(__dirname, '../redist/python/python.exe');
@@ -238,9 +243,18 @@ function setPythonConfigFile(config) {
 
 function getPythonConfigFilePath() {
   if (app.isPackaged) {
-    return process.resourcesPath + "/nvcs-dev/nvcs_builder/debug_config.ini";
+    return path.join(process.resourcesPath, "/nvcs-dev/nvcs_builder/debug_config.ini");
   }
   else {
     return path.join(__dirname, '../../nvcs-dev/nvcs_builder/debug_config.ini');
+  }
+}
+
+function getBuilderPyPath() {
+  if (app.isPackaged) {
+    return path.join(process.resourcesPath, "/nvcs-dev/nvcs_builder/builder.py");
+  }
+  else {
+    return path.join(__dirname, '../../nvcs-dev/nvcs_builder/builder.py');
   }
 }

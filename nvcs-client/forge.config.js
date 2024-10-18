@@ -5,7 +5,8 @@ module.exports = {
   packagerConfig: {
     asar: true,
     extraResource: [
-      "../nvcs-dev/nvcs_config/west"
+      "./redist",
+      "../nvcs-dev"
     ]
   },
   rebuildConfig: {},
