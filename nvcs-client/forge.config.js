@@ -6,7 +6,8 @@ module.exports = {
     asar: true,
     extraResource: [
       "./redist",
-      "../nvcs-dev"
+      "../nvcs-dev",
+      "../nvcs-data/run_output/west/west_shared_tables.db"
     ]
   },
   rebuildConfig: {},
