@@ -1,6 +1,11 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
+const ini = require('ini');
+const child_process = require("child_process");
+const util = require("util");
+const execFile = util.promisify(child_process.execFile);
+
 let mainWindow;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -34,6 +39,7 @@ app.whenReady().then(() => {
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
+  ipcMain.handle('execute-python-builder', executePython_builder);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -175,4 +181,66 @@ async function openBrowseDialog(event, targetPath) {
   console.log("- RETURNING RESULTS");
   const path = !cancelled ? filePaths[0] : null;
   return path;
+}
+
+async function executePython_builder(event, targetPath) {
+  console.log("INVOKED: executePython_builder");
+
+  const pythonPath = path.resolve(getPythonPath());
+  console.log("- Target Python Path:", pythonPath);
+
+  const builderPath = path.resolve(__dirname + "../../../nvcs-dev/nvcs_builder/builder.py");
+  console.log("- Target Builder.py Path:", builderPath);
+  
+  let config = getPythonConfigFile();
+  config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+  setPythonConfigFile(config);
+
+  var results = await execFile(pythonPath, [builderPath]);
+  console.log("- Results", results);
+
+  console.log("- RETURNING RESULTS");
+  return results;
+}
+
+function getPythonPath() {
+  if (app.isPackaged) {
+    return process.resourcesPath + "/redist/python/python.exe";
+  }
+  else {
+    return path.join(__dirname, '../redist/python/python.exe');
+  }
+}
+
+function getPythonConfigFile() {
+  const configFilePath = getPythonConfigFilePath();
+  
+  let configFile = fs.readFileSync(configFilePath, 'utf-8');
+  configFile = configFile.replaceAll(": ", "=");
+  configFile = configFile.replaceAll(":\r\n", "=\r\n");
+
+  const config = ini.parse(configFile);
+  return config;
+}
+
+function setPythonConfigFile(config) {
+  const configFilePath = getPythonConfigFilePath();
+
+  let configFileString = ini.stringify(config, {
+    whitespace: true
+  });
+  configFileString = configFileString.replaceAll(" = ", ": ");
+  configFileString = configFileString.replaceAll("\"", "");
+  configFileString = configFileString.replaceAll(": \r\n", ":\r\n");
+  configFileString = configFileString.replaceAll("${Config=", "${Config:");
+  fs.writeFileSync(configFilePath, configFileString);
+}
+
+function getPythonConfigFilePath() {
+  if (app.isPackaged) {
+    return process.resourcesPath + "/nvcs-dev/nvcs_builder/debug_config.ini";
+  }
+  else {
+    return path.join(__dirname, '../../nvcs-dev/nvcs_builder/debug_config.ini');
+  }
 }

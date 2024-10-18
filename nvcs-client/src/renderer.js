@@ -140,6 +140,20 @@ async function updateAvailableSpecies() {
     console.log(`Updated available species with ${availableSpecies.length} elements`);
 }
 
+async function executePythonBuilder() {
+    let returnedData;
+    try {
+        const newDirectoryName = document.getElementById("json-directory-name").value;
+        returnedData = await window.electronAPI.executePythonBuilder(newDirectoryName);
+    }
+    catch (error) {
+        alert(error);
+        return;
+    }
+
+    console.log("Execute Python Builder: ", returnedData);
+}
+
 function createEmptyHierarchyElement() {
     const element = {
         fileName: "",
