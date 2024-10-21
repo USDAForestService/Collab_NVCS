@@ -196,13 +196,27 @@ async function executePython_builder(event, targetPath) {
   let config = getPythonConfigFile();
   config.Config.ProjectRoot = getProjectResourcePath();
   config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+  config.FullOutputConfig.SkipSharedTables = "True";
   setPythonConfigFile(config);
 
-  var results = await execFile(pythonPath, [builderPath]);
-  console.log("- Results", results);
+  console.log("- Executing Builder Script...");
+  var builderResults = await execFile(pythonPath, [builderPath]);
+  console.log("- Builder Results", builderResults);
+
+  // Clone table
+  console.log("- Creating base SQLite output file...")
+  var sharedTablePath = getSharedTablePath();
+  var copyTablePath =  parseIniPath(config.FullOutputConfig.Out_DbPath, config);
+  fs.copyFileSync(sharedTablePath, copyTablePath);
+
+  // Execute full output
+  onsole.log("- Executing Full Output Script...");
+  var fullOutputPath = getFullOutputPyPath();
+  var fullOutputResults = await execFile(pythonPath, [fullOutputPath]);
+  console.log("- Full Output Results", fullOutputResults);
 
   console.log("- RETURNING RESULTS");
-  return results;
+  return [builderResults, fullOutputResults];
 }
 
 function getPythonPath() {
@@ -245,9 +259,29 @@ function getBuilderPyPath() {
   return path.resolve(relative);
 }
 
+function getFullOutputPyPath() {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_tester/full_output.py')
+  return path.resolve(relative);
+}
+
 function getProjectResourcePath() {
   let relative = process.resourcesPath;
   if (!app.isPackaged)
     relative = path.join(__dirname, '../../');
   return path.resolve(relative);
+}
+
+function getSharedTablePath() {
+  let relativeTable = "west_shared_tables.db";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/west_shared_tables.db";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function parseIniPath(path, config) {
+  const projectRoot = config.Config.ProjectRoot;
+  const parsedPath = path.replaceAll("${Config:ProjectRoot}", projectRoot);
+  return parsedPath;
 }
