@@ -18,22 +18,39 @@ body {
   border: 1px solid lightgrey;
 }
 
-.label-input-button-container {
+.label-content-container {
   display: flex;
   gap: 5px;
 }
 
-.label-input-button-container label {
+.label-content-container > label {
   width: 20%;
 }
 
-.label-input-button-container select,
-.label-input-button-container input {
+.label-content-container > div,
+.label-content-container > select,
+.label-content-container > input {
   flex-grow: 1;
 }
 
-.label-input-button-container button {
-  width: 18%;
+.label-content-container > button {
+  width: fit-content;
+}
+
+.label-content-container > .vertical-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.json-action-container {
+  display: flex;
+  gap: 5px;
+  flex-grow: 1;
+}
+
+.json-action-container > button {
+  flex-grow: 1;
 }
 
 .browse {

@@ -15,7 +15,7 @@
       </p>
     </div>
     <div class="top-action-container">
-      <div class="label-input-button-container">
+      <div class="label-content-container">
         <label for="packaged-json-type">Packaged JSON Type:</label>
         <select id="packaged-json-type">
           <option disabled>alaska</option>
@@ -24,27 +24,29 @@
         </select>
         <button id="btn-fetch-packaged-json" onclick="fetchPackagedJson()">Load Packaged JSON</button>
       </div>
-      <div class="label-input-button-container">
-        <label for="source-json-directory">Load JSON Directory:</label>
-        <input id="source-json-directory" type="text"/>
-        <button id="btn-browse-existing-json" class="browse" onclick="browseCustomJsonPath()">Browse</button>
-        <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load Custom JSON</button>
+      <div class="label-content-container">
+        <label for="json-directory-path">JSON Directory:</label>
+        <input id="json-directory-path" type="text" readonly>
       </div>
-      <div class="label-input-button-container">
-        <label for="json-directory-name">Save JSON Directory:</label>
-        <input id="json-directory-name" type="text" disabled/>
-        <button id="btn-browse-update-json" class="browse" onclick="browseUpdateJsonPath()" disabled>Browse</button>
-        <button id="btn-update-json" onclick="updateJson()" disabled>Save Custom JSON</button>
+      <div class="label-content-container">
+        <label>JSON Actions:</label>
+        <div class="json-action-container">
+          <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load</button>
+          <button id="btn-update-json" onclick="updateJson()" disabled>Save</button>
+          <button id="btn-test-json" onclick="executeTester()" disabled>Test</button>
+        </div>
       </div>
-      <div class="label-input-button-container">
+      <div class="label-content-container">
         <label for="search-hierarchy">Hierarchy Search:</label>
         <input id="search-hierarchy" type="text" list="full-hierarchy-list" disabled/>
         <button id="btn-search-hierarchy" onclick="searchHierarchy()" disabled>Search</button> 
         <datalist id="full-hierarchy-list"></datalist>
       </div>
-      <div>
-        <button id="btn-add-element" onclick="addHierarchyElement()" disabled>Add Element</button>
-        <button onclick="executePythonBuilder()">Execute Python Builder</button>
+      <div class="label-content-container">
+        <label>Hierarchy Actions:</label>
+        <div>
+          <button id="btn-add-element" onclick="addHierarchyElement()" disabled>Add Element</button>
+        </div>
       </div>
     </div>
     <div class="alert-container" role="alert">
@@ -97,7 +99,7 @@
           <datalist id="parent-hierarchy-list"></datalist>
         </div>
         <div class="input-container">
-          <label for="node-childrenNodes" class="key-holder">Children Nodes</label>
+          <label class="key-holder">Children Nodes</label>
           <div id="node-childrenNodes" class="value-holder"></div>
         </div>
         <div class="input-container">
@@ -113,7 +115,7 @@
           <textarea id="node-nodeTrigger" class="value-holder"></textarea>
         </div>
         <div class="input-container">
-          <label for="node-nodeFilters" class="key-holder">Node Filters</label>
+          <label class="key-holder">Node Filters</label>
           <div id="node-nodeFilters" class="value-holder"></div>
         </div>
       </div>

@@ -28,16 +28,25 @@ async function fetchPackagedJson() {
     if (hierarchy?.length > 0 && !confirm(loadMessage))
         return;
 
-    return await fetchJson();
+    await fetchJson();
+
+    document.getElementById("json-directory-path").value = "";
+    document.getElementById("btn-update-json").disabled = true;
+    document.getElementById("btn-test-json").disabled = true;
 }
 
 async function fetchCustomJson() {
+    const inputPath = document.getElementById("json-directory-path");
+    const browsePath = await openBrowseDialog(inputPath.value);
+    if (!browsePath) return;
+    inputPath.value = browsePath;
+
     const loadMessage = "Are you sure you want to load from this directory? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
     if (hierarchy?.length > 0 && !confirm(loadMessage))
         return;
 
-    const targetPath = document.getElementById("source-json-directory").value;
+    const targetPath = document.getElementById("json-directory-path").value;
     if (!targetPath) {
         const message = "When loading custom JSON, please ensure a valid path is provided to the directory " +
             "containing the key nodes and hierarchy file that you wish to load";
@@ -45,7 +54,10 @@ async function fetchCustomJson() {
         return;
     }
 
-    return await fetchJson(targetPath);
+    await fetchJson(targetPath);
+
+    document.getElementById("btn-update-json").disabled = false;
+    document.getElementById("btn-test-json").disabled = false;
 }
 
 async function fetchJson(targetPath) {
@@ -115,9 +127,6 @@ async function fetchJson(targetPath) {
 
     // Update HTML elements
     generateHierarchyHTML(hierarchy);
-    document.getElementById("json-directory-name").disabled = false;
-    document.getElementById("btn-browse-update-json").disabled = false;
-    document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
@@ -140,11 +149,11 @@ async function updateAvailableSpecies() {
     console.log(`Updated available species with ${availableSpecies.length} elements`);
 }
 
-async function executePythonBuilder() {
+async function executeTester() {
     let returnedData;
     try {
-        const newDirectoryName = document.getElementById("json-directory-name").value;
-        returnedData = await window.electronAPI.executePythonBuilder(newDirectoryName);
+        const newDirectoryName = document.getElementById("json-directory-path").value;
+        returnedData = await window.electronAPI.executeTester(newDirectoryName);
     }
     catch (error) {
         alert(error);
@@ -593,7 +602,7 @@ async function updateJson() {
     if (!confirm(updateWarning))
         return;
 
-    const newDirectoryName = document.getElementById("json-directory-name").value;
+    const newDirectoryName = document.getElementById("json-directory-path").value;
     if (!newDirectoryName) {
         const message = "Please provide an exact directory path to store your updated JSON files";
         alert(message);
@@ -1219,24 +1228,14 @@ function findHierarchyButton(hierarchyName) {
     return element;   
 }
 
-async function browseCustomJsonPath() {
-    const inputPath = document.getElementById("source-json-directory");
-    inputPath.value = await openBrowseDialog(inputPath.value);
-}
-
-async function browseUpdateJsonPath() {
-    const inputPath = document.getElementById("json-directory-name");
-    inputPath.value = await openBrowseDialog(inputPath.value);
-}
-
 async function openBrowseDialog(targetPath = "") {
     try {
         const returnedData = await window.electronAPI.openBrowse(targetPath);
-        return returnedData ?? targetPath;
+        return returnedData;
     }
     catch (error) {
         alert(error);
-        return targetPath;
+        return null;
     }
 }
 

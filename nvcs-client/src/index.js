@@ -39,7 +39,7 @@ app.whenReady().then(() => {
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
-  ipcMain.handle('execute-python-builder', executePython_builder);
+  ipcMain.handle('execute-tester', executeTester);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -184,8 +184,8 @@ async function openBrowseDialog(event, targetPath) {
   return path;
 }
 
-async function executePython_builder(event, targetPath) {
-  console.log("INVOKED: executePython_builder");
+async function executeTester(event, targetPath) {
+  console.log("INVOKED: executeTester");
 
   const pythonPath = getPythonPath();
   console.log("- Target Python Path:", pythonPath);
@@ -210,13 +210,17 @@ async function executePython_builder(event, targetPath) {
   fs.copyFileSync(sharedTablePath, copyTablePath);
 
   // Execute full output
-  onsole.log("- Executing Full Output Script...");
+  console.log("- Executing Full Output Script...");
   var fullOutputPath = getFullOutputPyPath();
   var fullOutputResults = await execFile(pythonPath, [fullOutputPath]);
   console.log("- Full Output Results", fullOutputResults);
 
   console.log("- RETURNING RESULTS");
-  return [builderResults, fullOutputResults];
+  return {
+    success: true,
+    builderMessage: builderResults,
+    fullOutputMessage: fullOutputResults
+  };
 }
 
 function getPythonPath() {
