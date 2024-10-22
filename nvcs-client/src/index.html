@@ -34,6 +34,7 @@
           <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load</button>
           <button id="btn-update-json" onclick="updateJson()" disabled>Save</button>
           <button id="btn-test-json" onclick="executeTester()" disabled>Test</button>
+          <button id="btn-test-settings" onclick="openSettingsDialog()" disabled>Settings</button>
           <button id="btn-open-json" onclick="openJsonDirectory()" disabled>Open</button>
         </div>
       </div>
@@ -125,6 +126,30 @@
           <button onclick="saveJsonChanges()">Save All</button>
           <button onclick="deleteHierarchyElement()">Delete</button>
           <button onclick="closeJsonDialog()">Close</button>
+        </div>
+      </div>
+    </div>
+    <div id='settings-dialog' class="dialog hidden">
+      <div class="header-container">
+        <div class="button-container">
+          <button onclick="closeSettingsDialog()">Close</button>
+        </div>
+        <h2>Test Settings</h2>
+      </div>
+      <div class="body-container">
+        <div class="input-container">
+          <label for="settings-inv-years" class="key-holder">Inventory Years</label>
+          <textarea id="settings-inv-years" class="value-holder" title="Comma-separated inventory years to run against the classifier"></textarea>
+        </div>
+        <div class="input-container">
+          <label for="settings-additional-where" class="key-holder">Additional Where Clause</label>
+          <textarea id="settings-additional-where" class="value-holder" title="More specific filtering applied to each inventory year input query"></textarea>
+        </div>
+      </div>
+      <div class="footer-container">
+        <div class="button-container">
+          <button onclick="saveSettingsChanges()">Save</button>
+          <button onclick="closeSettingsDialog()">Close</button>
         </div>
       </div>
     </div>

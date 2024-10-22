@@ -21,6 +21,7 @@ var nodeHierarchy;
 var hierarchy;
 var initialHierarchy;
 var availableSpecies;
+var testSettings;
 
 async function fetchPackagedJson() {
     const loadMessage = "Are you sure you want to load the selected packaged content? " +
@@ -32,6 +33,7 @@ async function fetchPackagedJson() {
 
     document.getElementById("json-directory-path").value = "";
     document.getElementById("btn-test-json").disabled = true;
+    document.getElementById("btn-test-settings").disabled = true;
     document.getElementById("btn-open-json").disabled = true;
 }
 
@@ -57,6 +59,7 @@ async function fetchCustomJson() {
     await fetchJson(targetPath);
 
     document.getElementById("btn-test-json").disabled = false;
+    document.getElementById("btn-test-settings").disabled = false;
     document.getElementById("btn-open-json").disabled = false;
 }
 
@@ -281,7 +284,8 @@ function generateListEntry(element) {
 }
 
 function openJsonDialog(hierarchyName) {
-    showJsonDialog();
+    const dialog = document.getElementById("json-dialog");
+    showDialog(dialog);
 
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
@@ -343,21 +347,9 @@ function openJsonDialog(hierarchyName) {
         checkInputInList(inputType);
 }
 
-function showJsonDialog() {
-    const dialog = document.getElementById("json-dialog");
-    dialog.classList.remove("hidden");
-
-    const dialogBody = dialog.querySelector(".body-container");
-    dialogBody.scroll({ top: 0 });
-}
-
-function hideJsonDialog() {
-    const dialog = document.getElementById("json-dialog");
-    dialog.classList.add("hidden");
-}
-
 function closeJsonDialog() {
-    hideJsonDialog();
+    const dialog = document.getElementById("json-dialog");
+    hideDialog(dialog);
 
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     const isNew = openedHierarchyName == "";
@@ -658,6 +650,7 @@ async function updateJson() {
         alert(message);
 
         document.getElementById("btn-test-json").disabled = false;
+        document.getElementById("btn-test-settings").disabled = false;
         document.getElementById("btn-open-json").disabled = false;
         return;
     }
@@ -1321,4 +1314,61 @@ function getOptionValuesFromDataList(list) {
     const listOptions = list.querySelectorAll("option");
     const listValues = [...listOptions].map(i => i.value);
     return listValues;
+}
+
+function openSettingsDialog() {
+
+    if (!testSettings) {
+        testSettings = {
+            inventoryYears: [],
+            additionalWhere: ""
+        }
+    }
+
+    const joinedInventoryYears = testSettings.inventoryYears.join(", ");
+    document.getElementById("settings-inv-years").value = joinedInventoryYears;
+
+    document.getElementById("settings-additional-where").value = testSettings.additionalWhere;
+
+    const dialog = document.getElementById("settings-dialog");
+    showDialog(dialog);
+}
+
+function closeSettingsDialog() {
+    const dialog = document.getElementById("settings-dialog");
+    hideDialog(dialog);
+}
+
+function showDialog(dialog) {
+    dialog.classList.remove("hidden");
+
+    const dialogBody = dialog.querySelector(".body-container");
+    dialogBody.scroll({ top: 0 });
+}
+
+function hideDialog(dialog) {
+    dialog.classList.add("hidden");
+}
+
+function saveSettingsChanges() {
+    const message = "Are you sure you want to overwrite these settings?";
+    if (!confirm(message))
+        return;
+
+    const inventoryYearsString = document.getElementById("settings-inv-years").value;
+    let inventoryYears = inventoryYearsString.split(",");
+    for (let i = 0; i < inventoryYears.length; i++) {
+        let stringValue = inventoryYears[i];
+        stringValue = stringValue.trim();
+        inventoryYears[i] = Number(stringValue);
+    }
+
+    const additionalWhere = document.getElementById("settings-additional-where").value;
+
+    testSettings.inventoryYears = inventoryYears;
+    testSettings.additionalWhere = additionalWhere;
+    console.log(testSettings);
+    
+    closeSettingsDialog();
+    alert("Successfully saved test settings");
 }
