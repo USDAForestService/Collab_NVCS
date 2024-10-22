@@ -31,7 +31,6 @@ async function fetchPackagedJson() {
     await fetchJson();
 
     document.getElementById("json-directory-path").value = "";
-    document.getElementById("btn-update-json").disabled = true;
     document.getElementById("btn-test-json").disabled = true;
 }
 
@@ -56,7 +55,6 @@ async function fetchCustomJson() {
 
     await fetchJson(targetPath);
 
-    document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-test-json").disabled = false;
 }
 
@@ -127,9 +125,21 @@ async function fetchJson(targetPath) {
 
     // Update HTML elements
     generateHierarchyHTML(hierarchy);
+    document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
+}
+
+async function openBrowseDialog(path) {
+    try {
+        const browsePath = await openBrowseDialog(path);
+        return browsePath;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
 }
 
 async function updateAvailableSpecies() {
@@ -150,17 +160,26 @@ async function updateAvailableSpecies() {
 }
 
 async function executeTester() {
-    let returnedData;
     try {
+        const testWarning = "Are you sure you want to test this directory? " +
+            "Any previously saved 'nvcs-output.db' file will be overwritten if testing is successful.";
+        if (!confirm(testWarning))
+            return;
+        
         const newDirectoryName = document.getElementById("json-directory-path").value;
-        returnedData = await window.electronAPI.executeTester(newDirectoryName);
+        const response = await window.electronAPI.executeTester(newDirectoryName);
+
+        if (!response.success)
+            throw new Error("Unexpected error while testing");
+
+        const message = `Successfully saved test results to the following location: ${response.outputDbPath}`;
+        alert(message);
+        return;
     }
     catch (error) {
         alert(error);
         return;
     }
-
-    console.log("Execute Python Builder: ", returnedData);
 }
 
 function createEmptyHierarchyElement() {
@@ -597,6 +616,11 @@ async function saveJsonChanges() {
 }
 
 async function updateJson() {
+    const inputPath = document.getElementById("json-directory-path");
+    const browsePath = await openBrowseDialog(inputPath.value);
+    if (!browsePath) return;
+    inputPath.value = browsePath;
+
     const updateWarning = "Are you sure you want to save changes to this directory? " +
         "Any previously saved changes within this directory will be overwritten.";
     if (!confirm(updateWarning))
@@ -618,6 +642,8 @@ async function updateJson() {
 
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
+
+        document.getElementById("btn-test-json").disabled = false;
         return;
     }
     catch (error) {

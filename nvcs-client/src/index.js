@@ -197,6 +197,7 @@ async function executeTester(event, targetPath) {
   config.Config.ProjectRoot = getProjectResourcePath();
   config.WestConfig.In_ConfigPath = path.resolve(targetPath);
   config.FullOutputConfig.SkipSharedTables = "True";
+  config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
   setPythonConfigFile(config);
 
   console.log("- Executing Builder Script...");
@@ -219,7 +220,8 @@ async function executeTester(event, targetPath) {
   return {
     success: true,
     builderMessage: builderResults,
-    fullOutputMessage: fullOutputResults
+    fullOutputMessage: fullOutputResults,
+    outputDbPath: config.FullOutputConfig.Out_DbPath
   };
 }
 
