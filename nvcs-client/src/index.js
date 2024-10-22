@@ -40,6 +40,7 @@ app.whenReady().then(() => {
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
   ipcMain.handle('execute-tester', executeTester);
+  ipcMain.handle('open-directory', openDirectory);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -290,4 +291,25 @@ function parseIniPath(path, config) {
   const projectRoot = config.Config.ProjectRoot;
   const parsedPath = path.replaceAll("${Config:ProjectRoot}", projectRoot);
   return parsedPath;
+}
+
+async function openDirectory(event, targetPath) {
+  console.log("INVOKED: openDirectory");
+
+  let command = "";
+  if (process.platform.startsWith("win"))
+    command = "explorer";
+  else if (process.platform == "darwin")
+    command = "open";
+  else if (process.platform == "linux")
+    command = "xdg-open";
+  else
+    new Error("Unable to determine which command to open for the following platform", process.platform);
+
+  let fullCommand = `${command} ${targetPath}`;
+  console.log(`- Executing: ${fullCommand}`);
+  await child_process.exec(fullCommand);
+
+  console.log("- RETURNING RESULTS");
+  return true;
 }

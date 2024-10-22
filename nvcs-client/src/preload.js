@@ -8,4 +8,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     fetchSpecies: () => ipcRenderer.invoke('fetch-species'),
     openBrowse: (targetPath) => ipcRenderer.invoke('open-browse', targetPath),
     executeTester: (targetPath) => ipcRenderer.invoke('execute-tester', targetPath),
+    openDirectory: (targetPath) => ipcRenderer.invoke('open-directory', targetPath),
 });

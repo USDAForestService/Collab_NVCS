@@ -32,6 +32,7 @@ async function fetchPackagedJson() {
 
     document.getElementById("json-directory-path").value = "";
     document.getElementById("btn-test-json").disabled = true;
+    document.getElementById("btn-open-json").disabled = true;
 }
 
 async function fetchCustomJson() {
@@ -56,6 +57,7 @@ async function fetchCustomJson() {
     await fetchJson(targetPath);
 
     document.getElementById("btn-test-json").disabled = false;
+    document.getElementById("btn-open-json").disabled = false;
 }
 
 async function fetchJson(targetPath) {
@@ -177,6 +179,18 @@ async function executeTester() {
         return;
     }
     catch (error) {
+        alert(error);
+        return;
+    }
+}
+
+async function openJsonDirectory() {
+    try {
+        const targetPath = document.getElementById("json-directory-path").value;
+        await electronAPI.openDirectory(targetPath);
+    }
+    catch (error) {
+        console.error(error);
         alert(error);
         return;
     }
@@ -644,6 +658,7 @@ async function updateJson() {
         alert(message);
 
         document.getElementById("btn-test-json").disabled = false;
+        document.getElementById("btn-open-json").disabled = false;
         return;
     }
     catch (error) {
