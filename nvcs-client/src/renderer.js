@@ -128,12 +128,28 @@ async function fetchJson(targetPath) {
     // Fetch latest species list
     await updateAvailableSpecies();
 
+    // Fetch default test settings
+    await getDefaultTestSettings();
+
     // Update HTML elements
     generateHierarchyHTML(hierarchy);
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
+}
+
+async function fetchSettings() {
+    try {
+        var response = await electronAPI.fetchSettings();
+        console.log("Fetched Test Settings", response);
+        return response;
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
 }
 
 async function openBrowseDialog(path) {
@@ -1316,22 +1332,39 @@ function getOptionValuesFromDataList(list) {
     return listValues;
 }
 
-function openSettingsDialog() {
+async function getDefaultTestSettings() {
+    let defaultSettings = await fetchSettings();
+    
+    // Convert to a number array
+    let inventoryYearsList = [];
+    let inventoryYearString = defaultSettings.inventoryYears;
+    let inventoryYearsSplit = inventoryYearString.substring(1, inventoryYearString.length - 1).split(",");
+    for (let inventoryYear of inventoryYearsSplit)
+        inventoryYearsList.push(Number(inventoryYear));
+    defaultSettings.inventoryYears = inventoryYearsList;
+
+    testSettings = {};
+    testSettings.inventoryYears = defaultSettings.inventoryYears;
+    testSettings.additionalWhere = defaultSettings.additionalWhere;
+}
+
+async function openSettingsDialog() {
 
     if (!testSettings) {
-        testSettings = {
-            inventoryYears: [],
-            additionalWhere: ""
-        }
+        await getDefaultTestSettings();
     }
 
+    updateSettingsDialogValues();
+
+    const dialog = document.getElementById("settings-dialog");
+    showDialog(dialog);
+}
+
+function updateSettingsDialogValues() {
     const joinedInventoryYears = testSettings.inventoryYears.join(", ");
     document.getElementById("settings-inv-years").value = joinedInventoryYears;
 
     document.getElementById("settings-additional-where").value = testSettings.additionalWhere;
-
-    const dialog = document.getElementById("settings-dialog");
-    showDialog(dialog);
 }
 
 function closeSettingsDialog() {
@@ -1351,24 +1384,36 @@ function hideDialog(dialog) {
 }
 
 function saveSettingsChanges() {
-    const message = "Are you sure you want to overwrite these settings?";
-    if (!confirm(message))
-        return;
-
     const inventoryYearsString = document.getElementById("settings-inv-years").value;
     let inventoryYears = inventoryYearsString.split(",");
     for (let i = 0; i < inventoryYears.length; i++) {
         let stringValue = inventoryYears[i];
         stringValue = stringValue.trim();
-        inventoryYears[i] = Number(stringValue);
+        let numberValue = Number(stringValue);
+        if (isNaN(numberValue)) {
+            const message = "Invalid inventory year provided. " +
+                "Please ensure a comma-separated list of valid inventory years is provided.";
+            console.error(message);
+            alert(message);
+            return;
+        }
+
+        inventoryYears[i] = numberValue;
     }
 
     const additionalWhere = document.getElementById("settings-additional-where").value;
 
-    testSettings.inventoryYears = inventoryYears;
-    testSettings.additionalWhere = additionalWhere;
-    console.log(testSettings);
-    
+    testSettings.inventoryYears = inventoryYears.sort();
+    testSettings.additionalWhere = additionalWhere.trim();
+
     closeSettingsDialog();
-    alert("Successfully saved test settings");
+}
+
+async function resetSettings() {
+    const message = `Are you sure you want to reset your settings back to the default?`;
+    if (!confirm(message))
+        return;
+
+    await getDefaultTestSettings();
+    updateSettingsDialogValues();
 }

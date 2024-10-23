@@ -41,6 +41,7 @@ app.whenReady().then(() => {
   ipcMain.handle('open-browse', openBrowseDialog);
   ipcMain.handle('execute-tester', executeTester);
   ipcMain.handle('open-directory', openDirectory);
+  ipcMain.handle('fetch-settings', fetchSettings);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -312,4 +313,18 @@ async function openDirectory(event, targetPath) {
 
   console.log("- RETURNING RESULTS");
   return true;
+}
+
+async function fetchSettings(event) {
+  console.log("INVOKED: fetchSettings");
+
+  const config = getPythonConfigFile();
+  
+  const response = {
+    inventoryYears: config.FullOutputConfig.InventoryYears,
+    additionalWhere: config.FullOutputConfig.AdditionalWhereClause
+  };
+
+  console.log("- RETURNING RESULTS");
+  return response;
 }

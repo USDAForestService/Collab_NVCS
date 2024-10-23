@@ -9,4 +9,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
     openBrowse: (targetPath) => ipcRenderer.invoke('open-browse', targetPath),
     executeTester: (targetPath) => ipcRenderer.invoke('execute-tester', targetPath),
     openDirectory: (targetPath) => ipcRenderer.invoke('open-directory', targetPath),
+    fetchSettings: () => ipcRenderer.invoke('fetch-settings')
 });
