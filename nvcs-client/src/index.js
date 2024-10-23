@@ -35,6 +35,10 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  // Forge will automatically create a copy via forge.config.js
+  if (!app.isPackaged)
+    createDefaultConfigFile();
+
   ipcMain.handle('fetch-existing-json', fetchExistingJson);
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
@@ -233,8 +237,14 @@ function getPythonPath() {
   return path.resolve(relative);
 }
 
-function getPythonConfigFile() {
-  const configFilePath = getPythonConfigFilePath();
+function createDefaultConfigFile() {
+  const source = getPythonConfigFilePath();
+  const target = getDefaultPythontConfigFilePath();
+  fs.copyFileSync(source, target);
+}
+
+function getPythonConfigFile(targetPath = null) {
+  const configFilePath = targetPath ?? getPythonConfigFilePath();
   
   let configFile = fs.readFileSync(configFilePath, 'utf-8');
   configFile = configFile.replaceAll(": ", "=");
@@ -259,6 +269,15 @@ function setPythonConfigFile(config) {
 
 function getPythonConfigFilePath() {
   let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_builder/debug_config.ini')
+  return path.resolve(relative);
+}
+
+function getDefaultPythontConfigFilePath() {
+  let relativeConfig = 'debug_config.ini';
+  if (!app.isPackaged)
+    relativeConfig = 'nvcs-data/debug_config.ini';
+
+  let relative = path.join(getProjectResourcePath(), relativeConfig)
   return path.resolve(relative);
 }
 
@@ -318,7 +337,8 @@ async function openDirectory(event, targetPath) {
 async function fetchSettings(event) {
   console.log("INVOKED: fetchSettings");
 
-  const config = getPythonConfigFile();
+  const defaultPath = getDefaultPythontConfigFilePath();
+  const config = getPythonConfigFile(defaultPath);
   
   const response = {
     inventoryYears: config.FullOutputConfig.InventoryYears,

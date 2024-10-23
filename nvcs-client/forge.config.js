@@ -7,6 +7,7 @@ module.exports = {
     extraResource: [
       "./redist",
       "../nvcs-dev",
+      "../nvcs-dev/nvcs_builder/debug_config.ini",
       "../nvcs-data/run_output/west/west_shared_tables.db"
     ]
   },
