@@ -206,6 +206,7 @@ def export_node_table(classification_key):
 
 def write_metadata(db, metadata_tbl, name, description):
     metadata = [[name, get_formatted_date(), description]]
+    plot_io.delete_row_sqlite(db, metadata_tbl, f"TABLE_NAME = '{name}'")
     plot_io.write_rows_sqlite(db, metadata_tbl, metadata, ref_key_output_table_columns)
 
 

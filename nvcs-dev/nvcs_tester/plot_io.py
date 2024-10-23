@@ -131,6 +131,18 @@ def write_rows_sqlite(dbfile, tbl, dataRows, columns, cur=None):
 
     return insertedRows
 
+def delete_row_sqlite(dbfile, tbl, where, cur=None):
+    con = None
+    if cur is None:
+        con = sqlite3.connect(dbfile)
+        cur = con.cursor()
+
+    deleteStatement = f"DELETE FROM {tbl} WHERE {where};"
+    cur.execute(deleteStatement)
+
+    if con is not None:
+        con.commit()
+        con.close()
 
 def write_table_sqlite(dbfile, tbl, dataRows, columns, table_definition=None):
     con = sqlite3.connect(dbfile)
