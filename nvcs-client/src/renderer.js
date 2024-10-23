@@ -188,7 +188,7 @@ async function executeTester() {
             return;
         
         const newDirectoryName = document.getElementById("json-directory-path").value;
-        const response = await window.electronAPI.executeTester(newDirectoryName);
+        const response = await window.electronAPI.executeTester(newDirectoryName, testSettings);
 
         if (!response.success)
             throw new Error("Unexpected error while testing");

@@ -193,7 +193,7 @@ async function openBrowseDialog(event, targetPath) {
   return path;
 }
 
-async function executeTester(event, targetPath) {
+async function executeTester(event, targetPath, testSettings) {
   console.log("INVOKED: executeTester");
 
   const pythonPath = getPythonPath();
@@ -207,6 +207,8 @@ async function executeTester(event, targetPath) {
   config.WestConfig.In_ConfigPath = path.resolve(targetPath);
   config.FullOutputConfig.SkipSharedTables = "True";
   config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
+  config.FullOutputConfig.InventoryYears = `[${testSettings.inventoryYears.join(',')}]`;
+  config.FullOutputConfig.AdditionalWhereClause = testSettings.additionalWhere;
   setPythonConfigFile(config);
 
   console.log("- Executing Builder Script...");
