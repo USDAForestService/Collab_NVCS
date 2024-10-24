@@ -254,7 +254,7 @@ function getPythonConfigFile(targetPath = null) {
   const configFilePath = targetPath ?? getPythonConfigFilePath();
   
   let configFile = fs.readFileSync(configFilePath, 'utf-8');
-  configFile = configFile.replaceAll(": ", "=");
+  configFile = configFile.replaceAll(/(^|\r\n)([^: ]*): /gi, "$1$2 = ");;
   configFile = configFile.replaceAll(":\r\n", "=\r\n");
 
   const config = ini.parse(configFile);
@@ -267,7 +267,7 @@ function setPythonConfigFile(config) {
   let configFileString = ini.stringify(config, {
     whitespace: true
   });
-  configFileString = configFileString.replaceAll(" = ", ": ");
+  configFileString = configFileString.replaceAll(/(^|\r\n)([^ = ]*) = /gi, "$1$2: ");
   configFileString = configFileString.replaceAll("\"", "");
   configFileString = configFileString.replaceAll(": \r\n", ":\r\n");
   configFileString = configFileString.replaceAll("${Config=", "${Config:");
