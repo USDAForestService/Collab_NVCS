@@ -33,8 +33,7 @@
         <div class="json-action-container">
           <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load</button>
           <button id="btn-update-json" onclick="updateJson()" disabled>Save</button>
-          <button id="btn-test-json" onclick="executeTester()" disabled>Test</button>
-          <button id="btn-test-settings" onclick="openSettingsDialog()" disabled>Settings</button>
+          <button id="btn-test-settings" onclick="openSettingsDialog()" disabled>Test</button>
           <button id="btn-open-json" onclick="openJsonDirectory()" disabled>Open</button>
         </div>
       </div>
@@ -152,6 +151,7 @@
       </div>
       <div class="footer-container">
         <div class="button-container">
+          <button onclick="executeTester()">Execute Tester</button>
           <button onclick="saveSettingsChanges()">Save</button>
           <button onclick="resetSettings()">Reset</button>
           <button onclick="closeSettingsDialog()">Close</button>

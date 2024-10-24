@@ -32,7 +32,6 @@ async function fetchPackagedJson() {
     await fetchJson();
 
     document.getElementById("json-directory-path").value = "";
-    document.getElementById("btn-test-json").disabled = true;
     document.getElementById("btn-test-settings").disabled = true;
     document.getElementById("btn-open-json").disabled = true;
 }
@@ -58,7 +57,6 @@ async function fetchCustomJson() {
 
     await fetchJson(targetPath);
 
-    document.getElementById("btn-test-json").disabled = false;
     document.getElementById("btn-test-settings").disabled = false;
     document.getElementById("btn-open-json").disabled = false;
 }
@@ -182,6 +180,9 @@ async function updateAvailableSpecies() {
 
 async function executeTester() {
     try {
+        // Save settings without closing the dialog
+        saveSettingsChanges(false);
+
         const testWarning = "Are you sure you want to test this directory? " +
             "Any previously saved 'nvcs-output.db' file will be overwritten if testing is successful.";
         if (!confirm(testWarning))
@@ -193,6 +194,7 @@ async function executeTester() {
         if (!response.success)
             throw new Error("Unexpected error while testing");
 
+        closeSettingsDialog();
         const message = `Successfully saved test results to the following location: ${response.outputDbPath}`;
         alert(message);
         return;
@@ -665,7 +667,6 @@ async function updateJson() {
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
 
-        document.getElementById("btn-test-json").disabled = false;
         document.getElementById("btn-test-settings").disabled = false;
         document.getElementById("btn-open-json").disabled = false;
         return;
@@ -1383,7 +1384,7 @@ function hideDialog(dialog) {
     dialog.classList.add("hidden");
 }
 
-function saveSettingsChanges() {
+function saveSettingsChanges(closeAfter = true) {
     const inventoryYearsString = document.getElementById("settings-inv-years").value;
     let inventoryYears = inventoryYearsString.split(",");
     for (let i = 0; i < inventoryYears.length; i++) {
@@ -1407,8 +1408,9 @@ function saveSettingsChanges() {
     testSettings.inventoryYears = inventoryYears.sort();
     testSettings.additionalWhere = additionalWhere.trim();
     testSettings.keepExisting = keepExisting;
-
-    closeSettingsDialog();
+    
+    if (closeAfter)
+        closeSettingsDialog();
 }
 
 async function resetSettings() {
