@@ -187,13 +187,18 @@ body {
 
 .dialog .input-container select,
 .dialog .input-container textarea,
-.dialog .input-container input {
+.dialog .input-container input[type='text'] {
   border: 1px solid grey;
   resize: vertical;
   height: fit-content;
   margin: 0;
   padding: 5px;
   white-space: nowrap;
+}
+
+.dialog .input-container input[type='checkbox'] {
+  margin: 0;
+  padding: 0;
 }
 
 .dialog option:disabled,

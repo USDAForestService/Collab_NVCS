@@ -1346,6 +1346,7 @@ async function getDefaultTestSettings() {
     testSettings = {};
     testSettings.inventoryYears = defaultSettings.inventoryYears;
     testSettings.additionalWhere = defaultSettings.additionalWhere;
+    testSettings.keepExisting = false;
 }
 
 async function openSettingsDialog() {
@@ -1361,10 +1362,9 @@ async function openSettingsDialog() {
 }
 
 function updateSettingsDialogValues() {
-    const joinedInventoryYears = testSettings.inventoryYears.join(", ");
-    document.getElementById("settings-inv-years").value = joinedInventoryYears;
-
+    document.getElementById("settings-inv-years").value = testSettings.inventoryYears.join(", ");
     document.getElementById("settings-additional-where").value = testSettings.additionalWhere;
+    document.getElementById("settings-keep-existing").checked = testSettings.keepExisting;
 }
 
 function closeSettingsDialog() {
@@ -1402,9 +1402,11 @@ function saveSettingsChanges() {
     }
 
     const additionalWhere = document.getElementById("settings-additional-where").value;
+    const keepExisting = document.getElementById("settings-keep-existing").checked;
 
     testSettings.inventoryYears = inventoryYears.sort();
     testSettings.additionalWhere = additionalWhere.trim();
+    testSettings.keepExisting = keepExisting;
 
     closeSettingsDialog();
 }

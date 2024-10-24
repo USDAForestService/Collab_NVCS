@@ -216,10 +216,12 @@ async function executeTester(event, targetPath, testSettings) {
   console.log("- Builder Results", builderResults);
 
   // Clone table
-  console.log("- Creating base SQLite output file...")
-  var sharedTablePath = getSharedTablePath();
   var copyTablePath =  parseIniPath(config.FullOutputConfig.Out_DbPath, config);
-  fs.copyFileSync(sharedTablePath, copyTablePath);
+  if (!testSettings.keepExisting || !fs.existsSync(copyTablePath)) {
+    console.log("- Creating base SQLite output file...")
+    var sharedTablePath = getSharedTablePath();
+    fs.copyFileSync(sharedTablePath, copyTablePath);
+  }
 
   // Execute full output
   console.log("- Executing Full Output Script...");
