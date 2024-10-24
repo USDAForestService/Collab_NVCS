@@ -7,9 +7,7 @@ Created on Mar 28, 2013
 '''
 import sqlite3
 import csv
-
-from key_western_us import Plot
-from key_western_us import Tree
+import sys
 
 def read_line(f):
     fields = f.readline().strip()
@@ -19,6 +17,8 @@ def read_line(f):
         return None
 
 def read_file(plotfile):
+    from key_western_us import Plot
+    from key_western_us import Tree
     with open(plotfile, 'r') as f:
         next(f)
         # str.strip each column value (CT 2023-02-13):
@@ -42,6 +42,8 @@ def read_csv(file_path):
     return results
 
 def read_sqlite(dbfile, tbl):
+    from key_western_us import Plot
+    from key_western_us import Tree
     plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION'
     tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, SPCOV'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
@@ -159,7 +161,27 @@ def write_table_sqlite(dbfile, tbl, dataRows, columns, table_definition=None):
 
     print(f"Successfully inserted {len(insertedRows)} rows into '{tbl}' at: {dbfile}")
 
+def get_unique_values_sqlite(dbfile, tbl, column, cur=None):
+    selectStatement = f"SELECT DISTINCT {column} FROM {tbl} ORDER BY {column}"
+    results = query_sqlite(dbfile, selectStatement)
+    return_list = [i[0] for i in results]
+    return return_list
+
+
 if __name__ == '__main__':
-    #for plot in read_file('C:/nvcs-workspace/nvcs_west/nvcs_tester/run_input/nvcs-case-dataset-1.csv'):
-        print(plot)
+    if len(sys.argv) == 1:
+        print("Usage: py plot_io.py function_name param_1 param_2 param_n")
+        sys.exit()
+    
+    target_function = sys.argv[1]
+    if target_function == "get_unique_values_sqlite":
+        required_param_count = 3
+        if len(sys.argv) < 2 + required_param_count:
+            raise Exception(f"{target_function} has {required_param_count} required parameters")
+        results = get_unique_values_sqlite(sys.argv[2], sys.argv[3], sys.argv[4])
+        print(results)
+        sys.exit()
+    else:
+        print(f"Unimplemented target function: {target_function}")
+
     
