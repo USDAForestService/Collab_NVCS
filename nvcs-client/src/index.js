@@ -49,6 +49,7 @@ app.whenReady().then(() => {
   ipcMain.handle('execute-tester', executeTester);
   ipcMain.handle('open-directory', openDirectory);
   ipcMain.handle('fetch-settings', fetchSettings);
+  ipcMain.handle('fetch-years', fetchAvailableYears);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -298,6 +299,11 @@ function getFullOutputPyPath() {
   return path.resolve(relative);
 }
 
+function getPlotIoPyPath() {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_tester/plot_io.py')
+  return path.resolve(relative);
+}
+
 function getProjectResourcePath() {
   let relative = process.resourcesPath;
   if (!app.isPackaged)
@@ -351,6 +357,32 @@ async function fetchSettings(event) {
     inventoryYears: config.FullOutputConfig.InventoryYears,
     additionalWhere: config.FullOutputConfig.AdditionalWhereClause
   };
+
+  console.log("- RETURNING RESULTS");
+  return response;
+}
+
+async function fetchAvailableYears(event) {
+  console.log("INVOKED: fetchAvailableYears");
+
+  const pythonPath = getPythonPath();
+  console.log("- Target Python Path:", pythonPath);
+
+  // Get source table & column
+  const defaultConfigPath = getDefaultPythontConfigFilePath();
+  const config = getPythonConfigFile(defaultConfigPath);
+  const table = config.FullOutputConfig.KeyTestDataName;
+  const column = "INVYR";
+
+  // Execute Plot IO
+  console.log("- Executing Plot IO Script...");
+  const scriptPath = getPlotIoPyPath();
+  const dbPath = getSharedTablePath();
+  const results = await execFile(pythonPath, [scriptPath, "get_unique_values_sqlite", dbPath, table, column]);
+  console.log("- Plot IO  Results", results);
+
+  // Parse results
+  response = results.stdout.replace('[', '').replace(']\r\n', '').split(',');
 
   console.log("- RETURNING RESULTS");
   return response;

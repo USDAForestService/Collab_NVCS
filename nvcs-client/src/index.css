@@ -135,6 +135,13 @@ body {
   flex-grow: 1;
 }
 
+.dialog .checkbox-container {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+
 .dialog .filter-container {
   padding: 5px 0;
 }
@@ -199,6 +206,8 @@ body {
 .dialog .input-container input[type='checkbox'] {
   margin: 0;
   padding: 0;
+  vertical-align: middle;
+  margin-bottom: 2px;
 }
 
 .dialog option:disabled,

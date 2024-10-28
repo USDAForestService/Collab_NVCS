@@ -21,6 +21,7 @@ var nodeHierarchy;
 var hierarchy;
 var initialHierarchy;
 var availableSpecies;
+var availableYears;
 var testSettings;
 
 async function fetchPackagedJson() {
@@ -139,7 +140,7 @@ async function fetchJson(targetPath) {
 
 async function fetchSettings() {
     try {
-        var response = await electronAPI.fetchSettings();
+        const response = await electronAPI.fetchSettings();
         console.log("Fetched Test Settings", response);
         return response;
     }
@@ -148,6 +149,35 @@ async function fetchSettings() {
         alert(error);
         return;
     }
+}
+
+async function fetchAvailableYears() {
+    try {
+        const response = await electronAPI.fetchYears();
+        availableYears = convertStringToNumbersList(response);
+        console.log("Fetched and Converted Available Years", availableYears);
+        return availableYears;
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
+}
+
+async function updateAvailableYears() {
+    let html = "";
+    for (const year of availableYears) {
+        let checked = testSettings.inventoryYears.includes(year) ? "checked" : "";
+        html += `
+        <div class='label-checkbox-container'>
+            <label for='year_${year}'>${year}</label>
+            <input id='year_${year}' type='checkbox' value='${year}' ${checked}/>
+        </div>
+        `;
+    }
+
+    document.getElementById("settings-inv-years").innerHTML = html;
 }
 
 async function openBrowseDialog(path) {
@@ -1333,24 +1363,32 @@ function getOptionValuesFromDataList(list) {
     return listValues;
 }
 
+function convertStringToNumbersList(stringList) {
+    // stringList is '[2015, 2016, 2017]' or ['2015', '2016', '2017']
+    let numberSplit = stringList;
+    if (typeof(stringList) == 'string')
+        numberSplit = stringList.substring(1, stringList.length - 1).split(",");
+    
+    let numberList = [];
+    for (let number of numberSplit)
+        numberList.push(Number(number));
+
+    return numberList;
+}
+
 async function getDefaultTestSettings() {
     let defaultSettings = await fetchSettings();
-    
-    // Convert to a number array
-    let inventoryYearsList = [];
-    let inventoryYearString = defaultSettings.inventoryYears;
-    let inventoryYearsSplit = inventoryYearString.substring(1, inventoryYearString.length - 1).split(",");
-    for (let inventoryYear of inventoryYearsSplit)
-        inventoryYearsList.push(Number(inventoryYear));
-    defaultSettings.inventoryYears = inventoryYearsList;
-
     testSettings = {};
-    testSettings.inventoryYears = defaultSettings.inventoryYears;
+    testSettings.inventoryYears = convertStringToNumbersList(defaultSettings.inventoryYears);
     testSettings.additionalWhere = defaultSettings.additionalWhere;
     testSettings.keepExisting = false;
 }
 
 async function openSettingsDialog() {
+
+    if (!availableYears) {
+        await fetchAvailableYears();
+    }
 
     if (!testSettings) {
         await getDefaultTestSettings();
@@ -1363,7 +1401,7 @@ async function openSettingsDialog() {
 }
 
 function updateSettingsDialogValues() {
-    document.getElementById("settings-inv-years").value = testSettings.inventoryYears.join(", ");
+    updateAvailableYears();
     document.getElementById("settings-additional-where").value = testSettings.additionalWhere;
     document.getElementById("settings-keep-existing").checked = testSettings.keepExisting;
 }
@@ -1385,18 +1423,16 @@ function hideDialog(dialog) {
 }
 
 function saveSettingsChanges(closeAfter = true) {
-    const inventoryYearsString = document.getElementById("settings-inv-years").value;
-    let inventoryYears = inventoryYearsString.split(",");
+    const checkedInventoryYears = [...document.querySelectorAll("#settings-inv-years input[type='checkbox']:checked")];
+    let inventoryYears = checkedInventoryYears.map(i => i.value);
     for (let i = 0; i < inventoryYears.length; i++) {
         let stringValue = inventoryYears[i];
         stringValue = stringValue.trim();
         let numberValue = Number(stringValue);
         if (isNaN(numberValue)) {
-            const message = "Invalid inventory year provided. " +
-                "Please ensure a comma-separated list of valid inventory years is provided.";
             console.error(message);
             alert(message);
-            return;
+            continue;
         }
 
         inventoryYears[i] = numberValue;
