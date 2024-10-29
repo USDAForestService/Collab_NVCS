@@ -24,6 +24,28 @@ var availableSpecies;
 var availableYears;
 var testSettings;
 
+document.getElementById("json-dialog").addEventListener("close", (event) => {
+    const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
+    const isNew = openedHierarchyName == "";
+
+    // Delete newly-added but unsaved hierarchy elements
+    if (isNew) {
+        hierarchy = hierarchy.filter(i => i.hierarchyName != openedHierarchyName);
+    }
+});
+
+document.getElementById("settings-dialog").addEventListener("close", (event) => {
+    // No implementation yet
+});
+
+const closeButtons = document.querySelectorAll(".close-btn");
+closeButtons.forEach(closeButton => {
+    closeButton.addEventListener("click", (event) => {
+        const dialog = event.target.closest("dialog");
+        dialog.close();
+    })
+})
+
 async function fetchPackagedJson() {
     const loadMessage = "Are you sure you want to load the selected packaged content? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
@@ -218,22 +240,22 @@ async function executeTester() {
         if (!confirm(testWarning))
             return;
         
-        showOverlay("testing-overlay");
+        document.getElementById("testing-dialog").showModal();
         const newDirectoryName = document.getElementById("json-directory-path").value;
         const response = await window.electronAPI.executeTester(newDirectoryName, testSettings);
 
         if (!response.success)
             throw new Error("Unexpected error while testing");
 
-        closeSettingsDialog();
-        hideAllOverlays();
+        document.getElementById("testing-dialog").close();
+        document.getElementById("settings-dialog").close();
         
         const message = `Successfully saved test results to the following location: ${response.outputDbPath}`;
         alert(message);
         return;
     }
     catch (error) {
-        hideAllOverlays();
+        document.getElementById("testing-dialog").close();
         alert(error);
         return;
     }
@@ -336,9 +358,6 @@ function generateListEntry(element) {
 }
 
 function openJsonDialog(hierarchyName) {
-    const dialog = document.getElementById("json-dialog");
-    showDialog(dialog);
-
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
     console.log(hierarchyElement);
@@ -397,20 +416,10 @@ function openJsonDialog(hierarchyName) {
     const inputTypes = document.querySelectorAll(".input-value");
     for (const inputType of inputTypes)
         checkInputInList(inputType);
-}
 
-function closeJsonDialog() {
+    // Open the dialog
     const dialog = document.getElementById("json-dialog");
-    hideDialog(dialog);
-
-    const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
-    const isNew = openedHierarchyName == "";
-
-    // Delete newly-added but unsaved hierarchy elements
-    if (isNew) {
-        hierarchy = hierarchy.filter(i => i.hierarchyName != openedHierarchyName);
-    }
-
+    showDialog(dialog);
 }
 
 function createElementFromString(htmlString) {
@@ -669,7 +678,7 @@ async function saveJsonChanges() {
 
     // Close dialog & render new changes
     console.log(newHierarchyElement);
-    closeJsonDialog();
+    document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
 
@@ -938,7 +947,7 @@ function deleteHierarchyElement() {
     recalculateHierarchyPositionalData(hierarchy);
 
     // Close dialog & render new changes
-    closeJsonDialog();
+    document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
 
@@ -1410,23 +1419,11 @@ function updateSettingsDialogValues() {
     document.getElementById("settings-keep-existing").checked = testSettings.keepExisting;
 }
 
-function closeSettingsDialog() {
-    const dialog = document.getElementById("settings-dialog");
-    hideDialog(dialog);
-}
-
 function showDialog(dialog) {
-    dialog.classList.remove("hidden");
+    dialog.showModal();
 
     const dialogBody = dialog.querySelector(".body-container");
     dialogBody.scroll({ top: 0 });
-
-    showOverlay("dialog-overlay");
-}
-
-function hideDialog(dialog) {
-    dialog.classList.add("hidden");
-    hideAllOverlays();
 }
 
 function saveSettingsChanges(closeAfter = true) {
@@ -1453,7 +1450,7 @@ function saveSettingsChanges(closeAfter = true) {
     testSettings.keepExisting = keepExisting;
     
     if (closeAfter)
-        closeSettingsDialog();
+        document.getElementById("settings-dialog").close();
 }
 
 async function resetSettings() {
@@ -1463,16 +1460,4 @@ async function resetSettings() {
 
     await getDefaultTestSettings();
     updateSettingsDialogValues();
-}
-
-function showOverlay(id) {
-    hideAllOverlays();
-    const overlay = document.getElementById(id);
-    overlay.classList.remove("hidden");
-}
-
-function hideAllOverlays() {
-    const overlays = document.querySelectorAll(".overlay");
-    for (const overlay of overlays)
-        overlay.classList.add("hidden");
 }

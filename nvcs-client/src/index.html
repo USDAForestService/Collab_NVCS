@@ -70,10 +70,10 @@
       </div>
     </main>
     <div class="dialogs">
-      <div id='json-dialog' class="dialog hidden">
+      <dialog id='json-dialog' class="dialog">
         <div class="header-container">
           <div class="button-container">
-            <button onclick="closeJsonDialog()">Close</button>
+            <button class='close-btn' autofocus>Close</button>
           </div>
           <h2>JSON Editor</h2>
         </div>
@@ -129,14 +129,14 @@
           <div class="button-container">
             <button onclick="saveJsonChanges()">Save All</button>
             <button onclick="deleteHierarchyElement()">Delete</button>
-            <button onclick="closeJsonDialog()">Close</button>
+            <button class='close-btn'>Close</button>
           </div>
         </div>
-      </div>
-      <div id='settings-dialog' class="dialog hidden">
+      </dialog>
+      <dialog id='settings-dialog' class="dialog">
         <div class="header-container">
           <div class="button-container">
-            <button onclick="closeSettingsDialog()">Close</button>
+            <button class='close-btn' autofocus>Close</button>
           </div>
           <h2>Test Settings</h2>
         </div>
@@ -159,19 +159,15 @@
             <button onclick="executeTester()">Execute Tester</button>
             <button onclick="saveSettingsChanges()">Save</button>
             <button onclick="resetSettings()">Reset</button>
-            <button onclick="closeSettingsDialog()">Close</button>
+            <button class='close-btn'>Close</button>
           </div>
         </div>
-      </div>
-    </div>
-    <div id="dialog-overlay" class="overlay hidden">
-      <div class="backdrop"></div>
-    </div>
-    <div id="testing-overlay" class="overlay hidden">
-      <div class="backdrop"></div>
-      <div class="content">
-        Testing...
-      </div>
+      </dialog>
+      <dialog id="testing-dialog" class="dialog">
+        <div class="alert-content">
+          Testing...
+        </div>
+      </dialog>
     </div>
     <div class="data-list-container">
       <datalist id="species-list" data-type="warning" data-missing-message="This species is not tracked"></datalist>

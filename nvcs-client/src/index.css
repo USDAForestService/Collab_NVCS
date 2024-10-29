@@ -125,11 +125,16 @@ main {
   display: none !important;
 }
 
+dialog:not([open]) {
+  display: none;
+}
+
+::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .dialog {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 50%;
   height: fit-content;
   max-height: 90%;
@@ -138,6 +143,10 @@ main {
   display: flex;
   flex-direction: column;
   z-index: 1000;
+}
+
+.dialog .alert-content {
+  text-align: center;
 }
 
 .dialog .header-container {
