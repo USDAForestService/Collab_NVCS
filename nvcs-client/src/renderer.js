@@ -227,11 +227,13 @@ async function executeTester() {
 
         closeSettingsDialog();
         hideAllOverlays();
+        
         const message = `Successfully saved test results to the following location: ${response.outputDbPath}`;
         alert(message);
         return;
     }
     catch (error) {
+        hideAllOverlays();
         alert(error);
         return;
     }

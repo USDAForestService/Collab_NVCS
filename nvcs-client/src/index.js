@@ -208,6 +208,9 @@ async function executeTester(event, targetPath, testSettings) {
   config.WestConfig.In_ConfigPath = path.resolve(targetPath);
   config.FullOutputConfig.SkipSharedTables = "True";
   config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
+  config.FullOutputConfig.Out_TesterResultsPath = getOutPath();
+  config.FullOutputConfig.Out_DebugLogPath = getDebugLogPath();
+  config.FullOutputConfig.Out_FixupCsvPath = getFixupCsvPath();
   config.FullOutputConfig.InventoryYears = `[${testSettings.inventoryYears.join(',')}]`;
   config.FullOutputConfig.AdditionalWhereClause = testSettings.additionalWhere;
   setPythonConfigFile(config);
@@ -315,6 +318,33 @@ function getSharedTablePath() {
   let relativeTable = "west_shared_tables.db";
   if (!app.isPackaged)
     relativeTable = "nvcs-data/run_output/west/west_shared_tables.db";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function getOutPath() {
+  let relativeTable = "TEMP_nvcs_full_output.out";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/TEMP_nvcs_full_output.out";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function getDebugLogPath() {
+  let relativeTable = "TEMP_nvcs_full_output.log";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/TEMP_nvcs_full_output.log";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function getFixupCsvPath() {
+  let relativeTable = "TEMP_nvcs_full_output.csv";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/TEMP_nvcs_full_output.csv";
 
   let relative = path.join(getProjectResourcePath(), relativeTable);
   return path.resolve(relative);
