@@ -7,155 +7,170 @@
     <script defer src="renderer.js"></script>
   </head>
   <body>
-    <div class="main-header-container">
-      <h1>NVCS Configuration Tool</h1>
-      <p>
-        This application will allow users to create and modify the JSON couplet files necessary for 
-        building classification keys.
-      </p>
+    <main>
+      <div class="main-content">
+        <div class="main-header-container">
+          <h1>NVCS Configuration Tool</h1>
+          <p>
+            This application will allow users to create and modify the JSON couplet files necessary for 
+            building classification keys.
+          </p>
+        </div>
+        <div class="top-action-container">
+          <div class="label-content-container">
+            <label for="packaged-json-type">Packaged JSON Type:</label>
+            <select id="packaged-json-type">
+              <option disabled>alaska</option>
+              <option disabled>east</option>
+              <option selected>west</option>
+            </select>
+            <button id="btn-fetch-packaged-json" onclick="fetchPackagedJson()">Load Packaged JSON</button>
+          </div>
+          <div class="label-content-container">
+            <label for="json-directory-path">JSON Directory:</label>
+            <input id="json-directory-path" type="text" readonly>
+          </div>
+          <div class="label-content-container">
+            <label>JSON Actions:</label>
+            <div class="json-action-container">
+              <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load</button>
+              <button id="btn-update-json" onclick="updateJson()" disabled>Save</button>
+              <button id="btn-test-settings" onclick="openSettingsDialog()" disabled>Test</button>
+              <button id="btn-open-json" onclick="openJsonDirectory()" disabled>Open</button>
+            </div>
+          </div>
+          <div class="label-content-container">
+            <label for="search-hierarchy">Hierarchy Search:</label>
+            <input id="search-hierarchy" type="text" list="full-hierarchy-list" disabled/>
+            <button id="btn-search-hierarchy" onclick="searchHierarchy()" disabled>Search</button> 
+            <datalist id="full-hierarchy-list"></datalist>
+          </div>
+          <div class="label-content-container">
+            <label>Hierarchy Actions:</label>
+            <div>
+              <button id="btn-add-element" onclick="addHierarchyElement()" disabled>Add Element</button>
+            </div>
+          </div>
+        </div>
+        <div class="alert-container" role="alert">
+          <div id="error-container" class="alert-type error-bg-color" hidden>
+            <h2>ERROR</h2>
+            <ul class="error-list" aria-label="Error List">
+            </ul>
+          </div>
+          <div id="warning-container" class="alert-type warning-bg-color" hidden>
+            <h2>WARNING</h2>
+            <ul class="warning-list" aria-label="Warning List">
+            </ul>
+          </div>
+        </div>
+        <div id="detected-json-container">
+          No JSON Detected
+        </div>
+      </div>
+    </main>
+    <div class="dialogs">
+      <div id='json-dialog' class="dialog hidden">
+        <div class="header-container">
+          <div class="button-container">
+            <button onclick="closeJsonDialog()">Close</button>
+          </div>
+          <h2>JSON Editor</h2>
+        </div>
+        <div class="body-container">
+          <div class="input-container">
+            <label for="node-hierarchyName" class="key-holder">Node Name</label>
+            <textarea id="node-hierarchyName" class="value-holder" data-opened-name></textarea>
+          </div>
+          <div class="input-container">
+            <label for="node-fileName" class="key-holder">File Name</label>
+            <textarea id="node-fileName" class="value-holder"></textarea>
+            <button onclick="suggestFileName()">Suggest</button>
+          </div>
+          <div class="input-container">
+            <label for="node-nodeDescription" class="key-holder">Node Description</label>
+            <textarea id="node-nodeDescription" class="value-holder"></textarea>
+          </div>
+          <div class="input-container">
+            <label for="node-hierarchyLevel" class="key-holder">Hierarchy Level</label>
+            <input id="node-hierarchyLevel" class="value-holder" readonly />
+          </div>
+          <div class="input-container">
+            <label for="node-hierarchyLineNumber" class="key-holder">Hierarchy Line Number</label>
+            <input id="node-hierarchyLineNumber" class="value-holder" readonly />
+          </div>
+          <div class="input-container">
+            <label for="node-parentNode" class="key-holder">Parent Node</label>
+            <input id="node-parentNode" class="value-holder" type="text" list="parent-hierarchy-list" />
+            <datalist id="parent-hierarchy-list"></datalist>
+          </div>
+          <div class="input-container">
+            <label class="key-holder">Children Nodes</label>
+            <div id="node-childrenNodes" class="value-holder"></div>
+          </div>
+          <div class="input-container">
+            <label for="node-nodeID" class="key-holder">Node ID</label>
+            <textarea id="node-nodeID" class="value-holder"></textarea>
+          </div>
+          <div class="input-container">
+            <label for="node-nodeLevel" class="key-holder">Node Level</label>
+            <textarea id="node-nodeLevel" class="value-holder"></textarea>
+          </div>
+          <div class="input-container">
+            <label for="node-nodeTrigger" class="key-holder">Node Trigger</label>
+            <textarea id="node-nodeTrigger" class="value-holder"></textarea>
+          </div>
+          <div class="input-container">
+            <label class="key-holder">Node Filters</label>
+            <div id="node-nodeFilters" class="value-holder"></div>
+          </div>
+        </div>
+        <div class="footer-container">
+          <div class="button-container">
+            <button onclick="saveJsonChanges()">Save All</button>
+            <button onclick="deleteHierarchyElement()">Delete</button>
+            <button onclick="closeJsonDialog()">Close</button>
+          </div>
+        </div>
+      </div>
+      <div id='settings-dialog' class="dialog hidden">
+        <div class="header-container">
+          <div class="button-container">
+            <button onclick="closeSettingsDialog()">Close</button>
+          </div>
+          <h2>Test Settings</h2>
+        </div>
+        <div class="body-container">
+          <div class="input-container">
+            <label class="key-holder">Inventory Years</label>
+            <div id="settings-inv-years" class="checkbox-container">Loading...</div>
+          </div>
+          <div class="input-container">
+            <label for="settings-additional-where" class="key-holder">Additional Where Clause</label>
+            <textarea id="settings-additional-where" class="value-holder" title="More specific filtering applied to each inventory year input query"></textarea>
+          </div>
+          <div class="input-container">
+            <label for="settings-keep-existing" class="key-holder">Keep Existing Output</label>
+            <input id="settings-keep-existing" type="checkbox" title="Will attempt to keep the existing 'nvcs-output.db' file if it exists" />
+          </div>
+        </div>
+        <div class="footer-container">
+          <div class="button-container">
+            <button onclick="executeTester()">Execute Tester</button>
+            <button onclick="saveSettingsChanges()">Save</button>
+            <button onclick="resetSettings()">Reset</button>
+            <button onclick="closeSettingsDialog()">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="top-action-container">
-      <div class="label-content-container">
-        <label for="packaged-json-type">Packaged JSON Type:</label>
-        <select id="packaged-json-type">
-          <option disabled>alaska</option>
-          <option disabled>east</option>
-          <option selected>west</option>
-        </select>
-        <button id="btn-fetch-packaged-json" onclick="fetchPackagedJson()">Load Packaged JSON</button>
-      </div>
-      <div class="label-content-container">
-        <label for="json-directory-path">JSON Directory:</label>
-        <input id="json-directory-path" type="text" readonly>
-      </div>
-      <div class="label-content-container">
-        <label>JSON Actions:</label>
-        <div class="json-action-container">
-          <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load</button>
-          <button id="btn-update-json" onclick="updateJson()" disabled>Save</button>
-          <button id="btn-test-settings" onclick="openSettingsDialog()" disabled>Test</button>
-          <button id="btn-open-json" onclick="openJsonDirectory()" disabled>Open</button>
-        </div>
-      </div>
-      <div class="label-content-container">
-        <label for="search-hierarchy">Hierarchy Search:</label>
-        <input id="search-hierarchy" type="text" list="full-hierarchy-list" disabled/>
-        <button id="btn-search-hierarchy" onclick="searchHierarchy()" disabled>Search</button> 
-        <datalist id="full-hierarchy-list"></datalist>
-      </div>
-      <div class="label-content-container">
-        <label>Hierarchy Actions:</label>
-        <div>
-          <button id="btn-add-element" onclick="addHierarchyElement()" disabled>Add Element</button>
-        </div>
-      </div>
+    <div id="dialog-overlay" class="overlay hidden">
+      <div class="backdrop"></div>
     </div>
-    <div class="alert-container" role="alert">
-      <div id="error-container" class="alert-type error-bg-color" hidden>
-        <h2>ERROR</h2>
-        <ul class="error-list" aria-label="Error List">
-        </ul>
-      </div>
-      <div id="warning-container" class="alert-type warning-bg-color" hidden>
-        <h2>WARNING</h2>
-        <ul class="warning-list" aria-label="Warning List">
-        </ul>
-      </div>
-    </div>
-    <div id="detected-json-container">
-      No JSON Detected
-    </div>
-    <div id='json-dialog' class="dialog hidden">
-      <div class="header-container">
-        <div class="button-container">
-          <button onclick="closeJsonDialog()">Close</button>
-        </div>
-        <h2>JSON Editor</h2>
-      </div>
-      <div class="body-container">
-        <div class="input-container">
-          <label for="node-hierarchyName" class="key-holder">Node Name</label>
-          <textarea id="node-hierarchyName" class="value-holder" data-opened-name></textarea>
-        </div>
-        <div class="input-container">
-          <label for="node-fileName" class="key-holder">File Name</label>
-          <textarea id="node-fileName" class="value-holder"></textarea>
-          <button onclick="suggestFileName()">Suggest</button>
-        </div>
-        <div class="input-container">
-          <label for="node-nodeDescription" class="key-holder">Node Description</label>
-          <textarea id="node-nodeDescription" class="value-holder"></textarea>
-        </div>
-        <div class="input-container">
-          <label for="node-hierarchyLevel" class="key-holder">Hierarchy Level</label>
-          <input id="node-hierarchyLevel" class="value-holder" readonly />
-        </div>
-        <div class="input-container">
-          <label for="node-hierarchyLineNumber" class="key-holder">Hierarchy Line Number</label>
-          <input id="node-hierarchyLineNumber" class="value-holder" readonly />
-        </div>
-        <div class="input-container">
-          <label for="node-parentNode" class="key-holder">Parent Node</label>
-          <input id="node-parentNode" class="value-holder" type="text" list="parent-hierarchy-list" />
-          <datalist id="parent-hierarchy-list"></datalist>
-        </div>
-        <div class="input-container">
-          <label class="key-holder">Children Nodes</label>
-          <div id="node-childrenNodes" class="value-holder"></div>
-        </div>
-        <div class="input-container">
-          <label for="node-nodeID" class="key-holder">Node ID</label>
-          <textarea id="node-nodeID" class="value-holder"></textarea>
-        </div>
-        <div class="input-container">
-          <label for="node-nodeLevel" class="key-holder">Node Level</label>
-          <textarea id="node-nodeLevel" class="value-holder"></textarea>
-        </div>
-        <div class="input-container">
-          <label for="node-nodeTrigger" class="key-holder">Node Trigger</label>
-          <textarea id="node-nodeTrigger" class="value-holder"></textarea>
-        </div>
-        <div class="input-container">
-          <label class="key-holder">Node Filters</label>
-          <div id="node-nodeFilters" class="value-holder"></div>
-        </div>
-      </div>
-      <div class="footer-container">
-        <div class="button-container">
-          <button onclick="saveJsonChanges()">Save All</button>
-          <button onclick="deleteHierarchyElement()">Delete</button>
-          <button onclick="closeJsonDialog()">Close</button>
-        </div>
-      </div>
-    </div>
-    <div id='settings-dialog' class="dialog hidden">
-      <div class="header-container">
-        <div class="button-container">
-          <button onclick="closeSettingsDialog()">Close</button>
-        </div>
-        <h2>Test Settings</h2>
-      </div>
-      <div class="body-container">
-        <div class="input-container">
-          <label class="key-holder">Inventory Years</label>
-          <div id="settings-inv-years" class="checkbox-container">Loading...</div>
-        </div>
-        <div class="input-container">
-          <label for="settings-additional-where" class="key-holder">Additional Where Clause</label>
-          <textarea id="settings-additional-where" class="value-holder" title="More specific filtering applied to each inventory year input query"></textarea>
-        </div>
-        <div class="input-container">
-          <label for="settings-keep-existing" class="key-holder">Keep Existing Output</label>
-          <input id="settings-keep-existing" type="checkbox" title="Will attempt to keep the existing 'nvcs-output.db' file if it exists" />
-        </div>
-      </div>
-      <div class="footer-container">
-        <div class="button-container">
-          <button onclick="executeTester()">Execute Tester</button>
-          <button onclick="saveSettingsChanges()">Save</button>
-          <button onclick="resetSettings()">Reset</button>
-          <button onclick="closeSettingsDialog()">Close</button>
-        </div>
+    <div id="testing-overlay" class="overlay hidden">
+      <div class="backdrop"></div>
+      <div class="content">
+        Testing...
       </div>
     </div>
     <div class="data-list-container">

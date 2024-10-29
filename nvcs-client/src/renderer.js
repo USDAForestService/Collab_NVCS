@@ -218,6 +218,7 @@ async function executeTester() {
         if (!confirm(testWarning))
             return;
         
+        showOverlay("testing-overlay");
         const newDirectoryName = document.getElementById("json-directory-path").value;
         const response = await window.electronAPI.executeTester(newDirectoryName, testSettings);
 
@@ -225,6 +226,7 @@ async function executeTester() {
             throw new Error("Unexpected error while testing");
 
         closeSettingsDialog();
+        hideAllOverlays();
         const message = `Successfully saved test results to the following location: ${response.outputDbPath}`;
         alert(message);
         return;
@@ -1416,10 +1418,13 @@ function showDialog(dialog) {
 
     const dialogBody = dialog.querySelector(".body-container");
     dialogBody.scroll({ top: 0 });
+
+    showOverlay("dialog-overlay");
 }
 
 function hideDialog(dialog) {
     dialog.classList.add("hidden");
+    hideAllOverlays();
 }
 
 function saveSettingsChanges(closeAfter = true) {
@@ -1456,4 +1461,16 @@ async function resetSettings() {
 
     await getDefaultTestSettings();
     updateSettingsDialogValues();
+}
+
+function showOverlay(id) {
+    hideAllOverlays();
+    const overlay = document.getElementById(id);
+    overlay.classList.remove("hidden");
+}
+
+function hideAllOverlays() {
+    const overlays = document.querySelectorAll(".overlay");
+    for (const overlay of overlays)
+        overlay.classList.add("hidden");
 }
