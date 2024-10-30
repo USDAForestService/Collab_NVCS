@@ -31,10 +31,12 @@ const stateChecker = {
         if (value) {
             btnTestSettings.disabled = true;
             btnTestSettings.setAttribute("title", "You must save your modifications before testing this directory");
+            showContentById("unsaved-changes-banner");
         }
         else {
             btnTestSettings.disabled = false;
             btnTestSettings.removeAttribute("title");
+            hideContentById("unsaved-changes-banner");
         }
     },
     set modified(value) {
@@ -1448,6 +1450,16 @@ function showDialog(dialog) {
 
     const dialogBody = dialog.querySelector(".body-container");
     dialogBody.scroll({ top: 0 });
+}
+
+function showContentById(id) {
+    const element = document.getElementById(id);
+    element.removeAttribute("hidden");
+}
+
+function hideContentById(id) {
+    const element = document.getElementById(id);
+    element.setAttribute("hidden", "");
 }
 
 function saveSettingsChanges(closeAfter = true) {
