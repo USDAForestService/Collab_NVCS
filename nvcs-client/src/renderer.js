@@ -24,6 +24,28 @@ var availableSpecies;
 var availableYears;
 var testSettings;
 
+const stateChecker = {
+    _modified: false,
+    _modifiedListener: value => {
+        const btnTestSettings = document.getElementById("btn-test-settings");
+        if (value) {
+            btnTestSettings.disabled = true;
+            btnTestSettings.setAttribute("title", "You must save your modifications before testing this directory");
+        }
+        else {
+            btnTestSettings.disabled = false;
+            btnTestSettings.removeAttribute("title");
+        }
+    },
+    set modified(value) {
+        this._modified = value;
+        this._modifiedListener(value);
+    },
+    get modified() {
+        return this._modified;
+    }
+};
+
 document.getElementById("json-dialog").addEventListener("close", (event) => {
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     const isNew = openedHierarchyName == "";
@@ -153,6 +175,7 @@ async function fetchJson(targetPath) {
     await getDefaultTestSettings();
 
     // Update HTML elements
+    stateChecker.modified = false;
     generateHierarchyHTML(hierarchy);
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-add-element").disabled = false;
@@ -358,6 +381,10 @@ function generateListEntry(element) {
 }
 
 function openJsonDialog(hierarchyName) {
+    // Open the dialog
+    const dialog = document.getElementById("json-dialog");
+    showDialog(dialog);
+
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
     console.log(hierarchyElement);
@@ -416,10 +443,6 @@ function openJsonDialog(hierarchyName) {
     const inputTypes = document.querySelectorAll(".input-value");
     for (const inputType of inputTypes)
         checkInputInList(inputType);
-
-    // Open the dialog
-    const dialog = document.getElementById("json-dialog");
-    showDialog(dialog);
 }
 
 function createElementFromString(htmlString) {
@@ -678,6 +701,7 @@ async function saveJsonChanges() {
 
     // Close dialog & render new changes
     console.log(newHierarchyElement);
+    stateChecker.modified = true;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
@@ -710,7 +734,7 @@ async function updateJson() {
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
 
-        document.getElementById("btn-test-settings").disabled = false;
+        stateChecker.modified = false;
         document.getElementById("btn-open-json").disabled = false;
         return;
     }
