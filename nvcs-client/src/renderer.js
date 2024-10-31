@@ -1055,6 +1055,7 @@ function checkForProblems() {
 
     // Check errors
     checkMissingTriggerParenthesesError();
+    checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
 
     // Check warnings
@@ -1134,6 +1135,53 @@ function checkMissingTriggerParenthesesError() {
     `
 
     createError("invalid-parentheses", html);
+}
+
+function checkMissingFiltersInTrigger() {
+    const invalidTriggerFilters = findMissingTriggerFilters();
+    if (invalidTriggerFilters.length == 0)
+        return;
+    console.error("Invalid missing trigger filters", invalidTriggerFilters);
+
+    let html = `
+        <p>
+            Unknown filters mentioned within ${invalidTriggerFilters.length} hierarchy element triggers!
+            These triggers should only reference valid filter names or the classification key will fail to build.
+            <button id='btn-toggle-nested-trigger-filter-errors' aria-controls='nested-trigger-filter-errors' onclick="toggleNestedContent(this, 'errors')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-trigger-filter-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Trigger Filters" hidden>
+    `;
+
+    for (const info of invalidTriggerFilters) {
+        const elementButton = info.button.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            html += `
+                <li>
+                    ${elementFilter}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-trigger-filters", html);
 }
 
 function checkInvalidBinaryValueError() {
@@ -1292,6 +1340,27 @@ function findMissingTriggerParentheses() {
             hierarchyName: element.hierarchyName,
             element: element,
             button: findHierarchyButton(element.hierarchyName)
+        });
+    }
+
+    return invalid;
+}
+
+function findMissingTriggerFilters() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        if (element.hierarchyName == "ROOT") continue;
+        const trigger = element.node.trigger;
+        const joinedTrigger = trigger.join("\n");
+        const filters = Object.keys(element.node.filters);
+        const invalids = findMissingFiltersInTrigger(joinedTrigger, filters);
+        if (invalids.length == 0) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            invalids: invalids
         });
     }
 
@@ -1499,4 +1568,18 @@ async function resetSettings() {
 
     await getDefaultTestSettings();
     updateSettingsDialogValues();
+}
+
+function findMissingFiltersInTrigger(trigger, filters) {
+    const regex = /(match|riv|spcov)\(([^\)]*)\)/g;
+    const references = trigger.match(regex) ?? [];
+    
+    let missing = [];
+    for (const reference of references) {
+        const filter = reference.replace("match(", "").replace("riv(", "").replace("spcov(", "").replace(")", "");
+        if (filters.includes(filter)) continue;
+        missing.push(reference);
+    }
+
+    return missing;
 }
