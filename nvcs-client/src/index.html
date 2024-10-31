@@ -22,36 +22,36 @@
         <div class="top-action-container">
           <div class="label-content-container">
             <label for="packaged-json-type">Packaged JSON Type:</label>
-            <select id="packaged-json-type">
+            <select id="packaged-json-type" title="Only enabled options have been packaged into the current application">
               <option disabled>alaska</option>
               <option disabled>east</option>
               <option selected>west</option>
             </select>
-            <button id="btn-fetch-packaged-json" onclick="fetchPackagedJson()">Load Packaged JSON</button>
+            <button id="btn-fetch-packaged-json" onclick="fetchPackagedJson()" title="Loads pre-packaged JSON configuration settings for the selected type">Load Packaged JSON</button>
           </div>
           <div class="label-content-container">
             <label for="json-directory-path">JSON Directory:</label>
-            <input id="json-directory-path" type="text" readonly>
+            <input id="json-directory-path" type="text" title="This directory is updated whenever JSON configuration settings are loaded or saved" readonly>
           </div>
           <div class="label-content-container">
             <label>JSON Actions:</label>
             <div class="json-action-container">
-              <button id="btn-fetch-existing-json" onclick="fetchCustomJson()">Load</button>
-              <button id="btn-update-json" onclick="updateJson()" disabled>Save</button>
-              <button id="btn-test-settings" onclick="openSettingsDialog()" disabled>Test</button>
-              <button id="btn-open-json" onclick="openJsonDirectory()" disabled>Open</button>
+              <button id="btn-fetch-existing-json" onclick="fetchCustomJson()" title="Browse for a directory containing a key-nodes folder and key-hierarchy.txt file">Load</button>
+              <button id="btn-update-json" onclick="updateJson()" title="You must load either custom or packaged JSON before being able to save changes" disabled>Save</button>
+              <button id="btn-test-settings" onclick="openSettingsDialog()" title="All changes must be saved before being able to test the JSON configuration settings" disabled>Test</button>
+              <button id="btn-open-json" onclick="openJsonDirectory()" title="Opens the currently loaded custom JSON directory" disabled>Open</button>
             </div>
           </div>
           <div class="label-content-container">
             <label for="search-hierarchy">Hierarchy Search:</label>
-            <input id="search-hierarchy" type="text" list="full-hierarchy-list" disabled/>
-            <button id="btn-search-hierarchy" onclick="searchHierarchy()" disabled>Search</button> 
+            <input id="search-hierarchy" type="text" list="full-hierarchy-list" title="Search inputs must be exact, so using the suggested dropdown options is recommended" disabled/>
+            <button id="btn-search-hierarchy" onclick="searchHierarchy()" title="Focus will be shifted to the hierarchy element within the tree if found" disabled>Search</button> 
             <datalist id="full-hierarchy-list"></datalist>
           </div>
           <div class="label-content-container">
             <label>Hierarchy Actions:</label>
             <div>
-              <button id="btn-add-element" onclick="addHierarchyElement()" disabled>Add Element</button>
+              <button id="btn-add-element" onclick="addHierarchyElement()" title="Opens a dialog to add a blank element to the hierarchy" disabled>Add Element</button>
             </div>
           </div>
         </div>
@@ -88,7 +88,7 @@
           <div class="input-container">
             <label for="node-fileName" class="key-holder">File Name</label>
             <textarea id="node-fileName" class="value-holder"></textarea>
-            <button onclick="suggestFileName()">Suggest</button>
+            <button onclick="suggestFileName()" title="This is recommended for newly-added or renamed hierarchy elements">Suggest</button>
           </div>
           <div class="input-container">
             <label for="node-nodeDescription" class="key-holder">Node Description</label>
@@ -130,8 +130,8 @@
         </div>
         <div class="footer-container">
           <div class="button-container">
-            <button onclick="saveJsonChanges()">Save All</button>
-            <button onclick="deleteHierarchyElement()">Delete</button>
+            <button onclick="saveJsonChanges()" title="Savees changes made to this specific hierarchy element">Save All</button>
+            <button onclick="deleteHierarchyElement()" title="Deletes this specific hierarchy element">Delete</button>
             <button class='close-btn'>Close</button>
           </div>
         </div>
@@ -159,9 +159,9 @@
         </div>
         <div class="footer-container">
           <div class="button-container">
-            <button onclick="executeTester()">Execute Tester</button>
-            <button onclick="saveSettingsChanges()">Save</button>
-            <button onclick="resetSettings()">Reset</button>
+            <button onclick="executeTester()" title="Makes use of the current test settings whlie testing the currently loaded JSON configuration settings">Execute Tester</button>
+            <button onclick="saveSettingsChanges()" title="Saves the current test settings for this session">Save</button>
+            <button onclick="resetSettings()" title="Resets the current test settings to their default values for this session">Reset</button>
             <button class='close-btn'>Close</button>
           </div>
         </div>

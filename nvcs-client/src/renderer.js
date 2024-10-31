@@ -35,7 +35,7 @@ const stateChecker = {
         }
         else {
             btnTestSettings.disabled = false;
-            btnTestSettings.removeAttribute("title");
+            btnTestSettings.setAttribute("title", "Opens a dialog to modify test settings and execute the test program on your JSON configuration settings");
             hideContentById("unsaved-changes-banner");
         }
     },
@@ -180,6 +180,9 @@ async function fetchJson(targetPath) {
     stateChecker.modified = false;
     generateHierarchyHTML(hierarchy);
     document.getElementById("btn-update-json").disabled = false;
+    document.getElementById("btn-update-json").setAttribute("title", 
+        "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
+    );
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
@@ -544,7 +547,7 @@ function createFilter(filterKey, inputFilters) {
                 <button onclick="addInputFilter('${identifier}', false)" title='The full input will be added as a single filter'>
                     Add Single
                 </button>
-                <button onclick="addInputFilter('${identifier}', true)" title='Comma-separate the individual values to add multiple filters'>
+                <button onclick="addInputFilter('${identifier}', true)" title='The full input will be separated based on commas and added as separate filters'>
                     Add Bulk
                 </button>
             </div>
