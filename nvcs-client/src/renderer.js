@@ -448,6 +448,9 @@ function openJsonDialog(hierarchyName) {
     const inputTypes = document.querySelectorAll(".input-value");
     for (const inputType of inputTypes)
         checkInputInList(inputType);
+
+    // Mark invalid trigger value
+    checkNodeTrigger();
 }
 
 function createElementFromString(htmlString) {
@@ -517,8 +520,8 @@ function createFilter(filterKey, inputFilters) {
     let html = `
     <div class='filter-container' id="${identifier}">
         <div class='sub-content-header-container'>
-            <label for="filter-${filterKey}">Name:</label>
-            <input type="text" id="filter-${filterKey}" value="${filterKey}"/>
+            <label for="filter-${identifier}">Name:</label>
+            <input type="text" id="filter-${identifier}" class="filter-name-input" value="${filterKey}" onblur="checkNodeTrigger()"/>
             <button onclick="deleteElement('${identifier}', true)">Delete Filter</button>
         </div>
         <div class='sub-content-container'>
@@ -1065,23 +1068,25 @@ function checkForProblems() {
     generateAlerts();
 }
 
-function createError(name, content) {
+function createError(name, content, source) {
     errors = errors.filter(i => i.name != name);
 
     errors.push({
         name: name,
-        content: content
+        content: content,
+        source: source
     });
 
     errors.sort((a,b) => a.name - b.name);
 }
 
-function createWarning(name, content) {
+function createWarning(name, content, source) {
     warnings = warnings.filter(i => i.name != name);
     
     warnings.push({
         name: name,
-        content: content
+        content: content,
+        source: source
     });
 
     warnings.sort((a,b) => a.name - b.name);
@@ -1134,7 +1139,7 @@ function checkMissingTriggerParenthesesError() {
         </ul>
     `
 
-    createError("invalid-parentheses", html);
+    createError("invalid-trigger-parentheses", html, invalidParentheses);
 }
 
 function checkMissingFiltersInTrigger() {
@@ -1181,7 +1186,7 @@ function checkMissingFiltersInTrigger() {
         </ul>
     `;
 
-    createError("invalid-trigger-filters", html);
+    createError("invalid-trigger-filters", html, invalidTriggerFilters);
 }
 
 function checkInvalidBinaryValueError() {
@@ -1252,7 +1257,7 @@ function checkInvalidBinaryValueError() {
         </ul>
     `;
 
-    createError("invalid-binary", html);
+    createError("invalid-binary", html, invalidBinaryValues);
 }
 
 function checkInvalidSpeciesWarning() {
@@ -1324,7 +1329,7 @@ function checkInvalidSpeciesWarning() {
         </ul>
     `;
 
-    createWarning("invalid-species", html);
+    createWarning("invalid-species", html, invalidSpeciesInfo);
 }
 
 function findMissingTriggerParentheses() {
@@ -1332,9 +1337,8 @@ function findMissingTriggerParentheses() {
     for (const element of hierarchy) {
         const trigger = element.node.trigger;
         const joinedTrigger = trigger.join("\n");
-        const leftCount = (joinedTrigger.match(/\(/g) || []).length
-        const rightCount = (joinedTrigger.match(/\)/g) || []).length
-        if (leftCount == rightCount) continue;
+        const matchingParentheses = doParenthesesMatchInTrigger(joinedTrigger);
+        if (matchingParentheses) continue;
 
         invalid.push({
             hierarchyName: element.hierarchyName,
@@ -1344,6 +1348,12 @@ function findMissingTriggerParentheses() {
     }
 
     return invalid;
+}
+
+function doParenthesesMatchInTrigger(trigger) {
+    const leftCount = (trigger.match(/\(/g) || []).length
+    const rightCount = (trigger.match(/\)/g) || []).length
+    return leftCount == rightCount;
 }
 
 function findMissingTriggerFilters() {
@@ -1454,6 +1464,39 @@ function checkInputInList(element) {
         element.classList.add(listTypeClass);
         element.title = listMessage;
     }
+}
+
+function checkNodeTrigger() {
+    const markedElement = document.getElementById("node-nodeTrigger");
+    const trigger = markedElement.value;
+    const dialogFilters = document.querySelectorAll(".filter-name-input");
+    const filters = [...dialogFilters].map(i => i.value);
+
+    let collectedErrors = [];
+    if (findMissingFiltersInTrigger(trigger, filters).length > 0)
+        collectedErrors.push("Invalid filters referenced.");
+    if (!doParenthesesMatchInTrigger(trigger))
+        collectedErrors.push("Mismatched parentheses detected.");
+
+    if (collectedErrors.length == 0) {
+        markElementAsType(markedElement, null);
+    }
+    else {
+        const message = collectedErrors.join(' ');
+        markElementAsType(markedElement, "error", message);
+    }
+}
+
+function markElementAsType(element, type, title = null) {
+    if (type == null) {
+        element.classList.remove(mapTypeToClass("error"))
+        element.classList.remove(mapTypeToClass("warning"))
+        element.removeAttribute("title");
+        return;
+    }
+    const listTypeClass = mapTypeToClass(type);
+    element.classList.add(listTypeClass);
+    element.setAttribute("title", title);
 }
 
 function mapTypeToClass(type) {
