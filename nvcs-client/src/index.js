@@ -111,7 +111,7 @@ async function fetchExistingJson(event, targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json) {
+async function updateJson(event, directory, json, changeList) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
@@ -154,6 +154,16 @@ async function updateJson(event, directory, json) {
   // Write hierarchy file content
   hierarchyContent = hierarchyContent.trim();
   fs.writeFileSync(hierarchyPath, hierarchyContent);
+
+  // Update changelog
+  const changeLogPath = path.resolve(path.join(newJsonDirectoryPath, "changes.txt"));
+  let existingChangeLogEntry = "";
+  if (fs.existsSync(changeLogPath))
+    existingChangeLogEntry = fs.readFileSync(changeLogPath);
+  const newChangeLogEntry = generateChangeLogEntry(changeList);
+  const updatedChangeLog = newChangeLogEntry + existingChangeLogEntry;
+  fs.writeFileSync(changeLogPath, updatedChangeLog);
+
   console.log("- RETURNING RESULTS");
   return true;
 }
@@ -416,4 +426,28 @@ async function fetchAvailableYears(event) {
 
   console.log("- RETURNING RESULTS");
   return response;
+}
+
+function generateChangeLogEntry(messageList) {
+  const timestamp = new Date().toISOString();
+
+  let message = "";
+  if (messageList.length == 0) {
+    message = "~ No changes detected";
+  }
+  else {
+    for (let i = 0; i < messageList.length; i++) {
+      let content = messageList[i];
+      let mark = "~";
+      if (content.toLowerCase().startsWith("added"))
+        mark = "+";
+      else if (content.toLowerCase().startsWith("removed"))
+        mark = "-";
+      messageList[i] = `${mark} ${content}`;
+    }
+    message = messageList.join("\r\n");
+  }
+  
+  const entry = `### Saved at ${timestamp} (UTC):\r\n${message}\r\n\r\n`;
+  return entry;
 }

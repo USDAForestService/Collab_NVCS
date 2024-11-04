@@ -735,10 +735,10 @@ async function updateJson() {
     cleanUpWhitespace();
 
     try {
-        const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
-        if (!updateDataResponse)
-            throw new Error("updateJson() failed to return a successful response");
-
+        const changeList = detectHierarchyChanges();
+        console.log(changeList)
+        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changeList);
+        initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
 
@@ -1625,4 +1625,81 @@ function findMissingFiltersInTrigger(trigger, filters) {
     }
 
     return missing;
+}
+
+function detectHierarchyChanges() {
+    let changes = [];
+    for (const initElement of initialHierarchy) {
+        const newElement = hierarchy.filter(i => i.hierarchyName == initElement.hierarchyName)[0];
+        if (newElement == null) {
+            changes.push(`Removed element "${initElement.hierarchyName}"`);
+            continue;
+        }
+
+        const elementName = initElement.hierarchyName;
+        if (initElement.fileName != newElement.fileName)
+            changes.push(generateLogMessage("Updated File Name", elementName, initElement.fileName, newElement.fileName));
+
+        if (initElement.node.description.join("\r\n") != newElement.node.description.join("\r\n"))
+            changes.push(generateLogMessage("Updated Description", elementName));
+
+        if (initElement.node.id != newElement.node.id)
+            changes.push(generateLogMessage("Updated ID", elementName, initElement.node.id, newElement.node.id));
+
+        if (initElement.node.level != newElement.node.level)
+            changes.push(generateLogMessage("Updated Level", elementName, initElement.node.level, newElement.node.level));
+
+        if (initElement.node.trigger.join("\r\n") != newElement.node.trigger.join("\r\n"))
+            changes.push(generateLogMessage("Updated Trigger", elementName));
+
+        // Check filters
+        const initFilterKeys = Object.keys(initElement.node.filters);
+        const newFilterKeys = Object.keys(newElement.node.filters);
+        const addedKeys = newFilterKeys.filter(i => !initFilterKeys.includes(i));
+        const removedKeys = initFilterKeys.filter(i => !newFilterKeys.includes(i));
+        const sharedKeys = initFilterKeys.filter(i => newFilterKeys.includes(i));
+        for (const addedKey of addedKeys)
+            changes.push(generateLogMessage(`Added Filter Key "${addedKey}"`, elementName));
+        for (const removedKey of removedKeys)
+            changes.push(generateLogMessage(`Removed Filter Key "${removedKey}"`, elementName));
+
+        // Check sub-filters
+        for (const sharedKey of sharedKeys) {
+            const initSubFilters = initElement.node.filters[sharedKey];
+            const newSubFilters = newElement.node.filters[sharedKey];
+
+            let initSubFilterKeyValues = [];
+            for (const subFilter of initSubFilters) {
+                const subFilterKeys = Object.keys(subFilter);
+                const subFilterValues = Object.values(subFilter);
+                for (let i = 0; i < subFilterKeys.length; i++)
+                    initSubFilterKeyValues.push(`${subFilterKeys[i]}: ${subFilterValues[i]}`)
+            }
+
+            let newSubFilterKeyValues = [];
+            for (const subFilter of newSubFilters) {
+                const subFilterKeys = Object.keys(subFilter);
+                const subFilterValues = Object.values(subFilter);
+                for (let i = 0; i < subFilterKeys.length; i++)
+                    newSubFilterKeyValues.push(`${subFilterKeys[i]}: ${subFilterValues[i]}`)
+            }
+
+            const addedSubKeys = newSubFilterKeyValues.filter(i => !initSubFilterKeyValues.includes(i));
+            const removeSubdKeys = initSubFilterKeyValues.filter(i => !newSubFilterKeyValues.includes(i));
+
+            for (const addedSubKey of addedSubKeys)
+                changes.push(generateLogMessage(`Added Filter Value "${addedSubKey}" in "${sharedKey}"`, elementName));
+            for (const removedSubKey of removeSubdKeys)
+                changes.push(generateLogMessage(`Removed Filter Value "${removedSubKey}" in "${sharedKey}"`, elementName));
+        }
+    }
+
+    return changes;
+}
+
+function generateLogMessage(action, name, before = null, after = null) {
+    if (!before && !after) {
+        return `${action} for "${name}"`;
+    }
+    return `${action} for "${name}" from "${before}" to "${after}"`;
 }
