@@ -26,12 +26,13 @@ var testSettings;
 
 const stateChecker = {
     _modified: false,
-    _modifiedListener: value => {
+    _modifiedListener: async (value) => {
         const btnTestSettings = document.getElementById("btn-test-settings");
         if (value) {
             btnTestSettings.disabled = true;
             btnTestSettings.setAttribute("title", "You must save your modifications before testing this directory");
             showContentById("unsaved-changes-banner");
+            await markUnsavedChanges(true);
         }
         else {
             btnTestSettings.disabled = false;
@@ -293,6 +294,17 @@ async function openJsonDirectory() {
     try {
         const targetPath = document.getElementById("json-directory-path").value;
         await electronAPI.openDirectory(targetPath);
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
+}
+
+async function markUnsavedChanges(value) {
+    try {
+        await electronAPI.markUnsavedChanges(value);
     }
     catch (error) {
         console.error(error);
@@ -979,6 +991,7 @@ function deleteHierarchyElement() {
     recalculateHierarchyPositionalData(hierarchy);
 
     // Close dialog & render new changes
+    stateChecker.modified = true;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }

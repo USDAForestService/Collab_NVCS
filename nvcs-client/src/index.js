@@ -7,6 +7,7 @@ const util = require("util");
 const execFile = util.promisify(child_process.execFile);
 
 let mainWindow;
+let unsavedChanges = false;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -29,6 +30,21 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
+  // Bind a close event
+  mainWindow.on('close', (e) => {
+    if (!unsavedChanges)
+      return;
+    const confirm = dialog.showMessageBoxSync(mainWindow, {
+      type: 'warning',
+      buttons: ['Yes', 'No'],
+      defaultId: 0,
+      title: 'Unsaved Changes Detected',
+      message: 'You have unsaved changes detected. Are you sure you want to exit the application and risk losing these changes?'
+    });
+    if (confirm === 1)
+      e.preventDefault();
+  });
+
   // Open the DevTools.
   if (!app.isPackaged)
     mainWindow.webContents.openDevTools();
@@ -50,6 +66,7 @@ app.whenReady().then(() => {
   ipcMain.handle('open-directory', openDirectory);
   ipcMain.handle('fetch-settings', fetchSettings);
   ipcMain.handle('fetch-years', fetchAvailableYears);
+  ipcMain.handle('mark-unsaved-changes', markUnsavedChanges);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -163,6 +180,9 @@ async function updateJson(event, directory, json, changes) {
   const newChangeLogEntry = generateChangeLogEntry(changes);
   const updatedChangeLog = newChangeLogEntry + existingChangeLogEntry;
   fs.writeFileSync(changeLogPath, updatedChangeLog);
+
+  // Mark unaved as false
+  unsavedChanges = false;
 
   console.log("- RETURNING RESULTS");
   return true;
@@ -434,4 +454,8 @@ function generateChangeLogEntry(message) {
     message = "~ No changes detected";
   const entry = `### Saved at ${timestamp} (UTC):\r\n${message}\r\n\r\n`;
   return entry;
+}
+
+async function markUnsavedChanges(value) {
+  unsavedChanges = value;
 }
