@@ -172,7 +172,7 @@ dialog:not([open]) {
   z-index: 1000;
 }
 
-#testing-dialog {
+.quarter-dialog {
   max-width: 25%;
 }
 
@@ -182,8 +182,22 @@ dialog:not([open]) {
   gap: 15px;
 }
 
-.dialog .alert-text {
+.text-align-center {
   text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.popup-content {
+  padding: 15px 0;
+}
+
+.alert-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
 }
 
 .dialog .header-container {

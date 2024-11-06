@@ -74,7 +74,7 @@ closeButtons.forEach(closeButton => {
 async function fetchPackagedJson() {
     const loadMessage = "Are you sure you want to load the selected packaged content? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
-    if (hierarchy?.length > 0 && !confirm(loadMessage))
+    if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
     await fetchJson();
@@ -92,7 +92,7 @@ async function fetchCustomJson() {
 
     const loadMessage = "Are you sure you want to load from this directory? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
-    if (hierarchy?.length > 0 && !confirm(loadMessage))
+    if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
     const targetPath = document.getElementById("json-directory-path").value;
@@ -266,7 +266,7 @@ async function executeTester() {
 
         const testWarning = "Are you sure you want to test this directory? " +
             "Any previously saved 'nvcs-output.db' file will be overwritten if testing is successful.";
-        if (!confirm(testWarning))
+        if (!await confirm(testWarning))
             return;
         
         document.getElementById("testing-dialog").showModal();
@@ -479,12 +479,12 @@ function addFilter() {
     filterContainer.insertBefore(newFilterElement, addFilterButton);
 }
 
-function addInputFilter(identifier, bulkAdd = false) {
+async function addInputFilter(identifier, bulkAdd = false) {
     if (bulkAdd) {
         const message = "Are you sure you want to bulk-add these filters? " +
         "Unique values will be extracted from the comma-separated 'Value' field and assigned the " +
         "selected 'Type' field. These can all be modified or removed afterwards if necessary.";
-        if (!confirm(message))
+        if (!await confirm(message))
             return;
     }
 
@@ -614,9 +614,9 @@ function createOptions(options, selectedOption = null) {
     return html;
 }
 
-function deleteElement(identifier, confirmation = false) {
+async function deleteElement(identifier, confirmation = false) {
     const message = "Are you sure you want to delete this element?";
-    if (confirmation && !confirm(message))
+    if (confirmation && !await confirm(message))
         return;
 
     const container = document.getElementById(identifier);
@@ -734,7 +734,7 @@ async function updateJson() {
 
     const updateWarning = "Are you sure you want to save changes to this directory? " +
         "Any previously saved changes within this directory will be overwritten.";
-    if (!confirm(updateWarning))
+    if (!await confirm(updateWarning))
         return;
 
     const newDirectoryName = document.getElementById("json-directory-path").value;
@@ -959,10 +959,10 @@ function recursivelyUpdatePositionalData(element) {
         recursivelyUpdatePositionalData(child);
 }
 
-function deleteHierarchyElement() {
+async function deleteHierarchyElement() {
     // Confirm before deleting
     const message = "Are you sure you want to delete this hierarchy element?";
-    if (!confirm(message))
+    if (!await confirm(message))
         return;
 
     // Get associated element
@@ -1619,7 +1619,7 @@ function saveSettingsChanges(closeAfter = true) {
 
 async function resetSettings() {
     const message = `Are you sure you want to reset your settings back to the default?`;
-    if (!confirm(message))
+    if (!await confirm(message))
         return;
 
     await getDefaultTestSettings();
@@ -1740,3 +1740,24 @@ function generateLogMessage(action, tabCount, before = null, after = null) {
         return `${tabs}${action}`;
     return `${tabs}${action} from "${before}" to "${after}"`;
 }
+
+async function confirm(message) {
+    return await new Promise((success, failure) => {
+        document.getElementById("confirm-dialog").returnValue = "";
+        document.getElementById("confirm-dialog-text").innerText = message;
+        confirmClose = (event) => {
+            document.getElementById("confirm-dialog").removeEventListener("close", confirmClose);
+            const dialogValue = document.getElementById("confirm-dialog").returnValue;
+            const confirmation = dialogValue === "confirm";
+            success(confirmation)
+        }
+        document.getElementById("confirm-dialog").addEventListener("close", confirmClose);
+        document.getElementById("confirm-dialog").showModal();
+    });
+}
+
+document.getElementById("confirm-dialog-ok").addEventListener("click", (event) => {
+    event.preventDefault();
+    document.getElementById("confirm-dialog").close("confirm");
+});
+

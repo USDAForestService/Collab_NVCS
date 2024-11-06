@@ -166,13 +166,23 @@
           </div>
         </div>
       </dialog>
-      <dialog id="testing-dialog" class="dialog">
+      <dialog id="testing-dialog" class="dialog quarter-dialog">
         <div class="alert-content">
-          <div class="alert-text">
+          <div class="text-align-center">
             Executing Python Classifier. Please wait...
           </div>
           <div class="loading-icon"></div>
         </div>
+      </dialog>
+      <dialog id="confirm-dialog" class="dialog quarter-dialog">
+        <form>
+          <div class="popup-header">NVCS Configuration Tool</div>
+          <div id="confirm-dialog-text" class="popup-content text-align-left"></div>
+          <div class="popup-footer alert-buttons">
+            <button id="confirm-dialog-ok" value="confirm">OK</button>
+            <button id="confirm-dialog-cancel" formmethod="dialog">Cancel</button>
+          </div>
+        </form>
       </dialog>
     </div>
     <div class="data-list-container">
