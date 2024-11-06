@@ -17,7 +17,27 @@ main {
   left: 50%;
   transform: translate(-50%);
   border: 1px solid black;
-  background-color: beige;
+  background-color: #B40000;
+  color: white;
+  font-weight: bold;
+}
+
+.loading-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: green;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
 }
 
 .main-content {
@@ -55,10 +75,6 @@ main {
   opacity: 0.3;
   width: 100%;
   height: 100%;
-}
-
-#testing-overlay {
-  z-index: 1500;
 }
 
 .top-action-container {
@@ -156,7 +172,17 @@ dialog:not([open]) {
   z-index: 1000;
 }
 
+#testing-dialog {
+  max-width: 25%;
+}
+
 .dialog .alert-content {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.dialog .alert-text {
   text-align: center;
 }
 
