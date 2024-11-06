@@ -172,8 +172,28 @@ dialog:not([open]) {
   z-index: 1000;
 }
 
-.quarter-dialog {
+.small-dialog {
   max-width: 25%;
+}
+
+.popup-dialog {
+  padding: 0;
+  max-width: 30%;
+}
+
+.popup-header {
+  padding: 15px;
+}
+
+.popup-content {
+  margin-left: 15px;
+  padding-right: 15px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.popup-footer {
+  padding: 15px;
 }
 
 .dialog .alert-content {
@@ -188,10 +208,6 @@ dialog:not([open]) {
 
 .text-align-left {
   text-align: left;
-}
-
-.popup-content {
-  padding: 15px 0;
 }
 
 .alert-buttons {

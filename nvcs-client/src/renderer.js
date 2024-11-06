@@ -1580,6 +1580,13 @@ function showDialog(dialog) {
     dialogBody.scroll({ top: 0 });
 }
 
+function showPopup(dialog) {
+    dialog.showModal();
+
+    const dialogBody = dialog.querySelector(".popup-content");
+    dialogBody.scroll({ top: 0, left: 0 });
+}
+
 function showContentById(id) {
     const element = document.getElementById(id);
     element.removeAttribute("hidden");
@@ -1752,12 +1759,22 @@ async function confirm(message) {
             success(confirmation)
         }
         document.getElementById("confirm-dialog").addEventListener("close", confirmClose);
-        document.getElementById("confirm-dialog").showModal();
+        showPopup(document.getElementById("confirm-dialog"));
     });
 }
 
 document.getElementById("confirm-dialog-ok").addEventListener("click", (event) => {
     event.preventDefault();
     document.getElementById("confirm-dialog").close("confirm");
+});
+
+function alert(message) {
+    document.getElementById("alert-dialog-text").innerText = message;
+    showPopup(document.getElementById("alert-dialog"));
+}
+
+document.getElementById("alert-dialog-ok").addEventListener("click", (event) => {
+    event.preventDefault();
+    document.getElementById("alert-dialog").close();
 });
 
