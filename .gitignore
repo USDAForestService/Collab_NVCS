@@ -1,6 +1,5 @@
 # NVCS-specific files
-nvcs-dev/nvcs_tester/run_input/
-nvcs-dev/nvcs_tester/run_output/
+nvcs-data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

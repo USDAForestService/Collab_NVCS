@@ -1,3 +1,6 @@
+# Redistributables
+**/redist/
+
 # Logs
 logs
 *.log

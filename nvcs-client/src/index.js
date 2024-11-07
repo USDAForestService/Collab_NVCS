@@ -1,7 +1,13 @@
 const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('fs');
+const ini = require('ini');
+const child_process = require("child_process");
+const util = require("util");
+const execFile = util.promisify(child_process.execFile);
+
 let mainWindow;
+let unsavedChanges = false;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -13,13 +19,31 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    show: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+  mainWindow.maximize();
+  mainWindow.show();
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+  // Bind a close event
+  mainWindow.on('close', (e) => {
+    if (!unsavedChanges)
+      return;
+    const confirm = dialog.showMessageBoxSync(mainWindow, {
+      type: 'warning',
+      buttons: ['Yes', 'No'],
+      defaultId: 0,
+      title: 'Unsaved Changes Detected',
+      message: 'You have unsaved changes detected. Are you sure you want to exit the application and risk losing these changes?'
+    });
+    if (confirm === 1)
+      e.preventDefault();
+  });
 
   // Open the DevTools.
   if (!app.isPackaged)
@@ -30,10 +54,19 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  // Forge will automatically create a copy via forge.config.js
+  if (!app.isPackaged)
+    createDefaultConfigFile();
+
   ipcMain.handle('fetch-existing-json', fetchExistingJson);
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
+  ipcMain.handle('execute-tester', executeTester);
+  ipcMain.handle('open-directory', openDirectory);
+  ipcMain.handle('fetch-settings', fetchSettings);
+  ipcMain.handle('fetch-years', fetchAvailableYears);
+  ipcMain.handle('mark-unsaved-changes', markUnsavedChanges);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -95,7 +128,7 @@ async function fetchExistingJson(event, targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json) {
+async function updateJson(event, directory, json, changes) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
@@ -138,6 +171,19 @@ async function updateJson(event, directory, json) {
   // Write hierarchy file content
   hierarchyContent = hierarchyContent.trim();
   fs.writeFileSync(hierarchyPath, hierarchyContent);
+
+  // Update changelog
+  const changeLogPath = path.resolve(path.join(newJsonDirectoryPath, "changelog.txt"));
+  let existingChangeLogEntry = "";
+  if (fs.existsSync(changeLogPath))
+    existingChangeLogEntry = fs.readFileSync(changeLogPath);
+  const newChangeLogEntry = generateChangeLogEntry(changes);
+  const updatedChangeLog = newChangeLogEntry + existingChangeLogEntry;
+  fs.writeFileSync(changeLogPath, updatedChangeLog);
+
+  // Mark unaved as false
+  unsavedChanges = false;
+
   console.log("- RETURNING RESULTS");
   return true;
 }
@@ -159,7 +205,8 @@ async function fetchSpecies(event) {
 }
 
 function getConfigurationPath() {
-  return app.isPackaged ? process.resourcesPath + "/west" : __dirname + '../../../nvcs-dev/nvcs_config/west';
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_config/west')
+  return path.resolve(relative);
 }
 
 async function openBrowseDialog(event, targetPath) {
@@ -175,4 +222,240 @@ async function openBrowseDialog(event, targetPath) {
   console.log("- RETURNING RESULTS");
   const path = !cancelled ? filePaths[0] : null;
   return path;
+}
+
+async function executeTester(event, targetPath, testSettings) {
+  console.log("INVOKED: executeTester");
+
+  const pythonPath = getPythonPath();
+  console.log("- Target Python Path:", pythonPath);
+
+  const builderPath = getBuilderPyPath();
+  console.log("- Target Builder.py Path:", builderPath);
+  
+  let config = getPythonConfigFile();
+  config.Config.ProjectRoot = getProjectResourcePath();
+  config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+  config.FullOutputConfig.SkipSharedTables = "True";
+  config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
+  config.FullOutputConfig.Out_TesterResultsPath = getOutPath();
+  config.FullOutputConfig.Out_DebugLogPath = getDebugLogPath();
+  config.FullOutputConfig.Out_FixupCsvPath = getFixupCsvPath();
+  config.FullOutputConfig.InventoryYears = `[${testSettings.inventoryYears.join(',')}]`;
+  config.FullOutputConfig.AdditionalWhereClause = testSettings.additionalWhere;
+  setPythonConfigFile(config);
+
+  console.log("- Executing Builder Script...");
+  var builderResults = await execFile(pythonPath, [builderPath]);
+  console.log("- Builder Results", builderResults);
+
+  // Clone table
+  var copyTablePath =  parseIniPath(config.FullOutputConfig.Out_DbPath, config);
+  if (!testSettings.keepExisting || !fs.existsSync(copyTablePath)) {
+    console.log("- Creating base SQLite output file...")
+    var sharedTablePath = getSharedTablePath();
+    fs.copyFileSync(sharedTablePath, copyTablePath);
+  }
+
+  // Execute full output
+  console.log("- Executing Full Output Script...");
+  var fullOutputPath = getFullOutputPyPath();
+  var fullOutputResults = await execFile(pythonPath, [fullOutputPath]);
+  console.log("- Full Output Results", fullOutputResults);
+
+  console.log("- RETURNING RESULTS");
+  return {
+    success: true,
+    builderMessage: builderResults,
+    fullOutputMessage: fullOutputResults,
+    outputDbPath: config.FullOutputConfig.Out_DbPath
+  };
+}
+
+function getPythonPath() {
+  let redistPath = app.isPackaged ? "redist" : "nvcs-client/redist";
+  let relative = path.join(getProjectResourcePath(), redistPath, 'python/python.exe')
+  return path.resolve(relative);
+}
+
+function createDefaultConfigFile() {
+  const source = getPythonConfigFilePath();
+  const target = getDefaultPythontConfigFilePath();
+  fs.copyFileSync(source, target);
+}
+
+function getPythonConfigFile(targetPath = null) {
+  const configFilePath = targetPath ?? getPythonConfigFilePath();
+  
+  let configFile = fs.readFileSync(configFilePath, 'utf-8');
+  configFile = configFile.replaceAll(/(^|\r\n)([^: ]*): /gi, "$1$2 = ");;
+  configFile = configFile.replaceAll(":\r\n", "=\r\n");
+
+  const config = ini.parse(configFile);
+  return config;
+}
+
+function setPythonConfigFile(config) {
+  const configFilePath = getPythonConfigFilePath();
+
+  let configFileString = ini.stringify(config, {
+    whitespace: true
+  });
+  configFileString = configFileString.replaceAll(/(^|\r\n)([^ = ]*) = /gi, "$1$2: ");
+  configFileString = configFileString.replaceAll("\"", "");
+  configFileString = configFileString.replaceAll(": \r\n", ":\r\n");
+  configFileString = configFileString.replaceAll("${Config=", "${Config:");
+  fs.writeFileSync(configFilePath, configFileString);
+}
+
+function getPythonConfigFilePath() {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_builder/debug_config.ini')
+  return path.resolve(relative);
+}
+
+function getDefaultPythontConfigFilePath() {
+  let relativeConfig = 'debug_config.ini';
+  if (!app.isPackaged)
+    relativeConfig = 'nvcs-data/debug_config.ini';
+
+  let relative = path.join(getProjectResourcePath(), relativeConfig)
+  return path.resolve(relative);
+}
+
+function getBuilderPyPath() {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_builder/builder.py')
+  return path.resolve(relative);
+}
+
+function getFullOutputPyPath() {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_tester/full_output.py')
+  return path.resolve(relative);
+}
+
+function getPlotIoPyPath() {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_tester/plot_io.py')
+  return path.resolve(relative);
+}
+
+function getProjectResourcePath() {
+  let relative = process.resourcesPath;
+  if (!app.isPackaged)
+    relative = path.join(__dirname, '../../');
+  return path.resolve(relative);
+}
+
+function getSharedTablePath() {
+  let relativeTable = "west_shared_tables.db";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/west_shared_tables.db";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function getOutPath() {
+  let relativeTable = "TEMP_nvcs_full_output.out";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/TEMP_nvcs_full_output.out";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function getDebugLogPath() {
+  let relativeTable = "TEMP_nvcs_full_output.log";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/TEMP_nvcs_full_output.log";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function getFixupCsvPath() {
+  let relativeTable = "TEMP_nvcs_full_output.csv";
+  if (!app.isPackaged)
+    relativeTable = "nvcs-data/run_output/west/TEMP_nvcs_full_output.csv";
+
+  let relative = path.join(getProjectResourcePath(), relativeTable);
+  return path.resolve(relative);
+}
+
+function parseIniPath(path, config) {
+  const projectRoot = config.Config.ProjectRoot;
+  const parsedPath = path.replaceAll("${Config:ProjectRoot}", projectRoot);
+  return parsedPath;
+}
+
+async function openDirectory(event, targetPath) {
+  console.log("INVOKED: openDirectory");
+
+  let command = "";
+  if (process.platform.startsWith("win"))
+    command = "explorer";
+  else if (process.platform == "darwin")
+    command = "open";
+  else if (process.platform == "linux")
+    command = "xdg-open";
+  else
+    new Error("Unable to determine which command to open for the following platform", process.platform);
+
+  let fullCommand = `${command} ${targetPath}`;
+  console.log(`- Executing: ${fullCommand}`);
+  await child_process.exec(fullCommand);
+
+  console.log("- RETURNING RESULTS");
+  return true;
+}
+
+async function fetchSettings(event) {
+  console.log("INVOKED: fetchSettings");
+
+  const defaultPath = getDefaultPythontConfigFilePath();
+  const config = getPythonConfigFile(defaultPath);
+  
+  const response = {
+    inventoryYears: config.FullOutputConfig.InventoryYears,
+    additionalWhere: config.FullOutputConfig.AdditionalWhereClause
+  };
+
+  console.log("- RETURNING RESULTS");
+  return response;
+}
+
+async function fetchAvailableYears(event) {
+  console.log("INVOKED: fetchAvailableYears");
+
+  const pythonPath = getPythonPath();
+  console.log("- Target Python Path:", pythonPath);
+
+  // Get source table & column
+  const defaultConfigPath = getDefaultPythontConfigFilePath();
+  const config = getPythonConfigFile(defaultConfigPath);
+  const table = config.FullOutputConfig.KeyTestDataName;
+  const column = "INVYR";
+
+  // Execute Plot IO
+  console.log("- Executing Plot IO Script...");
+  const scriptPath = getPlotIoPyPath();
+  const dbPath = getSharedTablePath();
+  const results = await execFile(pythonPath, [scriptPath, "get_unique_values_sqlite", dbPath, table, column]);
+  console.log("- Plot IO  Results", results);
+
+  // Parse results
+  response = results.stdout.replace('[', '').replace(']\r\n', '').split(',');
+
+  console.log("- RETURNING RESULTS");
+  return response;
+}
+
+function generateChangeLogEntry(message) {
+  const timestamp = new Date().toISOString();
+  if (!message || message == "")
+    message = "~ No changes detected";
+  const entry = `### Saved at ${timestamp} (UTC):\r\n${message}\r\n\r\n`;
+  return entry;
+}
+
+async function markUnsavedChanges(value) {
+  unsavedChanges = value;
 }

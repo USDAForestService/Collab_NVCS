@@ -88,6 +88,11 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         print("-" * 50)
         print(f"Generating tables and views for: {inventory_year}\n")
 
+        # Modify additional where clause if provided
+        additional_where_clause = out_Options['additional_where_clause'].strip()
+        if len(additional_where_clause) > 0:
+            additional_where_clause = f" AND ({additional_where_clause})"
+
         # Create a filtered input view
         python_key_input_vw_name = f"Y{inventory_year}_PYTHON_KEY_INPUT_VW"
         python_key_input_vw_desc = f"View containing filtered input data fed through the classification key [{inventory_year} plots only]"
@@ -96,7 +101,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
             "ELEVATION, SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
             f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
-            f"WHERE INVYR = {inventory_year} {out_Options['additional_where_clause']};"
+            f"WHERE INVYR = {inventory_year}{additional_where_clause};"
         )
         plot_io.create_view(out_Options["output_db"], python_key_input_vw_name, python_key_input_vw_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], python_key_input_vw_name, python_key_input_vw_desc)
@@ -118,7 +123,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         nvcs_analytical_test_data_vw_definition = (
             f"CREATE VIEW '{nvcs_analytical_test_data_vw_name}' AS "
             f"SELECT * FROM {in_AnlyTestData['new_tbl_nm']} "
-            f"WHERE INVYR = {inventory_year} {out_Options['additional_where_clause']}"
+            f"WHERE INVYR = {inventory_year}{additional_where_clause}"
         )
         plot_io.create_view(out_Options["output_db"], nvcs_analytical_test_data_vw_name, nvcs_analytical_test_data_vw_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], nvcs_analytical_test_data_vw_name, nvcs_analytical_test_data_vw_desc)
@@ -206,6 +211,7 @@ def export_node_table(classification_key):
 
 def write_metadata(db, metadata_tbl, name, description):
     metadata = [[name, get_formatted_date(), description]]
+    plot_io.delete_row_sqlite(db, metadata_tbl, f"TABLE_NAME = '{name}'")
     plot_io.write_rows_sqlite(db, metadata_tbl, metadata, ref_key_output_table_columns)
 
 

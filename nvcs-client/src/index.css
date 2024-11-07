@@ -1,12 +1,80 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.top-banner {
+  width: 95%;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border: 1px solid black;
+  background-color: #B40000;
+  color: white;
+  font-weight: bold;
+}
+
+.loading-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: green;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+.main-content {
   margin: auto;
   max-width: 60em;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.overlay .content {
+  background: white;
+  color: black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: 1px solid black;
+  box-shadow: 5px 5px 10px 0px;
+  padding: 10px 20px;
+}
+
+.overlay .backdrop {
+  background: black;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
 }
 
 .top-action-container {
@@ -18,22 +86,39 @@ body {
   border: 1px solid lightgrey;
 }
 
-.label-input-button-container {
+.label-content-container {
   display: flex;
   gap: 5px;
 }
 
-.label-input-button-container label {
+.label-content-container > label {
   width: 20%;
 }
 
-.label-input-button-container select,
-.label-input-button-container input {
+.label-content-container > div,
+.label-content-container > select,
+.label-content-container > input {
   flex-grow: 1;
 }
 
-.label-input-button-container button {
-  width: 18%;
+.label-content-container > button {
+  width: fit-content;
+}
+
+.label-content-container > .vertical-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.json-action-container {
+  display: flex;
+  gap: 5px;
+  flex-grow: 1;
+}
+
+.json-action-container > button {
+  flex-grow: 1;
 }
 
 .browse {
@@ -67,11 +152,16 @@ body {
   display: none !important;
 }
 
+dialog:not([open]) {
+  display: none;
+}
+
+::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
 .dialog {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 50%;
   height: fit-content;
   max-height: 90%;
@@ -79,6 +169,51 @@ body {
   background-color: white;
   display: flex;
   flex-direction: column;
+  z-index: 1000;
+}
+
+.small-dialog {
+  max-width: 25%;
+}
+
+.popup-dialog {
+  padding: 0;
+  max-width: 30%;
+}
+
+.popup-header {
+  padding: 15px;
+}
+
+.popup-content {
+  margin-left: 15px;
+  padding-right: 15px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.popup-footer {
+  padding: 15px;
+}
+
+.dialog .alert-content {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.alert-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
 }
 
 .dialog .header-container {
@@ -116,6 +251,13 @@ body {
 
 .dialog .value-holder {
   flex-grow: 1;
+}
+
+.dialog .checkbox-container {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
 }
 
 .dialog .filter-container {
@@ -170,13 +312,20 @@ body {
 
 .dialog .input-container select,
 .dialog .input-container textarea,
-.dialog .input-container input {
+.dialog .input-container input[type='text'] {
   border: 1px solid grey;
   resize: vertical;
   height: fit-content;
   margin: 0;
   padding: 5px;
   white-space: nowrap;
+}
+
+.dialog .input-container input[type='checkbox'] {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  margin-bottom: 2px;
 }
 
 .dialog option:disabled,
@@ -228,7 +377,8 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  column-width: 18em;
+  column-count: 2;
+  column-width: auto;
   column-gap: 1em;
 }
 

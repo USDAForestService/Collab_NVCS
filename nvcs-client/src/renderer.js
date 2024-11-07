@@ -21,23 +21,81 @@ var nodeHierarchy;
 var hierarchy;
 var initialHierarchy;
 var availableSpecies;
+var availableYears;
+var testSettings;
+
+const stateChecker = {
+    _modified: false,
+    _modifiedListener: async (value) => {
+        const btnTestSettings = document.getElementById("btn-test-settings");
+        if (value) {
+            btnTestSettings.disabled = true;
+            btnTestSettings.setAttribute("title", "You must save your modifications before testing this directory");
+            showContentById("unsaved-changes-banner");
+            await markUnsavedChanges(true);
+        }
+        else {
+            btnTestSettings.disabled = false;
+            btnTestSettings.setAttribute("title", "Opens a dialog to modify test settings and execute the test program on your JSON configuration settings");
+            hideContentById("unsaved-changes-banner");
+        }
+    },
+    set modified(value) {
+        this._modified = value;
+        this._modifiedListener(value);
+    },
+    get modified() {
+        return this._modified;
+    }
+};
+
+document.getElementById("json-dialog").addEventListener("close", (event) => {
+    const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
+    const isNew = openedHierarchyName == "";
+
+    // Delete newly-added but unsaved hierarchy elements
+    if (isNew) {
+        hierarchy = hierarchy.filter(i => i.hierarchyName != openedHierarchyName);
+    }
+});
+
+document.getElementById("settings-dialog").addEventListener("close", (event) => {
+    // No implementation yet
+});
+
+const closeButtons = document.querySelectorAll(".close-btn");
+closeButtons.forEach(closeButton => {
+    closeButton.addEventListener("click", (event) => {
+        const dialog = event.target.closest("dialog");
+        dialog.close();
+    })
+})
 
 async function fetchPackagedJson() {
     const loadMessage = "Are you sure you want to load the selected packaged content? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
-    if (hierarchy?.length > 0 && !confirm(loadMessage))
+    if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
-    return await fetchJson();
+    await fetchJson();
+
+    document.getElementById("json-directory-path").value = "";
+    document.getElementById("btn-test-settings").disabled = true;
+    document.getElementById("btn-open-json").disabled = true;
 }
 
 async function fetchCustomJson() {
+    const inputPath = document.getElementById("json-directory-path");
+    const browsePath = await openBrowseDialog(inputPath.value);
+    if (!browsePath) return;
+    inputPath.value = browsePath;
+
     const loadMessage = "Are you sure you want to load from this directory? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
-    if (hierarchy?.length > 0 && !confirm(loadMessage))
+    if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
-    const targetPath = document.getElementById("source-json-directory").value;
+    const targetPath = document.getElementById("json-directory-path").value;
     if (!targetPath) {
         const message = "When loading custom JSON, please ensure a valid path is provided to the directory " +
             "containing the key nodes and hierarchy file that you wish to load";
@@ -45,7 +103,10 @@ async function fetchCustomJson() {
         return;
     }
 
-    return await fetchJson(targetPath);
+    await fetchJson(targetPath);
+
+    document.getElementById("btn-test-settings").disabled = false;
+    document.getElementById("btn-open-json").disabled = false;
 }
 
 async function fetchJson(targetPath) {
@@ -113,14 +174,72 @@ async function fetchJson(targetPath) {
     // Fetch latest species list
     await updateAvailableSpecies();
 
+    // Fetch default test settings
+    await getDefaultTestSettings();
+
     // Update HTML elements
+    stateChecker.modified = false;
     generateHierarchyHTML(hierarchy);
-    document.getElementById("json-directory-name").disabled = false;
-    document.getElementById("btn-browse-update-json").disabled = false;
     document.getElementById("btn-update-json").disabled = false;
+    document.getElementById("btn-update-json").setAttribute("title", 
+        "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
+    );
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
+}
+
+async function fetchSettings() {
+    try {
+        const response = await electronAPI.fetchSettings();
+        console.log("Fetched Test Settings", response);
+        return response;
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
+}
+
+async function fetchAvailableYears() {
+    try {
+        const response = await electronAPI.fetchYears();
+        availableYears = convertStringToNumbersList(response);
+        console.log("Fetched and Converted Available Years", availableYears);
+        return availableYears;
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
+}
+
+async function updateAvailableYears() {
+    let html = "";
+    for (const year of availableYears) {
+        let checked = testSettings.inventoryYears.includes(year) ? "checked" : "";
+        html += `
+        <div class='label-checkbox-container'>
+            <label for='year_${year}'>${year}</label>
+            <input id='year_${year}' type='checkbox' value='${year}' ${checked}/>
+        </div>
+        `;
+    }
+
+    document.getElementById("settings-inv-years").innerHTML = html;
+}
+
+async function openBrowseDialog(path) {
+    try {
+        const browsePath = await openBrowseDialog(path);
+        return browsePath;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
 }
 
 async function updateAvailableSpecies() {
@@ -138,6 +257,60 @@ async function updateAvailableSpecies() {
     document.getElementById("species-list").innerHTML = speciesOptions;
 
     console.log(`Updated available species with ${availableSpecies.length} elements`);
+}
+
+async function executeTester() {
+    try {
+        // Save settings without closing the dialog
+        saveSettingsChanges(false);
+
+        const testWarning = "Are you sure you want to test this directory? " +
+            "Any previously saved 'nvcs-output.db' file will be overwritten if testing is successful.";
+        if (!await confirm(testWarning))
+            return;
+        
+        document.getElementById("testing-dialog").showModal();
+        const newDirectoryName = document.getElementById("json-directory-path").value;
+        const response = await window.electronAPI.executeTester(newDirectoryName, testSettings);
+
+        if (!response.success)
+            throw new Error("Unexpected error while testing");
+
+        document.getElementById("testing-dialog").close();
+        document.getElementById("settings-dialog").close();
+        
+        const message = `Successfully saved test results to the following location: ${response.outputDbPath}`;
+        alert(message);
+        return;
+    }
+    catch (error) {
+        document.getElementById("testing-dialog").close();
+        alert(error);
+        return;
+    }
+}
+
+async function openJsonDirectory() {
+    try {
+        const targetPath = document.getElementById("json-directory-path").value;
+        await electronAPI.openDirectory(targetPath);
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
+}
+
+async function markUnsavedChanges(value) {
+    try {
+        await electronAPI.markUnsavedChanges(value);
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
 }
 
 function createEmptyHierarchyElement() {
@@ -225,7 +398,9 @@ function generateListEntry(element) {
 }
 
 function openJsonDialog(hierarchyName) {
-    showJsonDialog();
+    // Open the dialog
+    const dialog = document.getElementById("json-dialog");
+    showDialog(dialog);
 
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
@@ -285,32 +460,9 @@ function openJsonDialog(hierarchyName) {
     const inputTypes = document.querySelectorAll(".input-value");
     for (const inputType of inputTypes)
         checkInputInList(inputType);
-}
 
-function showJsonDialog() {
-    const dialog = document.getElementById("json-dialog");
-    dialog.classList.remove("hidden");
-
-    const dialogBody = dialog.querySelector(".body-container");
-    dialogBody.scroll({ top: 0 });
-}
-
-function hideJsonDialog() {
-    const dialog = document.getElementById("json-dialog");
-    dialog.classList.add("hidden");
-}
-
-function closeJsonDialog() {
-    hideJsonDialog();
-
-    const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
-    const isNew = openedHierarchyName == "";
-
-    // Delete newly-added but unsaved hierarchy elements
-    if (isNew) {
-        hierarchy = hierarchy.filter(i => i.hierarchyName != openedHierarchyName);
-    }
-
+    // Mark invalid trigger value
+    checkNodeTrigger();
 }
 
 function createElementFromString(htmlString) {
@@ -327,12 +479,12 @@ function addFilter() {
     filterContainer.insertBefore(newFilterElement, addFilterButton);
 }
 
-function addInputFilter(identifier, bulkAdd = false) {
+async function addInputFilter(identifier, bulkAdd = false) {
     if (bulkAdd) {
         const message = "Are you sure you want to bulk-add these filters? " +
         "Unique values will be extracted from the comma-separated 'Value' field and assigned the " +
         "selected 'Type' field. These can all be modified or removed afterwards if necessary.";
-        if (!confirm(message))
+        if (!await confirm(message))
             return;
     }
 
@@ -380,8 +532,8 @@ function createFilter(filterKey, inputFilters) {
     let html = `
     <div class='filter-container' id="${identifier}">
         <div class='sub-content-header-container'>
-            <label for="filter-${filterKey}">Name:</label>
-            <input type="text" id="filter-${filterKey}" value="${filterKey}"/>
+            <label for="filter-${identifier}">Name:</label>
+            <input type="text" id="filter-${identifier}" class="filter-name-input" value="${filterKey}" onblur="checkNodeTrigger()"/>
             <button onclick="deleteElement('${identifier}', true)">Delete Filter</button>
         </div>
         <div class='sub-content-container'>
@@ -410,7 +562,7 @@ function createFilter(filterKey, inputFilters) {
                 <button onclick="addInputFilter('${identifier}', false)" title='The full input will be added as a single filter'>
                     Add Single
                 </button>
-                <button onclick="addInputFilter('${identifier}', true)" title='Comma-separate the individual values to add multiple filters'>
+                <button onclick="addInputFilter('${identifier}', true)" title='The full input will be separated based on commas and added as separate filters'>
                     Add Bulk
                 </button>
             </div>
@@ -462,9 +614,9 @@ function createOptions(options, selectedOption = null) {
     return html;
 }
 
-function deleteElement(identifier, confirmation = false) {
+async function deleteElement(identifier, confirmation = false) {
     const message = "Are you sure you want to delete this element?";
-    if (confirmation && !confirm(message))
+    if (confirmation && !await confirm(message))
         return;
 
     const container = document.getElementById(identifier);
@@ -569,17 +721,23 @@ async function saveJsonChanges() {
 
     // Close dialog & render new changes
     console.log(newHierarchyElement);
-    closeJsonDialog();
+    stateChecker.modified = true;
+    document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
 
 async function updateJson() {
+    const inputPath = document.getElementById("json-directory-path");
+    const browsePath = await openBrowseDialog(inputPath.value);
+    if (!browsePath) return;
+    inputPath.value = browsePath;
+
     const updateWarning = "Are you sure you want to save changes to this directory? " +
         "Any previously saved changes within this directory will be overwritten.";
-    if (!confirm(updateWarning))
+    if (!await confirm(updateWarning))
         return;
 
-    const newDirectoryName = document.getElementById("json-directory-name").value;
+    const newDirectoryName = document.getElementById("json-directory-path").value;
     if (!newDirectoryName) {
         const message = "Please provide an exact directory path to store your updated JSON files";
         alert(message);
@@ -589,12 +747,15 @@ async function updateJson() {
     cleanUpWhitespace();
 
     try {
-        const updateDataResponse = await window.electronAPI.updateJson(newDirectoryName, hierarchy);
-        if (!updateDataResponse)
-            throw new Error("updateJson() failed to return a successful response");
-
+        const changes = detectHierarchyChanges();
+        console.log(changes)
+        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes);
+        initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
+
+        stateChecker.modified = false;
+        document.getElementById("btn-open-json").disabled = false;
         return;
     }
     catch (error) {
@@ -798,10 +959,10 @@ function recursivelyUpdatePositionalData(element) {
         recursivelyUpdatePositionalData(child);
 }
 
-function deleteHierarchyElement() {
+async function deleteHierarchyElement() {
     // Confirm before deleting
     const message = "Are you sure you want to delete this hierarchy element?";
-    if (!confirm(message))
+    if (!await confirm(message))
         return;
 
     // Get associated element
@@ -830,7 +991,8 @@ function deleteHierarchyElement() {
     recalculateHierarchyPositionalData(hierarchy);
 
     // Close dialog & render new changes
-    closeJsonDialog();
+    stateChecker.modified = true;
+    document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
 
@@ -909,6 +1071,7 @@ function checkForProblems() {
 
     // Check errors
     checkMissingTriggerParenthesesError();
+    checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
 
     // Check warnings
@@ -918,23 +1081,25 @@ function checkForProblems() {
     generateAlerts();
 }
 
-function createError(name, content) {
+function createError(name, content, source) {
     errors = errors.filter(i => i.name != name);
 
     errors.push({
         name: name,
-        content: content
+        content: content,
+        source: source
     });
 
     errors.sort((a,b) => a.name - b.name);
 }
 
-function createWarning(name, content) {
+function createWarning(name, content, source) {
     warnings = warnings.filter(i => i.name != name);
     
     warnings.push({
         name: name,
-        content: content
+        content: content,
+        source: source
     });
 
     warnings.sort((a,b) => a.name - b.name);
@@ -987,7 +1152,54 @@ function checkMissingTriggerParenthesesError() {
         </ul>
     `
 
-    createError("invalid-parentheses", html);
+    createError("invalid-trigger-parentheses", html, invalidParentheses);
+}
+
+function checkMissingFiltersInTrigger() {
+    const invalidTriggerFilters = findMissingTriggerFilters();
+    if (invalidTriggerFilters.length == 0)
+        return;
+    console.error("Invalid missing trigger filters", invalidTriggerFilters);
+
+    let html = `
+        <p>
+            Unknown filters mentioned within ${invalidTriggerFilters.length} hierarchy element triggers!
+            These triggers should only reference valid filter names or the classification key will fail to build.
+            <button id='btn-toggle-nested-trigger-filter-errors' aria-controls='nested-trigger-filter-errors' onclick="toggleNestedContent(this, 'errors')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-trigger-filter-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Trigger Filters" hidden>
+    `;
+
+    for (const info of invalidTriggerFilters) {
+        const elementButton = info.button.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            html += `
+                <li>
+                    ${elementFilter}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-trigger-filters", html, invalidTriggerFilters);
 }
 
 function checkInvalidBinaryValueError() {
@@ -1058,7 +1270,7 @@ function checkInvalidBinaryValueError() {
         </ul>
     `;
 
-    createError("invalid-binary", html);
+    createError("invalid-binary", html, invalidBinaryValues);
 }
 
 function checkInvalidSpeciesWarning() {
@@ -1130,7 +1342,7 @@ function checkInvalidSpeciesWarning() {
         </ul>
     `;
 
-    createWarning("invalid-species", html);
+    createWarning("invalid-species", html, invalidSpeciesInfo);
 }
 
 function findMissingTriggerParentheses() {
@@ -1138,14 +1350,40 @@ function findMissingTriggerParentheses() {
     for (const element of hierarchy) {
         const trigger = element.node.trigger;
         const joinedTrigger = trigger.join("\n");
-        const leftCount = (joinedTrigger.match(/\(/g) || []).length
-        const rightCount = (joinedTrigger.match(/\)/g) || []).length
-        if (leftCount == rightCount) continue;
+        const matchingParentheses = doParenthesesMatchInTrigger(joinedTrigger);
+        if (matchingParentheses) continue;
 
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
             button: findHierarchyButton(element.hierarchyName)
+        });
+    }
+
+    return invalid;
+}
+
+function doParenthesesMatchInTrigger(trigger) {
+    const leftCount = (trigger.match(/\(/g) || []).length
+    const rightCount = (trigger.match(/\)/g) || []).length
+    return leftCount == rightCount;
+}
+
+function findMissingTriggerFilters() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        if (element.hierarchyName == "ROOT") continue;
+        const trigger = element.node.trigger;
+        const joinedTrigger = trigger.join("\n");
+        const filters = Object.keys(element.node.filters);
+        const invalids = findMissingFiltersInTrigger(joinedTrigger, filters);
+        if (invalids.length == 0) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            invalids: invalids
         });
     }
 
@@ -1205,24 +1443,14 @@ function findHierarchyButton(hierarchyName) {
     return element;   
 }
 
-async function browseCustomJsonPath() {
-    const inputPath = document.getElementById("source-json-directory");
-    inputPath.value = await openBrowseDialog(inputPath.value);
-}
-
-async function browseUpdateJsonPath() {
-    const inputPath = document.getElementById("json-directory-name");
-    inputPath.value = await openBrowseDialog(inputPath.value);
-}
-
 async function openBrowseDialog(targetPath = "") {
     try {
         const returnedData = await window.electronAPI.openBrowse(targetPath);
-        return returnedData ?? targetPath;
+        return returnedData;
     }
     catch (error) {
         alert(error);
-        return targetPath;
+        return null;
     }
 }
 
@@ -1251,6 +1479,39 @@ function checkInputInList(element) {
     }
 }
 
+function checkNodeTrigger() {
+    const markedElement = document.getElementById("node-nodeTrigger");
+    const trigger = markedElement.value;
+    const dialogFilters = document.querySelectorAll(".filter-name-input");
+    const filters = [...dialogFilters].map(i => i.value);
+
+    let collectedErrors = [];
+    if (findMissingFiltersInTrigger(trigger, filters).length > 0)
+        collectedErrors.push("Invalid filters referenced.");
+    if (!doParenthesesMatchInTrigger(trigger))
+        collectedErrors.push("Mismatched parentheses detected.");
+
+    if (collectedErrors.length == 0) {
+        markElementAsType(markedElement, null);
+    }
+    else {
+        const message = collectedErrors.join(' ');
+        markElementAsType(markedElement, "error", message);
+    }
+}
+
+function markElementAsType(element, type, title = null) {
+    if (type == null) {
+        element.classList.remove(mapTypeToClass("error"))
+        element.classList.remove(mapTypeToClass("warning"))
+        element.removeAttribute("title");
+        return;
+    }
+    const listTypeClass = mapTypeToClass(type);
+    element.classList.add(listTypeClass);
+    element.setAttribute("title", title);
+}
+
 function mapTypeToClass(type) {
     switch (type) {
         case "warning":
@@ -1268,3 +1529,252 @@ function getOptionValuesFromDataList(list) {
     const listValues = [...listOptions].map(i => i.value);
     return listValues;
 }
+
+function convertStringToNumbersList(stringList) {
+    // stringList is '[2015, 2016, 2017]' or ['2015', '2016', '2017']
+    let numberSplit = stringList;
+    if (typeof(stringList) == 'string')
+        numberSplit = stringList.substring(1, stringList.length - 1).split(",");
+    
+    let numberList = [];
+    for (let number of numberSplit)
+        numberList.push(Number(number));
+
+    return numberList;
+}
+
+async function getDefaultTestSettings() {
+    let defaultSettings = await fetchSettings();
+    testSettings = {};
+    testSettings.inventoryYears = convertStringToNumbersList(defaultSettings.inventoryYears);
+    testSettings.additionalWhere = defaultSettings.additionalWhere;
+    testSettings.keepExisting = false;
+}
+
+async function openSettingsDialog() {
+
+    if (!availableYears) {
+        await fetchAvailableYears();
+    }
+
+    if (!testSettings) {
+        await getDefaultTestSettings();
+    }
+
+    updateSettingsDialogValues();
+
+    const dialog = document.getElementById("settings-dialog");
+    showDialog(dialog);
+}
+
+function updateSettingsDialogValues() {
+    updateAvailableYears();
+    document.getElementById("settings-additional-where").value = testSettings.additionalWhere;
+    document.getElementById("settings-keep-existing").checked = testSettings.keepExisting;
+}
+
+function showDialog(dialog) {
+    dialog.showModal();
+
+    const dialogBody = dialog.querySelector(".body-container");
+    dialogBody.scroll({ top: 0 });
+}
+
+function showPopup(dialog) {
+    dialog.showModal();
+
+    const dialogBody = dialog.querySelector(".popup-content");
+    dialogBody.scroll({ top: 0, left: 0 });
+}
+
+function showContentById(id) {
+    const element = document.getElementById(id);
+    element.removeAttribute("hidden");
+}
+
+function hideContentById(id) {
+    const element = document.getElementById(id);
+    element.setAttribute("hidden", "");
+}
+
+function saveSettingsChanges(closeAfter = true) {
+    const checkedInventoryYears = [...document.querySelectorAll("#settings-inv-years input[type='checkbox']:checked")];
+    let inventoryYears = checkedInventoryYears.map(i => i.value);
+    for (let i = 0; i < inventoryYears.length; i++) {
+        let stringValue = inventoryYears[i];
+        stringValue = stringValue.trim();
+        let numberValue = Number(stringValue);
+        if (isNaN(numberValue)) {
+            console.error(message);
+            alert(message);
+            continue;
+        }
+
+        inventoryYears[i] = numberValue;
+    }
+
+    const additionalWhere = document.getElementById("settings-additional-where").value;
+    const keepExisting = document.getElementById("settings-keep-existing").checked;
+
+    testSettings.inventoryYears = inventoryYears.sort();
+    testSettings.additionalWhere = additionalWhere.trim();
+    testSettings.keepExisting = keepExisting;
+    
+    if (closeAfter)
+        document.getElementById("settings-dialog").close();
+}
+
+async function resetSettings() {
+    const message = `Are you sure you want to reset your settings back to the default?`;
+    if (!await confirm(message))
+        return;
+
+    await getDefaultTestSettings();
+    updateSettingsDialogValues();
+}
+
+function findMissingFiltersInTrigger(trigger, filters) {
+    const regex = /(match|riv|spcov)\(([^\)]*)\)/g;
+    const references = trigger.match(regex) ?? [];
+    
+    let missing = [];
+    for (const reference of references) {
+        const filter = reference.replace("match(", "").replace("riv(", "").replace("spcov(", "").replace(")", "");
+        if (filters.includes(filter)) continue;
+        missing.push(reference);
+    }
+
+    return missing;
+}
+
+function detectHierarchyChanges() {
+    let changes = [];
+
+    // Record element changes
+    const newNames = hierarchy.map(i => i.hierarchyName);
+    const oldNames = initialHierarchy.map(i => i.hierarchyName);
+    const addedNames = newNames.filter(i => !oldNames.includes(i));
+    const removedNames = oldNames.filter(i => !newNames.includes(i));
+    const sameNames = oldNames.filter(i => newNames.includes(i));
+    for (const addedName of addedNames)
+        changes.push(generateLogMessage(`+ Added element "${addedName}"`, 0));
+    for (const removedName of removedNames)
+        changes.push(generateLogMessage(`- Removed element "${removedName}"`, 0));
+
+    for (const sameName of sameNames) {
+        const newElement = hierarchy.filter(i => i.hierarchyName == sameName)[0];
+        const initElement = initialHierarchy.filter(i => i.hierarchyName == sameName)[0];
+
+        // Record general changes
+        let elementChanges = [];
+        if (initElement.fileName != newElement.fileName)
+            elementChanges.push(generateLogMessage("~ Updated File Name", 1));
+
+        if (initElement.node.description.join("\r\n") != newElement.node.description.join("\r\n"))
+            elementChanges.push(generateLogMessage("~ Updated Description", 1));
+
+        if (initElement.node.id != newElement.node.id)
+            elementChanges.push(generateLogMessage("~ Updated ID", 1, initElement.node.id, newElement.node.id));
+
+        if (initElement.node.level != newElement.node.level)
+            elementChanges.push(generateLogMessage("~ Updated Level", 1, initElement.node.level, newElement.node.level));
+
+        if (initElement.node.trigger.join("\r\n") != newElement.node.trigger.join("\r\n"))
+            elementChanges.push(generateLogMessage("~ Updated Trigger", 1));
+
+        // Record Filter changes
+        const initFilterKeys = Object.keys(initElement.node.filters);
+        const newFilterKeys = Object.keys(newElement.node.filters);
+        const addedKeys = newFilterKeys.filter(i => !initFilterKeys.includes(i));
+        const removedKeys = initFilterKeys.filter(i => !newFilterKeys.includes(i));
+        const sharedKeys = initFilterKeys.filter(i => newFilterKeys.includes(i));
+        for (const addedKey of addedKeys)
+            elementChanges.push(generateLogMessage(`+ Added Filter Key "${addedKey}"`, 1));
+        for (const removedKey of removedKeys)
+            elementChanges.push(generateLogMessage(`- Removed Filter Key "${removedKey}"`, 1));
+
+        // Check sub-filters
+        for (const sharedKey of sharedKeys) {
+            const initSubFilters = initElement.node.filters[sharedKey];
+            const newSubFilters = newElement.node.filters[sharedKey];
+
+            let initSubFilterKeyValues = [];
+            for (const subFilter of initSubFilters) {
+                const subFilterKeys = Object.keys(subFilter);
+                const subFilterValues = Object.values(subFilter);
+                for (let i = 0; i < subFilterKeys.length; i++)
+                    initSubFilterKeyValues.push(`${subFilterKeys[i]}: ${subFilterValues[i]}`)
+            }
+
+            let newSubFilterKeyValues = [];
+            for (const subFilter of newSubFilters) {
+                const subFilterKeys = Object.keys(subFilter);
+                const subFilterValues = Object.values(subFilter);
+                for (let i = 0; i < subFilterKeys.length; i++)
+                    newSubFilterKeyValues.push(`${subFilterKeys[i]}: ${subFilterValues[i]}`)
+            }
+
+            // Record sub-filter changes
+            let subFilterChanges = [];
+            const addedSubKeys = newSubFilterKeyValues.filter(i => !initSubFilterKeyValues.includes(i));
+            const removeSubdKeys = initSubFilterKeyValues.filter(i => !newSubFilterKeyValues.includes(i));
+            for (const addedSubKey of addedSubKeys)
+                subFilterChanges.push(`+ Added Filter Value "${addedSubKey}"`);
+            for (const removedSubKey of removeSubdKeys)
+                subFilterChanges.push(`- Removed Filter Value "${removedSubKey}"`);
+
+            if (subFilterChanges.length > 0) {
+                elementChanges.push(generateLogMessage(`~ Updated Filter Key "${sharedKey}"`, 1));
+                for (const subFilterChange of subFilterChanges)
+                    elementChanges.push(generateLogMessage(subFilterChange, 2));
+            }
+        }
+
+        // Compile all changes
+        if (elementChanges.length == 0) 
+            continue;
+
+        changes.push(generateLogMessage(`~ Updated element "${sameName}"`, 0));
+        changes.push(...elementChanges);
+    }
+
+    return changes.join("\r\n");
+}
+
+function generateLogMessage(action, tabCount, before = null, after = null) {
+    const tabs = "\t".repeat(tabCount);
+    if (!before && !after)
+        return `${tabs}${action}`;
+    return `${tabs}${action} from "${before}" to "${after}"`;
+}
+
+async function confirm(message) {
+    return await new Promise((success, failure) => {
+        document.getElementById("confirm-dialog").returnValue = "";
+        document.getElementById("confirm-dialog-text").innerText = message;
+        confirmClose = (event) => {
+            document.getElementById("confirm-dialog").removeEventListener("close", confirmClose);
+            const dialogValue = document.getElementById("confirm-dialog").returnValue;
+            const confirmation = dialogValue === "confirm";
+            success(confirmation)
+        }
+        document.getElementById("confirm-dialog").addEventListener("close", confirmClose);
+        showPopup(document.getElementById("confirm-dialog"));
+    });
+}
+
+document.getElementById("confirm-dialog-ok").addEventListener("click", (event) => {
+    event.preventDefault();
+    document.getElementById("confirm-dialog").close("confirm");
+});
+
+function alert(message) {
+    document.getElementById("alert-dialog-text").innerText = message;
+    showPopup(document.getElementById("alert-dialog"));
+}
+
+document.getElementById("alert-dialog-ok").addEventListener("click", (event) => {
+    event.preventDefault();
+    document.getElementById("alert-dialog").close();
+});
+
