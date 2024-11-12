@@ -19,7 +19,7 @@ def read_line(f):
 def read_file(plotfile):
     from key_western_us import Plot
     from key_western_us import Tree
-    with open(plotfile, 'r') as f:
+    with open(plotfile, mode='r', encoding='utf-8') as f:
         next(f)
         # str.strip each column value (CT 2023-02-13):
         curr = prev = list(map(str.strip, read_line(f)))
@@ -36,7 +36,7 @@ def read_file(plotfile):
                     break;
 
 def read_csv(file_path):
-    with open(file_path, newline='') as f:
+    with open(file_path, newline='', encoding='utf-8') as f:
         reader = csv.reader(f)
         results = list(reader)
     return results
