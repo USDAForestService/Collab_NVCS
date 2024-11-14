@@ -42,7 +42,7 @@ def fixup(key_outfile, out_csv, out_db, out_db_tbl):
     header = header + ['soln_div_id','soln_div_desc','soln_mg_id','soln_mg_desc','soln_grp_id','soln_grp_desc']
     outRows = []
     writer.writerow(header)
-    with open(key_outfile, 'r') as f:
+    with open(key_outfile, mode='r', encoding='utf-8') as f:
         line = f.readline().strip()
         while line:
             outrow = []

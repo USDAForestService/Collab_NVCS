@@ -42,7 +42,7 @@ def run(outfile, debugfile, dbfile = None, plottbl = None, txtfile = None):
     #Classify plots read from a sqlite db or text file
     logging.basicConfig(filename=debugfile, filemode='w', level=logging.DEBUG) # or ERROR
     with Timer() as t:
-        with open(outfile, 'w') as f:
+        with open(outfile, mode='w', encoding='utf-8') as f:
             plots = read_sqlite(dbfile, plottbl) if txtfile is None else read_file(txtfile)
             for plot in plots:
                 solution = classifier.classify(plot)

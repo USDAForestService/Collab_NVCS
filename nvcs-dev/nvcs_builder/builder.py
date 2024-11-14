@@ -10,9 +10,9 @@ def _makevarcode(varname, alternatives):
 
 class ElementBuilder:
     def __init__(self, templatepath, elementpath):
-        with open(templatepath, 'r') as handle:
+        with open(templatepath, mode='r', encoding='utf-8') as handle:
             self.template = handle.read()
-        with open(elementpath,'r') as handle:    
+        with open(elementpath, mode='r', encoding='utf-8') as handle:    
             self.element = json.load(handle)['node']
 
     def build(self, ident):
