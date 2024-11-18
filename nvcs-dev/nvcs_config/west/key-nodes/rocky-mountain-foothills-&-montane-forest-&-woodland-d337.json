@@ -5,7 +5,7 @@
         "level": "division",
         "description": [
             "Tree composition and ecology matching one of the following options:",
-            "i.  Elevation below 1600 meters and located in ECOREGION M242C,",
+            "i.  Elevation below 2800 meters and located in ECOREGION M242C,",
             "    M242D – only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,",
             "    313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331,",
             "    M332, M333, M334, 341, M341, 342   ",
@@ -14,23 +14,23 @@
             "    a.  Tree composition dominated by one or more of STRONG diagnostic tree",
             "    species Abies concolor, Abies grandis, Abies lasiocarpa,",
             "    Acer grandidentatum, Juniperus scopulorum, Larix lyallii,",
-            "    Larix occidentalis, Picea engelmannii, Picea pungens, Pinus contorta,",
-            "    Pinus flexilis, Pinus ponderosa, Populus tremuloides, Pseudotsuga menziesii,",
+            "    Larix occidentalis, Picea glauca, Picea pungens, Pinus contorta,",
+            "    Pinus flexilis, Pinus ponderosa, Pinus longaeva, Populus tremuloides, Pseudotsuga menziesii,",
             "    Quercus gambelii, Thuja plicata,  or Tsuga heterophylla (=>50% RIV),",
             "    [Additional species not tracked by FIA Picea engelmannii x glauca hybrids]",
             "    OR",
             "    b.  The above tree species, but with =>20% RIV AND other MODERATE",
             "    diagnostic species any combination of Abies lasiocarpa var. arizonica,",
             "    Abies lasiocarpa var. lasiocarpa, Acer negundo, Betula papyrifera,",
-            "    Fraxinus pennsylvanica, Juniperus deppeana, Juniperus osteosperma,",
-            "    Picea glauca, Pinus edulis, Pinus monticola, Pinus strobiformis,",
+            "    Fraxinus pennsylvanica, Juniperus deppeana, Juniperus osteosperma, Picea engelmannii,",
+            "   , Pinus edulis, Pinus monticola, Pinus strobiformis,",
             "    Quercus macrocarpa, or Ulmus americana (>=30% RIV; i.e., together STRONG",
             "    and MODERATE diagnostic species =>50% RIV) ",
             "    OR",
             "    c.  Any EXOTIC = yes tree species =>80% RIV"
         ],
         "trigger": [
-            "elevation() < 1600 and match(ECOREGIONS) and ",
+            "elevation() < 2800 and match(ECOREGIONS) and ",
             "((riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
             "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and ",
             "riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or",
@@ -65,9 +65,6 @@
                     "species": "Larix occidentalis"
                 },
                 {
-                    "species": "Picea engelmannii"
-                },
-                {
                     "species": "Picea pungens"
                 },
                 {
@@ -93,6 +90,12 @@
                 },
                 {
                     "species": "Tsuga heterophylla"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Pinus longaeva"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -118,9 +121,6 @@
                     "species": "Juniperus osteosperma"
                 },
                 {
-                    "species": "Picea glauca"
-                },
-                {
                     "species": "Pinus edulis"
                 },
                 {
@@ -134,6 +134,12 @@
                 },
                 {
                     "species": "Ulmus americana"
+                },
+                {
+                    "species": "Prunus virginiana"
+                },
+                {
+                    "species": "Picea engelmannii"
                 }
             ],
             "EXOTIC_TREE_SPP": [

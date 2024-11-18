@@ -23,6 +23,8 @@
             " OR",
             " iid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
             " Do not include exotic species.",
+            " OR",
+            " iie. RIV Populus fremontii > 20% # test",
             "OR",
             "iii. If physiographic class code is HYDRIC = Y, OR if the physiographic class code is RIVERINE = Y, AND EITHER",
             " iiia. Facultative wet (W2) tree species have at least a combined RIV =>10%,",
@@ -31,15 +33,19 @@
             " iiib. Facultative wet (W2) tree species have at least a combined RIV => 10%,",
             " and the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 50%,",
             " OR",
-            " iiic. Facultative (W3) tree species have at least a combined RIV => 10%,",
-            " The combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,",
+            " iiic. Facultative (W3) tree species have at least a combined RIV => 10%, and",
+            " the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,",
             " OR",
             " iiid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).",
             " Do not include exotic species.",
             " OR",
+            " iiie. RIV Populus fremontii > 20% # test",
+            " OR",
             "iv. If the ecoregion (ECOREGION ) is 242 AND",
             " iva. The facultative wet (W2) tree species have at least a combined RIV =>20%, and the combination of",
-            "obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%"
+            "obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%",
+            " OR",
+            " va. The “facultative wet” (W2) tree species have at least a combined RIV =>520%, and the combination of “obligate wet” (W1) and “facultative wet” (W2) understory species and have a combined SPCOV =>50%"
         ],
         "trigger": [
             "(match(ECOREGIONS_SGP) and ( match(RIVERINE) or (riv(W2) + riv(W3) >= 50) ))",
@@ -47,11 +53,14 @@
             "                          or (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
             "                          or (riv(W3) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
             "                          or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
+            "                          or (riv(Populus_fremontii) >= 20)",
             "or (match(HYDRIC_OR_RIVERINE) and ( (riv(W2) >= 10 and spcov(W1_UNDERSTORY) >= 10)",
             "                                     or (riv(W2) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50)",
             "                                     or (riv(W3) >= 10 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 40)",
             "                                     or (riv(WI) > riv(UI) or spcov(WI_UNDERSTORY) > spcov(UI_UNDERSTORY)) ))",
-            "or (match(ECOREGIONS_IV) and (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50))"
+            "                                     or (riv(Populus_fremontii) >= 20)",
+            "or (match(ECOREGIONS_IV) and (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >= 50))",
+            "or (riv(W2) >= 20 and spcov(W1_UNDERSTORY) + spcov(W2_UNDERSTORY) >=50)"
         ],
         "filters": {
             "ECOREGIONS_SGP": [
@@ -84,7 +93,9 @@
             ],
             "W1_UNDERSTORY": [
                 {
-                    "wetland": "OBL",
+                    "wetland": "OBL"
+                },
+                {
                     "tallytree": "no"
                 }
             ],
@@ -95,7 +106,9 @@
             ],
             "W2_UNDERSTORY": [
                 {
-                    "wetland": "FACW",
+                    "wetland": "FACW"
+                },
+                {
                     "tallytree": "no"
                 }
             ],
@@ -106,28 +119,45 @@
             ],
             "WI": [
                 {
-                    "wetland": "OBL, FACW",
+                    "wetland": "OBL, FACW"
+                },
+                {
                     "exotic": "no"
                 }
             ],
             "WI_UNDERSTORY": [
                 {
-                    "wetland": "OBL, FACW",
-                    "exotic": "no",
+                    "wetland": "OBL, FACW"
+                },
+                {
+                    "exotic": "no"
+                },
+                {
                     "tallytree": "no"
                 }
             ],
             "UI": [
                 {
-                    "wetland": "UPL",
+                    "wetland": "UPL"
+                },
+                {
                     "exotic": "no"
                 }
             ],
             "UI_UNDERSTORY": [
                 {
-                    "wetland": "UPL",
-                    "exotic": "no",
+                    "wetland": "UPL"
+                },
+                {
+                    "exotic": "no"
+                },
+                {
                     "tallytree": "no"
+                }
+            ],
+            "Populus_fremontii": [
+                {
+                    "species": "Populus fremontii"
                 }
             ]
         }

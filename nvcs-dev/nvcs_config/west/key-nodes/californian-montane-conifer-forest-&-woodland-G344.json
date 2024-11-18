@@ -8,7 +8,7 @@
             "i. Located in ECOREGION 261B, 262A, 341E, 322A, M242A, 263, M261,",
             "341D, M242C, 342B, M262, M242B, 261A and tree",
             "composition dominated by one or more of STRONG DIAGNOSTIC species",
-            "Abies lowiana, Calocedrus decurrens, Pinus jeffreyi, Pinus lambertiana,",
+            "Abies concolor, Calocedrus decurrens, Pinus jeffreyi, Pinus lambertiana,",
             "Pinus monticola, Pinus ponderosa, Pseudotsuga menziesii,",
             "Quercus chrysolepis, Quercus kelloggii or Sequoiadendron giganteum",
             "(RIV=>50%),",
@@ -33,9 +33,6 @@
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
-                {
-                    "species": "Abies lowiana"
-                },
                 {
                     "species": "Calocedrus decurrens"
                 },
@@ -62,6 +59,9 @@
                 },
                 {
                     "species": "Sequoiadendron giganteum"
+                },
+                {
+                    "species": "Abies concolor"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [

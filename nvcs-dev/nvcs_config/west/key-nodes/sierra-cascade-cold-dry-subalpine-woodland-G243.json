@@ -7,7 +7,7 @@
             "Plot location and tree composition are as follows:",
             "i. Located in ECOREGION 342B, M242D, M242B, M242C, M261, 341D",
             "and tree composition dominated by one or more of",
-            "STRONG DIAGNOSTIC species Juniperus grandis, Pinus albicaulis, or",
+            "STRONG DIAGNOSTIC species Juniperus occidentalis, Pinus albicaulis, or",
             "Pinus contorta (RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
@@ -29,13 +29,13 @@
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
                 {
-                    "species": "Juniperus grandis"
-                },
-                {
                     "species": "Pinus albicaulis"
                 },
                 {
-                    "species": "Pinus contorta var. murrayana"
+                    "species": "Pinus contorta"
+                },
+                {
+                    "species": "Juniperus occidentalis"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [

@@ -5,8 +5,8 @@
         "level": "group",
         "description": [
             "Plot location and tree composition are as follows:",
-            "i. Located in ECOREGION 242B, 261A, M261A, M261B, M242A, M242B,",
-            "M242D, 242A, 263",
+            "i. Located in ECOREGION 261A, M261A, M261B, M242A, M242B,",
+            "M242D, 242, 263",
             "and tree composition dominated by one or more of STRONG",
             "DIAGNOSTIC species Picea sitchensis, Thuja plicata, or",
             "Tsuga heterophylla (RIV=>50%),",
@@ -15,7 +15,7 @@
             "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
             "combination of Abies amabilis, Abies grandis, Acer circinatum,",
             "Acer macrophyllum, Alnus rubra, Callitropsis nootkatensis,",
-            "Chamaecyparis lawsoniana, Frangula purshiana, or",
+            "Chamaecyparis lawsoniana, Frangula purshiana, Malus fusca, Prunus emarginata  or",
             "Pseudotsuga menziesii (>=30% RIV; i.e., together STRONG and",
             "MODERATE diagnostic species RIV =>50%)"
         ],
@@ -27,7 +27,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "242B, 261A, M261A, M261B, M242A, M242B, M242D, 242A, 263"
+                    "ecoregion": "261A, M261A, M261B, M242A, M242B, M242D, 242, 263"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
@@ -68,6 +68,12 @@
                 },
                 {
                     "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Malus fusca"
+                },
+                {
+                    "species": "Prunus emarginata"
                 }
             ]
         }

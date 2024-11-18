@@ -7,7 +7,7 @@
             "Plot location and tree composition are as follows:",
             "i. Located in ECOREGION M242, 242, M261, 263, 262,",
             "AND tree composition dominated by one or more of STRONG DRY",
-            "DIAGNOSTIC species Arbutus menziesii, Notholithocarpus densiflorus, Pinus ponderosa,",
+            "DIAGNOSTIC species Arbutus menziesii, Notholithocarpus densiflorus,",
             "Chrysolepis chrysophylla, Pseudotsuga macrocarpa ",
             "Pseudotsuga menziesii, or Quercus garryana (RIV=>50%),",
             "OR",
@@ -15,7 +15,7 @@
             "but with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any",
             "combination of Abies grandis, Acer macrophyllum,",
             "Abies bracteata, Calocedrus decurrens, Chamaecyparis lawsoniana, Pinus coulteri ",
-            "Juniperus occidentalis, Juniperus scopulorum, Pinus contorta,",
+            "Juniperus occidentalis, Juniperus scopulorum, Pinus contorta, Pinus ponderosa,",
             "Quercus chrysolepis, Quercus kelloggii, Taxus brevifolia, or",
             "Umbellularia californica",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
@@ -37,9 +37,6 @@
                 },
                 {
                     "species": "Notholithocarpus densiflorus"
-                },
-                {
-                    "species": "Pinus ponderosa"
                 },
                 {
                     "species": "Chrysolepis chrysophylla"
@@ -93,6 +90,9 @@
                 },
                 {
                     "species": "Umbellularia californica"
+                },
+                {
+                    "species": "Pinus ponderosa"
                 }
             ]
         }

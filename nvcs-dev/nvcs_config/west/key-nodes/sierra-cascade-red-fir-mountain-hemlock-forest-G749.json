@@ -8,12 +8,12 @@
             "i. Located in ECOREGION 242B, 342B, M242B, M242C, M261, 341D",
             "and tree composition dominated by one or more of STRONG",
             "DIAGNOSTIC species Abies magnifica, Abies shastensis [Abies",
-            "magnifica var. shastensis],, Abies procera, or Tsuga mertensiana",
+            "magnifica var. shastensis], Abies lasiocarpa, Abies procera, or Tsuga mertensiana",
             "(RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of Abies lasiocarpa, Pinus albicaulis, Pinus contorta,",
+            "combination of Abies concolor, Pinus albicaulis, Pinus contorta,",
             "Pinus jeffreyi, or Pinus monticola (>=30% RIV; i.e., together STRONG",
             "and MODERATE diagnostic species RIV =>50%)"
         ],
@@ -33,19 +33,19 @@
                     "species": "Abies magnifica"
                 },
                 {
-                    "species": "Abies shastensis"
+                    "species": "Abies magnifica var. shastensis"
                 },
                 {
                     "species": "Abies procera"
                 },
                 {
                     "species": "Tsuga mertensiana"
+                },
+                {
+                    "species": "Abies lasiocarpa"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
-                {
-                    "species": "Abies lasiocarpa"
-                },
                 {
                     "species": "Pinus albicaulis"
                 },
@@ -57,6 +57,9 @@
                 },
                 {
                     "species": "Pinus monticola"
+                },
+                {
+                    "species": "Abies concolor"
                 }
             ]
         }
