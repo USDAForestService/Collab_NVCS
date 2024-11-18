@@ -6,12 +6,12 @@
         "description": [
             "Plot location and tree composition are as follows:",
             "i. Located in ECOREGION M334A and tree composition dominated by one",
-            "or more of STRONG DIAGNOSTIC species Picea glauca (RIV=>50%),",
+            "or more of STRONG DIAGNOSTIC species Picea glauca or Populus tremuloides (RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species",
-            "Abies lasiocarpa, Pinus contorta,",
-            "Pinus ponderosa, Pseudotsuga menziesii, or Populus tremuloides in any",
+            "Abies lasiocarpa, Picea engelmannii, Pinus contorta,",
+            "Pinus ponderosa or Pseudotsuga menziesii in any",
             "combination of (>=30% RIV; i.e., together STRONG and MODERATE",
             "diagnostic species RIV =>50%)"
         ],
@@ -29,6 +29,9 @@
             "STRONG_DIAGNOSTIC_SPECIES": [
                 {
                     "species": "Picea glauca"
+                },
+                {
+                    "species": "Populus tremuloides"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -45,7 +48,7 @@
                     "species": "Pseudotsuga menziesii"
                 },
                 {
-                    "species": "Populus tremuloides"
+                    "species": "Picea engelmannii"
                 }
             ]
         }

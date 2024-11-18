@@ -13,7 +13,7 @@
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of Juniperus monosperma, Juniperus osteosperma, or",
+            "combination of Juniperus monosperma, Juniperus osteosperma, Quercus gambelii, Quercus grisea  or",
             "Juniperus scopulorum (>=30% RIV; i.e., together STRONG and MODERATE",
             "diagnostic species RIV =>50%)"
         ],
@@ -42,6 +42,12 @@
                 },
                 {
                     "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Quercus gambelii"
+                },
+                {
+                    "species": "Quercus grisea"
                 }
             ]
         }

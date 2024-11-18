@@ -15,7 +15,7 @@
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV AND with other MODERATE MESIC TO WET DIAGNOSTIC species",
-            "in any combination of Populus tremuloides or Tsuga mertensiana",
+            "in any combination of Populus tremuloides, Pseudotsuga menziesii or Tsuga mertensiana",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -43,6 +43,9 @@
                 },
                 {
                     "species": "Tsuga mertensiana"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
                 }
             ]
         }

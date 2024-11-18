@@ -250,17 +250,17 @@ class ClassificationKey:
         self.nodes[108] = Node(108, 106, element_108(), 'Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)')
         self.nodes[109] = Node(109, 106, element_109(), 'Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)')
         self.nodes[110] = Node(110, 106, element_110(), 'Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)')
-        self.nodes[111] = Node(111, 105, element_111(), 'Central Rocky Mountain Mesic Lower Montane Forest (M500)')
-        self.nodes[112] = Node(112, 111, element_112(), 'East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)')
-        self.nodes[113] = Node(113, 111, element_113(), 'Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)')
-        self.nodes[114] = Node(114, 111, element_114(), 'Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)')
-        self.nodes[115] = Node(115, 105, element_115(), 'Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)')
-        self.nodes[116] = Node(116, 115, element_116(), 'Central Rocky Mountain Montane White Spruce Forest (G345)')
-        self.nodes[117] = Node(117, 115, element_117(), 'Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)')
-        self.nodes[118] = Node(118, 115, element_118(), 'Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)')
-        self.nodes[119] = Node(119, 115, element_119(), 'Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)')
-        self.nodes[120] = Node(120, 115, element_120(), 'Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)')
-        self.nodes[121] = Node(121, 115, element_121(), 'Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)')
+        self.nodes[111] = Node(111, 105, element_111(), 'Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)')
+        self.nodes[112] = Node(112, 111, element_112(), 'Central Rocky Mountain Montane White Spruce Forest (G345)')
+        self.nodes[113] = Node(113, 111, element_113(), 'Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)')
+        self.nodes[114] = Node(114, 111, element_114(), 'Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)')
+        self.nodes[115] = Node(115, 111, element_115(), 'Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)')
+        self.nodes[116] = Node(116, 111, element_116(), 'Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)')
+        self.nodes[117] = Node(117, 111, element_117(), 'Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)')
+        self.nodes[118] = Node(118, 105, element_118(), 'Central Rocky Mountain Mesic Lower Montane Forest (M500)')
+        self.nodes[119] = Node(119, 118, element_119(), 'East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)')
+        self.nodes[120] = Node(120, 118, element_120(), 'Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)')
+        self.nodes[121] = Node(121, 118, element_121(), 'Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)')
         self.nodes[122] = Node(122,  77, element_122(), 'Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)')
         self.nodes[123] = Node(123, 122, element_123(), 'Rocky Mountain Subalpine-High Montane Forest (M020)')
         self.nodes[124] = Node(124, 123, element_124(), 'Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)')
@@ -357,6 +357,8 @@ def element_003():
     #  OR
     #  iid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).
     #  Do not include exotic species.
+    #  OR
+    #  iie. RIV Populus fremontii > 20% # test
     # OR
     # iii. If physiographic class code is HYDRIC = Y, OR if the physiographic class code is RIVERINE = Y, AND EITHER
     #  iiia. Facultative wet (W2) tree species have at least a combined RIV =>10%,
@@ -365,15 +367,19 @@ def element_003():
     #  iiib. Facultative wet (W2) tree species have at least a combined RIV => 10%,
     #  and the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 50%,
     #  OR
-    #  iiic. Facultative (W3) tree species have at least a combined RIV => 10%,
-    #  The combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,
+    #  iiic. Facultative (W3) tree species have at least a combined RIV => 10%, and
+    #  the combination of OBLigate wet (W1) or facultative wet (W2) understory species SPCOV => 40%,
     #  OR
     #  iiid. Wetland indicators for trees (% RIV) or understory (% SPCOV) species W1, W2 (WI) > Upland indicators (UI).
     #  Do not include exotic species.
     #  OR
+    #  iiie. RIV Populus fremontii > 20% # test
+    #  OR
     # iv. If the ecoregion (ECOREGION ) is 242 AND
     #  iva. The facultative wet (W2) tree species have at least a combined RIV =>20%, and the combination of
     # obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%
+    #  OR
+    #  va. The “facultative wet” (W2) tree species have at least a combined RIV =>520%, and the combination of “obligate wet” (W1) and “facultative wet” (W2) understory species and have a combined SPCOV =>50%
 
     ECOREGIONS_SGP = PatternList('ECOREGIONS_SGP',
         {'ecoregion': '315Ce, 315G, 321B'}
@@ -397,7 +403,8 @@ def element_003():
     )
 
     W1_UNDERSTORY = PatternList('W1_UNDERSTORY',
-        {'wetland': 'OBL', 'tallytree': 'no'}
+        {'wetland': 'OBL'},
+        {'tallytree': 'no'}
     )
 
     W2 = PatternList('W2',
@@ -405,7 +412,8 @@ def element_003():
     )
 
     W2_UNDERSTORY = PatternList('W2_UNDERSTORY',
-        {'wetland': 'FACW', 'tallytree': 'no'}
+        {'wetland': 'FACW'},
+        {'tallytree': 'no'}
     )
 
     W3 = PatternList('W3',
@@ -413,19 +421,29 @@ def element_003():
     )
 
     WI = PatternList('WI',
-        {'wetland': 'OBL, FACW', 'exotic': 'no'}
+        {'wetland': 'OBL, FACW'},
+        {'exotic': 'no'}
     )
 
     WI_UNDERSTORY = PatternList('WI_UNDERSTORY',
-        {'wetland': 'OBL, FACW', 'exotic': 'no', 'tallytree': 'no'}
+        {'wetland': 'OBL, FACW'},
+        {'exotic': 'no'},
+        {'tallytree': 'no'}
     )
 
     UI = PatternList('UI',
-        {'wetland': 'UPL', 'exotic': 'no'}
+        {'wetland': 'UPL'},
+        {'exotic': 'no'}
     )
 
     UI_UNDERSTORY = PatternList('UI_UNDERSTORY',
-        {'wetland': 'UPL', 'exotic': 'no', 'tallytree': 'no'}
+        {'wetland': 'UPL'},
+        {'exotic': 'no'},
+        {'tallytree': 'no'}
+    )
+
+    Populus_fremontii = PatternList('Populus_fremontii',
+        {'species': 'Populus fremontii'}
     )
 
     def match(plot):
@@ -435,11 +453,14 @@ def element_003():
                                          or (plot.riv(W2) >= 20 and plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >= 40)
                                          or (plot.riv(W3) >= 20 and plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >= 50)
                                          or (plot.riv(WI) > plot.riv(UI) or plot.spcov(WI_UNDERSTORY) > plot.spcov(UI_UNDERSTORY)) ))
+                                         or (plot.riv(Populus_fremontii) >= 20)
                or (plot.match(HYDRIC_OR_RIVERINE) and ( (plot.riv(W2) >= 10 and plot.spcov(W1_UNDERSTORY) >= 10)
                                                     or (plot.riv(W2) >= 10 and plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >= 50)
                                                     or (plot.riv(W3) >= 10 and plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >= 40)
                                                     or (plot.riv(WI) > plot.riv(UI) or plot.spcov(WI_UNDERSTORY) > plot.spcov(UI_UNDERSTORY)) ))
-               or (plot.match(ECOREGIONS_IV) and (plot.riv(W2) >= 20 and plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >= 50)))
+                                                    or (plot.riv(Populus_fremontii) >= 20)
+               or (plot.match(ECOREGIONS_IV) and (plot.riv(W2) >= 20 and plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >= 50))
+               or (plot.riv(W2) >= 20 and plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >=50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -471,13 +492,13 @@ def element_005():
     code = 'F026'
 
     # Forests found in ECOREGION 315, 331, 332, M334, AND
-    # tree composition is dominated by one or more of Acer negundo,
+    # tree composition is dominated by one or more of Acer negundo, Betula occidentalis
     # Carya illinoinensis, Celtis laevigata, Celtis laevigata var. reticulata,
     # Celtis occidentalis, Fraxinus pennsylvanica, Juglans microcarpa,
-    # Juglans nigra, Juglans major, Platanus occidentalis, Populus deltoides,
+    # Juglans nigra, Juglans major, Platanus occidentalis, Populus angustifolia Populus deltoides,
     # Quercus macrocarpa, Quercus shumardii, Quercus virginiana, Salix nigra,
     # Salix amygdaloides, Sapindus saponaria var. drummondii,
-    # Sideroxylon lanuginosum, Taxodium distichum, or Ulmus americana
+    # Sideroxylon lanuginosum ssp. lanuginosum, Taxodium distichum, or Ulmus americana
     # (=>20% RIV)
 
     ECOREGIONS_GP = PatternList('ECOREGIONS_GP',
@@ -502,9 +523,11 @@ def element_005():
         {'species': 'Salix nigra'},
         {'species': 'Salix amygdaloides'},
         {'species': 'Sapindus saponaria var. drummondii'},
-        {'species': 'Sideroxylon lanuginosum'},
+        {'species': 'Sideroxylon lanuginosum ssp. lanuginosum'},
         {'species': 'Taxodium distichum'},
-        {'species': 'Ulmus americana'}
+        {'species': 'Ulmus americana'},
+        {'species': 'Betula occidentalis'},
+        {'species': 'Populus angustifolia'}
     )
 
     def match(plot):
@@ -522,7 +545,7 @@ def element_006():
     code = 'D011'
 
     # Tree composition and ecology matching one of the following options:
-    # i. Located in ECOREGION ECOREGION 332, M334, 331 â€“ exclude 331A, 
+    # i. Located in ECOREGION ECOREGION 332, M334, 331 – exclude 331A, 
     # AND
     # ii. EITHER
     # a. Tree composition dominated by one or more of STRONG diagnostic tree species
@@ -585,7 +608,7 @@ def element_007():
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
     # ruderal native or EXOTIC = yes (< 20% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -607,7 +630,7 @@ def element_008():
 
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION 315D, 332A, 332B, 315A, 315B, 315C, 315F,
-    # 315G, M313B, 331 â€“ exclude 331A and 331J, M332D, M334A, 332C, 332D,
+    # 315G, M313B, 331 – exclude 331A and 331J, M332D, M334A, 332C, 332D,
     # 332F, 332E and tree composition dominated by one or
     # more of STRONG DIAGNOSTIC species Populus deltoides (RIV=>50%),
     # OR
@@ -763,7 +786,7 @@ def element_011():
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
     # ruderal native or EXOTIC = yes (< 20% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -968,7 +991,7 @@ def element_016():
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
     # ruderal native or EXOTIC = yes (< 20% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -1046,7 +1069,7 @@ def element_018():
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
     # combination of Abies grandis, Abies magnifica, Pinus contorta, Thuja plicata, or
-    # Tsuga mertensiana [PLACEHOLDER â€“ INSERT P2 VEG] (>=30% RIV; i.e.,
+    # Tsuga mertensiana [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
     # together STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -1096,7 +1119,7 @@ def element_019():
     # combination of Acer macrophyllum, Chamaecyparis lawsoniana,
     # Notholithocarpus densiflorus, Platanus racemosa, Populus fremontii,
     # Pseudotsuga menziesii, Quercus lobata, Thuja plicata, or
-    # Tsuga heterophylla [PLACEHOLDER â€“ INSERT P2 VEG] (>=30% RIV; i.e.,
+    # Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
     # together STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -1170,7 +1193,7 @@ def element_021():
     # AND
     # ii. EITHER
     # a. Tree composition dominated by one or more of STRONG diagnostic tree species
-    # Abies lasiocarpa, Abies grandis, Acer grandidentatum, Acer negundo,
+    # Abies lasiocarpa, Abies grandis, Acer grandidentatum, Acer negundo, Betula occidentalis,
     # Juniperus scopulorum, Picea engelmannii, Picea pungens, Pinus contorta,
     # Pinus ponderosa, Populus angustifolia, Populus balsamifera, Populus tremuloides,
     # or Pseudotsuga menziesii (=>50% RIV),
@@ -1202,7 +1225,8 @@ def element_021():
         {'species': 'Populus angustifolia'},
         {'species': 'Populus balsamifera'},
         {'species': 'Populus tremuloides'},
-        {'species': 'Pseudotsuga menziesii'}
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Betula occidentalis'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -1247,7 +1271,7 @@ def element_022():
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
     # ruderal native or EXOTIC = yes (< 20% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -1560,7 +1584,7 @@ def element_028():
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
     # ruderal native or EXOTIC = yes (< 20% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -1818,7 +1842,7 @@ def element_033():
     # has been allowed to succeed more-or-less spontaneously). Tree
     # composition dominated by ruderal native or EXOTIC = yes
     # (>= 80% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division
 
     RUDERAL_OR_EXOTIC = PatternList('RUDERAL_OR_EXOTIC',
         {'exotic': 'yes'},
@@ -1872,7 +1896,7 @@ def element_036():
     code = ''
 
     # Tree composition and ecology matching one of the following options
-    # i. Located in ECOREGION 315 â€“ exclude 315H, 332, 331 â€“ exclude 331A and 331J, AND
+    # i. Located in ECOREGION 315 – exclude 315H, 332, 331 – exclude 331A and 331J, AND
     # EITHER
     # ii. Tree composition is dominated by one or more of Betula papyrifera
     # or Populus tremuloides =>20% RIV and Abies concolor,
@@ -2279,7 +2303,7 @@ def element_043():
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
     # ruderal native or EXOTIC = yes (< 20% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -2551,7 +2575,7 @@ def element_050():
     code = 'D326'
 
     # Tree composition and ecology matching one of the following options:
-    # i. Located in ECOREGION 315, 331 â€“ exclude 331A and 331J, 332
+    # i. Located in ECOREGION 315, 331 – exclude 331A and 331J, 332
     # AND
     # ii. EITHER
     # a. Tree composition dominated by one or more of STRONG diagnostic
@@ -2659,7 +2683,7 @@ def element_052():
     code = 'G145'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION ECOREGION 315F, 315B, 332, 331 â€“ 
+    # i. Located in ECOREGION ECOREGION 315F, 315B, 332, 331 – 
     # exclude 331A and 331J and tree composition dominated by one or more
     # of STRONG DIAGNOSTIC species Betula papyrifera, Fraxinus pennsylvanica,
     # Juniperus scopulorum, Populus tremuloides, Ulmus americana, or
@@ -3090,27 +3114,11 @@ def element_059():
 
     # Tree composition and ecology matching one of the following options:
     # i. EITHER
-    # a. Tree composition contains one or more of STRONG diagnostic tree
-    # species Aesculus californica, Arbutus menziesii, Calocedrus decurrens,
-    # Chamaecyparis lawsoniana, Chrysolepis chrysophylla,
-    # Hesperocyparis bakeri, Hesperocyparis forbesii,
-    # Hesperocyparis macnabiana, Hesperocyparis macrocarpa,
-    # Hesperocyparis pigmaea, Hesperocyparis sargentii, Juglans californica,
-    # Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata,
-    # Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata,
-    # Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis,
-    # Quercus douglasii, Quercus engelmannii, Quercus kelloggii,
-    # Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei
-    # or Umbellularia californica (=>50% RIV),
-    # [Additional tree species not tracked by FIA include
-    # Hesperocyparis abramsiana, Hesperocyparis goveniana,
-    # Hesperocyparis nevadensis, Hesperocyparis stephensonii,
-    # Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis,
-    # Quercus tomentella]
+    # a. Tree composition contains one or more of STRONG diagnostic tree species Abies concolor, Aesculus californica, Arbutus menziesii, Calocedrus decurrens, Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Fraxinus latifolia, Cupressus bakeri, Cupressus forbesii, Cupressus macnabiana, Cupressus macrocarpa, Cupressus goveniana ssp. pigmaea, Cupressus sargentii, Juglans californica, Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata, Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata, Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis, Quercus douglasii, Quercus engelmannii, Quercus kelloggii, Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei,  or Umbellularia californica (=>50% RIV), [Additional tree species not tracked by FIA include Cupressus abramsiana, Cupressus goveniana, CupressusHesperocyparis nevadensis, Cupressus Hesperocyparis stephensonii, Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis, Quercus tomentella] 
     # OR
     # b. The above tree species, but with =>20% RIV AND other MODERATE
     # diagnostic species any combination of Pinus lambertiana,
-    # Pinus monophylla, Pinus ponderosa, Pseudotsuga macrocarpa,
+    # Pinus monophylla, Pinus ponderosa, Pseudotsuga macrocarpa, sequoia sempervirens
     # or Pseudotsuga menziesii
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
@@ -3128,12 +3136,6 @@ def element_059():
         {'species': 'Calocedrus decurrens'},
         {'species': 'Chamaecyparis lawsoniana'},
         {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Hesperocyparis bakeri'},
-        {'species': 'Hesperocyparis forbesii'},
-        {'species': 'Hesperocyparis macnabiana'},
-        {'species': 'Hesperocyparis macrocarpa'},
-        {'species': 'Hesperocyparis pigmaea'},
-        {'species': 'Hesperocyparis sargentii'},
         {'species': 'Juglans californica'},
         {'species': 'Juniperus californica'},
         {'species': 'Notholithocarpus densiflorus'},
@@ -3150,8 +3152,16 @@ def element_059():
         {'species': 'Quercus kelloggii'},
         {'species': 'Quercus lobata'},
         {'species': 'Quercus wislizeni'},
-        {'species': 'Quercus parvula var. shrevei'},
-        {'species': 'Umbellularia californica'}
+        {'species': 'Umbellularia californica'},
+        {'species': 'Abies concolor'},
+        {'species': 'Fraxinus latifolia'},
+        {'species': 'Cupressus bakeri'},
+        {'species': 'Cupressus forbesii'},
+        {'species': 'Cupressus macnabiana'},
+        {'species': 'Cupressus macrocarpa'},
+        {'species': 'Cupressus goveniana ssp. pygmaea'},
+        {'species': 'Cupressus sargentii'},
+        {'species': 'Quercus parvula'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -3159,7 +3169,8 @@ def element_059():
         {'species': 'Pinus monophylla'},
         {'species': 'Pinus ponderosa'},
         {'species': 'Pseudotsuga macrocarpa'},
-        {'species': 'Pseudotsuga menziesii'}
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Sequoia sempervirens'}
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
@@ -3343,7 +3354,7 @@ def element_063():
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
     # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
-    # (See Appendix xx [PLACEHOLDER] â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER] – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -3389,10 +3400,10 @@ def element_064():
     # OR
     # c. Any EXOTIC = yes tree species =>80% RIV
     # AND
-    # ii. Located in ECOREGION 322, 313C, M313, 321, 315
+    # ii. Located in ECOREGION 322, 313, M313, 321, 315
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '322, 313C, M313, 321, 315'}
+        {'ecoregion': '322, 313, M313, 321, 315'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
@@ -3466,7 +3477,7 @@ def element_065():
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
     # ruderal native or EXOTIC = yes (< 20% RIV)
-    # (See Appendix xx [PLACEHOLDER]) â€“ needs to be refined for this Division)
+    # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'yes'}
@@ -4306,32 +4317,31 @@ def element_080():
     code = 'G205'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 242A, M242A, M261A, 263
+    # i. Located in ECOREGION 242, M242A, M261A, 263
     # and tree composition dominated by one or more of STRONG
-    # DIAGNOSTIC species Picea sitchensis, Pinus contorta,
-    # or Pseudotsuga menziesii (RIV=>50%),
+    # DIAGNOSTIC species Pinus contorta(RIV=>50%),
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Abies grandis, Arbutus menziesii, Pinus muricata, or
-    # Tsuga heterophylla [PLACEHOLDER â€“ INSERT P2 VEG] (>=30% RIV; i.e.,
+    # combination of Abies grandis, Arbutus menziesii, Pinus muricata, Picea sitchensis, Pseudotsuga menziesii  or
+    # Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
     # together STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '242A, M242A, M261A, 263'}
+        {'ecoregion': '242, M242A, M261A, 263'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Picea sitchensis'},
-        {'species': 'Pinus contorta'},
-        {'species': 'Pseudotsuga menziesii'}
+        {'species': 'Pinus contorta'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Abies grandis'},
         {'species': 'Arbutus menziesii'},
         {'species': 'Pinus muricata'},
-        {'species': 'Tsuga heterophylla'}
+        {'species': 'Tsuga heterophylla'},
+        {'species': 'Picea sitchensis'},
+        {'species': 'Pseudotsuga menziesii'}
     )
 
     def match(plot):
@@ -4397,7 +4407,7 @@ def element_082():
     code = 'G237'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION M242C, M242D, M261A, M261D, M242A, M242B, 242B, 242A
+    # i. Located in ECOREGION M242C, M242D, M261A, M261D, M242A, M242B, 242
     # and tree composition dominated
     # by one or more of STRONG DIAGNOSTIC species Acer macrophyllum or
     # Alnus rubra (RIV=>50%),
@@ -4406,11 +4416,11 @@ def element_082():
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
     # combination of Abies grandis, Cornus nuttallii, Frangula purshiana,
     # Picea sitchensis, Pseudotsuga menziesii, Quercus garryana,
-    # Thuja plicata, or Tsuga heterophylla (>=30% RIV; i.e., together STRONG
+    # Thuja plicata, Malus fusca, Prunus emarginata or Tsuga heterophylla (>=30% RIV; i.e., together STRONG
     # and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': 'M242C, M242D, M261A, M261D, M242A, M242B, 242B, 242A'}
+        {'ecoregion': 'M242C, M242D, M261A, M261D, M242A, M242B, 242'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
@@ -4426,7 +4436,9 @@ def element_082():
         {'species': 'Pseudotsuga menziesii'},
         {'species': 'Quercus garryana'},
         {'species': 'Thuja plicata'},
-        {'species': 'Tsuga heterophylla'}
+        {'species': 'Tsuga heterophylla'},
+        {'species': 'Malus fusca'},
+        {'species': 'Prunus emarginata'}
     )
 
     def match(plot):
@@ -4446,7 +4458,7 @@ def element_083():
     code = 'G240'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 261A, M242A, M261A, M261B, 263, 242A, 242B,
+    # i. Located in ECOREGION 261A, M242A, M261A, M261B, 263, 242
     # M242B, M242D and tree composition
     # dominated by one or more of STRONG DIAGNOSTIC species
     # Pseudotsuga menziesii, Tsuga heterophylla, or Thuja plicata
@@ -4454,11 +4466,11 @@ def element_083():
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Acer macrophyllum or Alnus rubra (>=30% RIV; i.e.,
+    # combination of Acer macrophyllum, Alnus rubra, Prunus emarginata, or Malus fusca (>=30% RIV; i.e.,
     # together STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '261A, M242A, M261A, M261B, 263, 242A, 242B, M242B, M242D'}
+        {'ecoregion': '261A, M242A, M261A, M261B, 263, 242, M242B, M242D'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
@@ -4469,7 +4481,9 @@ def element_083():
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Acer macrophyllum'},
-        {'species': 'Alnus rubra'}
+        {'species': 'Alnus rubra'},
+        {'species': 'Malus fusca'},
+        {'species': 'Prunus emarginata'}
     )
 
     def match(plot):
@@ -4489,19 +4503,19 @@ def element_084():
     code = 'G241'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 242B, M242, 242A
+    # i. Located in ECOREGION M242, 242
     # and tree composition dominated
     # by one or more of STRONG DIAGNOSTIC species Abies amabilis or
     # Tsuga heterophylla (RIV=>50%),
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Abies lasiocarpa, Abies procera, or
+    # combination of Abies lasiocarpa, Abies procera, Malus fusca, Prunus emarginata  or
     # Callitropsis nootkatensis (>=30% RIV; i.e., together STRONG and
     # MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '242B, M242, 242A'}
+        {'ecoregion': 'M242, 242'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
@@ -4512,7 +4526,9 @@ def element_084():
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Abies lasiocarpa'},
         {'species': 'Abies procera'},
-        {'species': 'Callitropsis nootkatensis'}
+        {'species': 'Callitropsis nootkatensis'},
+        {'species': 'Malus fusca'},
+        {'species': 'Prunus emarginata'}
     )
 
     def match(plot):
@@ -4532,8 +4548,8 @@ def element_085():
     code = 'G751'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 242B, 261A, M261A, M261B, M242A, M242B,
-    # M242D, 242A, 263
+    # i. Located in ECOREGION 261A, M261A, M261B, M242A, M242B,
+    # M242D, 242, 263
     # and tree composition dominated by one or more of STRONG
     # DIAGNOSTIC species Picea sitchensis, Thuja plicata, or
     # Tsuga heterophylla (RIV=>50%),
@@ -4542,12 +4558,12 @@ def element_085():
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
     # combination of Abies amabilis, Abies grandis, Acer circinatum,
     # Acer macrophyllum, Alnus rubra, Callitropsis nootkatensis,
-    # Chamaecyparis lawsoniana, Frangula purshiana, or
+    # Chamaecyparis lawsoniana, Frangula purshiana, Malus fusca, Prunus emarginata  or
     # Pseudotsuga menziesii (>=30% RIV; i.e., together STRONG and
     # MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '242B, 261A, M261A, M261B, M242A, M242B, M242D, 242A, 263'}
+        {'ecoregion': '261A, M261A, M261B, M242A, M242B, M242D, 242, 263'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
@@ -4565,7 +4581,9 @@ def element_085():
         {'species': 'Callitropsis nootkatensis'},
         {'species': 'Chamaecyparis lawsoniana'},
         {'species': 'Frangula purshiana'},
-        {'species': 'Pseudotsuga menziesii'}
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Malus fusca'},
+        {'species': 'Prunus emarginata'}
     )
 
     def match(plot):
@@ -4784,7 +4802,7 @@ def element_090():
     code = 'G899'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 322B, 342D, 342H, M242C, 313A, 322A, 341A,
+    # i. Located in ECOREGION 322B, 342D, 342H, M242C, 313, 322A, 341A,
     # 341D, 341E, 341F, 341G, 342B, 342C, 342J, M261F, M261E, M261G,
     # M262B, M331D, M341A, M341D, M341C
     # and tree composition dominated by the STRONG
@@ -4792,12 +4810,12 @@ def element_090():
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of
-    # Cercocarpus ledifolius, Juniperus californica, Juniperus grandis,
+    # Cercocarpus ledifolius, Juniperus californica, Juniperus occidentalis,
     # Juniperus osteosperma or Pinus jeffreyi (>=30% RIV; i.e., together
     # STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '322B, 342D, 342H, M242C, 313A, 322A, 341A, 341D, 341E, 341F, 341G, 342B, 342C, 342J, M261F, M261E, M261G, M262B, M331D, M341A, M341D, M341C'}
+        {'ecoregion': '322B, 342D, 342H, M242C, 313, 322A, 341A, 341D, 341E, 341F, 341G, 342B, 342C, 342J, M261F, M261E, M261G, M262B, M331D, M341A, M341D, M341C'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
@@ -4807,9 +4825,9 @@ def element_090():
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Cercocarpus ledifolius'},
         {'species': 'Juniperus californica'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Juniperus osteosperma'},
-        {'species': 'Pinus jeffreyi'}
+        {'species': 'Pinus jeffreyi'},
+        {'species': 'Juniperus occidentalis'}
     )
 
     def match(plot):
@@ -4837,7 +4855,7 @@ def element_091():
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Juniperus monosperma, Juniperus osteosperma, or
+    # combination of Juniperus monosperma, Juniperus osteosperma, Quercus gambelii, Quercus grisea  or
     # Juniperus scopulorum (>=30% RIV; i.e., together STRONG and MODERATE
     # diagnostic species RIV =>50%)
 
@@ -4852,7 +4870,9 @@ def element_091():
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Juniperus monosperma'},
         {'species': 'Juniperus osteosperma'},
-        {'species': 'Juniperus scopulorum'}
+        {'species': 'Juniperus scopulorum'},
+        {'species': 'Quercus gambelii'},
+        {'species': 'Quercus grisea'}
     )
 
     def match(plot):
@@ -4878,7 +4898,7 @@ def element_092():
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any
     # combination of Cercocarpus ledifolius, Juniperus californica,
-    # Juniperus monosperma or Juniperus scopulorum (>=30% RIV; i.e.,
+    # Juniperus monosperma, Juniperus scopulorum or Quercus gambelii (>=30% RIV; i.e.,
     # together STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -4893,7 +4913,8 @@ def element_092():
         {'species': 'Cercocarpus ledifolius'},
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus monosperma'},
-        {'species': 'Juniperus scopulorum'}
+        {'species': 'Juniperus scopulorum'},
+        {'species': 'Quercus gambelii'}
     )
 
     def match(plot):
@@ -5037,9 +5058,7 @@ def element_096():
     code = 'D339'
 
     # Tree composition and ecology matching one of the following options:
-    # i.  Elevation less than 1600 meters and Located in ECOREGION 242, M242, M261,
-    #     261A, 262, 263, 341D
-    # AND 
+    # i.  Elevation less than 2400 meters and Located in ECOREGION 242, M242, M261, 261A, 262, 263, 341D
     # ii.  EITHER 
     #     d.  Tree composition dominated by one or more of STRONG diagnostic tree
     #     species Abies concolor, Abies grandis, Abies lasiocarpa, Abies magnifica,
@@ -5051,8 +5070,7 @@ def element_096():
     #     (=>20% RIV) 
     #     OR 
     #     e.  The above tree species, but with =>10% RIV AND other MODERATE 
-    #     diagnostic species, any combination of Abies bracteata, 
-    #     Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, 
+    #     diagnostic species, any combination of Abies bracteata, Acer circinatum, Acer macrophyllum, 
     #     Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, 
     #     Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus muricata, 
     #     Pinus washoensis, Populus balsamifera ssp. trichocarpa, 
@@ -5068,29 +5086,16 @@ def element_096():
     #   AND 
     #   iv.  EITHER 
     #       a.  Tree composition dominated by one or more of STRONG diagnostic tree 
-    #           species Abies amabilis, Abies concolor, Abies grandis, 
-    #           Abies lasiocarpa, Abies magnifica, Abies shastensis 
-    #           [Abies magnifica var. shastensis], Abies procera, 
-    #           Calocedrus decurrens, Chrysolepis chrysophylla, Juniperus grandis, 
-    #           Notholithocarpus densiflorus, Pinus contorta, Picea sitchensis, 
-    #           Pinus lambertiana, Pinus jeffreyi, Pinus monticola, 
-    #           Pinus ponderosa, Pseudotsuga menziesii, Quercus chrysolepis, 
-    #           Quercus garryana, Quercus kelloggii, Sequoiadendron giganteum, 
-    #           Taxus brevifolia, or Umbellularia californica (=>20% RIV) 
+    #           species Abies concolor, Abies grandis, Abies lasiocarpa, Abies magnifica, Abies shastensis [Abies magnifica var. shastensis], Abies procera, Calocedrus decurrens, , Chrysolepis chrysophylla, Juniperus occidentalis, Notholithocarpus densiflorus, Pinus jeffreyi, Pinus monticola, Quercus chrysolepis, Quercus garryana, Quercus kelloggii, Sequoiadendron giganteum, Taxus brevifolia, or Umbellularia californica (=>20% RIV) 
     #       OR 
     #       b.  The above tree species, but with =>10% RIV AND other MODERATE 
-    #           diagnostic species, any combination of Abies bracteata, 
-    #           Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, 
-    #           Arbutus menziesii, Cornus nuttallii, Frangula purshiana, 
-    #           Picea breweriana, Pinus coulteri, Pinus flexilis, Pinus muricata, 
-    #           Pinus washoensis, Populus balsamifera ssp. trichocarpa, 
-    #           Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and 
+    #           diagnostic species, any combination of Abies bracteata, Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and 
     #           MODERATE diagnostic species =>50% RIV) 
     #       OR 
     #       d.  Any EXOTIC = yes tree species =>80% RIV
 
     ECOREGIONS_I = PatternList('ECOREGIONS_I',
-        {'state': '242, M242, M261, 261A, 262, 263, 341D'}
+        {'ecoregion': '242, M242, M261, 261A, 262, 263, 341D'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES_I = PatternList('STRONG_DIAGNOSTIC_SPECIES_I',
@@ -5098,11 +5103,10 @@ def element_096():
         {'species': 'Abies grandis'},
         {'species': 'Abies lasiocarpa'},
         {'species': 'Abies magnifica'},
-        {'species': 'Abies shastensis'},
+        {'species': 'Abies magnifica var. shastensis'},
         {'species': 'Abies procera'},
         {'species': 'Calocedrus decurrens'},
         {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Notholithocarpus densiflorus'},
         {'species': 'Pinus jeffreyi'},
         {'species': 'Pinus monticola'},
@@ -5111,12 +5115,12 @@ def element_096():
         {'species': 'Quercus kelloggii'},
         {'species': 'Sequoiadendron giganteum'},
         {'species': 'Taxus brevifolia'},
-        {'species': 'Umbellularia californica'}
+        {'species': 'Umbellularia californica'},
+        {'species': 'Juniperus occidentalis'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES_I = PatternList('MODERATE_DIAGNOSTIC_SPECIES_I',
         {'species': 'Abies bracteata'},
-        {'species': 'Abies concolor var. lowiana'},
         {'species': 'Acer circinatum'},
         {'species': 'Acer macrophyllum'},
         {'species': 'Arbutus menziesii'},
@@ -5146,11 +5150,10 @@ def element_096():
         {'species': 'Abies grandis'},
         {'species': 'Abies lasiocarpa'},
         {'species': 'Abies magnifica'},
-        {'species': 'Abies shastensis'},
+        {'species': 'Abies magnifica var. shastensis'},
         {'species': 'Abies procera'},
         {'species': 'Calocedrus decurrens'},
         {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Notholithocarpus densiflorus'},
         {'species': 'Pinus contorta'},
         {'species': 'Picea sitchensis'},
@@ -5164,12 +5167,12 @@ def element_096():
         {'species': 'Quercus kelloggii'},
         {'species': 'Sequoiadendron giganteum'},
         {'species': 'Taxus brevifolia'},
-        {'species': 'Umbellularia californica'}
+        {'species': 'Umbellularia californica'},
+        {'species': 'Juniperus occidentalis'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES_II = PatternList('MODERATE_DIAGNOSTIC_SPECIES_II',
         {'species': 'Abies bracteata'},
-        {'species': 'Abies concolor var. lowiana'},
         {'species': 'Acer circinatum'},
         {'species': 'Acer macrophyllum'},
         {'species': 'Arbutus menziesii'},
@@ -5186,7 +5189,7 @@ def element_096():
 
     def match(plot):
         logging.debug('%s|NODE=096|Pacific Mountains Forest & Woodland Division (D339)', plot.ident)
-        result = (plot.get_elevation() < 1600 and plot.match(ECOREGIONS_I) and
+        result = (plot.get_elevation() < 2400 and plot.match(ECOREGIONS_I) and
                ((plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 10 and 
                plot.riv(MODERATE_DIAGNOSTIC_SPECIES_I) >= 40) or 
@@ -5210,7 +5213,7 @@ def element_097():
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION M242, 242, M261, 263, 262,
     # AND tree composition dominated by one or more of STRONG DRY
-    # DIAGNOSTIC species Arbutus menziesii, Notholithocarpus densiflorus, Pinus ponderosa,
+    # DIAGNOSTIC species Arbutus menziesii, Notholithocarpus densiflorus,
     # Chrysolepis chrysophylla, Pseudotsuga macrocarpa 
     # Pseudotsuga menziesii, or Quercus garryana (RIV=>50%),
     # OR
@@ -5218,7 +5221,7 @@ def element_097():
     # but with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any
     # combination of Abies grandis, Acer macrophyllum,
     # Abies bracteata, Calocedrus decurrens, Chamaecyparis lawsoniana, Pinus coulteri 
-    # Juniperus occidentalis, Juniperus scopulorum, Pinus contorta,
+    # Juniperus occidentalis, Juniperus scopulorum, Pinus contorta, Pinus ponderosa,
     # Quercus chrysolepis, Quercus kelloggii, Taxus brevifolia, or
     # Umbellularia californica
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
@@ -5230,7 +5233,6 @@ def element_097():
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
         {'species': 'Arbutus menziesii'},
         {'species': 'Notholithocarpus densiflorus'},
-        {'species': 'Pinus ponderosa'},
         {'species': 'Chrysolepis chrysophylla'},
         {'species': 'Pseudotsuga macrocarpa'},
         {'species': 'Pseudotsuga menziesii'},
@@ -5250,7 +5252,8 @@ def element_097():
         {'species': 'Quercus chrysolepis'},
         {'species': 'Quercus kelloggii'},
         {'species': 'Taxus brevifolia'},
-        {'species': 'Umbellularia californica'}
+        {'species': 'Umbellularia californica'},
+        {'species': 'Pinus ponderosa'}
     )
 
     def match(plot):
@@ -5418,9 +5421,9 @@ def element_101():
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION M261, 262, 263, 341D,
     # AND tree composition dominated by one or more of STRONG DIAGNOSTIC
-    # species Abies concolor var. lowiana,
+    # species Abies concolor [=var. lowiana],
     # Calocedrus decurrens, Pinus jeffreyi, Pinus lambertiana,
-    # Pinus ponderosa or Sequoiadendron giganteum
+    # Pinus ponderosa, Quercus chrysolepis, or Sequoiadendron giganteum
     # (RIV=>20%),
     # [Additional tree species not tracked by FIA include Abies lowiana]
     # OR
@@ -5429,7 +5432,7 @@ def element_101():
     # any combination Abies magnifica, Abies shastensis [Abies magnifica
     # var. shastensis], Chrysolepis chrysophylla,
     # Picea breweriana, Pinus monticola, Pseudotsuga macrocarpa,
-    # Pseudotsuga menziesii, Quercus chrysolepis, Quercus kelloggii
+    # Pseudotsuga menziesii, Quercus kelloggii
     # Pinus washoensis and Pseudotsuga macrocarpa 
     # (>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%),
     # [Additional tree species not tracked by FIA include Abies bracteata]
@@ -5439,23 +5442,23 @@ def element_101():
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies concolor var. lowiana'},
         {'species': 'Calocedrus decurrens'},
         {'species': 'Pinus jeffreyi'},
         {'species': 'Pinus lambertiana'},
         {'species': 'Pinus ponderosa'},
-        {'species': 'Sequoiadendron giganteum'}
+        {'species': 'Sequoiadendron giganteum'},
+        {'species': 'Abies concolor'},
+        {'species': 'Quercus chrysolepis'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Abies magnifica'},
-        {'species': 'Abies shastensis'},
+        {'species': 'Abies magnifica var. shastensis'},
         {'species': 'Chrysolepis chrysophylla'},
         {'species': 'Picea breweriana'},
         {'species': 'Pinus monticola'},
         {'species': 'Pseudotsuga macrocarpa'},
         {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Quercus chrysolepis'},
         {'species': 'Quercus kelloggii'},
         {'species': 'Pinus washoensis'}
     )
@@ -5480,7 +5483,7 @@ def element_102():
     # i. Located in ECOREGION 261B, 262A, 341E, 322A, M242A, 263, M261,
     # 341D, M242C, 342B, M262, M242B, 261A and tree
     # composition dominated by one or more of STRONG DIAGNOSTIC species
-    # Abies lowiana, Calocedrus decurrens, Pinus jeffreyi, Pinus lambertiana,
+    # Abies concolor, Calocedrus decurrens, Pinus jeffreyi, Pinus lambertiana,
     # Pinus monticola, Pinus ponderosa, Pseudotsuga menziesii,
     # Quercus chrysolepis, Quercus kelloggii or Sequoiadendron giganteum
     # (RIV=>50%),
@@ -5498,7 +5501,6 @@ def element_102():
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies lowiana'},
         {'species': 'Calocedrus decurrens'},
         {'species': 'Pinus jeffreyi'},
         {'species': 'Pinus lambertiana'},
@@ -5507,7 +5509,8 @@ def element_102():
         {'species': 'Pseudotsuga menziesii'},
         {'species': 'Quercus chrysolepis'},
         {'species': 'Quercus kelloggii'},
-        {'species': 'Sequoiadendron giganteum'}
+        {'species': 'Sequoiadendron giganteum'},
+        {'species': 'Abies concolor'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -5569,8 +5572,8 @@ def element_105():
     code = 'D337'
 
     # Tree composition and ecology matching one of the following options:
-    # i.  Elevation below 1600 meters and located in ECOREGION M242C,
-    #     M242D â€“ only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
+    # i.  Elevation below 2800 meters and located in ECOREGION M242C,
+    #     M242D – only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
     #     313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331,
     #     M332, M333, M334, 341, M341, 342   
     # AND
@@ -5578,16 +5581,16 @@ def element_105():
     #     a.  Tree composition dominated by one or more of STRONG diagnostic tree
     #     species Abies concolor, Abies grandis, Abies lasiocarpa,
     #     Acer grandidentatum, Juniperus scopulorum, Larix lyallii,
-    #     Larix occidentalis, Picea engelmannii, Picea pungens, Pinus contorta,
-    #     Pinus flexilis, Pinus ponderosa, Populus tremuloides, Pseudotsuga menziesii,
+    #     Larix occidentalis, Picea glauca, Picea pungens, Pinus contorta,
+    #     Pinus flexilis, Pinus ponderosa, Pinus longaeva, Populus tremuloides, Pseudotsuga menziesii,
     #     Quercus gambelii, Thuja plicata,  or Tsuga heterophylla (=>50% RIV),
     #     [Additional species not tracked by FIA Picea engelmannii x glauca hybrids]
     #     OR
     #     b.  The above tree species, but with =>20% RIV AND other MODERATE
     #     diagnostic species any combination of Abies lasiocarpa var. arizonica,
     #     Abies lasiocarpa var. lasiocarpa, Acer negundo, Betula papyrifera,
-    #     Fraxinus pennsylvanica, Juniperus deppeana, Juniperus osteosperma,
-    #     Picea glauca, Pinus edulis, Pinus monticola, Pinus strobiformis,
+    #     Fraxinus pennsylvanica, Juniperus deppeana, Juniperus osteosperma, Picea engelmannii,
+    #    , Pinus edulis, Pinus monticola, Pinus strobiformis,
     #     Quercus macrocarpa, or Ulmus americana (>=30% RIV; i.e., together STRONG
     #     and MODERATE diagnostic species =>50% RIV) 
     #     OR
@@ -5605,7 +5608,6 @@ def element_105():
         {'species': 'Juniperus scopulorum'},
         {'species': 'Larix lyallii'},
         {'species': 'Larix occidentalis'},
-        {'species': 'Picea engelmannii'},
         {'species': 'Picea pungens'},
         {'species': 'Pinus contorta'},
         {'species': 'Pinus flexilis'},
@@ -5614,7 +5616,9 @@ def element_105():
         {'species': 'Pseudotsuga menziesii'},
         {'species': 'Quercus gambelii'},
         {'species': 'Thuja plicata'},
-        {'species': 'Tsuga heterophylla'}
+        {'species': 'Tsuga heterophylla'},
+        {'species': 'Picea glauca'},
+        {'species': 'Pinus longaeva'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -5625,12 +5629,13 @@ def element_105():
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Juniperus deppeana'},
         {'species': 'Juniperus osteosperma'},
-        {'species': 'Picea glauca'},
         {'species': 'Pinus edulis'},
         {'species': 'Pinus monticola'},
         {'species': 'Pinus strobiformis'},
         {'species': 'Quercus macrocarpa'},
-        {'species': 'Ulmus americana'}
+        {'species': 'Ulmus americana'},
+        {'species': 'Prunus virginiana'},
+        {'species': 'Picea engelmannii'}
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
@@ -5639,7 +5644,7 @@ def element_105():
 
     def match(plot):
         logging.debug('%s|NODE=105|Rocky Mountain Foothills & Montane Forest & Woodland (D337)', plot.ident)
-        result = (plot.get_elevation() < 1600 and plot.match(ECOREGIONS) and 
+        result = (plot.get_elevation() < 2800 and plot.match(ECOREGIONS) and 
                ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and 
                plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
@@ -5916,208 +5921,6 @@ def element_110():
 
 def element_111():
 
-    """Central Rocky Mountain Mesic Lower Montane Forest (M500)"""
-    """M500"""
-    level = 'macrogroup'
-    code = 'M500'
-
-    # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION M242C, M242D, 331N, 342H, M332, M333, 331A,
-    # 331K, 342D, M331A, M331B, 342A, 331G, 342F, M331J, M331D, 331D,
-    # 342I, 342G, AND tree composition
-    # dominated by one or more of STRONG MESIC DIAGNOSTIC species
-    # Abies grandis, Larix occidentalis, Pseudotsuga menziesii,
-    # Thuja plicata, or Tsuga heterophylla (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above,
-    # but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC species
-    # in any combination of Abies lasiocarpa, Betula papyrifera,
-    # Picea engelmannii, Picea glauca, Pinus contorta, Pinus monticola,
-    # Pinus ponderosa, or Populus tremuloides
-    # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%),
-    # [Additional tree species not tracked by FIA include
-    # Picea engelmannii x glauca]
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': 'M242C, M242D, 331N, 342H, M332, M333, 331A, 331K, 342D, M331A, M331B, 342A, 331G, 342F, M331J, M331D, 331D, 342I, 342G'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies grandis'},
-        {'species': 'Larix occidentalis'},
-        {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Thuja plicata'},
-        {'species': 'Tsuga heterophylla'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies lasiocarpa'},
-        {'species': 'Betula papyrifera'},
-        {'species': 'Picea engelmannii'},
-        {'species': 'Picea glauca'},
-        {'species': 'Pinus contorta'},
-        {'species': 'Pinus monticola'},
-        {'species': 'Pinus ponderosa'},
-        {'species': 'Populus tremuloides'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=111|Central Rocky Mountain Mesic Lower Montane Forest (M500)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_112():
-
-    """East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)"""
-    """G212"""
-    level = 'group'
-    code = 'G212'
-
-    # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION M261D, M261E, M261G, 342H, 342I, M242C,
-    # M242D - only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg,
-    # M242Dh and tree composition dominated
-    # by one or more of STRONG MESIC DIAGNOSTIC species Abies grandis or
-    # Pseudotsuga menziesii (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV AND with other MODERATE MESIC DIAGNOSTIC species in any
-    # combination of Larix occidentalis, Pinus contorta, Pinus monticola,
-    # Tsuga heterophylla or Thuja plicata (>=30% RIV; i.e., together STRONG
-    # and MODERATE diagnostic species RIV =>50%)
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': 'M261D, M261E, M261G, 342H, 342I, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies grandis'},
-        {'species': 'Pseudotsuga menziesii'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Larix occidentalis'},
-        {'species': 'Pinus contorta'},
-        {'species': 'Pinus monticola'},
-        {'species': 'Tsuga heterophylla'},
-        {'species': 'Thuja plicata'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=112|East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_113():
-
-    """Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)"""
-    """G217"""
-    level = 'group'
-    code = 'G217'
-
-    # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION M242C, M332F, M332G, 331D, 342I, M333, 331A,
-    # M332A, M332B, M242D - only eastern ecosubsections M242Dd, M242De,
-    # M242Df, M242Dg, M242Dh and
-    # tree composition dominated by the STRONG DIAGNOSTIC species
-    # Tsuga heterophylla or Thuja plicata (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of
-    # Abies grandis, Abies lasiocarpa, Larix occidentalis,
-    # Picea engelmannii, Pinus contorta, Pinus monticola, Pinus ponderosa
-    # or Pseudotsuga menziesii (>=30% RIV; i.e., together STRONG and
-    # MODERATE diagnostic species RIV =>50%)
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': 'M242C, M332F, M332G, 331D, 342I, M333, 331A, M332A, M332B, M242Dd, M242De, M242Df, M242Dg, M242Dh'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Tsuga heterophylla'},
-        {'species': 'Thuja plicata'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies grandis'},
-        {'species': 'Abies lasiocarpa'},
-        {'species': 'Larix occidentalis'},
-        {'species': 'Picea engelmannii'},
-        {'species': 'Pinus contorta'},
-        {'species': 'Pinus monticola'},
-        {'species': 'Pinus ponderosa'},
-        {'species': 'Pseudotsuga menziesii'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=113|Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_114():
-
-    """Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)"""
-    """G211"""
-    level = 'group'
-    code = 'G211'
-
-    # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION M242C, 331D, 331G, 331N, 342A, 342D, 342E,
-    # 342F, 342G, 342I, M331J, M242D - only eastern ecosubsections M242Dd,
-    # M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B,
-    # M331D, M333 and tree
-    # composition dominated by one or more of STRONG MESIC DIAGNOSTIC
-    # species Abies grandis, Pseudotsuga menziesii, or Larix occidentalis
-    # (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV AND with other MODERATE MESIC DIAGNOSTIC species in any
-    # combination of Abies lasiocarpa, Picea engelmannii, Pinus contorta,
-    # Pinus monticola, Thuja plicata or Tsuga heterophylla (>=30% RIV; i.e.,
-    # together STRONG and MODERATE diagnostic species RIV =>50%)
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': 'M242C, 331D, 331G, 331N, 342A, 342D, 342E, 342F, 342G, 342I, M331J, M242Dd, M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B, M331D, M333'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies grandis'},
-        {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Larix occidentalis'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies lasiocarpa'},
-        {'species': 'Picea engelmannii'},
-        {'species': 'Pinus contorta'},
-        {'species': 'Pinus monticola'},
-        {'species': 'Thuja plicata'},
-        {'species': 'Tsuga heterophylla'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=114|Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_115():
-
     """Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)"""
     """M501"""
     level = 'macrogroup'
@@ -6130,13 +5933,13 @@ def element_115():
     # AND ASPECT is between 157 and 203
     # AND tree composition dominated
     # by one or more of STRONG DRY DIAGNOSTIC species
-    # Juniperus osteosperma, Juniperus scopulorum, Pinus ponderosa,
-    # Pinus flexilis, or Pseudotsuga menziesii (RIV=>50%),
+    # Juniperus osteosperma, Juniperus scopulorum, Picea glauca, Pinus ponderosa, Populus tremuloides, Pseudotsuga menziesii
+    # Pinus flexilis(RIV=>50%),
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any
     # combination of Acer negundo, Betula papyrifera,
-    # Fraxinus pennsylvanica, Picea engelmannii, Picea glauca,
+    # Fraxinus pennsylvanica, Picea engelmannii,
     # Pinus contorta, Populus tremuloides, Quercus macrocarpa,
     # or Ulmus americana
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
@@ -6150,7 +5953,9 @@ def element_115():
         {'species': 'Juniperus scopulorum'},
         {'species': 'Pinus ponderosa'},
         {'species': 'Pinus flexilis'},
-        {'species': 'Pseudotsuga menziesii'}
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Picea glauca'},
+        {'species': 'Populus tremuloides'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -6158,7 +5963,6 @@ def element_115():
         {'species': 'Betula papyrifera'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Picea engelmannii'},
-        {'species': 'Picea glauca'},
         {'species': 'Pinus contorta'},
         {'species': 'Populus tremuloides'},
         {'species': 'Quercus macrocarpa'},
@@ -6166,7 +5970,7 @@ def element_115():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=115|Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)', plot.ident)
+        logging.debug('%s|NODE=111|Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6174,7 +5978,7 @@ def element_115():
         return result
     return level, code, match
 
-def element_116():
+def element_112():
 
     """Central Rocky Mountain Montane White Spruce Forest (G345)"""
     """G345"""
@@ -6183,12 +5987,12 @@ def element_116():
 
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION M334A and tree composition dominated by one
-    # or more of STRONG DIAGNOSTIC species Picea glauca (RIV=>50%),
+    # or more of STRONG DIAGNOSTIC species Picea glauca or Populus tremuloides (RIV=>50%),
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species
-    # Abies lasiocarpa, Pinus contorta,
-    # Pinus ponderosa, Pseudotsuga menziesii, or Populus tremuloides in any
+    # Abies lasiocarpa, Picea engelmannii, Pinus contorta,
+    # Pinus ponderosa or Pseudotsuga menziesii in any
     # combination of (>=30% RIV; i.e., together STRONG and MODERATE
     # diagnostic species RIV =>50%)
 
@@ -6197,7 +6001,8 @@ def element_116():
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Picea glauca'}
+        {'species': 'Picea glauca'},
+        {'species': 'Populus tremuloides'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -6205,11 +6010,11 @@ def element_116():
         {'species': 'Pinus contorta'},
         {'species': 'Pinus ponderosa'},
         {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Populus tremuloides'}
+        {'species': 'Picea engelmannii'}
     )
 
     def match(plot):
-        logging.debug('%s|NODE=116|Central Rocky Mountain Montane White Spruce Forest (G345)', plot.ident)
+        logging.debug('%s|NODE=112|Central Rocky Mountain Montane White Spruce Forest (G345)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6217,7 +6022,7 @@ def element_116():
         return result
     return level, code, match
 
-def element_117():
+def element_113():
 
     """Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)"""
     """G216"""
@@ -6264,7 +6069,7 @@ def element_117():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=117|Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)', plot.ident)
+        logging.debug('%s|NODE=113|Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)', plot.ident)
         result = ((plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) or 
                (plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) and 
                (plot.match(ECOREGIONS) and plot.riv(PSME) <= 1))
@@ -6272,7 +6077,7 @@ def element_117():
         return result
     return level, code, match
 
-def element_118():
+def element_114():
 
     """Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)"""
     """G209"""
@@ -6307,7 +6112,7 @@ def element_118():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=118|Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)', plot.ident)
+        logging.debug('%s|NODE=114|Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6315,7 +6120,7 @@ def element_118():
         return result
     return level, code, match
 
-def element_119():
+def element_115():
 
     """Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)"""
     """G213"""
@@ -6355,7 +6160,7 @@ def element_119():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=119|Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)', plot.ident)
+        logging.debug('%s|NODE=115|Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)', plot.ident)
         result = ((plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) or 
                (plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) and 
                (plot.match(ECOREGIONS) and plot.riv(PSME) <= 10))
@@ -6363,7 +6168,7 @@ def element_119():
         return result
     return level, code, match
 
-def element_120():
+def element_116():
 
     """Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)"""
     """G210"""
@@ -6375,13 +6180,13 @@ def element_120():
     # M242C, M242D - only eastern ecosubsections M242Dd, M242De, M242Df,
     # M242Dg, M242Dh, 331A, 331G, 331K, 331N, 342C, 342D, 342H, 342I, M332,
     # M333, M331A, M331B, M331D and tree composition dominated by one or
-    # more of STRONG DIAGNOSTIC species Pinus ponderosa or
+    # more of STRONG DIAGNOSTIC species Pinus ponderosa, Picea engelmannii, or
     # Pseudotsuga menziesii (RIV=>50%),
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
     # combination of Larix occidentalis, Pinus contorta, Pinus monticola,
-    # Picea engelmannii or Picea glauca (>=30% RIV; i.e., together STRONG
+    # or Picea glauca (>=30% RIV; i.e., together STRONG
     # and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -6390,19 +6195,19 @@ def element_120():
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
         {'species': 'Pinus ponderosa'},
-        {'species': 'Pseudotsuga menziesii'}
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Picea engelmannii'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Larix occidentalis'},
         {'species': 'Pinus contorta'},
         {'species': 'Pinus monticola'},
-        {'species': 'Picea engelmannii'},
         {'species': 'Picea glauca'}
     )
 
     def match(plot):
-        logging.debug('%s|NODE=120|Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)', plot.ident)
+        logging.debug('%s|NODE=116|Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6410,7 +6215,7 @@ def element_120():
         return result
     return level, code, match
 
-def element_121():
+def element_117():
 
     """Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)"""
     """G215"""
@@ -6448,7 +6253,209 @@ def element_121():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=121|Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)', plot.ident)
+        logging.debug('%s|NODE=117|Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)', plot.ident)
+        result = (plot.match(ECOREGIONS) and 
+               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
+               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
+        logging.debug('%s|RESULT|%s', plot.ident, result)
+        return result
+    return level, code, match
+
+def element_118():
+
+    """Central Rocky Mountain Mesic Lower Montane Forest (M500)"""
+    """M500"""
+    level = 'macrogroup'
+    code = 'M500'
+
+    # Plot location and tree composition are as follows:
+    # i. Located in ECOREGION M242C, M242D, 331N, 342H, M332, M333, 331A,
+    # 331K, 342D, M331A, M331B, 342A, 331G, 342F, M331J, M331D, 331D,
+    # 342I, 342G, AND tree composition
+    # dominated by one or more of STRONG MESIC DIAGNOSTIC species
+    # Abies grandis, Larix occidentalis, Pseudotsuga menziesii,
+    # Thuja plicata, or Tsuga heterophylla (RIV=>50%),
+    # OR
+    # ii. Located in above ECOREGION, and tree composition as above,
+    # but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC species
+    # in any combination of Abies lasiocarpa, Betula papyrifera,
+    # Picea engelmannii, Picea glauca, Pinus contorta, Pinus monticola,
+    # Pinus ponderosa, or Populus tremuloides
+    # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%),
+    # [Additional tree species not tracked by FIA include
+    # Picea engelmannii x glauca]
+
+    ECOREGIONS = PatternList('ECOREGIONS',
+        {'ecoregion': 'M242C, M242D, 331N, 342H, M332, M333, 331A, 331K, 342D, M331A, M331B, 342A, 331G, 342F, M331J, M331D, 331D, 342I, 342G'}
+    )
+
+    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
+        {'species': 'Abies grandis'},
+        {'species': 'Larix occidentalis'},
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Thuja plicata'},
+        {'species': 'Tsuga heterophylla'}
+    )
+
+    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
+        {'species': 'Abies lasiocarpa'},
+        {'species': 'Betula papyrifera'},
+        {'species': 'Picea engelmannii'},
+        {'species': 'Picea glauca'},
+        {'species': 'Pinus contorta'},
+        {'species': 'Pinus monticola'},
+        {'species': 'Pinus ponderosa'},
+        {'species': 'Populus tremuloides'}
+    )
+
+    def match(plot):
+        logging.debug('%s|NODE=118|Central Rocky Mountain Mesic Lower Montane Forest (M500)', plot.ident)
+        result = (plot.match(ECOREGIONS) and 
+               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
+               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
+        logging.debug('%s|RESULT|%s', plot.ident, result)
+        return result
+    return level, code, match
+
+def element_119():
+
+    """East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)"""
+    """G212"""
+    level = 'group'
+    code = 'G212'
+
+    # Plot location and tree composition are as follows:
+    # i. Located in ECOREGION M261D, M261E, M261G, 342H, 342I, M242C,
+    # M242D - only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg,
+    # M242Dh and tree composition dominated
+    # by one or more of STRONG MESIC DIAGNOSTIC species Abies grandis or
+    # Pseudotsuga menziesii (RIV=>50%),
+    # OR
+    # ii. Located in above ECOREGION, and tree composition as above, but
+    # with =>20% RIV AND with other MODERATE MESIC DIAGNOSTIC species in any
+    # combination of Larix occidentalis, Pinus contorta, Pinus monticola,
+    # Tsuga heterophylla or Thuja plicata (>=30% RIV; i.e., together STRONG
+    # and MODERATE diagnostic species RIV =>50%)
+
+    ECOREGIONS = PatternList('ECOREGIONS',
+        {'ecoregion': 'M261D, M261E, M261G, 342H, 342I, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh'}
+    )
+
+    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
+        {'species': 'Abies grandis'},
+        {'species': 'Pseudotsuga menziesii'}
+    )
+
+    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
+        {'species': 'Larix occidentalis'},
+        {'species': 'Pinus contorta'},
+        {'species': 'Pinus monticola'},
+        {'species': 'Tsuga heterophylla'},
+        {'species': 'Thuja plicata'}
+    )
+
+    def match(plot):
+        logging.debug('%s|NODE=119|East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)', plot.ident)
+        result = (plot.match(ECOREGIONS) and 
+               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
+               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
+        logging.debug('%s|RESULT|%s', plot.ident, result)
+        return result
+    return level, code, match
+
+def element_120():
+
+    """Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)"""
+    """G217"""
+    level = 'group'
+    code = 'G217'
+
+    # Plot location and tree composition are as follows:
+    # i. Located in ECOREGION M242C, M332F, M332G, 331D, 342I, M333, 331A,
+    # M332A, M332B, M242D - only eastern ecosubsections M242Dd, M242De,
+    # M242Df, M242Dg, M242Dh and
+    # tree composition dominated by the STRONG DIAGNOSTIC species
+    # Tsuga heterophylla or Thuja plicata (RIV=>50%),
+    # OR
+    # ii. Located in above ECOREGION, and tree composition as above, but
+    # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of
+    # Abies grandis, Abies lasiocarpa, Larix occidentalis,
+    # Picea engelmannii, Pinus contorta, Pinus monticola, Pinus ponderosa
+    # or Pseudotsuga menziesii (>=30% RIV; i.e., together STRONG and
+    # MODERATE diagnostic species RIV =>50%)
+
+    ECOREGIONS = PatternList('ECOREGIONS',
+        {'ecoregion': 'M242C, M332F, M332G, 331D, 342I, M333, 331A, M332A, M332B, M242Dd, M242De, M242Df, M242Dg, M242Dh'}
+    )
+
+    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
+        {'species': 'Tsuga heterophylla'},
+        {'species': 'Thuja plicata'}
+    )
+
+    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
+        {'species': 'Abies grandis'},
+        {'species': 'Abies lasiocarpa'},
+        {'species': 'Larix occidentalis'},
+        {'species': 'Picea engelmannii'},
+        {'species': 'Pinus contorta'},
+        {'species': 'Pinus monticola'},
+        {'species': 'Pinus ponderosa'},
+        {'species': 'Pseudotsuga menziesii'}
+    )
+
+    def match(plot):
+        logging.debug('%s|NODE=120|Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)', plot.ident)
+        result = (plot.match(ECOREGIONS) and 
+               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
+               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
+        logging.debug('%s|RESULT|%s', plot.ident, result)
+        return result
+    return level, code, match
+
+def element_121():
+
+    """Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)"""
+    """G211"""
+    level = 'group'
+    code = 'G211'
+
+    # Plot location and tree composition are as follows:
+    # i. Located in ECOREGION M242C, 331D, 331G, 331N, 342A, 342D, 342E,
+    # 342F, 342G, 342I, M331J, M242D - only eastern ecosubsections M242Dd,
+    # M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B,
+    # M331D, M333 and tree
+    # composition dominated by one or more of STRONG MESIC DIAGNOSTIC
+    # species Abies grandis, Pseudotsuga menziesii, or Larix occidentalis
+    # (RIV=>50%),
+    # OR
+    # ii. Located in above ECOREGION, and tree composition as above, but
+    # with =>20% RIV AND with other MODERATE MESIC DIAGNOSTIC species in any
+    # combination of Abies lasiocarpa, Picea engelmannii, Pinus contorta,
+    # Pinus monticola, Thuja plicata or Tsuga heterophylla (>=30% RIV; i.e.,
+    # together STRONG and MODERATE diagnostic species RIV =>50%)
+
+    ECOREGIONS = PatternList('ECOREGIONS',
+        {'ecoregion': 'M242C, 331D, 331G, 331N, 342A, 342D, 342E, 342F, 342G, 342I, M331J, M242Dd, M242De, M242Df, M242Dg, M242Dh, 331A, 331K, 342H, M332, M331A, M331B, M331D, M333'}
+    )
+
+    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
+        {'species': 'Abies grandis'},
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Larix occidentalis'}
+    )
+
+    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
+        {'species': 'Abies lasiocarpa'},
+        {'species': 'Picea engelmannii'},
+        {'species': 'Pinus contorta'},
+        {'species': 'Pinus monticola'},
+        {'species': 'Thuja plicata'},
+        {'species': 'Tsuga heterophylla'}
+    )
+
+    def match(plot):
+        logging.debug('%s|NODE=121|Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6464,21 +6471,21 @@ def element_122():
     code = 'D336'
 
     # Tree composition and ecology matching one of the following options:
-    # i.  Elevation above 1600 meters and located in 242A, 242B, 242C, M242A, M242B, M242C,
+    # i.  Elevation above 2100 meters and located in 242A, 242B, 242C, M242A, M242B, M242C,
     #   M242D, M261; 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331,
     #   M332, M333, M334, 341, M341, 342
     # AND
     # ii.  EITHER
     #     d.  Tree composition dominated by one or more of STRONG diagnostic tree 
-    #     species Abies amabilis, Abies lasiocarpa, Abies magnifica, Abies procera, 
+    #     species Abies amabilis, Abies concolor, Abies lasiocarpa, Abies magnifica, Abies procera, 
     #     Abies shastensis [Abies magnifica var. shastensis], Betula papyrifera, 
     #     Juniperus grandis, Larix lyallii Picea engelmannii, Pinus albicaulis, 
-    #     Pinus contorta, Pinus flexilis, Populus tremuloides, or Tsuga mertensiana  
+    #     Pinus contorta, Pinus flexilis, Populus tremuloides, Pseudotsuga menziesii, or Tsuga mertensiana  
     #     (=>50% RIV)
     #     OR
     #     e.  The above tree species, but with =>20% RIV AND other MODERATE diagnostic
     #     species of Callitropsis nootkatensis , Pinus balfouriana, Pinus flexilis,
-    #     Pinus jeffreyi, Pinus monticola, Pseudotsuga menziesii. or Tsuga heterophylla
+    #     Pinus jeffreyi, Pinus monticola, or Tsuga heterophylla
     #     (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     #     OR
     #     f.  Any EXOTIC = yes tree species =>80% RIV
@@ -6492,16 +6499,19 @@ def element_122():
         {'species': 'Abies lasiocarpa'},
         {'species': 'Abies magnifica'},
         {'species': 'Abies procera'},
-        {'species': 'Abies shastensis'},
+        {'species': 'Abies magnifica var. shastensis'},
         {'species': 'Betula papyrifera'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Pinus flexilis'},
         {'species': 'Populus tremuloides'},
         {'species': 'Pinus albicaulis'},
         {'species': 'Pinus contorta'},
         {'species': 'Pinus flexilis'},
         {'species': 'Populus tremuloides'},
-        {'species': 'Tsuga mertensiana'}
+        {'species': 'Tsuga mertensiana'},
+        {'species': 'Picea engelmannii'},
+        {'species': 'Juniperus occidentalis'},
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Abies concolor'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -6510,7 +6520,6 @@ def element_122():
         {'species': 'Pinus flexilis'},
         {'species': 'Pinus jeffreyi'},
         {'species': 'Pinus monticola'},
-        {'species': 'Pseudotsuga menziesii'},
         {'species': 'Tsuga heterophylla'}
     )
 
@@ -6520,7 +6529,7 @@ def element_122():
 
     def match(plot):
         logging.debug('%s|NODE=122|Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)', plot.ident)
-        result = (plot.get_elevation() > 1600 and plot.match(ECOREGIONS) and 
+        result = (plot.get_elevation() > 2100 and plot.match(ECOREGIONS) and 
                ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and 
                plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or 
@@ -6593,7 +6602,7 @@ def element_124():
 
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION 313C, 315A, 315H, 321A, 322A, 322B, M242B,
-    # M261A, M261D, M242C, M242D â€“ only eastern ecosubsections M242Dd,
+    # M261A, M261D, M242C, M242D – only eastern ecosubsections M242Dd,
     # M242De, M242Df, M242Dg, M242Dh, M261E, M261G, 313A, 313B, 331, 341,
     # 342, M332, M313, M331, M341, M333, M334
     # and tree composition dominated by one or more of STRONG DIAGNOSTIC
@@ -6625,7 +6634,7 @@ def element_125():
 
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION 313A, 313B, 322A, M313, 341A, 341B, 341F,
-    # 341G, 331A, 331B, 331D, 331G, 331H, 331I, 331J, 331K, M242C, M242D â€“
+    # 341G, 331A, 331B, 331D, 331G, 331H, 331I, 331J, 331K, M242C, M242D –
     # only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
     # M261D, M332, M331, 342, M333, M341B, M341C
     # and tree composition dominated by one
@@ -6634,7 +6643,7 @@ def element_125():
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE MESIC TO WET DIAGNOSTIC species
-    # in any combination of Populus tremuloides or Tsuga mertensiana
+    # in any combination of Populus tremuloides, Pseudotsuga menziesii or Tsuga mertensiana
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -6648,7 +6657,8 @@ def element_125():
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Populus tremuloides'},
-        {'species': 'Tsuga mertensiana'}
+        {'species': 'Tsuga mertensiana'},
+        {'species': 'Pseudotsuga menziesii'}
     )
 
     def match(plot):
@@ -6669,7 +6679,7 @@ def element_126():
 
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION M242B, M261D, M313B, 313C, 315H, 322A,
-    # M242C, M242D â€“ only eastern ecosubsections M242Dd, M242De, M242Df,
+    # M242C, M242D – only eastern ecosubsections M242Dd, M242De, M242Df,
     # M242Dg, M242Dh, 313A, 313B, M313A, 342, 341, M331, 331, M332, M333,
     # M341 and tree composition dominated by one or more of STRONG DRY
     # TO MESIC DIAGNOSTIC species Abies lasiocarpa or Picea engelmannii
@@ -6677,7 +6687,7 @@ def element_126():
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE DRY TO MESIC DIAGNOSTIC species
-    # in any combination of Pinus contorta or Populus tremuloides
+    # in any combination of Pinus contorta, Pseudotsuga menziesii, or Populus tremuloides
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -6691,7 +6701,8 @@ def element_126():
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Pinus contorta'},
-        {'species': 'Populus tremuloides'}
+        {'species': 'Populus tremuloides'},
+        {'species': 'Pseudotsuga menziesii'}
     )
 
     def match(plot):
@@ -6711,7 +6722,7 @@ def element_127():
     code = 'G220'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION M242B, 313B, 341B, M242C, M242D â€“ only
+    # i. Located in ECOREGION M242B, 313B, 341B, M242C, M242D – only
     # eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
     # M332, M333, 342, M331, 331
     # and tree composition dominated by the STRONG DIAGNOSTIC species
@@ -6809,7 +6820,7 @@ def element_129():
 
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION 331A, 331D, 331K, 331N, M261G, M242B,
-    # M242C, M242D â€“ only eastern ecosubsections M242Dd, M242De, M242Df,
+    # M242C, M242D – only eastern ecosubsections M242Dd, M242De, M242Df,
     # M242Dg, M242Dh, 341G, 342, M331A, M331B, M331D, M331J, M332, M333
     # and tree composition dominated by one or more of
     # STRONG DIAGNOSTIC species Pinus albicaulis, Abies lasiocarpa, or
@@ -6817,7 +6828,7 @@ def element_129():
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species
-    # Picea engelmannii in any combination of (>=30% RIV; i.e., together
+    # Picea engelmannii or Pseudotsuga menziesii in any combination of (>=30% RIV; i.e., together
     # STRONG and MODERATE diagnostic species RIV =>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
@@ -6831,7 +6842,8 @@ def element_129():
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Picea engelmannii'}
+        {'species': 'Picea engelmannii'},
+        {'species': 'Pseudotsuga menziesii'}
     )
 
     def match(plot):
@@ -6857,7 +6869,7 @@ def element_130():
     # M242Dh, 242, M261, 263, 341D, AND tree composition dominated by one or more of
     # STRONG MESIC DIAGNOSTIC species Abies amabilis, Abies magnifica, Abies shastensis,
     # Abies magnifica var. shastensis], Abies procera, Callitropsis nootkatensis,
-    # Juniperus grandis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,
+    # Juniperus occidentalis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,
     # Pinus monticola, or Tsuga mertensiana (RIV=>50%),
     # OR
     # STRONG DIAGNOSTICS RIV 20% or more + MODERATE DIAGNOSTICS RIV 30% or more
@@ -6868,7 +6880,7 @@ def element_130():
     # DIAGNOSTIC SPECIES] (>=30% RIV; i.e., together STRONG and MODERATE diagnostic
     # species RIV =>50%)
     # OR
-    # M242Dd, M242De, M242Df, M242Dg, M242Dh subsections Exclusion/Exception for
+    # M242Db, M242Dd, M242De, M242Df, M242Dg, M242Dh subsections Exclusion/Exception for
     # Abies lasiocarpa and  Picea engelmannii
     # Tree composition and ecology matching one of the following options:
     # iii. Located in ECOREGION M242A, M242B, M242C, M242Da, M242Db, 242, M261, 263, 341D,
@@ -6877,11 +6889,11 @@ def element_130():
     # a. Tree composition dominated by one or more of STRONG MESIC DIAGNOSTIC species
     # Abies amabilis,  Abies lasiocarpa, Abies magnifica, Abies shastensis,
     # Abies magnifica var. shastensis, Abies procera, Callitropsis nootkatensis,
-    # Juniperus grandis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,
+    # Juniperus occidentalis, Pinus albicaulis, Pinus balfouriana, Pinus contorta,
     # Pinus monticola, or Tsuga mertensiana (RIV=>50%),
     # OR
     # b. The above tree species, but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC
-    # species in any combination of  Picea engelmannii, Pinus flexilis, Pinus jeffreyi or
+    # species in any combination of  Pinus flexilis, Pinus jeffreyi, Abies concolor or
     # Tsuga heterophylla [PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES] (>=30% RIV; i.e.,
     # together STRONG and MODERATE diagnostic species RIV =>50%)
 
@@ -6890,38 +6902,37 @@ def element_130():
     )
 
     ECOREGIONS_2 = PatternList('ECOREGIONS_2',
-        {'ecoregion': 'M242A, M242B, M242C, M242Da, M242Db, 242, M261, 263, 341D'}
+        {'ecoregion': 'M242Db, M242A, M242B, M242C, M242Da, M242Db, 242, M261, 263, 341D'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES_1 = PatternList('STRONG_DIAGNOSTIC_SPECIES_1',
         {'species': 'Abies amabilis'},
         {'species': 'Abies magnifica'},
-        {'species': 'Abies shastensis'},
         {'species': 'Abies magnifica var. shastensis'},
         {'species': 'Abies procera'},
         {'species': 'Callitropsis nootkatensis'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Pinus albicaulis'},
         {'species': 'Pinus balfouriana'},
         {'species': 'Pinus contorta'},
         {'species': 'Pinus monticola'},
-        {'species': 'Tsuga mertensiana'}
+        {'species': 'Tsuga mertensiana'},
+        {'species': 'Juniperus occidentalis'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES_2 = PatternList('STRONG_DIAGNOSTIC_SPECIES_2',
         {'species': 'Abies amabilis'},
         {'species': 'Abies lasiocarpa'},
         {'species': 'Abies magnifica'},
-        {'species': 'Abies shastensis'},
         {'species': 'Abies magnifica var. shastensis'},
         {'species': 'Abies procera'},
         {'species': 'Callitropsis nootkatensis'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Pinus albicaulis'},
         {'species': 'Pinus balfouriana'},
         {'species': 'Pinus contorta'},
         {'species': 'Pinus monticola'},
-        {'species': 'Tsuga mertensiana'}
+        {'species': 'Tsuga mertensiana'},
+        {'species': 'Juniperus occidentalis'},
+        {'species': 'Picea engelmannii'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES_1 = PatternList('MODERATE_DIAGNOSTIC_SPECIES_1',
@@ -6931,10 +6942,10 @@ def element_130():
     )
 
     MODERATE_DIAGNOSTIC_SPECIES_2 = PatternList('MODERATE_DIAGNOSTIC_SPECIES_2',
-        {'species': 'Picea engelmannii'},
         {'species': 'Pinus flexilis'},
         {'species': 'Pinus jeffreyi'},
-        {'species': 'Tsuga heterophylla'}
+        {'species': 'Tsuga heterophylla'},
+        {'species': 'Abies concolor'}
     )
 
     def match(plot):
@@ -6957,7 +6968,7 @@ def element_131():
     # Plot location and tree composition are as follows:
     # i. Located in ECOREGION 342B, M242D, M242B, M242C, M261, 341D
     # and tree composition dominated by one or more of
-    # STRONG DIAGNOSTIC species Juniperus grandis, Pinus albicaulis, or
+    # STRONG DIAGNOSTIC species Juniperus occidentalis, Pinus albicaulis, or
     # Pinus contorta (RIV=>50%),
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
@@ -6971,9 +6982,9 @@ def element_131():
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Juniperus grandis'},
         {'species': 'Pinus albicaulis'},
-        {'species': 'Pinus contorta var. murrayana'}
+        {'species': 'Pinus contorta'},
+        {'species': 'Juniperus occidentalis'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -7003,12 +7014,12 @@ def element_132():
     # i. Located in ECOREGION 242B, 342B, M242B, M242C, M261, 341D
     # and tree composition dominated by one or more of STRONG
     # DIAGNOSTIC species Abies magnifica, Abies shastensis [Abies
-    # magnifica var. shastensis],, Abies procera, or Tsuga mertensiana
+    # magnifica var. shastensis], Abies lasiocarpa, Abies procera, or Tsuga mertensiana
     # (RIV=>50%),
     # OR
     # ii. Located in above ECOREGION, and tree composition as above, but
     # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Abies lasiocarpa, Pinus albicaulis, Pinus contorta,
+    # combination of Abies concolor, Pinus albicaulis, Pinus contorta,
     # Pinus jeffreyi, or Pinus monticola (>=30% RIV; i.e., together STRONG
     # and MODERATE diagnostic species RIV =>50%)
 
@@ -7018,17 +7029,18 @@ def element_132():
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
         {'species': 'Abies magnifica'},
-        {'species': 'Abies shastensis'},
+        {'species': 'Abies magnifica var. shastensis'},
         {'species': 'Abies procera'},
-        {'species': 'Tsuga mertensiana'}
+        {'species': 'Tsuga mertensiana'},
+        {'species': 'Abies lasiocarpa'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies lasiocarpa'},
         {'species': 'Pinus albicaulis'},
         {'species': 'Pinus contorta'},
         {'species': 'Pinus jeffreyi'},
-        {'species': 'Pinus monticola'}
+        {'species': 'Pinus monticola'},
+        {'species': 'Abies concolor'}
     )
 
     def match(plot):

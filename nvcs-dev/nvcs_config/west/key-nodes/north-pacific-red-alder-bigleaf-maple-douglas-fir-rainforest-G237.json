@@ -5,7 +5,7 @@
         "level": "group",
         "description": [
             "Plot location and tree composition are as follows:",
-            "i. Located in ECOREGION M242C, M242D, M261A, M261D, M242A, M242B, 242B, 242A",
+            "i. Located in ECOREGION M242C, M242D, M261A, M261D, M242A, M242B, 242",
             "and tree composition dominated",
             "by one or more of STRONG DIAGNOSTIC species Acer macrophyllum or",
             "Alnus rubra (RIV=>50%),",
@@ -14,7 +14,7 @@
             "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
             "combination of Abies grandis, Cornus nuttallii, Frangula purshiana,",
             "Picea sitchensis, Pseudotsuga menziesii, Quercus garryana,",
-            "Thuja plicata, or Tsuga heterophylla (>=30% RIV; i.e., together STRONG",
+            "Thuja plicata, Malus fusca, Prunus emarginata or Tsuga heterophylla (>=30% RIV; i.e., together STRONG",
             "and MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -25,7 +25,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "M242C, M242D, M261A, M261D, M242A, M242B, 242B, 242A"
+                    "ecoregion": "M242C, M242D, M261A, M261D, M242A, M242B, 242"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
@@ -60,6 +60,12 @@
                 },
                 {
                     "species": "Tsuga heterophylla"
+                },
+                {
+                    "species": "Malus fusca"
+                },
+                {
+                    "species": "Prunus emarginata"
                 }
             ]
         }

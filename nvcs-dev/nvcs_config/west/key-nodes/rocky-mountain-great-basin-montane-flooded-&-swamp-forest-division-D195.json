@@ -9,7 +9,7 @@
             "AND",
             "ii. EITHER",
             "a. Tree composition dominated by one or more of STRONG diagnostic tree species",
-            "Abies lasiocarpa, Abies grandis, Acer grandidentatum, Acer negundo,",
+            "Abies lasiocarpa, Abies grandis, Acer grandidentatum, Acer negundo, Betula occidentalis,",
             "Juniperus scopulorum, Picea engelmannii, Picea pungens, Pinus contorta,",
             "Pinus ponderosa, Populus angustifolia, Populus balsamifera, Populus tremuloides,",
             "or Pseudotsuga menziesii (=>50% RIV),",
@@ -75,6 +75,9 @@
                 },
                 {
                     "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Betula occidentalis"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [

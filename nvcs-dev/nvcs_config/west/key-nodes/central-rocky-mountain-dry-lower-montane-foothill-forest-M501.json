@@ -11,13 +11,13 @@
             "AND ASPECT is between 157 and 203",
             "AND tree composition dominated",
             "by one or more of STRONG DRY DIAGNOSTIC species",
-            "Juniperus osteosperma, Juniperus scopulorum, Pinus ponderosa,",
-            "Pinus flexilis, or Pseudotsuga menziesii (RIV=>50%),",
+            "Juniperus osteosperma, Juniperus scopulorum, Picea glauca, Pinus ponderosa, Populus tremuloides, Pseudotsuga menziesii",
+            "Pinus flexilis(RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any",
             "combination of Acer negundo, Betula papyrifera,",
-            "Fraxinus pennsylvanica, Picea engelmannii, Picea glauca,",
+            "Fraxinus pennsylvanica, Picea engelmannii,",
             "Pinus contorta, Populus tremuloides, Quercus macrocarpa,",
             "or Ulmus americana",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
@@ -48,6 +48,12 @@
                 },
                 {
                     "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Populus tremuloides"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -62,9 +68,6 @@
                 },
                 {
                     "species": "Picea engelmannii"
-                },
-                {
-                    "species": "Picea glauca"
                 },
                 {
                     "species": "Pinus contorta"

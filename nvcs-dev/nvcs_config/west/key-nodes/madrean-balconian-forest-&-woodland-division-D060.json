@@ -30,7 +30,7 @@
             "OR",
             "c. Any EXOTIC = yes tree species =>80% RIV",
             "AND",
-            "ii. Located in ECOREGION 322, 313C, M313, 321, 315"
+            "ii. Located in ECOREGION 322, 313, M313, 321, 315"
         ],
         "trigger": [
             "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or ",
@@ -41,7 +41,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "322, 313C, M313, 321, 315"
+                    "ecoregion": "322, 313, M313, 321, 315"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [

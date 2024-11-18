@@ -11,7 +11,7 @@
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any",
             "combination of Cercocarpus ledifolius, Juniperus californica,",
-            "Juniperus monosperma or Juniperus scopulorum (>=30% RIV; i.e.,",
+            "Juniperus monosperma, Juniperus scopulorum or Quercus gambelii (>=30% RIV; i.e.,",
             "together STRONG and MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -42,6 +42,9 @@
                 },
                 {
                     "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Quercus gambelii"
                 }
             ]
         }

@@ -6,27 +6,11 @@
         "description": [
             "Tree composition and ecology matching one of the following options:",
             "i. EITHER",
-            "a. Tree composition contains one or more of STRONG diagnostic tree",
-            "species Aesculus californica, Arbutus menziesii, Calocedrus decurrens,",
-            "Chamaecyparis lawsoniana, Chrysolepis chrysophylla,",
-            "Hesperocyparis bakeri, Hesperocyparis forbesii,",
-            "Hesperocyparis macnabiana, Hesperocyparis macrocarpa,",
-            "Hesperocyparis pigmaea, Hesperocyparis sargentii, Juglans californica,",
-            "Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata,",
-            "Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata,",
-            "Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis,",
-            "Quercus douglasii, Quercus engelmannii, Quercus kelloggii,",
-            "Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei",
-            "or Umbellularia californica (=>50% RIV),",
-            "[Additional tree species not tracked by FIA include",
-            "Hesperocyparis abramsiana, Hesperocyparis goveniana,",
-            "Hesperocyparis nevadensis, Hesperocyparis stephensonii,",
-            "Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis,",
-            "Quercus tomentella]",
+            "a. Tree composition contains one or more of STRONG diagnostic tree species Abies concolor, Aesculus californica, Arbutus menziesii, Calocedrus decurrens, Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Fraxinus latifolia, Cupressus bakeri, Cupressus forbesii, Cupressus macnabiana, Cupressus macrocarpa, Cupressus goveniana ssp. pigmaea, Cupressus sargentii, Juglans californica, Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata, Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata, Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis, Quercus douglasii, Quercus engelmannii, Quercus kelloggii, Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei,  or Umbellularia californica (=>50% RIV), [Additional tree species not tracked by FIA include Cupressus abramsiana, Cupressus goveniana, CupressusHesperocyparis nevadensis, Cupressus Hesperocyparis stephensonii, Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis, Quercus tomentella] ",
             "OR",
             "b. The above tree species, but with =>20% RIV AND other MODERATE",
             "diagnostic species any combination of Pinus lambertiana,",
-            "Pinus monophylla, Pinus ponderosa, Pseudotsuga macrocarpa,",
+            "Pinus monophylla, Pinus ponderosa, Pseudotsuga macrocarpa, sequoia sempervirens",
             "or Pseudotsuga menziesii",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
             "OR",
@@ -61,24 +45,6 @@
                 },
                 {
                     "species": "Chrysolepis chrysophylla"
-                },
-                {
-                    "species": "Hesperocyparis bakeri"
-                },
-                {
-                    "species": "Hesperocyparis forbesii"
-                },
-                {
-                    "species": "Hesperocyparis macnabiana"
-                },
-                {
-                    "species": "Hesperocyparis macrocarpa"
-                },
-                {
-                    "species": "Hesperocyparis pigmaea"
-                },
-                {
-                    "species": "Hesperocyparis sargentii"
                 },
                 {
                     "species": "Juglans californica"
@@ -129,10 +95,34 @@
                     "species": "Quercus wislizeni"
                 },
                 {
-                    "species": "Quercus parvula var. shrevei"
+                    "species": "Umbellularia californica"
                 },
                 {
-                    "species": "Umbellularia californica"
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Fraxinus latifolia"
+                },
+                {
+                    "species": "Cupressus bakeri"
+                },
+                {
+                    "species": "Cupressus forbesii"
+                },
+                {
+                    "species": "Cupressus macnabiana"
+                },
+                {
+                    "species": "Cupressus macrocarpa"
+                },
+                {
+                    "species": "Cupressus goveniana ssp. pygmaea"
+                },
+                {
+                    "species": "Cupressus sargentii"
+                },
+                {
+                    "species": "Quercus parvula"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -150,6 +140,9 @@
                 },
                 {
                     "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Sequoia sempervirens"
                 }
             ],
             "EXOTIC_TREE_SPP": [

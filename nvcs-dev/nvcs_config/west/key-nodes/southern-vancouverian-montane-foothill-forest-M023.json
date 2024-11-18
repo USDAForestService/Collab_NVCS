@@ -7,9 +7,9 @@
             "Plot location and tree composition are as follows:",
             "i. Located in ECOREGION M261, 262, 263, 341D,",
             "AND tree composition dominated by one or more of STRONG DIAGNOSTIC",
-            "species Abies concolor var. lowiana,",
+            "species Abies concolor [=var. lowiana],",
             "Calocedrus decurrens, Pinus jeffreyi, Pinus lambertiana,",
-            "Pinus ponderosa or Sequoiadendron giganteum",
+            "Pinus ponderosa, Quercus chrysolepis, or Sequoiadendron giganteum",
             "(RIV=>20%),",
             "[Additional tree species not tracked by FIA include Abies lowiana]",
             "OR",
@@ -18,7 +18,7 @@
             "any combination Abies magnifica, Abies shastensis [Abies magnifica",
             "var. shastensis], Chrysolepis chrysophylla,",
             "Picea breweriana, Pinus monticola, Pseudotsuga macrocarpa,",
-            "Pseudotsuga menziesii, Quercus chrysolepis, Quercus kelloggii",
+            "Pseudotsuga menziesii, Quercus kelloggii",
             "Pinus washoensis and Pseudotsuga macrocarpa ",
             "(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%),",
             "[Additional tree species not tracked by FIA include Abies bracteata]"
@@ -36,9 +36,6 @@
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
                 {
-                    "species": "Abies concolor var. lowiana"
-                },
-                {
                     "species": "Calocedrus decurrens"
                 },
                 {
@@ -52,6 +49,12 @@
                 },
                 {
                     "species": "Sequoiadendron giganteum"
+                },
+                {
+                    "species": "Abies concolor"
+                },
+                {
+                    "species": "Quercus chrysolepis"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -59,7 +62,7 @@
                     "species": "Abies magnifica"
                 },
                 {
-                    "species": "Abies shastensis"
+                    "species": "Abies magnifica var. shastensis"
                 },
                 {
                     "species": "Chrysolepis chrysophylla"
@@ -75,9 +78,6 @@
                 },
                 {
                     "species": "Pseudotsuga menziesii"
-                },
-                {
-                    "species": "Quercus chrysolepis"
                 },
                 {
                     "species": "Quercus kelloggii"
