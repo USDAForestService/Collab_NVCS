@@ -5,7 +5,7 @@
 library(sf)
 library(tmap)
 
-key_ver = "v. 17.1 key, division level (2024-11-19) - 2017 test data"
+key_ver = "NVCS v17.1 Western Classification Key - 2017 Test Data"
 pt.csv = "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/west/maps/Y2017_MAP_INPUT_VW.csv"
 out_dir = "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_output/west/maps/"
 file_ext = ".png"
@@ -70,8 +70,8 @@ for (i in 1:nrow(classes)) {
 	
 	class_pts = pt.sf[pt.sf$node_desc==class_name,]
 
-	map_title = paste0("NVCS West draft ", key_ver, "\n", class_name)
-	print(paste0("Creating map: ", map_title))
+	print(paste0("Creating map: ", class_name))
+	map_title = paste0(key_ver, "\n", class_name)
 	m = tm_shape(land, bbox=west_bbox) + tm_fill(col="#cccccc") +
 	tm_shape(ocean, bbox=west_bbox) + tm_fill(col="#a6cae0") +
 	tm_shape(this_sec, bbox=west_bbox) + tm_borders(col="#969696", lwd=0.5) +
@@ -96,4 +96,6 @@ for (i in 1:nrow(classes)) {
 	
 	m = NULL
 }
+
+print("All maps have been generated, process complete")
 
