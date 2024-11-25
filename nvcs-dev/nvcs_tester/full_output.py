@@ -72,17 +72,17 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
                              fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefForestType['new_tbl_nm'], in_RefForestType['description'])
 
-        # Prepare & create table containing NVCS classifications, IDs, and codes
-        ref_nvcs_algorithm_node_definition = (
-            f"CREATE TABLE '{in_RefAlgNode['new_tbl_nm']}' ("
-            "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
-            "'NVC_LEVEL' VARCHAR(256), 'NVC_CODE' VARCHAR(256));"
-        )
-        ref_nvcs_algorithm_node_columns = ['IDENT', 'PARENT', 'DESCRIPTION', 'NVC_LEVEL', 'NVC_CODE']
-        ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
-        plot_io.write_table_sqlite(out_Options["output_db"], in_RefAlgNode["new_tbl_nm"], ref_nvcs_algorithm_node_rows,
-                             ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
-        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefAlgNode['new_tbl_nm'], in_RefAlgNode['description'])
+    # Prepare & create table containing NVCS classifications, IDs, and codes
+    ref_nvcs_algorithm_node_definition = (
+        f"CREATE TABLE '{in_RefAlgNode['new_tbl_nm']}' ("
+        "'IDENT' INTEGER, 'PARENT' INTEGER, 'DESCRIPTION' VARCHAR(256), "
+        "'NVC_LEVEL' VARCHAR(256), 'NVC_CODE' VARCHAR(256));"
+    )
+    ref_nvcs_algorithm_node_columns = ['IDENT', 'PARENT', 'DESCRIPTION', 'NVC_LEVEL', 'NVC_CODE']
+    ref_nvcs_algorithm_node_rows = export_node_table(in_ClassificationKey)
+    plot_io.write_table_sqlite(out_Options["output_db"], in_RefAlgNode["new_tbl_nm"], ref_nvcs_algorithm_node_rows,
+                            ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
+    write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefAlgNode['new_tbl_nm'], in_RefAlgNode['description'])
 
     for inventory_year in out_Options["inventory_years"]:
         print("-" * 50)
