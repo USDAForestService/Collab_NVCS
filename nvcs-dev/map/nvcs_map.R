@@ -41,7 +41,8 @@ labels = c("0", ">0 to 1", "1 to 10", "10 to 100", "500 to 1,000", ">1,000")
 west_bbox = st_bbox(west)
 
 classes = unique(pt.df[,c("node_desc","nvc_level","nvc_code")])
-for (i in 1:nrow(classes)) {
+classes_count = nrow(classes)
+for (i in 1:classes_count) {
 	class_name = classes[i,"node_desc"]
 	nvc_level = classes[i,"nvc_level"]
 	nvc_code = classes[i,"nvc_code"]
@@ -50,7 +51,7 @@ for (i in 1:nrow(classes)) {
 	file_name = gsub("[\\(\\)]", "", file_name)
 	file_name = paste0(file_name, file_ext)
 
-	print(paste0("Working on: ", file_name))
+	print(paste0("Working on: ", file_name, " (", i, "/", classes_count, ")"))
 
 	# for using km2 LANDFIRE-mapped NVC by section:
 	this_lut = NULL
