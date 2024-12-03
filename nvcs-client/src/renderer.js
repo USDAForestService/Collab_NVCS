@@ -1,4 +1,4 @@
-var InputFilterTypes = [
+let InputFilterTypes = [
     "state",
     "ecoregion",
     "plantation",
@@ -12,17 +12,17 @@ var InputFilterTypes = [
     "planted",
     "tallytree"
 ];
-var lineNumberCounter = 0;
-var warnings = [];
-var errors = [];
+let lineNumberCounter = 0;
+let warnings = [];
+let errors = [];
 
-var nodeJson;
-var nodeHierarchy;
-var hierarchy;
-var initialHierarchy;
-var availableSpecies;
-var availableYears;
-var testSettings;
+let nodeJson;
+let nodeHierarchy;
+let hierarchy;
+let initialHierarchy;
+let availableSpecies;
+let availableYears;
+let testSettings;
 
 const stateChecker = {
     _modified: false,
@@ -231,17 +231,6 @@ async function updateAvailableYears() {
     document.getElementById("settings-inv-years").innerHTML = html;
 }
 
-async function openBrowseDialog(path) {
-    try {
-        const browsePath = await openBrowseDialog(path);
-        return browsePath;
-    }
-    catch (error) {
-        console.error(error);
-        return null;
-    }
-}
-
 async function updateAvailableSpecies() {
     let returnedData;
     try {
@@ -336,7 +325,7 @@ function createEmptyHierarchyElement() {
 
 function generateHierarchyHTML(hierarchy) {
     // Generate HTML tree
-    nodeDisplay = "<ul>";
+    let nodeDisplay = "<ul>";
     let rootElement = hierarchy.filter(i => i.hierarchyName == "ROOT")[0];
     nodeDisplay += generateListEntry(rootElement);
     nodeDisplay += "</ul>";
@@ -387,7 +376,7 @@ function generateAlerts() {
 }
 
 function generateListEntry(element) {
-    returnString = "<li class='hierarchyNode'>";
+    let returnString = "<li class='hierarchyNode'>";
     returnString += `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
@@ -651,10 +640,6 @@ async function saveJsonChanges() {
     // Update hierarchy name
     newHierarchyElement.hierarchyName = hierarchyName;
     newHierarchyElement.fileName = fileName;
-    
-    // Update connection data
-    newHierarchyElement.children = newHierarchyElement.children;
-    newHierarchyElement.parent = newHierarchyElement.parent;
 
     // Update node data
     newHierarchyElement.node.id = nodeID;
@@ -708,8 +693,7 @@ async function saveJsonChanges() {
     // Re-assign children nodes based on dialog positioning
     let newChildNodes = [];
     let childNodeInputs = document.querySelectorAll(".child-node-container input");
-    for (let i = 0; i < childNodeInputs.length; i++) {
-        const childNodeInput = childNodeInputs[i];
+    for (const childNodeInput of childNodeInputs) {
         const childName = childNodeInput.value;
         const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName)[0];
         newChildNodes.push(associatedChildNode);
@@ -861,7 +845,7 @@ function generateFilters(element) {
                 const inputFilterKeys = Object.keys(filterValueArrayElement);
                 for (const inputFilterKey of inputFilterKeys) {
                     const inputFilterValue = filterValueArrayElement[inputFilterKey];
-                    const [html, identifier] = createInputFilter(inputFilterKey, inputFilterValue);
+                    const [html] = createInputFilter(inputFilterKey, inputFilterValue);
                     inputFilterContent += html;
                 }
             }
@@ -983,9 +967,6 @@ async function deleteHierarchyElement() {
     // Delete the element from hierarchy element list
     const indexAsHierarchy = hierarchy.indexOf(element);
     hierarchy.splice(indexAsHierarchy, 1);
-    
-    // Delete the element
-    delete element;
 
     // Re-calculate hierarchy line numbers & levels
     recalculateHierarchyPositionalData(hierarchy);
@@ -1015,7 +996,7 @@ function suggestFileName() {
     const whiteSpace = /\s+/g;
     suggestedName = suggestedName.replace(whiteSpace, "-");
 
-    const parantheses = /\(|\)/g;
+    const parantheses = /[()]/g;
     suggestedName = suggestedName.replace(parantheses, "");
     suggestedName = suggestedName + ".json";
 
@@ -1612,11 +1593,12 @@ function saveSettingsChanges(closeAfter = true) {
 
         inventoryYears[i] = numberValue;
     }
+    inventoryYears.sort((a, b) => a - b);
 
     const additionalWhere = document.getElementById("settings-additional-where").value;
     const keepExisting = document.getElementById("settings-keep-existing").checked;
 
-    testSettings.inventoryYears = inventoryYears.sort();
+    testSettings.inventoryYears = inventoryYears;
     testSettings.additionalWhere = additionalWhere.trim();
     testSettings.keepExisting = keepExisting;
     
@@ -1634,7 +1616,7 @@ async function resetSettings() {
 }
 
 function findMissingFiltersInTrigger(trigger, filters) {
-    const regex = /(match|riv|spcov)\(([^\)]*)\)/g;
+    const regex = /(match|riv|spcov)\(([^)]*)\)/g;
     const references = trigger.match(regex) ?? [];
     
     let missing = [];
@@ -1752,7 +1734,7 @@ async function confirm(message) {
     return await new Promise((success, failure) => {
         document.getElementById("confirm-dialog").returnValue = "";
         document.getElementById("confirm-dialog-text").innerText = message;
-        confirmClose = (event) => {
+        let confirmClose = (event) => {
             document.getElementById("confirm-dialog").removeEventListener("close", confirmClose);
             const dialogValue = document.getElementById("confirm-dialog").returnValue;
             const confirmation = dialogValue === "confirm";
