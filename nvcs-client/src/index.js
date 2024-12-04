@@ -67,6 +67,7 @@ app.whenReady().then(() => {
   ipcMain.handle('fetch-settings', fetchSettings);
   ipcMain.handle('fetch-years', fetchAvailableYears);
   ipcMain.handle('mark-unsaved-changes', markUnsavedChanges);
+  ipcMain.handle('get-application-version', getApplicationVersion);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -458,4 +459,8 @@ function generateChangeLogEntry(message) {
 
 async function markUnsavedChanges(value) {
   unsavedChanges = value;
+}
+
+async function getApplicationVersion() {
+  return app.getVersion();
 }

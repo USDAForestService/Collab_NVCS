@@ -9,6 +9,13 @@ main {
   overflow-x: hidden;
 }
 
+.left-corner-element {
+  position: absolute;
+  top: 100%;
+  transform: translate(0, -100%);
+  padding: 5px 10px;
+}
+
 .top-banner {
   width: 95%;
   padding: 10px;

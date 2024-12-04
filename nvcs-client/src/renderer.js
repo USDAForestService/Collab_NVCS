@@ -25,6 +25,8 @@ let availableSpecies;
 let availableYears;
 let testSettings;
 
+displayApplicationVersion();
+
 const stateChecker = {
     _modified: false,
     _modifiedListener: async (value) => {
@@ -91,6 +93,20 @@ closeButtons.forEach(closeButton => {
         dialog.close();
     })
 })
+
+async function displayApplicationVersion() {
+    const version = await getApplicationVersion();
+    document.getElementById("app-version").innerHTML = "v" + version;
+}
+
+async function getApplicationVersion() {
+    try {
+        return await window.electronAPI.getApplicationVersion();
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
 
 async function fetchPackagedJson() {
     const loadMessage = "Are you sure you want to load the selected packaged content? " +
