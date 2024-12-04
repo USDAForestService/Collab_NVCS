@@ -15,6 +15,7 @@ let InputFilterTypes = [
 let lineNumberCounter = 0;
 let warnings = [];
 let errors = [];
+let unsavedDialogChanges = false;
 
 let nodeJson;
 let nodeHierarchy;
@@ -49,7 +50,17 @@ const stateChecker = {
     }
 };
 
-document.getElementById("json-dialog").addEventListener("close", (event) => {
+document.getElementById("json-dialog").addEventListener("close", async (event) => {
+    if (unsavedDialogChanges) {
+        const message = "You may have unsaved changes made to this element. Are you sure you want to discard these changes by exiting the dialog without saving?";
+        if (!await confirm(message)) {
+            const dialog = document.getElementById("json-dialog");
+            showDialog(dialog);
+            return;
+        }
+        unsavedDialogChanges = false;
+    }
+
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     const isNew = openedHierarchyName == "";
 
@@ -58,6 +69,16 @@ document.getElementById("json-dialog").addEventListener("close", (event) => {
         hierarchy = hierarchy.filter(i => i.hierarchyName != openedHierarchyName);
     }
 });
+
+const jsonDialogBody = document.querySelector("#json-dialog .body-container");
+jsonDialogBody.addEventListener("input", (event) => {
+    unsavedDialogChanges = true;
+});
+jsonDialogBody.addEventListener("click", (event) => {
+    if (!(event.target instanceof HTMLButtonElement)) 
+        return;
+    unsavedDialogChanges = true;
+})
 
 document.getElementById("settings-dialog").addEventListener("close", (event) => {
     // No implementation yet
@@ -388,6 +409,7 @@ function generateListEntry(element) {
 
 function openJsonDialog(hierarchyName) {
     // Open the dialog
+    unsavedDialogChanges = false;
     const dialog = document.getElementById("json-dialog");
     showDialog(dialog);
 
@@ -706,6 +728,7 @@ async function saveJsonChanges() {
     // Close dialog & render new changes
     console.log(newHierarchyElement);
     stateChecker.modified = true;
+    unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
@@ -973,6 +996,7 @@ async function deleteHierarchyElement() {
 
     // Close dialog & render new changes
     stateChecker.modified = true;
+    unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
