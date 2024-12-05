@@ -125,6 +125,9 @@ async function fetchExistingJson(event, targetPath) {
     hierarchy: hierarchyString
   }
 
+  // Mark unaved as false
+  unsavedChanges = false;
+
   console.log("- RETURNING RESULTS");
   return returnData;
 }
