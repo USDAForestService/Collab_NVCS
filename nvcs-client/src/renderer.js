@@ -1717,6 +1717,26 @@ function detectExistingElementHierarchyChanges(changes, sameName) {
     if (initElement.node.trigger.join("\r\n") != newElement.node.trigger.join("\r\n"))
         elementChanges.push(generateLogMessage("~ Updated Trigger", 1));
 
+    if (initElement.parent?.hierarchyName != newElement.parent?.hierarchyName)
+        elementChanges.push(generateLogMessage("~ Updated Parent Element", 1, initElement.parent.hierarchyName, newElement.parent.hierarchyName));
+
+    // Record child position changes
+    const initChildren = initElement.children?.map((i, index) => { return { hierarchyName: i.hierarchyName, index: index }});
+    const newChildren = newElement.children?.map((i, index) => { return { hierarchyName: i.hierarchyName, index: index }});
+    const addedChildren = newChildren.filter(i => !initChildren.map(i => i.hierarchyName).includes(i.hierarchyName));
+    const removedChildren = initChildren.filter(i => !newChildren.map(i => i.hierarchyName).includes(i.hierarchyName));
+    const sharedChildren = initChildren.filter(i => newChildren.map(i => i.hierarchyName).includes(i.hierarchyName));
+    for (const addedChild of addedChildren)
+        elementChanges.push(generateLogMessage(`+ Added Child Element "${addedChild.hierarchyName}" at position "${addedChild.index}"`, 1));
+    for (const removedChild of removedChildren)
+        elementChanges.push(generateLogMessage(`+ Removed Child Element "${removedChild.hierarchyName}" at position "${removedChild.index}"`, 1));
+    for (const sharedChild of sharedChildren) {
+        const initChildIndex = initChildren.filter(i => i.hierarchyName == sharedChild.hierarchyName).map(i => i.index)[0];
+        const newChildIndex = newChildren.filter(i => i.hierarchyName == sharedChild.hierarchyName).map(i => i.index)[0];
+        if (initChildIndex != newChildIndex)
+            elementChanges.push(generateLogMessage(`~ Updated Child Element "${sharedChild.hierarchyName}" position`, 1, initChildIndex, newChildIndex))
+    }
+
     // Record Filter changes
     const initFilterKeys = Object.keys(initElement.node.filters);
     const newFilterKeys = Object.keys(newElement.node.filters);
