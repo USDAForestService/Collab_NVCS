@@ -426,6 +426,7 @@ function generateListEntry(element) {
 function openJsonDialog(hierarchyName) {
     // Open the dialog
     unsavedDialogChanges = false;
+    clearMarkedValidationFields();
     const dialog = document.getElementById("json-dialog");
     showDialog(dialog);
 
@@ -760,8 +761,6 @@ function performDialogValidations() {
     let inputFileName = document.getElementById("node-fileName")
     let inputNodeDescription = document.getElementById("node-nodeDescription")
     let inputParentNode = document.getElementById("node-parentNode")
-    let inputNodeID = document.getElementById("node-nodeID")
-    let inputNodeLevel = document.getElementById("node-nodeLevel")
     let inputNodeTrigger = document.getElementById("node-nodeTrigger")
 
     // Extract dialog values
@@ -771,17 +770,9 @@ function performDialogValidations() {
     let fileName = inputFileName.value.trim();
     let nodeDescription = inputNodeDescription.value.trim();
     let parentNode = inputParentNode.value.trim();
-    let nodeID = inputNodeID.value.trim();
-    let nodeLevel = inputNodeLevel.value.trim();
     let nodeTrigger = inputNodeTrigger.value.trim();
-
-    // Find all marked-fields and remove error for new scan
-    const markedSelector = "data-validation-marked";
-    const existingMarkedElements = document.querySelectorAll(`[${markedSelector}]`);
-    for (const markedElement of existingMarkedElements) {
-        markElementAsType(markedElement, null);
-        markedElement.removeAttribute(markedSelector);
-    }
+    
+    clearMarkedValidationFields();
 
     // Perform validations and mark fields as needing error & collect messages
     let newMarkedElements = [];
@@ -863,15 +854,7 @@ function performDialogValidations() {
         }
     }
 
-    // Loop through marked-fields, focusing the first, and applying errors
-    for (let i = 0; i < newMarkedElements.length; i++) {
-        const newMarkedElement = newMarkedElements[i];
-        const html = newMarkedElement.html;
-        const message = newMarkedElement.message;
-        markElementAsType(html, 'error', message);
-        html.setAttribute(markedSelector, "error");
-        if (i == 0) html.focus();
-    }
+    markValidationFields(newMarkedElements);
 
     // Alert containing all errors
     const allErrorMessages = [... new Set(newMarkedElements.map(i => i.message))]
@@ -883,6 +866,29 @@ function performDialogValidations() {
         return false;
     }
     return true;
+}
+
+function clearMarkedValidationFields() {
+    // Find all marked-fields and remove error for new scan
+    const markedSelector = "data-validation-marked";
+    const existingMarkedElements = document.querySelectorAll(`[${markedSelector}]`);
+    for (const markedElement of existingMarkedElements) {
+        markElementAsType(markedElement, null);
+        markedElement.removeAttribute(markedSelector);
+    }
+}
+
+function markValidationFields(newMarkedElements) {
+    // Loop through marked-fields, focusing the first, and applying errors
+    const markedSelector = "data-validation-marked";
+    for (let i = 0; i < newMarkedElements.length; i++) {
+        const newMarkedElement = newMarkedElements[i];
+        const html = newMarkedElement.html;
+        const message = newMarkedElement.message;
+        markElementAsType(html, 'error', message);
+        html.setAttribute(markedSelector, "error");
+        if (i == 0) html.focus();
+    }
 }
 
 async function updateJson() {
