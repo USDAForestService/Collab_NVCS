@@ -655,22 +655,27 @@ function newGuid() {
 }
 
 async function saveJsonChanges() {
-    // Extract dialog values
-    let openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
-    let isRoot = openedHierarchyName == "ROOT";
-    let hierarchyName = document.getElementById("node-hierarchyName").value.trim();
-    let fileName = document.getElementById("node-fileName").value.trim();
-    let nodeDescription = document.getElementById("node-nodeDescription").value.trim();
-    let nodeID = document.getElementById("node-nodeID").value.trim();
-    let nodeLevel = document.getElementById("node-nodeLevel").value.trim();
-    let nodeTrigger = document.getElementById("node-nodeTrigger").value.trim();
+    // Get input fields
+    let inputHierarchyName = document.getElementById("node-hierarchyName")
+    let inputFileName = document.getElementById("node-fileName")
+    let inputNodeDescription = document.getElementById("node-nodeDescription")
+    let inputNodeID = document.getElementById("node-nodeID")
+    let inputNodeLevel = document.getElementById("node-nodeLevel")
+    let inputNodeTrigger = document.getElementById("node-nodeTrigger")
 
-    // TODO: Implement validations
-    if (!isRoot && !fileName.endsWith(".json")){
-        const message = "File name must end with the '.json' file type";
-        alert(message);
+    // Extract dialog values
+    let openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    let isRoot = openedHierarchyName == "ROOT";
+    let hierarchyName = inputHierarchyName.value.trim();
+    let fileName = inputFileName.value.trim();
+    let nodeDescription = inputNodeDescription.value.trim();
+    let nodeID = inputNodeID.value.trim();
+    let nodeLevel = inputNodeLevel.value.trim();
+    let nodeTrigger = inputNodeTrigger.value.trim();
+
+    // Exit function if validations don't pass
+    if (!performDialogValidations())
         return;
-    }
 
     // Find hierarchy element to change
     let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
@@ -747,6 +752,137 @@ async function saveJsonChanges() {
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
+}
+
+function performDialogValidations() {
+    // Get input fields
+    let inputHierarchyName = document.getElementById("node-hierarchyName")
+    let inputFileName = document.getElementById("node-fileName")
+    let inputNodeDescription = document.getElementById("node-nodeDescription")
+    let inputParentNode = document.getElementById("node-parentNode")
+    let inputNodeID = document.getElementById("node-nodeID")
+    let inputNodeLevel = document.getElementById("node-nodeLevel")
+    let inputNodeTrigger = document.getElementById("node-nodeTrigger")
+
+    // Extract dialog values
+    let openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    let isRoot = openedHierarchyName == "ROOT";
+    let hierarchyName = inputHierarchyName.value.trim();
+    let fileName = inputFileName.value.trim();
+    let nodeDescription = inputNodeDescription.value.trim();
+    let parentNode = inputParentNode.value.trim();
+    let nodeID = inputNodeID.value.trim();
+    let nodeLevel = inputNodeLevel.value.trim();
+    let nodeTrigger = inputNodeTrigger.value.trim();
+
+    // Find all marked-fields and remove error for new scan
+    const markedSelector = "data-validation-marked";
+    const existingMarkedElements = document.querySelectorAll(`[${markedSelector}]`);
+    for (const markedElement of existingMarkedElements) {
+        markElementAsType(markedElement, null);
+        markedElement.removeAttribute(markedSelector);
+    }
+
+    // Perform validations and mark fields as needing error & collect messages
+    let newMarkedElements = [];
+
+    if (hierarchyName == "") {
+        newMarkedElements.push({
+            html: inputHierarchyName,
+            message: "Node name is required"
+        });
+    }
+
+    const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
+    if (otherElementsWithName.length != 0) {
+        newMarkedElements.push({
+            html: inputHierarchyName,
+            message: "Node name must be unique"
+        });
+    }
+
+    if (!isRoot && !fileName.endsWith(".json")){
+        newMarkedElements.push({
+            html: inputFileName,
+            message: "File name must end with the '.json' file type"
+        });
+    }
+
+    if (nodeDescription == "") {
+        newMarkedElements.push({
+            html: inputNodeDescription,
+            message: "Node description is required"
+        });
+    }
+
+    const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
+    if (otherElementAsParent.length == 0) {
+        newMarkedElements.push({
+            html: inputParentNode,
+            message: "Parent node is required and must be assigned to a valid hierarchy element"
+        });
+    }
+
+    if (nodeTrigger == "") {
+        newMarkedElements.push({
+            html: inputNodeTrigger,
+            message: "Node trigger is required"
+        });
+    }
+
+    if (!doParenthesesMatchInTrigger(nodeTrigger)) {
+        newMarkedElements.push({
+            html: inputNodeTrigger,
+            message: "Node trigger has mismatched parentheses"
+        });
+    }
+    
+    const inputFilterNames = [...document.querySelectorAll(".filter-name-input")];
+    const missingFilters = findMissingFiltersInTrigger(nodeTrigger, inputFilterNames.map(i => i.value));
+    if (missingFilters.length > 0) {
+        newMarkedElements.push({
+            html: inputNodeTrigger,
+            message: "Node trigger references filter names that don't exist"
+        });
+    }
+
+    for (const inputFilterName of inputFilterNames) {
+        if (inputFilterName.value == "") {
+            newMarkedElements.push({
+                html: inputFilterName,
+                message: "Filter names are required"
+            });
+        }
+
+        const filtersWithSameName = inputFilterNames.filter(i => i.value == inputFilterName.value);
+        if (filtersWithSameName.length > 1) {
+            newMarkedElements.push({
+                html: inputFilterName,
+                message: "Filter names must be unique"
+            });
+        }
+    }
+
+    // Loop through marked-fields, focusing the first, and applying errors
+    for (let i = 0; i < newMarkedElements.length; i++) {
+        const newMarkedElement = newMarkedElements[i];
+        const html = newMarkedElement.html;
+        const message = newMarkedElement.message;
+        markElementAsType(html, 'error', message);
+        html.setAttribute(markedSelector, "error");
+        if (i == 0) html.focus();
+    }
+
+    // Alert containing all errors
+    const allErrorMessages = [... new Set(newMarkedElements.map(i => i.message))]
+    if (allErrorMessages.length > 0) {
+        const newLineError = "\r\n -";
+        const joinedErrorMessages = allErrorMessages.join(newLineError);
+        const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
+        alert(finalMessage);
+        return false;
+    }
+    return true;
 }
 
 async function updateJson() {
