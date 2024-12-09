@@ -75,11 +75,13 @@ document.getElementById("json-dialog").addEventListener("close", async (event) =
 const jsonDialogBody = document.querySelector("#json-dialog .body-container");
 jsonDialogBody.addEventListener("input", (event) => {
     unsavedDialogChanges = true;
+    performDialogValidations(false);
 });
 jsonDialogBody.addEventListener("click", (event) => {
     if (!(event.target instanceof HTMLButtonElement)) 
         return;
     unsavedDialogChanges = true;
+    performDialogValidations(false);
 })
 
 document.getElementById("settings-dialog").addEventListener("close", (event) => {
@@ -489,8 +491,8 @@ function openJsonDialog(hierarchyName) {
     for (const inputType of inputTypes)
         checkInputInList(inputType);
 
-    // Mark invalid trigger value
-    checkNodeTrigger();
+    // Perform other dialog validations
+    performDialogValidations(false);
 }
 
 function createElementFromString(htmlString) {
@@ -561,7 +563,7 @@ function createFilter(filterKey, inputFilters) {
     <div class='filter-container' id="${identifier}">
         <div class='sub-content-header-container'>
             <label for="filter-${identifier}">Name:</label>
-            <input type="text" id="filter-${identifier}" class="filter-name-input" value="${filterKey}" onblur="checkNodeTrigger()"/>
+            <input type="text" id="filter-${identifier}" class="filter-name-input" value="${filterKey}"/>
             <button onclick="deleteElement('${identifier}', true)">Delete Filter</button>
         </div>
         <div class='sub-content-container'>
@@ -675,7 +677,7 @@ async function saveJsonChanges() {
     let nodeTrigger = inputNodeTrigger.value.trim();
 
     // Exit function if validations don't pass
-    if (!performDialogValidations())
+    if (!performDialogValidations(true))
         return;
 
     // Find hierarchy element to change
@@ -755,7 +757,9 @@ async function saveJsonChanges() {
     generateHierarchyHTML(hierarchy);
 }
 
-function performDialogValidations() {
+function performDialogValidations(displayAlert) {
+    let valid = true;
+
     // Get input fields
     let inputHierarchyName = document.getElementById("node-hierarchyName")
     let inputFileName = document.getElementById("node-fileName")
@@ -854,18 +858,20 @@ function performDialogValidations() {
         }
     }
 
-    markValidationFields(newMarkedElements);
+    markValidationFields(newMarkedElements, displayAlert);
+
+    valid = newMarkedElements.length == 0;
 
     // Alert containing all errors
-    const allErrorMessages = [... new Set(newMarkedElements.map(i => i.message))]
-    if (allErrorMessages.length > 0) {
+    if (!valid && displayAlert) {
+        const allErrorMessages = [... new Set(newMarkedElements.map(i => i.message))]
         const newLineError = "\r\n -";
         const joinedErrorMessages = allErrorMessages.join(newLineError);
         const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
         alert(finalMessage);
-        return false;
     }
-    return true;
+
+    return valid;
 }
 
 function clearMarkedValidationFields() {
@@ -878,7 +884,7 @@ function clearMarkedValidationFields() {
     }
 }
 
-function markValidationFields(newMarkedElements) {
+function markValidationFields(newMarkedElements, focusFirst) {
     // Loop through marked-fields, focusing the first, and applying errors
     const markedSelector = "data-validation-marked";
     for (let i = 0; i < newMarkedElements.length; i++) {
@@ -887,7 +893,7 @@ function markValidationFields(newMarkedElements) {
         const message = newMarkedElement.message;
         markElementAsType(html, 'error', message);
         html.setAttribute(markedSelector, "error");
-        if (i == 0) html.focus();
+        if (i == 0 && focusFirst) html.focus();
     }
 }
 
@@ -1647,27 +1653,6 @@ function checkInputInList(element) {
     else {
         element.classList.add(listTypeClass);
         element.title = listMessage;
-    }
-}
-
-function checkNodeTrigger() {
-    const markedElement = document.getElementById("node-nodeTrigger");
-    const trigger = markedElement.value;
-    const dialogFilters = document.querySelectorAll(".filter-name-input");
-    const filters = [...dialogFilters].map(i => i.value);
-
-    let collectedErrors = [];
-    if (findMissingFiltersInTrigger(trigger, filters).length > 0)
-        collectedErrors.push("Invalid filters referenced.");
-    if (!doParenthesesMatchInTrigger(trigger))
-        collectedErrors.push("Mismatched parentheses detected.");
-
-    if (collectedErrors.length == 0) {
-        markElementAsType(markedElement, null);
-    }
-    else {
-        const message = collectedErrors.join(' ');
-        markElementAsType(markedElement, "error", message);
     }
 }
 
