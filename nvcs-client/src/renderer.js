@@ -758,53 +758,96 @@ async function saveJsonChanges() {
 }
 
 function performDialogValidations(displayAlert) {
-    let valid = true;
-
-    // Get input fields
-    let inputHierarchyName = document.getElementById("node-hierarchyName")
-    let inputFileName = document.getElementById("node-fileName")
-    let inputNodeDescription = document.getElementById("node-nodeDescription")
-    let inputParentNode = document.getElementById("node-parentNode")
-    let inputNodeTrigger = document.getElementById("node-nodeTrigger")
-
-    // Extract dialog values
-    let openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
-    let isRoot = openedHierarchyName == "ROOT";
-    let hierarchyName = inputHierarchyName.value.trim();
-    let fileName = inputFileName.value.trim();
-    let nodeDescription = inputNodeDescription.value.trim();
-    let parentNode = inputParentNode.value.trim();
-    let nodeTrigger = inputNodeTrigger.value.trim();
-    
+    // Prepare for new validations
     clearMarkedValidationFields();
-
-    // Perform validations and mark fields as needing error & collect messages
+    let valid = true;
     let newMarkedElements = [];
 
-    if (hierarchyName == "") {
-        newMarkedElements.push({
-            html: inputHierarchyName,
-            message: "Node name is required"
-        });
+    // Find invalid elements within the JSON dialog
+    newMarkedElements = findInvalidsForNodeName(newMarkedElements);
+    newMarkedElements = findInvalidsForFilePath(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeDescription(newMarkedElements);
+    newMarkedElements = findInvalidsForParentNode(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeTrigger(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
+
+    // Determine if dialog content is valid and mark any invalid fields
+    valid = newMarkedElements.length == 0;
+    markValidationFields(newMarkedElements, displayAlert);
+
+    // If requested and eligible, display an alert containing all unique errors
+    if (!valid && displayAlert) {
+        const allErrorMessages = [... new Set(newMarkedElements.map(i => i.messages))]
+        const newLineError = "\r\n -";
+        const joinedErrorMessages = allErrorMessages.join(newLineError);
+        const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
+        alert(finalMessage);
     }
 
+    return valid;
+}
+
+function findInvalidsForNodeName(newMarkedElements) {
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const hierarchyName = inputHierarchyName.value.trim();
     const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
+
+    if (hierarchyName == "") {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is required");
+    }
+
     if (otherElementsWithName.length != 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name must be unique");
     }
 
+    return newMarkedElements
+}
+
+function findInvalidsForFilePath(newMarkedElements) {
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const isRoot = openedHierarchyName == "ROOT";
+    const inputFileName = document.getElementById("node-fileName")
+    const fileName = inputFileName.value.trim();
+
     if (!isRoot && !fileName.endsWith(".json")){
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type");
     }
+    
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeDescription(newMarkedElements) {
+    const inputNodeDescription = document.getElementById("node-nodeDescription")
+    const nodeDescription = inputNodeDescription.value.trim();
 
     if (nodeDescription == "") {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeDescription, "Node description is required");
     }
 
+    return newMarkedElements;
+}
+
+function findInvalidsForParentNode(newMarkedElements) {
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputParentNode = document.getElementById("node-parentNode")
+    const parentNode = inputParentNode.value.trim();
+
     const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
     if (otherElementAsParent.length == 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element");
     }
+
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeTrigger(newMarkedElements) {
+    const inputNodeTrigger = document.getElementById("node-nodeTrigger")
+    const nodeTrigger = inputNodeTrigger.value.trim();
+    const inputFilterNames = [...document.querySelectorAll(".filter-name-input")];
+    const missingFilters = findMissingFiltersInTrigger(nodeTrigger, inputFilterNames.map(i => i.value));
 
     if (nodeTrigger == "") {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger is required");
@@ -813,12 +856,16 @@ function performDialogValidations(displayAlert) {
     if (!doParenthesesMatchInTrigger(nodeTrigger)) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger has mismatched parentheses");
     }
-    
-    const inputFilterNames = [...document.querySelectorAll(".filter-name-input")];
-    const missingFilters = findMissingFiltersInTrigger(nodeTrigger, inputFilterNames.map(i => i.value));
+
     if (missingFilters.length > 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger references filter names that don't exist");
     }
+
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeFilters(newMarkedElements) {
+    const inputFilterNames = [...document.querySelectorAll(".filter-name-input")];
 
     for (const inputFilterName of inputFilterNames) {
         if (inputFilterName.value == "") {
@@ -831,20 +878,7 @@ function performDialogValidations(displayAlert) {
         }
     }
 
-    markValidationFields(newMarkedElements, displayAlert);
-
-    valid = newMarkedElements.length == 0;
-
-    // Alert containing all errors
-    if (!valid && displayAlert) {
-        const allErrorMessages = [... new Set(newMarkedElements.map(i => i.message))]
-        const newLineError = "\r\n -";
-        const joinedErrorMessages = allErrorMessages.join(newLineError);
-        const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
-        alert(finalMessage);
-    }
-
-    return valid;
+    return newMarkedElements;
 }
 
 function addMarkedElementMessage(newMarkedElements, html, message) {
