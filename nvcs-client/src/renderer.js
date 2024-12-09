@@ -790,71 +790,44 @@ function performDialogValidations(displayAlert) {
 
     const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
     if (otherElementsWithName.length != 0) {
-        newMarkedElements.push({
-            html: inputHierarchyName,
-            message: "Node name must be unique"
-        });
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name must be unique");
     }
 
     if (!isRoot && !fileName.endsWith(".json")){
-        newMarkedElements.push({
-            html: inputFileName,
-            message: "File name must end with the '.json' file type"
-        });
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type");
     }
 
     if (nodeDescription == "") {
-        newMarkedElements.push({
-            html: inputNodeDescription,
-            message: "Node description is required"
-        });
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeDescription, "Node description is required");
     }
 
     const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
     if (otherElementAsParent.length == 0) {
-        newMarkedElements.push({
-            html: inputParentNode,
-            message: "Parent node is required and must be assigned to a valid hierarchy element"
-        });
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element");
     }
 
     if (nodeTrigger == "") {
-        newMarkedElements.push({
-            html: inputNodeTrigger,
-            message: "Node trigger is required"
-        });
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger is required");
     }
 
     if (!doParenthesesMatchInTrigger(nodeTrigger)) {
-        newMarkedElements.push({
-            html: inputNodeTrigger,
-            message: "Node trigger has mismatched parentheses"
-        });
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger has mismatched parentheses");
     }
     
     const inputFilterNames = [...document.querySelectorAll(".filter-name-input")];
     const missingFilters = findMissingFiltersInTrigger(nodeTrigger, inputFilterNames.map(i => i.value));
     if (missingFilters.length > 0) {
-        newMarkedElements.push({
-            html: inputNodeTrigger,
-            message: "Node trigger references filter names that don't exist"
-        });
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger references filter names that don't exist");
     }
 
     for (const inputFilterName of inputFilterNames) {
         if (inputFilterName.value == "") {
-            newMarkedElements.push({
-                html: inputFilterName,
-                message: "Filter names are required"
-            });
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names are required");
         }
 
         const filtersWithSameName = inputFilterNames.filter(i => i.value == inputFilterName.value);
         if (filtersWithSameName.length > 1) {
-            newMarkedElements.push({
-                html: inputFilterName,
-                message: "Filter names must be unique"
-            });
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names must be unique");
         }
     }
 
@@ -874,6 +847,20 @@ function performDialogValidations(displayAlert) {
     return valid;
 }
 
+function addMarkedElementMessage(newMarkedElements, html, message) {
+    const existingHtml = newMarkedElements.filter(i => i.html == html)[0];
+    if (existingHtml) {
+        existingHtml.messages.push(message);
+    }
+    else {
+        newMarkedElements.push({
+            html: html,
+            messages: [message]
+        });
+    }
+    return newMarkedElements;
+}
+
 function clearMarkedValidationFields() {
     // Find all marked-fields and remove error for new scan
     const markedSelector = "data-validation-marked";
@@ -890,7 +877,7 @@ function markValidationFields(newMarkedElements, focusFirst) {
     for (let i = 0; i < newMarkedElements.length; i++) {
         const newMarkedElement = newMarkedElements[i];
         const html = newMarkedElement.html;
-        const message = newMarkedElement.message;
+        const message = newMarkedElement.messages.join(", ");
         markElementAsType(html, 'error', message);
         html.setAttribute(markedSelector, "error");
         if (i == 0 && focusFirst) html.focus();
