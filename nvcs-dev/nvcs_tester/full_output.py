@@ -89,7 +89,8 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         print(f"Generating tables and views for: {inventory_year}\n")
 
         # Modify additional where clause if provided
-        additional_where_clause = out_Options['additional_where_clause'].strip()
+        opt_add_where = out_Options['additional_where_clause'] or ""
+        additional_where_clause = opt_add_where.strip()
         if len(additional_where_clause) > 0:
             additional_where_clause = f" AND ({additional_where_clause})"
 
