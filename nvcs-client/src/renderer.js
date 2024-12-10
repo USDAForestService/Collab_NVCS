@@ -287,6 +287,7 @@ async function updateAvailableSpecies() {
 
     const speciesOptions = createOptions(availableSpecies);
     document.getElementById("species-list").innerHTML = speciesOptions;
+    getDatalistDetails("species-list");
 
     console.log(`Updated available species with ${availableSpecies.length} elements`);
 }
@@ -1669,40 +1670,32 @@ async function openBrowseDialog(targetPath = "") {
     }
 }
 
-let dataListOptions = [];
-function getDatalistOptions(listId) {
-    const dataListOption = dataListOptions.filter(i => i.id == listId)[0];
-    if (!dataListOption) {
+let datalistDetails = [];
+function getDatalistDetails(listId) {
+    let datalistDetail = datalistDetails.filter(i => i.id == listId)[0];
+    if (!datalistDetail) {
         const list = document.getElementById(listId);
-        const foundOptions = getOptionValuesFromDataList(list);
-        dataListOptions.push({
+        datalistDetail = {
             id: listId,
-            options: foundOptions
-        });
-        return foundOptions;
+            type: list.getAttribute("data-type"),
+            message: list.getAttribute("data-missing-message"),
+            options: getOptionValuesFromDataList(list)
+        };
+        datalistDetails.push(datalistDetail);
     }
-    else {
-        return dataListOption.options;
-    }
+    return datalistDetail;
 }
 
 function findInvalidsForSubFilters(newMarkedElements) {
-    const inputTypes = document.querySelectorAll(".input-value:not(.skip-validation)");
-
+    const inputTypes = document.querySelectorAll("input[list].input-value:not(.skip-validation)");
     for (const element of inputTypes) {
         const input = element.value;
         const listId = element.getAttribute("list");
-        const list = document.getElementById(listId);
-        if (!list) continue;
-
-        const listType = list.getAttribute("data-type");
-        const listMessage = list.getAttribute("data-missing-message");
-        const listValues = getDatalistOptions(listId);
-
-        if (!listValues.includes(input))
-            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listMessage, listType);
+        if (!listId) continue;
+        const listDetails = getDatalistDetails(listId);
+        if (!listDetails.options.includes(input))
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
     }
-
     return newMarkedElements;
 }
 
