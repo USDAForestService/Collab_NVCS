@@ -1126,7 +1126,7 @@ function moveChildDown(identifier) {
     const container = document.getElementById(identifier);
     const parentContainer = container.parentElement;
     const pivotContainer = container.nextElementSibling;
-    if (!pivotContainer.classList.contains("child-node-container"))
+    if (!pivotContainer?.classList.contains("child-node-container"))
         return;
 
     // Perform move
