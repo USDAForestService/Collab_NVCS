@@ -89,7 +89,7 @@
           <div class="input-container">
             <label for="node-fileName" class="key-holder">File Name</label>
             <textarea id="node-fileName" class="value-holder"></textarea>
-            <button onclick="suggestFileName()" title="This is recommended for newly-added or renamed hierarchy elements">Suggest</button>
+            <button id="suggest-file-name" onclick="suggestFileName()" title="This is recommended for newly-added or renamed hierarchy elements">Suggest</button>
           </div>
           <div class="input-container">
             <label for="node-nodeDescription" class="key-holder">Node Description</label>
@@ -132,7 +132,7 @@
         <div class="footer-container">
           <div class="button-container">
             <button onclick="saveJsonChanges()" title="Savees changes made to this specific hierarchy element">Save All</button>
-            <button onclick="deleteHierarchyElement()" title="Deletes this specific hierarchy element">Delete</button>
+            <button id="delete-hierarchy-element" onclick="deleteHierarchyElement()" title="Deletes this specific hierarchy element">Delete</button>
             <button class='close-btn'>Close</button>
           </div>
         </div>

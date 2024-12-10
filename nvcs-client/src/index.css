@@ -230,6 +230,7 @@ dialog:not([open]) {
 
 .dialog .button-container {
   display: flex;
+  gap: 5px;
   justify-content: flex-end;
 }
 
@@ -336,6 +337,7 @@ dialog:not([open]) {
 }
 
 .dialog option:disabled,
+.dialog textarea:read-only,
 .dialog input:read-only {
   background: lightgrey;
 }
@@ -343,12 +345,6 @@ dialog:not([open]) {
 .dialog .footer-container {
   padding: 20px;
   border-top: 1px solid black;
-}
-
-.dialog .button-container {
-  display: flex;
-  gap: 5px;
-  justify-content: flex-end;
 }
 
 .dialog button {

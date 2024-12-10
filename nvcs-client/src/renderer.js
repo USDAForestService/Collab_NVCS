@@ -437,41 +437,61 @@ function openJsonDialog(hierarchyName) {
     const dialog = document.getElementById("json-dialog");
     showDialog(dialog);
 
+    // Gather opened dialog context
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
     console.log(hierarchyElement);
 
-    document.getElementById("node-hierarchyName").value = hierarchyElement.hierarchyName;
-    document.getElementById("node-hierarchyName").setAttribute("data-opened-name", hierarchyElement.hierarchyName);
-    document.getElementById("node-fileName").value = hierarchyElement.fileName;
+    // Prepare node name
+    const inputNodeName = document.getElementById("node-hierarchyName");
+    inputNodeName.value = hierarchyElement.hierarchyName;
+    inputNodeName.setAttribute("data-opened-name", hierarchyElement.hierarchyName);
+    inputNodeName.readOnly = isRoot;
+
+    // Prepare file name
+    const inputFileName = document.getElementById("node-fileName");
+    inputFileName.value = hierarchyElement.fileName;
+    inputFileName.readOnly = isRoot;
+
+    // Prepare hierarchy level & line number (always readonly)
     document.getElementById("node-hierarchyLevel").value = hierarchyElement.hierarchyLevel;
     document.getElementById("node-hierarchyLineNumber").value = hierarchyElement.hierarchyLineNumber;
-    document.getElementById("node-nodeID").value = hierarchyElement.node.id;
-    document.getElementById("node-nodeLevel").value = hierarchyElement.node.level;
+
+    // Prepare node ID
+    const inputNodeId = document.getElementById("node-nodeID");
+    inputNodeId.value = hierarchyElement.node.id;
+    inputNodeId.readOnly = isRoot;
+
+    // Prepare node level
+    const inputNodeLevel = document.getElementById("node-nodeLevel");
+    inputNodeLevel.value = hierarchyElement.node.level;
+    inputNodeLevel.readOnly = isRoot;
 
     // Update node description data
     let lineBrokenDescription = hierarchyElement.node.description.join('\n');
-    document.getElementById("node-nodeDescription").value = lineBrokenDescription;
+    const inputNodeDescription = document.getElementById("node-nodeDescription");
+    inputNodeDescription.value = lineBrokenDescription;
+    inputNodeDescription.readOnly = isRoot;
 
     // Resize description height for its content
-    document.getElementById("node-nodeDescription").style.height = "1px";
+    inputNodeDescription.style.height = "1px";
     let descriptionScrollHeight = document.getElementById("node-nodeDescription").scrollHeight;
-    document.getElementById("node-nodeDescription").style.height = descriptionScrollHeight + "px";
+    inputNodeDescription.style.height = descriptionScrollHeight + "px";
 
     // Populate node parent options
+    const inputParentNode = document.getElementById("node-parentNode");
+    inputParentNode.readOnly = isRoot;
     if (!isRoot) {
         let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
         document.getElementById("parent-hierarchy-list").innerHTML = nodeParentOptions;
-        document.getElementById("node-parentNode").value = hierarchyElement.parent?.hierarchyName ?? "";
-        document.getElementById("node-parentNode").disabled = false;
+        inputParentNode.value = hierarchyElement.parent?.hierarchyName ?? "";
     }
     else  {
         const unavailableMessage = "Cannot be assigned to a parent";
         document.getElementById("parent-hierarchy-list").innerHTML = `
             <option selected disabled>${unavailableMessage}</option>
         `;
-        document.getElementById("node-parentNode").value = unavailableMessage;
-        document.getElementById("node-parentNode").disabled = true;
+        inputParentNode.value = unavailableMessage;
     }
 
     // Populate node children inputs
@@ -480,16 +500,23 @@ function openJsonDialog(hierarchyName) {
 
     // Update node trigger data
     let lineBrokenTrigger = hierarchyElement.node.trigger.join('\n');
-    document.getElementById("node-nodeTrigger").value = lineBrokenTrigger;
+    const inputNodeTrigger = document.getElementById("node-nodeTrigger");
+    inputNodeTrigger.value = lineBrokenTrigger;
+    inputNodeTrigger.readOnly = isRoot;
 
     // Resize trigger height for its content
-    document.getElementById("node-nodeTrigger").style.height = "1px";
+    inputNodeTrigger.style.height = "1px";
     let triggerScrollHeight = document.getElementById("node-nodeTrigger").scrollHeight;
-    document.getElementById("node-nodeTrigger").style.height = triggerScrollHeight + "px";
+    inputNodeTrigger.style.height = triggerScrollHeight + "px";
 
     // Populate filters
     let nodeFilters = generateFilters(hierarchyElement);
     document.getElementById("node-nodeFilters").innerHTML = nodeFilters;
+
+    // Prepare buttons
+    document.getElementById("suggest-file-name").disabled = isRoot;
+    document.getElementById("add-new-filter").disabled = isRoot;
+    document.getElementById("delete-hierarchy-element").disabled = isRoot;
 
     // Perform other dialog validations
     performDialogValidations(false);
@@ -759,6 +786,12 @@ function performDialogValidations(displayAlert) {
     let hasNoErrors = true;
     let newMarkedElements = [];
 
+    // Do not perform validations on the ROOT element
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    if (openedHierarchyName == "ROOT")
+        return hasNoErrors;
+    
     // Find invalid elements within the JSON dialog
     newMarkedElements = findInvalidsForNodeName(newMarkedElements);
     newMarkedElements = findInvalidsForFilePath(newMarkedElements);
@@ -811,13 +844,10 @@ function findInvalidsForNodeName(newMarkedElements) {
 }
 
 function findInvalidsForFilePath(newMarkedElements) {
-    const inputHierarchyName = document.getElementById("node-hierarchyName")
-    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
-    const isRoot = openedHierarchyName == "ROOT";
     const inputFileName = document.getElementById("node-fileName")
     const fileName = inputFileName.value.trim();
 
-    if (!isRoot && !fileName.endsWith(".json")){
+    if (!fileName.endsWith(".json")){
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type", "error");
     }
     
@@ -1077,7 +1107,7 @@ function generateFilters(element) {
 
     nodeFilterContent += `
         <div class='add-filter-container'>
-            <button onclick="addFilter()">
+            <button id='add-new-filter' onclick="addFilter()">
                 Add Filter
             </button>
         </div>
