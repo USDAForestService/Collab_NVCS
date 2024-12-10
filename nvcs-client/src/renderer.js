@@ -211,7 +211,7 @@ async function fetchJson(targetPath) {
     hierarchy.sort((a, b) => a.hierarchyLevel - b.hierarchyLevel);
 
     // Clone hierarchy
-    console.log(hierarchy);
+    console.log("Current Hierarchy", hierarchy);
     initialHierarchy = structuredClone(hierarchy);
 
     // Fetch latest species list
@@ -440,7 +440,7 @@ function openJsonDialog(hierarchyName) {
     // Gather opened dialog context
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
-    console.log(hierarchyElement);
+    console.log("Opened Hierarchy Element", hierarchyElement);
 
     // Prepare node name
     const inputNodeName = document.getElementById("node-hierarchyName");
@@ -970,7 +970,7 @@ async function updateJson() {
         "Any previously saved changes within this directory will be overwritten.";
     if (!await confirm(updateWarning))
         return;
-    
+
     inputPath.value = browsePath;
     const newDirectoryName = document.getElementById("json-directory-path").value;
     if (!newDirectoryName) {
@@ -1343,11 +1343,25 @@ function createWarning(name, content, source) {
     warnings.sort((a,b) => a.name - b.name);
 }
 
+function cloneElement(element, ariaLabel = null) {
+    const clone = element.cloneNode(true);
+    if (ariaLabel)
+        clone.setAttribute("aria-label", ariaLabel);
+    return clone;
+}
+
 function toggleNestedContent(button, type) {
     const ariaControls = button.getAttribute("aria-controls");
     const content = document.getElementById(ariaControls);
-    const typeMessage = type == "error" ? "Errors" : "Warnings";
-    
+
+    let typeMessage;
+    if (type == "error")
+        typeMessage = "Errors";
+    else if (type == "warning")
+        typeMessage = "Warnings";
+    else
+        throw new Error("Invalid nested button type provided", type);
+
     if (content.getAttribute("aria-expanded") === "true") {
         content.setAttribute("hidden", "");
         content.setAttribute("aria-expanded", false);
@@ -1370,7 +1384,7 @@ function checkMissingTriggerParenthesesError() {
         <p>
             Mismatched left and right parentheses counts detected within ${invalidParentheses.length} hierarchy element triggers!
             These triggers should be revisited or the classification key will fail to build.
-            <button id='btn-toggle-nested-parentheses-errors' aria-controls='nested-parentheses-errors' onclick="toggleNestedContent(this, 'errors')">
+            <button id='btn-toggle-nested-parentheses-errors' aria-describedby="nested-parentheses-errors" aria-controls='nested-parentheses-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
         </p>
@@ -1378,7 +1392,8 @@ function checkMissingTriggerParenthesesError() {
     `;
 
     for (const info of invalidParentheses) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (mismatched parentheses)");
+        const elementButton = cloneButton.outerHTML;
         html += `
             <li>
                 ${elementButton}
@@ -1403,7 +1418,7 @@ function checkMissingFiltersInTrigger() {
         <p>
             Unknown filters mentioned within ${invalidTriggerFilters.length} hierarchy element triggers!
             These triggers should only reference valid filter names or the classification key will fail to build.
-            <button id='btn-toggle-nested-trigger-filter-errors' aria-controls='nested-trigger-filter-errors' onclick="toggleNestedContent(this, 'errors')">
+            <button id='btn-toggle-nested-trigger-filter-errors' aria-describedby="nested-trigger-filter-errors" aria-controls='nested-trigger-filter-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
         </p>
@@ -1411,7 +1426,8 @@ function checkMissingFiltersInTrigger() {
     `;
 
     for (const info of invalidTriggerFilters) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing filters)");
+        const elementButton = cloneButton.outerHTML;
 
         html += `
             <li class='border-box-list-item'>
@@ -1450,7 +1466,7 @@ function checkInvalidBinaryValueError() {
         <p>
             Invalid binary values have been detected within ${invalidBinaryValues.length} hierarchy elements!
             These binary filters should only have their inputs set to "yes" or "no".
-            <button id='btn-toggle-invalid-binary-errors' aria-controls='nested-binary-errors' onclick="toggleNestedContent(this, 'error')">
+            <button id='btn-toggle-invalid-binary-errors' aria-describedby="nested-binary-errors" aria-controls='nested-binary-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
         </p>
@@ -1458,7 +1474,8 @@ function checkInvalidBinaryValueError() {
     `;
 
     for (const info of invalidBinaryValues) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid binary fields)");
+        const elementButton = cloneButton.outerHTML;
 
         let elementFilters = [];
         for (const entry of info.invalids)
@@ -1521,7 +1538,7 @@ function checkInvalidSpeciesWarning() {
         <p>
             Non-tracked FIA species filters have been detected within ${invalidSpeciesInfo.length} hierarchy elements!
             These species filters will simply catch no conditions while running the classification key.
-            <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warnings' onclick="toggleNestedContent(this, 'warning')">
+            <button id='btn-toggle-nested-species-warnings' aria-describedby="nested-species-warnings" aria-controls='nested-species-warnings' onclick="toggleNestedContent(this, 'warning')">
                 Show Nested Warnings
             </button>
         </p>
@@ -1529,7 +1546,8 @@ function checkInvalidSpeciesWarning() {
     `;
 
     for (const info of invalidSpeciesInfo) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid species)");
+        const elementButton = cloneButton.outerHTML;
 
         let elementFilters = [];
         for (const entry of info.invalids)
@@ -1630,7 +1648,8 @@ function findMissingTriggerFilters() {
 
 function findInvalidBinaryValues() {
     let availableKeys = ["plantation", "hydric", "riverine", "ruderal", "exotic", "planted", "tallytree"];
-    let availableValues = getOptionValuesFromDataList(document.getElementById("binary-list"));
+    let datalistDetails = getDatalistDetails("binary-list");
+    let availableValues = datalistDetails.options;
     return findInvalidFilters(availableKeys, availableValues);
 }
 
