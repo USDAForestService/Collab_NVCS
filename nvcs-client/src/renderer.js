@@ -75,13 +75,17 @@ document.getElementById("json-dialog").addEventListener("close", async (event) =
 const jsonDialogBody = document.querySelector("#json-dialog .body-container");
 jsonDialogBody.addEventListener("input", (event) => {
     unsavedDialogChanges = true;
+    // Only perform validations on saveable input and textarea fields
+    if (!(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) 
+        return;
+    if (event.target.classList.contains("skip-validation")) 
+        return;
     performDialogValidations(false);
 });
 jsonDialogBody.addEventListener("click", (event) => {
     if (!(event.target instanceof HTMLButtonElement)) 
         return;
     unsavedDialogChanges = true;
-    performDialogValidations(false);
 })
 
 document.getElementById("settings-dialog").addEventListener("close", (event) => {
@@ -486,11 +490,6 @@ function openJsonDialog(hierarchyName) {
     let nodeFilters = generateFilters(hierarchyElement);
     document.getElementById("node-nodeFilters").innerHTML = nodeFilters;
 
-    // Mark invalid filter values
-    const inputTypes = document.querySelectorAll(".input-value");
-    for (const inputType of inputTypes)
-        checkInputInList(inputType);
-
     // Perform other dialog validations
     performDialogValidations(false);
 }
@@ -523,30 +522,23 @@ async function addInputFilter(identifier, bulkAdd = false) {
     const singleInputType = document.getElementById("input_type_add_" + identifier).value;
     const singleInputValue = document.getElementById("input_value_add_" + identifier).value;
     let newInputFilterHtml = "";
-    let newInputFilterIdentifiers = [];
     if (bulkAdd) {
         const separatedInputValues = singleInputValue.split(",");
         for (const separatedInputValue of separatedInputValues) {
             const cleanedInputValue = separatedInputValue.trim();
-            const [html, identifier] = createInputFilter(singleInputType, cleanedInputValue)
+            const [html] = createInputFilter(singleInputType, cleanedInputValue)
             newInputFilterHtml += html;
-            newInputFilterIdentifiers.push(identifier);
         }
 
     }
     else {
-        const [html, identifier] = createInputFilter(singleInputType, singleInputValue);
+        const [html] = createInputFilter(singleInputType, singleInputValue);
         newInputFilterHtml += html;
-        newInputFilterIdentifiers.push(identifier);
     }
     inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
 
-    // Mark new entries if invalid
-    for (const identifier of newInputFilterIdentifiers) {
-        const inputFilterContainer = document.getElementById(identifier);
-        const inputFilterInput = inputFilterContainer.querySelector(".input-value");
-        checkInputInList(inputFilterInput);
-    }
+    // Check newly-added filters
+    performDialogValidations(false);
 }
 
 function createFilter(filterKey, inputFilters) {
@@ -582,13 +574,13 @@ function createFilter(filterKey, inputFilters) {
                 <label for="input_type_add_${identifier}">
                     Type:
                 </label>
-                <select id="input_type_add_${identifier}" class="input-type" onchange="swapInputType(this, false)"  aria-label="Add Input Filter Type">
+                <select id="input_type_add_${identifier}" class="input-type skip-validation" onchange="swapInputType(this)"  aria-label="Add Input Filter Type">
                     ${inputFilterOptions}
                 </select>
                 <label for="input_value_add_${identifier}">
                     Value:
                 </label>
-                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}" aria-label="Add Input Filter Value"/>
+                <input id="input_value_add_${identifier}" type="text" class="input-value skip-validation" list="${inputValueList}" aria-label="Add Input Filter Value"/>
                 <button onclick="addInputFilter('${identifier}', false)" title='The full input will be added as a single filter'>
                     Add Single
                 </button>
@@ -619,7 +611,7 @@ function createInputFilter(inputFilterKey, inputFilterValue) {
         <select class='sub-key-holder input-type' value="${inputFilterKey}" onchange="swapInputType(this)" aria-label="Input Filter Type">
         ${filterSelectBoxOptions}
         </select>
-        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}" onblur="checkInputInList(this)" aria-label="Input Filter Value"/>
+        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}" aria-label="Input Filter Value"/>
         <button onclick="deleteElement('${identifier}')">Delete</button>
     </div>
     `
@@ -651,6 +643,9 @@ async function deleteElement(identifier, confirmation = false) {
 
     const container = document.getElementById(identifier);
     container.remove();
+
+    // Check to see if recently deleted elements trigger any new errors
+    performDialogValidations(false);
 }
 
 function newGuid() {
@@ -760,7 +755,7 @@ async function saveJsonChanges() {
 function performDialogValidations(displayAlert) {
     // Prepare for new validations
     clearMarkedValidationFields();
-    let valid = true;
+    let hasNoErrors = true;
     let newMarkedElements = [];
 
     // Find invalid elements within the JSON dialog
@@ -770,21 +765,31 @@ function performDialogValidations(displayAlert) {
     newMarkedElements = findInvalidsForParentNode(newMarkedElements);
     newMarkedElements = findInvalidsForNodeTrigger(newMarkedElements);
     newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
+    newMarkedElements = findInvalidsForSubFilters(newMarkedElements);
 
-    // Determine if dialog content is valid and mark any invalid fields
-    valid = newMarkedElements.length == 0;
+    // Mark invalid fields
     markValidationFields(newMarkedElements, displayAlert);
 
+    // Extract unique error messages if they exist
+    let uniqueErrorMessages = [];
+    const messageObjects = newMarkedElements.map(i => i.messages);
+    for (const messageObject of messageObjects) {
+        const errorTypes = messageObject.filter(i => i.type == "error");
+        const newErrorMessages = errorTypes.map(i => i.message);
+        uniqueErrorMessages.push(...newErrorMessages);
+    }
+    uniqueErrorMessages = [...new Set(uniqueErrorMessages)];
+
     // If requested and eligible, display an alert containing all unique errors
-    if (!valid && displayAlert) {
-        const allErrorMessages = [... new Set(newMarkedElements.map(i => i.messages))]
+    hasNoErrors = uniqueErrorMessages.length == 0;
+    if (displayAlert && !hasNoErrors) {
         const newLineError = "\r\n -";
-        const joinedErrorMessages = allErrorMessages.join(newLineError);
+        const joinedErrorMessages = uniqueErrorMessages.join(newLineError);
         const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
         alert(finalMessage);
     }
 
-    return valid;
+    return hasNoErrors;
 }
 
 function findInvalidsForNodeName(newMarkedElements) {
@@ -794,11 +799,11 @@ function findInvalidsForNodeName(newMarkedElements) {
     const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
 
     if (hierarchyName == "") {
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is required");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is required", "error");
     }
 
     if (otherElementsWithName.length != 0) {
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name must be unique");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name must be unique", "error");
     }
 
     return newMarkedElements
@@ -812,7 +817,7 @@ function findInvalidsForFilePath(newMarkedElements) {
     const fileName = inputFileName.value.trim();
 
     if (!isRoot && !fileName.endsWith(".json")){
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type", "error");
     }
     
     return newMarkedElements;
@@ -823,7 +828,7 @@ function findInvalidsForNodeDescription(newMarkedElements) {
     const nodeDescription = inputNodeDescription.value.trim();
 
     if (nodeDescription == "") {
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeDescription, "Node description is required");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeDescription, "Node description is required", "error");
     }
 
     return newMarkedElements;
@@ -837,7 +842,7 @@ function findInvalidsForParentNode(newMarkedElements) {
 
     const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
     if (otherElementAsParent.length == 0) {
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element", "error");
     }
 
     return newMarkedElements;
@@ -850,15 +855,15 @@ function findInvalidsForNodeTrigger(newMarkedElements) {
     const missingFilters = findMissingFiltersInTrigger(nodeTrigger, inputFilterNames.map(i => i.value));
 
     if (nodeTrigger == "") {
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger is required");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger is required", "error");
     }
 
     if (!doParenthesesMatchInTrigger(nodeTrigger)) {
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger has mismatched parentheses");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger has mismatched parentheses", "error");
     }
 
     if (missingFilters.length > 0) {
-        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger references filter names that don't exist");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger references filter names that don't exist", "error");
     }
 
     return newMarkedElements;
@@ -869,27 +874,33 @@ function findInvalidsForNodeFilters(newMarkedElements) {
 
     for (const inputFilterName of inputFilterNames) {
         if (inputFilterName.value == "") {
-            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names are required");
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names are required", "error");
         }
 
         const filtersWithSameName = inputFilterNames.filter(i => i.value == inputFilterName.value);
         if (filtersWithSameName.length > 1) {
-            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names must be unique");
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names must be unique", "error");
         }
     }
 
     return newMarkedElements;
 }
 
-function addMarkedElementMessage(newMarkedElements, html, message) {
+function addMarkedElementMessage(newMarkedElements, html, message, type) {
     const existingHtml = newMarkedElements.filter(i => i.html == html)[0];
     if (existingHtml) {
-        existingHtml.messages.push(message);
+        existingHtml.messages.push({
+            message: message,
+            type: type
+        });
     }
     else {
         newMarkedElements.push({
             html: html,
-            messages: [message]
+            messages: [{
+                message: message,
+                type: type
+            }]
         });
     }
     return newMarkedElements;
@@ -911,10 +922,11 @@ function markValidationFields(newMarkedElements, focusFirst) {
     for (let i = 0; i < newMarkedElements.length; i++) {
         const newMarkedElement = newMarkedElements[i];
         const html = newMarkedElement.html;
-        const message = newMarkedElement.messages.join(", ");
-        markElementAsType(html, 'error', message);
-        html.setAttribute(markedSelector, "error");
-        if (i == 0 && focusFirst) html.focus();
+        const message = newMarkedElement.messages.map(i => i.message).join(", ");
+        const type = newMarkedElement.messages.map(i => i.type)[0];
+        markElementAsType(html, type, message);
+        html.setAttribute(markedSelector, type);
+        if (i == 0 && focusFirst && type == "error") html.focus();
     }
 }
 
@@ -1210,6 +1222,9 @@ function suggestFileName() {
     suggestedName = suggestedName + ".json";
 
     document.getElementById("node-fileName").value = suggestedName;
+
+    // See if the new file name somehow caused issues
+    performDialogValidations(false);
 }
 
 function searchHierarchy() {
@@ -1230,11 +1245,13 @@ function searchHierarchy() {
     element.focus();
 }
 
-function swapInputType(element, validateInput = true) {
+function swapInputType(element) {
     const inputValue = element.parentElement.querySelector(".input-value");
     const inputValueListName = getInputValueListForType(element.value);
     inputValue.setAttribute("list", inputValueListName);
-    if (validateInput) checkInputInList(inputValue);
+    
+    // Check adjacent input field to see if any violations appear
+    performDialogValidations(false);
 }
 
 function getInputValueListForType(type) {
@@ -1652,29 +1669,41 @@ async function openBrowseDialog(targetPath = "") {
     }
 }
 
-function checkInputInList(element) {
-    const input = element.value;
-    const listId = element.getAttribute("list");
-    const list = document.getElementById(listId);
-    if (!list) {
-        element.classList.remove(mapTypeToClass("error"))
-        element.classList.remove(mapTypeToClass("warning"))
-        return;
-    }
-
-    const listType = list.getAttribute("data-type");
-    const listTypeClass = mapTypeToClass(listType);
-    const listMessage = list.getAttribute("data-missing-message");
-    const listValues = getOptionValuesFromDataList(list);
-    
-    if (listValues.includes(input)) {
-        element.classList.remove(listTypeClass);
-        element.removeAttribute("title");
+let dataListOptions = [];
+function getDatalistOptions(listId) {
+    const dataListOption = dataListOptions.filter(i => i.id == listId)[0];
+    if (!dataListOption) {
+        const list = document.getElementById(listId);
+        const foundOptions = getOptionValuesFromDataList(list);
+        dataListOptions.push({
+            id: listId,
+            options: foundOptions
+        });
+        return foundOptions;
     }
     else {
-        element.classList.add(listTypeClass);
-        element.title = listMessage;
+        return dataListOption.options;
     }
+}
+
+function findInvalidsForSubFilters(newMarkedElements) {
+    const inputTypes = document.querySelectorAll(".input-value:not(.skip-validation)");
+
+    for (const element of inputTypes) {
+        const input = element.value;
+        const listId = element.getAttribute("list");
+        const list = document.getElementById(listId);
+        if (!list) continue;
+
+        const listType = list.getAttribute("data-type");
+        const listMessage = list.getAttribute("data-missing-message");
+        const listValues = getDatalistOptions(listId);
+
+        if (!listValues.includes(input))
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listMessage, listType);
+    }
+
+    return newMarkedElements;
 }
 
 function markElementAsType(element, type, title = null) {
