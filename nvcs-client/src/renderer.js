@@ -131,13 +131,13 @@ async function fetchCustomJson() {
     const inputPath = document.getElementById("json-directory-path");
     const browsePath = await openBrowseDialog(inputPath.value);
     if (!browsePath) return;
-    inputPath.value = browsePath;
 
     const loadMessage = "Are you sure you want to load from this directory? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
     if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
+    inputPath.value = browsePath;
     const targetPath = document.getElementById("json-directory-path").value;
     if (!targetPath) {
         const message = "When loading custom JSON, please ensure a valid path is provided to the directory " +
@@ -965,13 +965,13 @@ async function updateJson() {
     const inputPath = document.getElementById("json-directory-path");
     const browsePath = await openBrowseDialog(inputPath.value);
     if (!browsePath) return;
-    inputPath.value = browsePath;
 
     const updateWarning = "Are you sure you want to save changes to this directory? " +
         "Any previously saved changes within this directory will be overwritten.";
     if (!await confirm(updateWarning))
         return;
-
+    
+    inputPath.value = browsePath;
     const newDirectoryName = document.getElementById("json-directory-path").value;
     if (!newDirectoryName) {
         const message = "Please provide an exact directory path to store your updated JSON files";

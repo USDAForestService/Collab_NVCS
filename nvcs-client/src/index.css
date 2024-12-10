@@ -336,10 +336,11 @@ dialog:not([open]) {
   margin-bottom: 2px;
 }
 
-.dialog option:disabled,
-.dialog textarea:read-only,
-.dialog input:read-only {
+option:disabled,
+textarea:read-only,
+input:read-only {
   background: lightgrey;
+  border: 1px solid grey;
 }
 
 .dialog .footer-container {
