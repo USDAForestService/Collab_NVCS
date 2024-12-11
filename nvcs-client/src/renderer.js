@@ -1308,6 +1308,7 @@ function checkForProblems() {
     warnings = [];
 
     // Check errors
+    checkMissingRequiredFields();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -1374,6 +1375,54 @@ function toggleNestedContent(button, type) {
     }
 } 
 
+function checkMissingRequiredFields() {
+    const invalidMissingRequired = findMissingRequiredFields();
+    if (invalidMissingRequired.length == 0)
+        return;
+    console.error("Invalid missing required fields", invalidMissingRequired);
+
+    let html = `
+        <p>
+            Missing required fields within ${invalidMissingRequired.length} hierarchy elements!
+            All required fields must be provided or the classification key may fail to build.
+            <button id='btn-toggle-nested-missing-required-errors' aria-describedby="nested-missing-required-errors" aria-controls='nested-missing-required-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-missing-required-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Missing Required Fields" hidden>
+    `;
+
+    for (const info of invalidMissingRequired) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing required fields)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            html += `
+                <li>
+                    ${elementFilter}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("missing-required-fields", html, invalidMissingRequired);
+}
+
 function checkMissingTriggerParenthesesError() {
     const invalidParentheses = findMissingTriggerParentheses();
     if (invalidParentheses.length == 0)
@@ -1383,7 +1432,7 @@ function checkMissingTriggerParenthesesError() {
     let html = `
         <p>
             Mismatched left and right parentheses counts detected within ${invalidParentheses.length} hierarchy element triggers!
-            These triggers should be revisited or the classification key will fail to build.
+            These triggers should be revisited or the classification key may fail to build.
             <button id='btn-toggle-nested-parentheses-errors' aria-describedby="nested-parentheses-errors" aria-controls='nested-parentheses-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
@@ -1417,7 +1466,7 @@ function checkMissingFiltersInTrigger() {
     let html = `
         <p>
             Unknown filters mentioned within ${invalidTriggerFilters.length} hierarchy element triggers!
-            These triggers should only reference valid filter names or the classification key will fail to build.
+            These triggers should only reference valid filter names or the classification key may fail to build.
             <button id='btn-toggle-nested-trigger-filter-errors' aria-describedby="nested-trigger-filter-errors" aria-controls='nested-trigger-filter-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
@@ -1599,6 +1648,41 @@ function checkInvalidSpeciesWarning() {
     `;
 
     createWarning("invalid-species", html, invalidSpeciesInfo);
+}
+
+function findMissingRequiredFields() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        if (element.hierarchyName == "ROOT") continue;
+        
+        let invalids = [];
+        if (element.hierarchyName == "")
+            invalids.push("Node Name");
+
+        if (element.fileName == "")
+            invalids.push("Node Description");
+
+        if (element.node.description == "")
+            invalids.push("Node Description");
+
+        if (!element.parent)
+            invalids.push("Parent Node");
+
+        if (element.node.trigger == "")
+            invalids.push("Node Trigger");
+        
+        if (invalids.length == 0) 
+            continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            invalids: invalids
+        });
+    }
+
+    return invalid;
 }
 
 function findMissingTriggerParentheses() {
