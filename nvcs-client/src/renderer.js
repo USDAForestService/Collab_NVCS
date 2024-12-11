@@ -1249,19 +1249,33 @@ function suggestFileName() {
         return;
     }
 
+    let suggestedName = generateFileNameFromValue(nodeName);
+    document.getElementById("node-fileName").value = suggestedName;
+
+    // See if the new file name somehow caused issues
+    performDialogValidations(false);
+}
+
+function generateFileNameFromValue(nodeName) {
     let suggestedName = nodeName.toLowerCase().trim();
+
+    const nodeId = /(?<=\()[^()]+(?=\)$)/g;
+    suggestedName = suggestedName.replace(nodeId, i => i.toUpperCase());
+
+    const commas = ",";
+    suggestedName = suggestedName.replaceAll(commas, "-");
 
     const whiteSpace = /\s+/g;
     suggestedName = suggestedName.replace(whiteSpace, "-");
 
     const parantheses = /[()]/g;
     suggestedName = suggestedName.replace(parantheses, "");
+
+    const consecutiveDashes = /(-+){2}/g;
+    suggestedName = suggestedName.replace(consecutiveDashes, "-"); 
+
     suggestedName = suggestedName + ".json";
-
-    document.getElementById("node-fileName").value = suggestedName;
-
-    // See if the new file name somehow caused issues
-    performDialogValidations(false);
+    return suggestedName;
 }
 
 function searchHierarchy() {
