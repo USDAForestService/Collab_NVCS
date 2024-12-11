@@ -844,12 +844,18 @@ function findInvalidsForNodeName(newMarkedElements) {
 }
 
 function findInvalidsForFilePath(newMarkedElements) {
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
     const inputFileName = document.getElementById("node-fileName")
-    const fileName = inputFileName.value.trim();
+    const fileName = inputFileName.value.trim().toLowerCase();
 
     if (!fileName.endsWith(".json")){
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type", "error");
     }
+
+    const othersWithFileName = hierarchy.filter(i => i.hierarchyName != openedHierarchyName && i.fileName == fileName);
+    if (othersWithFileName.length > 0)
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must be unique", "error");
     
     return newMarkedElements;
 }
