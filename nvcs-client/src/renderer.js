@@ -1334,6 +1334,7 @@ function checkForProblems() {
     checkInvalidBinaryValueError();
 
     // Check warnings
+    checkUnconventionalFileNames();
     checkInvalidSpeciesWarning();
 
     // Update alerts
@@ -1597,6 +1598,55 @@ function checkInvalidBinaryValueError() {
     createError("invalid-binary", html, invalidBinaryValues);
 }
 
+function checkUnconventionalFileNames() {
+    const unconventionalFileNames = findUnconventionalFileNames();
+    if (unconventionalFileNames.length == 0)
+        return;
+    console.warn("Invalid unconventional file names", unconventionalFileNames);
+
+    let html = `
+        <p>
+            Unconventional file names detected within ${unconventionalFileNames.length} hierarchy elements!
+            The following elements have file names that don't follow standard conventions. Use of the "Suggest" button is recommended for these file names.
+            <button id='btn-toggle-nested-unconventional-file-name-warnings' aria-describedby="nested-unconventional-file-name-warnings" aria-controls='nested-unconventional-file-name-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-unconventional-file-name-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Unconventional File Names" hidden>
+    `;
+
+    for (const info of unconventionalFileNames) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (unconventional file name)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        html += `
+                <li>
+                    <b>File Name:</b> ${info.fileName}
+                </li>
+                <li>
+                    <b>Suggested Name:</b> ${info.suggestedName}
+                </li>
+        `;
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createWarning("unconventional-file-name", html, unconventionalFileNames);
+}
+
 function checkInvalidSpeciesWarning() {
     const invalidSpeciesInfo = findInvalidSpecies();
     if (invalidSpeciesInfo.length == 0)
@@ -1763,6 +1813,27 @@ function findInvalidSpecies() {
     let availableKeys = ["species"];
     let availableValues = availableSpecies;
     return findInvalidFilters(availableKeys, availableValues);
+}
+
+function findUnconventionalFileNames() {
+    let invalid = [];
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const fileName = element.fileName;
+        const suggestedName = generateFileNameFromValue(element.hierarchyName);
+        
+        if (fileName == suggestedName) 
+            continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            fileName: fileName,
+            suggestedName: suggestedName
+        });
+    }
+
+    return invalid;
 }
 
 function findInvalidFilters(availableKeys, availableValues) {
