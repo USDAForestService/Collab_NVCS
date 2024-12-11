@@ -1652,9 +1652,7 @@ function checkInvalidSpeciesWarning() {
 
 function findMissingRequiredFields() {
     let invalid = [];
-    for (const element of hierarchy) {
-        if (element.hierarchyName == "ROOT") continue;
-        
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
         let invalids = [];
         if (element.hierarchyName == "")
             invalids.push("Node Name");
@@ -1670,6 +1668,10 @@ function findMissingRequiredFields() {
 
         if (element.node.trigger == "")
             invalids.push("Node Trigger");
+
+        const filterNames = Object.keys(element.node.filters);
+        if (filterNames.includes(""))
+            invalids.push("Node Filter Names");
         
         if (invalids.length == 0) 
             continue;
