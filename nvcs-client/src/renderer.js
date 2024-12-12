@@ -829,6 +829,8 @@ function performDialogValidations(displayAlert) {
 function findInvalidsForNodeName(newMarkedElements) {
     const inputHierarchyName = document.getElementById("node-hierarchyName")
     const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputNodeId = document.getElementById("node-nodeID");
+    const nodeId = inputNodeId.value.trim();
     const hierarchyName = inputHierarchyName.value.trim();
     const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
 
@@ -839,6 +841,9 @@ function findInvalidsForNodeName(newMarkedElements) {
     if (otherElementsWithName.length != 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name must be unique", "error");
     }
+
+    if (nodeId && !hierarchyName.includes(`(${nodeId})`))
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is unconventional because it lacks the node ID in parentheses at the end", "warning");
 
     return newMarkedElements
 }
