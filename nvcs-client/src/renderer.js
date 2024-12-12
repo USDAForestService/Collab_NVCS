@@ -1338,6 +1338,7 @@ function checkForProblems() {
     checkInvalidBinaryValueError();
 
     // Check warnings
+    checkMissingNodeIdInNames();
     checkUnconventionalFileNames();
     checkInvalidSpeciesWarning();
 
@@ -1602,6 +1603,52 @@ function checkInvalidBinaryValueError() {
     createError("invalid-binary", html, invalidBinaryValues);
 }
 
+function checkMissingNodeIdInNames() {
+    const missingNodeIdsInNames = findMissingNodeIdInNames();
+    if (missingNodeIdsInNames.length == 0)
+        return;
+    console.warn("Invalid missing node ID in names", missingNodeIdsInNames);
+
+    let html = `
+        <p>
+            Node ID missing from the node name of ${missingNodeIdsInNames.length} hierarchy elements!
+            The standard convention for node names is to include the node ID in parentheses at the end if one exists.
+            <button id='btn-toggle-nested-missing-node-id-in-name-warnings' aria-describedby="nested-missing-node-id-in-name-warnings" aria-controls='nested-missing-node-id-in-name-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-missing-node-id-in-name-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Missing Node ID in Names" hidden>
+    `;
+
+    for (const info of missingNodeIdsInNames) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing node ID in name)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        html += `
+                <li>
+                    <b>Missing Node ID:</b> ${info.id}
+                </li>
+        `;
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createWarning("missing-node-id-in-name", html, missingNodeIdsInNames);
+}
+
 function checkUnconventionalFileNames() {
     const unconventionalFileNames = findUnconventionalFileNames();
     if (unconventionalFileNames.length == 0)
@@ -1817,6 +1864,24 @@ function findInvalidSpecies() {
     let availableKeys = ["species"];
     let availableValues = availableSpecies;
     return findInvalidFilters(availableKeys, availableValues);
+}
+
+function findMissingNodeIdInNames() {
+    let invalid = [];
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const missingId = `(${element.node.id})`;
+        if (!element.node.id || element.hierarchyName.includes(missingId))
+            continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            id: missingId
+        });
+    }
+
+    return invalid;
 }
 
 function findUnconventionalFileNames() {
