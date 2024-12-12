@@ -1345,6 +1345,7 @@ function checkForProblems() {
     // Check warnings
     checkMissingNodeIdInNames();
     checkUnconventionalFileNames();
+    checkDuplicateNodeIds();
     checkInvalidSpeciesWarning();
 
     // Update alerts
@@ -1703,6 +1704,56 @@ function checkUnconventionalFileNames() {
     createWarning("unconventional-file-name", html, unconventionalFileNames);
 }
 
+function checkDuplicateNodeIds() {
+    const duplicateNodeIds = findDuplicateNodeIds();
+    if (duplicateNodeIds.length == 0)
+        return;
+    console.warn("Invalid duplicate node IDs", duplicateNodeIds);
+
+    let html = `
+        <p>
+            Duplicate node IDs detected within ${duplicateNodeIds.length} hierarchy elements!
+            The following elements are unconventional because they have non-unique node IDs. Most hierarchy elements either have a unique node ID or none at all.
+            <button id='btn-toggle-nested-duplicate-node-ids-warnings' aria-describedby="nested-duplicate-node-ids-warnings" aria-controls='nested-duplicate-node-ids-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-duplicate-node-ids-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Duplicate Node IDs" hidden>
+    `;
+
+    for (const info of duplicateNodeIds) {
+        
+
+        html += `
+            <li class='border-box-list-item'>
+                <b>Node ID:</b> ${info.id}
+                <ul>
+        `;
+
+        for (const button of info.buttons) {
+            const cloneButton = cloneElement(button, button.innerText + " (duplicate node ID)");
+            const elementButton = cloneButton.outerHTML;
+
+            html += `
+            <li>
+                ${elementButton}
+            </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createWarning("duplicate-node-ids", html, duplicateNodeIds);
+}
+
 function checkInvalidSpeciesWarning() {
     const invalidSpeciesInfo = findInvalidSpecies();
     if (invalidSpeciesInfo.length == 0)
@@ -1904,6 +1955,28 @@ function findUnconventionalFileNames() {
             button: findHierarchyButton(element.hierarchyName),
             fileName: fileName,
             suggestedName: suggestedName
+        });
+    }
+
+    return invalid;
+}
+
+function findDuplicateNodeIds() {
+    let invalid = [];
+    const context = hierarchy.filter(i => i.hierarchyName != "ROOT" && i.node.id != "");
+    for (const element of context) {
+        // Skip already accounted for node IDs
+        if (invalid.filter(i => i.id == element.node.id).length > 0)
+            continue;
+
+        const elementsWithNodeId = context.filter(i => i.node.id == element.node.id);
+        if (elementsWithNodeId.length == 1) 
+            continue;
+
+        invalid.push({
+            id: element.node.id,
+            elements: elementsWithNodeId,
+            buttons: elementsWithNodeId.map(i => findHierarchyButton(i.hierarchyName))
         });
     }
 
