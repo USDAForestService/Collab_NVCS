@@ -368,6 +368,9 @@ function createEmptyHierarchyElement() {
 }
 
 function generateHierarchyHTML(hierarchy) {
+    // Update hierarchy node level colors
+    updateLevelColorScale();
+
     // Generate HTML tree
     let nodeDisplay = "<ul>";
     let rootElement = hierarchy.filter(i => i.hierarchyName == "ROOT")[0];
@@ -421,7 +424,9 @@ function generateAlerts() {
 
 function generateListEntry(element) {
     let returnString = "<li class='hierarchyNode'>";
-    returnString += `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
+    let nodeTagColor = levelColorScale[element.node.level];
+    let nodeTag = `<span class="node-level-tag" style="background-color: ${nodeTagColor};">${element.node.level != "" ? element.node.level : "none"}</span>`
+    returnString += `${nodeTag}<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
@@ -2389,4 +2394,58 @@ document.getElementById("alert-dialog-ok").addEventListener("click", (event) => 
     event.preventDefault();
     document.getElementById("alert-dialog").close();
 });
+
+let levelColorScale = {};
+function updateLevelColorScale() {
+    const allLevels = hierarchy.toSorted((a, b) => a.hierarchyLevel - b.hierarchyLevel).map(i => i.node.level);
+    const uniqueLevels = [...new Set(allLevels)];
+    const startColor = "#C25252";
+    const endColor = "#338800";
+    levelColorScale = generateColorsFromLevels(uniqueLevels, startColor, endColor);
+}
+
+function generateColorsFromLevels(levels, startHex, endHex) {
+    const hexLevels = {};
+    const startRGB = convertHexToRGB(startHex);
+    const endRGB = convertHexToRGB(endHex);
+
+    for (let i = 0; i < levels.length; i++) {
+        const level = levels[i] != "" ? levels[i] : "none";
+        const colorRatio = levels.length === 1 ? 0.5 : i / (levels.length - 1);
+        const r = lerp(startRGB.r, endRGB.r, colorRatio);
+        const g = lerp(startRGB.g, endRGB.g, colorRatio);
+        const b = lerp(startRGB.b, endRGB.b, colorRatio);
+        const hex = convertRGBToHex(r, g, b);
+        hexLevels[level] = hex;
+    }
+
+    return hexLevels;
+}
+
+function lerp(a, b, ratio) {
+    return Math.round(a + (b - a) * ratio);
+}
+
+function convertHexToRGB(hex) {
+    const hexFormat = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i;
+    const executionResults = hexFormat.exec(hex);
+    
+    if (!executionResults)
+        throw new Error("Provided hex string is not in an expected format", hex);
+    
+    const rgb = {
+        r: parseInt(executionResults[1], 16),
+        g: parseInt(executionResults[2], 16),
+        b: parseInt(executionResults[3], 16),
+    };
+
+    return rgb;
+}
+
+function convertRGBToHex(r, g, b) {
+    const shift = (1 << 24 | r << 16 | g << 8 | b);
+    const shiftString = shift.toString(16).slice(1);
+    const hex = "#" + shiftString;
+    return hex; 
+}
 
