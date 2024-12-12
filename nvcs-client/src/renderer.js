@@ -797,6 +797,7 @@ function performDialogValidations(displayAlert) {
     newMarkedElements = findInvalidsForFilePath(newMarkedElements);
     newMarkedElements = findInvalidsForNodeDescription(newMarkedElements);
     newMarkedElements = findInvalidsForParentNode(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeId(newMarkedElements);
     newMarkedElements = findInvalidsForNodeTrigger(newMarkedElements);
     newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
     newMarkedElements = findInvalidsForSubFilters(newMarkedElements);
@@ -889,6 +890,18 @@ function findInvalidsForParentNode(newMarkedElements) {
     const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
     if (otherElementAsParent.length == 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element", "error");
+    }
+
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeId(newMarkedElements) {
+    const inputNodeId = document.getElementById("node-nodeID");
+    const nodeId = inputNodeId.value.trim();
+    const elementsWithNodeId = hierarchy.filter(i => i.node.id == nodeId);
+
+    if (nodeId != "" && elementsWithNodeId.length > 1) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeId, "Node ID is non-unique", "warning");
     }
 
     return newMarkedElements;
