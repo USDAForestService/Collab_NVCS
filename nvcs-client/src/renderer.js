@@ -12,10 +12,22 @@ let InputFilterTypes = [
     "planted",
     "tallytree"
 ];
+let availableLevelColors = [
+    "#000000",
+    "#EF0000",
+    "#CD4D00",
+    "#7A7A00",
+    "#008A00",
+    "#0000FF",
+    "#4B0082",
+    "#9400D3",
+]
+let levelColorMap = {};
 let lineNumberCounter = 0;
 let warnings = [];
 let errors = [];
 let unsavedDialogChanges = false;
+let showTags = false;
 
 let nodeJson;
 let nodeHierarchy;
@@ -228,6 +240,7 @@ async function fetchJson(targetPath) {
         "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
     );
     document.getElementById("btn-add-element").disabled = false;
+    document.getElementById("btn-toggle-levels").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
 }
@@ -425,7 +438,8 @@ function generateAlerts() {
 function generateListEntry(element) {
     let returnString = "<li class='hierarchyNode'>";
     let nodeTagColor = levelColorMap[element.node.level];
-    let nodeTag = `<span class="node-level-tag" style="background-color: ${nodeTagColor};">${element.node.level != "" ? element.node.level : "none"}</span>`
+    let nodeTagHidden = showTags ? "" : "hidden";
+    let nodeTag = `<span class="node-level-tag" style="background-color: ${nodeTagColor};" ${nodeTagHidden}>${element.node.level != "" ? element.node.level : "none"}</span>`
     returnString += `${nodeTag}<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
@@ -2187,6 +2201,20 @@ function hideContentById(id) {
     element.setAttribute("hidden", "");
 }
 
+function toggleNodeLevelTags() {
+    showTags = !showTags;
+    const buttonToggleLevels = document.getElementById("btn-toggle-levels");
+    const buttonText = showTags ? "Hide Level Tags" : "Show Level Tags";
+    buttonToggleLevels.innerText = buttonText;
+    setHiddenBySelector(".node-level-tag", showTags);
+}
+
+function setHiddenBySelector(selector, show) {
+    const elements = document.querySelectorAll(selector);
+    for (const element of elements)
+        element.hidden = !show;
+}
+
 function saveSettingsChanges(closeAfter = true) {
     const checkedInventoryYears = [...document.querySelectorAll("#settings-inv-years input[type='checkbox']:checked")];
     let inventoryYears = checkedInventoryYears.map(i => i.value);
@@ -2395,17 +2423,6 @@ document.getElementById("alert-dialog-ok").addEventListener("click", (event) => 
     document.getElementById("alert-dialog").close();
 });
 
-let levelColorMap = {};
-let availableLevelColors = [
-    "#000000",
-    "#EF0000",
-    "#CD4D00",
-    "#7A7A00",
-    "#008A00",
-    "#0000FF",
-    "#4B0082",
-    "#9400D3",
-]
 function updateLevelColorScale() {
     const allLevels = hierarchy.toSorted((a, b) => a.hierarchyLevel - b.hierarchyLevel).map(i => i.node.level);
     const uniqueLevels = [...new Set(allLevels)];
