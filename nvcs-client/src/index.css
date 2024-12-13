@@ -160,7 +160,7 @@ main {
 .node-level-tag {
   background-color: lightcoral;
   border-radius: 5px;
-  padding: 2px;
+  padding: 1px 4px;
   margin: 0 5px;
   border: 1px solid lightgray;
   font-size: 0.8rem;
