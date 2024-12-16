@@ -198,7 +198,6 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
 
 def export_node_table(classification_key):
     rows = [
-        ['ident', 'parent', 'description', 'nvc_level', 'nvc_code'],
         ['-1', '', 'unclassified', 'unclassified', '']
     ]
 
