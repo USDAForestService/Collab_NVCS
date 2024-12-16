@@ -1,4 +1,4 @@
-var InputFilterTypes = [
+let InputFilterTypes = [
     "state",
     "ecoregion",
     "plantation",
@@ -12,17 +12,32 @@ var InputFilterTypes = [
     "planted",
     "tallytree"
 ];
-var lineNumberCounter = 0;
-var warnings = [];
-var errors = [];
+let availableLevelColors = [
+    "#000000",
+    "#EF0000",
+    "#CD4D00",
+    "#7A7A00",
+    "#008A00",
+    "#0000FF",
+    "#4B0082",
+    "#9400D3",
+]
+let levelColorMap = {};
+let lineNumberCounter = 0;
+let warnings = [];
+let errors = [];
+let unsavedDialogChanges = false;
+let showTags = false;
 
-var nodeJson;
-var nodeHierarchy;
-var hierarchy;
-var initialHierarchy;
-var availableSpecies;
-var availableYears;
-var testSettings;
+let nodeJson;
+let nodeHierarchy;
+let hierarchy;
+let initialHierarchy;
+let availableSpecies;
+let availableYears;
+let testSettings;
+
+displayApplicationVersion();
 
 const stateChecker = {
     _modified: false,
@@ -49,7 +64,17 @@ const stateChecker = {
     }
 };
 
-document.getElementById("json-dialog").addEventListener("close", (event) => {
+document.getElementById("json-dialog").addEventListener("close", async (event) => {
+    if (unsavedDialogChanges) {
+        const message = "You may have unsaved changes made to this element. Are you sure you want to discard these changes by exiting the dialog without saving?";
+        if (!await confirm(message)) {
+            const dialog = document.getElementById("json-dialog");
+            showDialog(dialog);
+            return;
+        }
+        unsavedDialogChanges = false;
+    }
+
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
     const isNew = openedHierarchyName == "";
 
@@ -58,6 +83,22 @@ document.getElementById("json-dialog").addEventListener("close", (event) => {
         hierarchy = hierarchy.filter(i => i.hierarchyName != openedHierarchyName);
     }
 });
+
+const jsonDialogBody = document.querySelector("#json-dialog .body-container");
+jsonDialogBody.addEventListener("input", (event) => {
+    unsavedDialogChanges = true;
+    // Only perform validations on saveable input and textarea fields
+    if (!(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) 
+        return;
+    if (event.target.classList.contains("skip-validation")) 
+        return;
+    performDialogValidations(false);
+});
+jsonDialogBody.addEventListener("click", (event) => {
+    if (!(event.target instanceof HTMLButtonElement)) 
+        return;
+    unsavedDialogChanges = true;
+})
 
 document.getElementById("settings-dialog").addEventListener("close", (event) => {
     // No implementation yet
@@ -70,6 +111,20 @@ closeButtons.forEach(closeButton => {
         dialog.close();
     })
 })
+
+async function displayApplicationVersion() {
+    const version = await getApplicationVersion();
+    document.getElementById("app-version").innerHTML = "v" + version;
+}
+
+async function getApplicationVersion() {
+    try {
+        return await window.electronAPI.getApplicationVersion();
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
 
 async function fetchPackagedJson() {
     const loadMessage = "Are you sure you want to load the selected packaged content? " +
@@ -88,13 +143,13 @@ async function fetchCustomJson() {
     const inputPath = document.getElementById("json-directory-path");
     const browsePath = await openBrowseDialog(inputPath.value);
     if (!browsePath) return;
-    inputPath.value = browsePath;
 
     const loadMessage = "Are you sure you want to load from this directory? " +
         "All currently loaded modifications will be lost unless they were saved to another directory.";
     if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
+    inputPath.value = browsePath;
     const targetPath = document.getElementById("json-directory-path").value;
     if (!targetPath) {
         const message = "When loading custom JSON, please ensure a valid path is provided to the directory " +
@@ -168,7 +223,7 @@ async function fetchJson(targetPath) {
     hierarchy.sort((a, b) => a.hierarchyLevel - b.hierarchyLevel);
 
     // Clone hierarchy
-    console.log(hierarchy);
+    console.log("Current Hierarchy", hierarchy);
     initialHierarchy = structuredClone(hierarchy);
 
     // Fetch latest species list
@@ -185,6 +240,7 @@ async function fetchJson(targetPath) {
         "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
     );
     document.getElementById("btn-add-element").disabled = false;
+    document.getElementById("btn-toggle-levels").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
 }
@@ -231,17 +287,6 @@ async function updateAvailableYears() {
     document.getElementById("settings-inv-years").innerHTML = html;
 }
 
-async function openBrowseDialog(path) {
-    try {
-        const browsePath = await openBrowseDialog(path);
-        return browsePath;
-    }
-    catch (error) {
-        console.error(error);
-        return null;
-    }
-}
-
 async function updateAvailableSpecies() {
     let returnedData;
     try {
@@ -255,6 +300,7 @@ async function updateAvailableSpecies() {
 
     const speciesOptions = createOptions(availableSpecies);
     document.getElementById("species-list").innerHTML = speciesOptions;
+    getDatalistDetails("species-list");
 
     console.log(`Updated available species with ${availableSpecies.length} elements`);
 }
@@ -335,8 +381,11 @@ function createEmptyHierarchyElement() {
 }
 
 function generateHierarchyHTML(hierarchy) {
+    // Update hierarchy node level colors
+    updateLevelColorScale();
+
     // Generate HTML tree
-    nodeDisplay = "<ul>";
+    let nodeDisplay = "<ul>";
     let rootElement = hierarchy.filter(i => i.hierarchyName == "ROOT")[0];
     nodeDisplay += generateListEntry(rootElement);
     nodeDisplay += "</ul>";
@@ -384,11 +433,18 @@ function generateAlerts() {
             </li>
         `;
     }
+
+    // Update counters
+    document.getElementById("error-type-counter").innerText = `(${errors.length})`;
+    document.getElementById("warning-type-counter").innerText = `(${warnings.length})`;
 }
 
 function generateListEntry(element) {
-    returnString = "<li class='hierarchyNode'>";
-    returnString += `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
+    let returnString = "<li class='hierarchyNode'>";
+    let nodeTagColor = levelColorMap[element.node.level];
+    let nodeTagHidden = showTags ? "" : "hidden";
+    let nodeTag = `<span class="node-level-tag" style="background-color: ${nodeTagColor};" ${nodeTagHidden}>${element.node.level != "" ? element.node.level : "none"}</span>`
+    returnString += `${nodeTag}<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
@@ -399,44 +455,66 @@ function generateListEntry(element) {
 
 function openJsonDialog(hierarchyName) {
     // Open the dialog
+    unsavedDialogChanges = false;
+    clearMarkedValidationFields();
     const dialog = document.getElementById("json-dialog");
     showDialog(dialog);
 
+    // Gather opened dialog context
     const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
-    console.log(hierarchyElement);
+    console.log("Opened Hierarchy Element", hierarchyElement);
 
-    document.getElementById("node-hierarchyName").value = hierarchyElement.hierarchyName;
-    document.getElementById("node-hierarchyName").setAttribute("data-opened-name", hierarchyElement.hierarchyName);
-    document.getElementById("node-fileName").value = hierarchyElement.fileName;
+    // Prepare node name
+    const inputNodeName = document.getElementById("node-hierarchyName");
+    inputNodeName.value = hierarchyElement.hierarchyName;
+    inputNodeName.setAttribute("data-opened-name", hierarchyElement.hierarchyName);
+    inputNodeName.readOnly = isRoot;
+
+    // Prepare file name
+    const inputFileName = document.getElementById("node-fileName");
+    inputFileName.value = hierarchyElement.fileName;
+    inputFileName.readOnly = isRoot;
+
+    // Prepare hierarchy level & line number (always readonly)
     document.getElementById("node-hierarchyLevel").value = hierarchyElement.hierarchyLevel;
     document.getElementById("node-hierarchyLineNumber").value = hierarchyElement.hierarchyLineNumber;
-    document.getElementById("node-nodeID").value = hierarchyElement.node.id;
-    document.getElementById("node-nodeLevel").value = hierarchyElement.node.level;
+
+    // Prepare node ID
+    const inputNodeId = document.getElementById("node-nodeID");
+    inputNodeId.value = hierarchyElement.node.id;
+    inputNodeId.readOnly = isRoot;
+
+    // Prepare node level
+    const inputNodeLevel = document.getElementById("node-nodeLevel");
+    inputNodeLevel.value = hierarchyElement.node.level;
+    inputNodeLevel.readOnly = isRoot;
 
     // Update node description data
     let lineBrokenDescription = hierarchyElement.node.description.join('\n');
-    document.getElementById("node-nodeDescription").value = lineBrokenDescription;
+    const inputNodeDescription = document.getElementById("node-nodeDescription");
+    inputNodeDescription.value = lineBrokenDescription;
+    inputNodeDescription.readOnly = isRoot;
 
     // Resize description height for its content
-    document.getElementById("node-nodeDescription").style.height = "1px";
+    inputNodeDescription.style.height = "1px";
     let descriptionScrollHeight = document.getElementById("node-nodeDescription").scrollHeight;
-    document.getElementById("node-nodeDescription").style.height = descriptionScrollHeight + "px";
+    inputNodeDescription.style.height = descriptionScrollHeight + "px";
 
     // Populate node parent options
+    const inputParentNode = document.getElementById("node-parentNode");
+    inputParentNode.readOnly = isRoot;
     if (!isRoot) {
         let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
         document.getElementById("parent-hierarchy-list").innerHTML = nodeParentOptions;
-        document.getElementById("node-parentNode").value = hierarchyElement.parent?.hierarchyName ?? "";
-        document.getElementById("node-parentNode").disabled = false;
+        inputParentNode.value = hierarchyElement.parent?.hierarchyName ?? "";
     }
     else  {
         const unavailableMessage = "Cannot be assigned to a parent";
         document.getElementById("parent-hierarchy-list").innerHTML = `
             <option selected disabled>${unavailableMessage}</option>
         `;
-        document.getElementById("node-parentNode").value = unavailableMessage;
-        document.getElementById("node-parentNode").disabled = true;
+        inputParentNode.value = unavailableMessage;
     }
 
     // Populate node children inputs
@@ -445,24 +523,26 @@ function openJsonDialog(hierarchyName) {
 
     // Update node trigger data
     let lineBrokenTrigger = hierarchyElement.node.trigger.join('\n');
-    document.getElementById("node-nodeTrigger").value = lineBrokenTrigger;
+    const inputNodeTrigger = document.getElementById("node-nodeTrigger");
+    inputNodeTrigger.value = lineBrokenTrigger;
+    inputNodeTrigger.readOnly = isRoot;
 
     // Resize trigger height for its content
-    document.getElementById("node-nodeTrigger").style.height = "1px";
+    inputNodeTrigger.style.height = "1px";
     let triggerScrollHeight = document.getElementById("node-nodeTrigger").scrollHeight;
-    document.getElementById("node-nodeTrigger").style.height = triggerScrollHeight + "px";
+    inputNodeTrigger.style.height = triggerScrollHeight + "px";
 
     // Populate filters
     let nodeFilters = generateFilters(hierarchyElement);
     document.getElementById("node-nodeFilters").innerHTML = nodeFilters;
 
-    // Mark invalid filter values
-    const inputTypes = document.querySelectorAll(".input-value");
-    for (const inputType of inputTypes)
-        checkInputInList(inputType);
+    // Prepare buttons
+    document.getElementById("suggest-file-name").disabled = isRoot;
+    document.getElementById("add-new-filter").disabled = isRoot;
+    document.getElementById("delete-hierarchy-element").disabled = isRoot;
 
-    // Mark invalid trigger value
-    checkNodeTrigger();
+    // Perform other dialog validations
+    performDialogValidations(false);
 }
 
 function createElementFromString(htmlString) {
@@ -493,30 +573,23 @@ async function addInputFilter(identifier, bulkAdd = false) {
     const singleInputType = document.getElementById("input_type_add_" + identifier).value;
     const singleInputValue = document.getElementById("input_value_add_" + identifier).value;
     let newInputFilterHtml = "";
-    let newInputFilterIdentifiers = [];
     if (bulkAdd) {
         const separatedInputValues = singleInputValue.split(",");
         for (const separatedInputValue of separatedInputValues) {
             const cleanedInputValue = separatedInputValue.trim();
-            const [html, identifier] = createInputFilter(singleInputType, cleanedInputValue)
+            const [html] = createInputFilter(singleInputType, cleanedInputValue)
             newInputFilterHtml += html;
-            newInputFilterIdentifiers.push(identifier);
         }
 
     }
     else {
-        const [html, identifier] = createInputFilter(singleInputType, singleInputValue);
+        const [html] = createInputFilter(singleInputType, singleInputValue);
         newInputFilterHtml += html;
-        newInputFilterIdentifiers.push(identifier);
     }
     inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
 
-    // Mark new entries if invalid
-    for (const identifier of newInputFilterIdentifiers) {
-        const inputFilterContainer = document.getElementById(identifier);
-        const inputFilterInput = inputFilterContainer.querySelector(".input-value");
-        checkInputInList(inputFilterInput);
-    }
+    // Check newly-added filters
+    performDialogValidations(false);
 }
 
 function createFilter(filterKey, inputFilters) {
@@ -533,7 +606,7 @@ function createFilter(filterKey, inputFilters) {
     <div class='filter-container' id="${identifier}">
         <div class='sub-content-header-container'>
             <label for="filter-${identifier}">Name:</label>
-            <input type="text" id="filter-${identifier}" class="filter-name-input" value="${filterKey}" onblur="checkNodeTrigger()"/>
+            <input type="text" id="filter-${identifier}" class="filter-name-input" value="${filterKey}"/>
             <button onclick="deleteElement('${identifier}', true)">Delete Filter</button>
         </div>
         <div class='sub-content-container'>
@@ -552,13 +625,13 @@ function createFilter(filterKey, inputFilters) {
                 <label for="input_type_add_${identifier}">
                     Type:
                 </label>
-                <select id="input_type_add_${identifier}" class="input-type" onchange="swapInputType(this, false)"  aria-label="Add Input Filter Type">
+                <select id="input_type_add_${identifier}" class="input-type skip-validation" onchange="swapInputType(this)"  aria-label="Add Input Filter Type">
                     ${inputFilterOptions}
                 </select>
                 <label for="input_value_add_${identifier}">
                     Value:
                 </label>
-                <input id="input_value_add_${identifier}" type="text" class="input-value" list="${inputValueList}" aria-label="Add Input Filter Value"/>
+                <input id="input_value_add_${identifier}" type="text" class="input-value skip-validation" list="${inputValueList}" aria-label="Add Input Filter Value"/>
                 <button onclick="addInputFilter('${identifier}', false)" title='The full input will be added as a single filter'>
                     Add Single
                 </button>
@@ -589,7 +662,7 @@ function createInputFilter(inputFilterKey, inputFilterValue) {
         <select class='sub-key-holder input-type' value="${inputFilterKey}" onchange="swapInputType(this)" aria-label="Input Filter Type">
         ${filterSelectBoxOptions}
         </select>
-        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}" onblur="checkInputInList(this)" aria-label="Input Filter Value"/>
+        <input type="text" class='sub-value-holder input-value' value="${inputFilterValue}" list="${inputValueList}" aria-label="Input Filter Value"/>
         <button onclick="deleteElement('${identifier}')">Delete</button>
     </div>
     `
@@ -621,6 +694,9 @@ async function deleteElement(identifier, confirmation = false) {
 
     const container = document.getElementById(identifier);
     container.remove();
+
+    // Check to see if recently deleted elements trigger any new errors
+    performDialogValidations(false);
 }
 
 function newGuid() {
@@ -628,22 +704,27 @@ function newGuid() {
 }
 
 async function saveJsonChanges() {
-    // Extract dialog values
-    let openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
-    let isRoot = openedHierarchyName == "ROOT";
-    let hierarchyName = document.getElementById("node-hierarchyName").value.trim();
-    let fileName = document.getElementById("node-fileName").value.trim();
-    let nodeDescription = document.getElementById("node-nodeDescription").value.trim();
-    let nodeID = document.getElementById("node-nodeID").value.trim();
-    let nodeLevel = document.getElementById("node-nodeLevel").value.trim();
-    let nodeTrigger = document.getElementById("node-nodeTrigger").value.trim();
+    // Get input fields
+    let inputHierarchyName = document.getElementById("node-hierarchyName")
+    let inputFileName = document.getElementById("node-fileName")
+    let inputNodeDescription = document.getElementById("node-nodeDescription")
+    let inputNodeID = document.getElementById("node-nodeID")
+    let inputNodeLevel = document.getElementById("node-nodeLevel")
+    let inputNodeTrigger = document.getElementById("node-nodeTrigger")
 
-    // TODO: Implement validations
-    if (!isRoot && !fileName.endsWith(".json")){
-        const message = "File name must end with the '.json' file type";
-        alert(message);
+    // Extract dialog values
+    let openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    let isRoot = openedHierarchyName == "ROOT";
+    let hierarchyName = inputHierarchyName.value.trim();
+    let fileName = inputFileName.value.trim();
+    let nodeDescription = inputNodeDescription.value.trim();
+    let nodeID = inputNodeID.value.trim();
+    let nodeLevel = inputNodeLevel.value.trim();
+    let nodeTrigger = inputNodeTrigger.value.trim();
+
+    // Exit function if validations don't pass
+    if (!performDialogValidations(true))
         return;
-    }
 
     // Find hierarchy element to change
     let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
@@ -651,10 +732,6 @@ async function saveJsonChanges() {
     // Update hierarchy name
     newHierarchyElement.hierarchyName = hierarchyName;
     newHierarchyElement.fileName = fileName;
-    
-    // Update connection data
-    newHierarchyElement.children = newHierarchyElement.children;
-    newHierarchyElement.parent = newHierarchyElement.parent;
 
     // Update node data
     newHierarchyElement.node.id = nodeID;
@@ -708,8 +785,7 @@ async function saveJsonChanges() {
     // Re-assign children nodes based on dialog positioning
     let newChildNodes = [];
     let childNodeInputs = document.querySelectorAll(".child-node-container input");
-    for (let i = 0; i < childNodeInputs.length; i++) {
-        const childNodeInput = childNodeInputs[i];
+    for (const childNodeInput of childNodeInputs) {
         const childName = childNodeInput.value;
         const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName)[0];
         newChildNodes.push(associatedChildNode);
@@ -722,21 +798,231 @@ async function saveJsonChanges() {
     // Close dialog & render new changes
     console.log(newHierarchyElement);
     stateChecker.modified = true;
+    unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
+}
+
+function performDialogValidations(displayAlert) {
+    // Prepare for new validations
+    clearMarkedValidationFields();
+    let hasNoErrors = true;
+    let newMarkedElements = [];
+
+    // Do not perform validations on the ROOT element
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    if (openedHierarchyName == "ROOT")
+        return hasNoErrors;
+    
+    // Find invalid elements within the JSON dialog
+    newMarkedElements = findInvalidsForNodeName(newMarkedElements);
+    newMarkedElements = findInvalidsForFilePath(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeDescription(newMarkedElements);
+    newMarkedElements = findInvalidsForParentNode(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeId(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeTrigger(newMarkedElements);
+    newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
+    newMarkedElements = findInvalidsForSubFilters(newMarkedElements);
+
+    // Mark invalid fields
+    markValidationFields(newMarkedElements, displayAlert);
+
+    // Extract unique error messages if they exist
+    let uniqueErrorMessages = [];
+    const messageObjects = newMarkedElements.map(i => i.messages);
+    for (const messageObject of messageObjects) {
+        const errorTypes = messageObject.filter(i => i.type == "error");
+        const newErrorMessages = errorTypes.map(i => i.message);
+        uniqueErrorMessages.push(...newErrorMessages);
+    }
+    uniqueErrorMessages = [...new Set(uniqueErrorMessages)];
+
+    // If requested and eligible, display an alert containing all unique errors
+    hasNoErrors = uniqueErrorMessages.length == 0;
+    if (displayAlert && !hasNoErrors) {
+        const newLineError = "\r\n -";
+        const joinedErrorMessages = uniqueErrorMessages.join(newLineError);
+        const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
+        alert(finalMessage);
+    }
+
+    return hasNoErrors;
+}
+
+function findInvalidsForNodeName(newMarkedElements) {
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputNodeId = document.getElementById("node-nodeID");
+    const nodeId = inputNodeId.value.trim();
+    const hierarchyName = inputHierarchyName.value.trim();
+    const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
+
+    if (hierarchyName == "") {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is required", "error");
+    }
+
+    if (otherElementsWithName.length != 0) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name must be unique", "error");
+    }
+
+    if (nodeId && !hierarchyName.includes(`(${nodeId})`))
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is unconventional because it lacks the node ID in parentheses at the end", "warning");
+
+    return newMarkedElements
+}
+
+function findInvalidsForFilePath(newMarkedElements) {
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputFileName = document.getElementById("node-fileName")
+    const fileName = inputFileName.value.trim();
+
+    if (!fileName.endsWith(".json")){
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type", "error");
+    }
+
+    const othersWithFileName = hierarchy.filter(i => i.hierarchyName != openedHierarchyName && i.fileName.toLowerCase() == fileName.toLowerCase());
+    if (othersWithFileName.length > 0)
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must be unique", "error");
+    
+    const suggestedFileName = generateFileNameFromValue(inputHierarchyName.value);
+    if (fileName != suggestedFileName)
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name is unconventional, use of the 'Suggest' button is recommended", "warning");
+
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeDescription(newMarkedElements) {
+    const inputNodeDescription = document.getElementById("node-nodeDescription")
+    const nodeDescription = inputNodeDescription.value.trim();
+
+    if (nodeDescription == "") {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeDescription, "Node description is required", "error");
+    }
+
+    return newMarkedElements;
+}
+
+function findInvalidsForParentNode(newMarkedElements) {
+    const inputHierarchyName = document.getElementById("node-hierarchyName")
+    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputParentNode = document.getElementById("node-parentNode")
+    const parentNode = inputParentNode.value.trim();
+
+    const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
+    if (otherElementAsParent.length == 0) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element", "error");
+    }
+
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeId(newMarkedElements) {
+    const inputNodeId = document.getElementById("node-nodeID");
+    const nodeId = inputNodeId.value.trim();
+    const elementsWithNodeId = hierarchy.filter(i => i.node.id == nodeId);
+
+    if (nodeId != "" && elementsWithNodeId.length > 1) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeId, "Node ID is non-unique", "warning");
+    }
+
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeTrigger(newMarkedElements) {
+    const inputNodeTrigger = document.getElementById("node-nodeTrigger")
+    const nodeTrigger = inputNodeTrigger.value.trim();
+    const inputFilterNames = [...document.querySelectorAll(".filter-name-input")];
+    const missingFilters = findMissingFiltersInTrigger(nodeTrigger, inputFilterNames.map(i => i.value));
+
+    if (nodeTrigger == "") {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger is required", "error");
+    }
+
+    if (!doParenthesesMatchInTrigger(nodeTrigger)) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger has mismatched parentheses", "error");
+    }
+
+    if (missingFilters.length > 0) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger references filter names that don't exist", "error");
+    }
+
+    return newMarkedElements;
+}
+
+function findInvalidsForNodeFilters(newMarkedElements) {
+    const inputFilterNames = [...document.querySelectorAll(".filter-name-input")];
+
+    for (const inputFilterName of inputFilterNames) {
+        if (inputFilterName.value == "") {
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names are required", "error");
+        }
+
+        const filtersWithSameName = inputFilterNames.filter(i => i.value == inputFilterName.value);
+        if (filtersWithSameName.length > 1) {
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names must be unique", "error");
+        }
+    }
+
+    return newMarkedElements;
+}
+
+function addMarkedElementMessage(newMarkedElements, html, message, type) {
+    const existingHtml = newMarkedElements.filter(i => i.html == html)[0];
+    if (existingHtml) {
+        existingHtml.messages.push({
+            message: message,
+            type: type
+        });
+    }
+    else {
+        newMarkedElements.push({
+            html: html,
+            messages: [{
+                message: message,
+                type: type
+            }]
+        });
+    }
+    return newMarkedElements;
+}
+
+function clearMarkedValidationFields() {
+    // Find all marked-fields and remove error for new scan
+    const markedSelector = "data-validation-marked";
+    const existingMarkedElements = document.querySelectorAll(`[${markedSelector}]`);
+    for (const markedElement of existingMarkedElements) {
+        markElementAsType(markedElement, null);
+        markedElement.removeAttribute(markedSelector);
+    }
+}
+
+function markValidationFields(newMarkedElements, focusFirst) {
+    // Loop through marked-fields, focusing the first, and applying errors
+    const markedSelector = "data-validation-marked";
+    for (let i = 0; i < newMarkedElements.length; i++) {
+        const newMarkedElement = newMarkedElements[i];
+        const html = newMarkedElement.html;
+        const message = newMarkedElement.messages.map(i => i.message).join(", ");
+        const type = newMarkedElement.messages.map(i => i.type)[0];
+        markElementAsType(html, type, message);
+        html.setAttribute(markedSelector, type);
+        if (i == 0 && focusFirst && type == "error") html.focus();
+    }
 }
 
 async function updateJson() {
     const inputPath = document.getElementById("json-directory-path");
     const browsePath = await openBrowseDialog(inputPath.value);
     if (!browsePath) return;
-    inputPath.value = browsePath;
 
     const updateWarning = "Are you sure you want to save changes to this directory? " +
         "Any previously saved changes within this directory will be overwritten.";
     if (!await confirm(updateWarning))
         return;
 
+    inputPath.value = browsePath;
     const newDirectoryName = document.getElementById("json-directory-path").value;
     if (!newDirectoryName) {
         const message = "Please provide an exact directory path to store your updated JSON files";
@@ -861,7 +1147,7 @@ function generateFilters(element) {
                 const inputFilterKeys = Object.keys(filterValueArrayElement);
                 for (const inputFilterKey of inputFilterKeys) {
                     const inputFilterValue = filterValueArrayElement[inputFilterKey];
-                    const [html, identifier] = createInputFilter(inputFilterKey, inputFilterValue);
+                    const [html] = createInputFilter(inputFilterKey, inputFilterValue);
                     inputFilterContent += html;
                 }
             }
@@ -872,7 +1158,7 @@ function generateFilters(element) {
 
     nodeFilterContent += `
         <div class='add-filter-container'>
-            <button onclick="addFilter()">
+            <button id='add-new-filter' onclick="addFilter()">
                 Add Filter
             </button>
         </div>
@@ -921,7 +1207,7 @@ function moveChildDown(identifier) {
     const container = document.getElementById(identifier);
     const parentContainer = container.parentElement;
     const pivotContainer = container.nextElementSibling;
-    if (!pivotContainer.classList.contains("child-node-container"))
+    if (!pivotContainer?.classList.contains("child-node-container"))
         return;
 
     // Perform move
@@ -983,15 +1269,13 @@ async function deleteHierarchyElement() {
     // Delete the element from hierarchy element list
     const indexAsHierarchy = hierarchy.indexOf(element);
     hierarchy.splice(indexAsHierarchy, 1);
-    
-    // Delete the element
-    delete element;
 
     // Re-calculate hierarchy line numbers & levels
     recalculateHierarchyPositionalData(hierarchy);
 
     // Close dialog & render new changes
     stateChecker.modified = true;
+    unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
 }
@@ -1010,16 +1294,33 @@ function suggestFileName() {
         return;
     }
 
+    let suggestedName = generateFileNameFromValue(nodeName);
+    document.getElementById("node-fileName").value = suggestedName;
+
+    // See if the new file name somehow caused issues
+    performDialogValidations(false);
+}
+
+function generateFileNameFromValue(nodeName) {
     let suggestedName = nodeName.toLowerCase().trim();
+
+    const nodeId = /(?<=\()[^()]+(?=\)$)/g;
+    suggestedName = suggestedName.replace(nodeId, i => i.toUpperCase());
+
+    const commas = ",";
+    suggestedName = suggestedName.replaceAll(commas, "-");
 
     const whiteSpace = /\s+/g;
     suggestedName = suggestedName.replace(whiteSpace, "-");
 
-    const parantheses = /\(|\)/g;
+    const parantheses = /[()]/g;
     suggestedName = suggestedName.replace(parantheses, "");
-    suggestedName = suggestedName + ".json";
 
-    document.getElementById("node-fileName").value = suggestedName;
+    const consecutiveDashes = /(-+){2}/g;
+    suggestedName = suggestedName.replace(consecutiveDashes, "-"); 
+
+    suggestedName = suggestedName + ".json";
+    return suggestedName;
 }
 
 function searchHierarchy() {
@@ -1040,11 +1341,13 @@ function searchHierarchy() {
     element.focus();
 }
 
-function swapInputType(element, validateInput = true) {
+function swapInputType(element) {
     const inputValue = element.parentElement.querySelector(".input-value");
     const inputValueListName = getInputValueListForType(element.value);
     inputValue.setAttribute("list", inputValueListName);
-    if (validateInput) checkInputInList(inputValue);
+    
+    // Check adjacent input field to see if any violations appear
+    performDialogValidations(false);
 }
 
 function getInputValueListForType(type) {
@@ -1070,11 +1373,15 @@ function checkForProblems() {
     warnings = [];
 
     // Check errors
+    checkMissingRequiredFields();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
 
     // Check warnings
+    checkMissingNodeIdInNames();
+    checkUnconventionalFileNames();
+    checkDuplicateNodeIds();
     checkInvalidSpeciesWarning();
 
     // Update alerts
@@ -1105,11 +1412,53 @@ function createWarning(name, content, source) {
     warnings.sort((a,b) => a.name - b.name);
 }
 
+function cloneElement(element, ariaLabel = null) {
+    const clone = element.cloneNode(true);
+    if (ariaLabel)
+        clone.setAttribute("aria-label", ariaLabel);
+    return clone;
+}
+
+function toggleAlertList(type) {
+    if (type != "warning" && type != "error")
+        throw new Error("Invalid type provided", type);
+
+    const plural = type == "error" ? "Errors" : "Warnings";
+    const listId = type == "error" ? "error-list" : "warning-list";
+    const buttonId = type == "error" ? "btn-toggle-errors" : "btn-toggle-warnings";
+
+    const list = document.getElementById(listId);
+    const button = document.getElementById(buttonId);
+
+    let title = "";
+    let innerText = "";
+    if (list.hidden) {
+        innerText = "-";
+        title = "Hide " + plural;
+    }
+    else {
+        innerText = "+";
+        title = "Show " + plural;
+    }
+
+    list.hidden = !list.hidden;
+    button.innerText = innerText;
+    button.title = title;
+    button.ariaExpanded = !list.hidden;
+}
+
 function toggleNestedContent(button, type) {
     const ariaControls = button.getAttribute("aria-controls");
     const content = document.getElementById(ariaControls);
-    const typeMessage = type == "error" ? "Errors" : "Warnings";
-    
+
+    let typeMessage;
+    if (type == "error")
+        typeMessage = "Errors";
+    else if (type == "warning")
+        typeMessage = "Warnings";
+    else
+        throw new Error("Invalid nested button type provided", type);
+
     if (content.getAttribute("aria-expanded") === "true") {
         content.setAttribute("hidden", "");
         content.setAttribute("aria-expanded", false);
@@ -1122,6 +1471,54 @@ function toggleNestedContent(button, type) {
     }
 } 
 
+function checkMissingRequiredFields() {
+    const invalidMissingRequired = findMissingRequiredFields();
+    if (invalidMissingRequired.length == 0)
+        return;
+    console.error("Invalid missing required fields", invalidMissingRequired);
+
+    let html = `
+        <p>
+            Missing required fields within ${invalidMissingRequired.length} hierarchy elements!
+            All required fields must be provided or the classification key may fail to build.
+            <button id='btn-toggle-nested-missing-required-errors' aria-describedby="nested-missing-required-errors" aria-controls='nested-missing-required-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-missing-required-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Missing Required Fields" hidden>
+    `;
+
+    for (const info of invalidMissingRequired) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing required fields)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            html += `
+                <li>
+                    ${elementFilter}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("missing-required-fields", html, invalidMissingRequired);
+}
+
 function checkMissingTriggerParenthesesError() {
     const invalidParentheses = findMissingTriggerParentheses();
     if (invalidParentheses.length == 0)
@@ -1131,8 +1528,8 @@ function checkMissingTriggerParenthesesError() {
     let html = `
         <p>
             Mismatched left and right parentheses counts detected within ${invalidParentheses.length} hierarchy element triggers!
-            These triggers should be revisited or the classification key will fail to build.
-            <button id='btn-toggle-nested-parentheses-errors' aria-controls='nested-parentheses-errors' onclick="toggleNestedContent(this, 'errors')">
+            These triggers should be revisited or the classification key may fail to build.
+            <button id='btn-toggle-nested-parentheses-errors' aria-describedby="nested-parentheses-errors" aria-controls='nested-parentheses-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
         </p>
@@ -1140,7 +1537,8 @@ function checkMissingTriggerParenthesesError() {
     `;
 
     for (const info of invalidParentheses) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (mismatched parentheses)");
+        const elementButton = cloneButton.outerHTML;
         html += `
             <li>
                 ${elementButton}
@@ -1164,8 +1562,8 @@ function checkMissingFiltersInTrigger() {
     let html = `
         <p>
             Unknown filters mentioned within ${invalidTriggerFilters.length} hierarchy element triggers!
-            These triggers should only reference valid filter names or the classification key will fail to build.
-            <button id='btn-toggle-nested-trigger-filter-errors' aria-controls='nested-trigger-filter-errors' onclick="toggleNestedContent(this, 'errors')">
+            These triggers should only reference valid filter names or the classification key may fail to build.
+            <button id='btn-toggle-nested-trigger-filter-errors' aria-describedby="nested-trigger-filter-errors" aria-controls='nested-trigger-filter-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
         </p>
@@ -1173,7 +1571,8 @@ function checkMissingFiltersInTrigger() {
     `;
 
     for (const info of invalidTriggerFilters) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing filters)");
+        const elementButton = cloneButton.outerHTML;
 
         html += `
             <li class='border-box-list-item'>
@@ -1212,7 +1611,7 @@ function checkInvalidBinaryValueError() {
         <p>
             Invalid binary values have been detected within ${invalidBinaryValues.length} hierarchy elements!
             These binary filters should only have their inputs set to "yes" or "no".
-            <button id='btn-toggle-invalid-binary-errors' aria-controls='nested-binary-errors' onclick="toggleNestedContent(this, 'error')">
+            <button id='btn-toggle-invalid-binary-errors' aria-describedby="nested-binary-errors" aria-controls='nested-binary-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
         </p>
@@ -1220,7 +1619,8 @@ function checkInvalidBinaryValueError() {
     `;
 
     for (const info of invalidBinaryValues) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid binary fields)");
+        const elementButton = cloneButton.outerHTML;
 
         let elementFilters = [];
         for (const entry of info.invalids)
@@ -1273,6 +1673,151 @@ function checkInvalidBinaryValueError() {
     createError("invalid-binary", html, invalidBinaryValues);
 }
 
+function checkMissingNodeIdInNames() {
+    const missingNodeIdsInNames = findMissingNodeIdInNames();
+    if (missingNodeIdsInNames.length == 0)
+        return;
+    console.warn("Invalid missing node ID in names", missingNodeIdsInNames);
+
+    let html = `
+        <p>
+            Node ID missing from the node name of ${missingNodeIdsInNames.length} hierarchy elements!
+            The standard convention for node names is to include the node ID in parentheses at the end if one exists.
+            <button id='btn-toggle-nested-missing-node-id-in-name-warnings' aria-describedby="nested-missing-node-id-in-name-warnings" aria-controls='nested-missing-node-id-in-name-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-missing-node-id-in-name-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Missing Node ID in Names" hidden>
+    `;
+
+    for (const info of missingNodeIdsInNames) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing node ID in name)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        html += `
+                <li>
+                    <b>Missing Node ID:</b> ${info.id}
+                </li>
+        `;
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createWarning("missing-node-id-in-name", html, missingNodeIdsInNames);
+}
+
+function checkUnconventionalFileNames() {
+    const unconventionalFileNames = findUnconventionalFileNames();
+    if (unconventionalFileNames.length == 0)
+        return;
+    console.warn("Invalid unconventional file names", unconventionalFileNames);
+
+    let html = `
+        <p>
+            Unconventional file names detected within ${unconventionalFileNames.length} hierarchy elements!
+            The following elements have file names that don't follow standard conventions. Use of the "Suggest" button is recommended for these file names.
+            <button id='btn-toggle-nested-unconventional-file-name-warnings' aria-describedby="nested-unconventional-file-name-warnings" aria-controls='nested-unconventional-file-name-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-unconventional-file-name-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Unconventional File Names" hidden>
+    `;
+
+    for (const info of unconventionalFileNames) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (unconventional file name)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        html += `
+                <li>
+                    <b>File Name:</b> ${info.fileName}
+                </li>
+                <li>
+                    <b>Suggested Name:</b> ${info.suggestedName}
+                </li>
+        `;
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createWarning("unconventional-file-name", html, unconventionalFileNames);
+}
+
+function checkDuplicateNodeIds() {
+    const duplicateNodeIds = findDuplicateNodeIds();
+    if (duplicateNodeIds.length == 0)
+        return;
+    console.warn("Invalid duplicate node IDs", duplicateNodeIds);
+
+    let html = `
+        <p>
+            Duplicate node IDs detected within ${duplicateNodeIds.length} hierarchy elements!
+            The following elements are unconventional because they have non-unique node IDs. Most hierarchy elements either have a unique node ID or none at all.
+            <button id='btn-toggle-nested-duplicate-node-ids-warnings' aria-describedby="nested-duplicate-node-ids-warnings" aria-controls='nested-duplicate-node-ids-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-duplicate-node-ids-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Duplicate Node IDs" hidden>
+    `;
+
+    for (const info of duplicateNodeIds) {
+        
+
+        html += `
+            <li class='border-box-list-item'>
+                <b>Node ID:</b> ${info.id}
+                <ul>
+        `;
+
+        for (const button of info.buttons) {
+            const cloneButton = cloneElement(button, button.innerText + " (duplicate node ID)");
+            const elementButton = cloneButton.outerHTML;
+
+            html += `
+            <li>
+                ${elementButton}
+            </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createWarning("duplicate-node-ids", html, duplicateNodeIds);
+}
+
 function checkInvalidSpeciesWarning() {
     const invalidSpeciesInfo = findInvalidSpecies();
     if (invalidSpeciesInfo.length == 0)
@@ -1283,7 +1828,7 @@ function checkInvalidSpeciesWarning() {
         <p>
             Non-tracked FIA species filters have been detected within ${invalidSpeciesInfo.length} hierarchy elements!
             These species filters will simply catch no conditions while running the classification key.
-            <button id='btn-toggle-nested-species-warnings' aria-controls='nested-species-warnings' onclick="toggleNestedContent(this, 'warning')">
+            <button id='btn-toggle-nested-species-warnings' aria-describedby="nested-species-warnings" aria-controls='nested-species-warnings' onclick="toggleNestedContent(this, 'warning')">
                 Show Nested Warnings
             </button>
         </p>
@@ -1291,7 +1836,8 @@ function checkInvalidSpeciesWarning() {
     `;
 
     for (const info of invalidSpeciesInfo) {
-        const elementButton = info.button.outerHTML;
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid species)");
+        const elementButton = cloneButton.outerHTML;
 
         let elementFilters = [];
         for (const entry of info.invalids)
@@ -1345,6 +1891,43 @@ function checkInvalidSpeciesWarning() {
     createWarning("invalid-species", html, invalidSpeciesInfo);
 }
 
+function findMissingRequiredFields() {
+    let invalid = [];
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        let invalids = [];
+        if (element.hierarchyName == "")
+            invalids.push("Node Name");
+
+        if (element.fileName == "")
+            invalids.push("Node Description");
+
+        if (element.node.description == "")
+            invalids.push("Node Description");
+
+        if (!element.parent)
+            invalids.push("Parent Node");
+
+        if (element.node.trigger == "")
+            invalids.push("Node Trigger");
+
+        const filterNames = Object.keys(element.node.filters);
+        if (filterNames.includes(""))
+            invalids.push("Node Filter Names");
+        
+        if (invalids.length == 0) 
+            continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            invalids: invalids
+        });
+    }
+
+    return invalid;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -1392,7 +1975,8 @@ function findMissingTriggerFilters() {
 
 function findInvalidBinaryValues() {
     let availableKeys = ["plantation", "hydric", "riverine", "ruderal", "exotic", "planted", "tallytree"];
-    let availableValues = getOptionValuesFromDataList(document.getElementById("binary-list"));
+    let datalistDetails = getDatalistDetails("binary-list");
+    let availableValues = datalistDetails.options;
     return findInvalidFilters(availableKeys, availableValues);
 }
 
@@ -1402,36 +1986,105 @@ function findInvalidSpecies() {
     return findInvalidFilters(availableKeys, availableValues);
 }
 
+function findMissingNodeIdInNames() {
+    let invalid = [];
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const missingId = `(${element.node.id})`;
+        if (!element.node.id || element.hierarchyName.includes(missingId))
+            continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            id: missingId
+        });
+    }
+
+    return invalid;
+}
+
+function findUnconventionalFileNames() {
+    let invalid = [];
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const fileName = element.fileName;
+        const suggestedName = generateFileNameFromValue(element.hierarchyName);
+        
+        if (fileName == suggestedName) 
+            continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName),
+            fileName: fileName,
+            suggestedName: suggestedName
+        });
+    }
+
+    return invalid;
+}
+
+function findDuplicateNodeIds() {
+    let invalid = [];
+    const context = hierarchy.filter(i => i.hierarchyName != "ROOT" && i.node.id != "");
+    for (const element of context) {
+        // Skip already accounted for node IDs
+        if (invalid.filter(i => i.id == element.node.id).length > 0)
+            continue;
+
+        const elementsWithNodeId = context.filter(i => i.node.id == element.node.id);
+        if (elementsWithNodeId.length == 1) 
+            continue;
+
+        invalid.push({
+            id: element.node.id,
+            elements: elementsWithNodeId,
+            buttons: elementsWithNodeId.map(i => findHierarchyButton(i.hierarchyName))
+        });
+    }
+
+    return invalid;
+}
+
 function findInvalidFilters(availableKeys, availableValues) {
     let invalidInfo = [];
     for (const element of hierarchy) {
         const filters = element.node.filters;
         for (const [filterKey, filterValues] of Object.entries(filters)) {
             for (const filterValue of filterValues) {
-                for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
-                    if (!availableKeys.includes(subFilterKey)) continue;
-                    if (availableValues.includes(subFilterValue)) continue;
-                    const subFilterCombo = `${subFilterKey}: ${subFilterValue}`;
-                    let existingInvalid = invalidInfo.filter(i => i.element == element)[0];
-                    if (!existingInvalid) {
-                        invalidInfo.push({
-                            hierarchyName: element.hierarchyName,
-                            invalids: [{
-                                filter: filterKey,
-                                value: subFilterCombo
-                            }],
-                            element: element,
-                            button: findHierarchyButton(element.hierarchyName)
-                        });
-                    }
-                    else {
-                        existingInvalid.invalids.push({
-                            filter: filterKey,
-                            value: subFilterCombo
-                        });
-                    }
-                }
+                invalidInfo = extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue);
             }
+        }
+    }
+    return invalidInfo;
+}
+
+function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue) {
+    for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
+        // Skip if sub-filter key isn't available
+        if (!availableKeys.includes(subFilterKey)) continue;
+        // Skip if sub-filter key and value are available
+        if (availableValues.includes(subFilterValue)) continue;
+        // Either add new unique invalid info node entries or add to their existing invalids list
+        const subFilterCombo = `${subFilterKey}: ${subFilterValue}`;
+        let existingInvalid = invalidInfo.filter(i => i.element == element)[0];
+        if (!existingInvalid) {
+            invalidInfo.push({
+                hierarchyName: element.hierarchyName,
+                invalids: [{
+                    filter: filterKey,
+                    value: subFilterCombo
+                }],
+                element: element,
+                button: findHierarchyButton(element.hierarchyName)
+            });
+        }
+        else {
+            existingInvalid.invalids.push({
+                filter: filterKey,
+                value: subFilterCombo
+            });
         }
     }
     return invalidInfo;
@@ -1454,50 +2107,33 @@ async function openBrowseDialog(targetPath = "") {
     }
 }
 
-function checkInputInList(element) {
-    const input = element.value;
-    const listId = element.getAttribute("list");
-    const list = document.getElementById(listId);
-    if (!list) {
-        element.classList.remove(mapTypeToClass("error"))
-        element.classList.remove(mapTypeToClass("warning"))
-        return;
+let datalistDetails = [];
+function getDatalistDetails(listId) {
+    let datalistDetail = datalistDetails.filter(i => i.id == listId)[0];
+    if (!datalistDetail) {
+        const list = document.getElementById(listId);
+        datalistDetail = {
+            id: listId,
+            type: list.getAttribute("data-type"),
+            message: list.getAttribute("data-missing-message"),
+            options: getOptionValuesFromDataList(list)
+        };
+        datalistDetails.push(datalistDetail);
     }
-
-    const listType = list.getAttribute("data-type");
-    const listTypeClass = mapTypeToClass(listType);
-    const listMessage = list.getAttribute("data-missing-message");
-    const listValues = getOptionValuesFromDataList(list);
-    
-    if (listValues.includes(input)) {
-        element.classList.remove(listTypeClass);
-        element.removeAttribute("title");
-    }
-    else {
-        element.classList.add(listTypeClass);
-        element.title = listMessage;
-    }
+    return datalistDetail;
 }
 
-function checkNodeTrigger() {
-    const markedElement = document.getElementById("node-nodeTrigger");
-    const trigger = markedElement.value;
-    const dialogFilters = document.querySelectorAll(".filter-name-input");
-    const filters = [...dialogFilters].map(i => i.value);
-
-    let collectedErrors = [];
-    if (findMissingFiltersInTrigger(trigger, filters).length > 0)
-        collectedErrors.push("Invalid filters referenced.");
-    if (!doParenthesesMatchInTrigger(trigger))
-        collectedErrors.push("Mismatched parentheses detected.");
-
-    if (collectedErrors.length == 0) {
-        markElementAsType(markedElement, null);
+function findInvalidsForSubFilters(newMarkedElements) {
+    const inputTypes = document.querySelectorAll("input[list].input-value:not(.skip-validation)");
+    for (const element of inputTypes) {
+        const input = element.value;
+        const listId = element.getAttribute("list");
+        if (!listId) continue;
+        const listDetails = getDatalistDetails(listId);
+        if (!listDetails.options.includes(input))
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
     }
-    else {
-        const message = collectedErrors.join(' ');
-        markElementAsType(markedElement, "error", message);
-    }
+    return newMarkedElements;
 }
 
 function markElementAsType(element, type, title = null) {
@@ -1597,6 +2233,20 @@ function hideContentById(id) {
     element.setAttribute("hidden", "");
 }
 
+function toggleNodeLevelTags() {
+    showTags = !showTags;
+    const buttonToggleLevels = document.getElementById("btn-toggle-levels");
+    const buttonText = showTags ? "Hide Level Tags" : "Show Level Tags";
+    buttonToggleLevels.innerText = buttonText;
+    setHiddenBySelector(".node-level-tag", showTags);
+}
+
+function setHiddenBySelector(selector, show) {
+    const elements = document.querySelectorAll(selector);
+    for (const element of elements)
+        element.hidden = !show;
+}
+
 function saveSettingsChanges(closeAfter = true) {
     const checkedInventoryYears = [...document.querySelectorAll("#settings-inv-years input[type='checkbox']:checked")];
     let inventoryYears = checkedInventoryYears.map(i => i.value);
@@ -1612,11 +2262,12 @@ function saveSettingsChanges(closeAfter = true) {
 
         inventoryYears[i] = numberValue;
     }
+    inventoryYears.sort((a, b) => a - b);
 
     const additionalWhere = document.getElementById("settings-additional-where").value;
     const keepExisting = document.getElementById("settings-keep-existing").checked;
 
-    testSettings.inventoryYears = inventoryYears.sort();
+    testSettings.inventoryYears = inventoryYears;
     testSettings.additionalWhere = additionalWhere.trim();
     testSettings.keepExisting = keepExisting;
     
@@ -1634,7 +2285,7 @@ async function resetSettings() {
 }
 
 function findMissingFiltersInTrigger(trigger, filters) {
-    const regex = /(match|riv|spcov)\(([^\)]*)\)/g;
+    const regex = /(match|riv|spcov)\(([^)]*)\)/g;
     const references = trigger.match(regex) ?? [];
     
     let missing = [];
@@ -1660,85 +2311,111 @@ function detectHierarchyChanges() {
         changes.push(generateLogMessage(`+ Added element "${addedName}"`, 0));
     for (const removedName of removedNames)
         changes.push(generateLogMessage(`- Removed element "${removedName}"`, 0));
-
-    for (const sameName of sameNames) {
-        const newElement = hierarchy.filter(i => i.hierarchyName == sameName)[0];
-        const initElement = initialHierarchy.filter(i => i.hierarchyName == sameName)[0];
-
-        // Record general changes
-        let elementChanges = [];
-        if (initElement.fileName != newElement.fileName)
-            elementChanges.push(generateLogMessage("~ Updated File Name", 1));
-
-        if (initElement.node.description.join("\r\n") != newElement.node.description.join("\r\n"))
-            elementChanges.push(generateLogMessage("~ Updated Description", 1));
-
-        if (initElement.node.id != newElement.node.id)
-            elementChanges.push(generateLogMessage("~ Updated ID", 1, initElement.node.id, newElement.node.id));
-
-        if (initElement.node.level != newElement.node.level)
-            elementChanges.push(generateLogMessage("~ Updated Level", 1, initElement.node.level, newElement.node.level));
-
-        if (initElement.node.trigger.join("\r\n") != newElement.node.trigger.join("\r\n"))
-            elementChanges.push(generateLogMessage("~ Updated Trigger", 1));
-
-        // Record Filter changes
-        const initFilterKeys = Object.keys(initElement.node.filters);
-        const newFilterKeys = Object.keys(newElement.node.filters);
-        const addedKeys = newFilterKeys.filter(i => !initFilterKeys.includes(i));
-        const removedKeys = initFilterKeys.filter(i => !newFilterKeys.includes(i));
-        const sharedKeys = initFilterKeys.filter(i => newFilterKeys.includes(i));
-        for (const addedKey of addedKeys)
-            elementChanges.push(generateLogMessage(`+ Added Filter Key "${addedKey}"`, 1));
-        for (const removedKey of removedKeys)
-            elementChanges.push(generateLogMessage(`- Removed Filter Key "${removedKey}"`, 1));
-
-        // Check sub-filters
-        for (const sharedKey of sharedKeys) {
-            const initSubFilters = initElement.node.filters[sharedKey];
-            const newSubFilters = newElement.node.filters[sharedKey];
-
-            let initSubFilterKeyValues = [];
-            for (const subFilter of initSubFilters) {
-                const subFilterKeys = Object.keys(subFilter);
-                const subFilterValues = Object.values(subFilter);
-                for (let i = 0; i < subFilterKeys.length; i++)
-                    initSubFilterKeyValues.push(`${subFilterKeys[i]}: ${subFilterValues[i]}`)
-            }
-
-            let newSubFilterKeyValues = [];
-            for (const subFilter of newSubFilters) {
-                const subFilterKeys = Object.keys(subFilter);
-                const subFilterValues = Object.values(subFilter);
-                for (let i = 0; i < subFilterKeys.length; i++)
-                    newSubFilterKeyValues.push(`${subFilterKeys[i]}: ${subFilterValues[i]}`)
-            }
-
-            // Record sub-filter changes
-            let subFilterChanges = [];
-            const addedSubKeys = newSubFilterKeyValues.filter(i => !initSubFilterKeyValues.includes(i));
-            const removeSubdKeys = initSubFilterKeyValues.filter(i => !newSubFilterKeyValues.includes(i));
-            for (const addedSubKey of addedSubKeys)
-                subFilterChanges.push(`+ Added Filter Value "${addedSubKey}"`);
-            for (const removedSubKey of removeSubdKeys)
-                subFilterChanges.push(`- Removed Filter Value "${removedSubKey}"`);
-
-            if (subFilterChanges.length > 0) {
-                elementChanges.push(generateLogMessage(`~ Updated Filter Key "${sharedKey}"`, 1));
-                for (const subFilterChange of subFilterChanges)
-                    elementChanges.push(generateLogMessage(subFilterChange, 2));
-            }
-        }
-
-        // Compile all changes
-        if (elementChanges.length == 0) 
-            continue;
-
-        changes.push(generateLogMessage(`~ Updated element "${sameName}"`, 0));
-        changes.push(...elementChanges);
-    }
+    for (const sameName of sameNames)
+        changes = detectExistingElementHierarchyChanges(changes, sameName);
 
     return changes.join("\r\n");
+}
+
+function detectExistingElementHierarchyChanges(changes, sameName) {
+    const newElement = hierarchy.filter(i => i.hierarchyName == sameName)[0];
+    const initElement = initialHierarchy.filter(i => i.hierarchyName == sameName)[0];
+
+    // Record general changes
+    let elementChanges = [];
+    if (initElement.fileName != newElement.fileName)
+        elementChanges.push(generateLogMessage("~ Updated File Name", 1));
+
+    if (initElement.node.description.join("\r\n") != newElement.node.description.join("\r\n"))
+        elementChanges.push(generateLogMessage("~ Updated Description", 1));
+
+    if (initElement.node.id != newElement.node.id)
+        elementChanges.push(generateLogMessage("~ Updated ID", 1, initElement.node.id, newElement.node.id));
+
+    if (initElement.node.level != newElement.node.level)
+        elementChanges.push(generateLogMessage("~ Updated Level", 1, initElement.node.level, newElement.node.level));
+
+    if (initElement.node.trigger.join("\r\n") != newElement.node.trigger.join("\r\n"))
+        elementChanges.push(generateLogMessage("~ Updated Trigger", 1));
+
+    if (initElement.parent?.hierarchyName != newElement.parent?.hierarchyName)
+        elementChanges.push(generateLogMessage("~ Updated Parent Element", 1, initElement.parent.hierarchyName, newElement.parent.hierarchyName));
+
+    // Record child position changes
+    const initChildren = initElement.children?.map((i, index) => { return { hierarchyName: i.hierarchyName, index: index }});
+    const newChildren = newElement.children?.map((i, index) => { return { hierarchyName: i.hierarchyName, index: index }});
+    const addedChildren = newChildren.filter(i => !initChildren.map(i => i.hierarchyName).includes(i.hierarchyName));
+    const removedChildren = initChildren.filter(i => !newChildren.map(i => i.hierarchyName).includes(i.hierarchyName));
+    const sharedChildren = initChildren.filter(i => newChildren.map(i => i.hierarchyName).includes(i.hierarchyName));
+    for (const addedChild of addedChildren)
+        elementChanges.push(generateLogMessage(`+ Added Child Element "${addedChild.hierarchyName}" at position "${addedChild.index}"`, 1));
+    for (const removedChild of removedChildren)
+        elementChanges.push(generateLogMessage(`+ Removed Child Element "${removedChild.hierarchyName}" at position "${removedChild.index}"`, 1));
+    for (const sharedChild of sharedChildren) {
+        const initChildIndex = initChildren.filter(i => i.hierarchyName == sharedChild.hierarchyName).map(i => i.index)[0];
+        const newChildIndex = newChildren.filter(i => i.hierarchyName == sharedChild.hierarchyName).map(i => i.index)[0];
+        if (initChildIndex != newChildIndex)
+            elementChanges.push(generateLogMessage(`~ Updated Child Element "${sharedChild.hierarchyName}" position`, 1, initChildIndex, newChildIndex))
+    }
+
+    // Record Filter changes
+    const initFilterKeys = Object.keys(initElement.node.filters);
+    const newFilterKeys = Object.keys(newElement.node.filters);
+    const addedKeys = newFilterKeys.filter(i => !initFilterKeys.includes(i));
+    const removedKeys = initFilterKeys.filter(i => !newFilterKeys.includes(i));
+    const sharedKeys = initFilterKeys.filter(i => newFilterKeys.includes(i));
+    for (const addedKey of addedKeys)
+        elementChanges.push(generateLogMessage(`+ Added Filter Key "${addedKey}"`, 1));
+    for (const removedKey of removedKeys)
+        elementChanges.push(generateLogMessage(`- Removed Filter Key "${removedKey}"`, 1));
+
+    // Check sub-filters
+    elementChanges = detectSubFilterHierarchyChanges(elementChanges, initElement, newElement, sharedKeys);
+
+    // Compile all changes
+    if (elementChanges.length == 0) 
+        return changes;
+
+    changes.push(generateLogMessage(`~ Updated element "${sameName}"`, 0));
+    changes.push(...elementChanges);
+    return changes;
+}
+
+function detectSubFilterHierarchyChanges(elementChanges, initElement, newElement, sharedKeys) {
+    for (const sharedKey of sharedKeys) {
+        const initSubFilters = initElement.node.filters[sharedKey];
+        const newSubFilters = newElement.node.filters[sharedKey];
+
+        let initSubFilterKeyValues = createSubFilterKeyValueList(initSubFilters);
+        let newSubFilterKeyValues = createSubFilterKeyValueList(newSubFilters);
+
+        // Record sub-filter changes
+        let subFilterChanges = [];
+        const addedSubKeys = newSubFilterKeyValues.filter(i => !initSubFilterKeyValues.includes(i));
+        const removeSubdKeys = initSubFilterKeyValues.filter(i => !newSubFilterKeyValues.includes(i));
+        for (const addedSubKey of addedSubKeys)
+            subFilterChanges.push(`+ Added Filter Value "${addedSubKey}"`);
+        for (const removedSubKey of removeSubdKeys)
+            subFilterChanges.push(`- Removed Filter Value "${removedSubKey}"`);
+
+        if (subFilterChanges.length > 0) {
+            elementChanges.push(generateLogMessage(`~ Updated Filter Key "${sharedKey}"`, 1));
+            for (const subFilterChange of subFilterChanges)
+                elementChanges.push(generateLogMessage(subFilterChange, 2));
+        }
+    }
+    return elementChanges;
+}
+
+function createSubFilterKeyValueList(subFilters) {
+    let filterKeyValues = [];
+    for (const subFilter of subFilters) {
+        const subFilterKeys = Object.keys(subFilter);
+        const subFilterValues = Object.values(subFilter);
+        for (let i = 0; i < subFilterKeys.length; i++)
+            filterKeyValues.push(`${subFilterKeys[i]}: ${subFilterValues[i]}`)
+    }
+    return filterKeyValues;
 }
 
 function generateLogMessage(action, tabCount, before = null, after = null) {
@@ -1752,7 +2429,7 @@ async function confirm(message) {
     return await new Promise((success, failure) => {
         document.getElementById("confirm-dialog").returnValue = "";
         document.getElementById("confirm-dialog-text").innerText = message;
-        confirmClose = (event) => {
+        let confirmClose = (event) => {
             document.getElementById("confirm-dialog").removeEventListener("close", confirmClose);
             const dialogValue = document.getElementById("confirm-dialog").returnValue;
             const confirmation = dialogValue === "confirm";
@@ -1777,4 +2454,20 @@ document.getElementById("alert-dialog-ok").addEventListener("click", (event) => 
     event.preventDefault();
     document.getElementById("alert-dialog").close();
 });
+
+function updateLevelColorScale() {
+    const allLevels = hierarchy.toSorted((a, b) => a.hierarchyLevel - b.hierarchyLevel).map(i => i.node.level);
+    const uniqueLevels = [...new Set(allLevels)];
+    levelColorMap = mapLevelsToColors(uniqueLevels, availableLevelColors);
+}
+
+function mapLevelsToColors(levels, hexOptions) {
+    const hexLevels = {};
+    for (let i = 0; i < levels.length; i++) {
+        const level = levels[i];
+        const hex = hexOptions[i % hexOptions.length];
+        hexLevels[level] = hex;
+    }
+    return hexLevels;
+}
 

@@ -9,6 +9,13 @@ main {
   overflow-x: hidden;
 }
 
+.left-corner-element {
+  position: absolute;
+  top: 100%;
+  transform: translate(0, -100%);
+  padding: 5px 10px;
+}
+
 .top-banner {
   width: 95%;
   padding: 10px;
@@ -142,10 +149,24 @@ main {
   padding: 0;
   margin: 0;
   font: inherit;
+  text-align: left;
+  vertical-align: top;
 }
 
 .hierarchyNodeButton:hover {
   background: lightgray;
+}
+
+.node-level-tag {
+  background-color: lightcoral;
+  border-radius: 5px;
+  padding: 1px 4px;
+  margin: 0 5px;
+  border: 1px solid lightgray;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 1px 2px black;
 }
 
 .hidden {
@@ -223,6 +244,7 @@ dialog:not([open]) {
 
 .dialog .button-container {
   display: flex;
+  gap: 5px;
   justify-content: flex-end;
 }
 
@@ -328,20 +350,16 @@ dialog:not([open]) {
   margin-bottom: 2px;
 }
 
-.dialog option:disabled,
-.dialog input:read-only {
+option:disabled,
+textarea:read-only,
+input:read-only {
   background: lightgrey;
+  border: 1px solid grey;
 }
 
 .dialog .footer-container {
   padding: 20px;
   border-top: 1px solid black;
-}
-
-.dialog .button-container {
-  display: flex;
-  gap: 5px;
-  justify-content: flex-end;
 }
 
 .dialog button {
@@ -355,9 +373,42 @@ dialog:not([open]) {
   gap: 5px;
 }
 
+.alert-header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.alert-header-container h2 {
+  flex: 1;
+  margin: 0;
+}
+
+.alert-header-container button {
+  height: 32px;
+  width: 32px;
+  border: none;
+  background: none;
+  font-size: 1.5em;
+  align-self: center;
+}
+
+.alert-header-container button:hover {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
 .alert-type {
   border: 3px solid black;
   padding: 10px;
+}
+
+.alert-type-counter {
+  align-content: center;
+  text-align: center;
+  height: 32px;
+  width: 32px;
+  font-weight: bold;
 }
 
 .error-bg-color {
@@ -366,10 +417,6 @@ dialog:not([open]) {
 
 .warning-bg-color {
   background-color: #fbfb88;
-}
-
-.alert-type h2 {
-  margin: 15px;
 }
 
 .border-box-list {

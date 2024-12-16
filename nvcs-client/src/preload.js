@@ -11,5 +11,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     openDirectory: (targetPath) => ipcRenderer.invoke('open-directory', targetPath),
     fetchSettings: () => ipcRenderer.invoke('fetch-settings'),
     fetchYears: () => ipcRenderer.invoke('fetch-years'),
-    markUnsavedChanges: (value) => ipcRenderer.invoke('mark-unsaved-changes', value)
+    markUnsavedChanges: (value) => ipcRenderer.invoke('mark-unsaved-changes', value),
+    getApplicationVersion: () => ipcRenderer.invoke('get-application-version')
 });

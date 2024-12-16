@@ -67,6 +67,7 @@ app.whenReady().then(() => {
   ipcMain.handle('fetch-settings', fetchSettings);
   ipcMain.handle('fetch-years', fetchAvailableYears);
   ipcMain.handle('mark-unsaved-changes', markUnsavedChanges);
+  ipcMain.handle('get-application-version', getApplicationVersion);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -109,7 +110,7 @@ async function fetchExistingJson(event, targetPath) {
     cleanedJsonData.push(cleanedData);
   })
 
-  allJsonData = `[${cleanedJsonData.join(',')}]`;
+  let allJsonData = `[${cleanedJsonData.join(',')}]`;
 
   // Retrieve Key Hierarchy TXT file
   const hierarchyPath = path.resolve((targetPath ?? getConfigurationPath()) + '/key-hierarchy.txt');
@@ -119,10 +120,13 @@ async function fetchExistingJson(event, targetPath) {
   let hierarchyString = hierarchyData.toString();
 
   // Combine and return data
-  returnData = {
+  let returnData = {
     json: allJsonData,
     hierarchy: hierarchyString
   }
+
+  // Mark unaved as false
+  unsavedChanges = false;
 
   console.log("- RETURNING RESULTS");
   return returnData;
@@ -246,21 +250,21 @@ async function executeTester(event, targetPath, testSettings) {
   setPythonConfigFile(config);
 
   console.log("- Executing Builder Script...");
-  var builderResults = await execFile(pythonPath, [builderPath]);
+  let builderResults = await execFile(pythonPath, [builderPath]);
   console.log("- Builder Results", builderResults);
 
   // Clone table
-  var copyTablePath =  parseIniPath(config.FullOutputConfig.Out_DbPath, config);
+  let copyTablePath =  parseIniPath(config.FullOutputConfig.Out_DbPath, config);
   if (!testSettings.keepExisting || !fs.existsSync(copyTablePath)) {
     console.log("- Creating base SQLite output file...")
-    var sharedTablePath = getSharedTablePath();
+    let sharedTablePath = getSharedTablePath();
     fs.copyFileSync(sharedTablePath, copyTablePath);
   }
 
   // Execute full output
   console.log("- Executing Full Output Script...");
-  var fullOutputPath = getFullOutputPyPath();
-  var fullOutputResults = await execFile(pythonPath, [fullOutputPath]);
+  let fullOutputPath = getFullOutputPyPath();
+  let fullOutputResults = await execFile(pythonPath, [fullOutputPath]);
   console.log("- Full Output Results", fullOutputResults);
 
   console.log("- RETURNING RESULTS");
@@ -301,7 +305,7 @@ function setPythonConfigFile(config) {
   let configFileString = ini.stringify(config, {
     whitespace: true
   });
-  configFileString = configFileString.replaceAll(/(^|\r\n)([^ = ]*) = /gi, "$1$2: ");
+  configFileString = configFileString.replaceAll(/(^|\r\n)([^ =]*) = /gi, "$1$2: ");
   configFileString = configFileString.replaceAll("\"", "");
   configFileString = configFileString.replaceAll(": \r\n", ":\r\n");
   configFileString = configFileString.replaceAll("${Config=", "${Config:");
@@ -397,11 +401,14 @@ async function openDirectory(event, targetPath) {
   else if (process.platform == "linux")
     command = "xdg-open";
   else
-    new Error("Unable to determine which command to open for the following platform", process.platform);
+    throw new Error("Unable to determine which command to open for the following platform", process.platform);
+
+  if (!fs.existsSync(targetPath))
+    throw new Error("Provided path does not exist");
 
   let fullCommand = `${command} ${targetPath}`;
   console.log(`- Executing: ${fullCommand}`);
-  await child_process.exec(fullCommand);
+  child_process.exec(fullCommand);
 
   console.log("- RETURNING RESULTS");
   return true;
@@ -442,7 +449,7 @@ async function fetchAvailableYears(event) {
   console.log("- Plot IO  Results", results);
 
   // Parse results
-  response = results.stdout.replace('[', '').replace(']\r\n', '').split(',');
+  let response = results.stdout.replace('[', '').replace(']\r\n', '').split(',');
 
   console.log("- RETURNING RESULTS");
   return response;
@@ -458,4 +465,8 @@ function generateChangeLogEntry(message) {
 
 async function markUnsavedChanges(value) {
   unsavedChanges = value;
+}
+
+async function getApplicationVersion() {
+  return app.getVersion();
 }

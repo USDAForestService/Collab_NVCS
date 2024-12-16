@@ -7,6 +7,7 @@
     <script defer src="renderer.js"></script>
   </head>
   <body>
+    <span id="app-version" class="left-corner-element">v0.0.0</span>
     <div id="unsaved-changes-banner" class="top-banner" hidden>
       ALERT: Unsaved changes detected
     </div>
@@ -52,18 +53,27 @@
             <label>Hierarchy Actions:</label>
             <div>
               <button id="btn-add-element" onclick="addHierarchyElement()" title="Opens a dialog to add a blank element to the hierarchy" disabled>Add Element</button>
+              <button id="btn-toggle-levels" onclick="toggleNodeLevelTags()" title="Toggles node level tags in the hierarchy tree below" disabled>Show Level Tags</button>
             </div>
           </div>
         </div>
         <div class="alert-container" role="alert">
           <div id="error-container" class="alert-type error-bg-color" hidden>
-            <h2>ERROR</h2>
-            <ul class="error-list" aria-label="Error List">
+            <div class="alert-header-container">
+              <h2>ERROR</h2>
+              <div id="error-type-counter" class="alert-type-counter" title="Number of error categories">(x)</div>
+              <button id="btn-toggle-errors" title="Hide Errors" aria-expanded="true" onclick="toggleAlertList('error')">-</button>
+            </div>
+            <ul id="error-list" class="error-list" aria-label="Error List">
             </ul>
           </div>
           <div id="warning-container" class="alert-type warning-bg-color" hidden>
-            <h2>WARNING</h2>
-            <ul class="warning-list" aria-label="Warning List">
+            <div class="alert-header-container">
+              <h2>WARNING</h2>
+              <div id="warning-type-counter" class="alert-type-counter" title="Number of warning categories">(x)</div>
+              <button id="btn-toggle-warnings" title="Hide Warnings" aria-expanded="true" onclick="toggleAlertList('warning')">-</button>
+            </div>
+            <ul id="warning-list" class="warning-list" aria-label="Warning List">
             </ul>
           </div>
         </div>
@@ -88,7 +98,7 @@
           <div class="input-container">
             <label for="node-fileName" class="key-holder">File Name</label>
             <textarea id="node-fileName" class="value-holder"></textarea>
-            <button onclick="suggestFileName()" title="This is recommended for newly-added or renamed hierarchy elements">Suggest</button>
+            <button id="suggest-file-name" onclick="suggestFileName()" title="This is recommended for newly-added or renamed hierarchy elements">Suggest</button>
           </div>
           <div class="input-container">
             <label for="node-nodeDescription" class="key-holder">Node Description</label>
@@ -121,7 +131,7 @@
           </div>
           <div class="input-container">
             <label for="node-nodeTrigger" class="key-holder">Node Trigger</label>
-            <textarea id="node-nodeTrigger" class="value-holder" onblur="checkNodeTrigger()"></textarea>
+            <textarea id="node-nodeTrigger" class="value-holder"></textarea>
           </div>
           <div class="input-container">
             <label class="key-holder">Node Filters</label>
@@ -131,7 +141,7 @@
         <div class="footer-container">
           <div class="button-container">
             <button onclick="saveJsonChanges()" title="Savees changes made to this specific hierarchy element">Save All</button>
-            <button onclick="deleteHierarchyElement()" title="Deletes this specific hierarchy element">Delete</button>
+            <button id="delete-hierarchy-element" onclick="deleteHierarchyElement()" title="Deletes this specific hierarchy element">Delete</button>
             <button class='close-btn'>Close</button>
           </div>
         </div>
