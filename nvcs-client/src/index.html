@@ -59,13 +59,21 @@
         </div>
         <div class="alert-container" role="alert">
           <div id="error-container" class="alert-type error-bg-color" hidden>
-            <h2>ERROR</h2>
-            <ul class="error-list" aria-label="Error List">
+            <div class="alert-header-container">
+              <h2>ERROR</h2>
+              <div id="error-type-counter" class="alert-type-counter" title="Number of error categories">(x)</div>
+              <button id="btn-toggle-errors" title="Hide Errors" aria-expanded="true" onclick="toggleAlertList('error')">-</button>
+            </div>
+            <ul id="error-list" class="error-list" aria-label="Error List">
             </ul>
           </div>
           <div id="warning-container" class="alert-type warning-bg-color" hidden>
-            <h2>WARNING</h2>
-            <ul class="warning-list" aria-label="Warning List">
+            <div class="alert-header-container">
+              <h2>WARNING</h2>
+              <div id="warning-type-counter" class="alert-type-counter" title="Number of warning categories">(x)</div>
+              <button id="btn-toggle-warnings" title="Hide Warnings" aria-expanded="true" onclick="toggleAlertList('warning')">-</button>
+            </div>
+            <ul id="warning-list" class="warning-list" aria-label="Warning List">
             </ul>
           </div>
         </div>

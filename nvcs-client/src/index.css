@@ -373,9 +373,42 @@ input:read-only {
   gap: 5px;
 }
 
+.alert-header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.alert-header-container h2 {
+  flex: 1;
+  margin: 0;
+}
+
+.alert-header-container button {
+  height: 32px;
+  width: 32px;
+  border: none;
+  background: none;
+  font-size: 1.5em;
+  align-self: center;
+}
+
+.alert-header-container button:hover {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
 .alert-type {
   border: 3px solid black;
   padding: 10px;
+}
+
+.alert-type-counter {
+  align-content: center;
+  text-align: center;
+  height: 32px;
+  width: 32px;
+  font-weight: bold;
 }
 
 .error-bg-color {
@@ -384,10 +417,6 @@ input:read-only {
 
 .warning-bg-color {
   background-color: #fbfb88;
-}
-
-.alert-type h2 {
-  margin: 15px;
 }
 
 .border-box-list {

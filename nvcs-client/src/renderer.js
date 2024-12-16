@@ -433,6 +433,10 @@ function generateAlerts() {
             </li>
         `;
     }
+
+    // Update counters
+    document.getElementById("error-type-counter").innerText = `(${errors.length})`;
+    document.getElementById("warning-type-counter").innerText = `(${warnings.length})`;
 }
 
 function generateListEntry(element) {
@@ -1413,6 +1417,34 @@ function cloneElement(element, ariaLabel = null) {
     if (ariaLabel)
         clone.setAttribute("aria-label", ariaLabel);
     return clone;
+}
+
+function toggleAlertList(type) {
+    if (type != "warning" && type != "error")
+        throw new Error("Invalid type provided", type);
+
+    const plural = type == "error" ? "Errors" : "Warnings";
+    const listId = type == "error" ? "error-list" : "warning-list";
+    const buttonId = type == "error" ? "btn-toggle-errors" : "btn-toggle-warnings";
+
+    const list = document.getElementById(listId);
+    const button = document.getElementById(buttonId);
+
+    let title = "";
+    let innerText = "";
+    if (list.hidden) {
+        innerText = "-";
+        title = "Hide " + plural;
+    }
+    else {
+        innerText = "+";
+        title = "Show " + plural;
+    }
+
+    list.hidden = !list.hidden;
+    button.innerText = innerText;
+    button.title = title;
+    button.ariaExpanded = !list.hidden;
 }
 
 function toggleNestedContent(button, type) {
