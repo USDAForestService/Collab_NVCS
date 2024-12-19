@@ -8,8 +8,8 @@ import logging
 import time
 from datetime import date
 
-__version__ = "1.3"
-__version_date__ = date.fromisoformat("2021-11-21")
+__version__ = "1.4"
+__version_date__ = date.fromisoformat("2024-12-19")
 
 logfile = "nvcs-debug.log"
 
@@ -116,9 +116,9 @@ def driver_update_mode(con, schema_name, statecd, invyr, countycd, plot):
         + "       cnd.cond_status_cd,"
         + "       cnd.stdorgcd,"
         + "       CASE"
-        + "          WHEN plt.ecosubcd_actual IS NULL THEN"
+        + "          WHEN nbp.ecosubcd IS NULL THEN"
         + "           'missing'"
-        + "          WHEN NOT (rtrim(ltrim(plt.ecosubcd_actual)) LIKE 'M3%' OR rtrim(ltrim(plt.ecosubcd_actual)) LIKE '3%') THEN"
+        + "          WHEN NOT (rtrim(ltrim(nbp.ecosubcd)) LIKE 'M3%' OR rtrim(ltrim(nbp.ecosubcd)) LIKE '3%') THEN"
         + "           'supported'"
         + "          ELSE"
         + "           'not supported'"
@@ -127,8 +127,12 @@ def driver_update_mode(con, schema_name, statecd, invyr, countycd, plot):
         + schema_name
         + ".nims_plot_vw plt, "
         + schema_name
+        + ".nims_base_plot nbp, "
+        + schema_name
         + ".nims_cond_vw cnd"
-        + " WHERE cnd.plt_cn = plt.cn"
+        + " WHERE nbp.cn = plt.nbp_cn"
+        + "   AND "
+        + "cnd.plt_cn = plt.cn"
         + "   AND "
         + schema_name
         + ".nims_utils.get_state_rscd(plt.statecd) in (23, 24, 33)"
