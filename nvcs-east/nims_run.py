@@ -8,8 +8,8 @@ import logging
 import time
 from datetime import date
 
-__version__ = "1.3"
-__version_date__ = date.fromisoformat("2021-11-21")
+__version__ = "1.4"
+__version_date__ = date.fromisoformat("2024-12-19")
 
 logfile = "nvcs-debug.log"
 
