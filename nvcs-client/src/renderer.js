@@ -2226,11 +2226,13 @@ function showPopup(dialog) {
 function showContentById(id) {
     const element = document.getElementById(id);
     element.removeAttribute("hidden");
+    element.classList.remove("hidden");
 }
 
 function hideContentById(id) {
     const element = document.getElementById(id);
     element.setAttribute("hidden", "");
+    element.classList.add("hidden");
 }
 
 function toggleNodeLevelTags() {

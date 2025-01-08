@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <title>NVCS Configuration Tool</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="document.css" />
     <script defer src="renderer.js"></script>
+    <script defer src="document.js"></script>
   </head>
   <body>
     <span id="app-version" class="left-corner-element">v0.0.0</span>
@@ -54,10 +56,11 @@
             <div>
               <button id="btn-add-element" onclick="addHierarchyElement()" title="Opens a dialog to add a blank element to the hierarchy" disabled>Add Element</button>
               <button id="btn-toggle-levels" onclick="toggleNodeLevelTags()" title="Toggles node level tags in the hierarchy tree below" disabled>Show Level Tags</button>
+              <button id="btn-show-document" onclick="toggleDocumentForm()" title="Displays the loaded hierarchy in document form">Toggle Document</button>
             </div>
           </div>
         </div>
-        <div class="alert-container" role="alert">
+        <div id="alerts" class="alert-container" role="alert">
           <div id="error-container" class="alert-type error-bg-color" hidden>
             <div class="alert-header-container">
               <h2>ERROR</h2>
@@ -79,6 +82,10 @@
         </div>
         <div id="detected-json-container">
           No JSON Detected
+        </div>
+        <div id="document-form" class="document-form" hidden>
+          <div id="document-container"></div>
+          <div id="document-container-computed"></div>
         </div>
       </div>
     </main>
