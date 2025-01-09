@@ -7,8 +7,7 @@ function toggleDocumentForm() {
 }
 
 function showDocumentForm() {
-    // Hide JSON tree & alerts
-    hideContentById("alerts");
+    // Hide JSON tree
     hideContentById("detected-json-container");
 
     // Generate document
@@ -22,8 +21,7 @@ function hideDocumentForm() {
     // Hide document container
     hideContentById("document-form");
 
-    // Show JSON tree & alerts
-    showContentById("alerts");
+    // Show JSON tree
     showContentById("detected-json-container");
 }
 
@@ -48,7 +46,7 @@ function generateDocumentListEntry(element) {
     }
     let fullDescription = descriptionList.join("</br>");
     returnString += fullDescription;
-    returnString += ` ... <b>${element.hierarchyName}</b>`;
+    returnString += ` ... <button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'><b>${element.hierarchyName}</b></button>`;
     returnString += "</p>";
     returnString += "<ul>";
     for (let child of element.children)
