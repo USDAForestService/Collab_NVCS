@@ -350,6 +350,15 @@ dialog:not([open]) {
   margin-bottom: 2px;
 }
 
+.document-section .input-container textarea,
+.document-section .input-container input[type='text'] {
+  flex: 1;
+}
+
+.document-section-content {
+  padding-left: 50px;
+}
+
 option:disabled,
 textarea:read-only,
 input:read-only {
@@ -446,4 +455,3 @@ input:read-only {
   margin: 0;
   font-weight: bold;
 }
-

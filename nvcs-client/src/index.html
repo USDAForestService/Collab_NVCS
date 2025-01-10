@@ -57,6 +57,7 @@
               <button id="btn-add-element" onclick="addHierarchyElement()" title="Opens a dialog to add a blank element to the hierarchy" disabled>Add Element</button>
               <button id="btn-toggle-levels" onclick="toggleNodeLevelTags()" title="Toggles node level tags in the hierarchy tree below" disabled>Show Level Tags</button>
               <button id="btn-show-document" onclick="toggleDocumentForm()" title="Displays the loaded hierarchy in document form">Toggle Document</button>
+              <button id="btn-document-editor" onclick="openDocumentDialog()" title="Opens a dialog to edit the document structure">Edit Document</button>
             </div>
           </div>
         </div>
@@ -146,7 +147,7 @@
         </div>
         <div class="footer-container">
           <div class="button-container">
-            <button onclick="saveJsonChanges()" title="Savees changes made to this specific hierarchy element">Save All</button>
+            <button onclick="saveJsonChanges()" title="Saves changes made to this specific hierarchy element">Save All</button>
             <button id="delete-hierarchy-element" onclick="deleteHierarchyElement()" title="Deletes this specific hierarchy element">Delete</button>
             <button class='close-btn'>Close</button>
           </div>
@@ -208,6 +209,22 @@
             <button id="alert-dialog-ok" value="confirm">OK</button>
           </div>
         </form>
+      </dialog>
+      <dialog id='document-dialog' class="dialog">
+        <div class="header-container">
+          <div class="button-container">
+            <button class='close-btn' autofocus>Close</button>
+          </div>
+          <h2>Document Editor</h2>
+        </div>
+        <div class="body-container">
+        </div>
+        <div class="footer-container">
+          <div class="button-container">
+            <button onclick="" title="Saves changes to the document structure">Save All</button>
+            <button class='close-btn'>Close</button>
+          </div>
+        </div>
       </dialog>
     </div>
     <div class="data-list-container">
