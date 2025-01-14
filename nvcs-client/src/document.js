@@ -144,7 +144,7 @@ function generateDocumentEditorContent(item) {
 }
 
 function generateDocumentEditorElementContent(item) {
-    const element = hierarchy.filter(i => i.hierarchyName = item.hierarchyName)[0];
+    const element = hierarchy.filter(i => i.hierarchyName == item.hierarchyName)[0];
     const hierarchyOptions = generateElementOptions(hierarchy, element);
     const identifier = newGuid();
 
