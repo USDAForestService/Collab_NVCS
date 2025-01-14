@@ -10,23 +10,29 @@ let documentStructure = {
                 },
                 {
                     type: "text",
-                    content: "A summary of the forest plantation types is provided in Table xx."
+                    content: [
+                        "A summary of the forest plantation types is provided in Table xx."
+                    ]
                 },
                 {
                     type: "text",
-                    content: "[work with FIA staff to determine what is needed for plantation types in west.]"
+                    content: [
+                        "[work with FIA staff to determine what is needed for plantation types in west.]"
+                    ]
                 },
                 {
                     type: "text",
-                    content: "Forest types are separated first into plantation versus natural types. FIA field crews " +
-                    "make that call in the field, and we rely entirely on that call to make the distinction. The " +
-                    "plantation label is sometimes applied to failed plantations that may now be dominated by " +
-                    "non-plantation species (typically hardwoods), to stands in very early stages of planting (and thus " +
-                    "dominated by native conifers or hardwoods) or to transitional areas that are on the edge of the " +
-                    "plantation. Likewise, failed attempts to establish plantations may become obscured following " +
-                    "subsequent natural regeneration, in such cases, FIA field crews observe no plantation evidence and " +
-                    "label stand origin as natural regeneration, possibly conflicting with, or updating, historical stand " +
-                    "records (which are not utilized in this classification)."
+                    content: [
+                        "Forest types are separated first into plantation versus natural types. FIA field crews ",
+                        "make that call in the field, and we rely entirely on that call to make the distinction. The ",
+                        "plantation label is sometimes applied to failed plantations that may now be dominated by ",
+                        "non-plantation species (typically hardwoods), to stands in very early stages of planting (and thus ",
+                        "dominated by native conifers or hardwoods) or to transitional areas that are on the edge of the ",
+                        "plantation. Likewise, failed attempts to establish plantations may become obscured following ",
+                        "subsequent natural regeneration, in such cases, FIA field crews observe no plantation evidence and ",
+                        "label stand origin as natural regeneration, possibly conflicting with, or updating, historical stand ",
+                        "records (which are not utilized in this classification)."
+                    ]
                 },
                 {
                     type: "element",
@@ -69,12 +75,13 @@ function hideDocumentForm() {
 }
 
 function openDocumentDialog() {
+    populateDocumentDialog();
     const dialog = document.getElementById("document-dialog");
-    populateDocumentDialog(dialog);
     showDialog(dialog);
 }
 
-function populateDocumentDialog(dialog) {
+function populateDocumentDialog() {
+    const dialog = document.getElementById("document-dialog");
     let html = "";
 
     for (const section of documentStructure.sections) {
@@ -85,9 +92,9 @@ function populateDocumentDialog(dialog) {
         // Section Name
         html += `
             <div class='input-container'>
-                <label for='section-name'>Section Name:</label>
-                <input id='section-name' type='text' value='${section.name}' />
-                <button id='btn-delete-seciton'>Delete</button>
+                <label for='section-name-${identifier}'>Section Name:</label>
+                <input id='section-name-${identifier}' type='text' value='${section.name}' />
+                <button id='btn-delete-section-${identifier}'>Delete</button>
             </div>
         `;
 
@@ -100,9 +107,9 @@ function populateDocumentDialog(dialog) {
         // Add Content Settings
         html += `
             <div>
-                <button id='btn-add-document-header-${identifier}'>Add Header</button>
-                <button id='btn-add-document-text-${identifier}'>Add Text</button>
-                <button id='btn-add-document-element-${identifier}'>Add Element Description</button>
+                <button id='btn-add-document-header-${identifier}' onclick="addDocumentHeader('${identifier}')">Add Header</button>
+                <button id='btn-add-document-text-${identifier}' onclick="addDocumentText('${identifier}')">Add Text</button>
+                <button id='btn-add-document-element-${identifier}' onclick="addDocumentElement('${identifier}')">Add Element Description</button>
             </div>
         `;
 
@@ -184,11 +191,12 @@ function generateDocumenEditortHeaderContent(item) {
 
 function generateDocumentEditorTextContent(item) {
     const identifier = newGuid();
+    const joinedContent = item.content.join("\r\n");
 
     let html = `
         <div class='input-container'>
             <label for='text-content-${identifier}'>Text Content:</label>
-            <textarea id='text-content-${identifier}'>${item.content}</textarea>
+            <textarea id='text-content-${identifier}'>${joinedContent}</textarea>
         </div>
     `;
     
@@ -313,4 +321,50 @@ function getDescendantElementsByType(descendants, rootElement, types) {
         descendants = getDescendantElementsByType(descendants, child, types);
 
     return descendants;
+}
+
+function addDocumentHeader(identifier) {
+    const sectionInput = document.getElementById(`section-name-${identifier}`);
+    const sectionName = sectionInput.value;
+    const targetSection = documentStructure.sections.filter(i => i.name == sectionName)[0];
+    if (!targetSection)
+        throw new Error("Failed to find target section:", targetSection);
+
+    targetSection.content.push({
+        type: "header",
+        level: "1",
+        content: ""
+    });
+
+    populateDocumentDialog();
+}
+
+function addDocumentText(identifier) {
+    const sectionInput = document.getElementById(`section-name-${identifier}`);
+    const sectionName = sectionInput.value;
+    const targetSection = documentStructure.sections.filter(i => i.name == sectionName)[0];
+    if (!targetSection)
+        throw new Error("Failed to find target section:", targetSection);
+
+    targetSection.content.push({
+        type: "text",
+        content: []
+    });
+
+    populateDocumentDialog();
+}
+
+function addDocumentElement(identifier) {
+    const sectionInput = document.getElementById(`section-name-${identifier}`);
+    const sectionName = sectionInput.value;
+    const targetSection = documentStructure.sections.filter(i => i.name == sectionName)[0];
+    if (!targetSection)
+        throw new Error("Failed to find target section:", targetSection);
+
+    targetSection.content.push({
+        type: "element",
+        hierarchyName: null
+    });
+
+    populateDocumentDialog();
 }
