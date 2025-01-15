@@ -123,7 +123,7 @@ function populateDocumentDialog() {
         <div class='input-container'>
             <label for='add-section-name'>New Section Name:</label>
             <input id='add-section-name' type='text' />
-            <button id='add-section'>Add Section</button>
+            <button id='add-section' onclick="addDocumentSection()">Add Section</button>
         </div>
     `;
 
@@ -332,6 +332,25 @@ function findDocumentSectionFromIdentifier(structure, identifier) {
     if (!targetSection)
         throw new Error("Failed to find target section:", targetSection);
     return targetSection;
+}
+
+function addDocumentSection() {
+    recordUnsavedChanges();
+
+    const sectionName = document.getElementById("add-section-name").value;
+    const existingSections = unsavedDocumentStructure.sections.filter(i => i.name == sectionName);
+    if (existingSections.length > 0) {
+        const message = "The provided section name already exists, please provide a unique section name";
+        alert(message);
+        return;
+    }
+
+    unsavedDocumentStructure.sections.push({
+        name: sectionName,
+        content: []
+    });
+
+    populateDocumentDialog();
 }
 
 function addDocumentHeader(identifier) {
