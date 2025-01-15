@@ -46,6 +46,7 @@ let documentStructure = {
         }
     ]
 };
+let unsavedDocumentStructure = {};
 
 function toggleDocumentForm() {
     const documentForm = document.getElementById("document-form");
@@ -75,6 +76,7 @@ function hideDocumentForm() {
 }
 
 function openDocumentDialog() {
+    unsavedDocumentStructure = documentStructure;
     populateDocumentDialog();
     const dialog = document.getElementById("document-dialog");
     showDialog(dialog);
@@ -84,10 +86,10 @@ function populateDocumentDialog() {
     const dialog = document.getElementById("document-dialog");
     let html = "";
 
-    for (const section of documentStructure.sections) {
+    for (const section of unsavedDocumentStructure.sections) {
         // New section prep
         const identifier = newGuid();
-        html += "<div class='document-section'>";
+        html += `<div id='${identifier}' class='document-section'>`;
 
         // Section Name
         html += `
@@ -156,7 +158,7 @@ function generateDocumentEditorElementContent(item) {
     const identifier = newGuid();
 
     let html = `
-        <div class='input-container'>
+        <div class='input-container document-element'>
             <label for='element-source-${identifier}'>Element Description Source:</label>
             <select id='element-source-${identifier}'>
                 ${hierarchyOptions}
@@ -176,7 +178,7 @@ function generateDocumenEditortHeaderContent(item) {
     }
 
     let html = `
-        <div class='input-container'>
+        <div class='input-container document-header'>
             <label for='header-content-${identifier}'>Header Content:</label>
             <input id='header-content-${identifier}' type="text" value='${item.content}'/>
             <label for='header-level-${identifier}'>Header Level:</label>
@@ -194,7 +196,7 @@ function generateDocumentEditorTextContent(item) {
     const joinedContent = item.content.join("\r\n");
 
     let html = `
-        <div class='input-container'>
+        <div class='input-container document-text'>
             <label for='text-content-${identifier}'>Text Content:</label>
             <textarea id='text-content-${identifier}'>${joinedContent}</textarea>
         </div>
@@ -323,13 +325,19 @@ function getDescendantElementsByType(descendants, rootElement, types) {
     return descendants;
 }
 
-function addDocumentHeader(identifier) {
+function findDocumentSectionFromIdentifier(structure, identifier) {
     const sectionInput = document.getElementById(`section-name-${identifier}`);
     const sectionName = sectionInput.value;
-    const targetSection = documentStructure.sections.filter(i => i.name == sectionName)[0];
+    const targetSection = structure.sections.filter(i => i.name == sectionName)[0];
     if (!targetSection)
         throw new Error("Failed to find target section:", targetSection);
+    return targetSection;
+}
 
+function addDocumentHeader(identifier) {
+    recordUnsavedChanges();
+
+    const targetSection = findDocumentSectionFromIdentifier(unsavedDocumentStructure, identifier);
     targetSection.content.push({
         type: "header",
         level: "1",
@@ -340,12 +348,9 @@ function addDocumentHeader(identifier) {
 }
 
 function addDocumentText(identifier) {
-    const sectionInput = document.getElementById(`section-name-${identifier}`);
-    const sectionName = sectionInput.value;
-    const targetSection = documentStructure.sections.filter(i => i.name == sectionName)[0];
-    if (!targetSection)
-        throw new Error("Failed to find target section:", targetSection);
+    recordUnsavedChanges();
 
+    const targetSection = findDocumentSectionFromIdentifier(unsavedDocumentStructure, identifier);
     targetSection.content.push({
         type: "text",
         content: []
@@ -355,16 +360,63 @@ function addDocumentText(identifier) {
 }
 
 function addDocumentElement(identifier) {
-    const sectionInput = document.getElementById(`section-name-${identifier}`);
-    const sectionName = sectionInput.value;
-    const targetSection = documentStructure.sections.filter(i => i.name == sectionName)[0];
-    if (!targetSection)
-        throw new Error("Failed to find target section:", targetSection);
+    recordUnsavedChanges();
 
+    const targetSection = findDocumentSectionFromIdentifier(unsavedDocumentStructure, identifier);
     targetSection.content.push({
         type: "element",
         hierarchyName: null
     });
 
     populateDocumentDialog();
+}
+
+function recordUnsavedChanges() {
+    unsavedDocumentStructure = {
+        sections: []
+    };
+
+    const dialog = document.getElementById("document-dialog");
+    const sectionContainers = dialog.querySelectorAll(".body-container > .document-section");
+    for (const sectionContainer of [...sectionContainers]) {
+        const sectionId = sectionContainer.id;
+        const sectionName = sectionContainer.querySelector(`#section-name-${sectionId}`).value;
+        
+        let sectionContent = [];
+        const sectionContentContainers = sectionContainer.querySelectorAll(".document-section-content .input-container");
+        for (const contentContainer of [...sectionContentContainers]) {
+            if (contentContainer.classList.contains("document-header")) {
+                const headerContent = contentContainer.querySelector("input").value;
+                const headerLevel = contentContainer.querySelector("select").value;
+                sectionContent.push({
+                    type: "header",
+                    content: headerContent,
+                    level: headerLevel
+                });
+            }
+            else if (contentContainer.classList.contains("document-text")) {
+                const textContent = contentContainer.querySelector("textarea").value;
+                const splitTextContent = textContent.split("\n");
+                sectionContent.push({
+                    type: "text",
+                    content: splitTextContent
+                });
+            }
+            else if (contentContainer.classList.contains("document-element")) {
+                const elementName = contentContainer.querySelector("select").value;
+                sectionContent.push({
+                    type: "element",
+                    hierarchyName: elementName
+                });
+            }
+            else {
+                throw new Error("Invalid class list detected for element", contentContainer);
+            }
+        }
+
+        unsavedDocumentStructure.sections.push({
+            name: sectionName,
+            content: sectionContent
+        });
+    }
 }
