@@ -439,3 +439,14 @@ function recordUnsavedChanges() {
         });
     }
 }
+
+async function saveDocumentChanges() {
+    const confirmSaveMessage = "Are you sure you wanted to save these changes?";
+    if (!await confirm(confirmSaveMessage))
+        return;
+
+    recordUnsavedChanges();
+    documentStructure = unsavedDocumentStructure;
+    
+    document.getElementById("document-dialog").close();
+}
