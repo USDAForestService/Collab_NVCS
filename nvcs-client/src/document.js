@@ -104,15 +104,12 @@ function generateDocumentEditorContent(item) {
 
 function generateDocumentEditorElementContent(item) {
     const element = hierarchy.filter(i => i.hierarchyName == item.hierarchyName)[0];
-    const hierarchyOptions = generateElementOptions(hierarchy, element);
     const identifier = newGuid();
 
     let html = `
         <div class='input-container document-element'>
             <label for='element-source-${identifier}'>Element Description Source:</label>
-            <select id='element-source-${identifier}'>
-                ${hierarchyOptions}
-            </select>
+            <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${element.hierarchyName}'/>
         </div>
     `;
 
@@ -372,7 +369,7 @@ function recordUnsavedChanges() {
                 });
             }
             else if (contentContainer.classList.contains("document-element")) {
-                const elementName = contentContainer.querySelector("select").value;
+                const elementName = contentContainer.querySelector("input").value;
                 sectionContent.push({
                     type: "element",
                     hierarchyName: elementName
