@@ -119,10 +119,20 @@ async function fetchExistingJson(event, targetPath) {
   let hierarchyData = fs.readFileSync(hierarchyPath);
   let hierarchyString = hierarchyData.toString();
 
+  // Retrieve document structure JSON
+  let documentStructureString;
+  const documentStructurePath = path.resolve((targetPath ?? getConfigurationPath()) + '/document.json');
+  if (fs.existsSync(documentStructurePath)) {
+    console.log(`- Target Document Structure Path: ${documentStructurePath}`);
+    let documentStructureData = fs.readFileSync(documentStructurePath);
+    documentStructureString = documentStructureData.toString();
+  }
+
   // Combine and return data
   let returnData = {
     json: allJsonData,
-    hierarchy: hierarchyString
+    hierarchy: hierarchyString,
+    documentStructure: documentStructureString
   }
 
   // Mark unaved as false
@@ -132,7 +142,7 @@ async function fetchExistingJson(event, targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json, changes) {
+async function updateJson(event, directory, json, changes, documentStructure) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
@@ -184,6 +194,12 @@ async function updateJson(event, directory, json, changes) {
   const newChangeLogEntry = generateChangeLogEntry(changes);
   const updatedChangeLog = newChangeLogEntry + existingChangeLogEntry;
   fs.writeFileSync(changeLogPath, updatedChangeLog);
+
+  // Update document structure
+  const documentStructurePath = path.resolve(path.join(newJsonDirectoryPath, "document.json"));
+  let documentStructureJson = JSON.stringify(documentStructure, null, 4);
+  documentStructureJson = documentStructureJson.trim();
+  fs.writeFileSync(documentStructurePath, documentStructureJson);
 
   // Mark unaved as false
   unsavedChanges = false;

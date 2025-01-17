@@ -33,6 +33,8 @@ let nodeJson;
 let nodeHierarchy;
 let hierarchy;
 let initialHierarchy;
+let documentStructure;
+let unsavedDocumentStructure;
 let availableSpecies;
 let availableYears;
 let testSettings;
@@ -176,6 +178,7 @@ async function fetchJson(targetPath) {
     }
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
+    documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
 
     // Generate objects from returned JSON and TXT data
     let hierarchySplit = nodeHierarchy.split('\r\n');
@@ -1035,7 +1038,7 @@ async function updateJson() {
     try {
         const changes = detectHierarchyChanges();
         console.log(changes)
-        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes);
+        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes, documentStructure);
         initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
