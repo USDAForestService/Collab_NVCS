@@ -340,7 +340,7 @@ dialog:not([open]) {
   height: fit-content;
   margin: 0;
   padding: 5px;
-  white-space: nowrap;
+  white-space: pre-wrap;
 }
 
 .dialog .input-container input[type='checkbox'] {
