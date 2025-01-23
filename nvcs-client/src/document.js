@@ -43,10 +43,12 @@ function populateDocumentDialog() {
 
         // Section Name
         html += `
-            <div class='input-container'>
+            <div id='document-content-${identifier}' class='input-container'>
                 <label for='section-name-${identifier}'>Section Name:</label>
                 <input id='section-name-${identifier}' type='text' value='${section.name}' />
                 <button id='btn-delete-section-${identifier}'>Delete</button>
+                <button onclick="moveUpInDocument('${identifier}')">Up</button>
+                <button onclick="moveDownInDocument('${identifier}')">Down</button>
             </div>
         `;
 
@@ -103,13 +105,15 @@ function generateDocumentEditorContent(item) {
 }
 
 function generateDocumentEditorElementContent(item) {
-    const element = hierarchy.filter(i => i.hierarchyName == item.hierarchyName)[0];
+    const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
     const identifier = newGuid();
 
     let html = `
-        <div class='input-container document-element'>
+        <div id='document-content-${identifier}' class='input-container document-element'>
             <label for='element-source-${identifier}'>Element Description Source:</label>
             <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${element.hierarchyName}'/>
+            <button onclick="moveUpInDocument('${identifier}')">Up</button>
+            <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
     `;
 
@@ -125,13 +129,15 @@ function generateDocumenEditortHeaderContent(item) {
     }
 
     let html = `
-        <div class='input-container document-header'>
+        <div id='document-content-${identifier}'  class='input-container document-header'>
             <label for='header-content-${identifier}'>Header Content:</label>
             <input id='header-content-${identifier}' type="text" value='${item.content}'/>
             <label for='header-level-${identifier}'>Header Level:</label>
             <select id='header-level-${identifier}'>
                 ${levelOptions}
             </select>
+            <button onclick="moveUpInDocument('${identifier}')">Up</button>
+            <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
     `;
     
@@ -143,9 +149,11 @@ function generateDocumentEditorTextContent(item) {
     const joinedContent = item.content.join("\r\n");
 
     let html = `
-        <div class='input-container document-text'>
+        <div id='document-content-${identifier}' class='input-container document-text'>
             <label for='text-content-${identifier}'>Text Content:</label>
             <textarea id='text-content-${identifier}'>${joinedContent}</textarea>
+            <button onclick="moveUpInDocument('${identifier}')">Up</button>
+            <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
     `;
     
@@ -331,7 +339,7 @@ function addDocumentElement(identifier) {
     const targetSection = findDocumentSectionFromIdentifier(unsavedDocumentStructure, identifier);
     targetSection.content.push({
         type: "element",
-        hierarchyName: null
+        content: null
     });
 
     populateDocumentDialog();
@@ -372,7 +380,7 @@ function recordUnsavedChanges() {
                 const elementName = contentContainer.querySelector("input").value;
                 sectionContent.push({
                     type: "element",
-                    hierarchyName: elementName
+                    content: elementName
                 });
             }
             else {
@@ -385,6 +393,56 @@ function recordUnsavedChanges() {
             content: sectionContent
         });
     }
+}
+
+function moveUpInDocument(identifier) {
+    moveInDocument(identifier, true);
+}
+
+function moveDownInDocument(identifier) {
+    moveInDocument(identifier, false);
+}
+
+function moveInDocument(identifier, moveUp) {
+    recordUnsavedChanges();
+
+    const documentContent = document.getElementById(`document-content-${identifier}`);
+    const documentInput = documentContent.querySelector("input,select,textarea");
+    const replacementIndexIncrement = moveUp ? -1 : 1;
+
+    if (documentInput.id.startsWith("section-name")) {
+        const sectionName = documentInput.value;
+        const section = unsavedDocumentStructure.sections.filter(i => i.name == sectionName)[0];
+        const sectionIndex = unsavedDocumentStructure.sections.indexOf(section);
+        const cutOff = moveUp ? 0 : unsavedDocumentStructure.sections.length - 1;
+        if (sectionIndex == cutOff)
+            return;
+
+        unsavedDocumentStructure.sections[sectionIndex] = unsavedDocumentStructure.sections[sectionIndex + replacementIndexIncrement];
+        unsavedDocumentStructure.sections[sectionIndex + replacementIndexIncrement] = section;
+    }
+    else {
+        const contentValue = documentInput.value;
+        const contentType = documentInput.id.split("-")[0];
+        const sectionContainer = documentContent.closest(".document-section");
+        const sectionName = sectionContainer.querySelector("[id^='section-name']").value;
+        const section = unsavedDocumentStructure.sections.filter(i => i.name == sectionName)[0];
+        const content = section.content.filter(
+            i => i.type == contentType && 
+            contentType == "text" ? 
+            i.content.join("\n") == contentValue : 
+            i.content == contentValue
+        )[0];
+        const contentIndex = section.content.indexOf(content);
+        const cutOff = moveUp ? 0 : section.content.length - 1;
+        if (contentIndex == cutOff)
+            return;
+
+        section.content[contentIndex] = section.content[contentIndex + replacementIndexIncrement];
+        section.content[contentIndex + replacementIndexIncrement] = content;
+    }
+
+    populateDocumentDialog();
 }
 
 async function saveDocumentChanges() {
