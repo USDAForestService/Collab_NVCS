@@ -139,6 +139,8 @@ async function fetchPackagedJson() {
     document.getElementById("json-directory-path").value = "";
     document.getElementById("btn-test-settings").disabled = true;
     document.getElementById("btn-open-json").disabled = true;
+    document.getElementById("btn-show-document").disabled = true;
+    document.getElementById("btn-document-editor").disabled = true;
 }
 
 async function fetchCustomJson() {
@@ -246,6 +248,8 @@ async function fetchJson(targetPath) {
     document.getElementById("btn-toggle-levels").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
+    document.getElementById("btn-show-document").disabled = false;
+    document.getElementById("btn-document-editor").disabled = false;
 }
 
 async function fetchSettings() {
