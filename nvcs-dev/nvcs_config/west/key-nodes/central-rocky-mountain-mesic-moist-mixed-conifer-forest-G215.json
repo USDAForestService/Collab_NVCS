@@ -9,13 +9,12 @@
             "M333D, 331D, 331G, 331K, 331L, 331N, 342A, 342D, 342E, 342F, 342G,",
             "M332A, M332B, M332D, M332E, M332F, M331A, M331B, M331D, M331J",
             "and tree composition",
-            "dominated by the STRONG DIAGNOSTIC species Pseudotsuga menziesii",
+            "dominated by the STRONG DIAGNOSTIC species Pinus contorta, Pseudotsuga menziesii or Populus tremuloides",
             "(RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of",
-            "Juniperus osteosperma, Juniperus scopulorum, Picea engelmannii,",
-            "Pinus contorta or Pinus flexilis (>=30% RIV; i.e., together STRONG",
+            "Juniperus osteosperma, Juniperus scopulorum, Picea engelmannii, or Pinus flexilis (>=30% RIV; i.e., together STRONG",
             "and MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -32,6 +31,12 @@
             "STRONG_DIAGNOSTIC_SPECIES": [
                 {
                     "species": "Pseudotsuga menziesii"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Pinus contorta"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -43,9 +48,6 @@
                 },
                 {
                     "species": "Picea engelmannii"
-                },
-                {
-                    "species": "Pinus contorta"
                 },
                 {
                     "species": "Pinus flexilis"

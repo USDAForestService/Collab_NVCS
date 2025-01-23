@@ -5,11 +5,11 @@
         "level": "subclass",
         "description": [
             "Tree composition and ecology matching one of the following options",
-            "i. Located in ECOREGION 315 – exclude 315H, 332, 331 – exclude 331A and 331J, AND",
+            "i. Located in ECOREGION 222, 251, 315 – exclude 315H, 332, 331 – exclude 331A and 331J, AND",
             "EITHER",
             "ii. Tree composition is dominated by one or more of Betula papyrifera",
             "or Populus tremuloides =>20% RIV and Abies concolor,",
-            "Psuedotsuga menziesii, and Pinus ponderosa =<5% RIV",
+            "Pseudotsuga menziesii, and Pinus ponderosa =<5% RIV",
             "OR",
             "iii. Aesculus pavia, Acer negundo, Acer saccharum, Aesculus glabra,",
             "Amelanchier spp., Carya cordiformis, Carya texana, Celtis laevigata,",
@@ -20,8 +20,7 @@
             "Persea borbonia, Platanus occidentalis, Populus balsamifera,",
             "Populus deltoides, Prosopis glandulosa, Prosopis velutina,",
             "Prunus pensylvanica, Prunus serotina, Prunus virginiana,",
-            "Quercus falcata, Quercus fusiformis, Quercus macrocarpa,",
-            "Quercus margarettiae, Quercus marilandica, Quercus muehlenbergii,",
+            "Quercus falcata, Quercus virginiana, Quercus macrocarpa, Quercus marilandica, Quercus muehlenbergii,",
             "Quercus rubra, Quercus shumardii, Quercus sinuata var. sinuata,",
             "Quercus stellata, Quercus velutina, Quercus virginiana, Sabal palmetto,",
             "Tilia americana, Ulmus alata, Ulmus americana, Ulmus crassifolia,",
@@ -35,7 +34,7 @@
         "filters": {
             "ECOREGIONS_1": [
                 {
-                    "ecoregion": "315, 331, 332"
+                    "ecoregion": "222, 251, 315, 331, 332"
                 }
             ],
             "ECOREGIONS_EXCL": [
@@ -56,10 +55,10 @@
                     "species": "Abies concolor"
                 },
                 {
-                    "species": "Psuedotsuga menziesii"
+                    "species": "Pinus ponderosa"
                 },
                 {
-                    "species": "Pinus ponderosa"
+                    "species": "Pseudotsuga menziesii"
                 }
             ],
             "DIAGNOSTIC_SPECIES_3": [
@@ -157,13 +156,7 @@
                     "species": "Quercus falcata"
                 },
                 {
-                    "species": "Quercus fusiformis"
-                },
-                {
                     "species": "Quercus macrocarpa"
-                },
-                {
-                    "species": "Quercus margarettiae"
                 },
                 {
                     "species": "Quercus marilandica"
@@ -206,6 +199,9 @@
                 },
                 {
                     "species": "Ulmus rubra"
+                },
+                {
+                    "species": "Quercus virginiana"
                 }
             ]
         }

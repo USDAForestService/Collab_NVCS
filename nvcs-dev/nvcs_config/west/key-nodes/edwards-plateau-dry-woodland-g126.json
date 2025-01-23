@@ -1,19 +1,18 @@
 {
     "node": {
-        "name": "Balconian Dry Forest & Woodland (G126)",
+        "name": "Edwards Plateau Dry Woodland (G126)",
         "id": "G126",
         "level": "group",
         "description": [
             "Plot location and tree composition are as follows:",
-            "i. Located in ECOREGION 315C, 315G, 321B, 315D, 315E and tree",
+            "i. Located in ECOREGION 255B, 255E, 315C, 315D, 315E, 315G, 321B and tree",
             "composition dominated by one or more of STRONG",
-            "DIAGNOSTIC species Quercus fusiformis (RIV=>50%),",
+            "DIAGNOSTIC species Diospyros texana, Juniperus ashei, Juniperus pinchotii, Prosopis glandulosa, or Quercus virginiana [=Quercus fusiformis, Q. v. fusiformis] (RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of Fraxinus albicans, Juniperus ashei, Pinus remota,",
-            "Prosopis glandulosa, Quercus buckleyi, Quercus marilandica,",
-            "Quercus sinuata, Quercus stellata, Quercus vaseyana, or",
+            "combination of Fraxinus texensis, Pinus remota, Quercus buckleyi, Quercus marilandica,",
+            "Quercus sinuata, Quercus stellata, Quercus pungens, or",
             "Ulmus crassifolia (>=30% RIV; i.e., together STRONG and MODERATE",
             "diagnostic species RIV =>50%)"
         ],
@@ -25,26 +24,29 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "315C, 315G, 321B, 315D, 315E"
+                    "ecoregion": "255B, 255E, 315C, 315D, 315E, 315G, 321B"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
                 {
-                    "species": "Quercus fusiformis"
-                }
-            ],
-            "MODERATE_DIAGNOSTIC_SPECIES": [
+                    "species": "Prosopis glandulosa"
+                },
                 {
-                    "species": "Fraxinus albicans"
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Diospyros texana"
                 },
                 {
                     "species": "Juniperus ashei"
                 },
                 {
-                    "species": "Pinus remota"
-                },
+                    "species": "Juniperus pinchotii"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
                 {
-                    "species": "Prosopis glandulosa"
+                    "species": "Pinus remota"
                 },
                 {
                     "species": "Quercus buckleyi"
@@ -59,10 +61,13 @@
                     "species": "Quercus stellata"
                 },
                 {
-                    "species": "Quercus vaseyana"
+                    "species": "Ulmus crassifolia"
                 },
                 {
-                    "species": "Ulmus crassifolia"
+                    "species": "Fraxinus texensis"
+                },
+                {
+                    "species": "Quercus pungens"
                 }
             ]
         }

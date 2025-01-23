@@ -18,7 +18,7 @@
         ],
         "trigger": [
             "match(ECOREGIONS) and ",
-            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
             "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
         ],
         "filters": {
