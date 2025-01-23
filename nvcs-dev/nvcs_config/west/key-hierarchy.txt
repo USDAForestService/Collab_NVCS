@@ -34,6 +34,17 @@ Natural (including ruderal) Forests
 	Upland Forest & Woodlands
 		Temperate & Boreal Forest & Woodland Subclass
 			Great Plains Temperate Forests
+				North American Great Plains Forest & Woodland Division (D326)
+					Southern Great Plains Forest & Woodland (M544)
+						Cross Timbers Forest & Woodland (G887)
+						Edwards Plateau Dry-Mesic Hardwood Forest (G028)
+						Edwards Plateau Dry Woodland (G126)
+					Northern Great Plains Forest & Woodland (M545)
+						Great Plains Bur Oak Forest & Woodland(G329)
+						Northeastern Great Plains Aspen Woodland (G146)
+						Northwestern Great Plains Aspen Woodland (G328)
+						Great Plains Mesic Forest & Woodland (G145)
+					Great Plains Ruderal Woodland (M524)
 				Southeastern North American Forest & Woodland Division (D006)
 					Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)
 						Coastal Live Oak - Hickory - Palmetto Forest (G798)
@@ -47,13 +58,6 @@ Natural (including ruderal) Forests
 							Western Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)
 					Eastern North American Ruderal Forests
 						Eastern North American Ruderal Forest (M013)
-				North American Great Plains Forest & Woodland Division (D326)
-					Great Plains Forest & Woodland (M151)
-						Great Plains Mesic Forest & Woodland (G145)
-						Northeastern Great Plains Aspen Woodland (G146)
-						Great Plains Bur Oak Forest & Woodland (G329)
-						Cross Timbers Forest & Woodland (G887)
-					Great Plains Ruderal Woodland (M524)
 			Western North American Temperate Forests
 				Warm Temperate Forest & Woodland Formation
 					Californian Forest & Woodland Division (D007)
@@ -61,8 +65,8 @@ Natural (including ruderal) Forests
 							Californian Conifer Forest & Woodland (G198)
 							Californian Broadleaf Forest & Woodland (G195)
 						Californian Ruderal Forest (M513)
-					Madrean-Balconian Forest & Woodland Division (D060)
-						Madrean-Balconian Natural Forests & Woodlands
+					Madrean Forest & Woodland Division (D331)
+						Madrean Natural Forests & Woodlands
 							Madrean Lowland Evergreen Woodland (M010)
 								Madrean Pinyon - Juniper Woodland (G200)
 								Madrean Encinal (G201)
@@ -70,9 +74,6 @@ Natural (including ruderal) Forests
 							Madrean Montane Forest & Woodland (M011)
 								Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)
 								Madrean Lower Montane Pine - Oak Forest & Woodland (G203)
-							Balconian Forest & Woodland (M015)
-								Balconian Dry-Mesic Hardwood Forest (G028)
-								Balconian Dry Forest & Woodland (G126)
 						Western North American Ruderal Forests - Madrean-Balconian
 				Cool Temperate Forest & Woodland Formation
 					Pacific Coast Temperate Rainforest Division (D338)
