@@ -10,16 +10,15 @@
             "M331I, 331H, 331C, 331B, 331I, 331J, 341, M341, 322A,",
             "AND tree composition dominated by one or more of STRONG DIAGNOSTIC",
             "species Abies concolor, Acer grandidentatum, Juniperus scopulorum,",
-            "Pinus aristata, Pinus longaeva",
+            "Pinus aristata, Pinus contorta, Pinus longaeva",
             "Pinus ponderosa, Pinus strobiformis, Pseudotsuga menziesii,",
-            "Picea pungens, or Quercus gambelii (RIV=>50%),",
+            "Picea pungens, Populus tremuloides, or Quercus gambelii (RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above,",
             "but with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
             "combination of Abies lasiocarpa var. arizonica,",
             "Abies lasiocarpa var. lasiocarpa, Juniperus deppeana,",
-            "Picea engelmannii, Pinus contorta, Pinus edulis, Pinus flexilis,",
-            "Populus tremuloides",
+            "Picea engelmannii, Pinus edulis, Pinus flexilis,",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -63,6 +62,12 @@
                 },
                 {
                     "species": "Quercus gambelii"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Pinus contorta"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -79,16 +84,10 @@
                     "species": "Picea engelmannii"
                 },
                 {
-                    "species": "Pinus contorta"
-                },
-                {
                     "species": "Pinus edulis"
                 },
                 {
                     "species": "Pinus flexilis"
-                },
-                {
-                    "species": "Populus tremuloides"
                 }
             ]
         }

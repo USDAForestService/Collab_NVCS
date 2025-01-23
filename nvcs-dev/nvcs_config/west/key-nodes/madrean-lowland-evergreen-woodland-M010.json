@@ -5,7 +5,7 @@
         "level": "macrogroup",
         "description": [
             "Plot location and tree composition are as follows:",
-            "i. Located in ECOREGION 322, 313C, M313, 321, 315, AND",
+            "i. Located in ECOREGION 322, 313C, M313, 321, AND",
             "tree composition dominated by one or more of STRONG DIAGNOSTIC species",
             "Juniperus coahuilensis, Juniperus deppeana, Juniperus flaccida,",
             "Juniperus pinchotii, Pinus cembroides, Pinus discolor,",
@@ -31,7 +31,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "322, 313C, M313, 321, 315"
+                    "ecoregion": "322, 313C, M313, 321"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [

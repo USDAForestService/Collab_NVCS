@@ -5,13 +5,13 @@
         "level": "group",
         "description": [
             "Plot location and tree composition are as follows:",
-            "i. Located in ECOREGION 315F, 315C, 315G, 315D, 315E, 332F",
+            "i. Located in ECOREGION 231E, 231G, 251E, 251F, 255A, 255E, 315C, 315G, 332F",
             "and tree composition dominated by one or",
-            "more of STRONG DIAGNOSTIC species (RIV=>50%),",
+            "more of STRONG DIAGNOSTIC species Carya cordiformis, Carya texana, Quercus marilandica, Quercus stellata, Quercus virginiana, Quercus velutina, Sapindus saponaria, Sideroxylon lanuginosum ssp. lanuginosum, Ulmus crassifolia, Juniperus ashei, Juniperus virginiana    (RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above,",
             "but with =>20% RIV AND with other MODERATE DIAGNOSTIC species",
-            "in any combination of (>=30% RIV; i.e., together STRONG and",
+            "in any combination of Ulmus alata (>=30% RIV; i.e., together STRONG and",
             "MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -22,7 +22,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "315F, 315C, 315G, 315D, 315E, 332F"
+                    "ecoregion": "231E,  231G, 251E, 251F, 255A, 255E, 315C, 315G, 332F"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
@@ -34,6 +34,30 @@
                 },
                 {
                     "species": "Ulmus crassifolia"
+                },
+                {
+                    "species": "Juniperus virginiana"
+                },
+                {
+                    "species": "Juniperus ashei"
+                },
+                {
+                    "species": "Carya texana"
+                },
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Quercus velutina"
+                },
+                {
+                    "species": "Sapindus saponaria"
+                },
+                {
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Sideroxylon lanuginosum ssp. lanuginosum"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [

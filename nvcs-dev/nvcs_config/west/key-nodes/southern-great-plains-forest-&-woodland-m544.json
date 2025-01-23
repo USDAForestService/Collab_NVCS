@@ -1,0 +1,101 @@
+{
+    "node": {
+        "name": "Southern Great Plains Forest & Woodland (M544)",
+        "id": "M544",
+        "level": "macrogroup",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 251E, 251F, 255A, 255E, 315, 321B, 332F, 231E, 255B, AND tree composition dominated by one or more of STRONG MESIC DIAGNOSTIC species Juglans major, Acer grandidentatum, Diospyros texana, Juglans major, Juniperus ashei, Juniperus pinchotii Prosopis glandulosa, Prosopis velutina, Quercus buckleyi, Quercus laceyi, Quercus marilandica, Quercus muehlenbergii, Quercus stellata,   Quercus virginiana or Ulmus alata, or Ulmus crassifolia (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC species in any combination of ii. Located in above ECOREGION, and tree composition as above, but with =>20% RIV, AND with other MODERATE MESIC DIAGNOSTIC species in any combination of Arbutus xalapensis, Celtis laevigata, Juniperius virginai, Fraxinus texensis, Pinus remota, Prunus serotina, , Quercus macrocarpa, Quercus pungens, Quercus sinuata  (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "251E, 251F, 255A, 255E, 315, 321B, 332F, 231E, 255B"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Juglans major"
+                },
+                {
+                    "species": "Juniperus ashei"
+                },
+                {
+                    "species": "Quercus buckleyi"
+                },
+                {
+                    "species": "Quercus laceyi"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                },
+                {
+                    "species": "Prosopis glandulosa"
+                },
+                {
+                    "species": "Prosopis velutina"
+                },
+                {
+                    "species": "Quercus marilandica"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Ulmus alata"
+                },
+                {
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Juniperus pinchotii"
+                },
+                {
+                    "species": "Diospyros texana"
+                },
+                {
+                    "species": "Acer grandidentatum"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Arbutus xalapensis"
+                },
+                {
+                    "species": "Celtis laevigata"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Pinus remota"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus pungens"
+                },
+                {
+                    "species": "Juniperus virginiana"
+                },
+                {
+                    "species": "Fraxinus texensis"
+                },
+                {
+                    "species": "Quercus sinuata"
+                }
+            ]
+        }
+    }
+}

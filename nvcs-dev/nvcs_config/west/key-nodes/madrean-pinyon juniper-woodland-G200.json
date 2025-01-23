@@ -7,7 +7,7 @@
             "Plot location and tree composition are as follows:",
             "i. Located in ECOREGION 313D?, 315H?, 315A, 313B, M313A, M313B, 321,",
             "313A, 322A, 313C, 322B and tree composition dominated by one or more",
-            "of STRONG DIAGNOSTIC species Juniperus coahuilensis,",
+            "of STRONG DIAGNOSTIC species Juniperus coahuilensis, Juniperus deppeana,",
             "Juniperus flaccida, Juniperus pinchotii, Pinus cembroides,",
             "Pinus discolor, Pinus edulis, or Pinus remota (RIV=>50%),",
             "OR",
@@ -19,7 +19,7 @@
             "OR",
             "iii. Located in above ECOREGION, and tree composition as i. above,",
             "but with =>20% RIV AND with other INDICATOR species",
-            "Quercus arizonica, Quercus emoryi, Quercus grisea,",
+            "Juniperus ashei, Juniperus scopulorum, Pinus ponderosa, Quercus arizonica, Quercus emoryi, Quercus grisea,",
             "Quercus hypoleucoides, or Quercus rugosa (RIV >=1%)"
         ],
         "trigger": [
@@ -55,12 +55,12 @@
                 },
                 {
                     "species": "Pinus remota"
+                },
+                {
+                    "species": "Juniperus deppeana"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
-                {
-                    "species": "Juniperus deppeana"
-                },
                 {
                     "species": "Prosopis glandulosa"
                 },
@@ -83,6 +83,15 @@
                 },
                 {
                     "species": "Quercus rugosa"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Juniperus ashei"
                 }
             ]
         }
