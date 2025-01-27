@@ -256,8 +256,8 @@ class ClassificationKey:
         self.nodes[114] = Node(114, 112, element_114(), 'Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)')
         self.nodes[115] = Node(115, 112, element_115(), 'Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)')
         self.nodes[116] = Node(116, 112, element_116(), 'Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)')
-        self.nodes[117] = Node(117, 112, element_117(), 'Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)')
-        self.nodes[118] = Node(118, 112, element_118(), 'Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)')
+        self.nodes[117] = Node(117, 112, element_117(), 'Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)')
+        self.nodes[118] = Node(118, 112, element_118(), 'Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)')
         self.nodes[119] = Node(119, 106, element_119(), 'Central Rocky Mountain Mesic Lower Montane Forest (M500)')
         self.nodes[120] = Node(120, 119, element_120(), 'East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)')
         self.nodes[121] = Node(121, 119, element_121(), 'Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)')
@@ -1754,7 +1754,7 @@ def element_031():
         {'species': 'Acer grandidentatum'},
         {'species': 'Acer negundo'},
         {'species': 'Celtis laevigata'},
-        {'species': 'Hesperocyparis arizonica'},
+        {'species': 'Cupressus arizonica'},
         {'species': 'Populus angustifolia'},
         {'species': 'Populus deltoides'},
         {'species': 'Prosopis glandulosa'},
@@ -3170,12 +3170,12 @@ def element_062():
     )
 
     DIAGNOSTIC_SPECIES_1 = PatternList('DIAGNOSTIC_SPECIES_1',
-        {'species': 'Hesperocyparis bakeri'},
-        {'species': 'Hesperocyparis forbesii'},
-        {'species': 'Hesperocyparis macnabiana'},
-        {'species': 'Hesperocyparis macrocarpa'},
-        {'species': 'Hesperocyparis pigmaea'},
-        {'species': 'Hesperocyparis sargentii'},
+        {'species': 'Cupressus bakeri'},
+        {'species': 'Cupressus forbesii'},
+        {'species': 'Cupressus macnabiana'},
+        {'species': 'Cupressus macrocarpa'},
+        {'species': 'Cupressus goveniana ssp. pygmaea'},
+        {'species': 'Cupressus sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus pinchotii'},
         {'species': 'Juniperus ashei'},
@@ -3197,7 +3197,7 @@ def element_062():
         {'species': 'Aesculus californica'},
         {'species': 'Arbutus arizonica'},
         {'species': 'Arbutus xalapensis'},
-        {'species': 'Fraxinus albicans'},
+        {'species': 'Fraxinus texensis'},
         {'species': 'Juglans californica'},
         {'species': 'Juglans major'},
         {'species': 'Juglans nigra'},
@@ -3218,18 +3218,18 @@ def element_062():
         {'species': 'Quercus rugosa'},
         {'species': 'Quercus muehlenbergii'},
         {'species': 'Quercus vaseyana'},
-        {'species': 'Quercus parvula var. shrevei'},
+        {'species': 'Quercus parvula'},
         {'species': 'Quercus wislizeni'},
         {'species': 'Umbellularia californica'}
     )
 
     DIAGNOSTIC_SPECIES_2 = PatternList('DIAGNOSTIC_SPECIES_2',
-        {'species': 'Hesperocyparis bakeri'},
-        {'species': 'Hesperocyparis forbesii'},
-        {'species': 'Hesperocyparis macnabiana'},
-        {'species': 'Hesperocyparis macrocarpa'},
-        {'species': 'Hesperocyparis pigmaea'},
-        {'species': 'Hesperocyparis sargentii'},
+        {'species': 'Cupressus bakeri'},
+        {'species': 'Cupressus forbesii'},
+        {'species': 'Cupressus macnabiana'},
+        {'species': 'Cupressus macrocarpa'},
+        {'species': 'Cupressus goveniana ssp. pygmaea'},
+        {'species': 'Cupressus sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus pinchotii'},
         {'species': 'Juniperus ashei'},
@@ -3251,7 +3251,7 @@ def element_062():
         {'species': 'Aesculus californica'},
         {'species': 'Arbutus arizonica'},
         {'species': 'Arbutus xalapensis'},
-        {'species': 'Fraxinus albicans'},
+        {'species': 'Fraxinus texensis'},
         {'species': 'Juglans californica'},
         {'species': 'Juglans major'},
         {'species': 'Juglans nigra'},
@@ -3269,18 +3269,18 @@ def element_062():
         {'species': 'Quercus oblongifolia'},
         {'species': 'Quercus rugosa'},
         {'species': 'Quercus muehlenbergii'},
-        {'species': 'Quercus vaseyana'},
-        {'species': 'Quercus parvula var. shrevei'},
+        {'species': 'Quercus pungens'},
+        {'species': 'Quercus parvula'},
         {'species': 'Quercus wislizeni'}
     )
 
     DIAGNOSTIC_SPECIES_3 = PatternList('DIAGNOSTIC_SPECIES_3',
-        {'species': 'Hesperocyparis bakeri'},
-        {'species': 'Hesperocyparis forbesii'},
-        {'species': 'Hesperocyparis macnabiana'},
-        {'species': 'Hesperocyparis macrocarpa'},
-        {'species': 'Hesperocyparis pigmaea'},
-        {'species': 'Hesperocyparis sargentii'},
+        {'species': 'Cupressus bakeri'},
+        {'species': 'Cupressus forbesii'},
+        {'species': 'Cupressus macnabiana'},
+        {'species': 'Cupressus macrocarpa'},
+        {'species': 'Cupressus goveniana ssp. pygmaea'},
+        {'species': 'Cupressus sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus pinchotii'},
         {'species': 'Juniperus ashei'},
@@ -3301,7 +3301,7 @@ def element_062():
         {'species': 'Aesculus californica'},
         {'species': 'Arbutus arizonica'},
         {'species': 'Arbutus xalapensis'},
-        {'species': 'Fraxinus albicans'},
+        {'species': 'Fraxinus texensis'},
         {'species': 'Juglans californica'},
         {'species': 'Juglans major'},
         {'species': 'Juglans nigra'},
@@ -3319,8 +3319,8 @@ def element_062():
         {'species': 'Quercus oblongifolia'},
         {'species': 'Quercus rugosa'},
         {'species': 'Quercus muehlenbergii'},
-        {'species': 'Quercus vaseyana'},
-        {'species': 'Quercus parvula var. shrevei'},
+        {'species': 'Quercus pungens'},
+        {'species': 'Quercus parvula'},
         {'species': 'Quercus wislizeni'}
     )
 
@@ -3475,15 +3475,13 @@ def element_065():
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
         {'species': 'Hesperocyparis abramsiana'},
-        {'species': 'Hesperocyparis bakeri'},
-        {'species': 'Hesperocyparis forbesii'},
-        {'species': 'Hesperocyparis goveniana'},
-        {'species': 'Hesperocyparis macnabiana'},
-        {'species': 'Hesperocyparis macrocarpa'},
-        {'species': 'Hesperocyparis nevadensis'},
-        {'species': 'Hesperocyparis pigmaea'},
-        {'species': 'Hesperocyparis sargentii'},
-        {'species': 'Hesperocyparis stephensonii'},
+        {'species': 'Cupressus bakeri'},
+        {'species': 'Cupressus forbesii'},
+        {'species': 'Cupressus goveniana ssp. pygmaea'},
+        {'species': 'Cupressus macnabiana'},
+        {'species': 'Cupressus macrocarpa'},
+        {'species': 'Cupressus arizonica'},
+        {'species': 'Cupressus sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Pinus sabiniana'},
         {'species': 'Pinus attenuata'},
@@ -3558,7 +3556,7 @@ def element_066():
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Quercus engelmannii'},
-        {'species': 'Quercus parvula var. shrevei'}
+        {'species': 'Quercus parvula'}
     )
 
     def match(plot):
@@ -3663,7 +3661,7 @@ def element_068():
         {'species': 'Arbutus arizonica'},
         {'species': 'Arbutus xalapensis'},
         {'species': 'Celtis laevigata'},
-        {'species': 'Fraxinus albicans'},
+        {'species': 'Fraxinus texensis'},
         {'species': 'Juglans major'},
         {'species': 'Juglans nigra'},
         {'species': 'Juniperus monosperma'},
@@ -4108,12 +4106,12 @@ def element_076():
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Hesperocyparis arizonica'},
+        {'species': 'Cupressus arizonica'},
         {'species': 'Juniperus deppeana'},
         {'species': 'Pinus arizonica'},
         {'species': 'Pinus engelmannii'},
         {'species': 'Pinus leiophylla'},
-        {'species': 'Pinus ponderosa var. scopulorum'}
+        {'species': 'Pinus ponderosa'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
@@ -4705,7 +4703,6 @@ def element_087():
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus deppeana'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Juniperus scopulorum'},
         {'species': 'Pinus jeffreyi'},
         {'species': 'Pinus ponderosa'},
@@ -4763,7 +4760,6 @@ def element_088():
         {'species': 'Juniperus californica'},
         {'species': 'Pinus edulis'},
         {'species': 'Pinus jeffreyi'},
-        {'species': 'Juniperus grandis'},
         {'species': 'Juniperus monosperma'},
         {'species': 'Juniperus scopulorum'},
         {'species': 'Pinus ponderosa'}
@@ -5176,7 +5172,7 @@ def element_097():
         {'species': 'Abies procera'},
         {'species': 'Calocedrus decurrens'},
         {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Notholithocarpus densiflorus'},
+        {'species': 'Lithocarpus densiflorus'},
         {'species': 'Pinus jeffreyi'},
         {'species': 'Pinus monticola'},
         {'species': 'Quercus chrysolepis'},
@@ -5305,11 +5301,11 @@ def element_098():
         {'species': 'Chrysolepis chrysophylla'},
         {'species': 'Pseudotsuga macrocarpa'},
         {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Quercus garryana'}
+        {'species': 'Quercus garryana'},
+        {'species': 'Abies grandis'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies grandis'},
         {'species': 'Acer macrophyllum'},
         {'species': 'Abies bracteata'},
         {'species': 'Calocedrus decurrens'},
@@ -5408,7 +5404,7 @@ def element_100():
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
         {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Notholithocarpus densiflorus'},
+        {'species': 'Lithocarpus densiflorus'},
         {'species': 'Pseudotsuga menziesii'},
         {'species': 'Pseudotsuga macrocarpa'},
         {'species': 'Quercus chrysolepis'},
@@ -5488,7 +5484,7 @@ def element_102():
     code = 'M023'
 
     # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION M261, 262, 263, 341D,
+    # i. Located in ECOREGION M261, 262, 263, 341D, M242B
     # AND tree composition dominated by one or more of STRONG DIAGNOSTIC
     # species Abies concolor [=var. lowiana],
     # Calocedrus decurrens, Pinus jeffreyi, Pinus lambertiana,
@@ -5507,7 +5503,7 @@ def element_102():
     # [Additional tree species not tracked by FIA include Abies bracteata]
 
     ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': 'M261, 262, 263, 341D'}
+        {'ecoregion': 'M261, 262, 263, 341D, M242B'}
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
@@ -5517,17 +5513,17 @@ def element_102():
         {'species': 'Pinus ponderosa'},
         {'species': 'Sequoiadendron giganteum'},
         {'species': 'Abies concolor'},
-        {'species': 'Quercus chrysolepis'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Abies magnifica'},
-        {'species': 'Abies magnifica var. shastensis'},
-        {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Picea breweriana'},
+        {'species': 'Quercus chrysolepis'},
         {'species': 'Pinus monticola'},
         {'species': 'Pseudotsuga macrocarpa'},
         {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Pinus contorta'},
+        {'species': 'Abies magnifica'}
+    )
+
+    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
+        {'species': 'Chrysolepis chrysophylla'},
+        {'species': 'Picea breweriana'},
         {'species': 'Quercus kelloggii'},
         {'species': 'Pinus washoensis'}
     )
@@ -5579,17 +5575,18 @@ def element_103():
         {'species': 'Quercus chrysolepis'},
         {'species': 'Quercus kelloggii'},
         {'species': 'Sequoiadendron giganteum'},
-        {'species': 'Abies concolor'}
+        {'species': 'Abies concolor'},
+        {'species': 'Abies magnifica'},
+        {'species': 'Pinus contorta'}
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
         {'species': 'Abies bracteata'},
-        {'species': 'Abies magnifica'},
-        {'species': 'Abies shastensis'},
         {'species': 'Chrysolepis chrysophylla'},
         {'species': 'Picea breweriana'},
         {'species': 'Pinus washoensis'},
-        {'species': 'Pseudotsuga macrocarpa'}
+        {'species': 'Pseudotsuga macrocarpa'},
+        {'species': 'Tsuga mertensiana'}
     )
 
     def match(plot):
@@ -5610,9 +5607,13 @@ def element_104():
 
     # Only one Macrogroup
 
+    EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
+        {'exotic': 'yes'}
+    )
+
     def match(plot):
         logging.debug('%s|NODE=104|Vancouverian Ruderal Forest (M405)', plot.ident)
-        result = (True)
+        result = (plot.riv(EXOTIC_TREE_SPP) >=80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -6236,6 +6237,52 @@ def element_116():
 
 def element_117():
 
+    """Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)"""
+    """G215"""
+    level = 'group'
+    code = 'G215'
+
+    # Plot location and tree composition are as follows:
+    # i. Located in ECOREGION 331A, 331E, 331F, 331M, M331E, M332G, M333C,
+    # M333D, 331D, 331G, 331K, 331L, 331N, 342A, 342D, 342E, 342F, 342G,
+    # M332A, M332B, M332D, M332E, M332F, M331A, M331B, M331D, M331J
+    # and tree composition
+    # dominated by the STRONG DIAGNOSTIC species Pinus contorta, Pseudotsuga menziesii or Populus tremuloides
+    # (RIV=>50%),
+    # OR
+    # ii. Located in above ECOREGION, and tree composition as above, but
+    # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of
+    # Juniperus osteosperma, Juniperus scopulorum, Picea engelmannii, or Pinus flexilis (>=30% RIV; i.e., together STRONG
+    # and MODERATE diagnostic species RIV =>50%)
+
+    ECOREGIONS = PatternList('ECOREGIONS',
+        {'ecoregion': '331A, 331E, 331F, 331M, M331E, M332G, M333C, M333D, 331D, 331G, 331K, 331L, 331N, 342A, 342D, 342E, 342F, 342G, M332A, M332B, M332D, M332E, M332F, M331A, M331B, M331D, M331J'}
+    )
+
+    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
+        {'species': 'Pseudotsuga menziesii'},
+        {'species': 'Populus tremuloides'},
+        {'species': 'Pinus contorta'}
+    )
+
+    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
+        {'species': 'Juniperus osteosperma'},
+        {'species': 'Juniperus scopulorum'},
+        {'species': 'Picea engelmannii'},
+        {'species': 'Pinus flexilis'}
+    )
+
+    def match(plot):
+        logging.debug('%s|NODE=117|Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)', plot.ident)
+        result = (plot.match(ECOREGIONS) and 
+               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
+               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
+        logging.debug('%s|RESULT|%s', plot.ident, result)
+        return result
+    return level, code, match
+
+def element_118():
+
     """Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)"""
     """G210"""
     level = 'group'
@@ -6273,53 +6320,7 @@ def element_117():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=117|Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_118():
-
-    """Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)"""
-    """G215"""
-    level = 'group'
-    code = 'G215'
-
-    # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 331A, 331E, 331F, 331M, M331E, M332G, M333C,
-    # M333D, 331D, 331G, 331K, 331L, 331N, 342A, 342D, 342E, 342F, 342G,
-    # M332A, M332B, M332D, M332E, M332F, M331A, M331B, M331D, M331J
-    # and tree composition
-    # dominated by the STRONG DIAGNOSTIC species Pinus contorta, Pseudotsuga menziesii or Populus tremuloides
-    # (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of
-    # Juniperus osteosperma, Juniperus scopulorum, Picea engelmannii, or Pinus flexilis (>=30% RIV; i.e., together STRONG
-    # and MODERATE diagnostic species RIV =>50%)
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '331A, 331E, 331F, 331M, M331E, M332G, M333C, M333D, 331D, 331G, 331K, 331L, 331N, 342A, 342D, 342E, 342F, 342G, M332A, M332B, M332D, M332E, M332F, M331A, M331B, M331D, M331J'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Pseudotsuga menziesii'},
-        {'species': 'Populus tremuloides'},
-        {'species': 'Pinus contorta'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Juniperus osteosperma'},
-        {'species': 'Juniperus scopulorum'},
-        {'species': 'Picea engelmannii'},
-        {'species': 'Pinus flexilis'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=118|Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)', plot.ident)
+        logging.debug('%s|NODE=118|Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))

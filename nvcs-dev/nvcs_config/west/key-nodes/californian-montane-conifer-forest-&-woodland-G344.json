@@ -62,17 +62,17 @@
                 },
                 {
                     "species": "Abies concolor"
-                }
-            ],
-            "MODERATE_DIAGNOSTIC_SPECIES": [
-                {
-                    "species": "Abies bracteata"
                 },
                 {
                     "species": "Abies magnifica"
                 },
                 {
-                    "species": "Abies shastensis"
+                    "species": "Pinus contorta"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Abies bracteata"
                 },
                 {
                     "species": "Chrysolepis chrysophylla"
@@ -85,6 +85,9 @@
                 },
                 {
                     "species": "Pseudotsuga macrocarpa"
+                },
+                {
+                    "species": "Tsuga mertensiana"
                 }
             ]
         }
