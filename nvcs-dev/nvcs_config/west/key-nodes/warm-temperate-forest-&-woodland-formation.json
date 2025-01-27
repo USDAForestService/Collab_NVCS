@@ -53,22 +53,22 @@
             ],
             "DIAGNOSTIC_SPECIES_1": [
                 {
-                    "species": "Hesperocyparis bakeri"
+                    "species": "Cupressus bakeri"
                 },
                 {
-                    "species": "Hesperocyparis forbesii"
+                    "species": "Cupressus forbesii"
                 },
                 {
-                    "species": "Hesperocyparis macnabiana"
+                    "species": "Cupressus macnabiana"
                 },
                 {
-                    "species": "Hesperocyparis macrocarpa"
+                    "species": "Cupressus macrocarpa"
                 },
                 {
-                    "species": "Hesperocyparis pigmaea"
+                    "species": "Cupressus goveniana ssp. pygmaea"
                 },
                 {
-                    "species": "Hesperocyparis sargentii"
+                    "species": "Cupressus sargentii"
                 },
                 {
                     "species": "Juniperus californica"
@@ -134,7 +134,7 @@
                     "species": "Arbutus xalapensis"
                 },
                 {
-                    "species": "Fraxinus albicans"
+                    "species": "Fraxinus texensis"
                 },
                 {
                     "species": "Juglans californica"
@@ -197,7 +197,7 @@
                     "species": "Quercus vaseyana"
                 },
                 {
-                    "species": "Quercus parvula var. shrevei"
+                    "species": "Quercus parvula"
                 },
                 {
                     "species": "Quercus wislizeni"
@@ -208,22 +208,22 @@
             ],
             "DIAGNOSTIC_SPECIES_2": [
                 {
-                    "species": "Hesperocyparis bakeri"
+                    "species": "Cupressus bakeri"
                 },
                 {
-                    "species": "Hesperocyparis forbesii"
+                    "species": "Cupressus forbesii"
                 },
                 {
-                    "species": "Hesperocyparis macnabiana"
+                    "species": "Cupressus macnabiana"
                 },
                 {
-                    "species": "Hesperocyparis macrocarpa"
+                    "species": "Cupressus macrocarpa"
                 },
                 {
-                    "species": "Hesperocyparis pigmaea"
+                    "species": "Cupressus goveniana ssp. pygmaea"
                 },
                 {
-                    "species": "Hesperocyparis sargentii"
+                    "species": "Cupressus sargentii"
                 },
                 {
                     "species": "Juniperus californica"
@@ -289,7 +289,7 @@
                     "species": "Arbutus xalapensis"
                 },
                 {
-                    "species": "Fraxinus albicans"
+                    "species": "Fraxinus texensis"
                 },
                 {
                     "species": "Juglans californica"
@@ -343,10 +343,10 @@
                     "species": "Quercus muehlenbergii"
                 },
                 {
-                    "species": "Quercus vaseyana"
+                    "species": "Quercus pungens"
                 },
                 {
-                    "species": "Quercus parvula var. shrevei"
+                    "species": "Quercus parvula"
                 },
                 {
                     "species": "Quercus wislizeni"
@@ -354,22 +354,22 @@
             ],
             "DIAGNOSTIC_SPECIES_3": [
                 {
-                    "species": "Hesperocyparis bakeri"
+                    "species": "Cupressus bakeri"
                 },
                 {
-                    "species": "Hesperocyparis forbesii"
+                    "species": "Cupressus forbesii"
                 },
                 {
-                    "species": "Hesperocyparis macnabiana"
+                    "species": "Cupressus macnabiana"
                 },
                 {
-                    "species": "Hesperocyparis macrocarpa"
+                    "species": "Cupressus macrocarpa"
                 },
                 {
-                    "species": "Hesperocyparis pigmaea"
+                    "species": "Cupressus goveniana ssp. pygmaea"
                 },
                 {
-                    "species": "Hesperocyparis sargentii"
+                    "species": "Cupressus sargentii"
                 },
                 {
                     "species": "Juniperus californica"
@@ -432,7 +432,7 @@
                     "species": "Arbutus xalapensis"
                 },
                 {
-                    "species": "Fraxinus albicans"
+                    "species": "Fraxinus texensis"
                 },
                 {
                     "species": "Juglans californica"
@@ -486,10 +486,10 @@
                     "species": "Quercus muehlenbergii"
                 },
                 {
-                    "species": "Quercus vaseyana"
+                    "species": "Quercus pungens"
                 },
                 {
-                    "species": "Quercus parvula var. shrevei"
+                    "species": "Quercus parvula"
                 },
                 {
                     "species": "Quercus wislizeni"

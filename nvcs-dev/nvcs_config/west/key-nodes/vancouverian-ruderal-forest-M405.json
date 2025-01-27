@@ -7,8 +7,14 @@
             "Only one Macrogroup"
         ],
         "trigger": [
-            "true"
+            "riv(EXOTIC_TREE_SPP) >=80"
         ],
-        "filters": {}
+        "filters": {
+            "EXOTIC_TREE_SPP": [
+                {
+                    "exotic": "yes"
+                }
+            ]
+        }
     }
 }
