@@ -107,11 +107,17 @@ function generateDocumentEditorContent(item) {
 function generateDocumentEditorElementContent(item) {
     const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
     const identifier = newGuid();
+    const descendantOptions = ["None", "Division", "Macrogroup", "Group"];
+    const descendantOptionsHtml = createOptions(descendantOptions, item.descendantLimitType);
 
     let html = `
         <div id='document-content-${identifier}' class='input-container document-element'>
-            <label for='element-source-${identifier}'>Element Description Source:</label>
+            <label for='element-source-${identifier}'>Element:</label>
             <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${element.hierarchyName}'/>
+            <label for='element-descendants-type'>Include Descendants of Type:</label>
+            <select id='element-descendants-type'>
+                ${descendantOptionsHtml}
+            </select>
             <button onclick="moveUpInDocument('${identifier}')">Up</button>
             <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
@@ -339,6 +345,13 @@ function addDocumentElement(identifier) {
     const targetSection = findDocumentSectionFromIdentifier(unsavedDocumentStructure, identifier);
     targetSection.content.push({
         type: "element",
+        content: null,
+        descendantLimitType: null
+    });
+
+    populateDocumentDialog();
+}
+
         content: null
     });
 
@@ -378,9 +391,11 @@ function recordUnsavedChanges() {
             }
             else if (contentContainer.classList.contains("document-element")) {
                 const elementName = contentContainer.querySelector("input").value;
+                const descendantLimit = contentContainer.querySelector("select").value;
                 sectionContent.push({
                     type: "element",
-                    content: elementName
+                    content: elementName,
+                    descendantLimitType: descendantLimit
                 });
             }
             else {
