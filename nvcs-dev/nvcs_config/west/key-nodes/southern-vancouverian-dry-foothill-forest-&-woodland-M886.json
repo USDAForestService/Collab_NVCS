@@ -49,12 +49,12 @@
                 },
                 {
                     "species": "Quercus garryana"
+                },
+                {
+                    "species": "Abies grandis"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
-                {
-                    "species": "Abies grandis"
-                },
                 {
                     "species": "Acer macrophyllum"
                 },

@@ -34,7 +34,7 @@
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
                 {
-                    "species": "Hesperocyparis arizonica"
+                    "species": "Cupressus arizonica"
                 },
                 {
                     "species": "Juniperus deppeana"
@@ -49,7 +49,7 @@
                     "species": "Pinus leiophylla"
                 },
                 {
-                    "species": "Pinus ponderosa var. scopulorum"
+                    "species": "Pinus ponderosa"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
