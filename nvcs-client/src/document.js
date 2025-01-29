@@ -64,6 +64,7 @@ function populateDocumentDialog() {
                 <button id='btn-add-document-header-${identifier}' onclick="addDocumentHeader('${identifier}')">Add Header</button>
                 <button id='btn-add-document-text-${identifier}' onclick="addDocumentText('${identifier}')">Add Text</button>
                 <button id='btn-add-document-element-${identifier}' onclick="addDocumentElement('${identifier}')">Add Element Description</button>
+                <button id='btn-add-document-skeletal-${identifier}' onclick="addDocumentSkeletal('${identifier}')">Add Skeletal Element List</button>
             </div>
         `;
 
@@ -93,6 +94,9 @@ function generateDocumentEditorContent(item) {
             break;
         case "header":
             html += generateDocumenEditortHeaderContent(item);
+            break;
+        case "skeletal":
+            html += generateDocumentEditorSkeletalContent(item);
             break;
         case "text":
             html += generateDocumentEditorTextContent(item);
@@ -147,6 +151,22 @@ function generateDocumenEditortHeaderContent(item) {
         </div>
     `;
     
+    return html;
+}
+
+function generateDocumentEditorSkeletalContent(item) {
+    const identifier = newGuid();
+    const checked = item.content ? "checked" : "";
+    
+    let html = `
+        <div id='document-content-${identifier}' class='input-container document-skeletal'>
+            <label for='skeletal-content-${identifier}'>Enable Skeletal List for Section Elements:</label>
+            <input id='skeletal-content-${identifier}' type="checkbox" ${checked} />
+            <button onclick="moveUpInDocument('${identifier}')">Up</button>
+            <button onclick="moveDownInDocument('${identifier}')">Down</button>
+        </div>
+    `;
+
     return html;
 }
 
@@ -327,6 +347,18 @@ function addDocumentHeader(identifier) {
     populateDocumentDialog();
 }
 
+function addDocumentSkeletal(identifier) {
+    recordUnsavedChanges();
+
+    const targetSection = findDocumentSectionFromIdentifier(unsavedDocumentStructure, identifier);
+    targetSection.content.push({
+        type: "skeletal",
+        content: true
+    });
+
+    populateDocumentDialog();
+}
+
 function addDocumentText(identifier) {
     recordUnsavedChanges();
 
@@ -347,12 +379,6 @@ function addDocumentElement(identifier) {
         type: "element",
         content: null,
         descendantLimitType: null
-    });
-
-    populateDocumentDialog();
-}
-
-        content: null
     });
 
     populateDocumentDialog();
@@ -379,6 +405,13 @@ function recordUnsavedChanges() {
                     type: "header",
                     content: headerContent,
                     level: headerLevel
+                });
+            }
+            else if (contentContainer.classList.contains("document-skeletal")) {
+                const checkedContent = contentContainer.querySelector("input[type='checkbox']").checked;
+                sectionContent.push({
+                    type: "skeletal",
+                    content: checkedContent
                 });
             }
             else if (contentContainer.classList.contains("document-text")) {
@@ -437,7 +470,7 @@ function moveInDocument(identifier, moveUp) {
         unsavedDocumentStructure.sections[sectionIndex + replacementIndexIncrement] = section;
     }
     else {
-        const contentValue = documentInput.value;
+        const contentValue = documentInput.type == "checkbox" ? documentInput.checked : documentInput.value;
         const contentType = documentInput.id.split("-")[0];
         const sectionContainer = documentContent.closest(".document-section");
         const sectionName = sectionContainer.querySelector("[id^='section-name']").value;
