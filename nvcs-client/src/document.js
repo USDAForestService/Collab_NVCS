@@ -46,7 +46,7 @@ function populateDocumentDialog() {
             <div id='document-content-${identifier}' class='input-container'>
                 <label for='section-name-${identifier}'>Section Name:</label>
                 <input id='section-name-${identifier}' type='text' value='${section.name}' />
-                <button id='btn-delete-section-${identifier}'>Delete</button>
+                <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
                 <button onclick="moveUpInDocument('${identifier}')">Up</button>
                 <button onclick="moveDownInDocument('${identifier}')">Down</button>
             </div>
@@ -110,6 +110,7 @@ function generateDocumentEditorContent(item) {
 
 function generateDocumentEditorElementContent(item) {
     const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
+    const inputValue = element ? element.hierarchyName : "";
     const identifier = newGuid();
     const descendantOptions = ["None", "Division", "Macrogroup", "Group"];
     const descendantOptionsHtml = createOptions(descendantOptions, item.descendantLimitType);
@@ -117,11 +118,12 @@ function generateDocumentEditorElementContent(item) {
     let html = `
         <div id='document-content-${identifier}' class='input-container document-element'>
             <label for='element-source-${identifier}'>Element:</label>
-            <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${element.hierarchyName}'/>
+            <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
             <label for='element-descendants-type'>Include Descendants of Type:</label>
             <select id='element-descendants-type'>
                 ${descendantOptionsHtml}
             </select>
+            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
             <button onclick="moveUpInDocument('${identifier}')">Up</button>
             <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
@@ -146,6 +148,7 @@ function generateDocumenEditortHeaderContent(item) {
             <select id='header-level-${identifier}'>
                 ${levelOptions}
             </select>
+            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
             <button onclick="moveUpInDocument('${identifier}')">Up</button>
             <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
@@ -162,6 +165,7 @@ function generateDocumentEditorSkeletalContent(item) {
         <div id='document-content-${identifier}' class='input-container document-skeletal'>
             <label for='skeletal-content-${identifier}'>Enable Skeletal List for Section Elements:</label>
             <input id='skeletal-content-${identifier}' type="checkbox" ${checked} />
+            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
             <button onclick="moveUpInDocument('${identifier}')">Up</button>
             <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
@@ -178,6 +182,7 @@ function generateDocumentEditorTextContent(item) {
         <div id='document-content-${identifier}' class='input-container document-text'>
             <label for='text-content-${identifier}'>Text Content:</label>
             <textarea id='text-content-${identifier}'>${joinedContent}</textarea>
+            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
             <button onclick="moveUpInDocument('${identifier}')">Up</button>
             <button onclick="moveDownInDocument('${identifier}')">Down</button>
         </div>
@@ -488,6 +493,35 @@ function moveInDocument(identifier, moveUp) {
 
         section.content[contentIndex] = section.content[contentIndex + replacementIndexIncrement];
         section.content[contentIndex + replacementIndexIncrement] = content;
+    }
+
+    populateDocumentDialog();
+}
+
+function deleteDocumentContent(identifier) {
+    recordUnsavedChanges();
+
+    const documentContent = document.getElementById(`document-content-${identifier}`);
+    const documentInput = documentContent.querySelector("input,select,textarea");
+
+    if (documentInput.id.startsWith("section-name")) {
+        const sectionName = documentInput.value;
+        const section = unsavedDocumentStructure.sections.filter(i => i.name == sectionName)[0];
+        unsavedDocumentStructure.sections = unsavedDocumentStructure.sections.filter(i => i != section);
+    }
+    else {
+        const contentValue = documentInput.type == "checkbox" ? documentInput.checked : documentInput.value;
+        const contentType = documentInput.id.split("-")[0];
+        const sectionContainer = documentContent.closest(".document-section");
+        const sectionName = sectionContainer.querySelector("[id^='section-name']").value;
+        const section = unsavedDocumentStructure.sections.filter(i => i.name == sectionName)[0];
+        const content = section.content.filter(
+            i => i.type == contentType && 
+            contentType == "text" ? 
+            i.content.join("\n") == contentValue : 
+            i.content == contentValue
+        )[0];
+        section.content = section.content.filter(i => i != content);
     }
 
     populateDocumentDialog();
