@@ -43,12 +43,16 @@ function populateDocumentDialog() {
 
         // Section Name
         html += `
-            <div id='document-content-${identifier}' class='input-container'>
-                <label for='section-name-${identifier}'>Section Name:</label>
-                <input id='section-name-${identifier}' type='text' value='${section.name}' />
-                <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
-                <button onclick="moveUpInDocument('${identifier}')">Up</button>
-                <button onclick="moveDownInDocument('${identifier}')">Down</button>
+            <div id='document-content-${identifier}' class='document-content'>
+                <div class='input-container'>
+                    <label for='section-name-${identifier}'>Section Name:</label>
+                    <input id='section-name-${identifier}' type='text' value='${section.name}' />
+                </div>
+                <div class='button-container'>
+                    <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
+                    <button onclick="moveUpInDocument('${identifier}')">Up</button>
+                    <button onclick="moveDownInDocument('${identifier}')">Down</button>
+                </div>
             </div>
         `;
 
@@ -60,7 +64,7 @@ function populateDocumentDialog() {
 
         // Add Content Settings
         html += `
-            <div>
+            <div class='button-container bottom-buttons'>
                 <button id='btn-add-document-header-${identifier}' onclick="addDocumentHeader('${identifier}')">Add Header</button>
                 <button id='btn-add-document-text-${identifier}' onclick="addDocumentText('${identifier}')">Add Text</button>
                 <button id='btn-add-document-element-${identifier}' onclick="addDocumentElement('${identifier}')">Add Element Description</button>
@@ -73,10 +77,14 @@ function populateDocumentDialog() {
 
     // Add Section Settings
     html += `
-        <div class='input-container'>
-            <label for='add-section-name'>New Section Name:</label>
-            <input id='add-section-name' type='text' />
-            <button id='add-section' onclick="addDocumentSection()">Add Section</button>
+        <div class='document-content'>
+            <div class='input-container'>
+                <label for='add-section-name'>New Section Name:</label>
+                <input id='add-section-name' class='flex-grow' type='text' />
+            </div>
+            <div class='button-container'>
+                <button id='add-section' onclick="addDocumentSection()">Add Section</button>
+            </div>
         </div>
     `;
 
@@ -116,16 +124,20 @@ function generateDocumentEditorElementContent(item) {
     const descendantOptionsHtml = createOptions(descendantOptions, item.descendantLimitType);
 
     let html = `
-        <div id='document-content-${identifier}' class='input-container document-element'>
-            <label for='element-source-${identifier}'>Element:</label>
-            <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
-            <label for='element-descendants-type'>Include Descendants of Type:</label>
-            <select id='element-descendants-type'>
-                ${descendantOptionsHtml}
-            </select>
-            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
-            <button onclick="moveUpInDocument('${identifier}')">Up</button>
-            <button onclick="moveDownInDocument('${identifier}')">Down</button>
+        <div id='document-content-${identifier}' class='document-content document-element'>
+            <div class='input-container'>
+                <label for='element-source-${identifier}'>Element:</label>
+                <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
+                <label for='element-descendants-type'>Include Descendants of Type:</label>
+                <select id='element-descendants-type'>
+                    ${descendantOptionsHtml}
+                </select>
+            </div>
+            <div class='button-container'>
+                <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
+                <button onclick="moveUpInDocument('${identifier}')">Up</button>
+                <button onclick="moveDownInDocument('${identifier}')">Down</button>
+            </div>
         </div>
     `;
 
@@ -141,16 +153,20 @@ function generateDocumenEditortHeaderContent(item) {
     }
 
     let html = `
-        <div id='document-content-${identifier}'  class='input-container document-header'>
-            <label for='header-content-${identifier}'>Header Content:</label>
-            <input id='header-content-${identifier}' type="text" value='${item.content}'/>
-            <label for='header-level-${identifier}'>Header Level:</label>
-            <select id='header-level-${identifier}'>
-                ${levelOptions}
-            </select>
-            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
-            <button onclick="moveUpInDocument('${identifier}')">Up</button>
-            <button onclick="moveDownInDocument('${identifier}')">Down</button>
+        <div id='document-content-${identifier}'  class='document-content document-header'>
+            <div class='input-container'>
+                <label for='header-content-${identifier}'>Header Content:</label>
+                <input id='header-content-${identifier}' type="text" value='${item.content}'/>
+                <label for='header-level-${identifier}'>Header Level:</label>
+                <select id='header-level-${identifier}'>
+                    ${levelOptions}
+                </select>
+            </div>
+            <div class='button-container'>
+                <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
+                <button onclick="moveUpInDocument('${identifier}')">Up</button>
+                <button onclick="moveDownInDocument('${identifier}')">Down</button>
+            </div>
         </div>
     `;
     
@@ -162,12 +178,16 @@ function generateDocumentEditorSkeletalContent(item) {
     const checked = item.content ? "checked" : "";
     
     let html = `
-        <div id='document-content-${identifier}' class='input-container document-skeletal'>
-            <label for='skeletal-content-${identifier}'>Enable Skeletal List for Section Elements:</label>
-            <input id='skeletal-content-${identifier}' type="checkbox" ${checked} />
-            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
-            <button onclick="moveUpInDocument('${identifier}')">Up</button>
-            <button onclick="moveDownInDocument('${identifier}')">Down</button>
+        <div id='document-content-${identifier}' class='document-content document-skeletal'>
+            <div class='input-container'>
+                <label for='skeletal-content-${identifier}'>Enable Skeletal List for Section Elements:</label>
+                <input id='skeletal-content-${identifier}' type="checkbox" ${checked} />
+            </div>
+            <div class='button-container'>
+                <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
+                <button onclick="moveUpInDocument('${identifier}')">Up</button>
+                <button onclick="moveDownInDocument('${identifier}')">Down</button>
+            </div>
         </div>
     `;
 
@@ -179,12 +199,16 @@ function generateDocumentEditorTextContent(item) {
     const joinedContent = item.content.join("\r\n");
 
     let html = `
-        <div id='document-content-${identifier}' class='input-container document-text'>
-            <label for='text-content-${identifier}'>Text Content:</label>
-            <textarea id='text-content-${identifier}'>${joinedContent}</textarea>
-            <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
-            <button onclick="moveUpInDocument('${identifier}')">Up</button>
-            <button onclick="moveDownInDocument('${identifier}')">Down</button>
+        <div id='document-content-${identifier}' class='document-content document-text'>
+            <div class='input-container'>
+                <label for='text-content-${identifier}'>Text Content:</label>
+                <textarea id='text-content-${identifier}'>${joinedContent}</textarea>
+            </div>
+            <div class='button-container'>
+                <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
+                <button onclick="moveUpInDocument('${identifier}')">Up</button>
+                <button onclick="moveDownInDocument('${identifier}')">Down</button>
+            </div>
         </div>
     `;
     
@@ -401,7 +425,7 @@ function recordUnsavedChanges() {
         const sectionName = sectionContainer.querySelector(`#section-name-${sectionId}`).value;
         
         let sectionContent = [];
-        const sectionContentContainers = sectionContainer.querySelectorAll(".document-section-content .input-container");
+        const sectionContentContainers = sectionContainer.querySelectorAll(".document-section-content .document-content");
         for (const contentContainer of [...sectionContentContainers]) {
             if (contentContainer.classList.contains("document-header")) {
                 const headerContent = contentContainer.querySelector("input").value;

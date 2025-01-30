@@ -1,3 +1,20 @@
 .document-form {
     display: flex;
 }
+
+.document-content {
+    display: flex;
+    gap: 10px;
+}
+
+.document-content .input-container {
+    flex: 1;
+}
+
+.document-content .button-container {
+    align-items: center;
+}
+
+.bottom-buttons {
+    padding: 5px 0;
+}

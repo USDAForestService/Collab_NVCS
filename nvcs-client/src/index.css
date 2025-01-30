@@ -455,3 +455,7 @@ input:read-only {
   margin: 0;
   font-weight: bold;
 }
+
+.flex-grow {
+  flex-grow: 1;
+}
