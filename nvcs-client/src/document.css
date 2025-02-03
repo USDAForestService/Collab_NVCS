@@ -18,3 +18,19 @@
 .bottom-buttons {
     padding: 5px 0;
 }
+
+.skeletal-list-root {
+    padding: 0;
+    margin: 0;
+}
+
+.skeletal-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.separator {
+    flex: 1;
+    border-bottom: 1px dotted black;
+}
