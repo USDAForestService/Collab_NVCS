@@ -34,3 +34,8 @@
     flex: 1;
     border-bottom: 1px dotted black;
 }
+
+.document-toc ul {
+    list-style: none;
+    margin: 0;
+}

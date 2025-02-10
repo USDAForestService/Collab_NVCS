@@ -216,13 +216,63 @@ function generateDocumentEditorTextContent(item) {
 }
 
 function generateDocument() {
-    let html = "";
+    let html = generateDocumentTableOfContents();
     
     for (const section of documentStructure.sections)
         html += generateDocumentSection(section);
 
     const documentContainer = document.getElementById("document-container");
     documentContainer.innerHTML = html;
+}
+
+function generateDocumentTableOfContents() {
+    let html = "";
+
+    html += `
+        <div class='document-toc'>
+            <h1>TABLE OF CONTENTS</h1>
+            <ul style='padding: 0'>
+    `;
+
+    for (const section of documentStructure.sections) {
+        const sectionHeaders = section.content.filter(i => i.type == "header");
+
+        html += "<li><ul>"
+        let lastHeaderLevel = 1;
+        for (const sectionHeader of sectionHeaders) {
+            console.log(sectionHeader);
+
+            if (sectionHeader.level > lastHeaderLevel) {
+                html += `
+                    <li>
+                        <ul>
+                `;
+            }
+            else if (sectionHeader.level < lastHeaderLevel) {
+                html += `
+                        </ul>
+                    </li>
+                `;
+            }
+               
+
+            html += `
+                <li>
+                    ${sectionHeader.content}
+                </li>
+            `;
+
+            lastHeaderLevel = sectionHeader.level;
+        }
+        html += "</ul></li>"
+    }
+
+    html += `
+            </ul>    
+        </div>
+    `;
+
+    return html;
 }
 
 function generateDocumentSection(section) {
@@ -616,5 +666,6 @@ async function saveDocumentChanges() {
     recordUnsavedChanges();
     documentStructure = unsavedDocumentStructure;
     
+    generateDocument();
     document.getElementById("document-dialog").close();
 }
