@@ -139,8 +139,6 @@ async function fetchPackagedJson() {
     document.getElementById("json-directory-path").value = "";
     document.getElementById("btn-test-settings").disabled = true;
     document.getElementById("btn-open-json").disabled = true;
-    document.getElementById("btn-show-document").disabled = true;
-    document.getElementById("btn-document-editor").disabled = true;
 }
 
 async function fetchCustomJson() {
@@ -240,6 +238,7 @@ async function fetchJson(targetPath) {
     // Update HTML elements
     stateChecker.modified = false;
     generateHierarchyHTML(hierarchy);
+    generateDocument();
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-update-json").setAttribute("title", 
         "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"

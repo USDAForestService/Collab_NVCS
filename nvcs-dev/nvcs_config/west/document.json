@@ -1,0 +1,208 @@
+{
+    "sections": [
+        {
+            "name": "sectionZero",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION 0. EASTERN SECTION VS. WESTERN SECTION",
+                    "level": "1"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Insert narrative text"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sectionOne",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION I. KEY TO PLANTATION VS. NATURAL [WESTERN SECTION]",
+                    "level": "1"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "A summary of the forest plantation types is provided in Table xx."
+                    ]
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "[work with FIA staff to determine what is needed for plantation types in west.]"
+                    ]
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Forest types are separated first into plantation versus natural types. FIA field crews ",
+                        "make that call in the field, and we rely entirely on that call to make the distinction. The ",
+                        "plantation label is sometimes applied to failed plantations that may now be dominated by ",
+                        "non-plantation species (typically hardwoods), to stands in very early stages of planting (and thus ",
+                        "dominated by native conifers or hardwoods) or to transitional areas that are on the edge of the ",
+                        "plantation. Likewise, failed attempts to establish plantations may become obscured following ",
+                        "subsequent natural regeneration, in such cases, FIA field crews observe no plantation evidence and ",
+                        "label stand origin as natural regeneration, possibly conflicting with, or updating, historical stand ",
+                        "records (which are not utilized in this classification)."
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Forest Plantations",
+                    "descendantLimitType": "None"
+                },
+                {
+                    "type": "element",
+                    "content": "Natural (including ruderal) Forests",
+                    "descendantLimitType": "None"
+                }
+            ]
+        },
+        {
+            "name": "sectionTwo",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION II. KEY TO FORESTED VS. NON-FORESTED [WESTERN SECTION]",
+                    "level": "1"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "IF RIV = 0 AND TTCOV <= 20%, then \"Possibly Regenerating\""
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sectionThree",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION III. KEY TO UPLAND VS. WETLAND [WESTERN SECTION]",
+                    "level": "1"
+                },
+                {
+                    "type": "element",
+                    "content": "Wetland Forest & Woodlands",
+                    "descendantLimitType": "None"
+                },
+                {
+                    "type": "element",
+                    "content": "Upland Forest & Woodlands",
+                    "descendantLimitType": "None"
+                }
+            ]
+        },
+        {
+            "name": "sectionFour",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION IV. KEY TO NATURAL UPLAND FOREST & WOODLAND DIVISIONS",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "IV.1. Skeletal Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "IV.2. Detailed Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Please read the introduction to understand the approach used in the key."
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Temperate & Boreal Forest & Woodland Subclass",
+                    "descendantLimitType": "Division"
+                }
+            ]
+        },
+        {
+            "name": "sectionFive",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION V. KEY TO NATURAL WETLAND FOREST DIVISIONS ",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "V.1. Skeletal Version (wetland) ",
+                    "level": "2"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "[similar to uplands above]"
+                    ]
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "V.2. Detailed Version (wetland)",
+                    "level": "2"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Please read the introduction to understand the approach used in the key."
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Temperate Flooded & Swamp Forest Formation",
+                    "descendantLimitType": "Division"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Not as above, assign to uplands (generally riverine or hydric setting with upland species)  Section IV"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sectionSix",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION VI. KEYS TO UPLAND FOREST & WOODLAND MACROGROUPS",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "VI.1. Skeletal Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "VI.2. Detailed Version (upland)",
+                    "level": "2"
+                }
+            ]
+        }
+    ]
+}
