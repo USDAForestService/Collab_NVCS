@@ -234,37 +234,19 @@ function generateDocumentTableOfContents() {
             <ul style='padding: 0'>
     `;
 
-    for (const section of documentStructure.sections) {
-        const sectionHeaders = section.content.filter(i => i.type == "header");
+    let sectionHeaders = [];
+    for (const section of documentStructure.sections) 
+        sectionHeaders = [...sectionHeaders, ...section.content.filter(i => i.type == "header")];
 
-        html += "<li><ul>"
-        let lastHeaderLevel = 1;
-        for (const sectionHeader of sectionHeaders) {
-            console.log(sectionHeader);
-
-            if (sectionHeader.level > lastHeaderLevel) {
-                html += `
-                    <li>
-                        <ul>
-                `;
-            }
-            else if (sectionHeader.level < lastHeaderLevel) {
-                html += `
-                        </ul>
-                    </li>
-                `;
-            }
-               
-
-            html += `
-                <li>
-                    ${sectionHeader.content}
-                </li>
-            `;
-
-            lastHeaderLevel = sectionHeader.level;
-        }
-        html += "</ul></li>"
+    for (const sectionHeader of sectionHeaders) {
+        const padding = `padding-left: ${sectionHeader.level * 10}px;`
+        html += `
+            <li class='skeletal-container' style="${padding}">
+                <span>${sectionHeader.content}</span>
+                <span class='separator'></span>
+                <span>#</span>
+            </li>
+        `;
     }
 
     html += `
@@ -425,7 +407,6 @@ function generateDocumentText(content) {
 function getDocumentHeaderTagForElement(element) {
     const hierarchyLevel = element.hierarchyLevel;
     const headerLevel = Math.min(hierarchyLevel + 1, 6);
-    console.log(hierarchyLevel, headerLevel);
     const headerTag = "h" + headerLevel;
     return headerTag;
 }
