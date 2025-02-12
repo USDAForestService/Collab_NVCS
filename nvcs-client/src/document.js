@@ -370,8 +370,9 @@ function generateDocumentSkeletal(content, sectionContent) {
 }
 
 function generateDocumentNamesForElement(element, descendantLimitType) {
+    const padding = `padding-left: ${element.hierarchyLevel * 10}px;`
     let html = `
-        <li class='skeletal-container'>
+        <li class='skeletal-container' style='${padding}'>
             <span>${element.hierarchyName}</span>
             <span class='separator'></span>
             <span>A</span>
@@ -379,14 +380,12 @@ function generateDocumentNamesForElement(element, descendantLimitType) {
     `;
 
     if (element.children.length > 0) {
-        html += "<ul>";
         const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
         for (const child of element.children) {
             if (!designatedTypes.includes(child.node.level))
                 continue;
             html += generateDocumentNamesForElement(child, descendantLimitType);
         }
-        html += "</ul>";
     }
 
     return html;
