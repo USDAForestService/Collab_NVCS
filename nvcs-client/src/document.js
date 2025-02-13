@@ -1,6 +1,6 @@
 function toggleDocumentForm() {
     const documentForm = document.getElementById("document-form");
-    if (documentForm.hidden)
+    if (documentForm.classList.contains("hidden"))
         showDocumentForm();
     else
         hideDocumentForm();
