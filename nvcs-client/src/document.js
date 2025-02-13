@@ -289,9 +289,11 @@ function generateDocumentElement(content) {
 }
 
 function generateDocumentDescriptionByElement(element, descendantLimitType) {
-    const descriptionList = [...element.node.description];
-    for (let i = 0; i < descriptionList.length; i++) {
-        descriptionList[i] = descriptionList[i].trim();
+    let descriptionList = [];
+    for (const description of element.node.description) {
+        if (description.startsWith("###"))
+            break;
+        descriptionList.push(description.trim());
     }
     const fullDescription = descriptionList.join("</br>");
     const elementButton = `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'><b>${element.hierarchyName}</b></button>`;
