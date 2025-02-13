@@ -310,7 +310,8 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
         for (const description of element.node.description) {
             if (description.startsWith("###"))
                 break;
-            descriptionList.push(description.trim());
+            const adjustedDescription = duplicateLeadingSpaces(description, 2);
+            descriptionList.push(adjustedDescription);
         }
         const fullDescription = descriptionList.join("</br>");
         const elementButton = `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'><b>${element.hierarchyName}</b></button>`;
@@ -338,6 +339,15 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
         html += "</div>";
 
     return html;
+}
+
+function duplicateLeadingSpaces(text, times = 2) {
+    const regex = /^(\s+)/g;
+    let replaceRegex = "";
+    for (let i = 0; i < times; i++)
+        replaceRegex += "$1";
+    const replace = text.replace(regex, replaceRegex)
+    return replace;
 }
 
 
