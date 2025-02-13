@@ -315,18 +315,23 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
         const fullDescription = descriptionList.join("</br>");
         const elementButton = `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'><b>${element.hierarchyName}</b></button>`;
     
+        const tagHtml = headerTag != "" ? `<b>${headerTag}</b>` : "";
         html += `
-            <p style='white-space: pre-wrap;'>${fullDescription} ... ${elementButton}</p>
+            <div class='element-container'>
+                ${tagHtml}
+                <p>${fullDescription} ... ${elementButton}</p>
+            </div>
         `;
     }
     
-
+    let childTagCounter = 1;
     const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
     for (const child of element.children) {
         if (!designatedTypes.includes(child.node.level))
             continue;
-
-        html += generateDocumentDescriptionByElement(child, descendantLimitType, false, null);
+        const childHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter}` : "";
+        html += generateDocumentDescriptionByElement(child, descendantLimitType, false, childHeaderTag);
+        childTagCounter++;
     }
 
     if (isHeader)
@@ -385,7 +390,7 @@ function generateDocumentSkeletal(content, sectionContent) {
 
     for (const item of sectionContent.filter(i => i.type == "element")) {
         const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
-        html += generateDocumentNamesForElement(element, item.descendantLimitType);
+        html += generateDocumentNamesForElement(element, item.descendantLimitType, item.headerTag);
     }
 
     html += "</ul>";
@@ -393,22 +398,26 @@ function generateDocumentSkeletal(content, sectionContent) {
     return html;
 }
 
-function generateDocumentNamesForElement(element, descendantLimitType) {
+function generateDocumentNamesForElement(element, descendantLimitType, headerTag) {
     const padding = `padding-left: ${element.hierarchyLevel * 10}px;`
+    const mainHeaderTag = headerTag != "" ? `${headerTag}.` : "";
     let html = `
         <li class='skeletal-container' style='${padding}'>
-            <span>${element.hierarchyName}</span>
+            <span>${mainHeaderTag} ${element.hierarchyName}</span>
             <span class='separator'></span>
-            <span>A</span>
+            <span>#</span>
         </li>
     `;
 
     if (element.children.length > 0) {
+        let childTagCounter = 1;
         const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
         for (const child of element.children) {
             if (!designatedTypes.includes(child.node.level))
                 continue;
-            html += generateDocumentNamesForElement(child, descendantLimitType);
+            const childHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter}` : "";
+            html += generateDocumentNamesForElement(child, descendantLimitType, childHeaderTag);
+            childTagCounter++;
         }
     }
 
