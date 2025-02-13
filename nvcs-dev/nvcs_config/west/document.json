@@ -53,12 +53,16 @@
                 {
                     "type": "element",
                     "content": "Forest Plantations",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Natural (including ruderal) Forests",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 }
             ]
         },
@@ -89,12 +93,16 @@
                 {
                     "type": "element",
                     "content": "Wetland Forest & Woodlands",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Upland Forest & Woodlands",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 }
             ]
         },
@@ -129,7 +137,9 @@
                 {
                     "type": "element",
                     "content": "Temperate & Boreal Forest & Woodland Subclass",
-                    "descendantLimitType": "Division"
+                    "descendantLimitType": "Division",
+                    "isHeader": false,
+                    "headerTag": ""
                 }
             ]
         },
@@ -170,7 +180,9 @@
                 {
                     "type": "element",
                     "content": "Temperate Flooded & Swamp Forest Formation",
-                    "descendantLimitType": "Division"
+                    "descendantLimitType": "Division",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -210,12 +222,16 @@
                 {
                     "type": "element",
                     "content": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Southeastern North American Ruderal Forest (M305)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -225,12 +241,16 @@
                 {
                     "type": "element",
                     "content": "Eastern North American Forest & Woodland Natural Forests",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Eastern North American Ruderal Forests",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -240,12 +260,16 @@
                 {
                     "type": "element",
                     "content": "Central Midwest Oak Forest, Woodland & Savanna (M012)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Southern & South-Central Oak - Pine Forest & Woodland (M016)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -255,7 +279,9 @@
                 {
                     "type": "element",
                     "content": "Eastern North American Ruderal Forest (M013)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -271,7 +297,9 @@
                 {
                     "type": "element",
                     "content": "Great Plains Ruderal Woodland (M524)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -286,12 +314,16 @@
                 {
                     "type": "element",
                     "content": "Californian Forest & Woodland (M009)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Californian Ruderal Forest (M513)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -301,7 +333,9 @@
                 {
                     "type": "element",
                     "content": "Western North American Ruderal Forests - Madrean-Balconian",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -317,12 +351,16 @@
                 {
                     "type": "element",
                     "content": "Madrean Lowland Evergreen Woodland (M010)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Madrean Montane Forest & Woodland (M011)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -343,7 +381,9 @@
                 {
                     "type": "element",
                     "content": "Pacific Coast Temperate Rainforest Division (D338)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -359,12 +399,16 @@
                 {
                     "type": "element",
                     "content": "Intermountain Pinyon-Juniper Woodland (M896)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -385,12 +429,16 @@
                 {
                     "type": "element",
                     "content": "Southern Vancouverian Dry Foothill Forest & Woodland (M886)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Southern Vancouverian Montane-Foothill Forest (M023)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -400,7 +448,9 @@
                 {
                     "type": "element",
                     "content": "Vancouverian Ruderal Forest (M405)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -410,7 +460,9 @@
                 {
                     "type": "element",
                     "content": "Rocky Mountain Foothills & Montane Forest & Woodland (D337)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -426,17 +478,23 @@
                 {
                     "type": "element",
                     "content": "Southern Rocky Mountain Lower Montane Forest (M022)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Central Rocky Mountain Mesic Lower Montane Forest (M500)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -446,7 +504,9 @@
                 {
                     "type": "element",
                     "content": "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -462,12 +522,16 @@
                 {
                     "type": "element",
                     "content": "Rocky Mountain Subalpine-High Montane Forest (M020)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Vancouverian Subalpine-High Montane Forest (M025)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 }
             ]
         },
@@ -501,12 +565,16 @@
                 {
                     "type": "element",
                     "content": "Great Plains Flooded & Swamp Forest (M028)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Eastern North American Ruderal Flooded & Swamp Forest (M302)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -516,12 +584,16 @@
                 {
                     "type": "element",
                     "content": "Southern Great Plains Floodplain Forest & Woodland (M154)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Southeastern North American Ruderal Flooded & Swamp Forest (M310)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "header",
@@ -531,7 +603,9 @@
                 {
                     "type": "element",
                     "content": "Vancouverian Flooded & Swamp Forest (M035)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -547,7 +621,9 @@
                 {
                     "type": "element",
                     "content": "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "text",
@@ -563,12 +639,16 @@
                 {
                     "type": "element",
                     "content": "Interior Warm & Cool Desert Riparian Forest (M036)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 },
                 {
                     "type": "element",
                     "content": "Interior West Ruderal Flooded & Swamp Forest & Woodland (M298)",
-                    "descendantLimitType": "None"
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
                 }
             ]
         },
@@ -595,374 +675,128 @@
                     "level": "2"
                 },
                 {
-                    "type": "header",
-                    "content": "E1. Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
-                    "level": "3"
+                    "type": "element",
+                    "content": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "E1"
                 },
                 {
                     "type": "element",
-                    "content": "Coastal Live Oak - Hickory - Palmetto Forest (G798)",
-                    "descendantLimitType": "None"
+                    "content": "Central Midwest Oak Forest, Woodland & Savanna (M012)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "E2"
                 },
                 {
                     "type": "element",
-                    "content": "Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)",
-                    "descendantLimitType": "None"
+                    "content": "Southern & South-Central Oak - Pine Forest & Woodland (M016)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "E3"
                 },
                 {
-                    "type": "header",
-                    "content": "E2. Central Midwest Oak Forest, Woodland & Savanna (M012)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "North-Central Oak - Hickory Forest & Woodland (G649)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "E2. Southern & South-Central Oak - Pine Forest & Woodland (M016)",
-                    "level": "3"
+                    "type": "text",
+                    "content": [
+                        "TODO: Look into missing Great Plains M151 section"
+                    ]
                 },
                 {
                     "type": "element",
-                    "content": "Western Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "E3. Great Plains Forest & Woodland (M151)",
-                    "level": "3"
+                    "content": "Californian Forest & Woodland (M009)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "G1"
                 },
                 {
                     "type": "element",
-                    "content": "Great Plains Mesic Forest & Woodland (G145)",
-                    "descendantLimitType": "None"
+                    "content": "Madrean Lowland Evergreen Woodland (M010)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "G2"
                 },
                 {
                     "type": "element",
-                    "content": "Northeastern Great Plains Aspen Woodland (G146)",
-                    "descendantLimitType": "None"
+                    "content": "Madrean Montane Forest & Woodland (M011)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "G3"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Look into missing \"Balconian Forest & Woodland (M015)\" section"
+                    ]
                 },
                 {
                     "type": "element",
-                    "content": "Great Plains Bur Oak Forest & Woodland(G329)",
-                    "descendantLimitType": "None"
+                    "content": "Vancouverian Coastal Rainforest (M024)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H1"
                 },
                 {
                     "type": "element",
-                    "content": "Cross Timbers Forest & Woodland (G887)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "G1. Californian Forest & Woodland (M009)",
-                    "level": "3"
+                    "content": "Intermountain Pinyon-Juniper Woodland (M896)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H2"
                 },
                 {
                     "type": "element",
-                    "content": "Californian Conifer Forest & Woodland (G198)",
-                    "descendantLimitType": "None"
+                    "content": "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H3"
                 },
                 {
                     "type": "element",
-                    "content": "Californian Broadleaf Forest & Woodland (G195)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "G2. Madrean Lowland Evergreen Woodland (M010)",
-                    "level": "3"
+                    "content": "Southern Vancouverian Dry Foothill Forest & Woodland (M886)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H4"
                 },
                 {
                     "type": "element",
-                    "content": "Madrean Pinyon - Juniper Woodland (G200)",
-                    "descendantLimitType": "None"
+                    "content": "Southern Vancouverian Montane-Foothill Forest (M023)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H5"
                 },
                 {
                     "type": "element",
-                    "content": "Madrean Encinal (G201)",
-                    "descendantLimitType": "None"
+                    "content": "Southern Rocky Mountain Lower Montane Forest (M022)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H6"
                 },
                 {
                     "type": "element",
-                    "content": "Madrean Juniper Open Woodland (G487)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "G2. Madrean Montane Forest & Woodland (M011)",
-                    "level": "3"
+                    "content": "Central Rocky Mountain Mesic Lower Montane Forest (M500)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H7"
                 },
                 {
                     "type": "element",
-                    "content": "Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)",
-                    "descendantLimitType": "None"
+                    "content": "Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H8"
                 },
                 {
                     "type": "element",
-                    "content": "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "G2. Balconian Forest & Woodland (M015)",
-                    "level": "3"
+                    "content": "Vancouverian Subalpine-High Montane Forest (M025)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H9"
                 },
                 {
                     "type": "element",
-                    "content": "Edwards Plateau Dry-Mesic Hardwood Forest (G028)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Edwards Plateau Dry Woodland (G126)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H1. Pacific Coast Temperate Rainforest (M024)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Vancouverian Dry Coastal Beach Pine Forest & Woodland (G205)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Californian Coastal Redwood Forest (G235)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "North Pacific Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "North Pacific Maritime Douglas-fir - Western Hemlock Rainforest (G240)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "North-Central Pacific Maritime Silver Fir - Western Hemlock Rainforest (G241)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "North-Central Pacific Western Hemlock - Sitka Spruce Rainforest (G751)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H2. Intermountain Pinyon - Juniper Woodland (M896)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Intermountain Western Juniper Open Woodland (G248)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Great Basin Pinyon - Juniper Woodland (G899)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Colorado Plateau Pinyon - Juniper Woodland (G900)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Intermountain Utah Juniper Open Woodland (G105)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H2. Southern Rocky Mountain Two-needle Pinyon - Juniper Woodland (M897)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Southern Rocky Mountain Pinyon - Juniper Woodland (G253)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Southern Rocky Mountain Juniper Open Woodland (G252)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H3. Southern Vancouverian Dry Foothill Forest & Woodland (M886)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Cascadian Oregon White Oak - Conifer Forest & Woodland (G206)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Californian Moist Coastal Mixed Evergreen Forest (G208)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Southern Vancouverian Dry Douglas-fir - Madrone Woodland (G800)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H3. Southern Vancouverian Montane-Foothill Forest (M023)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Californian Montane Conifer Forest & Woodland (G344)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H4. Southern Rocky Mountain Lower Montane Forest (M022)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H4. Central Rocky Mountain Mesic Lower Montane Forest (M500)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H4. Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain Montane White Spruce Forest (G345)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H5. Vancouverian Subalpine-High Montane Forest (M025)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Sierra-Cascade Cold-Dry Subalpine Woodland (G243)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "H5. Rocky Mountain Subalpine-High Montane Forest (M020)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain Lodgepole Pine Forest & Woodland (G220)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain Limber Pine Subalpine-Montane Woodland (G101)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain Whitebark Pine - Subalpine Larch Forest & Woodland (G223)",
-                    "descendantLimitType": "None"
+                    "content": "Rocky Mountain Subalpine-High Montane Forest (M020)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H10"
                 }
             ]
         },
@@ -989,89 +823,39 @@
                     "level": "2"
                 },
                 {
-                    "type": "header",
-                    "content": "K1. Great Plains Flooded & Swamp Forest (M028)",
-                    "level": "3"
+                    "type": "element",
+                    "content": "Great Plains Flooded & Swamp Forest (M028)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "K1"
                 },
                 {
                     "type": "element",
-                    "content": "Great Plains Cottonwood - Green Ash Floodplain Forest (G147)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "K2. Southern Great Plains Floodplain Forest & Woodland (M154)",
-                    "level": "3"
+                    "content": "Southern Great Plains Floodplain Forest & Woodland (M154)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "K2"
                 },
                 {
                     "type": "element",
-                    "content": "Southeastern Great Plains Floodplain Forest (G784)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "L1. Vancouverian Flooded & Swamp Forest (M035)",
-                    "level": "3"
+                    "content": "Vancouverian Flooded & Swamp Forest (M035)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "L1"
                 },
                 {
                     "type": "element",
-                    "content": "North-Central Pacific Montane Riparian & Seepage Swamp Forest (G507)",
-                    "descendantLimitType": "None"
+                    "content": "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "L2"
                 },
                 {
                     "type": "element",
-                    "content": "North-Central Pacific Maritime Lowland Swamp Forest (G853)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "North-Central Pacific Lowland Riparian Forest (G851)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "L2. Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain-Great Basin Swamp Forest (G505)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (G506)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "header",
-                    "content": "L3. Interior Warm & Cool Desert Riparian Forest (M036)",
-                    "level": "3"
-                },
-                {
-                    "type": "element",
-                    "content": "Tamaulipan Riparian Scrub Forest (G549)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Californian Mediterranean Riparian Forest (G113)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Southwest Warm Desert Riparian Forest (G109)",
-                    "descendantLimitType": "None"
-                },
-                {
-                    "type": "element",
-                    "content": "Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)",
-                    "descendantLimitType": "None"
+                    "content": "Interior Warm & Cool Desert Riparian Forest (M036)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "L3"
                 }
             ]
         }

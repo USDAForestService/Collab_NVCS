@@ -5,6 +5,8 @@
 .document-content {
     display: flex;
     gap: 10px;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 0;
 }
 
 .document-content .input-container {
@@ -13,6 +15,11 @@
 
 .document-content .button-container {
     align-items: center;
+}
+
+.element-child-container {
+    outline: 1px solid black;
+    padding: 1px 20px;
 }
 
 .bottom-buttons {

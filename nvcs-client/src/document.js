@@ -122,16 +122,22 @@ function generateDocumentEditorElementContent(item) {
     const identifier = newGuid();
     const descendantOptions = ["None", "Division", "Macrogroup", "Group"];
     const descendantOptionsHtml = createOptions(descendantOptions, item.descendantLimitType);
+    const isHeaderChecked = item.isHeader ? "checked" : "";
+    const headerTag = item.headerTag ?? "";
 
     let html = `
         <div id='document-content-${identifier}' class='document-content document-element'>
-            <div class='input-container'>
-                <label for='element-source-${identifier}'>Element:</label>
+            <div class='input-container' style='flex-wrap: wrap;'>
+                <label for='element-source-${identifier}'>Root Element:</label>
                 <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
-                <label for='element-descendants-type'>Include Descendants of Type:</label>
-                <select id='element-descendants-type'>
+                <label for='element-descendants-type-${identifier}'>Include Descendants of Type:</label>
+                <select id='element-descendants-type-${identifier}'>
                     ${descendantOptionsHtml}
                 </select>
+                <label for='element-as-header-${identifier}'>Make Root Into Header:</label>
+                <input id='element-as-header-${identifier}' type='checkbox'  ${isHeaderChecked} />
+                <label for='element-header-tag-${identifier}'>Root Header Tag:</label>
+                <input id='element-header-tag-${identifier} type='text' value='${headerTag}' />
             </div>
             <div class='button-container'>
                 <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
@@ -284,31 +290,47 @@ function generateDocumentSection(section) {
 
 function generateDocumentElement(content) {
     const element = hierarchy.filter(i => i.hierarchyName == content.content)[0];
-    let html = generateDocumentDescriptionByElement(element, content.descendantLimitType);
+    let html = generateDocumentDescriptionByElement(element, content.descendantLimitType, content.isHeader, content.headerTag);
     return html;
 }
 
-function generateDocumentDescriptionByElement(element, descendantLimitType) {
-    let descriptionList = [];
-    for (const description of element.node.description) {
-        if (description.startsWith("###"))
-            break;
-        descriptionList.push(description.trim());
-    }
-    const fullDescription = descriptionList.join("</br>");
-    const elementButton = `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'><b>${element.hierarchyName}</b></button>`;
+function generateDocumentDescriptionByElement(element, descendantLimitType, isHeader, headerTag) {
 
-    let html = `
-        <p style='white-space: pre-wrap;'>${fullDescription} ... ${elementButton}</p>
-    `;
+    let html = "";
+    if (isHeader) {
+        html += `
+            <h3>
+                ${headerTag}. ${element.hierarchyName}
+            </h3>
+            <div class='element-child-container'>
+        `;
+    }
+    else {
+        let descriptionList = [];
+        for (const description of element.node.description) {
+            if (description.startsWith("###"))
+                break;
+            descriptionList.push(description.trim());
+        }
+        const fullDescription = descriptionList.join("</br>");
+        const elementButton = `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'><b>${element.hierarchyName}</b></button>`;
+    
+        html += `
+            <p style='white-space: pre-wrap;'>${fullDescription} ... ${elementButton}</p>
+        `;
+    }
+    
 
     const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
     for (const child of element.children) {
         if (!designatedTypes.includes(child.node.level))
             continue;
 
-        html += generateDocumentDescriptionByElement(child, descendantLimitType);
+        html += generateDocumentDescriptionByElement(child, descendantLimitType, false, null);
     }
+
+    if (isHeader)
+        html += "</div>";
 
     return html;
 }
@@ -496,7 +518,9 @@ function addDocumentElement(identifier) {
     targetSection.content.push({
         type: "element",
         content: null,
-        descendantLimitType: null
+        descendantLimitType: null,
+        isHeader: false,
+        headerTag: null
     });
 
     populateDocumentDialog();
@@ -541,12 +565,17 @@ function recordUnsavedChanges() {
                 });
             }
             else if (contentContainer.classList.contains("document-element")) {
-                const elementName = contentContainer.querySelector("input").value;
-                const descendantLimit = contentContainer.querySelector("select").value;
+                const elementName = contentContainer.querySelector("[id^='element-source']").value;
+                const descendantLimit = contentContainer.querySelector("[id^='element-descendants-type']").value;
+                const isHeader = contentContainer.querySelector("[id^='element-as-header']").checked;
+                const headerTag = contentContainer.querySelector("[id^='element-header-tag']").value;
+
                 sectionContent.push({
                     type: "element",
                     content: elementName,
-                    descendantLimitType: descendantLimit
+                    descendantLimitType: descendantLimit,
+                    isHeader: isHeader,
+                    headerTag: headerTag
                 });
             }
             else {
