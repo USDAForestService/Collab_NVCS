@@ -695,6 +695,7 @@ async function saveDocumentChanges() {
 
     recordUnsavedChanges();
     documentStructure = unsavedDocumentStructure;
+    stateChecker.modified = true;
     
     generateDocument();
     document.getElementById("document-dialog").close();
