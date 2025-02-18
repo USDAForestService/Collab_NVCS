@@ -49,7 +49,7 @@ function populateDocumentDialog() {
                     <input id='section-name-${identifier}' type='text' value='${section.name}' />
                 </div>
                 <div class='button-container'>
-                    <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
+                    <button onclick="deleteDocumentContent('${identifier}', true)">Delete</button>
                     <button onclick="moveUpInDocument('${identifier}')">Up</button>
                     <button onclick="moveDownInDocument('${identifier}')">Down</button>
                 </div>
@@ -659,7 +659,11 @@ function moveInDocument(identifier, moveUp) {
     populateDocumentDialog();
 }
 
-function deleteDocumentContent(identifier) {
+async function deleteDocumentContent(identifier, confirmation = false) {
+    const message = "Are you sure you want to delete this element?";
+    if (confirmation && !await confirm(message))
+        return;
+    
     recordUnsavedChanges();
 
     const documentContent = document.getElementById(`document-content-${identifier}`);
