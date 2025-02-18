@@ -807,6 +807,7 @@ async function saveJsonChanges() {
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
+    generateDocument();
 }
 
 function performDialogValidations(displayAlert) {
@@ -1284,6 +1285,7 @@ async function deleteHierarchyElement() {
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generateHierarchyHTML(hierarchy);
+    generateDocument();
 }
 
 function addHierarchyElement() {
