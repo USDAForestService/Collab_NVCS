@@ -1,3 +1,21 @@
+let unsavedDocumentDialogChanges = false;
+
+document.getElementById("document-dialog").addEventListener("close", async (event) => {
+    if (unsavedDocumentDialogChanges) {
+        const message = "You may have unsaved changes made to this document. Are you sure you want to discard these changes by exiting the dialog without saving?";
+        if (!await confirm(message)) {
+            const dialog = document.getElementById("document-dialog");
+            showDialog(dialog);
+            return;
+        }
+        unsavedDocumentDialogChanges = false;
+    }
+});
+
+document.getElementById("document-dialog").addEventListener("input", (event) => {
+    unsavedDocumentDialogChanges = true;
+});
+
 function toggleDocumentForm() {
     const documentForm = document.getElementById("document-form");
     if (documentForm.classList.contains("hidden"))
@@ -491,6 +509,7 @@ function addDocumentSection() {
     });
 
     populateDocumentDialog();
+    unsavedDocumentDialogChanges = true;
 }
 
 function addDocumentHeader(identifier) {
@@ -504,6 +523,7 @@ function addDocumentHeader(identifier) {
     });
 
     populateDocumentDialog();
+    unsavedDocumentDialogChanges = true;
 }
 
 function addDocumentSkeletal(identifier) {
@@ -516,6 +536,7 @@ function addDocumentSkeletal(identifier) {
     });
 
     populateDocumentDialog();
+    unsavedDocumentDialogChanges = true;
 }
 
 function addDocumentText(identifier) {
@@ -528,6 +549,7 @@ function addDocumentText(identifier) {
     });
 
     populateDocumentDialog();
+    unsavedDocumentDialogChanges = true;
 }
 
 function addDocumentElement(identifier) {
@@ -543,6 +565,7 @@ function addDocumentElement(identifier) {
     });
 
     populateDocumentDialog();
+    unsavedDocumentDialogChanges = true;
 }
 
 function recordUnsavedChanges() {
@@ -657,6 +680,7 @@ function moveInDocument(identifier, moveUp) {
     }
 
     populateDocumentDialog();
+    unsavedDocumentDialogChanges = true;
 }
 
 async function deleteDocumentContent(identifier, confirmation = false) {
@@ -690,6 +714,7 @@ async function deleteDocumentContent(identifier, confirmation = false) {
     }
 
     populateDocumentDialog();
+    unsavedDocumentDialogChanges = true;
 }
 
 async function saveDocumentChanges() {
@@ -700,6 +725,7 @@ async function saveDocumentChanges() {
     recordUnsavedChanges();
     documentStructure = unsavedDocumentStructure;
     stateChecker.modified = true;
+    unsavedDocumentDialogChanges = false;
     
     generateDocument();
     document.getElementById("document-dialog").close();
