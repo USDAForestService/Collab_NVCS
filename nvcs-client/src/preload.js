@@ -12,5 +12,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     fetchSettings: () => ipcRenderer.invoke('fetch-settings'),
     fetchYears: () => ipcRenderer.invoke('fetch-years'),
     markUnsavedChanges: (value) => ipcRenderer.invoke('mark-unsaved-changes', value),
-    getApplicationVersion: () => ipcRenderer.invoke('get-application-version')
+    getApplicationVersion: () => ipcRenderer.invoke('get-application-version'),
+    saveDocumentWordFormat: (targetPath, html) => ipcRenderer.invoke('save-document-word-format', targetPath, html)
 });

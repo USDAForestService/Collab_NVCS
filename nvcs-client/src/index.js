@@ -4,6 +4,7 @@ const fs = require('fs');
 const ini = require('ini');
 const child_process = require("child_process");
 const util = require("util");
+const HTMLtoDOCX = require('html-to-docx');
 const execFile = util.promisify(child_process.execFile);
 
 let mainWindow;
@@ -68,6 +69,7 @@ app.whenReady().then(() => {
   ipcMain.handle('fetch-years', fetchAvailableYears);
   ipcMain.handle('mark-unsaved-changes', markUnsavedChanges);
   ipcMain.handle('get-application-version', getApplicationVersion);
+  ipcMain.handle('save-document-word-format', saveDocumentWordFormat);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -485,4 +487,30 @@ async function markUnsavedChanges(value) {
 
 async function getApplicationVersion() {
   return app.getVersion();
+}
+
+async function saveDocumentWordFormat(event, targetPath, html) {
+  console.log("INVOKED: saveDocumentWordFormat");
+
+  if (!fs.existsSync(targetPath))
+    throw new Error("Provided path does not exist:", targetPath);
+
+  const joinedPath = path.join(targetPath, "word-format.docx");
+  const fullTargetPath = path.resolve(joinedPath);
+  console.log("Full Target Path:", fullTargetPath);
+
+  const headerString = null;
+  const footerString = null;
+  const documentOptions = {
+    table: { row: { cantSplit: true } },
+    footer: true,
+    pageNumber: true,
+  };
+  const fileBuffer = await HTMLtoDOCX(html, headerString, documentOptions, footerString);
+
+  console.log("- Executing file write");
+  fs.writeFileSync(fullTargetPath, fileBuffer);
+
+  console.log("- RETURNING RESULTS");
+  return fullTargetPath;
 }

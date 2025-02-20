@@ -19,15 +19,18 @@ document.getElementById("document-dialog").addEventListener("input", (event) => 
 function toggleDocumentForm() {
     const documentToggleButton = document.getElementById("btn-show-document");
     const documentCopyButton = document.getElementById("btn-document-copy");
+    const documentWordButton = document.getElementById("btn-document-word");
     if (isDocumentViewHidden()) {
         showDocumentForm();
         documentToggleButton.innerText = "Hide Document View";
         documentCopyButton.disabled = false;
+        documentWordButton.disabled = false;
     }
     else {
         hideDocumentForm();
         documentToggleButton.innerText = "Show Document View";
         documentCopyButton.disabled = true;
+        documentWordButton.disabled = true;
     }
 }
 
@@ -324,9 +327,7 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
     let html = "";
     if (isHeader) {
         html += `
-            <h3>
-                ${headerTag}. ${element.hierarchyName}
-            </h3>
+            <h3>${headerTag}. ${element.hierarchyName}</h3>
             <div class='element-child-container'>
         `;
     }
@@ -339,7 +340,7 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
             descriptionList.push(adjustedDescription);
         }
         const fullDescription = descriptionList.join("</br>");
-        const elementButton = `<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'><b>${element.hierarchyName}</b></button>`;
+        const elementButton = `<b><button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button></b>`;
     
         const tagHtml = headerTag != "" ? `<b>${headerTag}</b>` : "";
         html += `
@@ -409,9 +410,7 @@ function generateDocumentHeader(content) {
     const headerLevel = content.level;
 
     let html = `
-        <h${headerLevel}>
-            ${headerText}
-        </h${headerLevel}>
+        <h${headerLevel}>${headerText}</h${headerLevel}>
     `;
 
     return html
@@ -463,9 +462,7 @@ function generateDocumentText(content) {
     const text = content.content;
 
     let html = `
-        <p>
-            ${text}
-        </p>
+        <p>${text}</p>
     `;
 
     return html
@@ -760,4 +757,28 @@ function copyDocumentText() {
 function isDocumentViewHidden() {
     const documentForm = document.getElementById("document-form");
     return documentForm.hidden || documentForm.classList.contains("hidden"); 
+}
+
+async function saveDocumentWordFormat() {
+    try {
+        const inputPath = document.getElementById("json-directory-path");
+        const browsePath = await openBrowseDialog(inputPath.value);
+        if (!browsePath) return;
+
+        const updateWarning = "Are you sure you want to save the Word document to this directory? " +
+            "Any previously saved word documents within this directory will be overwritten.";
+        if (!await confirm(updateWarning))
+            return;
+
+        const documentHtml = document.getElementById("document-container").innerHTML;
+        const response = await electronAPI.saveDocumentWordFormat(browsePath, documentHtml);
+        const message = `Successfully saved word document to: ${response}`;
+        alert(message);
+        return response;
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
 }
