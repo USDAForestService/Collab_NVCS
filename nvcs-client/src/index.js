@@ -497,12 +497,12 @@ async function saveDocumentWordFormat(event, targetPath, html) {
 
   const joinedPath = path.join(targetPath, "word-format.docx");
   const fullTargetPath = path.resolve(joinedPath);
-  console.log("Full Target Path:", fullTargetPath);
+  console.log("- Full Target Path:", fullTargetPath);
 
   const headerString = null;
   const footerString = null;
   const documentOptions = {
-    table: { row: { cantSplit: true } },
+    table: { row: { cantSplit: false } },
     footer: true,
     pageNumber: true,
   };

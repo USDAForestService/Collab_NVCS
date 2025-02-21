@@ -29,8 +29,13 @@
 }
 
 .element-child-container {
+    width: 100%;
     outline: 1px solid black;
-    padding: 1px 20px;
+}
+
+.element-child-container td {
+    vertical-align: top;
+    padding: 10px;
 }
 
 .bottom-buttons {

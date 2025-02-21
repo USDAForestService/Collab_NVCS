@@ -324,11 +324,31 @@ function generateDocumentElement(content) {
 
 function generateDocumentDescriptionByElement(element, descendantLimitType, isHeader, headerTag) {
 
+    let html = addDocumentElementMainContent(element, isHeader, headerTag);
+    let childTagCounter = 1;
+    const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
+    for (const child of element.children) {
+        if (!designatedTypes.includes(child.node.level))
+            continue;
+        const childHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter}` : "";
+        html += generateDocumentDescriptionByElement(child, descendantLimitType, false, childHeaderTag);
+        childTagCounter++;
+    }
+
+    if (isHeader)
+        html += "</tbody></table>";
+
+    return html;
+}
+
+function addDocumentElementMainContent(element, isHeader, headerTag) {
     let html = "";
+
     if (isHeader) {
         html += `
             <h3>${headerTag}. ${element.hierarchyName}</h3>
-            <div class='element-child-container'>
+            <table class='element-child-container'>
+            <tbody>
         `;
     }
     else {
@@ -342,27 +362,20 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
         const fullDescription = descriptionList.join("</br>");
         const elementButton = `<b><button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button></b>`;
     
-        const tagHtml = headerTag != "" ? `<b>${headerTag}</b>` : "";
-        html += `
-            <div class='element-container'>
-                ${tagHtml}
+        if (headerTag) {
+            html += `
+                <tr>
+                    <td><b>${headerTag}</b></td>
+                    <td>${fullDescription} ... ${elementButton}</td>
+                </tr>
+            `;
+        }
+        else {
+            html += `
                 <p>${fullDescription} ... ${elementButton}</p>
-            </div>
-        `;
+            `;
+        }
     }
-    
-    let childTagCounter = 1;
-    const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
-    for (const child of element.children) {
-        if (!designatedTypes.includes(child.node.level))
-            continue;
-        const childHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter}` : "";
-        html += generateDocumentDescriptionByElement(child, descendantLimitType, false, childHeaderTag);
-        childTagCounter++;
-    }
-
-    if (isHeader)
-        html += "</div>";
 
     return html;
 }
