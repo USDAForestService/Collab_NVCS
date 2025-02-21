@@ -38,6 +38,10 @@
     padding: 10px;
 }
 
+.element-child-container p {
+    margin: 0;
+}
+
 .bottom-buttons {
     padding: 5px 0;
 }

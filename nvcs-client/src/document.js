@@ -366,7 +366,7 @@ function addDocumentElementMainContent(element, isHeader, headerTag) {
             html += `
                 <tr>
                     <td><b>${headerTag}</b></td>
-                    <td>${fullDescription} ... ${elementButton}</td>
+                    <td><p>${fullDescription} ... ${elementButton}</p></td>
                 </tr>
             `;
         }
