@@ -332,6 +332,16 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
             continue;
         const childHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter}` : "";
         html += generateDocumentDescriptionByElement(child, descendantLimitType, false, childHeaderTag);
+        if (headerTag && childTagCounter <= element.children.length - 1) {
+            const nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : "";
+            html += `
+                <tr>
+                    <td><b>${childHeaderTag}</b></td>
+                    <td><p>Tree composition not as above...</p></td>
+                    <td><b>${nextChildHeaderTag}</b></td>
+                </tr>
+            `;
+        }
         childTagCounter++;
     }
 
@@ -367,6 +377,7 @@ function addDocumentElementMainContent(element, isHeader, headerTag) {
                 <tr>
                     <td><b>${headerTag}</b></td>
                     <td><p>${fullDescription} ... ${elementButton}</p></td>
+                    <td></td>
                 </tr>
             `;
         }
