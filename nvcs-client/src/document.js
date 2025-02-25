@@ -466,9 +466,30 @@ function generateDocumentHeader(content) {
     return html
 }
 
+function getHeaderTagsForElements(sectionContent) {
+    let headerTags = new Map();
+
+    const allSectionElements = sectionContent.filter(i => i.type == "element");
+    for (const sectionElement of allSectionElements) {
+        const hierarchyElement = hierarchy.filter(i => i.hierarchyName == sectionElement.content)[0];
+        headerTags.set(sectionElement.content, sectionElement.headerTag);
+
+        for (let i = 0; i < hierarchyElement.children.length; i++) {
+            const childHierarchyElement = hierarchyElement.children[i];
+            const childHeaderTag = sectionElement.headerTag ? `${sectionElement.headerTag}.${i + 1}` : null;
+            headerTags.set(childHierarchyElement.hierarchyName, childHeaderTag);
+        }
+    }
+
+    return headerTags;
+}
+
 function generateDocumentSkeletal(content, sectionContent) {
     if (!content.content)
         return "";
+
+    let headerTags = getHeaderTagsForElements(sectionContent);
+    console.log(headerTags);
 
     let html = "<ul class='skeletal-list-root'>";
 
