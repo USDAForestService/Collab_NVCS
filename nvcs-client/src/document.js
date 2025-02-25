@@ -158,14 +158,14 @@ function generateDocumentEditorElementContent(item) {
             <div class='input-container' style='flex-wrap: wrap;'>
                 <label for='element-source-${identifier}'>Root Element:</label>
                 <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
+                <label for='element-header-tag-${identifier}'>Root Header Tag:</label>
+                <input id='element-header-tag-${identifier} type='text' value='${headerTag}' />
                 <label for='element-descendants-type-${identifier}'>Include Descendants of Type:</label>
                 <select id='element-descendants-type-${identifier}'>
                     ${descendantOptionsHtml}
                 </select>
                 <label for='element-as-header-${identifier}'>Make Root Into Header:</label>
                 <input id='element-as-header-${identifier}' type='checkbox'  ${isHeaderChecked} />
-                <label for='element-header-tag-${identifier}'>Root Header Tag:</label>
-                <input id='element-header-tag-${identifier} type='text' value='${headerTag}' />
             </div>
             <div class='button-container'>
                 <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
@@ -318,22 +318,78 @@ function generateDocumentSection(section) {
 
 function generateDocumentElement(content) {
     const element = hierarchy.filter(i => i.hierarchyName == content.content)[0];
-    let html = generateDocumentDescriptionByElement(element, content.descendantLimitType, content.isHeader, content.headerTag);
+    let html = generateDocumentDescriptionByElement(element, content.descendantLimitType, content.isHeader, content.isHeader, content.headerTag);
     return html;
 }
 
-function generateDocumentDescriptionByElement(element, descendantLimitType, isHeader, headerTag) {
+function generateDocumentDescriptionByElement(element, descendantLimitType, isHeader, needsTitle, headerTag) {
 
-    let html = addDocumentElementMainContent(element, isHeader, headerTag);
+    let html = "";
+    if (needsTitle) {
+        html += `
+            <h3>${headerTag}. ${element.hierarchyName}</h3>
+            <table class='element-child-container outlined'>
+            <tbody>
+        `;
+    }
+    else {
+        if (!isHeader) {
+            html += `
+            <table class='element-child-container'>
+            <tbody>
+        `;
+        }
+        html += addDocumentElementMainContent(element, headerTag);
+    }
+
+    html += addDocumentElementChildrenContent(element, descendantLimitType, isHeader, headerTag);
+
+    if (isHeader && needsTitle)
+        html += "</tbody></table>";
+
+    return html;
+}
+
+function addDocumentElementMainContent(element, headerTag) {
+    let html = "";
+
+    let descriptionList = [];
+    for (const description of element.node.description) {
+        if (description.startsWith("###"))
+            break;
+        const adjustedDescription = duplicateLeadingSpaces(description, 2);
+        descriptionList.push(adjustedDescription);
+    }
+    const fullDescription = descriptionList.join("</br>");
+    const elementButton = `<b><button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button></b>`;
+
+    html += `
+        <tr>
+            <td><b>${headerTag}</b></td>
+            <td><p>${fullDescription} ... ${elementButton}</p></td>
+            <td></td>
+        </tr>
+    `;
+
+    return html;
+}
+
+function addDocumentElementChildrenContent(element, descendantLimitType, isHeader, headerTag) {
+    let html = "";
     let childTagCounter = 1;
     const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
     for (const child of element.children) {
         if (!designatedTypes.includes(child.node.level))
             continue;
-        const childHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter}` : "";
-        html += generateDocumentDescriptionByElement(child, descendantLimitType, false, childHeaderTag);
-        if (headerTag && childTagCounter <= element.children.length - 1) {
-            const nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : "";
+
+        let childHeaderTag = "";
+        if (headerTag != "")
+            childHeaderTag = isHeader ? `${headerTag}.${childTagCounter}` : getNextAlphabetLetter(headerTag);
+
+        html += generateDocumentDescriptionByElement(child, descendantLimitType, isHeader, false, childHeaderTag);
+        if (isHeader && childTagCounter <= element.children.length - 1) {
+            let nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : "";;
+
             html += `
                 <tr>
                     <td><b>${childHeaderTag}</b></td>
@@ -344,51 +400,20 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
         }
         childTagCounter++;
     }
-
-    if (isHeader)
-        html += "</tbody></table>";
-
     return html;
 }
 
-function addDocumentElementMainContent(element, isHeader, headerTag) {
-    let html = "";
+function getNextAlphabetLetter(letter, capitalize = true) {
+    const lowered = letter.toLowerCase();
+    if (lowered == "z")
+        return "a";
 
-    if (isHeader) {
-        html += `
-            <h3>${headerTag}. ${element.hierarchyName}</h3>
-            <table class='element-child-container'>
-            <tbody>
-        `;
-    }
-    else {
-        let descriptionList = [];
-        for (const description of element.node.description) {
-            if (description.startsWith("###"))
-                break;
-            const adjustedDescription = duplicateLeadingSpaces(description, 2);
-            descriptionList.push(adjustedDescription);
-        }
-        const fullDescription = descriptionList.join("</br>");
-        const elementButton = `<b><button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button></b>`;
-    
-        if (headerTag) {
-            html += `
-                <tr>
-                    <td><b>${headerTag}</b></td>
-                    <td><p>${fullDescription} ... ${elementButton}</p></td>
-                    <td></td>
-                </tr>
-            `;
-        }
-        else {
-            html += `
-                <p>${fullDescription} ... ${elementButton}</p>
-            `;
-        }
-    }
+    const nextCharCode = lowered.charCodeAt(0) + 1;
+    let nextLetter = String.fromCharCode(nextCharCode);
+    if (capitalize)
+        nextLetter = nextLetter.toUpperCase();
+    return nextLetter;
 
-    return html;
 }
 
 function duplicateLeadingSpaces(text, times = 2) {

@@ -30,7 +30,6 @@
 
 .element-child-container {
     width: 100%;
-    outline: 1px solid black;
 }
 
 .element-child-container td {
@@ -65,4 +64,8 @@
 .document-toc ul {
     list-style: none;
     margin: 0;
+}
+
+.outlined {
+    outline: 1px solid black;
 }
