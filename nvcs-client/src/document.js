@@ -335,7 +335,7 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
     else {
         if (!isHeader) {
             html += `
-            <table class='element-child-container'>
+            <table class='element-child-container outlined'>
             <tbody>
         `;
         }
@@ -362,12 +362,13 @@ function addDocumentElementMainContent(element, headerTag) {
     }
     const fullDescription = descriptionList.join("</br>");
     const elementButton = `<b><button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button></b>`;
+    const displayHeaderTag = headerTag != "" ? headerTag : "";
 
     html += `
         <tr>
-            <td><b>${headerTag}</b></td>
-            <td><p>${fullDescription} ... ${elementButton}</p></td>
-            <td></td>
+            <td class='element-tag-cell'><b>${displayHeaderTag}</b></td>
+            <td class='element-content-cell'><p>${fullDescription} ... ${elementButton}</p></td>
+            <td class='element-tag-cell'></td>
         </tr>
     `;
 
@@ -388,13 +389,13 @@ function addDocumentElementChildrenContent(element, descendantLimitType, isHeade
 
         html += generateDocumentDescriptionByElement(child, descendantLimitType, isHeader, false, childHeaderTag);
         if (isHeader && childTagCounter <= element.children.length - 1) {
-            let nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : "";;
+            let nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : "";
 
             html += `
                 <tr>
-                    <td><b>${childHeaderTag}</b></td>
-                    <td><p>Tree composition not as above...</p></td>
-                    <td><b>${nextChildHeaderTag}</b></td>
+                    <td class='element-tag-cell'><b>${childHeaderTag}</b></td>
+                    <td class='element-content-cell'><p>Tree composition not as above...</p></td>
+                    <td class='element-tag-cell'><b>${nextChildHeaderTag}</b></td>
                 </tr>
             `;
         }

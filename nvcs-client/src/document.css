@@ -30,6 +30,7 @@
 
 .element-child-container {
     width: 100%;
+    margin: 10px 0;
 }
 
 .element-child-container td {
@@ -68,4 +69,12 @@
 
 .outlined {
     outline: 1px solid black;
+}
+
+.element-tag-cell {
+    width: 5%;
+}
+
+.element-content-cell {
+    width: 90%;   
 }
