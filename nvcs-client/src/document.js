@@ -392,12 +392,12 @@ function addDocumentElementChildrenContent(element, descendantLimitType, isHeade
             continue;
 
         let childHeaderTag = "";
-        if (headerTag != "")
+        if (headerTag)
             childHeaderTag = isHeader ? `${headerTag}.${childTagCounter}` : getNextAlphabetLetter(headerTag);
 
         html += generateDocumentDescriptionByElement(child, descendantLimitType, isHeader, false, childHeaderTag);
         if (isHeader && childTagCounter <= element.children.length - 1) {
-            let nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : nullCharacter;
+            let nextChildHeaderTag = headerTag ? `${headerTag}.${childTagCounter + 1}` : nullCharacter;
 
             html += `
                 <tr>
@@ -496,7 +496,7 @@ function getHeaderTagsForElement(hierarchyElement, headerTag) {
 
     for (let i = 0; i < hierarchyElement.children.length; i++) {
         const childHierarchyElement = hierarchyElement.children[i];
-        const childHeaderTag = headerTag != "" ? `${headerTag}.${i + 1}` : "";
+        const childHeaderTag = headerTag ? `${headerTag}.${i + 1}` : null;
         getHeaderTagsForElement(childHierarchyElement, childHeaderTag);
     }
 }
@@ -534,7 +534,7 @@ function generateDocumentNamesForElement(element, descendantLimitType, headerTag
         for (const child of element.children) {
             if (!designatedTypes.includes(child.node.level))
                 continue;
-            const childHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter}` : "";
+            const childHeaderTag = headerTag ? `${headerTag}.${childTagCounter}` : null;
             html += generateDocumentNamesForElement(child, descendantLimitType, childHeaderTag);
             childTagCounter++;
         }
