@@ -1,4 +1,6 @@
 let unsavedDocumentDialogChanges = false;
+let headerTags = new Map();
+let nullCharacter = "∅";
 
 document.getElementById("document-dialog").addEventListener("close", async (event) => {
     if (unsavedDocumentDialogChanges) {
@@ -251,6 +253,11 @@ function generateDocumentEditorTextContent(item) {
 
 function generateDocument() {
     let html = generateDocumentTableOfContents();
+
+    headerTags = new Map();
+    for (const section of documentStructure.sections)
+        headerTags = getHeaderTagsForElements(section.content);
+    console.log(headerTags);
     
     for (const section of documentStructure.sections)
         html += generateDocumentSection(section);
@@ -278,7 +285,7 @@ function generateDocumentTableOfContents() {
             <li class='skeletal-container' style="${padding}">
                 <span>${sectionHeader.content}</span>
                 <span class='separator'></span>
-                <span>#</span>
+                <span>${nullCharacter}</span>
             </li>
         `;
     }
@@ -326,8 +333,9 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
 
     let html = "";
     if (needsTitle) {
+        const titleTag = getHeaderTagsByName(element.hierarchyName) ?? nullCharacter;
         html += `
-            <h3>${headerTag}. ${element.hierarchyName}</h3>
+            <h3>${titleTag}. ${element.hierarchyName}</h3>
             <table class='element-child-container outlined'>
             <tbody>
         `;
@@ -339,18 +347,18 @@ function generateDocumentDescriptionByElement(element, descendantLimitType, isHe
             <tbody>
         `;
         }
-        html += addDocumentElementMainContent(element, headerTag);
+        html += addDocumentElementMainContent(element);
     }
 
     html += addDocumentElementChildrenContent(element, descendantLimitType, isHeader, headerTag);
 
-    if (isHeader && needsTitle)
+    if (!isHeader || needsTitle)
         html += "</tbody></table>";
 
     return html;
 }
 
-function addDocumentElementMainContent(element, headerTag) {
+function addDocumentElementMainContent(element) {
     let html = "";
 
     let descriptionList = [];
@@ -362,7 +370,7 @@ function addDocumentElementMainContent(element, headerTag) {
     }
     const fullDescription = descriptionList.join("</br>");
     const elementButton = `<b><button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button></b>`;
-    const displayHeaderTag = headerTag != "" ? headerTag : "";
+    const displayHeaderTag = getHeaderTagsByName(element.hierarchyName) ?? nullCharacter;
 
     html += `
         <tr>
@@ -389,7 +397,7 @@ function addDocumentElementChildrenContent(element, descendantLimitType, isHeade
 
         html += generateDocumentDescriptionByElement(child, descendantLimitType, isHeader, false, childHeaderTag);
         if (isHeader && childTagCounter <= element.children.length - 1) {
-            let nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : "";
+            let nextChildHeaderTag = headerTag != "" ? `${headerTag}.${childTagCounter + 1}` : nullCharacter;
 
             html += `
                 <tr>
@@ -466,30 +474,36 @@ function generateDocumentHeader(content) {
     return html
 }
 
-function getHeaderTagsForElements(sectionContent) {
-    let headerTags = new Map();
+function getHeaderTagsByName(name) {
+    const entry = headerTags.get(name);
+    const response = entry != "" ? entry : null;
+    return response; 
+}
 
+
+function getHeaderTagsForElements(sectionContent) {
     const allSectionElements = sectionContent.filter(i => i.type == "element");
     for (const sectionElement of allSectionElements) {
         const hierarchyElement = hierarchy.filter(i => i.hierarchyName == sectionElement.content)[0];
-        headerTags.set(sectionElement.content, sectionElement.headerTag);
-
-        for (let i = 0; i < hierarchyElement.children.length; i++) {
-            const childHierarchyElement = hierarchyElement.children[i];
-            const childHeaderTag = sectionElement.headerTag ? `${sectionElement.headerTag}.${i + 1}` : null;
-            headerTags.set(childHierarchyElement.hierarchyName, childHeaderTag);
-        }
+        getHeaderTagsForElement(hierarchyElement, sectionElement.headerTag);
     }
-
     return headerTags;
+}
+
+function getHeaderTagsForElement(hierarchyElement, headerTag) {
+    if (!getHeaderTagsByName(hierarchyElement.hierarchyName))
+        headerTags.set(hierarchyElement.hierarchyName, headerTag);
+
+    for (let i = 0; i < hierarchyElement.children.length; i++) {
+        const childHierarchyElement = hierarchyElement.children[i];
+        const childHeaderTag = headerTag != "" ? `${headerTag}.${i + 1}` : "";
+        getHeaderTagsForElement(childHierarchyElement, childHeaderTag);
+    }
 }
 
 function generateDocumentSkeletal(content, sectionContent) {
     if (!content.content)
         return "";
-
-    let headerTags = getHeaderTagsForElements(sectionContent);
-    console.log(headerTags);
 
     let html = "<ul class='skeletal-list-root'>";
 
@@ -505,12 +519,12 @@ function generateDocumentSkeletal(content, sectionContent) {
 
 function generateDocumentNamesForElement(element, descendantLimitType, headerTag) {
     const padding = `padding-left: ${element.hierarchyLevel * 10}px;`
-    const mainHeaderTag = headerTag != "" ? `${headerTag}.` : "";
+    const mainHeaderTag = getHeaderTagsByName(element.hierarchyName) ?? nullCharacter;
     let html = `
         <li class='skeletal-container' style='${padding}'>
-            <span>${mainHeaderTag} ${element.hierarchyName}</span>
+            <span>${mainHeaderTag}. ${element.hierarchyName}</span>
             <span class='separator'></span>
-            <span>#</span>
+            <span>${nullCharacter}</span>
         </li>
     `;
 
