@@ -455,7 +455,7 @@ function getElementsByContent(content) {
     if (content.descendantLimitType == "None")
         return elements;
 
-    let designatedChildTypes = getEligibleTypesByLimit(content.type);
+    let designatedChildTypes = getEligibleTypesByLimit(content.descendantLimitType);
 
     for (const child of element.children)
         elements = getDescendantElementsByType(elements, child, designatedChildTypes);

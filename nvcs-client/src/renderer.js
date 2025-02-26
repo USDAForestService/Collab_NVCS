@@ -1380,17 +1380,20 @@ function checkForProblems() {
     errors = [];
     warnings = [];
 
-    // Check errors
+    // Check hierarchy errors
     checkMissingRequiredFields();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
 
-    // Check warnings
+    // Check hierarchy warnings
     checkMissingNodeIdInNames();
     checkUnconventionalFileNames();
     checkDuplicateNodeIds();
     checkInvalidSpeciesWarning();
+
+    // Check document warnings
+    checkMissingElementsInDocument();
 
     // Update alerts
     generateAlerts();
@@ -1899,6 +1902,40 @@ function checkInvalidSpeciesWarning() {
     createWarning("invalid-species", html, invalidSpeciesInfo);
 }
 
+function checkMissingElementsInDocument() {
+    const missingElementsInfo = findMissingElementsInDocument();
+    if (missingElementsInfo.length == 0)
+        return;
+    console.warn("Invalid missing elements info", missingElementsInfo);
+
+    let html = `
+        <p>
+            There are ${missingElementsInfo.length} hierarchy elements unaccounted for in the current document settings!
+            Elements should either be added directly into a section or encompassed by another element's descendant scope.
+            <button id='btn-toggle-nested-missing-document-elements-warnings' aria-describedby="nested-missing-document-elements-warnings" aria-controls='nested-missing-document-elements-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-missing-document-elements-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Missing Document Elements" hidden>
+    `;
+
+    for (const info of missingElementsInfo) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing document element)");
+        const elementButton = cloneButton.outerHTML;
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `
+
+    createWarning("missing-document-elements", html, missingElementsInfo);
+}
+
 function findMissingRequiredFields() {
     let invalid = [];
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
@@ -2066,6 +2103,35 @@ function findInvalidFilters(availableKeys, availableValues) {
         }
     }
     return invalidInfo;
+}
+
+function findMissingElementsInDocument() {
+    let invalid = [];
+
+    let allSectionElements = [];
+    for (const section of documentStructure.sections) {
+        const sectionElements = section.content.filter(i => i.type == "element");
+        allSectionElements = [...sectionElements, ...allSectionElements];
+    }
+
+    let allIncludedElements = [];
+    for (const sectionElement of allSectionElements) {
+        const includedElements = getElementsByContent(sectionElement);
+        allIncludedElements = [...includedElements, ...allIncludedElements];
+    }
+
+    for (const element of hierarchy) {
+        if (element.hierarchyName == "ROOT") continue;
+        if (allIncludedElements.includes(element)) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName)
+        });
+    }
+
+    return invalid;
 }
 
 function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue) {
