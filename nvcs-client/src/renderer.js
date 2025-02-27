@@ -237,8 +237,7 @@ async function fetchJson(targetPath) {
 
     // Update HTML elements
     stateChecker.modified = false;
-    generateHierarchyHTML(hierarchy);
-    generateDocument();
+    generatePages(hierarchy);
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-update-json").setAttribute("title", 
         "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
@@ -386,6 +385,15 @@ function createEmptyHierarchyElement() {
     return element;
 }
 
+function generatePages(hierarchy) {
+    // Generate page content
+    generateHierarchyHTML(hierarchy);
+    generateDocument();
+
+    // Display alerts if any
+    checkForProblems();
+}
+
 function generateHierarchyHTML(hierarchy) {
     // Update hierarchy node level colors
     updateLevelColorScale();
@@ -402,9 +410,6 @@ function generateHierarchyHTML(hierarchy) {
     // Display results
     let detectedJsonContainer = document.getElementById("detected-json-container");
     detectedJsonContainer.innerHTML = nodeDisplay;
-
-    // Display alerts if any
-    checkForProblems();
 }
 
 function generateAlerts() {
@@ -806,8 +811,7 @@ async function saveJsonChanges() {
     stateChecker.modified = true;
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
-    generateHierarchyHTML(hierarchy);
-    generateDocument();
+    generatePages(hierarchy);
 }
 
 function performDialogValidations(displayAlert) {
@@ -1284,8 +1288,7 @@ async function deleteHierarchyElement() {
     stateChecker.modified = true;
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
-    generateHierarchyHTML(hierarchy);
-    generateDocument();
+    generatePages(hierarchy);
 }
 
 function addHierarchyElement() {
@@ -1394,6 +1397,7 @@ function checkForProblems() {
 
     // Check document warnings
     checkMissingElementsInDocument();
+    checkUnlabeledElementsInDocument();
 
     // Update alerts
     generateAlerts();
@@ -1936,6 +1940,41 @@ function checkMissingElementsInDocument() {
     createWarning("missing-document-elements", html, missingElementsInfo);
 }
 
+function checkUnlabeledElementsInDocument() {
+    const unlabeledElementsInfo = findUnlabeledElementsInDocument();
+    if (unlabeledElementsInfo.length == 0)
+        return;
+    console.warn("Invalid unlabeled elements info", unlabeledElementsInfo);
+
+    let html = `
+        <p>
+            There are ${unlabeledElementsInfo.length} hierarchy elements unlabeled in the current document settings!
+            Elements should either be given a header tag directly within a section or inherit one by descendant association. 
+            In the document viewer, these elements will be labeled with "${nullCharacter}".
+            <button id='btn-toggle-nested-unlabeled-document-elements-warnings' aria-describedby="nested-unlabeled-document-elements-warnings" aria-controls='nested-unlabeled-document-elements-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-unlabeled-document-elements-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested unlabeled Document Elements" hidden>
+    `;
+
+    for (const info of unlabeledElementsInfo) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (unlabeled document element)");
+        const elementButton = cloneButton.outerHTML;
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `
+
+    createWarning("unlabeled-document-elements", html, unlabeledElementsInfo);
+}
+
 function findMissingRequiredFields() {
     let invalid = [];
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
@@ -2123,6 +2162,23 @@ function findMissingElementsInDocument() {
     for (const element of hierarchy) {
         if (element.hierarchyName == "ROOT") continue;
         if (allIncludedElements.includes(element)) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName)
+        });
+    }
+
+    return invalid;
+}
+
+function findUnlabeledElementsInDocument() {
+    let invalid = [];
+
+    for (const element of hierarchy) {
+        if (element.hierarchyName == "ROOT") continue;
+        if (getHeaderTagsByName(element.hierarchyName)) continue;
         
         invalid.push({
             hierarchyName: element.hierarchyName,
