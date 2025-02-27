@@ -40,9 +40,6 @@ function showDocumentForm() {
     // Hide JSON tree
     hideContentById("detected-json-container");
 
-    // Generate document
-    generateDocument();
-
     // Show document container
     showContentById("document-form");
 }
@@ -816,7 +813,7 @@ async function saveDocumentChanges() {
     stateChecker.modified = true;
     unsavedDocumentDialogChanges = false;
     
-    generateDocument();
+    generatePages(hierarchy);
     document.getElementById("document-dialog").close();
 }
 
