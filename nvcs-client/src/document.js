@@ -296,33 +296,49 @@ function generateDocumentTableOfContents() {
 }
 
 function generateDocumentSection(section) {
-    let html = "";
+    let html = `
+        <div id="${section.name}" class="document-section-container">
+    `;
 
-    for (const content of section.content) {
+    for (let i = 0; i < section.content.length; i++) {
+        const content = section.content[i];
         switch (content.type) {
             case "element":
-                html += generateDocumentElement(content);
+                html += generateDocumentElement(content, i);
                 break;
             case "header":
-                html += generateDocumentHeader(content);
+                html += generateDocumentHeader(content, i);
                 break;
             case "skeletal":
-                html += generateDocumentSkeletal(content, section.content);
+                html += generateDocumentSkeletal(content, section.content, i);
                 break;
             case "text":
-                html += generateDocumentText(content);
+                html += generateDocumentText(content, i);
                 break;
             default:
                 throw new Error("Invalid type provided", content.type);
         }
     }
 
+    html += `
+        </div>
+    `;
+
     return html;
 }
 
-function generateDocumentElement(content) {
+function generateDocumentElement(content, index) {
     const element = hierarchy.filter(i => i.hierarchyName == content.content)[0];
-    let html = generateDocumentDescriptionByElement(element, content.descendantLimitType, content.isHeader, content.isHeader, content.headerTag);
+    let html = `
+        <div class="document-element-container" data-index="${index}">
+    `;
+
+    html += generateDocumentDescriptionByElement(element, content.descendantLimitType, content.isHeader, content.isHeader, content.headerTag);
+    
+    html += `
+        </div>
+    `;
+
     return html;
 }
 
@@ -460,12 +476,14 @@ function getElementsByContent(content) {
     return elements;
 }
 
-function generateDocumentHeader(content) {
+function generateDocumentHeader(content, index) {
     const headerText = content.content;
     const headerLevel = content.level;
 
     let html = `
-        <h${headerLevel}>${headerText}</h${headerLevel}>
+        <div class="document-header-container" data-index="${index}">
+            <h${headerLevel}>${headerText}</h${headerLevel}>
+        </div>
     `;
 
     return html
@@ -498,18 +516,24 @@ function getHeaderTagsForElement(hierarchyElement, headerTag) {
     }
 }
 
-function generateDocumentSkeletal(content, sectionContent) {
+function generateDocumentSkeletal(content, sectionContent, index) {
     if (!content.content)
         return "";
 
-    let html = "<ul class='skeletal-list-root'>";
+    let html = `
+        <div class="document-skeletal-container" data-index="${index}">
+            <ul class='skeletal-list-root'>
+    `;
 
     for (const item of sectionContent.filter(i => i.type == "element")) {
         const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
         html += generateDocumentNamesForElement(element, item.descendantLimitType, item.headerTag);
     }
 
-    html += "</ul>";
+    html += `
+            </ul>
+        </div>
+    `;
 
     return html;
 }
@@ -540,11 +564,13 @@ function generateDocumentNamesForElement(element, descendantLimitType, headerTag
     return html;
 }
 
-function generateDocumentText(content) {
+function generateDocumentText(content, index) {
     const text = content.content;
 
     let html = `
-        <p>${text}</p>
+        <div class="document-text-container" data-index="${index}">
+            <p>${text}</p>
+        </div>
     `;
 
     return html
