@@ -20,18 +20,15 @@ document.getElementById("document-dialog").addEventListener("input", (event) => 
 
 function toggleDocumentForm() {
     const documentToggleButton = document.getElementById("btn-show-document");
-    const documentCopyButton = document.getElementById("btn-document-copy");
     const documentWordButton = document.getElementById("btn-document-word");
     if (isDocumentViewHidden()) {
         showDocumentForm();
         documentToggleButton.innerText = "Hide Document View";
-        documentCopyButton.disabled = false;
         documentWordButton.disabled = false;
     }
     else {
         hideDocumentForm();
         documentToggleButton.innerText = "Show Document View";
-        documentCopyButton.disabled = true;
         documentWordButton.disabled = true;
     }
 }
@@ -870,25 +867,6 @@ async function saveDocumentChanges() {
     
     generatePages(hierarchy);
     document.getElementById("document-dialog").close();
-}
-
-function copyDocumentText() {
-    if (isDocumentViewHidden()) {
-        const message = "Unable to copy document text when not in document viewing mode.";
-        alert(message);
-        return;
-    }
-
-    window.getSelection().empty();
-    const range = document.createRange();
-    const documentContainer = document.getElementById("document-container");
-    range.selectNode(documentContainer);
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().empty();
-
-    const message = "Successfully copied the document text to the clipboard.";
-    alert(message);
 }
 
 function isDocumentViewHidden() {
