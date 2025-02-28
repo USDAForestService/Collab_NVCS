@@ -63,6 +63,7 @@ app.whenReady().then(() => {
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
+  ipcMain.handle('open-browse-document', openBrowseDocumentDialog);
   ipcMain.handle('execute-tester', executeTester);
   ipcMain.handle('open-directory', openDirectory);
   ipcMain.handle('fetch-settings', fetchSettings);
@@ -237,8 +238,37 @@ async function openBrowseDialog(event, targetPath) {
   console.log(`- Target Browse Path: ${targetPath}`);
   const { cancelled, filePaths } = await dialog.showOpenDialog(mainWindow, {
     defaultPath: targetPath,
-    properties: ['openDirectory'],
-    promptToCreate: true
+    properties: [
+      'openDirectory'
+    ],
+  });
+
+  console.log("- RETURNING RESULTS");
+  const path = !cancelled ? filePaths[0] : null;
+  return path;
+}
+
+async function openBrowseDocumentDialog(event, targetPath) {
+  console.log("INVOKED: openBrowseDocumentDialog");
+
+  console.log(`- Target Browse Path: ${targetPath}`);
+  const { cancelled, filePaths } = await dialog.showOpenDialog(mainWindow, {
+    defaultPath: targetPath,
+    buttonLabel: "Save",
+    properties: [
+      'openFile',
+      'promptToCreate'
+    ],
+    filters: [
+      { 
+        name: "Documents",
+        extensions: ['docx']
+      },
+      {
+        name: "All Files",
+        extensions: ["*"]
+      }
+    ]
   });
 
   console.log("- RETURNING RESULTS");
@@ -492,11 +522,7 @@ async function getApplicationVersion() {
 async function saveDocumentWordFormat(event, targetPath, html) {
   console.log("INVOKED: saveDocumentWordFormat");
 
-  if (!fs.existsSync(targetPath))
-    throw new Error("Provided path does not exist:", targetPath);
-
-  const joinedPath = path.join(targetPath, "word-format.docx");
-  const fullTargetPath = path.resolve(joinedPath);
+  const fullTargetPath = path.resolve(targetPath);
   console.log("- Full Target Path:", fullTargetPath);
 
   const headerString = null;

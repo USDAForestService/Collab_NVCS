@@ -2237,6 +2237,17 @@ async function openBrowseDialog(targetPath = "") {
     }
 }
 
+async function openBrowseDocumentDialog(targetPath = "") {
+    try {
+        const returnedData = await window.electronAPI.openBrowseDocument(targetPath);
+        return returnedData;
+    }
+    catch (error) {
+        alert(error);
+        return null;
+    }
+}
+
 let datalistDetails = [];
 function getDatalistDetails(listId) {
     let datalistDetail = datalistDetails.filter(i => i.id == listId)[0];

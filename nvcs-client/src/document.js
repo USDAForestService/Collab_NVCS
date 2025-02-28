@@ -877,7 +877,7 @@ function isDocumentViewHidden() {
 async function saveDocumentWordFormat() {
     try {
         const inputPath = document.getElementById("json-directory-path");
-        const browsePath = await openBrowseDialog(inputPath.value);
+        const browsePath = await openBrowseDocumentDialog(inputPath.value);
         if (!browsePath) return;
 
         const updateWarning = "Are you sure you want to save the Word document to this directory? " +
@@ -910,6 +910,6 @@ function prepareDocumentHtmlForString(htmlString) {
     const separator = `<span class="separator"></span>`;
     const separateReplace = `<span> .......... </span>`;
     cleaned = cleaned.replaceAll(separator, separateReplace);
-    
+
     return cleaned;
 }

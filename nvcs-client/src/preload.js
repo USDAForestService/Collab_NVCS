@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     updateJson: (directory, json, changes, documentStructure) => ipcRenderer.invoke('update-json', directory, json, changes, documentStructure),
     fetchSpecies: () => ipcRenderer.invoke('fetch-species'),
     openBrowse: (targetPath) => ipcRenderer.invoke('open-browse', targetPath),
+    openBrowseDocument: (targetPath) => ipcRenderer.invoke('open-browse-document', targetPath),
     executeTester: (targetPath, testSettings) => ipcRenderer.invoke('execute-tester', targetPath, testSettings),
     openDirectory: (targetPath) => ipcRenderer.invoke('open-directory', targetPath),
     fetchSettings: () => ipcRenderer.invoke('fetch-settings'),
