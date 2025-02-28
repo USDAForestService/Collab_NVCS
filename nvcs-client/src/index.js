@@ -63,7 +63,8 @@ app.whenReady().then(() => {
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
-  ipcMain.handle('open-browse-document', openBrowseDocumentDialog);
+  ipcMain.handle('open-save-directory', openSaveDirectoryDialog);
+  ipcMain.handle('open-save-document', openSaveDocumentDialog);
   ipcMain.handle('execute-tester', executeTester);
   ipcMain.handle('open-directory', openDirectory);
   ipcMain.handle('fetch-settings', fetchSettings);
@@ -238,6 +239,7 @@ async function openBrowseDialog(event, targetPath) {
   console.log(`- Target Browse Path: ${targetPath}`);
   const { cancelled, filePaths } = await dialog.showOpenDialog(mainWindow, {
     defaultPath: targetPath,
+    title: "Open JSON Directory",
     properties: [
       'openDirectory'
     ],
@@ -248,17 +250,33 @@ async function openBrowseDialog(event, targetPath) {
   return path;
 }
 
-async function openBrowseDocumentDialog(event, targetPath) {
-  console.log("INVOKED: openBrowseDocumentDialog");
+async function openSaveDirectoryDialog(event, targetPath) {
+  console.log("INVOKED: openSaveDirectoryDialog");
 
-  console.log(`- Target Browse Path: ${targetPath}`);
+  console.log(`- Target Save Path: ${targetPath}`);
   const { cancelled, filePaths } = await dialog.showOpenDialog(mainWindow, {
     defaultPath: targetPath,
     buttonLabel: "Save",
+    title: "Save JSON Directory",
     properties: [
-      'openFile',
-      'promptToCreate'
-    ],
+      'openDirectory',
+    ]
+  });
+
+  console.log("- RETURNING RESULTS");
+  const path = !cancelled ? filePaths[0] : null;
+  return path;
+}
+
+
+async function openSaveDocumentDialog(event, targetPath) {
+  console.log("INVOKED: openSaveDocumentDialog");
+
+  console.log(`- Target Save Path: ${targetPath}`);
+  const { cancelled, filePath } = await dialog.showSaveDialog(mainWindow, {
+    defaultPath: targetPath,
+    buttonLabel: "Save",
+    title: "Save Word Document",
     filters: [
       { 
         name: "Documents",
@@ -272,7 +290,7 @@ async function openBrowseDocumentDialog(event, targetPath) {
   });
 
   console.log("- RETURNING RESULTS");
-  const path = !cancelled ? filePaths[0] : null;
+  const path = !cancelled ? filePath : null;
   return path;
 }
 

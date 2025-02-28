@@ -1025,7 +1025,7 @@ function markValidationFields(newMarkedElements, focusFirst) {
 
 async function updateJson() {
     const inputPath = document.getElementById("json-directory-path");
-    const browsePath = await openBrowseDialog(inputPath.value);
+    const browsePath = await openSaveDirectoryDialog(inputPath.value);
     if (!browsePath) return;
 
     const updateWarning = "Are you sure you want to save changes to this directory? " +
@@ -2237,9 +2237,20 @@ async function openBrowseDialog(targetPath = "") {
     }
 }
 
-async function openBrowseDocumentDialog(targetPath = "") {
+async function openSaveDirectoryDialog(targetPath = "") {
     try {
-        const returnedData = await window.electronAPI.openBrowseDocument(targetPath);
+        const returnedData = await window.electronAPI.openSaveDirectory(targetPath);
+        return returnedData;
+    }
+    catch (error) {
+        alert(error);
+        return null;
+    }
+}
+
+async function openSaveDocumentDialog(targetPath = "") {
+    try {
+        const returnedData = await window.electronAPI.openSaveDocument(targetPath);
         return returnedData;
     }
     catch (error) {

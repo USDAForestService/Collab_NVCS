@@ -877,11 +877,11 @@ function isDocumentViewHidden() {
 async function saveDocumentWordFormat() {
     try {
         const inputPath = document.getElementById("json-directory-path");
-        const browsePath = await openBrowseDocumentDialog(inputPath.value);
+        const browsePath = await openSaveDocumentDialog(inputPath.value);
         if (!browsePath) return;
 
-        const updateWarning = "Are you sure you want to save the Word document to this directory? " +
-            "Any previously saved word documents within this directory will be overwritten.";
+        const updateWarning = "Are you sure you want to save the Word document to this path? " +
+            "Any previously saved word documents at this path will be overwritten.";
         if (!await confirm(updateWarning))
             return;
 
