@@ -93,6 +93,15 @@ main {
   border: 1px solid lightgrey;
 }
 
+.hierarchy-action-button-container {
+  display: flex;
+  gap: 5px;
+}
+
+.vertical-divide {
+  border-left: 1px solid gray;
+}
+
 .label-content-container {
   display: flex;
   gap: 5px;
