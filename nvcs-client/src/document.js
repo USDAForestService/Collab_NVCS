@@ -922,8 +922,16 @@ async function saveDocumentWordFormat() {
 }
 
 function prepareDocumentHtmlForString(htmlString) {
+    let cleaned = htmlString;
+
     // Remove any Edit buttons
     const regex = /<button class="document-content-edit-btn"(.*)<\/button>/g;
-    const cleaned = htmlString.replaceAll(regex, "");
+    cleaned = cleaned.replaceAll(regex, "");
+
+    // Replace CSS separators with text
+    const separator = `<span class="separator"></span>`;
+    const separateReplace = `<span> .......... </span>`;
+    cleaned = cleaned.replaceAll(separator, separateReplace);
+    
     return cleaned;
 }
