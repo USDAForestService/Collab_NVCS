@@ -52,11 +52,24 @@ function hideDocumentForm() {
     showContentById("detected-json-container");
 }
 
-function openDocumentDialog() {
+function openDocumentDialog(sectionName = null, index = null) {
     unsavedDocumentStructure = documentStructure;
     populateDocumentDialog();
     const dialog = document.getElementById("document-dialog");
     showDialog(dialog);
+
+    // If provided, focus specific elements within the dialog
+    if (sectionName && index) {
+        const section = document.querySelector(`[data-section="${sectionName}"]`);
+        const content = section.querySelector(`[data-index="${index}"]`);
+        const contentInput = content.querySelector(`input, textarea, select`);
+        contentInput.focus();
+    }
+    else if (sectionName) {
+        const section = document.querySelector(`[data-section="${sectionName}"]`);
+        const sectionInput = section.querySelector(`[id^="section-name-"]`);
+        sectionInput.focus();
+    }
 }
 
 function populateDocumentDialog() {
@@ -66,7 +79,7 @@ function populateDocumentDialog() {
     for (const section of unsavedDocumentStructure.sections) {
         // New section prep
         const identifier = newGuid();
-        html += `<div id='${identifier}' class='document-section'>`;
+        html += `<div id='${identifier}' class='document-section' data-section="${section.name}">`;
 
         // Section Name
         html += `
@@ -85,8 +98,10 @@ function populateDocumentDialog() {
 
         // Existing Content
         html += "<div class='document-section-content'>";
-        for (const content of section.content)
-            html += generateDocumentEditorContent(content)
+        for (let i = 0; i < section.content.length; i++) {
+            const content = section.content[i];
+            html += generateDocumentEditorContent(content, i)
+        }
         html += "</div>";
 
         // Add Content Settings
@@ -120,21 +135,21 @@ function populateDocumentDialog() {
     body.innerHTML = html;
 }
 
-function generateDocumentEditorContent(item) {
+function generateDocumentEditorContent(item, index) {
     let html = "";
 
     switch (item.type) {
         case "element":
-            html += generateDocumentEditorElementContent(item);
+            html += generateDocumentEditorElementContent(item, index);
             break;
         case "header":
-            html += generateDocumenEditortHeaderContent(item);
+            html += generateDocumenEditortHeaderContent(item, index);
             break;
         case "skeletal":
-            html += generateDocumentEditorSkeletalContent(item);
+            html += generateDocumentEditorSkeletalContent(item, index);
             break;
         case "text":
-            html += generateDocumentEditorTextContent(item);
+            html += generateDocumentEditorTextContent(item, index);
             break;
         default:
             throw new Error("Invalid type provided", item.type);
@@ -143,7 +158,7 @@ function generateDocumentEditorContent(item) {
     return html;
 }
 
-function generateDocumentEditorElementContent(item) {
+function generateDocumentEditorElementContent(item, index) {
     const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
     const inputValue = element ? element.hierarchyName : "";
     const identifier = newGuid();
@@ -153,7 +168,7 @@ function generateDocumentEditorElementContent(item) {
     const headerTag = item.headerTag ?? "";
 
     let html = `
-        <div id='document-content-${identifier}' class='document-content document-element'>
+        <div id='document-content-${identifier}' class='document-content document-element' data-index="${index}">
             <div class='input-container' style='flex-wrap: wrap;'>
                 <label for='element-source-${identifier}'>Root Element:</label>
                 <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
@@ -177,7 +192,7 @@ function generateDocumentEditorElementContent(item) {
     return html;
 }
 
-function generateDocumenEditortHeaderContent(item) {
+function generateDocumenEditortHeaderContent(item, index) {
     const identifier = newGuid();
     let levelOptions = "";
     for (let i = 1; i <= 6; i++) {
@@ -186,7 +201,7 @@ function generateDocumenEditortHeaderContent(item) {
     }
 
     let html = `
-        <div id='document-content-${identifier}'  class='document-content document-header'>
+        <div id='document-content-${identifier}' class='document-content document-header' data-index="${index}">
             <div class='input-container'>
                 <label for='header-content-${identifier}'>Header Content:</label>
                 <input id='header-content-${identifier}' type="text" value='${item.content}'/>
@@ -206,12 +221,12 @@ function generateDocumenEditortHeaderContent(item) {
     return html;
 }
 
-function generateDocumentEditorSkeletalContent(item) {
+function generateDocumentEditorSkeletalContent(item, index) {
     const identifier = newGuid();
     const checked = item.content ? "checked" : "";
     
     let html = `
-        <div id='document-content-${identifier}' class='document-content document-skeletal'>
+        <div id='document-content-${identifier}' class='document-content document-skeletal' data-index="${index}">
             <div class='input-container'>
                 <label for='skeletal-content-${identifier}'>Enable Skeletal List for Section Elements:</label>
                 <input id='skeletal-content-${identifier}' type="checkbox" ${checked} />
@@ -227,12 +242,12 @@ function generateDocumentEditorSkeletalContent(item) {
     return html;
 }
 
-function generateDocumentEditorTextContent(item) {
+function generateDocumentEditorTextContent(item, index) {
     const identifier = newGuid();
     const joinedContent = item.content.join("\r\n");
 
     let html = `
-        <div id='document-content-${identifier}' class='document-content document-text'>
+        <div id='document-content-${identifier}' class='document-content document-text' data-index="${index}">
             <div class='input-container'>
                 <label for='text-content-${identifier}'>Text Content:</label>
                 <textarea id='text-content-${identifier}'>${joinedContent}</textarea>
@@ -304,16 +319,16 @@ function generateDocumentSection(section) {
         const content = section.content[i];
         switch (content.type) {
             case "element":
-                html += generateDocumentElement(content, i);
+                html += generateDocumentElement(content, i, section.name);
                 break;
             case "header":
-                html += generateDocumentHeader(content, i);
+                html += generateDocumentHeader(content, i, section.name);
                 break;
             case "skeletal":
-                html += generateDocumentSkeletal(content, section.content, i);
+                html += generateDocumentSkeletal(content, section.content, i, section.name);
                 break;
             case "text":
-                html += generateDocumentText(content, i);
+                html += generateDocumentText(content, i, section.name);
                 break;
             default:
                 throw new Error("Invalid type provided", content.type);
@@ -327,14 +342,22 @@ function generateDocumentSection(section) {
     return html;
 }
 
-function generateDocumentElement(content, index) {
+function generateDocumentEditButton(sectionName, contentIndex) {
+    let html = `
+        <button class='document-content-edit-btn' onclick="openDocumentDialog('${sectionName}', ${contentIndex})">Edit</button>
+    `;
+    return html;
+} 
+
+function generateDocumentElement(content, index, sectionName) {
     const element = hierarchy.filter(i => i.hierarchyName == content.content)[0];
     let html = `
-        <div class="document-element-container" data-index="${index}">
+        <div class="document-element-container document-content-edit-container" data-index="${index}">
     `;
 
+    html += generateDocumentEditButton(sectionName, index);
     html += generateDocumentDescriptionByElement(element, content.descendantLimitType, content.isHeader, content.isHeader, content.headerTag);
-    
+
     html += `
         </div>
     `;
@@ -476,12 +499,14 @@ function getElementsByContent(content) {
     return elements;
 }
 
-function generateDocumentHeader(content, index) {
+function generateDocumentHeader(content, index, sectionName) {
     const headerText = content.content;
     const headerLevel = content.level;
+    const editButton = generateDocumentEditButton(sectionName, index);
 
     let html = `
-        <div class="document-header-container" data-index="${index}">
+        <div class="document-header-container document-content-edit-container" data-index="${index}">
+            ${editButton}
             <h${headerLevel}>${headerText}</h${headerLevel}>
         </div>
     `;
@@ -516,12 +541,14 @@ function getHeaderTagsForElement(hierarchyElement, headerTag) {
     }
 }
 
-function generateDocumentSkeletal(content, sectionContent, index) {
+function generateDocumentSkeletal(content, sectionContent, index, sectionName) {
     if (!content.content)
         return "";
 
+    const editButton = generateDocumentEditButton(sectionName, index);
     let html = `
-        <div class="document-skeletal-container" data-index="${index}">
+        <div class="document-skeletal-container document-content-edit-container" data-index="${index}">
+            ${editButton}
             <ul class='skeletal-list-root'>
     `;
 
@@ -564,11 +591,13 @@ function generateDocumentNamesForElement(element, descendantLimitType, headerTag
     return html;
 }
 
-function generateDocumentText(content, index) {
+function generateDocumentText(content, index, sectionName) {
     const text = content.content;
+    const editButton = generateDocumentEditButton(sectionName, index);
 
     let html = `
-        <div class="document-text-container" data-index="${index}">
+        <div class="document-text-container document-content-edit-container" data-index="${index}">
+            ${editButton}
             <p>${text}</p>
         </div>
     `;

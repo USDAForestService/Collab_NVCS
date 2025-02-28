@@ -78,3 +78,13 @@
 .element-content-cell {
     width: 90%;   
 }
+
+.document-content-edit-container {
+    position: relative;
+}
+
+.document-content-edit-btn {
+    position: absolute;
+    left: -55px;
+    height: fit-content;
+}
