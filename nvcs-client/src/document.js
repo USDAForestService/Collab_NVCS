@@ -907,7 +907,8 @@ async function saveDocumentWordFormat() {
         if (!await confirm(updateWarning))
             return;
 
-        const documentHtml = document.getElementById("document-container").innerHTML;
+        let documentHtml = document.getElementById("document-container").innerHTML;
+        documentHtml = prepareDocumentHtmlForString(documentHtml);
         const response = await electronAPI.saveDocumentWordFormat(browsePath, documentHtml);
         const message = `Successfully saved word document to: ${response}`;
         alert(message);
@@ -918,4 +919,11 @@ async function saveDocumentWordFormat() {
         alert(error);
         return;
     }
+}
+
+function prepareDocumentHtmlForString(htmlString) {
+    // Remove any Edit buttons
+    const regex = /<button class="document-content-edit-btn"(.*)<\/button>/g;
+    const cleaned = htmlString.replaceAll(regex, "");
+    return cleaned;
 }
