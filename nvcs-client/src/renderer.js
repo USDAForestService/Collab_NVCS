@@ -1941,7 +1941,9 @@ function checkNonexistentDocumentElements() {
         for (const element of info.elements) {
             html += `
                 <li>
-                    ${element.content}
+                    <button class='hierarchyNodeButton' onclick="openDocumentDialog('${info.section.name}','${element.index}')">
+                        ${element.sectionElement.content}
+                    </button>
                 </li>
             `;
         }
@@ -2216,7 +2218,12 @@ function findNonexistentDocumentElements() {
         for (const sectionElement of entry.sectionElements) {
             const associatedElement = hierarchy.filter(i => i.hierarchyName == sectionElement.content)[0];
             if (associatedElement) continue;
-            invalidElements.push(sectionElement);
+
+            const sectionElementIndex = entry.section.content.indexOf(sectionElement);
+            invalidElements.push({
+                sectionElement: sectionElement,
+                index: sectionElementIndex
+            });
         }
 
         if (invalidElements.length == 0) continue;
