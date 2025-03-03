@@ -347,8 +347,14 @@ function generateDocumentEditButton(sectionName, contentIndex) {
 } 
 
 function generateDocumentElement(content, index, sectionName) {
+    let html = "";
     const element = hierarchy.filter(i => i.hierarchyName == content.content)[0];
-    let html = `
+    if (!element) {
+        console.error("Unable to find a hierarchy element for the given content name:", content.content);
+        return html;
+    }
+
+    html += `
         <div class="document-element-container document-content-edit-container" data-index="${index}">
     `;
 
@@ -483,8 +489,14 @@ function getEligibleTypesByLimit(type) {
 }
 
 function getElementsByContent(content) {
+    let elements = [];
     const element = hierarchy.filter(i => i.hierarchyName == content.content)[0];
-    let elements = [ element ];
+    if (!element) {
+        onsole.error("Unable to find a hierarchy element for the given content name:", content.content);
+        return elements;
+    }
+
+    elements.push(element);
     if (content.descendantLimitType == "None")
         return elements;
 
@@ -522,6 +534,10 @@ function getHeaderTagsForElements(sectionContent) {
     const allSectionElements = sectionContent.filter(i => i.type == "element");
     for (const sectionElement of allSectionElements) {
         const hierarchyElement = hierarchy.filter(i => i.hierarchyName == sectionElement.content)[0];
+        if (!hierarchyElement) {
+            console.error("Unable to find a hierarchy element for the given content name:", sectionContent.content);
+            continue;
+        }
         getHeaderTagsForElement(hierarchyElement, sectionElement.headerTag);
     }
     return headerTags;
@@ -551,6 +567,11 @@ function generateDocumentSkeletal(content, sectionContent, index, sectionName) {
 
     for (const item of sectionContent.filter(i => i.type == "element")) {
         const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
+        if (!element) {
+            console.error("Unable to find a hierarchy element for the given content name:", item.content);
+            continue;
+        }
+
         html += generateDocumentNamesForElement(element, item.descendantLimitType, item.headerTag);
     }
 
