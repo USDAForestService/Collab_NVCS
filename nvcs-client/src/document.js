@@ -492,7 +492,7 @@ function getElementsByContent(content) {
     let elements = [];
     const element = hierarchy.filter(i => i.hierarchyName == content.content)[0];
     if (!element) {
-        onsole.error("Unable to find a hierarchy element for the given content name:", content.content);
+        console.error("Unable to find a hierarchy element for the given content name:", content.content);
         return elements;
     }
 

@@ -1395,6 +1395,9 @@ function checkForProblems() {
     checkDuplicateNodeIds();
     checkInvalidSpeciesWarning();
 
+    // Check document errors
+    checkNonexistentDocumentElements();
+
     // Check document warnings
     checkMissingElementsInDocument();
     checkUnlabeledElementsInDocument();
@@ -1906,6 +1909,56 @@ function checkInvalidSpeciesWarning() {
     createWarning("invalid-species", html, invalidSpeciesInfo);
 }
 
+function checkNonexistentDocumentElements() {
+    const nonexistentElementsInfo = findNonexistentDocumentElements();
+    if (nonexistentElementsInfo.length == 0)
+        return;
+    console.error("Invalid nonexistent elements info", nonexistentElementsInfo);
+
+    let invalidReferenceCount = 0;
+    for (const section of nonexistentElementsInfo)
+        invalidReferenceCount += section.elements.length;
+
+    let html = `
+        <p>
+            There are ${invalidReferenceCount} references to nonexistent hierarchy elements in the current document settings!
+            Renamed or removed hierarchy elements will need to be manually dereferenced from the document editor dialog.
+            <button id='btn-toggle-nested-nonexistent-document-elements-errors' aria-describedby="nested-nonexistent-document-elements-errors" aria-controls='nested-nonexistent-document-elements-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-nonexistent-document-elements-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Nonexistent Document Elements" hidden>
+    `;
+
+    for (const info of nonexistentElementsInfo) {
+
+        html += `
+            <li class='border-box-list-item'>
+                ${info.section.name}
+                <ul>
+        `;
+
+        for (const element of info.elements) {
+            html += `
+                <li>
+                    ${element.content}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("nonexistent-document-elements", html, nonexistentElementsInfo);
+}
+
 function checkMissingElementsInDocument() {
     const missingElementsInfo = findMissingElementsInDocument();
     if (missingElementsInfo.length == 0)
@@ -2142,6 +2195,38 @@ function findInvalidFilters(availableKeys, availableValues) {
         }
     }
     return invalidInfo;
+}
+
+function findNonexistentDocumentElements() {
+    let invalid = [];
+
+    // Gather all sections and their document elements
+    const allSections = [];
+    for (const section of documentStructure.sections) {
+        const sectionElements = section.content.filter(i => i.type == "element");
+        allSections.push({
+            section: section,
+            sectionElements: sectionElements
+        });
+    }
+
+    // Record all sections and their document elements that don't reference a valid hierarchy element
+    for (const entry of allSections) {
+        const invalidElements = [];
+        for (const sectionElement of entry.sectionElements) {
+            const associatedElement = hierarchy.filter(i => i.hierarchyName == sectionElement.content)[0];
+            if (associatedElement) continue;
+            invalidElements.push(sectionElement);
+        }
+
+        if (invalidElements.length == 0) continue;
+        invalid.push({
+            elements: invalidElements,
+            section: entry.section
+        });
+    }
+
+    return invalid;
 }
 
 function findMissingElementsInDocument() {
