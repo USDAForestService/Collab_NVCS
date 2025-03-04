@@ -250,6 +250,19 @@ async function fetchJson(targetPath) {
     document.getElementById("btn-document-editor").disabled = false;
 }
 
+async function fetchDocumentStructure(targetPath) {
+    try {
+        const returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        const returnedDocumentStructure =  returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
+        return returnedDocumentStructure;
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
+}
+
 async function fetchSettings() {
     try {
         const response = await electronAPI.fetchSettings();

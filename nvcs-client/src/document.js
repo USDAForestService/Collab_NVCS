@@ -79,6 +79,15 @@ function populateDocumentDialog() {
     const dialog = document.getElementById("document-dialog");
     let html = "";
 
+    if (unsavedDocumentStructure.sections.length == 0) {
+        html += `
+            <p>
+                Your document is currently empty. Please begin by adding new sections from scratch or
+                by clicking the "Reset All" button below to load in a prepackaged document template.
+            </p>
+        `;
+    }
+
     for (const section of unsavedDocumentStructure.sections) {
         // New section prep
         const identifier = newGuid();
@@ -900,6 +909,19 @@ async function saveDocumentChanges() {
     
     generatePages(hierarchy);
     document.getElementById("document-dialog").close();
+}
+
+async function resetDocumentChanges() {
+    const confirmSaveMessage = "Are you sure you wanted to reset all document changes to the prepackaged template?";
+    if (!await confirm(confirmSaveMessage))
+        return;
+
+    documentStructure = await fetchDocumentStructure();
+    stateChecker.modified = true;
+    unsavedDocumentDialogChanges = false;
+
+    openDocumentDialog();
+    generatePages(hierarchy);
 }
 
 function isDocumentViewHidden() {
