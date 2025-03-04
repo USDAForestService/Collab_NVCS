@@ -16,6 +16,12 @@ document.getElementById("document-dialog").addEventListener("close", async (even
 
 document.getElementById("document-dialog").addEventListener("input", (event) => {
     unsavedDocumentDialogChanges = true;
+    // Only perform validations on saveable input and textarea fields
+    if (!(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)) 
+        return;
+    if (event.target.classList.contains("skip-validation")) 
+        return;
+    performDocumentDialogValidations(false);
 });
 
 function toggleDocumentForm() {
@@ -130,6 +136,9 @@ function populateDocumentDialog() {
     // Apply HTML
     const body = dialog.querySelector(".body-container");
     body.innerHTML = html;
+
+    // Perform dialog validations
+    performDocumentDialogValidations();
 }
 
 function generateDocumentEditorContent(item, index) {
@@ -157,7 +166,7 @@ function generateDocumentEditorContent(item, index) {
 
 function generateDocumentEditorElementContent(item, index) {
     const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
-    const inputValue = element ? element.hierarchyName : "";
+    const inputValue = item.content;
     const identifier = newGuid();
     const descendantOptions = ["None", "Division", "Macrogroup", "Group"];
     const descendantOptionsHtml = createOptions(descendantOptions, item.descendantLimitType);

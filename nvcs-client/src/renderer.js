@@ -861,6 +861,41 @@ function performDialogValidations(displayAlert) {
     return hasNoErrors;
 }
 
+function performDocumentDialogValidations(displayAlert) {
+    // Prepare for new validations
+    clearMarkedValidationFields();
+    let hasNoErrors = true;
+    let newMarkedElements = [];
+
+    // Find invalid elements within the document dialog
+    newMarkedElements = findInvalidsForElementDescription(newMarkedElements);
+
+    // Mark invalid fields
+    markValidationFields(newMarkedElements, displayAlert);
+
+    // Extract unique error messages if they exist
+    let uniqueErrorMessages = [];
+    const messageObjects = newMarkedElements.map(i => i.messages);
+    for (const messageObject of messageObjects) {
+        const errorTypes = messageObject.filter(i => i.type == "error");
+        const newErrorMessages = errorTypes.map(i => i.message);
+        uniqueErrorMessages.push(...newErrorMessages);
+    }
+    uniqueErrorMessages = [...new Set(uniqueErrorMessages)];
+
+    // If requested and eligible, display an alert containing all unique errors
+    hasNoErrors = uniqueErrorMessages.length == 0;
+    if (displayAlert && !hasNoErrors) {
+        const newLineError = "\r\n -";
+        const joinedErrorMessages = uniqueErrorMessages.join(newLineError);
+        const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
+        alert(finalMessage);
+    }
+
+    return hasNoErrors;
+}
+
+
 function findInvalidsForNodeName(newMarkedElements) {
     const inputHierarchyName = document.getElementById("node-hierarchyName")
     const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
@@ -978,6 +1013,18 @@ function findInvalidsForNodeFilters(newMarkedElements) {
 
     return newMarkedElements;
 }
+
+function findInvalidsForElementDescription(newMarkedElements) {
+    const elementDescriptionInputs = document.querySelectorAll(`[id^="element-source"]`);
+    for (const elementDescriptionInput of [...elementDescriptionInputs]) {
+        const associatedElement = hierarchy.filter(i => i.hierarchyName == elementDescriptionInput.value)[0];
+        if (associatedElement) continue;
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, elementDescriptionInput, "Hierarchy element does not exist", "error");
+    }
+
+    return newMarkedElements
+}
+
 
 function addMarkedElementMessage(newMarkedElements, html, message, type) {
     const existingHtml = newMarkedElements.filter(i => i.html == html)[0];
@@ -1939,10 +1986,11 @@ function checkNonexistentDocumentElements() {
         `;
 
         for (const element of info.elements) {
+            const buttonText = element.sectionElement.content != "" ? element.sectionElement.content : "(blank)";
             html += `
                 <li>
                     <button class='hierarchyNodeButton' onclick="openDocumentDialog('${info.section.name}','${element.index}')">
-                        ${element.sectionElement.content}
+                        ${buttonText}
                     </button>
                 </li>
             `;
