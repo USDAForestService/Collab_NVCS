@@ -631,7 +631,7 @@ function generateDocumentNamesForElement(element, descendantLimitType, headerTag
 }
 
 function generateDocumentText(content, index, sectionName) {
-    const text = content.content;
+    const text = content.content.map(i => i.trim()).join("\n");
     const editButton = generateDocumentEditButton(sectionName, index);
 
     let html = `
