@@ -17,6 +17,13 @@
     align-items: center;
 }
 
+.document-element-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
 .element-container {
     display: flex;
     gap: 15px;

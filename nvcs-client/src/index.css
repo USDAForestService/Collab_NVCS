@@ -27,6 +27,7 @@ main {
   background-color: #B40000;
   color: white;
   font-weight: bold;
+  z-index: 999;
 }
 
 .loading-icon {
@@ -359,6 +360,7 @@ dialog:not([open]) {
   margin-bottom: 2px;
 }
 
+.document-section .input-container select,
 .document-section .input-container textarea,
 .document-section .input-container input[type='text'] {
   flex: 1;

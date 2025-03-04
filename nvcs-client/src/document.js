@@ -165,7 +165,6 @@ function generateDocumentEditorContent(item, index) {
 }
 
 function generateDocumentEditorElementContent(item, index) {
-    const element = hierarchy.filter(i => i.hierarchyName == item.content)[0];
     const inputValue = item.content;
     const identifier = newGuid();
     const descendantOptions = ["None", "Division", "Macrogroup", "Group"];
@@ -175,17 +174,21 @@ function generateDocumentEditorElementContent(item, index) {
 
     let html = `
         <div id='document-content-${identifier}' class='document-content document-element' data-index="${index}">
-            <div class='input-container' style='flex-wrap: wrap;'>
-                <label for='element-source-${identifier}'>Root Element:</label>
-                <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
-                <label for='element-header-tag-${identifier}'>Root Header Tag:</label>
-                <input id='element-header-tag-${identifier} type='text' value='${headerTag}' />
-                <label for='element-descendants-type-${identifier}'>Include Descendants of Type:</label>
-                <select id='element-descendants-type-${identifier}'>
-                    ${descendantOptionsHtml}
-                </select>
-                <label for='element-as-header-${identifier}'>Make Root Into Header:</label>
-                <input id='element-as-header-${identifier}' type='checkbox'  ${isHeaderChecked} />
+            <div class="document-element-input-container">
+                <div class='input-container'>
+                    <label for='element-source-${identifier}'>Root Element:</label>
+                    <input id='element-source-${identifier}' type='text' list='full-hierarchy-list' value='${inputValue}'/>
+                    <label for='element-header-tag-${identifier}'>Root Header Tag:</label>
+                    <input id='element-header-tag-${identifier} type='text' value='${headerTag}' />
+                </div>
+                <div class='input-container'>
+                    <label for='element-descendants-type-${identifier}'>Include Descendant Elements of Type:</label>
+                    <select id='element-descendants-type-${identifier}'>
+                        ${descendantOptionsHtml}
+                    </select>
+                    <label for='element-as-header-${identifier}'>Display Root Element Name As Header:</label>
+                    <input id='element-as-header-${identifier}' type='checkbox'  ${isHeaderChecked} />
+                </div>
             </div>
             <div class='button-container'>
                 <button onclick="deleteDocumentContent('${identifier}')">Delete</button>
