@@ -4213,7 +4213,7 @@ def element_079():
     #   OR 
     #   c.  Any EXOTIC = yes tree species =>80% RIV
     # 
-    # TRANSLATES TO:
+    # ###TRANSLATES TO:
     # 
     # Plot location and tree composition are as follows:
     # STRONG DIAGNOSTICS RIV 50% or more

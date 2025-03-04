@@ -1,7 +1,7 @@
 {
   "name": "nvcs-configuration-tool",
   "productName": "NVCS Configuration Tool",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "NVCS Configuration Tool",
   "main": "src/index.js",
   "scripts": {
@@ -30,6 +30,7 @@
   "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
+    "html-to-docx": "^1.8.0",
     "ini": "^5.0.0"
   }
 }

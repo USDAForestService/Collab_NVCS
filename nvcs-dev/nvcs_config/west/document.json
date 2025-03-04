@@ -1,0 +1,863 @@
+{
+    "sections": [
+        {
+            "name": "sectionZero",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION 0. EASTERN SECTION VS. WESTERN SECTION",
+                    "level": "1"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Insert narrative text"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sectionOne",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION I. KEY TO PLANTATION VS. NATURAL [WESTERN SECTION]",
+                    "level": "1"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "A summary of the forest plantation types is provided in Table xx."
+                    ]
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "[work with FIA staff to determine what is needed for plantation types in west.]"
+                    ]
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Forest types are separated first into plantation versus natural types. FIA field crews ",
+                        "make that call in the field, and we rely entirely on that call to make the distinction. The ",
+                        "plantation label is sometimes applied to failed plantations that may now be dominated by ",
+                        "non-plantation species (typically hardwoods), to stands in very early stages of planting (and thus ",
+                        "dominated by native conifers or hardwoods) or to transitional areas that are on the edge of the ",
+                        "plantation. Likewise, failed attempts to establish plantations may become obscured following ",
+                        "subsequent natural regeneration, in such cases, FIA field crews observe no plantation evidence and ",
+                        "label stand origin as natural regeneration, possibly conflicting with, or updating, historical stand ",
+                        "records (which are not utilized in this classification)."
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Forest Plantations",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Natural (including ruderal) Forests",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                }
+            ]
+        },
+        {
+            "name": "sectionTwo",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION II. KEY TO FORESTED VS. NON-FORESTED [WESTERN SECTION]",
+                    "level": "1"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "IF RIV = 0 AND TTCOV <= 20%, then \"Possibly Regenerating\""
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sectionThree",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION III. KEY TO UPLAND VS. WETLAND [WESTERN SECTION]",
+                    "level": "1"
+                },
+                {
+                    "type": "element",
+                    "content": "Wetland Forest & Woodlands",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Upland Forest & Woodlands",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                }
+            ]
+        },
+        {
+            "name": "sectionFour",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION IV. KEY TO NATURAL UPLAND FOREST & WOODLAND DIVISIONS",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "IV.1. Skeletal Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "IV.2. Detailed Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Please read the introduction to understand the approach used in the key."
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Temperate & Boreal Forest & Woodland Subclass",
+                    "descendantLimitType": "Division",
+                    "isHeader": false,
+                    "headerTag": ""
+                }
+            ]
+        },
+        {
+            "name": "sectionFive",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION V. KEY TO NATURAL WETLAND FOREST DIVISIONS ",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "V.1. Skeletal Version (wetland) ",
+                    "level": "2"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "[similar to uplands above]"
+                    ]
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "V.2. Detailed Version (wetland)",
+                    "level": "2"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Please read the introduction to understand the approach used in the key."
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Temperate Flooded & Swamp Forest Formation",
+                    "descendantLimitType": "Division",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "Not as above, assign to uplands (generally riverine or hydric setting with upland species)  Section IV"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "sectionSix",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION VI. KEYS TO UPLAND FOREST & WOODLAND MACROGROUPS",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "VI.1. Skeletal Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "VI.2. Detailed Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "header",
+                    "content": "E1.Southeastern North American Forest & Woodland Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Southeastern North American Ruderal Forest (M305)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "E2.Eastern North American Forest & Woodland Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Eastern North American Forest & Woodland Natural Forests",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Eastern North American Ruderal Forests",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "Eastern North American Forest & Woodland Natural Forests and Woodlands",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Central Midwest Oak Forest, Woodland & Savanna (M012)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Southern & South-Central Oak - Pine Forest & Woodland (M016)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "Eastern North American Ruderal Forests ",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Eastern North American Ruderal Forest (M013)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "E3. North American Great Plains Forest & Woodland Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Revisit, should be Great Plains Forest & Woodland M151 in 17.1 but this seems to change in 17.2"
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Great Plains Ruderal Woodland (M524)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "Warm Temperate Forest & Woodlands",
+                    "level": "4"
+                },
+                {
+                    "type": "header",
+                    "content": "G1. Californian Forest and Woodland Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Californian Forest & Woodland (M009)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Californian Ruderal Forest (M513)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "G2. Madrean-Balconian Forest and Woodland Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Western North American Ruderal Forests - Madrean-Balconian",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: See if we need to add all Western North American Ruderal Forest types here"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Madrean-Balconian Natural Forests and Woodlands",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Madrean Lowland Evergreen Woodland (M010)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Madrean Montane Forest & Woodland (M011)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: See what happened to M015"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Cool Temperate Forest & Woodlands",
+                    "level": "4"
+                },
+                {
+                    "type": "header",
+                    "content": "H1. Pacific Coast Temperate Rainforest Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Pacific Coast Temperate Rainforest Division (D338)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Also review this section. Is this bottom node all the Western North American Ruderal Forest types? Also, did I get the Pacific Coast Temperate node above correct?"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Western North American Pinyon–Juniper Natural Woodlands",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Intermountain Pinyon-Juniper Woodland (M896)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "H3. Pacific Mountains Forest & Woodland Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: I don't see any direct references to either of these mentioned nodes"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Pacific Mountains Natural Forests and Woodlands",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Vancouverian Dry Foothill Forest & Woodland (M886)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Vancouverian Montane-Foothill Forest (M023)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "Pacific Mountains Ruderal Forests and Woodlands",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Vancouverian Ruderal Forest (M405)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "H4. Rocky Mountain Foothills & Montane Forest & Woodland Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Rocky Mountain Foothills & Montane Forest & Woodland (D337)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Again, which Western North American Ruderal Forests?"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Rocky Mountain Foothills & Montane Forest & Woodland",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Rocky Mountain Lower Montane Forest (M022)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Central Rocky Mountain Mesic Lower Montane Forest (M500)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "H5. Western Cordilleran Subalpine-High Montane Forest & Woodland",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Where's the ruderal variant here?"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Western Cordilleran Subalpine-High Montane Forest & Woodland",
+                    "level": "4"
+                },
+                {
+                    "type": "element",
+                    "content": "Rocky Mountain Subalpine-High Montane Forest (M020)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Vancouverian Subalpine-High Montane Forest (M025)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                }
+            ]
+        },
+        {
+            "name": "sectionSeven",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION VII. KEYS TO WETLAND FOREST MACROGROUPS",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "VII.1. Skeletal Version (wetland)",
+                    "level": "2"
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "VII.2. Detailed Version (wetland)",
+                    "level": "2"
+                },
+                {
+                    "type": "header",
+                    "content": "K1. Eastern North American-Great Plains Flooded & Swamp Forest Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Great Plains Flooded & Swamp Forest (M028)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Eastern North American Ruderal Flooded & Swamp Forest (M302)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "K2. Southeastern North American Flooded & Swamp Forest Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Great Plains Floodplain Forest & Woodland (M154)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Southeastern North American Ruderal Flooded & Swamp Forest (M310)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "header",
+                    "content": "L1. Vancouverian Flooded & Swamp Forest Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Vancouverian Flooded & Swamp Forest (M035)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Which Western North American flooded ruderal forests?"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "L2. Rocky Mountain-Great Basin Montane Riparian & Swamp Forest Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Again, which Western North American flooded ruderal forests?"
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "L3. Western North American Interior Flooded Forest Macrogroups",
+                    "level": "3"
+                },
+                {
+                    "type": "element",
+                    "content": "Interior Warm & Cool Desert Riparian Forest (M036)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                },
+                {
+                    "type": "element",
+                    "content": "Interior West Ruderal Flooded & Swamp Forest & Woodland (M298)",
+                    "descendantLimitType": "None",
+                    "isHeader": false,
+                    "headerTag": ""
+                }
+            ]
+        },
+        {
+            "name": "sectionEight",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION VIII. KEYS TO UPLAND FOREST & WOODLAND GROUPS",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "VIII.1. Skeletal Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "VIII.2. Detailed Version (upland)",
+                    "level": "2"
+                },
+                {
+                    "type": "element",
+                    "content": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "E1"
+                },
+                {
+                    "type": "element",
+                    "content": "Central Midwest Oak Forest, Woodland & Savanna (M012)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "E2"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern & South-Central Oak - Pine Forest & Woodland (M016)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "E3"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Look into missing Great Plains M151 section"
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Californian Forest & Woodland (M009)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "G1"
+                },
+                {
+                    "type": "element",
+                    "content": "Madrean Lowland Evergreen Woodland (M010)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "G2"
+                },
+                {
+                    "type": "element",
+                    "content": "Madrean Montane Forest & Woodland (M011)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "G3"
+                },
+                {
+                    "type": "text",
+                    "content": [
+                        "TODO: Look into missing \"Balconian Forest & Woodland (M015)\" section"
+                    ]
+                },
+                {
+                    "type": "element",
+                    "content": "Vancouverian Coastal Rainforest (M024)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H1"
+                },
+                {
+                    "type": "element",
+                    "content": "Intermountain Pinyon-Juniper Woodland (M896)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H2"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H3"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Vancouverian Dry Foothill Forest & Woodland (M886)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H4"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Vancouverian Montane-Foothill Forest (M023)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H5"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Rocky Mountain Lower Montane Forest (M022)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H6"
+                },
+                {
+                    "type": "element",
+                    "content": "Central Rocky Mountain Mesic Lower Montane Forest (M500)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H7"
+                },
+                {
+                    "type": "element",
+                    "content": "Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H8"
+                },
+                {
+                    "type": "element",
+                    "content": "Vancouverian Subalpine-High Montane Forest (M025)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H9"
+                },
+                {
+                    "type": "element",
+                    "content": "Rocky Mountain Subalpine-High Montane Forest (M020)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "H10"
+                }
+            ]
+        },
+        {
+            "name": "sectionNine",
+            "content": [
+                {
+                    "type": "header",
+                    "content": "SECTION IX. KEYS TO WETLAND FOREST & WOODLAND GROUPS",
+                    "level": "1"
+                },
+                {
+                    "type": "header",
+                    "content": "IX.1. Skeletal Version (wetland)",
+                    "level": "2"
+                },
+                {
+                    "type": "skeletal",
+                    "content": true
+                },
+                {
+                    "type": "header",
+                    "content": "IX.2. Detailed Version (wetland)",
+                    "level": "2"
+                },
+                {
+                    "type": "element",
+                    "content": "Great Plains Flooded & Swamp Forest (M028)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "K1"
+                },
+                {
+                    "type": "element",
+                    "content": "Southern Great Plains Floodplain Forest & Woodland (M154)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "K2"
+                },
+                {
+                    "type": "element",
+                    "content": "Vancouverian Flooded & Swamp Forest (M035)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "L1"
+                },
+                {
+                    "type": "element",
+                    "content": "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "L2"
+                },
+                {
+                    "type": "element",
+                    "content": "Interior Warm & Cool Desert Riparian Forest (M036)",
+                    "descendantLimitType": "Group",
+                    "isHeader": true,
+                    "headerTag": "L3"
+                }
+            ]
+        }
+    ]
+}

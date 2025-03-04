@@ -4,13 +4,16 @@ const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electronAPI', {
     fetchExistingJson: (targetPath) => ipcRenderer.invoke('fetch-existing-json', targetPath),
-    updateJson: (directory, json, changes) => ipcRenderer.invoke('update-json', directory, json, changes),
+    updateJson: (directory, json, changes, documentStructure) => ipcRenderer.invoke('update-json', directory, json, changes, documentStructure),
     fetchSpecies: () => ipcRenderer.invoke('fetch-species'),
     openBrowse: (targetPath) => ipcRenderer.invoke('open-browse', targetPath),
+    openSaveDirectory: (targetPath) => ipcRenderer.invoke('open-save-directory', targetPath),
+    openSaveDocument: (targetPath) => ipcRenderer.invoke('open-save-document', targetPath),
     executeTester: (targetPath, testSettings) => ipcRenderer.invoke('execute-tester', targetPath, testSettings),
     openDirectory: (targetPath) => ipcRenderer.invoke('open-directory', targetPath),
     fetchSettings: () => ipcRenderer.invoke('fetch-settings'),
     fetchYears: () => ipcRenderer.invoke('fetch-years'),
     markUnsavedChanges: (value) => ipcRenderer.invoke('mark-unsaved-changes', value),
-    getApplicationVersion: () => ipcRenderer.invoke('get-application-version')
+    getApplicationVersion: () => ipcRenderer.invoke('get-application-version'),
+    saveDocumentWordFormat: (targetPath, html) => ipcRenderer.invoke('save-document-word-format', targetPath, html)
 });

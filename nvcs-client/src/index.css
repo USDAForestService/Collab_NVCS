@@ -27,6 +27,7 @@ main {
   background-color: #B40000;
   color: white;
   font-weight: bold;
+  z-index: 999;
 }
 
 .loading-icon {
@@ -91,6 +92,15 @@ main {
   background: beige;
   padding: 10px;
   border: 1px solid lightgrey;
+}
+
+.hierarchy-action-button-container {
+  display: flex;
+  gap: 5px;
+}
+
+.vertical-divide {
+  border-left: 1px solid gray;
 }
 
 .label-content-container {
@@ -340,7 +350,7 @@ dialog:not([open]) {
   height: fit-content;
   margin: 0;
   padding: 5px;
-  white-space: nowrap;
+  white-space: pre-wrap;
 }
 
 .dialog .input-container input[type='checkbox'] {
@@ -348,6 +358,16 @@ dialog:not([open]) {
   padding: 0;
   vertical-align: middle;
   margin-bottom: 2px;
+}
+
+.document-section .input-container select,
+.document-section .input-container textarea,
+.document-section .input-container input[type='text'] {
+  flex: 1;
+}
+
+.document-section-content {
+  padding-left: 50px;
 }
 
 option:disabled,
@@ -447,3 +467,6 @@ input:read-only {
   font-weight: bold;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}

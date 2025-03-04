@@ -33,6 +33,8 @@ let nodeJson;
 let nodeHierarchy;
 let hierarchy;
 let initialHierarchy;
+let documentStructure;
+let unsavedDocumentStructure;
 let availableSpecies;
 let availableYears;
 let testSettings;
@@ -176,6 +178,7 @@ async function fetchJson(targetPath) {
     }
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
+    documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
 
     // Generate objects from returned JSON and TXT data
     let hierarchySplit = nodeHierarchy.split('\r\n');
@@ -234,7 +237,7 @@ async function fetchJson(targetPath) {
 
     // Update HTML elements
     stateChecker.modified = false;
-    generateHierarchyHTML(hierarchy);
+    generatePages(hierarchy);
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-update-json").setAttribute("title", 
         "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
@@ -243,6 +246,21 @@ async function fetchJson(targetPath) {
     document.getElementById("btn-toggle-levels").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
+    document.getElementById("btn-show-document").disabled = false;
+    document.getElementById("btn-document-editor").disabled = false;
+}
+
+async function fetchDocumentStructure(targetPath) {
+    try {
+        const returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        const returnedDocumentStructure =  returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
+        return returnedDocumentStructure;
+    }
+    catch (error) {
+        console.error(error);
+        alert(error);
+        return;
+    }
 }
 
 async function fetchSettings() {
@@ -380,6 +398,15 @@ function createEmptyHierarchyElement() {
     return element;
 }
 
+function generatePages(hierarchy) {
+    // Generate page content
+    generateHierarchyHTML(hierarchy);
+    generateDocument();
+
+    // Display alerts if any
+    checkForProblems();
+}
+
 function generateHierarchyHTML(hierarchy) {
     // Update hierarchy node level colors
     updateLevelColorScale();
@@ -396,9 +423,6 @@ function generateHierarchyHTML(hierarchy) {
     // Display results
     let detectedJsonContainer = document.getElementById("detected-json-container");
     detectedJsonContainer.innerHTML = nodeDisplay;
-
-    // Display alerts if any
-    checkForProblems();
 }
 
 function generateAlerts() {
@@ -800,7 +824,7 @@ async function saveJsonChanges() {
     stateChecker.modified = true;
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
-    generateHierarchyHTML(hierarchy);
+    generatePages(hierarchy);
 }
 
 function performDialogValidations(displayAlert) {
@@ -849,6 +873,41 @@ function performDialogValidations(displayAlert) {
 
     return hasNoErrors;
 }
+
+function performDocumentDialogValidations(displayAlert) {
+    // Prepare for new validations
+    clearMarkedValidationFields();
+    let hasNoErrors = true;
+    let newMarkedElements = [];
+
+    // Find invalid elements within the document dialog
+    newMarkedElements = findInvalidsForElementDescription(newMarkedElements);
+
+    // Mark invalid fields
+    markValidationFields(newMarkedElements, displayAlert);
+
+    // Extract unique error messages if they exist
+    let uniqueErrorMessages = [];
+    const messageObjects = newMarkedElements.map(i => i.messages);
+    for (const messageObject of messageObjects) {
+        const errorTypes = messageObject.filter(i => i.type == "error");
+        const newErrorMessages = errorTypes.map(i => i.message);
+        uniqueErrorMessages.push(...newErrorMessages);
+    }
+    uniqueErrorMessages = [...new Set(uniqueErrorMessages)];
+
+    // If requested and eligible, display an alert containing all unique errors
+    hasNoErrors = uniqueErrorMessages.length == 0;
+    if (displayAlert && !hasNoErrors) {
+        const newLineError = "\r\n -";
+        const joinedErrorMessages = uniqueErrorMessages.join(newLineError);
+        const finalMessage = `The following errors were detected:${newLineError}${joinedErrorMessages}`;
+        alert(finalMessage);
+    }
+
+    return hasNoErrors;
+}
+
 
 function findInvalidsForNodeName(newMarkedElements) {
     const inputHierarchyName = document.getElementById("node-hierarchyName")
@@ -968,6 +1027,18 @@ function findInvalidsForNodeFilters(newMarkedElements) {
     return newMarkedElements;
 }
 
+function findInvalidsForElementDescription(newMarkedElements) {
+    const elementDescriptionInputs = document.querySelectorAll(`[id^="element-source"]`);
+    for (const elementDescriptionInput of [...elementDescriptionInputs]) {
+        const associatedElement = hierarchy.filter(i => i.hierarchyName == elementDescriptionInput.value)[0];
+        if (associatedElement) continue;
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, elementDescriptionInput, "Hierarchy element does not exist", "error");
+    }
+
+    return newMarkedElements
+}
+
+
 function addMarkedElementMessage(newMarkedElements, html, message, type) {
     const existingHtml = newMarkedElements.filter(i => i.html == html)[0];
     if (existingHtml) {
@@ -1014,7 +1085,7 @@ function markValidationFields(newMarkedElements, focusFirst) {
 
 async function updateJson() {
     const inputPath = document.getElementById("json-directory-path");
-    const browsePath = await openBrowseDialog(inputPath.value);
+    const browsePath = await openSaveDirectoryDialog(inputPath.value);
     if (!browsePath) return;
 
     const updateWarning = "Are you sure you want to save changes to this directory? " +
@@ -1035,7 +1106,7 @@ async function updateJson() {
     try {
         const changes = detectHierarchyChanges();
         console.log(changes)
-        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes);
+        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes, documentStructure);
         initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
@@ -1277,7 +1348,7 @@ async function deleteHierarchyElement() {
     stateChecker.modified = true;
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
-    generateHierarchyHTML(hierarchy);
+    generatePages(hierarchy);
 }
 
 function addHierarchyElement() {
@@ -1372,17 +1443,24 @@ function checkForProblems() {
     errors = [];
     warnings = [];
 
-    // Check errors
+    // Check hierarchy errors
     checkMissingRequiredFields();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
 
-    // Check warnings
+    // Check hierarchy warnings
     checkMissingNodeIdInNames();
     checkUnconventionalFileNames();
     checkDuplicateNodeIds();
     checkInvalidSpeciesWarning();
+
+    // Check document errors
+    checkNonexistentDocumentElements();
+
+    // Check document warnings
+    checkMissingElementsInDocument();
+    checkUnlabeledElementsInDocument();
 
     // Update alerts
     generateAlerts();
@@ -1891,6 +1969,128 @@ function checkInvalidSpeciesWarning() {
     createWarning("invalid-species", html, invalidSpeciesInfo);
 }
 
+function checkNonexistentDocumentElements() {
+    const nonexistentElementsInfo = findNonexistentDocumentElements();
+    if (nonexistentElementsInfo.length == 0)
+        return;
+    console.error("Invalid nonexistent elements info", nonexistentElementsInfo);
+
+    let invalidReferenceCount = 0;
+    for (const section of nonexistentElementsInfo)
+        invalidReferenceCount += section.elements.length;
+
+    let html = `
+        <p>
+            There are ${invalidReferenceCount} references to nonexistent hierarchy elements in the current document settings!
+            Renamed or removed hierarchy elements will need to be manually dereferenced from the document editor dialog.
+            <button id='btn-toggle-nested-nonexistent-document-elements-errors' aria-describedby="nested-nonexistent-document-elements-errors" aria-controls='nested-nonexistent-document-elements-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-nonexistent-document-elements-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Nonexistent Document Elements" hidden>
+    `;
+
+    for (const info of nonexistentElementsInfo) {
+
+        html += `
+            <li class='border-box-list-item'>
+                ${info.section.name}
+                <ul>
+        `;
+
+        for (const element of info.elements) {
+            const buttonText = element.sectionElement.content != "" ? element.sectionElement.content : "(blank)";
+            html += `
+                <li>
+                    <button class='hierarchyNodeButton' onclick="openDocumentDialog('${info.section.name}','${element.index}')">
+                        ${buttonText}
+                    </button>
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("nonexistent-document-elements", html, nonexistentElementsInfo);
+}
+
+function checkMissingElementsInDocument() {
+    const missingElementsInfo = findMissingElementsInDocument();
+    if (missingElementsInfo.length == 0)
+        return;
+    console.warn("Invalid missing elements info", missingElementsInfo);
+
+    let html = `
+        <p>
+            There are ${missingElementsInfo.length} hierarchy elements unaccounted for in the current document settings!
+            Elements should either be added directly into a section or encompassed by another element's descendant scope.
+            <button id='btn-toggle-nested-missing-document-elements-warnings' aria-describedby="nested-missing-document-elements-warnings" aria-controls='nested-missing-document-elements-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-missing-document-elements-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested Missing Document Elements" hidden>
+    `;
+
+    for (const info of missingElementsInfo) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (missing document element)");
+        const elementButton = cloneButton.outerHTML;
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `
+
+    createWarning("missing-document-elements", html, missingElementsInfo);
+}
+
+function checkUnlabeledElementsInDocument() {
+    const unlabeledElementsInfo = findUnlabeledElementsInDocument();
+    if (unlabeledElementsInfo.length == 0)
+        return;
+    console.warn("Invalid unlabeled elements info", unlabeledElementsInfo);
+
+    let html = `
+        <p>
+            There are ${unlabeledElementsInfo.length} hierarchy elements unlabeled in the current document settings!
+            Elements should either be given a header tag directly within a section or inherit one by descendant association. 
+            In the document viewer, these elements will be labeled with "${nullCharacter}".
+            <button id='btn-toggle-nested-unlabeled-document-elements-warnings' aria-describedby="nested-unlabeled-document-elements-warnings" aria-controls='nested-unlabeled-document-elements-warnings' onclick="toggleNestedContent(this, 'warning')">
+                Show Nested Warnings
+            </button>
+        </p>
+        <ul id='nested-unlabeled-document-elements-warnings' class='border-box-list' aria-expanded='false' aria-label="Nested unlabeled Document Elements" hidden>
+    `;
+
+    for (const info of unlabeledElementsInfo) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (unlabeled document element)");
+        const elementButton = cloneButton.outerHTML;
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `
+
+    createWarning("unlabeled-document-elements", html, unlabeledElementsInfo);
+}
+
 function findMissingRequiredFields() {
     let invalid = [];
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
@@ -2060,6 +2260,89 @@ function findInvalidFilters(availableKeys, availableValues) {
     return invalidInfo;
 }
 
+function findNonexistentDocumentElements() {
+    let invalid = [];
+
+    // Gather all sections and their document elements
+    const allSections = [];
+    for (const section of documentStructure.sections) {
+        const sectionElements = section.content.filter(i => i.type == "element");
+        allSections.push({
+            section: section,
+            sectionElements: sectionElements
+        });
+    }
+
+    // Record all sections and their document elements that don't reference a valid hierarchy element
+    for (const entry of allSections) {
+        const invalidElements = [];
+        for (const sectionElement of entry.sectionElements) {
+            const associatedElement = hierarchy.filter(i => i.hierarchyName == sectionElement.content)[0];
+            if (associatedElement) continue;
+
+            const sectionElementIndex = entry.section.content.indexOf(sectionElement);
+            invalidElements.push({
+                sectionElement: sectionElement,
+                index: sectionElementIndex
+            });
+        }
+
+        if (invalidElements.length == 0) continue;
+        invalid.push({
+            elements: invalidElements,
+            section: entry.section
+        });
+    }
+
+    return invalid;
+}
+
+function findMissingElementsInDocument() {
+    let invalid = [];
+
+    let allSectionElements = [];
+    for (const section of documentStructure.sections) {
+        const sectionElements = section.content.filter(i => i.type == "element");
+        allSectionElements = [...sectionElements, ...allSectionElements];
+    }
+
+    let allIncludedElements = [];
+    for (const sectionElement of allSectionElements) {
+        const includedElements = getElementsByContent(sectionElement);
+        allIncludedElements = [...includedElements, ...allIncludedElements];
+    }
+
+    for (const element of hierarchy) {
+        if (element.hierarchyName == "ROOT") continue;
+        if (allIncludedElements.includes(element)) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName)
+        });
+    }
+
+    return invalid;
+}
+
+function findUnlabeledElementsInDocument() {
+    let invalid = [];
+
+    for (const element of hierarchy) {
+        if (element.hierarchyName == "ROOT") continue;
+        if (getHeaderTagsByName(element.hierarchyName)) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName)
+        });
+    }
+
+    return invalid;
+}
+
 function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue) {
     for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
         // Skip if sub-filter key isn't available
@@ -2099,6 +2382,28 @@ function findHierarchyButton(hierarchyName) {
 async function openBrowseDialog(targetPath = "") {
     try {
         const returnedData = await window.electronAPI.openBrowse(targetPath);
+        return returnedData;
+    }
+    catch (error) {
+        alert(error);
+        return null;
+    }
+}
+
+async function openSaveDirectoryDialog(targetPath = "") {
+    try {
+        const returnedData = await window.electronAPI.openSaveDirectory(targetPath);
+        return returnedData;
+    }
+    catch (error) {
+        alert(error);
+        return null;
+    }
+}
+
+async function openSaveDocumentDialog(targetPath = "") {
+    try {
+        const returnedData = await window.electronAPI.openSaveDocument(targetPath);
         return returnedData;
     }
     catch (error) {
@@ -2226,11 +2531,13 @@ function showPopup(dialog) {
 function showContentById(id) {
     const element = document.getElementById(id);
     element.removeAttribute("hidden");
+    element.classList.remove("hidden");
 }
 
 function hideContentById(id) {
     const element = document.getElementById(id);
     element.setAttribute("hidden", "");
+    element.classList.add("hidden");
 }
 
 function toggleNodeLevelTags() {

@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <title>NVCS Configuration Tool</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="document.css" />
     <script defer src="renderer.js"></script>
+    <script defer src="document.js"></script>
   </head>
   <body>
     <span id="app-version" class="left-corner-element">v0.0.0</span>
@@ -51,13 +53,17 @@
           </div>
           <div class="label-content-container">
             <label>Hierarchy Actions:</label>
-            <div>
+            <div class="hierarchy-action-button-container">
               <button id="btn-add-element" onclick="addHierarchyElement()" title="Opens a dialog to add a blank element to the hierarchy" disabled>Add Element</button>
               <button id="btn-toggle-levels" onclick="toggleNodeLevelTags()" title="Toggles node level tags in the hierarchy tree below" disabled>Show Level Tags</button>
+              <span class="vertical-divide"></span>
+              <button id="btn-document-editor" onclick="openDocumentDialog()" title="Opens a dialog to edit the document structure" disabled>Edit Document</button>
+              <button id="btn-show-document" onclick="toggleDocumentForm()" title="Displays the loaded hierarchy in document form" disabled>Show Document View</button>
+              <button id="btn-document-word" onclick="saveDocumentWordFormat()" title="Saves the current document text to a Microsoft Word friendly version" disabled>Save Word Document</button>
             </div>
           </div>
         </div>
-        <div class="alert-container" role="alert">
+        <div id="alerts" class="alert-container" role="alert">
           <div id="error-container" class="alert-type error-bg-color" hidden>
             <div class="alert-header-container">
               <h2>ERROR</h2>
@@ -79,6 +85,9 @@
         </div>
         <div id="detected-json-container">
           No JSON Detected
+        </div>
+        <div id="document-form" class="document-form hidden">
+          <div id="document-container"></div>
         </div>
       </div>
     </main>
@@ -140,7 +149,7 @@
         </div>
         <div class="footer-container">
           <div class="button-container">
-            <button onclick="saveJsonChanges()" title="Savees changes made to this specific hierarchy element">Save All</button>
+            <button onclick="saveJsonChanges()" title="Saves changes made to this specific hierarchy element">Save All</button>
             <button id="delete-hierarchy-element" onclick="deleteHierarchyElement()" title="Deletes this specific hierarchy element">Delete</button>
             <button class='close-btn'>Close</button>
           </div>
@@ -202,6 +211,23 @@
             <button id="alert-dialog-ok" value="confirm">OK</button>
           </div>
         </form>
+      </dialog>
+      <dialog id='document-dialog' class="dialog">
+        <div class="header-container">
+          <div class="button-container">
+            <button class='close-btn' autofocus>Close</button>
+          </div>
+          <h2>Document Editor</h2>
+        </div>
+        <div class="body-container">
+        </div>
+        <div class="footer-container">
+          <div class="button-container">
+            <button onclick="saveDocumentChanges()" title="Saves changes to the document structure">Save All</button>
+            <button onclick="resetDocumentChanges()" title="Resets changes to the prepackaged document structure">Reset All</button>
+            <button class='close-btn'>Close</button>
+          </div>
+        </div>
       </dialog>
     </div>
     <div class="data-list-container">

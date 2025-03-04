@@ -4,6 +4,7 @@ const fs = require('fs');
 const ini = require('ini');
 const child_process = require("child_process");
 const util = require("util");
+const HTMLtoDOCX = require('html-to-docx');
 const execFile = util.promisify(child_process.execFile);
 
 let mainWindow;
@@ -62,12 +63,15 @@ app.whenReady().then(() => {
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
+  ipcMain.handle('open-save-directory', openSaveDirectoryDialog);
+  ipcMain.handle('open-save-document', openSaveDocumentDialog);
   ipcMain.handle('execute-tester', executeTester);
   ipcMain.handle('open-directory', openDirectory);
   ipcMain.handle('fetch-settings', fetchSettings);
   ipcMain.handle('fetch-years', fetchAvailableYears);
   ipcMain.handle('mark-unsaved-changes', markUnsavedChanges);
   ipcMain.handle('get-application-version', getApplicationVersion);
+  ipcMain.handle('save-document-word-format', saveDocumentWordFormat);
   createWindow();
 
   // On OS X it's common to re-create a window in the app when the
@@ -119,10 +123,20 @@ async function fetchExistingJson(event, targetPath) {
   let hierarchyData = fs.readFileSync(hierarchyPath);
   let hierarchyString = hierarchyData.toString();
 
+  // Retrieve document structure JSON
+  let documentStructureString;
+  const documentStructurePath = path.resolve((targetPath ?? getConfigurationPath()) + '/document.json');
+  if (fs.existsSync(documentStructurePath)) {
+    console.log(`- Target Document Structure Path: ${documentStructurePath}`);
+    let documentStructureData = fs.readFileSync(documentStructurePath);
+    documentStructureString = documentStructureData.toString();
+  }
+
   // Combine and return data
   let returnData = {
     json: allJsonData,
-    hierarchy: hierarchyString
+    hierarchy: hierarchyString,
+    documentStructure: documentStructureString
   }
 
   // Mark unaved as false
@@ -132,7 +146,7 @@ async function fetchExistingJson(event, targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json, changes) {
+async function updateJson(event, directory, json, changes, documentStructure) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
@@ -185,6 +199,12 @@ async function updateJson(event, directory, json, changes) {
   const updatedChangeLog = newChangeLogEntry + existingChangeLogEntry;
   fs.writeFileSync(changeLogPath, updatedChangeLog);
 
+  // Update document structure
+  const documentStructurePath = path.resolve(path.join(newJsonDirectoryPath, "document.json"));
+  let documentStructureJson = JSON.stringify(documentStructure, null, 4);
+  documentStructureJson = documentStructureJson.trim();
+  fs.writeFileSync(documentStructurePath, documentStructureJson);
+
   // Mark unaved as false
   unsavedChanges = false;
 
@@ -219,12 +239,58 @@ async function openBrowseDialog(event, targetPath) {
   console.log(`- Target Browse Path: ${targetPath}`);
   const { cancelled, filePaths } = await dialog.showOpenDialog(mainWindow, {
     defaultPath: targetPath,
-    properties: ['openDirectory'],
-    promptToCreate: true
+    title: "Open JSON Directory",
+    properties: [
+      'openDirectory'
+    ],
   });
 
   console.log("- RETURNING RESULTS");
   const path = !cancelled ? filePaths[0] : null;
+  return path;
+}
+
+async function openSaveDirectoryDialog(event, targetPath) {
+  console.log("INVOKED: openSaveDirectoryDialog");
+
+  console.log(`- Target Save Path: ${targetPath}`);
+  const { cancelled, filePaths } = await dialog.showOpenDialog(mainWindow, {
+    defaultPath: targetPath,
+    buttonLabel: "Save",
+    title: "Save JSON Directory",
+    properties: [
+      'openDirectory',
+    ]
+  });
+
+  console.log("- RETURNING RESULTS");
+  const path = !cancelled ? filePaths[0] : null;
+  return path;
+}
+
+
+async function openSaveDocumentDialog(event, targetPath) {
+  console.log("INVOKED: openSaveDocumentDialog");
+
+  console.log(`- Target Save Path: ${targetPath}`);
+  const { cancelled, filePath } = await dialog.showSaveDialog(mainWindow, {
+    defaultPath: targetPath,
+    buttonLabel: "Save",
+    title: "Save Word Document",
+    filters: [
+      { 
+        name: "Documents",
+        extensions: ['docx']
+      },
+      {
+        name: "All Files",
+        extensions: ["*"]
+      }
+    ]
+  });
+
+  console.log("- RETURNING RESULTS");
+  const path = !cancelled ? filePath : null;
   return path;
 }
 
@@ -469,4 +535,26 @@ async function markUnsavedChanges(value) {
 
 async function getApplicationVersion() {
   return app.getVersion();
+}
+
+async function saveDocumentWordFormat(event, targetPath, html) {
+  console.log("INVOKED: saveDocumentWordFormat");
+
+  const fullTargetPath = path.resolve(targetPath);
+  console.log("- Full Target Path:", fullTargetPath);
+
+  const headerString = null;
+  const footerString = null;
+  const documentOptions = {
+    table: { row: { cantSplit: false } },
+    footer: true,
+    pageNumber: true,
+  };
+  const fileBuffer = await HTMLtoDOCX(html, headerString, documentOptions, footerString);
+
+  console.log("- Executing file write");
+  fs.writeFileSync(fullTargetPath, fileBuffer);
+
+  console.log("- RETURNING RESULTS");
+  return fullTargetPath;
 }

@@ -1,0 +1,98 @@
+.document-form {
+    display: flex;
+}
+
+.document-content {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 0;
+}
+
+.document-content .input-container {
+    flex: 1;
+}
+
+.document-content .button-container {
+    align-items: center;
+}
+
+.document-element-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.element-container {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.element-container p {
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+.element-child-container {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.element-child-container td {
+    vertical-align: top;
+    padding: 10px;
+}
+
+.element-child-container p {
+    margin: 0;
+}
+
+.bottom-buttons {
+    padding: 5px 0;
+}
+
+.skeletal-list-root {
+    padding: 0;
+    margin: 0;
+}
+
+.skeletal-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.separator {
+    flex: 1;
+    border-bottom: 1px dotted black;
+}
+
+.document-toc ul {
+    list-style: none;
+    margin: 0;
+}
+
+.outlined {
+    outline: 1px solid black;
+}
+
+.element-tag-cell {
+    width: 5%;
+}
+
+.element-content-cell {
+    width: 90%;   
+}
+
+.document-content-edit-container {
+    position: relative;
+    min-height: 25px;
+}
+
+.document-content-edit-btn {
+    position: absolute;
+    left: -55px;
+    height: fit-content;
+}
