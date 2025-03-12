@@ -5,7 +5,7 @@ from pattern import PatternList
 import logging
 
 class Plot:
-    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation):
+    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive):
         self.attrs = dict()
         self.attrs['ident'] = ident
         self.attrs['rscd'] = rscd
@@ -15,6 +15,7 @@ class Plot:
         self.attrs['hydric'] = hydric
         self.attrs['riverine'] = riverine
         self.attrs['elevation'] = float(elevation)
+        self.attrs['balive'] = float(balive)
         self.trees = list()
 
     def __getattr__(self, name):
@@ -50,6 +51,10 @@ class Plot:
     def get_elevation(self):
         logging.debug('%s|elevation()|%s', self.ident, self.elevation)
         return int(self.elevation)
+
+    def get_balive(self):
+        logging.debug('%s|balive()|%s', self.ident, self.balive)
+        return float(self.balive)
 
     def __repr__(self):
         return "Plot(%r)" % (self.attrs)

@@ -32,6 +32,7 @@ class ElementBuilder:
             trigger = 'False'
         else:
             trigger = re.sub(r'(elevation)\s*\(\s*\)', r'plot.get_\1()', trigger)
+            trigger = re.sub(r'(balive)\s*\(\s*\)', r'plot.get_\1()', trigger)
             trigger = re.sub(r'(match)\s*\(\s*([0-9a-zA-Z_]+)\s*\)', r'plot.\1(\2)', trigger)
             trigger = re.sub(r'(riv)\s*\(\s*([0-9a-zA-Z_]+)\s*\)', r'plot.\1(\2)', trigger)
             trigger = re.sub(r'(spcov)\s*\(\s*([0-9a-zA-Z_]+)\s*\)', r'plot.\1(\2)', trigger)
