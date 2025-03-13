@@ -5,7 +5,7 @@ from pattern import PatternList
 import logging
 
 class Plot:
-    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive):
+    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov):
         self.attrs = dict()
         self.attrs['ident'] = ident
         self.attrs['rscd'] = rscd
@@ -16,6 +16,11 @@ class Plot:
         self.attrs['riverine'] = riverine
         self.attrs['elevation'] = float(elevation)
         self.attrs['balive'] = float(balive)
+        self.attrs['fbcov'] = float(fbcov or 0)
+        self.attrs['grcov'] = float(grcov or 0)
+        self.attrs['shcov'] = float(shcov or 0)
+        self.attrs['ttcov'] = float(ttcov or 0)
+        self.attrs['ntcov'] = float(ntcov or 0)
         self.trees = list()
 
     def __getattr__(self, name):
@@ -55,6 +60,26 @@ class Plot:
     def get_balive(self):
         logging.debug('%s|balive()|%s', self.ident, self.balive)
         return float(self.balive)
+
+    def get_fbcov(self):
+        logging.debug('%s|fbcov()|%s', self.ident, self.fbcov)
+        return float(self.fbcov)
+
+    def get_grcov(self):
+        logging.debug('%s|grcov()|%s', self.ident, self.grcov)
+        return float(self.grcov)
+
+    def get_shcovv(self):
+        logging.debug('%s|shcov()|%s', self.ident, self.shcov)
+        return float(self.shcov)
+
+    def get_ttcov(self):
+        logging.debug('%s|ttcov()|%s', self.ident, self.ttcov)
+        return float(self.ttcov)
+
+    def get_ntcov(self):
+        logging.debug('%s|ntcov()|%s', self.ident, self.ntcov)
+        return float(self.ntcov)
 
     def __repr__(self):
         return "Plot(%r)" % (self.attrs)
