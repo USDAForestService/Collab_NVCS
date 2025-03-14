@@ -69,7 +69,7 @@ class Plot:
         logging.debug('%s|grcov()|%s', self.ident, self.grcov)
         return float(self.grcov)
 
-    def get_shcovv(self):
+    def get_shcov(self):
         logging.debug('%s|shcov()|%s', self.ident, self.shcov)
         return float(self.shcov)
 
