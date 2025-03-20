@@ -14,8 +14,8 @@ class Plot:
         self.attrs['plantation'] = plantation
         self.attrs['hydric'] = hydric
         self.attrs['riverine'] = riverine
-        self.attrs['elevation'] = float(elevation)
-        self.attrs['balive'] = float(balive)
+        self.attrs['elevation'] = float(elevation or 0)
+        self.attrs['balive'] = float(balive or 0)
         self.attrs['fbcov'] = float(fbcov or 0)
         self.attrs['grcov'] = float(grcov or 0)
         self.attrs['shcov'] = float(shcov or 0)
