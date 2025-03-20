@@ -57,8 +57,12 @@ def fixup(key_outfile, out_csv, out_db, out_db_tbl):
 
             solution_path_str = key_result[2]
             solution_path = ast.literal_eval(solution_path_str)
-            last_node = solution_path[-1]
-            last_node_desc = nvcskey.nodes[last_node].description
+            if len(solution_path) > 0:
+                last_node = solution_path[-1]
+                last_node_desc = nvcskey.nodes[last_node].description
+            else:
+                last_node = -1
+                last_node_desc = "unclassified"
             
             soln_div_id = -1
             soln_div_desc = 'unclassified'
