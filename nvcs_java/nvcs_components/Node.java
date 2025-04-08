@@ -22,4 +22,9 @@ public class Node {
         this.description = description;
         this.children = new ArrayList<>();
     }
+
+    @Override
+    public String toString() {
+        return String.format("Node(%s, %s, %s, %s)", ident, parent, "match_function", description);
+    }
 }

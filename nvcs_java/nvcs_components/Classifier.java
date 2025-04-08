@@ -40,6 +40,6 @@ public class Classifier {
             node = choose(node.children, obj);
             path.add(node);
         }
-        return Solution(obj, path);
+        return new Solution(obj, path);
     }
 }
