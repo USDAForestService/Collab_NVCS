@@ -16,3 +16,4 @@ public class Solution {
     public String toString() {
         return String.format("Solution(%s, %s)", obj, path);
     }
+}

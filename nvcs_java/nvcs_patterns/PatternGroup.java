@@ -27,7 +27,7 @@ public class PatternGroup {
         }
     }
 
-    public boolean match_all(Map<String,String> valugrp) {
+    public boolean match_all(Map<String,Object> valugrp) {
         boolean result = true;
         for (String attr : this.pattgrp.keySet()) {
             if (!this.pattgrp.get(attr).match(valugrp.get(attr))) {

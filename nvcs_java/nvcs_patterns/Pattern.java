@@ -30,7 +30,7 @@ public class Pattern {
         }
     }
 
-    public boolean match(String value) {
+    public boolean match(Object value) {
         if (negated) {
             return !pattern.contains(value);
         }

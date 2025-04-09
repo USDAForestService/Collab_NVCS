@@ -21,7 +21,7 @@ public class PatternList {
         }
     }
 
-    public boolean match_any(Map<String,String> valugrp) {
+    public boolean match_any(Map<String,Object> valugrp) {
         boolean result;
         if (alternatives == null) {
             result = true;
