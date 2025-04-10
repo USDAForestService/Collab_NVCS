@@ -19,7 +19,7 @@ public class PatternGroup {
                     this.pattgrp.put(attr, new Pattern(value));
                     break;
                 case "_EcoregionPattern":
-                    //this.pattgrp.put(attr, new _EcoregionPattern(value));
+                    this.pattgrp.put(attr, new _EcoregionPattern(value));
                     break;
                 default:
                     throw new RuntimeException("Invalid class name registered: " + attrClass);
