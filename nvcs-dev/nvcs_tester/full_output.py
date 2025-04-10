@@ -41,8 +41,8 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             in_KeyTestData['source'], f"SELECT * FROM {in_KeyTestData['source_tbl_nm']};")
         plot_io.write_table_sqlite(out_Options["output_db"], in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
                              nvcs_key_test_data_columns, nvcs_key_test_data_definition)
-        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_test_ident;")
-        plot_io.execute_sqlite(out_Options["output_db"], f"CREATE INDEX idx_test_ident ON {in_KeyTestData['new_tbl_nm']} (IDENT);")
+        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS NKTD_PK;")
+        plot_io.execute_sqlite(out_Options["output_db"], f"CREATE UNIQUE INDEX NKTD_PK ON {in_KeyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_KeyTestData['new_tbl_nm'], in_KeyTestData['description'])
 
         # Prepare & create table containing unfiltered analytical input source
@@ -52,9 +52,9 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             in_AnlyTestData['source'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
         plot_io.write_table_sqlite(out_Options["output_db"], in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
                              nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
-        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_anly_ident;")
+        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS NATD_PK;")
         plot_io.execute_sqlite(out_Options["output_db"],
-                               f"CREATE INDEX idx_anly_ident ON {in_AnlyTestData['new_tbl_nm']} (IDENT);")
+                               f"CREATE INDEX NATD_PK ON {in_AnlyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_AnlyTestData['new_tbl_nm'], in_AnlyTestData['description'])
 
         # Prepare & create table containing REF_FOREST_TYPE values
@@ -143,7 +143,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "ANLY.COVER_NT_LAYER1, ANLY.COVER_FB_LAYER2, ANLY.COVER_SH_LAYER2, ANLY.COVER_GR_LAYER2, ANLY.COVER_TT_LAYER2, "
             "ANLY.COVER_NT_LAYER2, ANLY.COVER_FB_LAYER3, ANLY.COVER_SH_LAYER3, ANLY.COVER_GR_LAYER3, ANLY.COVER_TT_LAYER3, "
             "ANLY.COVER_NT_LAYER3, ANLY.COVER_FB_LAYER4, ANLY.COVER_SH_LAYER4, ANLY.COVER_GR_LAYER4, ANLY.COVER_TT_LAYER4, "
-            "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.UNADJ_FOR_COND, ANLY.NUM_FORCOND_PLOT "
+            "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.CONDPROP_UNADJ, ANLY.NUM_FORCOND_PLOT "
             f"FROM ({key_output_nm} AS 'KEY_OUTPUT' "
             f"INNER JOIN {nvcs_analytical_test_data_vw_name} AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
             f"INNER JOIN {in_RefForestType['new_tbl_nm']} AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
