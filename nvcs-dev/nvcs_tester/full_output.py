@@ -41,8 +41,8 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             in_KeyTestData['source'], f"SELECT * FROM {in_KeyTestData['source_tbl_nm']};")
         plot_io.write_table_sqlite(out_Options["output_db"], in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
                              nvcs_key_test_data_columns, nvcs_key_test_data_definition)
-        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_test_ident;")
-        plot_io.execute_sqlite(out_Options["output_db"], f"CREATE INDEX idx_test_ident ON {in_KeyTestData['new_tbl_nm']} (IDENT);")
+        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS NKTD_PK;")
+        plot_io.execute_sqlite(out_Options["output_db"], f"CREATE UNIQUE INDEX NKTD_PK ON {in_KeyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_KeyTestData['new_tbl_nm'], in_KeyTestData['description'])
 
         # Prepare & create table containing unfiltered analytical input source
@@ -52,9 +52,9 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             in_AnlyTestData['source'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
         plot_io.write_table_sqlite(out_Options["output_db"], in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
                              nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
-        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS idx_anly_ident;")
+        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS NATD_PK;")
         plot_io.execute_sqlite(out_Options["output_db"],
-                               f"CREATE INDEX idx_anly_ident ON {in_AnlyTestData['new_tbl_nm']} (IDENT);")
+                               f"CREATE INDEX NATD_PK ON {in_AnlyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_AnlyTestData['new_tbl_nm'], in_AnlyTestData['description'])
 
         # Prepare & create table containing REF_FOREST_TYPE values
