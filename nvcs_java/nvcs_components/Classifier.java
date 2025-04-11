@@ -3,12 +3,14 @@ package nvcs_java.nvcs_components;
 import java.util.ArrayList;
 import java.util.List;
 
+import nvcs_java.ClassificationKey;
+
 public class Classifier {
 
-    private Node root_node;
+    public Node root_node;
 
-    public Classifier(Node key) {
-        root_node = key;
+    public Classifier(ClassificationKey key) {
+        root_node = key.root_node;
     }
 
     @Override
@@ -16,7 +18,7 @@ public class Classifier {
         return String.format("Classifier(%s)", root_node);
     }
 
-    public Node choose(List<Node> nodes, Object obj) {
+    public Node choose(List<Node> nodes, Plot obj) {
         for (Node node: nodes) {
             if (node.match_function(obj)) {
                 return node;
@@ -25,15 +27,7 @@ public class Classifier {
         return null;
     }
 
-    // public Object walk(Object root_node, Object obj) {
-    //     Object node = root_node;
-    //     while (node != null && node.children != null) {
-    //         node = choose(node.children, obj);
-    //         return node;
-    //     }
-    // }
-
-    public Solution classify(Object obj) {
+    public Solution classify(Plot obj) {
         List<Node> path = new ArrayList<>();
         Node node = root_node;
         while (node != null && node.children != null) {

@@ -11,7 +11,7 @@ public class Node {
     public Integer parent;
     public Integer level;
     public Integer code;
-    public NodeMatch match_function;
+    public NodeMatch nodeMatch;
     public String description;
     public List<Node> children;
 
@@ -20,9 +20,13 @@ public class Node {
         this.parent = parent;
         this.level = (Integer)config[0];
         this.code = (Integer)config[1];
-        this.match_function = (NodeMatch)config[2];
+        this.nodeMatch = (NodeMatch)config[2];
         this.description = description;
         this.children = new ArrayList<>();
+    }
+
+    public boolean match_function(Plot plot) {
+        return nodeMatch.match(plot);
     }
 
     @Override
