@@ -3,22 +3,24 @@ package nvcs_java.nvcs_components;
 import java.util.ArrayList;
 import java.util.List;
 
+import nvcs_java.nvcs_interfaces.NodeMatch;
+
 public class Node {
     
-    public String ident;
-    public Node parent;
-    public int level;
-    public int code;
-    // match_function declaration
+    public Integer ident;
+    public Integer parent;
+    public Integer level;
+    public Integer code;
+    public NodeMatch match_function;
     public String description;
     public List<Node> children;
 
-    public Node(String ident, Node parent, Object[] config, String description) {
+    public Node(Integer ident, Integer parent, Object[] config, String description) {
         this.ident = ident;
         this.parent = parent;
-        this.level = (int)config[0];
-        this.code = (int)config[1];
-        //this.match_function = config[2];
+        this.level = (Integer)config[0];
+        this.code = (Integer)config[1];
+        this.match_function = (NodeMatch)config[2];
         this.description = description;
         this.children = new ArrayList<>();
     }

@@ -9,6 +9,7 @@ public class PatternList {
     public String label;
     public List<PatternGroup> alternatives;
 
+    @SafeVarargs
     public PatternList(String label, Map<String,String>... pattgrps) {
         if (pattgrps == null) {
             throw new RuntimeException("PatternList is empty");
