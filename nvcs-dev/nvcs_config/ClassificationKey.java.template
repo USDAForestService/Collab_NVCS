@@ -6,16 +6,17 @@ import java.util.Map;
 
 import nvcs_java.nvcs_components.Node;
 import nvcs_java.nvcs_components.Plot;
-import nvcs_java.nvcs_interfaces.NodeMatch;
+import nvcs_java.nvcs_interfaces.INodeMatch;
+import nvcs_java.nvcs_interfaces.IClassificationKey;
 import nvcs_java.nvcs_patterns.Pattern;
 import nvcs_java.nvcs_patterns.PatternList;
 
-public class ClassificationKey {
+public class <%classname%> implements IClassificationKey {
     
     public Map<Integer,Node> nodes;
     public Node root_node;
 
-    public ClassificationKey() {
+    public <%classname%>() {
 
         Pattern.register("rscd", "Pattern");
         Pattern.register("state", "Pattern");
@@ -36,7 +37,7 @@ public class ClassificationKey {
     }
 
     public Node _setup() {
-        nodes.put(0, new Node(0, null, new Object[] { "", "", (NodeMatch) plot -> true }, ""));
+        nodes.put(0, new Node(0, null, new Object[] { "", "", (INodeMatch) plot -> true }, ""));
 <%hierarchy%>
 
         for (Map.Entry<Integer,Node> entry : nodes.entrySet()) {

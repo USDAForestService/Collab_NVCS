@@ -3,7 +3,7 @@ package nvcs_java.nvcs_components;
 import java.util.ArrayList;
 import java.util.List;
 
-import nvcs_java.nvcs_interfaces.NodeMatch;
+import nvcs_java.nvcs_interfaces.INodeMatch;
 
 public class Node {
     
@@ -11,7 +11,7 @@ public class Node {
     public Integer parent;
     public Integer level;
     public Integer code;
-    public NodeMatch nodeMatch;
+    public INodeMatch nodeMatch;
     public String description;
     public List<Node> children;
 
@@ -20,7 +20,7 @@ public class Node {
         this.parent = parent;
         this.level = (Integer)config[0];
         this.code = (Integer)config[1];
-        this.nodeMatch = (NodeMatch)config[2];
+        this.nodeMatch = (INodeMatch)config[2];
         this.description = description;
         this.children = new ArrayList<>();
     }

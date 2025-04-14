@@ -10,7 +10,7 @@
 
         <%filters%>
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             <%trigger%>
         );
 

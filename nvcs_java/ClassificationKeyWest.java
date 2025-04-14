@@ -6,16 +6,17 @@ import java.util.Map;
 
 import nvcs_java.nvcs_components.Node;
 import nvcs_java.nvcs_components.Plot;
-import nvcs_java.nvcs_interfaces.NodeMatch;
+import nvcs_java.nvcs_interfaces.INodeMatch;
+import nvcs_java.nvcs_interfaces.IClassificationKey;
 import nvcs_java.nvcs_patterns.Pattern;
 import nvcs_java.nvcs_patterns.PatternList;
 
-public class ClassificationKey {
+public class ClassificationKeyWest implements IClassificationKey {
 
     public Map<Integer,Node> nodes;
     public Node root_node;
 
-    public ClassificationKey() {
+    public ClassificationKeyWest() {
 
         Pattern.register("rscd", "Pattern");
         Pattern.register("state", "Pattern");
@@ -36,7 +37,7 @@ public class ClassificationKey {
     }
 
     public Node _setup() {
-        nodes.put(0, new Node(0, null, new Object[] { "", "", (NodeMatch) plot -> true }, ""));
+        nodes.put(0, new Node(0, null, new Object[] { "", "", (INodeMatch) plot -> true }, ""));
         nodes.put(  1,  new Node(  1,   0, element_001(), "Forest Plantations"));
         nodes.put(  2,  new Node(  2,   0, element_002(), "Natural (including ruderal) Forests"));
         nodes.put(  3,  new Node(  3,   2, element_003(), "Wetland Forest & Woodlands"));
@@ -211,7 +212,7 @@ public class ClassificationKey {
         PLANTED_POPULUS_values.put("species","Populus");
         PatternList PLANTED_POPULUS = new PatternList("PLANTED_POPULUS", PLANTED_POPULUS_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(PLANTATION)
            && (plot.riv(PLANTED_EXOTIC) > 0 || plot.riv(PLANTED_POPULUS) > 0)
         );
@@ -229,7 +230,7 @@ public class ClassificationKey {
 
         // Natural (including ruderal) forests
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -352,7 +353,7 @@ public class ClassificationKey {
         Populus_fremontii_values.put("species","Populus fremontii");
         PatternList Populus_fremontii = new PatternList("Populus_fremontii", Populus_fremontii_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS_SGP) && ( plot.match(RIVERINE) || (plot.riv(W2) + plot.riv(W3) >= 50) ))
            || (plot.match(RIVERINE) && ( (plot.riv(W2) >= 20 && plot.spcov(W1_UNDERSTORY) >= 10)
                                      || (plot.riv(W2) >= 20 && plot.spcov(W1_UNDERSTORY) + plot.spcov(W2_UNDERSTORY) >= 40)
@@ -384,7 +385,7 @@ public class ClassificationKey {
         //   or needle-leaved trees, generally over 10% tree cover, and the substrate is either a
         //   wood-rich peat or a mineral soil on floodplains.
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -438,7 +439,7 @@ public class ClassificationKey {
         DIAGNOSTIC_SPECIES_values.put("species","Populus angustifolia");
         PatternList DIAGNOSTIC_SPECIES = new PatternList("DIAGNOSTIC_SPECIES", DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS_GP) && plot.riv(DIAGNOSTIC_SPECIES) >= 20
         );
 
@@ -495,7 +496,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && !plot.match(ECOREGIONS_EXCL) &&
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ||
@@ -524,7 +525,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -570,7 +571,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Salix amygdaloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS) && !plot.match(ECOREGIONS_EXCL)) &&
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -598,7 +599,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) >= 80
         );
 
@@ -679,7 +680,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             ( plot.match(ECOREGIONS_1) && plot.riv(SPECIES_1) >= 20 )
            || ( plot.match(ECOREGIONS_2) && ( plot.riv(SPECIES_2) >= 50 || (plot.riv(SPECIES_2) >= 20 && plot.riv(SPECIES_3) >= 30) ))
            || ( plot.match(ECOREGIONS_1) && plot.riv(EXOTIC_TREE_SPP) >=80 )
@@ -707,7 +708,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -764,7 +765,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus fusiformis");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -792,7 +793,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) >= 80
         );
 
@@ -814,7 +815,7 @@ public class ClassificationKey {
         ECOREGIONS_values.put("ecoregion","242, M242, 261, M261, 262, M262, 263, 313, M313, 315, 321, 322, 331, M331, M332, M333, M334, 341, M341, 342");
         PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
         );
 
@@ -888,7 +889,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ||
@@ -917,7 +918,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -966,7 +967,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus tremuloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1014,7 +1015,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Tsuga mertensiana");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1070,7 +1071,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Tsuga heterophylla");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1098,7 +1099,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) >= 80
         );
 
@@ -1174,7 +1175,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ||
@@ -1203,7 +1204,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -1257,7 +1258,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus tremuloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.get_elevation() < 1500 && plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1310,7 +1311,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1353,7 +1354,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus deltoides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1381,7 +1382,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) >= 80
         );
 
@@ -1493,7 +1494,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ||
@@ -1522,7 +1523,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -1578,7 +1579,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Taxodium mucronatum");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1635,7 +1636,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Salix lutea");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1699,7 +1700,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Robinia neomexicana");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1756,7 +1757,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Salix lasiolepis");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -1786,7 +1787,7 @@ public class ClassificationKey {
         RUDERAL_OR_EXOTIC_values.put("ruderal","yes");
         PatternList RUDERAL_OR_EXOTIC = new PatternList("RUDERAL_OR_EXOTIC", RUDERAL_OR_EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC) >= 80
         );
 
@@ -1803,7 +1804,7 @@ public class ClassificationKey {
 
         // Not as above
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -1820,7 +1821,7 @@ public class ClassificationKey {
 
         // other
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -1926,7 +1927,7 @@ public class ClassificationKey {
         DIAGNOSTIC_SPECIES_3_values.put("species","Quercus virginiana");
         PatternList DIAGNOSTIC_SPECIES_3 = new PatternList("DIAGNOSTIC_SPECIES_3", DIAGNOSTIC_SPECIES_3_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS_1) && !plot.match(ECOREGIONS_EXCL)) &&
            ( (plot.riv(DIAGNOSTIC_SPECIES_1) >= 20 && plot.riv(DIAGNOSTIC_SPECIES_2) <= 5) ||
            plot.riv(DIAGNOSTIC_SPECIES_3) >= 20 )
@@ -2016,7 +2017,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS_1) && !plot.match(ECOREGIONS_EXCL) &&
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ||
@@ -2073,7 +2074,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus sinuata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2122,7 +2123,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Ulmus alata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2179,7 +2180,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Fraxinus texensis");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2231,7 +2232,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus pungens");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2259,7 +2260,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -2302,7 +2303,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Morus rubra");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2347,7 +2348,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Prunus virginiana");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2393,7 +2394,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Ulmus americana");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2448,7 +2449,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus deltoides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS) && !plot.match(ECOREGIONS_EXCL)) &&
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2476,7 +2477,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) >= 80
         );
 
@@ -2542,7 +2543,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && plot.match(STATES) &&
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) ||
@@ -2572,7 +2573,7 @@ public class ClassificationKey {
         RUDERAL_EXOTIC_values.put("exotic","yes");
         PatternList RUDERAL_EXOTIC = new PatternList("RUDERAL_EXOTIC", RUDERAL_EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(RUDERAL_EXOTIC) < 20
         );
 
@@ -2610,7 +2611,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Sabal palmetto");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2651,7 +2652,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Zanthoxylum hirsutum");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2680,7 +2681,7 @@ public class ClassificationKey {
         RUDERAL_EXOTIC_values.put("exotic","yes");
         PatternList RUDERAL_EXOTIC = new PatternList("RUDERAL_EXOTIC", RUDERAL_EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(RUDERAL_EXOTIC) >= 80
         );
 
@@ -2774,7 +2775,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("tallytree","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ||
@@ -2803,7 +2804,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -2856,7 +2857,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Prunus serotina");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2903,7 +2904,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus macrocarpa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -2961,7 +2962,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Ulmus crassifolia");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -3009,7 +3010,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus stellata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -3038,7 +3039,7 @@ public class ClassificationKey {
         RUDERAL_EXOTIC_values.put("exotic","yes");
         PatternList RUDERAL_EXOTIC = new PatternList("RUDERAL_EXOTIC", RUDERAL_EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(RUDERAL_EXOTIC) >= 80
         );
 
@@ -3060,7 +3061,7 @@ public class ClassificationKey {
         RUDERAL_EXOTIC_values.put("exotic","yes");
         PatternList RUDERAL_EXOTIC = new PatternList("RUDERAL_EXOTIC", RUDERAL_EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -3082,7 +3083,7 @@ public class ClassificationKey {
         ECOREGIONS_values.put("ecoregion","242, M242, 261, M261, 262, M262, 263, 313, M313, 315, 321, 322, 331, M331, M332, M333, M334, 341, M341, 342");
         PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
         );
 
@@ -3290,7 +3291,7 @@ public class ClassificationKey {
         DIAGNOSTIC_SPECIES_3_values.put("species","Quercus wislizeni");
         PatternList DIAGNOSTIC_SPECIES_3 = new PatternList("DIAGNOSTIC_SPECIES_3", DIAGNOSTIC_SPECIES_3_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS) && !plot.match(ECOREGIONS_EXCL) && plot.riv(DIAGNOSTIC_SPECIES_1) >= 20) ||
            (plot.match(ECOREGIONS_EXCL) && plot.riv(DIAGNOSTIC_SPECIES_2) >= 20) ||
            (plot.match(ECOREGIONS_263) && plot.riv(DIAGNOSTIC_SPECIES_3) >= 20)
@@ -3372,7 +3373,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 || 
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) || 
            plot.riv(EXOTIC_TREE_SPP) >=80 )
@@ -3401,7 +3402,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -3477,7 +3478,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus douglasii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -3529,7 +3530,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus parvula");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -3557,7 +3558,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) >= 80
         );
 
@@ -3653,7 +3654,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 || 
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) || 
            plot.riv(EXOTIC_TREE_SPP) >=80 )
@@ -3682,7 +3683,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) < 20
         );
 
@@ -3749,7 +3750,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus rugosa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )
@@ -3815,7 +3816,7 @@ public class ClassificationKey {
         OTHER_INDICATOR_SPECIES_values.put("species","Juniperus ashei");
         PatternList OTHER_INDICATOR_SPECIES = new PatternList("OTHER_INDICATOR_SPECIES", OTHER_INDICATOR_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) ||
@@ -3877,7 +3878,7 @@ public class ClassificationKey {
         OTHER_INDICATOR_SPECIES_values.put("species","Pinus strobiformis");
         PatternList OTHER_INDICATOR_SPECIES = new PatternList("OTHER_INDICATOR_SPECIES", OTHER_INDICATOR_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) ||
@@ -3920,7 +3921,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Juniperus monosperma");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -3989,7 +3990,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus muehlenbergii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )
@@ -4047,7 +4048,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus muehlenbergii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4110,7 +4111,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus viminea");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4138,7 +4139,7 @@ public class ClassificationKey {
         EXOTIC_values.put("exotic","yes");
         PatternList EXOTIC = new PatternList("EXOTIC", EXOTIC_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC) >= 80
         );
 
@@ -4158,7 +4159,7 @@ public class ClassificationKey {
         // dominated by broad-leaved or needle-leaved tree growth forms found
         // in cool temperate regions of the western U.S. and southeast Alaska
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -4330,7 +4331,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS_1) && plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) ||
            (plot.match(ECOREGIONS_2) && plot.get_elevation() < 500 && plot.riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 50) ||
            (plot.match(ECOREGIONS_2) && plot.get_elevation() >= 500 && plot.riv(STRONG_DIAGNOSTIC_SPECIES_3) >= 50) ||
@@ -4353,7 +4354,7 @@ public class ClassificationKey {
 
         // Only macrogroup
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -4396,7 +4397,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4443,7 +4444,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Umbellularia californica");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4495,7 +4496,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Prunus emarginata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4541,7 +4542,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Prunus emarginata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4587,7 +4588,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Prunus emarginata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4643,7 +4644,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Prunus emarginata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4704,7 +4705,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
            && ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
            || (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30)
@@ -4757,7 +4758,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus ponderosa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )
@@ -4801,7 +4802,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus ponderosa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4844,7 +4845,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","placeholder - add moderate diagnostic");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4890,7 +4891,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Juniperus occidentalis");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4936,7 +4937,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus grisea");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -4979,7 +4980,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus gambelii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5021,7 +5022,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Juniperus scopulorum");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )
@@ -5066,7 +5067,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus gambelii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5106,7 +5107,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Juniperus scopulorum");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5253,7 +5254,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_II_values.put("species","Pseudotsuga macrocarpa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES_II = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_II", MODERATE_DIAGNOSTIC_SPECIES_II_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.get_elevation() < 2400 && plot.match(ECOREGIONS_I) &&
            ((plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 20 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 10 && 
@@ -5323,7 +5324,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus ponderosa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5370,7 +5371,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Quercus kelloggii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5424,7 +5425,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus ponderosa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5472,7 +5473,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Taxus brevifolia");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5534,7 +5535,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus washoensis");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) )
@@ -5596,7 +5597,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Tsuga mertensiana");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5619,7 +5620,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.riv(EXOTIC_TREE_SPP) >=80
         );
 
@@ -5636,7 +5637,7 @@ public class ClassificationKey {
 
         // 
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             true
         );
 
@@ -5722,7 +5723,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.get_elevation() < 2800 && plot.match(ECOREGIONS) && 
            ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 || 
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && 
@@ -5786,7 +5787,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus flexilis");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5838,7 +5839,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus tremuloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5886,7 +5887,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus tremuloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5939,7 +5940,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus ponderosa");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -5994,7 +5995,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6052,7 +6053,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Ulmus americana");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6097,7 +6098,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Picea engelmannii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6153,7 +6154,7 @@ public class ClassificationKey {
         PSME_values.put("species","Pseudotsuga menziesii");
         PatternList PSME = new PatternList("PSME", PSME_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS) && plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) || 
            (plot.match(ECOREGIONS) && plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) && 
            (plot.match(ECOREGIONS) && plot.riv(PSME) <= 1)
@@ -6197,7 +6198,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","PLACEHOLDER - INSERT P2 VEG");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6246,7 +6247,7 @@ public class ClassificationKey {
         PSME_values.put("species","Pseudotsuga menziesii");
         PatternList PSME = new PatternList("PSME", PSME_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS) && plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) || 
            (plot.match(ECOREGIONS) && plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) && 
            (plot.match(ECOREGIONS) && plot.riv(PSME) <= 10)
@@ -6293,7 +6294,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus flexilis");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6341,7 +6342,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Picea glauca");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6398,7 +6399,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus tremuloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6445,7 +6446,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Thuja plicata");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6496,7 +6497,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6547,7 +6548,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Tsuga heterophylla");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6621,7 +6622,7 @@ public class ClassificationKey {
         EXOTIC_TREE_SPP_values.put("exotic","yes");
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.get_elevation() > 2100 && plot.match(ECOREGIONS) && 
            ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 || 
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && 
@@ -6679,7 +6680,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6713,7 +6714,7 @@ public class ClassificationKey {
         STRONG_DIAGNOSTIC_SPECIES_values.put("species","Betula papyrifera");
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 75
         );
@@ -6758,7 +6759,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6803,7 +6804,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6850,7 +6851,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus tremuloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6902,7 +6903,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Populus tremuloides");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -6947,7 +6948,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pseudotsuga menziesii");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -7050,7 +7051,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_2_values.put("species","Abies concolor");
         PatternList MODERATE_DIAGNOSTIC_SPECIES_2 = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_2", MODERATE_DIAGNOSTIC_SPECIES_2_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             (plot.match(ECOREGIONS_1) && plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) ||
            (plot.match(ECOREGIONS_1) && plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES_1) >= 30) ||
            (plot.match(ECOREGIONS_2) && plot.riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 50) ||
@@ -7097,7 +7098,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Pinus monticola");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -7147,7 +7148,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Abies concolor");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
@@ -7192,7 +7193,7 @@ public class ClassificationKey {
         MODERATE_DIAGNOSTIC_SPECIES_values.put("species","Tsuga heterophylla");
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
 
-        NodeMatch match = plot -> (
+        INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )

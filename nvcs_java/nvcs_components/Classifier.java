@@ -3,13 +3,13 @@ package nvcs_java.nvcs_components;
 import java.util.ArrayList;
 import java.util.List;
 
-import nvcs_java.ClassificationKey;
+import nvcs_java.nvcs_interfaces.IClassificationKey;
 
 public class Classifier {
 
     public Node root_node;
 
-    public Classifier(ClassificationKey key) {
+    public Classifier(IClassificationKey key) {
         root_node = key.root_node;
     }
 

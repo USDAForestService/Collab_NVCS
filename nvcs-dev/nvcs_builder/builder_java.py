@@ -86,14 +86,16 @@ class HierarchyBuilder:
         return code
         
 class KeyBuilder:
-    def __init__(self, configdir, templatedir):
+    def __init__(self, configdir, templatedir, classname):
         self.configdir = configdir
         self.templatedir = templatedir
         self.template = open(self.templatedir + '/ClassificationKey.java.template', 'r').read()
+        self.classname = classname
     
     def build(self):
         code = self.template
         #code = code.replace('<%version%>', self.configdir[-2:])
+        code = code.replace('<%classname%>', self.classname)
         
         hbuilder = HierarchyBuilder(open(self.configdir + '/key-hierarchy.txt', 'r'))
         hcode = hbuilder.build()
@@ -119,9 +121,12 @@ if __name__ == '__main__':
     config = configuration.DebugConfig()
     templatePath = config.get(config.base, "TemplatePath")
     configPath = config.get(config.target, "In_ConfigPath")
-    keyPath = config.get(config.target, "Out_KeyPath_Java")
+    className = config.get(config.target, "Out_JavaClassName")
 
-    keybuilder = builder_java.KeyBuilder(configPath, templatePath)
+    javaDirectory = config.get(config.base, "Out_JavaDirectory")
+    keyPath = os.path.join(javaDirectory, className + ".java")
+
+    keybuilder = builder_java.KeyBuilder(configPath, templatePath, className)
     code = keybuilder.build()
 
     f = open(keyPath, 'w+')
