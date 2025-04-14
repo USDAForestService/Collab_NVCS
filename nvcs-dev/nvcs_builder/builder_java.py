@@ -89,7 +89,7 @@ class KeyBuilder:
     def __init__(self, configdir, templatedir):
         self.configdir = configdir
         self.templatedir = templatedir
-        self.template = open(self.templatedir + '/ClassificationKey.template', 'r').read()
+        self.template = open(self.templatedir + '/ClassificationKey.java.template', 'r').read()
     
     def build(self):
         code = self.template
@@ -103,7 +103,7 @@ class KeyBuilder:
         for f in os.listdir(self.configdir + '/key-nodes'):
             if f.endswith('.json'):
                 print(f);
-                ebuilder = ElementBuilder(self.templatedir + '/ElementFunction.template', self.configdir + '/key-nodes/' + f)
+                ebuilder = ElementBuilder(self.templatedir + '/ElementFunction.java.template', self.configdir + '/key-nodes/' + f)
                 internal_id = hbuilder.internal_id_map[ebuilder.element['name']]
                 element = ebuilder.build(internal_id)
                 ncode_list.append([internal_id, element])
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     import builder_java
 
     config = configuration.DebugConfig()
-    templatePath = config.get(config.base, "TemplatePath_Java")
+    templatePath = config.get(config.base, "TemplatePath")
     configPath = config.get(config.target, "In_ConfigPath")
     keyPath = config.get(config.target, "Out_KeyPath_Java")
 
