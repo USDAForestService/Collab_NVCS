@@ -1,15 +1,15 @@
-package nvcs_java;
+package nvcs;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import nvcs_java.nvcs_components.ClassificationKey;
-import nvcs_java.nvcs_components.Node;
-import nvcs_java.nvcs_components.Plot;
-import nvcs_java.nvcs_interfaces.INodeMatch;
-import nvcs_java.nvcs_patterns.Pattern;
-import nvcs_java.nvcs_patterns.PatternList;
+import nvcs_components.ClassificationKey;
+import nvcs_components.Node;
+import nvcs_components.Plot;
+import nvcs_interfaces.INodeMatch;
+import nvcs_patterns.Pattern;
+import nvcs_patterns.PatternList;
 
 public class <%classname%> extends ClassificationKey {
     

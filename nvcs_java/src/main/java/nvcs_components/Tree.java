@@ -1,4 +1,4 @@
-package nvcs_java.nvcs_components;
+package nvcs_components;
 
 import java.util.HashMap;
 import java.util.Map;

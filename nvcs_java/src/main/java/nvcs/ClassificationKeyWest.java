@@ -1,15 +1,15 @@
-package nvcs_java;
+package nvcs;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import nvcs_java.nvcs_components.ClassificationKey;
-import nvcs_java.nvcs_components.Node;
-import nvcs_java.nvcs_components.Plot;
-import nvcs_java.nvcs_interfaces.INodeMatch;
-import nvcs_java.nvcs_patterns.Pattern;
-import nvcs_java.nvcs_patterns.PatternList;
+import nvcs_components.ClassificationKey;
+import nvcs_components.Node;
+import nvcs_components.Plot;
+import nvcs_interfaces.INodeMatch;
+import nvcs_patterns.Pattern;
+import nvcs_patterns.PatternList;
 
 public class ClassificationKeyWest extends ClassificationKey {
 
@@ -17,7 +17,6 @@ public class ClassificationKeyWest extends ClassificationKey {
     public Node root_node;
 
     public ClassificationKeyWest() {
-
         Pattern.register("rscd", "Pattern");
         Pattern.register("state", "Pattern");
         Pattern.register("ecoregion", "_EcoregionPattern");
@@ -34,6 +33,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         nodes = new LinkedHashMap<>();
         root_node = _setup();
+        super.root_node = root_node;
     }
 
     public Node _setup() {
@@ -286,7 +286,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //  iva. The facultative wet (W2) tree species have at least a combined RIV =>20%, and the combination of
         // obligate wet (W1) and facultative wet (W2) understory species and have a combined SPCOV =>50%
         //  OR
-        //  va. The “facultative wet” (W2) tree species have at least a combined RIV =>520%, and the combination of “obligate wet” (W1) and “facultative wet” (W2) understory species and have a combined SPCOV =>50%
+        //  va. The ï¿½facultative wetï¿½ (W2) tree species have at least a combined RIV =>520%, and the combination of ï¿½obligate wetï¿½ (W1) and ï¿½facultative wetï¿½ (W2) understory species and have a combined SPCOV =>50%
 
         Map<String,String> ECOREGIONS_SGP_values = new HashMap<>();
         ECOREGIONS_SGP_values.put("ecoregion","315Ce, 315G, 321B");
@@ -455,7 +455,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "D011";
 
         // Tree composition and ecology matching one of the following options:
-        // i. Located in ECOREGION ECOREGION 332, M334, 331 – exclude 331A, 
+        // i. Located in ECOREGION ECOREGION 332, M334, 331 ï¿½ exclude 331A, 
         // AND
         // ii. EITHER
         // a. Tree composition dominated by one or more of STRONG diagnostic tree species
@@ -519,7 +519,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
         // ruderal native or EXOTIC = yes (< 20% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -542,7 +542,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION 315D, 332A, 332B, 315A, 315B, 315C, 315F,
-        // 315G, M313B, 331 – exclude 331A and 331J, M332D, M334A, 332C, 332D,
+        // 315G, M313B, 331 ï¿½ exclude 331A and 331J, M332D, M334A, 332C, 332D,
         // 332F, 332E and tree composition dominated by one or
         // more of STRONG DIAGNOSTIC species Populus deltoides (RIV=>50%),
         // OR
@@ -702,7 +702,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
         // ruderal native or EXOTIC = yes (< 20% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -912,7 +912,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
         // ruderal native or EXOTIC = yes (< 20% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -992,7 +992,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
         // combination of Abies grandis, Abies magnifica, Pinus contorta, Thuja plicata, or
-        // Tsuga mertensiana [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
+        // Tsuga mertensiana [PLACEHOLDER ï¿½ INSERT P2 VEG] (>=30% RIV; i.e.,
         // together STRONG and MODERATE diagnostic species RIV =>50%)
 
         Map<String,String> ECOREGIONS_values = new HashMap<>();
@@ -1043,7 +1043,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // combination of Acer macrophyllum, Chamaecyparis lawsoniana,
         // Notholithocarpus densiflorus, Platanus racemosa, Populus fremontii,
         // Pseudotsuga menziesii, Quercus lobata, Thuja plicata, or
-        // Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
+        // Tsuga heterophylla [PLACEHOLDER ï¿½ INSERT P2 VEG] (>=30% RIV; i.e.,
         // together STRONG and MODERATE diagnostic species RIV =>50%)
 
         Map<String,String> ECOREGIONS_values = new HashMap<>();
@@ -1198,7 +1198,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
         // ruderal native or EXOTIC = yes (< 20% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -1517,7 +1517,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
         // ruderal native or EXOTIC = yes (< 20% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -1780,7 +1780,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // has been allowed to succeed more-or-less spontaneously). Tree
         // composition dominated by ruderal native or EXOTIC = yes
         // (>= 80% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division
 
         Map<String,String> RUDERAL_OR_EXOTIC_values = new HashMap<>();
         RUDERAL_OR_EXOTIC_values.put("exotic","yes");
@@ -1837,7 +1837,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "";
 
         // Tree composition and ecology matching one of the following options
-        // i. Located in ECOREGION 222, 251, 315 – exclude 315H, 332, 331 – exclude 331A and 331J, AND
+        // i. Located in ECOREGION 222, 251, 315 ï¿½ exclude 315H, 332, 331 ï¿½ exclude 331A and 331J, AND
         // EITHER
         // ii. Tree composition is dominated by one or more of Betula papyrifera
         // or Populus tremuloides =>20% RIV and Abies concolor,
@@ -1945,7 +1945,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "D326";
 
         // Tree composition and ecology matching one of the following options:
-        // i. Located in ECOREGION 222, 231, 251, 255, 315, 321, 331, 332 – exclude 331A and 331J, 332
+        // i. Located in ECOREGION 222, 231, 251, 255, 315, 321, 331, 332 ï¿½ exclude 331A and 331J, 332
         // AND
         // ii. EITHER
         // a. Tree composition dominated by one or more of STRONG diagnostic
@@ -2412,7 +2412,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "G145";
 
         // Plot location and tree composition are as follows:
-        // i. Located in ECOREGION ECOREGION 222, 251, 315F, 315B, 332, 331 – 
+        // i. Located in ECOREGION ECOREGION 222, 251, 315F, 315B, 332, 331 ï¿½ 
         // exclude 331A and 331J and tree composition dominated by one or more
         // of STRONG DIAGNOSTIC species Betula papyrifera, Fraxinus pennsylvanica,
         // Juniperus scopulorum, Populus tremuloides, Ulmus americana, Juniperus virginiana, or
@@ -2798,7 +2798,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
         // ruderal native or EXOTIC = yes (< 20% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -3552,7 +3552,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
         // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
-        // (See Appendix xx [PLACEHOLDER] – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER] ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -3677,7 +3677,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
         // ruderal native or EXOTIC = yes (< 20% RIV)
-        // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
+        // (See Appendix xx [PLACEHOLDER]) ï¿½ needs to be refined for this Division)
 
         Map<String,String> EXOTIC_values = new HashMap<>();
         EXOTIC_values.put("exotic","yes");
@@ -4377,7 +4377,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
         // combination of Abies grandis, Arbutus menziesii, Pinus muricata, Picea sitchensis, Pseudotsuga menziesii  or
-        // Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
+        // Tsuga heterophylla [PLACEHOLDER ï¿½ INSERT P2 VEG] (>=30% RIV; i.e.,
         // together STRONG and MODERATE diagnostic species RIV =>50%)
 
         Map<String,String> ECOREGIONS_values = new HashMap<>();
@@ -5654,7 +5654,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Tree composition and ecology matching one of the following options:
         // i.  Elevation below 2800 meters and located in ECOREGION M242C,
-        //     M242D – only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
+        //     M242D ï¿½ only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
         //     313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331,
         //     M332, M333, M334, 341, M341, 342   
         // AND
@@ -6699,7 +6699,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION 313C, 315A, 315H, 321A, 322A, 322B, M242B,
-        // M261A, M261D, M242C, M242D – only eastern ecosubsections M242Dd,
+        // M261A, M261D, M242C, M242D ï¿½ only eastern ecosubsections M242Dd,
         // M242De, M242Df, M242Dg, M242Dh, M261E, M261G, 313A, 313B, 331, 341,
         // 342, M332, M313, M331, M341, M333, M334
         // and tree composition dominated by one or more of STRONG DIAGNOSTIC
@@ -6732,7 +6732,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION 313A, 313B, 322A, M313, 341A, 341B, 341F,
-        // 341G, 331A, 331B, 331D, 331G, 331H, 331I, 331J, 331K, M242C, M242D –
+        // 341G, 331A, 331B, 331D, 331G, 331H, 331I, 331J, 331K, M242C, M242D ï¿½
         // only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
         // M261D, M332, M331, 342, M333, M341B, M341C
         // and tree composition dominated by one
@@ -6778,7 +6778,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION M242B, M261D, M313B, 313C, 315H, 322A,
-        // M242C, M242D – only eastern ecosubsections M242Dd, M242De, M242Df,
+        // M242C, M242D ï¿½ only eastern ecosubsections M242Dd, M242De, M242Df,
         // M242Dg, M242Dh, 313A, 313B, M313A, 342, 341, M331, 331, M332, M333,
         // M341 and tree composition dominated by one or more of STRONG DRY
         // TO MESIC DIAGNOSTIC species Abies lasiocarpa or Picea engelmannii
@@ -6822,7 +6822,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "G220";
 
         // Plot location and tree composition are as follows:
-        // i. Located in ECOREGION M242B, 313B, 341B, M242C, M242D – only
+        // i. Located in ECOREGION M242B, 313B, 341B, M242C, M242D ï¿½ only
         // eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
         // M332, M333, 342, M331, 331
         // and tree composition dominated by the STRONG DIAGNOSTIC species
@@ -6922,7 +6922,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION 331A, 331D, 331K, 331N, M261G, M242B,
-        // M242C, M242D – only eastern ecosubsections M242Dd, M242De, M242Df,
+        // M242C, M242D ï¿½ only eastern ecosubsections M242Dd, M242De, M242Df,
         // M242Dg, M242Dh, 341G, 342, M331A, M331B, M331D, M331J, M332, M333
         // and tree composition dominated by one or more of
         // STRONG DIAGNOSTIC species Pinus albicaulis, Abies lasiocarpa, or

@@ -1,4 +1,4 @@
-package nvcs_java.nvcs_patterns;
+package nvcs_patterns;
 
 import java.util.ArrayList;
 import java.util.HashMap;

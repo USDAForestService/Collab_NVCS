@@ -2,6 +2,13 @@
     "version": "0.2.0",
     "configurations": [
       {
+        "type": "java",
+        "name": "App",
+        "request": "launch",
+        "mainClass": "nvcs.App",
+        "projectName": "nvcs_java",
+      },
+      {
         "name": "Debug Main Process",
         "type": "node",
         "request": "launch",
@@ -10,7 +17,9 @@
         "windows": {
           "runtimeExecutable": "${workspaceFolder}/nvcs-client/node_modules/.bin/electron.cmd"
         },
-        "args" : ["."],
+        "args": [
+          "."
+        ],
         "outputCapture": "std"
       }
     ]

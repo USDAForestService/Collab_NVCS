@@ -1,11 +1,11 @@
-package nvcs_java.nvcs_components;
+package nvcs_components;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import nvcs_java.nvcs_patterns.PatternList;
+import nvcs_patterns.PatternList;
 
 public class Plot {
 
