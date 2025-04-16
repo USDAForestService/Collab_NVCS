@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import nvcs_java.nvcs_components.ClassificationKey;
 import nvcs_java.nvcs_components.Node;
 import nvcs_java.nvcs_components.Plot;
 import nvcs_java.nvcs_interfaces.INodeMatch;
-import nvcs_java.nvcs_interfaces.IClassificationKey;
 import nvcs_java.nvcs_patterns.Pattern;
 import nvcs_java.nvcs_patterns.PatternList;
 
-public class ClassificationKeyWest implements IClassificationKey {
+public class ClassificationKeyWest extends ClassificationKey {
 
     public Map<Integer,Node> nodes;
     public Node root_node;
