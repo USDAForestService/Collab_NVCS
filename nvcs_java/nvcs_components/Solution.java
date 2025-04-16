@@ -4,10 +4,10 @@ import java.util.List;
 
 public class Solution {
     
-    private Object obj;
-    private List<Node> path; 
+    public Plot obj;
+    public List<Node> path; 
 
-    public Solution(Object obj, List<Node> path) {
+    public Solution(Plot obj, List<Node> path) {
         this.obj = obj;
         this.path = path;
     }
