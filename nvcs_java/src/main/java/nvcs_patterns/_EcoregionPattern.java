@@ -55,7 +55,9 @@ public class _EcoregionPattern extends Pattern {
         }
     }
 
-    public boolean match(String value) {
+    @Override
+    public boolean match(Object val) {
+        String value = (String)val;
         value = value.trim();
 
         boolean foundinclude;
