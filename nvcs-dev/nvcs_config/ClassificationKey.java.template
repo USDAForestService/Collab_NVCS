@@ -1,7 +1,9 @@
 package nvcs;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import nvcs_components.ClassificationKey;
@@ -34,6 +36,7 @@ public class <%classname%> extends ClassificationKey {
 
         nodes = new LinkedHashMap<>();
         root_node = _setup();
+        super.root_node = root_node;
     }
 
     public Node _setup() {

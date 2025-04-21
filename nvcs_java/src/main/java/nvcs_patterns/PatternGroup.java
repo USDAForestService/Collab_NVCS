@@ -29,8 +29,11 @@ public class PatternGroup {
 
     public boolean match_all(Map<String,Object> valugrp) {
         boolean result = true;
-        for (String attr : this.pattgrp.keySet()) {
-            if (!this.pattgrp.get(attr).match(valugrp.get(attr))) {
+        for (Map.Entry<String,Pattern> entry : pattgrp.entrySet()) {
+            String attr = entry.getKey();
+            Pattern pattern = entry.getValue();
+            Object object = valugrp.get(attr);
+            if (!pattern.match(object)) {
                 result = false;
                 break;
             }

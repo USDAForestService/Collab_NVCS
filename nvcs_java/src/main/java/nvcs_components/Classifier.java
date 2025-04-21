@@ -28,7 +28,7 @@ public class Classifier {
     public Solution classify(Plot obj) {
         List<Node> path = new ArrayList<>();
         Node node = root_node;
-        while (node != null && node.children != null) {
+        while (node != null && node.children != null && node.children.size() > 0) {
             node = choose(node.children, obj);
             path.add(node);
         }

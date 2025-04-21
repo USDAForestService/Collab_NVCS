@@ -1,6 +1,7 @@
 package nvcs_patterns;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +10,7 @@ public class PatternList {
     public String label;
     public List<PatternGroup> alternatives;
 
-    @SafeVarargs
-    public PatternList(String label, Map<String,String>... pattgrps) {
+    public PatternList(String label, List<HashMap<String,String>> pattgrps) {
         if (pattgrps == null) {
             throw new RuntimeException("PatternList is empty");
         }
