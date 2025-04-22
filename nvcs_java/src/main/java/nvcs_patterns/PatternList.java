@@ -5,19 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javafx.util.Pair;
+
 public class PatternList {
 
     public String label;
     public List<PatternGroup> alternatives;
 
-    public PatternList(String label, List<HashMap<String,String>> pattgrps) {
+    public PatternList(String label, List<Pair<String,String>> pattgrps) {
         if (pattgrps == null) {
             throw new RuntimeException("PatternList is empty");
         }
         this.label = label;
         this.alternatives = new ArrayList<>();
-        for (Map<String,String> pattgrp : pattgrps) {
-            PatternGroup entry = new PatternGroup(pattgrp);
+        for (Pair<String,String> pattgrp : pattgrps) {
+            HashMap<String,String> hashMap = new HashMap<String, String>();
+            hashMap.put(pattgrp.getKey(), pattgrp.getValue());
+            PatternGroup entry = new PatternGroup(hashMap);
             alternatives.add(entry);
         }
     }

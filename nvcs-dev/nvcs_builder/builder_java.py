@@ -6,10 +6,10 @@ import configuration
 indent = "    "
 
 def _makevarcode(varname, alternatives):
-    varcode = f'{indent * 2}List<HashMap<String,String>> {varname}_values = new ArrayList();\n'
+    varcode = f'{indent * 2}List<Pair<String,String>> {varname}_values = new ArrayList();\n'
     for entry in alternatives:
         for key, value in entry.items():
-            varcode += f'{indent * 2}{varname}_values.add(new HashMap() {{{{ put("{key}","{value}"); }}}});\n'
+            varcode += f'{indent * 2}{varname}_values.add(new Pair("{key}", "{value}"));\n'
     varcode += f'{indent * 2}PatternList {varname} = new PatternList("{varname}", {varname}_values);\n'
     return varcode
 
