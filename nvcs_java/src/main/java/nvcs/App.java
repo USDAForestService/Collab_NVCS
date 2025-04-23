@@ -12,6 +12,16 @@ public class App
 {
 
     public static Integer classifyWest(String json) {
+        Classifier classifier = new Classifier(new ClassificationKeyWest());
+        return classify(classifier, json);
+    }
+
+    public static Integer classifyEast(String json) {
+        Classifier classifier = new Classifier(new ClassificationKeyEast());
+        return classify(classifier, json);
+    }
+
+    private static Integer classify(Classifier classifier, String json) {
         JsonParse jsonParse = new JsonParse(json);
         
         JsonRow firstJsonRow = jsonParse.rows.get(0);
@@ -47,7 +57,6 @@ public class App
             plot.trees.add(tree);
         }
         
-        Classifier classifier = new Classifier(new ClassificationKeyWest());
         Solution solution = classifier.classify(plot);
         Node finalNode = solution.path.get(solution.path.size() - 1);
         Integer classification = finalNode != null ? finalNode.ident : -1;
