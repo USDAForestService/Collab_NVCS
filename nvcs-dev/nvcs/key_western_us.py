@@ -172,6 +172,11 @@ Pattern.register('exotic', Pattern)
 Pattern.register('softwoodhardwood', Pattern)
 Pattern.register('planted', Pattern)
 Pattern.register('tallytree', Pattern)
+Pattern.register('afforestation_cd', Pattern)
+Pattern.register('land_cover_class_cd', Pattern)
+Pattern.register('land_cover_class_cd_ret', Pattern)
+Pattern.register('trtcd1', Pattern)
+Pattern.register('trtcd2', Pattern)
 
 class ClassificationKey:
     def __init__(self):
