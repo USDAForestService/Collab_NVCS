@@ -5,7 +5,7 @@ from pattern import PatternList
 import logging
 
 class Plot:
-    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov):
+    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, land_cover_class_cd_ret, trtcd1, trtcd2):
         self.attrs = dict()
         self.attrs['ident'] = ident
         self.attrs['rscd'] = rscd
@@ -21,6 +21,12 @@ class Plot:
         self.attrs['shcov'] = float(shcov or 0)
         self.attrs['ttcov'] = float(ttcov or 0)
         self.attrs['ntcov'] = float(ntcov or 0)
+        self.attrs['live_canopy_cvr_pct'] = float(live_canopy_cvr_pct or 0)
+        self.attrs['afforestation_cd'] = afforestation_cd or ""
+        self.attrs['land_cover_class_cd'] = land_cover_class_cd or ""
+        self.attrs['land_cover_class_cd_ret'] = land_cover_class_cd_ret or ""
+        self.attrs['trtcd1'] = trtcd1 or ""
+        self.attrs['trtcd2'] = trtcd2 or ""
         self.trees = list()
 
     def __getattr__(self, name):
@@ -80,6 +86,10 @@ class Plot:
     def get_ntcov(self):
         logging.debug('%s|ntcov()|%s', self.ident, self.ntcov)
         return float(self.ntcov)
+    
+    def get_live_canopy_cvr_pct(self):
+        logging.debug('%s|live_canopy_cvr_pct()|%s', self.ident, self.live_canopy_cvr_pct)
+        return float(self.live_canopy_cvr_pct)
 
     def __repr__(self):
         return "Plot(%r)" % (self.attrs)

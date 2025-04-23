@@ -44,7 +44,7 @@ def read_csv(file_path):
 def read_sqlite(dbfile, tbl):
     from key_western_us import Plot
     from key_western_us import Tree
-    plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV'
+    plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2'
     tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, SPCOV'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
     sql = sql + ' WHERE STATEAB != "AK"'
