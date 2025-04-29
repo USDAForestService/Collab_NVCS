@@ -38,28 +38,28 @@ public class JsonParse {
         }
 
         JsonRow row = new JsonRow();
-        row.IDENT = attributes.get("IDENT");
-        row.RSCD = attributes.get("RSCD");
-        row.STATEAB = attributes.get("STATEAB");
-        row.ECOREGION = attributes.get("ECOREGION");
-        row.PLANTATION = attributes.get("PLANTATION");
-        row.HYDRIC = attributes.get("HYDRIC");
-        row.RIVERINE = attributes.get("RIVERINE");
-        row.ELEVATION = attributes.get("ELEVATION");
+        row.IDENT = attributes.get("IDENT") == null ? "" : attributes.get("IDENT");
+        row.RSCD = attributes.get("RSCD") == null ? "" : attributes.get("RSCD");
+        row.STATEAB = attributes.get("STATEAB") == null ? "" : attributes.get("STATEAB");
+        row.ECOREGION = attributes.get("ECOREGION") == null ? "" : attributes.get("ECOREGION");
+        row.PLANTATION = attributes.get("PLANTATION") == null ? "" : attributes.get("PLANTATION");
+        row.HYDRIC = attributes.get("HYDRIC") == null ? "" : attributes.get("HYDRIC");
+        row.RIVERINE = attributes.get("RIVERINE") == null ? "" : attributes.get("RIVERINE");
+        row.ELEVATION = attributes.get("ELEVATION") == null ? "" : attributes.get("ELEVATION");
         row.BALIVE = attributes.get("BALIVE") == null ? "0" : attributes.get("BALIVE");
         row.FBCOV = attributes.get("FBCOV") == null ? "0" : attributes.get("FBCOV");
         row.GRCOV = attributes.get("GRCOV") == null ? "0" : attributes.get("GRCOV");
         row.SHCOV = attributes.get("SHCOV") == null ? "0" : attributes.get("SHCOV");
         row.TTCOV = attributes.get("TTCOV") == null ? "0" : attributes.get("TTCOV");
         row.NTCOV = attributes.get("NTCOV") == null ? "0" : attributes.get("NTCOV");
-        row.SPECIES = attributes.get("SPECIES");
+        row.SPECIES = attributes.get("SPECIES") == null ? "" : attributes.get("SPECIES");
         row.RIV = attributes.get("RIV") == null ? "0" : attributes.get("RIV");
-        row.WETLAND = attributes.get("WETLAND");
-        row.RUDERAL = attributes.get("RUDERAL");
-        row.EXOTIC = attributes.get("EXOTIC");
-        row.SOFTWOODHARDWOOD = attributes.get("SOFTWOODHARDWOOD");
-        row.PLANTED = attributes.get("PLANTED");
-        row.TALLYTREE = attributes.get("TALLYTREE");
+        row.WETLAND = attributes.get("WETLAND") == null ? "" : attributes.get("WETLAND");
+        row.RUDERAL = attributes.get("RUDERAL") == null ? "" : attributes.get("RUDERAL");
+        row.EXOTIC = attributes.get("EXOTIC") == null ? "" : attributes.get("EXOTIC");
+        row.SOFTWOODHARDWOOD = attributes.get("SOFTWOODHARDWOOD") == null ? "" : attributes.get("SOFTWOODHARDWOOD");
+        row.PLANTED = attributes.get("PLANTED") == null ? "" : attributes.get("PLANTED");
+        row.TALLYTREE = attributes.get("TALLYTREE") == null ? "" : attributes.get("TALLYTREE");
         row.SPCOV = attributes.get("SPCOV") == null ? "0" : attributes.get("SPCOV");
 
         return row;

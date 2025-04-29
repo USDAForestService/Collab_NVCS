@@ -39,7 +39,7 @@ public class <%classname%> extends ClassificationKey {
     }
 
     public Node _setup() {
-        nodes.put(0, new Node(0, null, new Object[] { "", "", (INodeMatch) plot -> true }, ""));
+        nodes.put(0, new Node(0, null, element_000(), ""));
 <%hierarchy%>
 
         for (Map.Entry<Integer,Node> entry : nodes.entrySet()) {
@@ -53,6 +53,15 @@ public class <%classname%> extends ClassificationKey {
         return nodes.get(0);
     }
 
+    public Object[] element_000() {
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { "", "", match };
+    }
+    
 <%nodes%>
 
 }

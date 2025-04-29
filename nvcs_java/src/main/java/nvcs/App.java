@@ -1,5 +1,11 @@
 package nvcs;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import nvcs_components.Classifier;
 import nvcs_components.Node;
 import nvcs_components.Plot;
@@ -10,18 +16,33 @@ import nvcs_utilities.JsonRow;
 
 public class App 
 {
+    public static void main(String[] args) {
+        String json;
+        try {
+            String tempPath = args[0];
+            List<String> tempLines = Files.readAllLines(Paths.get(tempPath));
+            json = tempLines.get(0);
+        }
+        catch (Exception ex) {
+            System.err.println("Error reading file: " + ex);
+            return;
+        }
+        Integer[] path = classifyWest(json);
+        String joinedPath = Stream.of(path).map(String::valueOf).collect(Collectors.joining(", "));
+        System.out.print(joinedPath);
+    }
 
-    public static Integer classifyWest(String json) {
+    public static Integer[] classifyWest(String json) {
         Classifier classifier = new Classifier(new ClassificationKeyWest());
         return classify(classifier, json);
     }
 
-    public static Integer classifyEast(String json) {
+    public static Integer[] classifyEast(String json) {
         Classifier classifier = new Classifier(new ClassificationKeyEast());
         return classify(classifier, json);
     }
 
-    private static Integer classify(Classifier classifier, String json) {
+    private static Integer[] classify(Classifier classifier, String json) {
         JsonParse jsonParse = new JsonParse(json);
         
         JsonRow firstJsonRow = jsonParse.rows.get(0);
@@ -58,8 +79,14 @@ public class App
         }
         
         Solution solution = classifier.classify(plot);
-        Node finalNode = solution.path.get(solution.path.size() - 1);
-        Integer classification = finalNode != null ? finalNode.ident : -1;
-        return classification;
+        Integer[] path = new Integer[solution.path.size()];
+        for (int i = 0; i < path.length; i++) {
+            Node node = solution.path.get(i);
+            Integer ident = -1;
+            if (node != null)
+                ident = node.ident;
+            path[i] = ident;
+        }
+        return path;
     }
 }

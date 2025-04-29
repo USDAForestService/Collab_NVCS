@@ -39,7 +39,7 @@ public class ClassificationKeyWest extends ClassificationKey {
     }
 
     public Node _setup() {
-        nodes.put(0, new Node(0, null, new Object[] { "", "", (INodeMatch) plot -> true }, ""));
+        nodes.put(0, new Node(0, null, element_000(), ""));
         nodes.put(  1,  new Node(  1,   0, element_001(), "Forest Plantations"));
         nodes.put(  2,  new Node(  2,   0, element_002(), "Natural (including ruderal) Forests"));
         nodes.put(  3,  new Node(  3,   2, element_003(), "Wetland Forest & Woodlands"));
@@ -184,6 +184,15 @@ public class ClassificationKeyWest extends ClassificationKey {
         }
 
         return nodes.get(0);
+    }
+
+    public Object[] element_000() {
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { "", "", match };
     }
 
     public Object[] element_001() {
