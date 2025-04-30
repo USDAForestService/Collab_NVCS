@@ -107,8 +107,8 @@ class Timer:
 if __name__ == '__main__':
 
     run(type=config.target,
-        java_classes=config.get(config.base, "Out_JavaClassesBin"),
-        outfile=config.get(config.base, "Out_TestPath"),
+        java_classes=config.get(config.base, "JavaClassesBin"),
+        outfile=config.get(config.target, "Out_JavaTesterResultsPath"),
         debugfile=config.get(config.target, "Out_DebugLogPath"),
         dbfile=config.get(config.target, "In_DbPath"),
         plottbl=config.get(config.target, "In_DbTable"),

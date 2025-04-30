@@ -123,7 +123,7 @@ if __name__ == '__main__':
     configPath = config.get(config.target, "In_ConfigPath")
     className = config.get(config.target, "Out_JavaClassName")
 
-    javaDirectory = config.get(config.base, "Out_JavaDirectory")
+    javaDirectory = config.get(config.base, "JavaClassesSrc")
     keyPath = os.path.join(javaDirectory, className + ".java")
 
     keybuilder = builder_java.KeyBuilder(configPath, templatePath, className)
