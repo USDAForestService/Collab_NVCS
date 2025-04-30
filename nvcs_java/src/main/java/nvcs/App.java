@@ -97,6 +97,8 @@ public class App
         );
 
         for (JsonRow jsonRow : jsonParse.rows) {
+            if (jsonRow.SPECIES == "")
+                continue;
             Tree tree = new Tree(
                 jsonRow.SPECIES,
                 jsonRow.RIV,
