@@ -1,7 +1,10 @@
 package nvcs;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,19 +20,36 @@ import nvcs_utilities.JsonRow;
 public class App 
 {
     public static void main(String[] args) {
-        String json;
+        String inputPath = args[0];
+        String outputPath = args[1];
+        List<String> outputLines = new ArrayList<>();
+        Classifier classifier = new Classifier(new ClassificationKeyWest());
+
+        try (Stream<String> stream = Files.lines(Paths.get(inputPath))) {
+            stream.forEach(inLine -> {
+                String[] split = inLine.split("\t");
+                String ident = split[0];
+                String json = split[1];
+                Integer[] path = classify(classifier, json);
+                Integer solution = path.length > 0 ? path[path.length - 1] : -1;
+                if (path[path.length - 1] == -1)
+                    path = Arrays.copyOf(path, path.length - 1);
+
+                String joinedPath = Stream.of(path).map(String::valueOf).collect(Collectors.joining(", "));
+                String outputLine = String.format("%s\t%s\t[%s]", ident, solution, joinedPath);
+                outputLines.add(outputLine);
+            });
+        }
+        catch (IOException ex) {
+            System.err.println("Error reading file: " + ex);
+        }
+
         try {
-            String tempPath = args[0];
-            List<String> tempLines = Files.readAllLines(Paths.get(tempPath));
-            json = tempLines.get(0);
+            Files.write(Paths.get(outputPath), outputLines);
         }
         catch (Exception ex) {
-            System.err.println("Error reading file: " + ex);
-            return;
+            System.err.println("Error writing file: " + ex);
         }
-        Integer[] path = classifyWest(json);
-        String joinedPath = Stream.of(path).map(String::valueOf).collect(Collectors.joining(", "));
-        System.out.print(joinedPath);
     }
 
     public static Integer[] classifyWest(String json) {

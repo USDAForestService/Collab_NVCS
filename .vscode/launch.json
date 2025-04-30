@@ -7,7 +7,10 @@
         "request": "launch",
         "mainClass": "nvcs.App",
         "projectName": "nvcs_java",
-        "args": "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/TEMP.txt"
+        "args": [
+          "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/TEMP.txt",
+          "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_output/JavaResults.out"
+        ]
       },
       {
         "name": "Debug Main Process",

@@ -47,7 +47,7 @@ def read_sqlite(dbfile, tbl):
     plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV'
     tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, SPCOV'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
-    sql = sql + ' WHERE STATEAB != "AK"'
+    sql = sql + ' WHERE STATEAB != "AK" ORDER BY IDENT'
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
     tree_cur = con.cursor()
