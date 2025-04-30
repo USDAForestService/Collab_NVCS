@@ -115,10 +115,7 @@ public class App
         Integer[] path = new Integer[solution.path.size()];
         for (int i = 0; i < path.length; i++) {
             Node node = solution.path.get(i);
-            Integer ident = -1;
-            if (node != null)
-                ident = node.ident;
-            path[i] = ident;
+            path[i] = node != null ? node.ident : -1;
         }
         return path;
     }
