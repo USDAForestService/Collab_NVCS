@@ -6,11 +6,22 @@ import configuration
 indent = "    "
 
 def _makevarcode(varname, alternatives):
-    varcode = f'{indent * 2}List<Pair<String,String>> {varname}_values = new ArrayList();\n'
-    for entry in alternatives:
-        for key, value in entry.items():
-            varcode += f'{indent * 2}{varname}_values.add(new Pair("{key}", "{value}"));\n'
-    varcode += f'{indent * 2}PatternList {varname} = new PatternList("{varname}", {varname}_values);\n'
+    varcode = ""
+    pattern_names = []
+    for idx, entry in enumerate(alternatives):
+        pattern_name = f'{varname}_pattern{idx}'
+        pattern_names.append(pattern_name)
+        varcode += f'{indent * 2}List<Pair<String,String>> {pattern_name} = Arrays.asList(\n'
+        for index, (key, value) in enumerate(entry.items()):
+            comma = ',' if index < len(entry.items()) - 1 else ""
+            varcode += f'{indent * 3}new Pair("{key}", "{value}"){comma}\n'
+        varcode += f'{indent * 2});\n'
+    varcode += f'{indent * 2}List<List<Pair<String,String>>> {varname}_patterns = Arrays.asList(\n'
+    for idx, pattern_name in enumerate(pattern_names):
+        comma = ',' if idx < len(pattern_names) - 1 else ""
+        varcode += f'{indent * 3}{pattern_name}{comma}\n'
+    varcode += f'{indent * 2});\n'
+    varcode += f'{indent * 2}PatternList {varname} = new PatternList("{varname}", {varname}_patterns);\n'
     return varcode
 
 class ElementBuilder:

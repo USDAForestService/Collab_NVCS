@@ -12,15 +12,17 @@ public class PatternList {
     public String label;
     public List<PatternGroup> alternatives;
 
-    public PatternList(String label, List<Pair<String,String>> pattgrps) {
+    public PatternList(String label, List<List<Pair<String,String>>> pattgrps) {
         if (pattgrps == null) {
             throw new RuntimeException("PatternList is empty");
         }
         this.label = label;
         this.alternatives = new ArrayList<>();
-        for (Pair<String,String> pattgrp : pattgrps) {
-            HashMap<String,String> hashMap = new HashMap<String, String>();
-            hashMap.put(pattgrp.getKey(), pattgrp.getValue());
+        for (List<Pair<String,String>> pattgrp : pattgrps) {
+            HashMap<String,String> hashMap = new HashMap<>();
+            for (Pair<String,String> pattern : pattgrp) {
+                hashMap.put(pattern.getKey(), pattern.getValue());
+            }
             PatternGroup entry = new PatternGroup(hashMap);
             alternatives.add(entry);
         }

@@ -1,6 +1,6 @@
 package nvcs;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -223,9 +223,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         // aged.  The stand is identified as planted in the FIA database (Stand Origin Code
         // = "Clear evidence of artificial regeneration," Condition Table, Miles et al. 2001)
 
-        List<Pair<String,String>> PLANTATION_values = new ArrayList();
-        PLANTATION_values.add(new Pair("plantation", "yes"));
-        PatternList PLANTATION = new PatternList("PLANTATION", PLANTATION_values);
+        List<Pair<String,String>> PLANTATION_pattern0 = Arrays.asList(
+            new Pair("plantation", "yes")
+        );
+        List<List<Pair<String,String>>> PLANTATION_patterns = Arrays.asList(
+            PLANTATION_pattern0
+        );
+        PatternList PLANTATION = new PatternList("PLANTATION", PLANTATION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(PLANTATION)
@@ -245,12 +249,22 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Conifer & Hardwood plantations found in the tropics, including Puerto Rico, U.S. Virgin Islands,
         // and tropical Florida (EcoSection 411A)
 
-        List<Pair<String,String>> TROPICAL_LOCATION_values = new ArrayList();
-        TROPICAL_LOCATION_values.add(new Pair("state", "PR"));
-        TROPICAL_LOCATION_values.add(new Pair("state", "VI"));
-        TROPICAL_LOCATION_values.add(new Pair("state", "FL"));
-        TROPICAL_LOCATION_values.add(new Pair("ecoregion", "411A"));
-        PatternList TROPICAL_LOCATION = new PatternList("TROPICAL_LOCATION", TROPICAL_LOCATION_values);
+        List<Pair<String,String>> TROPICAL_LOCATION_pattern0 = Arrays.asList(
+            new Pair("state", "PR")
+        );
+        List<Pair<String,String>> TROPICAL_LOCATION_pattern1 = Arrays.asList(
+            new Pair("state", "VI")
+        );
+        List<Pair<String,String>> TROPICAL_LOCATION_pattern2 = Arrays.asList(
+            new Pair("state", "FL"),
+            new Pair("ecoregion", "411A")
+        );
+        List<List<Pair<String,String>>> TROPICAL_LOCATION_patterns = Arrays.asList(
+            TROPICAL_LOCATION_pattern0,
+            TROPICAL_LOCATION_pattern1,
+            TROPICAL_LOCATION_pattern2
+        );
+        PatternList TROPICAL_LOCATION = new PatternList("TROPICAL_LOCATION", TROPICAL_LOCATION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(TROPICAL_LOCATION)
@@ -270,12 +284,22 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical forest plantations found in the Caribbean region,
         // including Puerto Rico, U.S. Virgin Islands, and tropical Florida (EcoSection 411A)
 
-        List<Pair<String,String>> CARIBBEAN_values = new ArrayList();
-        CARIBBEAN_values.add(new Pair("state", "PR"));
-        CARIBBEAN_values.add(new Pair("state", "VI"));
-        CARIBBEAN_values.add(new Pair("state", "FL"));
-        CARIBBEAN_values.add(new Pair("ecoregion", "411A"));
-        PatternList CARIBBEAN = new PatternList("CARIBBEAN", CARIBBEAN_values);
+        List<Pair<String,String>> CARIBBEAN_pattern0 = Arrays.asList(
+            new Pair("state", "PR")
+        );
+        List<Pair<String,String>> CARIBBEAN_pattern1 = Arrays.asList(
+            new Pair("state", "VI")
+        );
+        List<Pair<String,String>> CARIBBEAN_pattern2 = Arrays.asList(
+            new Pair("state", "FL"),
+            new Pair("ecoregion", "411A")
+        );
+        List<List<Pair<String,String>>> CARIBBEAN_patterns = Arrays.asList(
+            CARIBBEAN_pattern0,
+            CARIBBEAN_pattern1,
+            CARIBBEAN_pattern2
+        );
+        PatternList CARIBBEAN = new PatternList("CARIBBEAN", CARIBBEAN_patterns);
 
         INodeMatch match = plot -> (
             plot.match(CARIBBEAN)
@@ -294,9 +318,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Caribbean species are conifers >=25% RIV
 
-        List<Pair<String,String>> CONIFERS_values = new ArrayList();
-        CONIFERS_values.add(new Pair("softwoodhardwood", "S"));
-        PatternList CONIFERS = new PatternList("CONIFERS", CONIFERS_values);
+        List<Pair<String,String>> CONIFERS_pattern0 = Arrays.asList(
+            new Pair("softwoodhardwood", "S")
+        );
+        List<List<Pair<String,String>>> CONIFERS_patterns = Arrays.asList(
+            CONIFERS_pattern0
+        );
+        PatternList CONIFERS = new PatternList("CONIFERS", CONIFERS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(CONIFERS) >= 25
@@ -315,15 +343,23 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Species of native conifers have > RIV than exotic species
 
-        List<Pair<String,String>> NATIVE_CONIFERS_values = new ArrayList();
-        NATIVE_CONIFERS_values.add(new Pair("softwoodhardwood", "S"));
-        NATIVE_CONIFERS_values.add(new Pair("exotic", "no"));
-        PatternList NATIVE_CONIFERS = new PatternList("NATIVE_CONIFERS", NATIVE_CONIFERS_values);
+        List<Pair<String,String>> NATIVE_CONIFERS_pattern0 = Arrays.asList(
+            new Pair("softwoodhardwood", "S"),
+            new Pair("exotic", "no")
+        );
+        List<List<Pair<String,String>>> NATIVE_CONIFERS_patterns = Arrays.asList(
+            NATIVE_CONIFERS_pattern0
+        );
+        PatternList NATIVE_CONIFERS = new PatternList("NATIVE_CONIFERS", NATIVE_CONIFERS_patterns);
 
-        List<Pair<String,String>> EXOTIC_CONIFERS_values = new ArrayList();
-        EXOTIC_CONIFERS_values.add(new Pair("softwoodhardwood", "S"));
-        EXOTIC_CONIFERS_values.add(new Pair("exotic", "yes"));
-        PatternList EXOTIC_CONIFERS = new PatternList("EXOTIC_CONIFERS", EXOTIC_CONIFERS_values);
+        List<Pair<String,String>> EXOTIC_CONIFERS_pattern0 = Arrays.asList(
+            new Pair("softwoodhardwood", "S"),
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> EXOTIC_CONIFERS_patterns = Arrays.asList(
+            EXOTIC_CONIFERS_pattern0
+        );
+        PatternList EXOTIC_CONIFERS = new PatternList("EXOTIC_CONIFERS", EXOTIC_CONIFERS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(NATIVE_CONIFERS) > plot.riv(EXOTIC_CONIFERS)
@@ -359,9 +395,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Caribbean species are hardwoods >=25% RIV
 
-        List<Pair<String,String>> HARDWOODS_values = new ArrayList();
-        HARDWOODS_values.add(new Pair("softwoodhardwood", "H"));
-        PatternList HARDWOODS = new PatternList("HARDWOODS", HARDWOODS_values);
+        List<Pair<String,String>> HARDWOODS_pattern0 = Arrays.asList(
+            new Pair("softwoodhardwood", "H")
+        );
+        List<List<Pair<String,String>>> HARDWOODS_patterns = Arrays.asList(
+            HARDWOODS_pattern0
+        );
+        PatternList HARDWOODS = new PatternList("HARDWOODS", HARDWOODS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(HARDWOODS) >= 25
@@ -380,15 +420,23 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Species of native hardwoods have > RIV than exotic species
 
-        List<Pair<String,String>> NATIVE_HARDWOODS_values = new ArrayList();
-        NATIVE_HARDWOODS_values.add(new Pair("softwoodhardwood", "H"));
-        NATIVE_HARDWOODS_values.add(new Pair("exotic", "no"));
-        PatternList NATIVE_HARDWOODS = new PatternList("NATIVE_HARDWOODS", NATIVE_HARDWOODS_values);
+        List<Pair<String,String>> NATIVE_HARDWOODS_pattern0 = Arrays.asList(
+            new Pair("softwoodhardwood", "H"),
+            new Pair("exotic", "no")
+        );
+        List<List<Pair<String,String>>> NATIVE_HARDWOODS_patterns = Arrays.asList(
+            NATIVE_HARDWOODS_pattern0
+        );
+        PatternList NATIVE_HARDWOODS = new PatternList("NATIVE_HARDWOODS", NATIVE_HARDWOODS_patterns);
 
-        List<Pair<String,String>> EXOTIC_HARDWOODS_values = new ArrayList();
-        EXOTIC_HARDWOODS_values.add(new Pair("softwoodhardwood", "H"));
-        EXOTIC_HARDWOODS_values.add(new Pair("exotic", "yes"));
-        PatternList EXOTIC_HARDWOODS = new PatternList("EXOTIC_HARDWOODS", EXOTIC_HARDWOODS_values);
+        List<Pair<String,String>> EXOTIC_HARDWOODS_pattern0 = Arrays.asList(
+            new Pair("softwoodhardwood", "H"),
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> EXOTIC_HARDWOODS_patterns = Arrays.asList(
+            EXOTIC_HARDWOODS_pattern0
+        );
+        PatternList EXOTIC_HARDWOODS = new PatternList("EXOTIC_HARDWOODS", EXOTIC_HARDWOODS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(NATIVE_HARDWOODS) > plot.riv(EXOTIC_HARDWOODS)
@@ -459,11 +507,18 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Plantations found in eastern temperate region of North America (EcoProvince 210,
         // M210, 220, M220, 230, M230, 250, 310-Texas part only, and 330
 
-        List<Pair<String,String>> EASTERN_TEMPERATE_REGION_values = new ArrayList();
-        EASTERN_TEMPERATE_REGION_values.add(new Pair("ecoregion", "210, M210, 220, M220, 230, M230, 250, 330"));
-        EASTERN_TEMPERATE_REGION_values.add(new Pair("ecoregion", "310"));
-        EASTERN_TEMPERATE_REGION_values.add(new Pair("state", "TX"));
-        PatternList EASTERN_TEMPERATE_REGION = new PatternList("EASTERN_TEMPERATE_REGION", EASTERN_TEMPERATE_REGION_values);
+        List<Pair<String,String>> EASTERN_TEMPERATE_REGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "210, M210, 220, M220, 230, M230, 250, 330")
+        );
+        List<Pair<String,String>> EASTERN_TEMPERATE_REGION_pattern1 = Arrays.asList(
+            new Pair("ecoregion", "310"),
+            new Pair("state", "TX")
+        );
+        List<List<Pair<String,String>>> EASTERN_TEMPERATE_REGION_patterns = Arrays.asList(
+            EASTERN_TEMPERATE_REGION_pattern0,
+            EASTERN_TEMPERATE_REGION_pattern1
+        );
+        PatternList EASTERN_TEMPERATE_REGION = new PatternList("EASTERN_TEMPERATE_REGION", EASTERN_TEMPERATE_REGION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(EASTERN_TEMPERATE_REGION)
@@ -482,9 +537,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Eastern North American species are conifers >=25% RIV
 
-        List<Pair<String,String>> CONIFERS_values = new ArrayList();
-        CONIFERS_values.add(new Pair("softwoodhardwood", "S"));
-        PatternList CONIFERS = new PatternList("CONIFERS", CONIFERS_values);
+        List<Pair<String,String>> CONIFERS_pattern0 = Arrays.asList(
+            new Pair("softwoodhardwood", "S")
+        );
+        List<List<Pair<String,String>>> CONIFERS_patterns = Arrays.asList(
+            CONIFERS_pattern0
+        );
+        PatternList CONIFERS = new PatternList("CONIFERS", CONIFERS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(CONIFERS) >= 25
@@ -504,15 +563,23 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree species dominated by native conifers (See
         // Appendix A) with RIV > exotic conifers
 
-        List<Pair<String,String>> NATIVE_CONIFERS_values = new ArrayList();
-        NATIVE_CONIFERS_values.add(new Pair("exotic", "no"));
-        NATIVE_CONIFERS_values.add(new Pair("softwoodhardwood", "S"));
-        PatternList NATIVE_CONIFERS = new PatternList("NATIVE_CONIFERS", NATIVE_CONIFERS_values);
+        List<Pair<String,String>> NATIVE_CONIFERS_pattern0 = Arrays.asList(
+            new Pair("exotic", "no"),
+            new Pair("softwoodhardwood", "S")
+        );
+        List<List<Pair<String,String>>> NATIVE_CONIFERS_patterns = Arrays.asList(
+            NATIVE_CONIFERS_pattern0
+        );
+        PatternList NATIVE_CONIFERS = new PatternList("NATIVE_CONIFERS", NATIVE_CONIFERS_patterns);
 
-        List<Pair<String,String>> EXOTIC_CONIFERS_values = new ArrayList();
-        EXOTIC_CONIFERS_values.add(new Pair("exotic", "yes"));
-        EXOTIC_CONIFERS_values.add(new Pair("softwoodhardwood", "S"));
-        PatternList EXOTIC_CONIFERS = new PatternList("EXOTIC_CONIFERS", EXOTIC_CONIFERS_values);
+        List<Pair<String,String>> EXOTIC_CONIFERS_pattern0 = Arrays.asList(
+            new Pair("exotic", "yes"),
+            new Pair("softwoodhardwood", "S")
+        );
+        List<List<Pair<String,String>>> EXOTIC_CONIFERS_patterns = Arrays.asList(
+            EXOTIC_CONIFERS_pattern0
+        );
+        PatternList EXOTIC_CONIFERS = new PatternList("EXOTIC_CONIFERS", EXOTIC_CONIFERS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(NATIVE_CONIFERS) > plot.riv(EXOTIC_CONIFERS)
@@ -538,17 +605,37 @@ public class ClassificationKeyEast extends ClassificationKey {
         // ii. Species are native conifers found in ecoregion divisions 230, M230, 310 and
         //     ecoprovince 255
 
-        List<Pair<String,String>> SOUTHERN_PINES_values = new ArrayList();
-        SOUTHERN_PINES_values.add(new Pair("species", "Pinus echinata"));
-        SOUTHERN_PINES_values.add(new Pair("species", "Pinus elliottii"));
-        SOUTHERN_PINES_values.add(new Pair("species", "Pinus palustris"));
-        SOUTHERN_PINES_values.add(new Pair("species", "Pinus taeda"));
-        SOUTHERN_PINES_values.add(new Pair("species", "Pinus clausa"));
-        PatternList SOUTHERN_PINES = new PatternList("SOUTHERN_PINES", SOUTHERN_PINES_values);
+        List<Pair<String,String>> SOUTHERN_PINES_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> SOUTHERN_PINES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> SOUTHERN_PINES_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<Pair<String,String>> SOUTHERN_PINES_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> SOUTHERN_PINES_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<List<Pair<String,String>>> SOUTHERN_PINES_patterns = Arrays.asList(
+            SOUTHERN_PINES_pattern0,
+            SOUTHERN_PINES_pattern1,
+            SOUTHERN_PINES_pattern2,
+            SOUTHERN_PINES_pattern3,
+            SOUTHERN_PINES_pattern4
+        );
+        PatternList SOUTHERN_PINES = new PatternList("SOUTHERN_PINES", SOUTHERN_PINES_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "230, M230, 310, 255"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "230, M230, 310, 255")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(SOUTHERN_PINES) >= 25 || plot.match(ECOREGIONS)
@@ -568,25 +655,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus echinata; i.e. Pinus echinata >= 25% RIV,
         // and exceeds each species of Pinus elliottii, Pinus palustris, Pinus clausa and Pinus taeda.
 
-        List<Pair<String,String>> SHORTLEAF_PINE_values = new ArrayList();
-        SHORTLEAF_PINE_values.add(new Pair("species", "Pinus echinata"));
-        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_values);
+        List<Pair<String,String>> SHORTLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<List<Pair<String,String>>> SHORTLEAF_PINE_patterns = Arrays.asList(
+            SHORTLEAF_PINE_pattern0
+        );
+        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_patterns);
 
-        List<Pair<String,String>> LONGLEAF_PINE_values = new ArrayList();
-        LONGLEAF_PINE_values.add(new Pair("species", "Pinus palustris"));
-        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_values);
+        List<Pair<String,String>> LONGLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> LONGLEAF_PINE_patterns = Arrays.asList(
+            LONGLEAF_PINE_pattern0
+        );
+        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
-        List<Pair<String,String>> SLASH_PINE_values = new ArrayList();
-        SLASH_PINE_values.add(new Pair("species", "Pinus elliottii"));
-        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_values);
+        List<Pair<String,String>> SLASH_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<List<Pair<String,String>>> SLASH_PINE_patterns = Arrays.asList(
+            SLASH_PINE_pattern0
+        );
+        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_patterns);
 
-        List<Pair<String,String>> LOBLOLLY_PINE_values = new ArrayList();
-        LOBLOLLY_PINE_values.add(new Pair("species", "Pinus taeda"));
-        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_values);
+        List<Pair<String,String>> LOBLOLLY_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<List<Pair<String,String>>> LOBLOLLY_PINE_patterns = Arrays.asList(
+            LOBLOLLY_PINE_pattern0
+        );
+        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_patterns);
 
-        List<Pair<String,String>> SAND_PINE_values = new ArrayList();
-        SAND_PINE_values.add(new Pair("species", "Pinus clausa"));
-        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_values);
+        List<Pair<String,String>> SAND_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<List<Pair<String,String>>> SAND_PINE_patterns = Arrays.asList(
+            SAND_PINE_pattern0
+        );
+        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(SHORTLEAF_PINE) >= 25
@@ -610,25 +717,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus palustris; i.e. Pinus palustris >= 25% RIV,
         // and exceeds each species of Pinus echinata, Pinus elliottii, Pinus clausa and Pinus taeda.
 
-        List<Pair<String,String>> SHORTLEAF_PINE_values = new ArrayList();
-        SHORTLEAF_PINE_values.add(new Pair("species", "Pinus echinata"));
-        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_values);
+        List<Pair<String,String>> SHORTLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<List<Pair<String,String>>> SHORTLEAF_PINE_patterns = Arrays.asList(
+            SHORTLEAF_PINE_pattern0
+        );
+        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_patterns);
 
-        List<Pair<String,String>> LONGLEAF_PINE_values = new ArrayList();
-        LONGLEAF_PINE_values.add(new Pair("species", "Pinus palustris"));
-        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_values);
+        List<Pair<String,String>> LONGLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> LONGLEAF_PINE_patterns = Arrays.asList(
+            LONGLEAF_PINE_pattern0
+        );
+        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
-        List<Pair<String,String>> SLASH_PINE_values = new ArrayList();
-        SLASH_PINE_values.add(new Pair("species", "Pinus elliottii"));
-        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_values);
+        List<Pair<String,String>> SLASH_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<List<Pair<String,String>>> SLASH_PINE_patterns = Arrays.asList(
+            SLASH_PINE_pattern0
+        );
+        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_patterns);
 
-        List<Pair<String,String>> LOBLOLLY_PINE_values = new ArrayList();
-        LOBLOLLY_PINE_values.add(new Pair("species", "Pinus taeda"));
-        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_values);
+        List<Pair<String,String>> LOBLOLLY_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<List<Pair<String,String>>> LOBLOLLY_PINE_patterns = Arrays.asList(
+            LOBLOLLY_PINE_pattern0
+        );
+        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_patterns);
 
-        List<Pair<String,String>> SAND_PINE_values = new ArrayList();
-        SAND_PINE_values.add(new Pair("species", "Pinus clausa"));
-        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_values);
+        List<Pair<String,String>> SAND_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<List<Pair<String,String>>> SAND_PINE_patterns = Arrays.asList(
+            SAND_PINE_pattern0
+        );
+        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(LONGLEAF_PINE) >= 25
@@ -652,25 +779,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus elliottii; i.e. Pinus elliotti >= 25% RIV,
         // and exceeds each species of Pinus echinta, Pinus palustris, Pinus clausa or Pinus taeda.
 
-        List<Pair<String,String>> SHORTLEAF_PINE_values = new ArrayList();
-        SHORTLEAF_PINE_values.add(new Pair("species", "Pinus echinata"));
-        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_values);
+        List<Pair<String,String>> SHORTLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<List<Pair<String,String>>> SHORTLEAF_PINE_patterns = Arrays.asList(
+            SHORTLEAF_PINE_pattern0
+        );
+        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_patterns);
 
-        List<Pair<String,String>> LONGLEAF_PINE_values = new ArrayList();
-        LONGLEAF_PINE_values.add(new Pair("species", "Pinus palustris"));
-        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_values);
+        List<Pair<String,String>> LONGLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> LONGLEAF_PINE_patterns = Arrays.asList(
+            LONGLEAF_PINE_pattern0
+        );
+        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
-        List<Pair<String,String>> SLASH_PINE_values = new ArrayList();
-        SLASH_PINE_values.add(new Pair("species", "Pinus elliottii"));
-        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_values);
+        List<Pair<String,String>> SLASH_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<List<Pair<String,String>>> SLASH_PINE_patterns = Arrays.asList(
+            SLASH_PINE_pattern0
+        );
+        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_patterns);
 
-        List<Pair<String,String>> LOBLOLLY_PINE_values = new ArrayList();
-        LOBLOLLY_PINE_values.add(new Pair("species", "Pinus taeda"));
-        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_values);
+        List<Pair<String,String>> LOBLOLLY_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<List<Pair<String,String>>> LOBLOLLY_PINE_patterns = Arrays.asList(
+            LOBLOLLY_PINE_pattern0
+        );
+        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_patterns);
 
-        List<Pair<String,String>> SAND_PINE_values = new ArrayList();
-        SAND_PINE_values.add(new Pair("species", "Pinus clausa"));
-        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_values);
+        List<Pair<String,String>> SAND_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<List<Pair<String,String>>> SAND_PINE_patterns = Arrays.asList(
+            SAND_PINE_pattern0
+        );
+        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(SLASH_PINE) >= 25
@@ -694,25 +841,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus taeda; i.e. Pinus taeda >= 25% RIV,
         // and exceeds each species of Pinus echinta, Pinus elliottii, Pinus clausa or Pinus palustris
 
-        List<Pair<String,String>> SHORTLEAF_PINE_values = new ArrayList();
-        SHORTLEAF_PINE_values.add(new Pair("species", "Pinus echinata"));
-        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_values);
+        List<Pair<String,String>> SHORTLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<List<Pair<String,String>>> SHORTLEAF_PINE_patterns = Arrays.asList(
+            SHORTLEAF_PINE_pattern0
+        );
+        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_patterns);
 
-        List<Pair<String,String>> LONGLEAF_PINE_values = new ArrayList();
-        LONGLEAF_PINE_values.add(new Pair("species", "Pinus palustris"));
-        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_values);
+        List<Pair<String,String>> LONGLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> LONGLEAF_PINE_patterns = Arrays.asList(
+            LONGLEAF_PINE_pattern0
+        );
+        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
-        List<Pair<String,String>> SLASH_PINE_values = new ArrayList();
-        SLASH_PINE_values.add(new Pair("species", "Pinus elliottii"));
-        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_values);
+        List<Pair<String,String>> SLASH_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<List<Pair<String,String>>> SLASH_PINE_patterns = Arrays.asList(
+            SLASH_PINE_pattern0
+        );
+        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_patterns);
 
-        List<Pair<String,String>> LOBLOLLY_PINE_values = new ArrayList();
-        LOBLOLLY_PINE_values.add(new Pair("species", "Pinus taeda"));
-        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_values);
+        List<Pair<String,String>> LOBLOLLY_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<List<Pair<String,String>>> LOBLOLLY_PINE_patterns = Arrays.asList(
+            LOBLOLLY_PINE_pattern0
+        );
+        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_patterns);
 
-        List<Pair<String,String>> SAND_PINE_values = new ArrayList();
-        SAND_PINE_values.add(new Pair("species", "Pinus clausa"));
-        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_values);
+        List<Pair<String,String>> SAND_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<List<Pair<String,String>>> SAND_PINE_patterns = Arrays.asList(
+            SAND_PINE_pattern0
+        );
+        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(LOBLOLLY_PINE) >= 25
@@ -736,25 +903,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus clausa >= 25% RIV, and exceeds each
         // species of Pinus echinata, Pinus palustris, Pinus elliottii and Pinus taeda
 
-        List<Pair<String,String>> SHORTLEAF_PINE_values = new ArrayList();
-        SHORTLEAF_PINE_values.add(new Pair("species", "Pinus echinata"));
-        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_values);
+        List<Pair<String,String>> SHORTLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<List<Pair<String,String>>> SHORTLEAF_PINE_patterns = Arrays.asList(
+            SHORTLEAF_PINE_pattern0
+        );
+        PatternList SHORTLEAF_PINE = new PatternList("SHORTLEAF_PINE", SHORTLEAF_PINE_patterns);
 
-        List<Pair<String,String>> LONGLEAF_PINE_values = new ArrayList();
-        LONGLEAF_PINE_values.add(new Pair("species", "Pinus palustris"));
-        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_values);
+        List<Pair<String,String>> LONGLEAF_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> LONGLEAF_PINE_patterns = Arrays.asList(
+            LONGLEAF_PINE_pattern0
+        );
+        PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
-        List<Pair<String,String>> SLASH_PINE_values = new ArrayList();
-        SLASH_PINE_values.add(new Pair("species", "Pinus elliottii"));
-        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_values);
+        List<Pair<String,String>> SLASH_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<List<Pair<String,String>>> SLASH_PINE_patterns = Arrays.asList(
+            SLASH_PINE_pattern0
+        );
+        PatternList SLASH_PINE = new PatternList("SLASH_PINE", SLASH_PINE_patterns);
 
-        List<Pair<String,String>> LOBLOLLY_PINE_values = new ArrayList();
-        LOBLOLLY_PINE_values.add(new Pair("species", "Pinus taeda"));
-        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_values);
+        List<Pair<String,String>> LOBLOLLY_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<List<Pair<String,String>>> LOBLOLLY_PINE_patterns = Arrays.asList(
+            LOBLOLLY_PINE_pattern0
+        );
+        PatternList LOBLOLLY_PINE = new PatternList("LOBLOLLY_PINE", LOBLOLLY_PINE_patterns);
 
-        List<Pair<String,String>> SAND_PINE_values = new ArrayList();
-        SAND_PINE_values.add(new Pair("species", "Pinus clausa"));
-        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_values);
+        List<Pair<String,String>> SAND_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<List<Pair<String,String>>> SAND_PINE_patterns = Arrays.asList(
+            SAND_PINE_pattern0
+        );
+        PatternList SAND_PINE = new PatternList("SAND_PINE", SAND_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(SAND_PINE) >= 25
@@ -801,19 +988,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // ii. Species not as above, but found in ecoregion divisions 211, M211, 212, 221, M221, 222,
         //     M222, 251, 223, M223, 231, M231
 
-        List<Pair<String,String>> NORTHERN_PINES_values = new ArrayList();
-        NORTHERN_PINES_values.add(new Pair("species", "Pinus banksiana"));
-        NORTHERN_PINES_values.add(new Pair("species", "Pinus resinosa"));
-        NORTHERN_PINES_values.add(new Pair("species", "Pinus strobus"));
-        NORTHERN_PINES_values.add(new Pair("species", "Abies balsamea"));
-        NORTHERN_PINES_values.add(new Pair("species", "Larix laricina"));
-        NORTHERN_PINES_values.add(new Pair("species", "Picea glauca"));
-        NORTHERN_PINES_values.add(new Pair("species", "Picea mariana"));
-        PatternList NORTHERN_PINES = new PatternList("NORTHERN_PINES", NORTHERN_PINES_values);
+        List<Pair<String,String>> NORTHERN_PINES_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> NORTHERN_PINES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<Pair<String,String>> NORTHERN_PINES_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> NORTHERN_PINES_pattern3 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> NORTHERN_PINES_pattern4 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> NORTHERN_PINES_pattern5 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<Pair<String,String>> NORTHERN_PINES_pattern6 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<List<Pair<String,String>>> NORTHERN_PINES_patterns = Arrays.asList(
+            NORTHERN_PINES_pattern0,
+            NORTHERN_PINES_pattern1,
+            NORTHERN_PINES_pattern2,
+            NORTHERN_PINES_pattern3,
+            NORTHERN_PINES_pattern4,
+            NORTHERN_PINES_pattern5,
+            NORTHERN_PINES_pattern6
+        );
+        PatternList NORTHERN_PINES = new PatternList("NORTHERN_PINES", NORTHERN_PINES_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "211, M211, 212, 221, M221, 222, M222, 251, 223, M223, 231, M231"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "211, M211, 212, 221, M221, 222, M222, 251, 223, M223, 231, M231")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(NORTHERN_PINES) >= 25 || plot.match(ECOREGIONS)
@@ -832,27 +1045,85 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Native pine species of Pinus spp. [Pinus spp not E = Exotic] exceed non-pine conifers (Native Pinus spp >=50% RIV)
 
-        List<Pair<String,String>> NATIVE_NORTHERN_PINES_values = new ArrayList();
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus banksiana"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus caribaea"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus cembroides"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus clausa"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus echinata"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus edulis"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus elliottii"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus elliottii var. elliottii"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus flexilis"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus glabra"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus palustris"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus pungens"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus remota"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus resinosa"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus rigida"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus serotina"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus strobus"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus taeda"));
-        NATIVE_NORTHERN_PINES_values.add(new Pair("species", "Pinus virginiana"));
-        PatternList NATIVE_NORTHERN_PINES = new PatternList("NATIVE_NORTHERN_PINES", NATIVE_NORTHERN_PINES_values);
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus caribaea")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus cembroides")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern5 = Arrays.asList(
+            new Pair("species", "Pinus edulis")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern7 = Arrays.asList(
+            new Pair("species", "Pinus elliottii var. elliottii")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus flexilis")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern10 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern11 = Arrays.asList(
+            new Pair("species", "Pinus pungens")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern12 = Arrays.asList(
+            new Pair("species", "Pinus remota")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern13 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern14 = Arrays.asList(
+            new Pair("species", "Pinus rigida")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern15 = Arrays.asList(
+            new Pair("species", "Pinus serotina")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern16 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern17 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> NATIVE_NORTHERN_PINES_pattern18 = Arrays.asList(
+            new Pair("species", "Pinus virginiana")
+        );
+        List<List<Pair<String,String>>> NATIVE_NORTHERN_PINES_patterns = Arrays.asList(
+            NATIVE_NORTHERN_PINES_pattern0,
+            NATIVE_NORTHERN_PINES_pattern1,
+            NATIVE_NORTHERN_PINES_pattern2,
+            NATIVE_NORTHERN_PINES_pattern3,
+            NATIVE_NORTHERN_PINES_pattern4,
+            NATIVE_NORTHERN_PINES_pattern5,
+            NATIVE_NORTHERN_PINES_pattern6,
+            NATIVE_NORTHERN_PINES_pattern7,
+            NATIVE_NORTHERN_PINES_pattern8,
+            NATIVE_NORTHERN_PINES_pattern9,
+            NATIVE_NORTHERN_PINES_pattern10,
+            NATIVE_NORTHERN_PINES_pattern11,
+            NATIVE_NORTHERN_PINES_pattern12,
+            NATIVE_NORTHERN_PINES_pattern13,
+            NATIVE_NORTHERN_PINES_pattern14,
+            NATIVE_NORTHERN_PINES_pattern15,
+            NATIVE_NORTHERN_PINES_pattern16,
+            NATIVE_NORTHERN_PINES_pattern17,
+            NATIVE_NORTHERN_PINES_pattern18
+        );
+        PatternList NATIVE_NORTHERN_PINES = new PatternList("NATIVE_NORTHERN_PINES", NATIVE_NORTHERN_PINES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(NATIVE_NORTHERN_PINES) >= 50
@@ -872,17 +1143,29 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus resinosa >= 25% RIV,
         // and exceeds each species of Pinus banksiana and Pinus strobus.
 
-        List<Pair<String,String>> RED_PINE_values = new ArrayList();
-        RED_PINE_values.add(new Pair("species", "Pinus resinosa"));
-        PatternList RED_PINE = new PatternList("RED_PINE", RED_PINE_values);
+        List<Pair<String,String>> RED_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<List<Pair<String,String>>> RED_PINE_patterns = Arrays.asList(
+            RED_PINE_pattern0
+        );
+        PatternList RED_PINE = new PatternList("RED_PINE", RED_PINE_patterns);
 
-        List<Pair<String,String>> JACK_PINE_values = new ArrayList();
-        JACK_PINE_values.add(new Pair("species", "Pinus banksiana"));
-        PatternList JACK_PINE = new PatternList("JACK_PINE", JACK_PINE_values);
+        List<Pair<String,String>> JACK_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<List<Pair<String,String>>> JACK_PINE_patterns = Arrays.asList(
+            JACK_PINE_pattern0
+        );
+        PatternList JACK_PINE = new PatternList("JACK_PINE", JACK_PINE_patterns);
 
-        List<Pair<String,String>> WHITE_PINE_values = new ArrayList();
-        WHITE_PINE_values.add(new Pair("species", "Pinus strobus"));
-        PatternList WHITE_PINE = new PatternList("WHITE_PINE", WHITE_PINE_values);
+        List<Pair<String,String>> WHITE_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<List<Pair<String,String>>> WHITE_PINE_patterns = Arrays.asList(
+            WHITE_PINE_pattern0
+        );
+        PatternList WHITE_PINE = new PatternList("WHITE_PINE", WHITE_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(RED_PINE) >= 25
@@ -904,17 +1187,29 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus strobus >= 25% RIV,
         // and exceeds each species of Pinus resinosa and Pinus banksiana.
 
-        List<Pair<String,String>> WHITE_PINE_values = new ArrayList();
-        WHITE_PINE_values.add(new Pair("species", "Pinus strobus"));
-        PatternList WHITE_PINE = new PatternList("WHITE_PINE", WHITE_PINE_values);
+        List<Pair<String,String>> WHITE_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<List<Pair<String,String>>> WHITE_PINE_patterns = Arrays.asList(
+            WHITE_PINE_pattern0
+        );
+        PatternList WHITE_PINE = new PatternList("WHITE_PINE", WHITE_PINE_patterns);
 
-        List<Pair<String,String>> RED_PINE_values = new ArrayList();
-        RED_PINE_values.add(new Pair("species", "Pinus resinosa"));
-        PatternList RED_PINE = new PatternList("RED_PINE", RED_PINE_values);
+        List<Pair<String,String>> RED_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<List<Pair<String,String>>> RED_PINE_patterns = Arrays.asList(
+            RED_PINE_pattern0
+        );
+        PatternList RED_PINE = new PatternList("RED_PINE", RED_PINE_patterns);
 
-        List<Pair<String,String>> JACK_PINE_values = new ArrayList();
-        JACK_PINE_values.add(new Pair("species", "Pinus banksiana"));
-        PatternList JACK_PINE = new PatternList("JACK_PINE", JACK_PINE_values);
+        List<Pair<String,String>> JACK_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<List<Pair<String,String>>> JACK_PINE_patterns = Arrays.asList(
+            JACK_PINE_pattern0
+        );
+        PatternList JACK_PINE = new PatternList("JACK_PINE", JACK_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(WHITE_PINE) >= 25
@@ -936,17 +1231,29 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Pinus banksiana >= 25% RIV,
         // and exceeds each species of Pinus resinosa and Pinus strobus.
 
-        List<Pair<String,String>> JACK_PINE_values = new ArrayList();
-        JACK_PINE_values.add(new Pair("species", "Pinus banksiana"));
-        PatternList JACK_PINE = new PatternList("JACK_PINE", JACK_PINE_values);
+        List<Pair<String,String>> JACK_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<List<Pair<String,String>>> JACK_PINE_patterns = Arrays.asList(
+            JACK_PINE_pattern0
+        );
+        PatternList JACK_PINE = new PatternList("JACK_PINE", JACK_PINE_patterns);
 
-        List<Pair<String,String>> RED_PINE_values = new ArrayList();
-        RED_PINE_values.add(new Pair("species", "Pinus resinosa"));
-        PatternList RED_PINE = new PatternList("RED_PINE", RED_PINE_values);
+        List<Pair<String,String>> RED_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<List<Pair<String,String>>> RED_PINE_patterns = Arrays.asList(
+            RED_PINE_pattern0
+        );
+        PatternList RED_PINE = new PatternList("RED_PINE", RED_PINE_patterns);
 
-        List<Pair<String,String>> WHITE_PINE_values = new ArrayList();
-        WHITE_PINE_values.add(new Pair("species", "Pinus strobus"));
-        PatternList WHITE_PINE = new PatternList("WHITE_PINE", WHITE_PINE_values);
+        List<Pair<String,String>> WHITE_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<List<Pair<String,String>>> WHITE_PINE_patterns = Arrays.asList(
+            WHITE_PINE_pattern0
+        );
+        PatternList WHITE_PINE = new PatternList("WHITE_PINE", WHITE_PINE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(JACK_PINE) >= 25
@@ -1003,25 +1310,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // and exceeds each species of Abies balsamea, Larix laricina,
         // Picea rubens and Picea mariana.
 
-        List<Pair<String,String>> WHITE_SPRUCE_values = new ArrayList();
-        WHITE_SPRUCE_values.add(new Pair("species", "Picea glauca"));
-        PatternList WHITE_SPRUCE = new PatternList("WHITE_SPRUCE", WHITE_SPRUCE_values);
+        List<Pair<String,String>> WHITE_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<List<Pair<String,String>>> WHITE_SPRUCE_patterns = Arrays.asList(
+            WHITE_SPRUCE_pattern0
+        );
+        PatternList WHITE_SPRUCE = new PatternList("WHITE_SPRUCE", WHITE_SPRUCE_patterns);
 
-        List<Pair<String,String>> BALSAM_FIR_values = new ArrayList();
-        BALSAM_FIR_values.add(new Pair("species", "Abies balsamea"));
-        PatternList BALSAM_FIR = new PatternList("BALSAM_FIR", BALSAM_FIR_values);
+        List<Pair<String,String>> BALSAM_FIR_pattern0 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<List<Pair<String,String>>> BALSAM_FIR_patterns = Arrays.asList(
+            BALSAM_FIR_pattern0
+        );
+        PatternList BALSAM_FIR = new PatternList("BALSAM_FIR", BALSAM_FIR_patterns);
 
-        List<Pair<String,String>> NATIVE_TAMARACK_values = new ArrayList();
-        NATIVE_TAMARACK_values.add(new Pair("species", "Larix laricina"));
-        PatternList NATIVE_TAMARACK = new PatternList("NATIVE_TAMARACK", NATIVE_TAMARACK_values);
+        List<Pair<String,String>> NATIVE_TAMARACK_pattern0 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<List<Pair<String,String>>> NATIVE_TAMARACK_patterns = Arrays.asList(
+            NATIVE_TAMARACK_pattern0
+        );
+        PatternList NATIVE_TAMARACK = new PatternList("NATIVE_TAMARACK", NATIVE_TAMARACK_patterns);
 
-        List<Pair<String,String>> RED_SPRUCE_values = new ArrayList();
-        RED_SPRUCE_values.add(new Pair("species", "Picea rubens"));
-        PatternList RED_SPRUCE = new PatternList("RED_SPRUCE", RED_SPRUCE_values);
+        List<Pair<String,String>> RED_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<List<Pair<String,String>>> RED_SPRUCE_patterns = Arrays.asList(
+            RED_SPRUCE_pattern0
+        );
+        PatternList RED_SPRUCE = new PatternList("RED_SPRUCE", RED_SPRUCE_patterns);
 
-        List<Pair<String,String>> BLACK_SPRUCE_values = new ArrayList();
-        BLACK_SPRUCE_values.add(new Pair("species", "Picea mariana"));
-        PatternList BLACK_SPRUCE = new PatternList("BLACK_SPRUCE", BLACK_SPRUCE_values);
+        List<Pair<String,String>> BLACK_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<List<Pair<String,String>>> BLACK_SPRUCE_patterns = Arrays.asList(
+            BLACK_SPRUCE_pattern0
+        );
+        PatternList BLACK_SPRUCE = new PatternList("BLACK_SPRUCE", BLACK_SPRUCE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(WHITE_SPRUCE) >= 25
@@ -1046,25 +1373,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // and exceeds each species of Larix laricina, Picea glauca,
         // Picea rubens and Picea mariana.
 
-        List<Pair<String,String>> BALSAM_FIR_values = new ArrayList();
-        BALSAM_FIR_values.add(new Pair("species", "Abies balsamea"));
-        PatternList BALSAM_FIR = new PatternList("BALSAM_FIR", BALSAM_FIR_values);
+        List<Pair<String,String>> BALSAM_FIR_pattern0 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<List<Pair<String,String>>> BALSAM_FIR_patterns = Arrays.asList(
+            BALSAM_FIR_pattern0
+        );
+        PatternList BALSAM_FIR = new PatternList("BALSAM_FIR", BALSAM_FIR_patterns);
 
-        List<Pair<String,String>> NATIVE_TAMARACK_values = new ArrayList();
-        NATIVE_TAMARACK_values.add(new Pair("species", "Larix laricina"));
-        PatternList NATIVE_TAMARACK = new PatternList("NATIVE_TAMARACK", NATIVE_TAMARACK_values);
+        List<Pair<String,String>> NATIVE_TAMARACK_pattern0 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<List<Pair<String,String>>> NATIVE_TAMARACK_patterns = Arrays.asList(
+            NATIVE_TAMARACK_pattern0
+        );
+        PatternList NATIVE_TAMARACK = new PatternList("NATIVE_TAMARACK", NATIVE_TAMARACK_patterns);
 
-        List<Pair<String,String>> RED_SPRUCE_values = new ArrayList();
-        RED_SPRUCE_values.add(new Pair("species", "Picea rubens"));
-        PatternList RED_SPRUCE = new PatternList("RED_SPRUCE", RED_SPRUCE_values);
+        List<Pair<String,String>> RED_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<List<Pair<String,String>>> RED_SPRUCE_patterns = Arrays.asList(
+            RED_SPRUCE_pattern0
+        );
+        PatternList RED_SPRUCE = new PatternList("RED_SPRUCE", RED_SPRUCE_patterns);
 
-        List<Pair<String,String>> WHITE_SPRUCE_values = new ArrayList();
-        WHITE_SPRUCE_values.add(new Pair("species", "Picea glauca"));
-        PatternList WHITE_SPRUCE = new PatternList("WHITE_SPRUCE", WHITE_SPRUCE_values);
+        List<Pair<String,String>> WHITE_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<List<Pair<String,String>>> WHITE_SPRUCE_patterns = Arrays.asList(
+            WHITE_SPRUCE_pattern0
+        );
+        PatternList WHITE_SPRUCE = new PatternList("WHITE_SPRUCE", WHITE_SPRUCE_patterns);
 
-        List<Pair<String,String>> BLACK_SPRUCE_values = new ArrayList();
-        BLACK_SPRUCE_values.add(new Pair("species", "Picea mariana"));
-        PatternList BLACK_SPRUCE = new PatternList("BLACK_SPRUCE", BLACK_SPRUCE_values);
+        List<Pair<String,String>> BLACK_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<List<Pair<String,String>>> BLACK_SPRUCE_patterns = Arrays.asList(
+            BLACK_SPRUCE_pattern0
+        );
+        PatternList BLACK_SPRUCE = new PatternList("BLACK_SPRUCE", BLACK_SPRUCE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(BALSAM_FIR) >= 25
@@ -1088,25 +1435,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Picea rubens, i.e., Picea rubens >=25% RIV,
         // and exceeds each species of Abies balsamea, Larix laricina, Picea glauca, and Picea mariana.
 
-        List<Pair<String,String>> BALSAM_FIR_values = new ArrayList();
-        BALSAM_FIR_values.add(new Pair("species", "Abies balsamea"));
-        PatternList BALSAM_FIR = new PatternList("BALSAM_FIR", BALSAM_FIR_values);
+        List<Pair<String,String>> BALSAM_FIR_pattern0 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<List<Pair<String,String>>> BALSAM_FIR_patterns = Arrays.asList(
+            BALSAM_FIR_pattern0
+        );
+        PatternList BALSAM_FIR = new PatternList("BALSAM_FIR", BALSAM_FIR_patterns);
 
-        List<Pair<String,String>> NATIVE_TAMARACK_values = new ArrayList();
-        NATIVE_TAMARACK_values.add(new Pair("species", "Larix laricina"));
-        PatternList NATIVE_TAMARACK = new PatternList("NATIVE_TAMARACK", NATIVE_TAMARACK_values);
+        List<Pair<String,String>> NATIVE_TAMARACK_pattern0 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<List<Pair<String,String>>> NATIVE_TAMARACK_patterns = Arrays.asList(
+            NATIVE_TAMARACK_pattern0
+        );
+        PatternList NATIVE_TAMARACK = new PatternList("NATIVE_TAMARACK", NATIVE_TAMARACK_patterns);
 
-        List<Pair<String,String>> RED_SPRUCE_values = new ArrayList();
-        RED_SPRUCE_values.add(new Pair("species", "Picea rubens"));
-        PatternList RED_SPRUCE = new PatternList("RED_SPRUCE", RED_SPRUCE_values);
+        List<Pair<String,String>> RED_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<List<Pair<String,String>>> RED_SPRUCE_patterns = Arrays.asList(
+            RED_SPRUCE_pattern0
+        );
+        PatternList RED_SPRUCE = new PatternList("RED_SPRUCE", RED_SPRUCE_patterns);
 
-        List<Pair<String,String>> WHITE_SPRUCE_values = new ArrayList();
-        WHITE_SPRUCE_values.add(new Pair("species", "Picea glauca"));
-        PatternList WHITE_SPRUCE = new PatternList("WHITE_SPRUCE", WHITE_SPRUCE_values);
+        List<Pair<String,String>> WHITE_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<List<Pair<String,String>>> WHITE_SPRUCE_patterns = Arrays.asList(
+            WHITE_SPRUCE_pattern0
+        );
+        PatternList WHITE_SPRUCE = new PatternList("WHITE_SPRUCE", WHITE_SPRUCE_patterns);
 
-        List<Pair<String,String>> BLACK_SPRUCE_values = new ArrayList();
-        BLACK_SPRUCE_values.add(new Pair("species", "Picea mariana"));
-        PatternList BLACK_SPRUCE = new PatternList("BLACK_SPRUCE", BLACK_SPRUCE_values);
+        List<Pair<String,String>> BLACK_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<List<Pair<String,String>>> BLACK_SPRUCE_patterns = Arrays.asList(
+            BLACK_SPRUCE_pattern0
+        );
+        PatternList BLACK_SPRUCE = new PatternList("BLACK_SPRUCE", BLACK_SPRUCE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(RED_SPRUCE) >= 25
@@ -1170,15 +1537,29 @@ public class ClassificationKeyEast extends ClassificationKey {
         // conifer plantation species are identified, they should be added to this list
         // and additional couplets added below].
 
-        List<Pair<String,String>> COMMON_EXOTIC_CONIFERS_values = new ArrayList();
-        COMMON_EXOTIC_CONIFERS_values.add(new Pair("species", "Pinus sylvestris"));
-        COMMON_EXOTIC_CONIFERS_values.add(new Pair("species", "Picea abies"));
-        COMMON_EXOTIC_CONIFERS_values.add(new Pair("species", "Larix spp."));
-        PatternList COMMON_EXOTIC_CONIFERS = new PatternList("COMMON_EXOTIC_CONIFERS", COMMON_EXOTIC_CONIFERS_values);
+        List<Pair<String,String>> COMMON_EXOTIC_CONIFERS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus sylvestris")
+        );
+        List<Pair<String,String>> COMMON_EXOTIC_CONIFERS_pattern1 = Arrays.asList(
+            new Pair("species", "Picea abies")
+        );
+        List<Pair<String,String>> COMMON_EXOTIC_CONIFERS_pattern2 = Arrays.asList(
+            new Pair("species", "Larix spp.")
+        );
+        List<List<Pair<String,String>>> COMMON_EXOTIC_CONIFERS_patterns = Arrays.asList(
+            COMMON_EXOTIC_CONIFERS_pattern0,
+            COMMON_EXOTIC_CONIFERS_pattern1,
+            COMMON_EXOTIC_CONIFERS_pattern2
+        );
+        PatternList COMMON_EXOTIC_CONIFERS = new PatternList("COMMON_EXOTIC_CONIFERS", COMMON_EXOTIC_CONIFERS_patterns);
 
-        List<Pair<String,String>> NORTHERN_REGION_values = new ArrayList();
-        NORTHERN_REGION_values.add(new Pair("ecoregion", "210, M210, 220, M220, 330, 251"));
-        PatternList NORTHERN_REGION = new PatternList("NORTHERN_REGION", NORTHERN_REGION_values);
+        List<Pair<String,String>> NORTHERN_REGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "210, M210, 220, M220, 330, 251")
+        );
+        List<List<Pair<String,String>>> NORTHERN_REGION_patterns = Arrays.asList(
+            NORTHERN_REGION_pattern0
+        );
+        PatternList NORTHERN_REGION = new PatternList("NORTHERN_REGION", NORTHERN_REGION_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(COMMON_EXOTIC_CONIFERS) >= 25 || plot.match(NORTHERN_REGION)
@@ -1200,14 +1581,25 @@ public class ClassificationKeyEast extends ClassificationKey {
         // ii. The above tree species, but with >=25% RIV, AND planted Picea abies or
         //     Larix spp. alone or in combination <25%
 
-        List<Pair<String,String>> SCOTCH_PINE_values = new ArrayList();
-        SCOTCH_PINE_values.add(new Pair("species", "Pinus sylvestris"));
-        PatternList SCOTCH_PINE = new PatternList("SCOTCH_PINE", SCOTCH_PINE_values);
+        List<Pair<String,String>> SCOTCH_PINE_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus sylvestris")
+        );
+        List<List<Pair<String,String>>> SCOTCH_PINE_patterns = Arrays.asList(
+            SCOTCH_PINE_pattern0
+        );
+        PatternList SCOTCH_PINE = new PatternList("SCOTCH_PINE", SCOTCH_PINE_patterns);
 
-        List<Pair<String,String>> NORWAY_SPRUCE_LARCH_values = new ArrayList();
-        NORWAY_SPRUCE_LARCH_values.add(new Pair("species", "Picea abies"));
-        NORWAY_SPRUCE_LARCH_values.add(new Pair("species", "Larix spp."));
-        PatternList NORWAY_SPRUCE_LARCH = new PatternList("NORWAY_SPRUCE_LARCH", NORWAY_SPRUCE_LARCH_values);
+        List<Pair<String,String>> NORWAY_SPRUCE_LARCH_pattern0 = Arrays.asList(
+            new Pair("species", "Picea abies")
+        );
+        List<Pair<String,String>> NORWAY_SPRUCE_LARCH_pattern1 = Arrays.asList(
+            new Pair("species", "Larix spp.")
+        );
+        List<List<Pair<String,String>>> NORWAY_SPRUCE_LARCH_patterns = Arrays.asList(
+            NORWAY_SPRUCE_LARCH_pattern0,
+            NORWAY_SPRUCE_LARCH_pattern1
+        );
+        PatternList NORWAY_SPRUCE_LARCH = new PatternList("NORWAY_SPRUCE_LARCH", NORWAY_SPRUCE_LARCH_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(SCOTCH_PINE) >= 50
@@ -1230,14 +1622,25 @@ public class ClassificationKeyEast extends ClassificationKey {
         // ii. Tree composition dominated by Pinus abies, but with >=25% RIV, AND species
         //     of Pinus sylvestris or Larix spp. alone or in combination <25% RIV
 
-        List<Pair<String,String>> NORWAY_SPRUCE_values = new ArrayList();
-        NORWAY_SPRUCE_values.add(new Pair("species", "Picea abies"));
-        PatternList NORWAY_SPRUCE = new PatternList("NORWAY_SPRUCE", NORWAY_SPRUCE_values);
+        List<Pair<String,String>> NORWAY_SPRUCE_pattern0 = Arrays.asList(
+            new Pair("species", "Picea abies")
+        );
+        List<List<Pair<String,String>>> NORWAY_SPRUCE_patterns = Arrays.asList(
+            NORWAY_SPRUCE_pattern0
+        );
+        PatternList NORWAY_SPRUCE = new PatternList("NORWAY_SPRUCE", NORWAY_SPRUCE_patterns);
 
-        List<Pair<String,String>> OTHER_EXOTIC_CONIFERS_values = new ArrayList();
-        OTHER_EXOTIC_CONIFERS_values.add(new Pair("species", "Pinus sylvestris"));
-        OTHER_EXOTIC_CONIFERS_values.add(new Pair("species", "Larix spp."));
-        PatternList OTHER_EXOTIC_CONIFERS = new PatternList("OTHER_EXOTIC_CONIFERS", OTHER_EXOTIC_CONIFERS_values);
+        List<Pair<String,String>> OTHER_EXOTIC_CONIFERS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus sylvestris")
+        );
+        List<Pair<String,String>> OTHER_EXOTIC_CONIFERS_pattern1 = Arrays.asList(
+            new Pair("species", "Larix spp.")
+        );
+        List<List<Pair<String,String>>> OTHER_EXOTIC_CONIFERS_patterns = Arrays.asList(
+            OTHER_EXOTIC_CONIFERS_pattern0,
+            OTHER_EXOTIC_CONIFERS_pattern1
+        );
+        PatternList OTHER_EXOTIC_CONIFERS = new PatternList("OTHER_EXOTIC_CONIFERS", OTHER_EXOTIC_CONIFERS_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(NORWAY_SPRUCE) >= 50
@@ -1260,14 +1663,25 @@ public class ClassificationKeyEast extends ClassificationKey {
         // ii. Tree composition dominated by Larix spp., but with >=25% RIV, AND species
         //     of Pinus sylvestris or Picea abies alone or in combination <25% RIV
 
-        List<Pair<String,String>> LARIX_SPP_values = new ArrayList();
-        LARIX_SPP_values.add(new Pair("species", "Larix spp."));
-        PatternList LARIX_SPP = new PatternList("LARIX_SPP", LARIX_SPP_values);
+        List<Pair<String,String>> LARIX_SPP_pattern0 = Arrays.asList(
+            new Pair("species", "Larix spp.")
+        );
+        List<List<Pair<String,String>>> LARIX_SPP_patterns = Arrays.asList(
+            LARIX_SPP_pattern0
+        );
+        PatternList LARIX_SPP = new PatternList("LARIX_SPP", LARIX_SPP_patterns);
 
-        List<Pair<String,String>> OTHER_EXOTIC_CONIFERS_values = new ArrayList();
-        OTHER_EXOTIC_CONIFERS_values.add(new Pair("species", "Pinus sylvestris"));
-        OTHER_EXOTIC_CONIFERS_values.add(new Pair("species", "Picea abies"));
-        PatternList OTHER_EXOTIC_CONIFERS = new PatternList("OTHER_EXOTIC_CONIFERS", OTHER_EXOTIC_CONIFERS_values);
+        List<Pair<String,String>> OTHER_EXOTIC_CONIFERS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus sylvestris")
+        );
+        List<Pair<String,String>> OTHER_EXOTIC_CONIFERS_pattern1 = Arrays.asList(
+            new Pair("species", "Picea abies")
+        );
+        List<List<Pair<String,String>>> OTHER_EXOTIC_CONIFERS_patterns = Arrays.asList(
+            OTHER_EXOTIC_CONIFERS_pattern0,
+            OTHER_EXOTIC_CONIFERS_pattern1
+        );
+        PatternList OTHER_EXOTIC_CONIFERS = new PatternList("OTHER_EXOTIC_CONIFERS", OTHER_EXOTIC_CONIFERS_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(LARIX_SPP) >= 50
@@ -1307,9 +1721,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         // plantation species types in the south, they should be listed here, and
         // additional couplets added below].
 
-        List<Pair<String,String>> SOUTHERN_REGION_values = new ArrayList();
-        SOUTHERN_REGION_values.add(new Pair("ecoregion", "230, M230, 310, 255"));
-        PatternList SOUTHERN_REGION = new PatternList("SOUTHERN_REGION", SOUTHERN_REGION_values);
+        List<Pair<String,String>> SOUTHERN_REGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "230, M230, 310, 255")
+        );
+        List<List<Pair<String,String>>> SOUTHERN_REGION_patterns = Arrays.asList(
+            SOUTHERN_REGION_pattern0
+        );
+        PatternList SOUTHERN_REGION = new PatternList("SOUTHERN_REGION", SOUTHERN_REGION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(SOUTHERN_REGION)
@@ -1363,15 +1781,23 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree species dominated by native hardwoods (See
         // Appendix A) with RIV > exotic hardwoods.
 
-        List<Pair<String,String>> NATIVE_HARDWOODS_values = new ArrayList();
-        NATIVE_HARDWOODS_values.add(new Pair("exotic", "no"));
-        NATIVE_HARDWOODS_values.add(new Pair("softwoodhardwood", "H"));
-        PatternList NATIVE_HARDWOODS = new PatternList("NATIVE_HARDWOODS", NATIVE_HARDWOODS_values);
+        List<Pair<String,String>> NATIVE_HARDWOODS_pattern0 = Arrays.asList(
+            new Pair("exotic", "no"),
+            new Pair("softwoodhardwood", "H")
+        );
+        List<List<Pair<String,String>>> NATIVE_HARDWOODS_patterns = Arrays.asList(
+            NATIVE_HARDWOODS_pattern0
+        );
+        PatternList NATIVE_HARDWOODS = new PatternList("NATIVE_HARDWOODS", NATIVE_HARDWOODS_patterns);
 
-        List<Pair<String,String>> EXOTIC_HARDWOODS_values = new ArrayList();
-        EXOTIC_HARDWOODS_values.add(new Pair("exotic", "yes"));
-        EXOTIC_HARDWOODS_values.add(new Pair("softwoodhardwood", "H"));
-        PatternList EXOTIC_HARDWOODS = new PatternList("EXOTIC_HARDWOODS", EXOTIC_HARDWOODS_values);
+        List<Pair<String,String>> EXOTIC_HARDWOODS_pattern0 = Arrays.asList(
+            new Pair("exotic", "yes"),
+            new Pair("softwoodhardwood", "H")
+        );
+        List<List<Pair<String,String>>> EXOTIC_HARDWOODS_patterns = Arrays.asList(
+            EXOTIC_HARDWOODS_pattern0
+        );
+        PatternList EXOTIC_HARDWOODS = new PatternList("EXOTIC_HARDWOODS", EXOTIC_HARDWOODS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(NATIVE_HARDWOODS) > plot.riv(EXOTIC_HARDWOODS)
@@ -1390,9 +1816,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Stands found in ecodivisions 210, M210, 220, M220, 330 and ecoprovince 251.
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "210, M210, 220, M220, 330, 251"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "210, M210, 220, M220, 330, 251")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
@@ -1413,21 +1843,37 @@ public class ClassificationKeyEast extends ClassificationKey {
         // and exceeds each species of Populus tremuloides,
         // Populus spp., and Robinia pseudoacacia.
 
-        List<Pair<String,String>> BLACK_WALNUT_values = new ArrayList();
-        BLACK_WALNUT_values.add(new Pair("species", "Juglans nigra"));
-        PatternList BLACK_WALNUT = new PatternList("BLACK_WALNUT", BLACK_WALNUT_values);
+        List<Pair<String,String>> BLACK_WALNUT_pattern0 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<List<Pair<String,String>>> BLACK_WALNUT_patterns = Arrays.asList(
+            BLACK_WALNUT_pattern0
+        );
+        PatternList BLACK_WALNUT = new PatternList("BLACK_WALNUT", BLACK_WALNUT_patterns);
 
-        List<Pair<String,String>> QUAKING_ASPEN_values = new ArrayList();
-        QUAKING_ASPEN_values.add(new Pair("species", "Populus tremuloides"));
-        PatternList QUAKING_ASPEN = new PatternList("QUAKING_ASPEN", QUAKING_ASPEN_values);
+        List<Pair<String,String>> QUAKING_ASPEN_pattern0 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<List<Pair<String,String>>> QUAKING_ASPEN_patterns = Arrays.asList(
+            QUAKING_ASPEN_pattern0
+        );
+        PatternList QUAKING_ASPEN = new PatternList("QUAKING_ASPEN", QUAKING_ASPEN_patterns);
 
-        List<Pair<String,String>> POPULUS_SPP_values = new ArrayList();
-        POPULUS_SPP_values.add(new Pair("species", "Populus spp."));
-        PatternList POPULUS_SPP = new PatternList("POPULUS_SPP", POPULUS_SPP_values);
+        List<Pair<String,String>> POPULUS_SPP_pattern0 = Arrays.asList(
+            new Pair("species", "Populus spp.")
+        );
+        List<List<Pair<String,String>>> POPULUS_SPP_patterns = Arrays.asList(
+            POPULUS_SPP_pattern0
+        );
+        PatternList POPULUS_SPP = new PatternList("POPULUS_SPP", POPULUS_SPP_patterns);
 
-        List<Pair<String,String>> BLACK_LOCUST_values = new ArrayList();
-        BLACK_LOCUST_values.add(new Pair("species", "Robinia pseudoacacia"));
-        PatternList BLACK_LOCUST = new PatternList("BLACK_LOCUST", BLACK_LOCUST_values);
+        List<Pair<String,String>> BLACK_LOCUST_pattern0 = Arrays.asList(
+            new Pair("species", "Robinia pseudoacacia")
+        );
+        List<List<Pair<String,String>>> BLACK_LOCUST_patterns = Arrays.asList(
+            BLACK_LOCUST_pattern0
+        );
+        PatternList BLACK_LOCUST = new PatternList("BLACK_LOCUST", BLACK_LOCUST_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(BLACK_WALNUT) >= 25
@@ -1450,18 +1896,33 @@ public class ClassificationKeyEast extends ClassificationKey {
         // i. Tree composition dominated by Populus tremuloides, Populus spp. >=25% RIV,
         //    and exceeds each species of Juglans nigra and Robinia pseudoacacia.
 
-        List<Pair<String,String>> ASPEN_values = new ArrayList();
-        ASPEN_values.add(new Pair("species", "Populus tremuloides"));
-        ASPEN_values.add(new Pair("species", "Populus spp."));
-        PatternList ASPEN = new PatternList("ASPEN", ASPEN_values);
+        List<Pair<String,String>> ASPEN_pattern0 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> ASPEN_pattern1 = Arrays.asList(
+            new Pair("species", "Populus spp.")
+        );
+        List<List<Pair<String,String>>> ASPEN_patterns = Arrays.asList(
+            ASPEN_pattern0,
+            ASPEN_pattern1
+        );
+        PatternList ASPEN = new PatternList("ASPEN", ASPEN_patterns);
 
-        List<Pair<String,String>> BLACK_WALNUT_values = new ArrayList();
-        BLACK_WALNUT_values.add(new Pair("species", "Juglans nigra"));
-        PatternList BLACK_WALNUT = new PatternList("BLACK_WALNUT", BLACK_WALNUT_values);
+        List<Pair<String,String>> BLACK_WALNUT_pattern0 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<List<Pair<String,String>>> BLACK_WALNUT_patterns = Arrays.asList(
+            BLACK_WALNUT_pattern0
+        );
+        PatternList BLACK_WALNUT = new PatternList("BLACK_WALNUT", BLACK_WALNUT_patterns);
 
-        List<Pair<String,String>> BLACK_LOCUST_values = new ArrayList();
-        BLACK_LOCUST_values.add(new Pair("species", "Robinia pseudoacacia"));
-        PatternList BLACK_LOCUST = new PatternList("BLACK_LOCUST", BLACK_LOCUST_values);
+        List<Pair<String,String>> BLACK_LOCUST_pattern0 = Arrays.asList(
+            new Pair("species", "Robinia pseudoacacia")
+        );
+        List<List<Pair<String,String>>> BLACK_LOCUST_patterns = Arrays.asList(
+            BLACK_LOCUST_pattern0
+        );
+        PatternList BLACK_LOCUST = new PatternList("BLACK_LOCUST", BLACK_LOCUST_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(ASPEN) >= 25
@@ -1484,21 +1945,37 @@ public class ClassificationKeyEast extends ClassificationKey {
         // and exceeds each species of Juglans nigra, Populus tremuloides
         // and Populus spp.
 
-        List<Pair<String,String>> BLACK_LOCUST_values = new ArrayList();
-        BLACK_LOCUST_values.add(new Pair("species", "Robinia pseudoacacia"));
-        PatternList BLACK_LOCUST = new PatternList("BLACK_LOCUST", BLACK_LOCUST_values);
+        List<Pair<String,String>> BLACK_LOCUST_pattern0 = Arrays.asList(
+            new Pair("species", "Robinia pseudoacacia")
+        );
+        List<List<Pair<String,String>>> BLACK_LOCUST_patterns = Arrays.asList(
+            BLACK_LOCUST_pattern0
+        );
+        PatternList BLACK_LOCUST = new PatternList("BLACK_LOCUST", BLACK_LOCUST_patterns);
 
-        List<Pair<String,String>> BLACK_WALNUT_values = new ArrayList();
-        BLACK_WALNUT_values.add(new Pair("species", "Juglans nigra"));
-        PatternList BLACK_WALNUT = new PatternList("BLACK_WALNUT", BLACK_WALNUT_values);
+        List<Pair<String,String>> BLACK_WALNUT_pattern0 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<List<Pair<String,String>>> BLACK_WALNUT_patterns = Arrays.asList(
+            BLACK_WALNUT_pattern0
+        );
+        PatternList BLACK_WALNUT = new PatternList("BLACK_WALNUT", BLACK_WALNUT_patterns);
 
-        List<Pair<String,String>> QUAKING_ASPEN_values = new ArrayList();
-        QUAKING_ASPEN_values.add(new Pair("species", "Populus tremuloides"));
-        PatternList QUAKING_ASPEN = new PatternList("QUAKING_ASPEN", QUAKING_ASPEN_values);
+        List<Pair<String,String>> QUAKING_ASPEN_pattern0 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<List<Pair<String,String>>> QUAKING_ASPEN_patterns = Arrays.asList(
+            QUAKING_ASPEN_pattern0
+        );
+        PatternList QUAKING_ASPEN = new PatternList("QUAKING_ASPEN", QUAKING_ASPEN_patterns);
 
-        List<Pair<String,String>> POPULUS_SPP_values = new ArrayList();
-        POPULUS_SPP_values.add(new Pair("species", "Populus spp."));
-        PatternList POPULUS_SPP = new PatternList("POPULUS_SPP", POPULUS_SPP_values);
+        List<Pair<String,String>> POPULUS_SPP_pattern0 = Arrays.asList(
+            new Pair("species", "Populus spp.")
+        );
+        List<List<Pair<String,String>>> POPULUS_SPP_patterns = Arrays.asList(
+            POPULUS_SPP_pattern0
+        );
+        PatternList POPULUS_SPP = new PatternList("POPULUS_SPP", POPULUS_SPP_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(BLACK_LOCUST) >= 25
@@ -1537,9 +2014,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Stands found in ecodivisions 230, M230, 310 and ecoprovince 255.
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "230, M230, 310, 255"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "230, M230, 310, 255")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
@@ -1559,13 +2040,21 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Liriodendron tulipifera >=25% RIV,
         // and exceeds species of Liquidambar styraciflua.
 
-        List<Pair<String,String>> TULIPTREE_values = new ArrayList();
-        TULIPTREE_values.add(new Pair("species", "Liriodendron tulipifera"));
-        PatternList TULIPTREE = new PatternList("TULIPTREE", TULIPTREE_values);
+        List<Pair<String,String>> TULIPTREE_pattern0 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<List<Pair<String,String>>> TULIPTREE_patterns = Arrays.asList(
+            TULIPTREE_pattern0
+        );
+        PatternList TULIPTREE = new PatternList("TULIPTREE", TULIPTREE_patterns);
 
-        List<Pair<String,String>> SWEETGUM_values = new ArrayList();
-        SWEETGUM_values.add(new Pair("species", "Liquidambar styraciflua"));
-        PatternList SWEETGUM = new PatternList("SWEETGUM", SWEETGUM_values);
+        List<Pair<String,String>> SWEETGUM_pattern0 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<List<Pair<String,String>>> SWEETGUM_patterns = Arrays.asList(
+            SWEETGUM_pattern0
+        );
+        PatternList SWEETGUM = new PatternList("SWEETGUM", SWEETGUM_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(TULIPTREE) >= 25
@@ -1586,13 +2075,21 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by Liquidambar styraciflua >=25% RIV,
         // and exceeds species of Liriodendron tulipifera.
 
-        List<Pair<String,String>> SWEETGUM_values = new ArrayList();
-        SWEETGUM_values.add(new Pair("species", "Liquidambar styraciflua"));
-        PatternList SWEETGUM = new PatternList("SWEETGUM", SWEETGUM_values);
+        List<Pair<String,String>> SWEETGUM_pattern0 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<List<Pair<String,String>>> SWEETGUM_patterns = Arrays.asList(
+            SWEETGUM_pattern0
+        );
+        PatternList SWEETGUM = new PatternList("SWEETGUM", SWEETGUM_patterns);
 
-        List<Pair<String,String>> TULIPTREE_values = new ArrayList();
-        TULIPTREE_values.add(new Pair("species", "Liriodendron tulipifera"));
-        PatternList TULIPTREE = new PatternList("TULIPTREE", TULIPTREE_values);
+        List<Pair<String,String>> TULIPTREE_pattern0 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<List<Pair<String,String>>> TULIPTREE_patterns = Arrays.asList(
+            TULIPTREE_pattern0
+        );
+        PatternList TULIPTREE = new PatternList("TULIPTREE", TULIPTREE_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(SWEETGUM) >= 25
@@ -1650,9 +2147,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         // If common exotic hardwood plantation species are identified, they should be added to
         // this list and additional couplets added below].
 
-        List<Pair<String,String>> NORTHERN_REGION_values = new ArrayList();
-        NORTHERN_REGION_values.add(new Pair("ecoregion", "210, M210, 220, M220, 330, 251"));
-        PatternList NORTHERN_REGION = new PatternList("NORTHERN_REGION", NORTHERN_REGION_values);
+        List<Pair<String,String>> NORTHERN_REGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "210, M210, 220, M220, 330, 251")
+        );
+        List<List<Pair<String,String>>> NORTHERN_REGION_patterns = Arrays.asList(
+            NORTHERN_REGION_pattern0
+        );
+        PatternList NORTHERN_REGION = new PatternList("NORTHERN_REGION", NORTHERN_REGION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(NORTHERN_REGION)
@@ -1674,9 +2175,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         // plantation species types in the south, they should be listed here, and
         // additional couplets added below].
 
-        List<Pair<String,String>> SOUTHERN_REGION_values = new ArrayList();
-        SOUTHERN_REGION_values.add(new Pair("ecoregion", "230, M230, 310, 255"));
-        PatternList SOUTHERN_REGION = new PatternList("SOUTHERN_REGION", SOUTHERN_REGION_values);
+        List<Pair<String,String>> SOUTHERN_REGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "230, M230, 310, 255")
+        );
+        List<List<Pair<String,String>>> SOUTHERN_REGION_patterns = Arrays.asList(
+            SOUTHERN_REGION_pattern0
+        );
+        PatternList SOUTHERN_REGION = new PatternList("SOUTHERN_REGION", SOUTHERN_REGION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(SOUTHERN_REGION)
@@ -1695,9 +2200,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Plantations found in the boreal region of North America (EcoDomain 100)
 
-        List<Pair<String,String>> BOREAL_REGION_values = new ArrayList();
-        BOREAL_REGION_values.add(new Pair("ecoregion", "100"));
-        PatternList BOREAL_REGION = new PatternList("BOREAL_REGION", BOREAL_REGION_values);
+        List<Pair<String,String>> BOREAL_REGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "100")
+        );
+        List<List<Pair<String,String>>> BOREAL_REGION_patterns = Arrays.asList(
+            BOREAL_REGION_pattern0
+        );
+        PatternList BOREAL_REGION = new PatternList("BOREAL_REGION", BOREAL_REGION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(BOREAL_REGION)
@@ -1761,57 +2270,119 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      OR
         //      Fraxinus nigra, Larix laricina, Picea mariana, Populus balsamifera, and Thuja occidentalis have a combined RIV >= 25%
 
-        List<Pair<String,String>> HYDRIC_OR_RIVERINE_values = new ArrayList();
-        HYDRIC_OR_RIVERINE_values.add(new Pair("hydric", "yes"));
-        HYDRIC_OR_RIVERINE_values.add(new Pair("riverine", "yes"));
-        PatternList HYDRIC_OR_RIVERINE = new PatternList("HYDRIC_OR_RIVERINE", HYDRIC_OR_RIVERINE_values);
+        List<Pair<String,String>> HYDRIC_OR_RIVERINE_pattern0 = Arrays.asList(
+            new Pair("hydric", "yes")
+        );
+        List<Pair<String,String>> HYDRIC_OR_RIVERINE_pattern1 = Arrays.asList(
+            new Pair("riverine", "yes")
+        );
+        List<List<Pair<String,String>>> HYDRIC_OR_RIVERINE_patterns = Arrays.asList(
+            HYDRIC_OR_RIVERINE_pattern0,
+            HYDRIC_OR_RIVERINE_pattern1
+        );
+        PatternList HYDRIC_OR_RIVERINE = new PatternList("HYDRIC_OR_RIVERINE", HYDRIC_OR_RIVERINE_patterns);
 
-        List<Pair<String,String>> W1_values = new ArrayList();
-        W1_values.add(new Pair("wetland", "obl"));
-        PatternList W1 = new PatternList("W1", W1_values);
+        List<Pair<String,String>> W1_pattern0 = Arrays.asList(
+            new Pair("wetland", "obl")
+        );
+        List<List<Pair<String,String>>> W1_patterns = Arrays.asList(
+            W1_pattern0
+        );
+        PatternList W1 = new PatternList("W1", W1_patterns);
 
-        List<Pair<String,String>> W2_values = new ArrayList();
-        W2_values.add(new Pair("wetland", "facw"));
-        PatternList W2 = new PatternList("W2", W2_values);
+        List<Pair<String,String>> W2_pattern0 = Arrays.asList(
+            new Pair("wetland", "facw")
+        );
+        List<List<Pair<String,String>>> W2_patterns = Arrays.asList(
+            W2_pattern0
+        );
+        PatternList W2 = new PatternList("W2", W2_patterns);
 
-        List<Pair<String,String>> W3_values = new ArrayList();
-        W3_values.add(new Pair("wetland", "fac"));
-        PatternList W3 = new PatternList("W3", W3_values);
+        List<Pair<String,String>> W3_pattern0 = Arrays.asList(
+            new Pair("wetland", "fac")
+        );
+        List<List<Pair<String,String>>> W3_patterns = Arrays.asList(
+            W3_pattern0
+        );
+        PatternList W3 = new PatternList("W3", W3_patterns);
 
-        List<Pair<String,String>> WETLAND_values = new ArrayList();
-        WETLAND_values.add(new Pair("wetland", "obl, facw"));
-        WETLAND_values.add(new Pair("exotic", "no"));
-        PatternList WETLAND = new PatternList("WETLAND", WETLAND_values);
+        List<Pair<String,String>> WETLAND_pattern0 = Arrays.asList(
+            new Pair("wetland", "obl, facw"),
+            new Pair("exotic", "no")
+        );
+        List<List<Pair<String,String>>> WETLAND_patterns = Arrays.asList(
+            WETLAND_pattern0
+        );
+        PatternList WETLAND = new PatternList("WETLAND", WETLAND_patterns);
 
-        List<Pair<String,String>> UPLAND_values = new ArrayList();
-        UPLAND_values.add(new Pair("wetland", "upl"));
-        UPLAND_values.add(new Pair("exotic", "no"));
-        PatternList UPLAND = new PatternList("UPLAND", UPLAND_values);
+        List<Pair<String,String>> UPLAND_pattern0 = Arrays.asList(
+            new Pair("wetland", "upl"),
+            new Pair("exotic", "no")
+        );
+        List<List<Pair<String,String>>> UPLAND_patterns = Arrays.asList(
+            UPLAND_pattern0
+        );
+        PatternList UPLAND = new PatternList("UPLAND", UPLAND_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_III_values = new ArrayList();
-        ECOREGIONS_III_values.add(new Pair("ecoregion", "231E, 231G, 255"));
-        PatternList ECOREGIONS_III = new PatternList("ECOREGIONS_III", ECOREGIONS_III_values);
+        List<Pair<String,String>> ECOREGIONS_III_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "231E, 231G, 255")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_III_patterns = Arrays.asList(
+            ECOREGIONS_III_pattern0
+        );
+        PatternList ECOREGIONS_III = new PatternList("ECOREGIONS_III", ECOREGIONS_III_patterns);
 
-        List<Pair<String,String>> RIVERINE_values = new ArrayList();
-        RIVERINE_values.add(new Pair("riverine", "yes"));
-        PatternList RIVERINE = new PatternList("RIVERINE", RIVERINE_values);
+        List<Pair<String,String>> RIVERINE_pattern0 = Arrays.asList(
+            new Pair("riverine", "yes")
+        );
+        List<List<Pair<String,String>>> RIVERINE_patterns = Arrays.asList(
+            RIVERINE_pattern0
+        );
+        PatternList RIVERINE = new PatternList("RIVERINE", RIVERINE_patterns);
 
-        List<Pair<String,String>> SPECIES_III_values = new ArrayList();
-        SPECIES_III_values.add(new Pair("species", "Gleditsia triacanthos"));
-        SPECIES_III_values.add(new Pair("species", "Quercus virginiana"));
-        PatternList SPECIES_III = new PatternList("SPECIES_III", SPECIES_III_values);
+        List<Pair<String,String>> SPECIES_III_pattern0 = Arrays.asList(
+            new Pair("species", "Gleditsia triacanthos")
+        );
+        List<Pair<String,String>> SPECIES_III_pattern1 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<List<Pair<String,String>>> SPECIES_III_patterns = Arrays.asList(
+            SPECIES_III_pattern0,
+            SPECIES_III_pattern1
+        );
+        PatternList SPECIES_III = new PatternList("SPECIES_III", SPECIES_III_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_IV_values = new ArrayList();
-        ECOREGIONS_IV_values.add(new Pair("ecoregion", "211, M211, 212"));
-        PatternList ECOREGIONS_IV = new PatternList("ECOREGIONS_IV", ECOREGIONS_IV_values);
+        List<Pair<String,String>> ECOREGIONS_IV_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "211, M211, 212")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_IV_patterns = Arrays.asList(
+            ECOREGIONS_IV_pattern0
+        );
+        PatternList ECOREGIONS_IV = new PatternList("ECOREGIONS_IV", ECOREGIONS_IV_patterns);
 
-        List<Pair<String,String>> SPECIES_IV_values = new ArrayList();
-        SPECIES_IV_values.add(new Pair("species", "Fraxinus nigra"));
-        SPECIES_IV_values.add(new Pair("species", "Larix laricina"));
-        SPECIES_IV_values.add(new Pair("species", "Picea mariana"));
-        SPECIES_IV_values.add(new Pair("species", "Populus balsamifera"));
-        SPECIES_IV_values.add(new Pair("species", "Thuja occidentalis"));
-        PatternList SPECIES_IV = new PatternList("SPECIES_IV", SPECIES_IV_values);
+        List<Pair<String,String>> SPECIES_IV_pattern0 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> SPECIES_IV_pattern1 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> SPECIES_IV_pattern2 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> SPECIES_IV_pattern3 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> SPECIES_IV_pattern4 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<List<Pair<String,String>>> SPECIES_IV_patterns = Arrays.asList(
+            SPECIES_IV_pattern0,
+            SPECIES_IV_pattern1,
+            SPECIES_IV_pattern2,
+            SPECIES_IV_pattern3,
+            SPECIES_IV_pattern4
+        );
+        PatternList SPECIES_IV = new PatternList("SPECIES_IV", SPECIES_IV_patterns);
 
         INodeMatch match = plot -> (
                (!plot.match(HYDRIC_OR_RIVERINE) && (    plot.riv(W1) >= 20
@@ -1849,28 +2420,62 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     AND with tree composition dominated by one or more of Avicennia germinans, Conocarpus erectus,
         //     Laguncularia racemosa, Rhizophora mangle (>=20% RIV);
 
-        List<Pair<String,String>> TROPICAL_FLORIDA_values = new ArrayList();
-        TROPICAL_FLORIDA_values.add(new Pair("state", "FL"));
-        TROPICAL_FLORIDA_values.add(new Pair("ecoregion", "411A"));
-        PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_values);
+        List<Pair<String,String>> TROPICAL_FLORIDA_pattern0 = Arrays.asList(
+            new Pair("state", "FL"),
+            new Pair("ecoregion", "411A")
+        );
+        List<List<Pair<String,String>>> TROPICAL_FLORIDA_patterns = Arrays.asList(
+            TROPICAL_FLORIDA_pattern0
+        );
+        PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_patterns);
 
-        List<Pair<String,String>> EXCLUDED_SPECIES_values = new ArrayList();
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Persea borbonia"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Pinus elliottii"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus virginiana"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Taxodium ascendens"));
-        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_values);
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Taxodium ascendens")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_SPECIES_patterns = Arrays.asList(
+            EXCLUDED_SPECIES_pattern0,
+            EXCLUDED_SPECIES_pattern1,
+            EXCLUDED_SPECIES_pattern2,
+            EXCLUDED_SPECIES_pattern3
+        );
+        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_patterns);
 
-        List<Pair<String,String>> GULF_OR_ATLANTIC_COAST_values = new ArrayList();
-        GULF_OR_ATLANTIC_COAST_values.add(new Pair("ecoregion", "232"));
-        PatternList GULF_OR_ATLANTIC_COAST = new PatternList("GULF_OR_ATLANTIC_COAST", GULF_OR_ATLANTIC_COAST_values);
+        List<Pair<String,String>> GULF_OR_ATLANTIC_COAST_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "232")
+        );
+        List<List<Pair<String,String>>> GULF_OR_ATLANTIC_COAST_patterns = Arrays.asList(
+            GULF_OR_ATLANTIC_COAST_pattern0
+        );
+        PatternList GULF_OR_ATLANTIC_COAST = new PatternList("GULF_OR_ATLANTIC_COAST", GULF_OR_ATLANTIC_COAST_patterns);
 
-        List<Pair<String,String>> DIAGNOSTIC_SPECIES_values = new ArrayList();
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Avicennia germinans"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Conocarpus erectus"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Laguncularia racemosa"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Rhizophora mangle"));
-        PatternList DIAGNOSTIC_SPECIES = new PatternList("DIAGNOSTIC_SPECIES", DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Avicennia germinans")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Conocarpus erectus")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Laguncularia racemosa")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Rhizophora mangle")
+        );
+        List<List<Pair<String,String>>> DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_pattern0,
+            DIAGNOSTIC_SPECIES_pattern1,
+            DIAGNOSTIC_SPECIES_pattern2,
+            DIAGNOSTIC_SPECIES_pattern3
+        );
+        PatternList DIAGNOSTIC_SPECIES = new PatternList("DIAGNOSTIC_SPECIES", DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 (plot.match(TROPICAL_FLORIDA) && plot.riv(EXCLUDED_SPECIES) < 20)
@@ -1894,10 +2499,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -1926,25 +2538,61 @@ public class ClassificationKeyEast extends ClassificationKey {
         //  this type may overlap with MG 7, since Magnolia virginiana and Persea borbonia
         //  are diagnostic in that MG]
 
-        List<Pair<String,String>> ECOREGION_values = new ArrayList();
-        ECOREGION_values.add(new Pair("ecoregion", "411A"));
-        PatternList ECOREGION = new PatternList("ECOREGION", ECOREGION_values);
+        List<Pair<String,String>> ECOREGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "411A")
+        );
+        List<List<Pair<String,String>>> ECOREGION_patterns = Arrays.asList(
+            ECOREGION_pattern0
+        );
+        PatternList ECOREGION = new PatternList("ECOREGION", ECOREGION_patterns);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Annona glabra"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Fraxinus caroliniana"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Salix caroliniana"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Taxodium distichum"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Annona glabra")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Fraxinus caroliniana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_pattern4
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Conocarpus erectus"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Magnolia virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Persea borbonia"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Salix caroliniana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "other palms"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Conocarpus erectus")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "other palms")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                  plot.match(ECOREGION)
@@ -1966,12 +2614,25 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by one or more of Avicennia germinans, Conocarpus erectus,
         // Laguncularia racemosa, Rhizophora mangle (>=20% RIV);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Avicennia germinans"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Conocarpus erectus"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Laguncularia racemosa"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Rhizophora mangle"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Avicennia germinans")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Conocarpus erectus")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Laguncularia racemosa")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Rhizophora mangle")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_pattern3
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20
@@ -2028,10 +2689,17 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Tropical wetland forests found in Puerto Rico, U.S. Virgin Islands and other Caribbean territories
 
-        List<Pair<String,String>> CARIBBEAN_values = new ArrayList();
-        CARIBBEAN_values.add(new Pair("state", "PR"));
-        CARIBBEAN_values.add(new Pair("state", "VI"));
-        PatternList CARIBBEAN = new PatternList("CARIBBEAN", CARIBBEAN_values);
+        List<Pair<String,String>> CARIBBEAN_pattern0 = Arrays.asList(
+            new Pair("state", "PR")
+        );
+        List<Pair<String,String>> CARIBBEAN_pattern1 = Arrays.asList(
+            new Pair("state", "VI")
+        );
+        List<List<Pair<String,String>>> CARIBBEAN_patterns = Arrays.asList(
+            CARIBBEAN_pattern0,
+            CARIBBEAN_pattern1
+        );
+        PatternList CARIBBEAN = new PatternList("CARIBBEAN", CARIBBEAN_patterns);
 
         INodeMatch match = plot -> (
             plot.match(CARIBBEAN)
@@ -2054,10 +2722,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -2134,9 +2809,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         // and the Yukon [may not need worry about east-west boreal line since tree
         // species for Macrogroups are the same across the line.
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "411A, 200, M200, 100, M100"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "411A, 200, M200, 100, M100")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
@@ -2172,50 +2851,158 @@ public class ClassificationKeyEast extends ClassificationKey {
         // but with >=20% RIV; AND other species are any combination of Acer negundo, Carpinus caroliniana, Ilex opaca,
         // Magnolia grandiflora (together >=50% RIV), OR All Ruderal stands where ruderals >= 80% RIV]
 
-        List<Pair<String,String>> EXCLUDED_REGIONS_values = new ArrayList();
-        EXCLUDED_REGIONS_values.add(new Pair("state", "MD, NY, NJ, PA, DE, VA"));
-        EXCLUDED_REGIONS_values.add(new Pair("ecoregion", "221"));
-        PatternList EXCLUDED_REGIONS = new PatternList("EXCLUDED_REGIONS", EXCLUDED_REGIONS_values);
+        List<Pair<String,String>> EXCLUDED_REGIONS_pattern0 = Arrays.asList(
+            new Pair("state", "MD, NY, NJ, PA, DE, VA")
+        );
+        List<Pair<String,String>> EXCLUDED_REGIONS_pattern1 = Arrays.asList(
+            new Pair("ecoregion", "221")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_REGIONS_patterns = Arrays.asList(
+            EXCLUDED_REGIONS_pattern0,
+            EXCLUDED_REGIONS_pattern1
+        );
+        PatternList EXCLUDED_REGIONS = new PatternList("EXCLUDED_REGIONS", EXCLUDED_REGIONS_patterns);
 
-        List<Pair<String,String>> DIAGNOSTIC_SPECIES_values = new ArrayList();
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Chamaecyparis thyoides"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus elliottii"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus glabra"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus palustris"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus serotina"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus taeda"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Taxodium distichum"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Taxodium ascendens"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carya aquatica"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Fraxinus caroliniana"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Fraxinus profunda"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Gleditsia aquatica"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Gordonia lasianthus"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Halesia diptera"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Juglans major"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Juglans microcarpa"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Magnolia virginiana"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Nyssa aquatica"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Nyssa biflora"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Planera aquatica"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Persea borbonia"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Nyssa ogeche"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus laurifolia"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus lyrata"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus michauxii"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus nigra"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus pagoda"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus sinuata var. sinuata"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus texana"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus virginiana"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sabal palmetto"));
-        DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ulmus crassifolia"));
-        PatternList DIAGNOSTIC_SPECIES = new PatternList("DIAGNOSTIC_SPECIES", DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Chamaecyparis thyoides")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus serotina")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Taxodium ascendens")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Carya aquatica")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Fraxinus caroliniana")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new Pair("species", "Fraxinus profunda")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+            new Pair("species", "Gleditsia aquatica")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+            new Pair("species", "Gordonia lasianthus")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
+            new Pair("species", "Halesia diptera")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern14 = Arrays.asList(
+            new Pair("species", "Juglans major")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern15 = Arrays.asList(
+            new Pair("species", "Juglans microcarpa")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern16 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
+            new Pair("species", "Nyssa aquatica")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
+            new Pair("species", "Nyssa biflora")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern19 = Arrays.asList(
+            new Pair("species", "Planera aquatica")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern20 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern21 = Arrays.asList(
+            new Pair("species", "Nyssa ogeche")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern23 = Arrays.asList(
+            new Pair("species", "Quercus lyrata")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern24 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern25 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern26 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern27 = Arrays.asList(
+            new Pair("species", "Quercus sinuata var. sinuata")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern28 = Arrays.asList(
+            new Pair("species", "Quercus texana")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern29 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern30 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_pattern31 = Arrays.asList(
+            new Pair("species", "Ulmus crassifolia")
+        );
+        List<List<Pair<String,String>>> DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_pattern0,
+            DIAGNOSTIC_SPECIES_pattern1,
+            DIAGNOSTIC_SPECIES_pattern2,
+            DIAGNOSTIC_SPECIES_pattern3,
+            DIAGNOSTIC_SPECIES_pattern4,
+            DIAGNOSTIC_SPECIES_pattern5,
+            DIAGNOSTIC_SPECIES_pattern6,
+            DIAGNOSTIC_SPECIES_pattern7,
+            DIAGNOSTIC_SPECIES_pattern8,
+            DIAGNOSTIC_SPECIES_pattern9,
+            DIAGNOSTIC_SPECIES_pattern10,
+            DIAGNOSTIC_SPECIES_pattern11,
+            DIAGNOSTIC_SPECIES_pattern12,
+            DIAGNOSTIC_SPECIES_pattern13,
+            DIAGNOSTIC_SPECIES_pattern14,
+            DIAGNOSTIC_SPECIES_pattern15,
+            DIAGNOSTIC_SPECIES_pattern16,
+            DIAGNOSTIC_SPECIES_pattern17,
+            DIAGNOSTIC_SPECIES_pattern18,
+            DIAGNOSTIC_SPECIES_pattern19,
+            DIAGNOSTIC_SPECIES_pattern20,
+            DIAGNOSTIC_SPECIES_pattern21,
+            DIAGNOSTIC_SPECIES_pattern22,
+            DIAGNOSTIC_SPECIES_pattern23,
+            DIAGNOSTIC_SPECIES_pattern24,
+            DIAGNOSTIC_SPECIES_pattern25,
+            DIAGNOSTIC_SPECIES_pattern26,
+            DIAGNOSTIC_SPECIES_pattern27,
+            DIAGNOSTIC_SPECIES_pattern28,
+            DIAGNOSTIC_SPECIES_pattern29,
+            DIAGNOSTIC_SPECIES_pattern30,
+            DIAGNOSTIC_SPECIES_pattern31
+        );
+        PatternList DIAGNOSTIC_SPECIES = new PatternList("DIAGNOSTIC_SPECIES", DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_II_values = new ArrayList();
-        ECOREGIONS_II_values.add(new Pair("ecoregion", "231, 232, 234, 255"));
-        ECOREGIONS_II_values.add(new Pair("state", "!KS, MD, NY, NJ, PA, DE"));
-        PatternList ECOREGIONS_II = new PatternList("ECOREGIONS_II", ECOREGIONS_II_values);
+        List<Pair<String,String>> ECOREGIONS_II_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "231, 232, 234, 255"),
+            new Pair("state", "!KS, MD, NY, NJ, PA, DE")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_II_patterns = Arrays.asList(
+            ECOREGIONS_II_pattern0
+        );
+        PatternList ECOREGIONS_II = new PatternList("ECOREGIONS_II", ECOREGIONS_II_patterns);
 
         INodeMatch match = plot -> (
             (!plot.match(EXCLUDED_REGIONS) && plot.riv(DIAGNOSTIC_SPECIES) >= 20) || plot.match(ECOREGIONS_II)
@@ -2238,10 +3025,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -2270,41 +3064,125 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Sapindus saponaria var. drummondii, Sideroxylon lanuginosum ssp. lanuginosum,
         //     Ulmus crassifolia (together >=50% RIV)
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "255B, 255C, 255D, 315C, 315D, 315E, 315G, 321B"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "255B, 255C, 255D, 315C, 315D, 315E, 315G, 321B")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values = new ArrayList();
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Carya illinoinensis"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata var. reticulata"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Juglans microcarpa"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Juglans nigra"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Juglans major"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Quercus virginiana"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Salix nigra"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Taxodium distichum"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Ulmus crassifolia"));
-        PatternList STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS = new PatternList("STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS", STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Carya illinoinensis")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Celtis laevigata var. reticulata")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Juglans microcarpa")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Juglans major")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Ulmus crassifolia")
+        );
+        List<List<Pair<String,String>>> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern0,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern1,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern2,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern3,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern4,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern5,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern6,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern7,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern8,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern9,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern10,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern11,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern12,
+            STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern13
+        );
+        PatternList STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS = new PatternList("STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS", STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer negundo"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Celtis occidentalis"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Diospyros virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Gleditsia triacanthos"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Juglans nigra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Maclura pomifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Prosopis glandulosa"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus macrocarpa"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus nigra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sapindus saponaria var. drummondii"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sideroxylon lanuginosum ssp. lanuginosum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ulmus crassifolia"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Gleditsia triacanthos")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Maclura pomifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Prosopis glandulosa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Sapindus saponaria var. drummondii")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new Pair("species", "Sideroxylon lanuginosum ssp. lanuginosum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+            new Pair("species", "Ulmus crassifolia")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern11
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                  plot.match(ECOREGIONS)
@@ -2334,23 +3212,61 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Pinus serotina, Pinus elliottii, Pinus taeda, Taxodium distichum, Sabal palmetto
         //     (together >=50% RIV).
 
-        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_values = new ArrayList();
-        STRONG_POND_CYPRESS_DIAGNOSTICS_values.add(new Pair("species", "Taxodium ascendens"));
-        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Taxodium ascendens")
+        );
+        List<List<Pair<String,String>>> STRONG_POND_CYPRESS_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0
+        );
+        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Annona glabra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Liriodendron tulipifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Liquidambar styraciflua"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Nyssa biflora"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Persea borbonia"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus elliottii"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus serotina"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus taeda"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Taxodium distichum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Annona glabra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Nyssa biflora")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Pinus serotina")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 50
@@ -2374,25 +3290,61 @@ public class ClassificationKeyEast extends ClassificationKey {
         // of Chamaecyparis thyoides, Cliftonia monophylla [not tracked by FIA], Fraxinus caroliniana, Gordonia lasianthus,
         // Magnolia virginiana, Persea borbonia, Pinus serotina or Quercus laurifolia, Sabal palmetto (>=20% RIV);
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "231A, 231B, 231D, 231E, 232A, 232B, 232C, 232D, 232F, 232G"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "231A, 231B, 231D, 231E, 232A, 232B, 232C, 232D, 232F, 232G")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> EXCLUDED_SPECIES_values = new ArrayList();
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Pinus palustris"));
-        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_values);
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_SPECIES_patterns = Arrays.asList(
+            EXCLUDED_SPECIES_pattern0
+        );
+        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_patterns);
 
-        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_values = new ArrayList();
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Chamaecyparis thyoides"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Cliftonia monophylla"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus caroliniana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Gordonia lasianthus"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Magnolia virginiana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Persea borbonia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Pinus serotina"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Chamaecyparis thyoides")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Cliftonia monophylla")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fraxinus caroliniana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Gordonia lasianthus")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus serotina")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_SWAMP_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_SWAMP_DIAGNOSTICS_pattern0,
+            STRONG_SWAMP_DIAGNOSTICS_pattern1,
+            STRONG_SWAMP_DIAGNOSTICS_pattern2,
+            STRONG_SWAMP_DIAGNOSTICS_pattern3,
+            STRONG_SWAMP_DIAGNOSTICS_pattern4,
+            STRONG_SWAMP_DIAGNOSTICS_pattern5,
+            STRONG_SWAMP_DIAGNOSTICS_pattern6,
+            STRONG_SWAMP_DIAGNOSTICS_pattern7,
+            STRONG_SWAMP_DIAGNOSTICS_pattern8
+        );
+        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && (plot.riv(EXCLUDED_SPECIES) < 5 && plot.riv(STRONG_SWAMP_DIAGNOSTICS) >= 20)
@@ -2422,60 +3374,209 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Ilex opaca, Juglans nigra, Liriodendron tulipifera, Magnolia grandiflora, Magnolia virginiana, Nyssa sylvatica,
         //     Pinus elliottii, Pinus glabra, Pinus taeda, Quercus macrocarpa, Sabal palmetto, Ulmus rubra, Ulmus serotina (together >=50% RIV)
 
-        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_values = new ArrayList();
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharinum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Betula nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya illinoinensis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus profunda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Gleditsia aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana var. silicicola"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa biflora"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa ogeche"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Planera aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus lyrata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus michauxii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus texana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix caroliniana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Sapindus saponaria var. drummondii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Taxodium distichum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus crassifolia"));
-        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Betula nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya illinoinensis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Fraxinus profunda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Gleditsia aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana var. silicicola")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Nyssa aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Nyssa biflora")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Nyssa ogeche")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Planera aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus lyrata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Quercus texana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26 = Arrays.asList(
+            new Pair("species", "Sapindus saponaria var. drummondii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29 = Arrays.asList(
+            new Pair("species", "Ulmus crassifolia")
+        );
+        List<List<Pair<String,String>>> STRONG_FLOODPLAIN_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29
+        );
+        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer negundo"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Chamaecyparis thyoides"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Gleditsia triacanthos"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Halesia diptera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ilex opaca"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Juglans nigra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Liriodendron tulipifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Magnolia grandiflora"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Magnolia virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Nyssa sylvatica"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus elliottii"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus glabra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus taeda"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus macrocarpa"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sabal palmetto"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ulmus rubra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ulmus serotina"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Chamaecyparis thyoides")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Gleditsia triacanthos")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Halesia diptera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Magnolia grandiflora")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern14 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern16 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
+            new Pair("species", "Ulmus serotina")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern11,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern12,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern13,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern14,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern15,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern16,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern17,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern18
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 50
@@ -2498,64 +3599,201 @@ public class ClassificationKeyEast extends ClassificationKey {
         // % RIV of STRONG SWAMP DIAGNOSTICS > either STRONG POND CYPRESS DIAGNOSTICS
         // or STRONG LONGLEAF DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "231A, 231B, 231D, 231E, 232A, 232B, 232C, 232D, 232F, 232G"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "231A, 231B, 231D, 231E, 232A, 232B, 232C, 232D, 232F, 232G")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_values = new ArrayList();
-        STRONG_POND_CYPRESS_DIAGNOSTICS_values.add(new Pair("species", "Taxodium ascendens"));
-        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Taxodium ascendens")
+        );
+        List<List<Pair<String,String>>> STRONG_POND_CYPRESS_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0
+        );
+        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_values = new ArrayList();
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus clausa"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus palustris"));
-        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> STRONG_LONGLEAF_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern0,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern1,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern2
+        );
+        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_values = new ArrayList();
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Chamaecyparis thyoides"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Cliftonia monophylla"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus caroliniana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Gordonia lasianthus"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Magnolia virginiana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Persea borbonia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Pinus serotina"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Chamaecyparis thyoides")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Cliftonia monophylla")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fraxinus caroliniana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Gordonia lasianthus")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus serotina")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_SWAMP_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_SWAMP_DIAGNOSTICS_pattern0,
+            STRONG_SWAMP_DIAGNOSTICS_pattern1,
+            STRONG_SWAMP_DIAGNOSTICS_pattern2,
+            STRONG_SWAMP_DIAGNOSTICS_pattern3,
+            STRONG_SWAMP_DIAGNOSTICS_pattern4,
+            STRONG_SWAMP_DIAGNOSTICS_pattern5,
+            STRONG_SWAMP_DIAGNOSTICS_pattern6,
+            STRONG_SWAMP_DIAGNOSTICS_pattern7,
+            STRONG_SWAMP_DIAGNOSTICS_pattern8
+        );
+        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_values = new ArrayList();
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharinum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Betula nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya illinoinensis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus profunda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Gleditsia aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana var. silicicola"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa biflora"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa ogeche"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Planera aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus lyrata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus michauxii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus texana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix caroliniana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Sapindus saponaria var. drummondii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Taxodium distichum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus crassifolia"));
-        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Betula nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya illinoinensis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Fraxinus profunda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Gleditsia aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana var. silicicola")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Nyssa aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Nyssa biflora")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Nyssa ogeche")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Planera aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus lyrata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Quercus texana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26 = Arrays.asList(
+            new Pair("species", "Sapindus saponaria var. drummondii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29 = Arrays.asList(
+            new Pair("species", "Ulmus crassifolia")
+        );
+        List<List<Pair<String,String>>> STRONG_FLOODPLAIN_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29
+        );
+        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS) &&
@@ -2577,60 +3815,193 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // % RIV OF STRONG POND CYPRESS DIAGNOSTICS > STRONG LONGLEAF DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS
 
-        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_values = new ArrayList();
-        STRONG_POND_CYPRESS_DIAGNOSTICS_values.add(new Pair("species", "Taxodium ascendens"));
-        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Taxodium ascendens")
+        );
+        List<List<Pair<String,String>>> STRONG_POND_CYPRESS_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0
+        );
+        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_values = new ArrayList();
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus clausa"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus palustris"));
-        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> STRONG_LONGLEAF_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern0,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern1,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern2
+        );
+        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_values = new ArrayList();
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Chamaecyparis thyoides"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Cliftonia monophylla"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus caroliniana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Gordonia lasianthus"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Magnolia virginiana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Persea borbonia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Pinus serotina"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Chamaecyparis thyoides")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Cliftonia monophylla")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fraxinus caroliniana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Gordonia lasianthus")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus serotina")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_SWAMP_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_SWAMP_DIAGNOSTICS_pattern0,
+            STRONG_SWAMP_DIAGNOSTICS_pattern1,
+            STRONG_SWAMP_DIAGNOSTICS_pattern2,
+            STRONG_SWAMP_DIAGNOSTICS_pattern3,
+            STRONG_SWAMP_DIAGNOSTICS_pattern4,
+            STRONG_SWAMP_DIAGNOSTICS_pattern5,
+            STRONG_SWAMP_DIAGNOSTICS_pattern6,
+            STRONG_SWAMP_DIAGNOSTICS_pattern7,
+            STRONG_SWAMP_DIAGNOSTICS_pattern8
+        );
+        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_values = new ArrayList();
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharinum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Betula nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya illinoinensis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus profunda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Gleditsia aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana var. silicicola"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa biflora"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa ogeche"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Planera aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus lyrata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus michauxii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus texana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix caroliniana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Sapindus saponaria var. drummondii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Taxodium distichum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus crassifolia"));
-        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Betula nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya illinoinensis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Fraxinus profunda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Gleditsia aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana var. silicicola")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Nyssa aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Nyssa biflora")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Nyssa ogeche")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Planera aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus lyrata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Quercus texana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26 = Arrays.asList(
+            new Pair("species", "Sapindus saponaria var. drummondii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29 = Arrays.asList(
+            new Pair("species", "Ulmus crassifolia")
+        );
+        List<List<Pair<String,String>>> STRONG_FLOODPLAIN_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29
+        );
+        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
                plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > plot.riv(STRONG_LONGLEAF_DIAGNOSTICS)
@@ -2650,60 +4021,193 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // % RIV OF STRONG LONGLEAF DIAGNOSTICS > either STRONG POND CYPRESS DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS
 
-        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_values = new ArrayList();
-        STRONG_POND_CYPRESS_DIAGNOSTICS_values.add(new Pair("species", "Taxodium ascendens"));
-        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Taxodium ascendens")
+        );
+        List<List<Pair<String,String>>> STRONG_POND_CYPRESS_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_POND_CYPRESS_DIAGNOSTICS_pattern0
+        );
+        PatternList STRONG_POND_CYPRESS_DIAGNOSTICS = new PatternList("STRONG_POND_CYPRESS_DIAGNOSTICS", STRONG_POND_CYPRESS_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_values = new ArrayList();
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus clausa"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus palustris"));
-        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> STRONG_LONGLEAF_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern0,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern1,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern2
+        );
+        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_values = new ArrayList();
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Chamaecyparis thyoides"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Cliftonia monophylla"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus caroliniana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Gordonia lasianthus"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Magnolia virginiana"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Persea borbonia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Pinus serotina"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Chamaecyparis thyoides")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Cliftonia monophylla")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fraxinus caroliniana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Gordonia lasianthus")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus serotina")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_SWAMP_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_SWAMP_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_SWAMP_DIAGNOSTICS_pattern0,
+            STRONG_SWAMP_DIAGNOSTICS_pattern1,
+            STRONG_SWAMP_DIAGNOSTICS_pattern2,
+            STRONG_SWAMP_DIAGNOSTICS_pattern3,
+            STRONG_SWAMP_DIAGNOSTICS_pattern4,
+            STRONG_SWAMP_DIAGNOSTICS_pattern5,
+            STRONG_SWAMP_DIAGNOSTICS_pattern6,
+            STRONG_SWAMP_DIAGNOSTICS_pattern7,
+            STRONG_SWAMP_DIAGNOSTICS_pattern8
+        );
+        PatternList STRONG_SWAMP_DIAGNOSTICS = new PatternList("STRONG_SWAMP_DIAGNOSTICS", STRONG_SWAMP_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_values = new ArrayList();
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharinum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Betula nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya illinoinensis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus profunda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Gleditsia aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana var. silicicola"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa biflora"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Nyssa ogeche"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Planera aquatica"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus lyrata"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus michauxii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Quercus texana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix caroliniana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix nigra"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Sapindus saponaria var. drummondii"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Taxodium distichum"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus crassifolia"));
-        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Betula nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya illinoinensis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Fraxinus profunda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Gleditsia aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana var. silicicola")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Nyssa aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Nyssa biflora")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Nyssa ogeche")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Planera aquatica")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus lyrata")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Quercus texana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26 = Arrays.asList(
+            new Pair("species", "Sapindus saponaria var. drummondii")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27 = Arrays.asList(
+            new Pair("species", "Taxodium distichum")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29 = Arrays.asList(
+            new Pair("species", "Ulmus crassifolia")
+        );
+        List<List<Pair<String,String>>> STRONG_FLOODPLAIN_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern0,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern1,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern2,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern3,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern6,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern7,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern8,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern9,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern10,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern11,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern12,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern13,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern14,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern17,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern18,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern19,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern20,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern21,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern22,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern23,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern24,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern25,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern26,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern27,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern28,
+            STRONG_FLOODPLAIN_DIAGNOSTICS_pattern29
+        );
+        PatternList STRONG_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_FLOODPLAIN_DIAGNOSTICS", STRONG_FLOODPLAIN_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
                plot.riv(STRONG_LONGLEAF_DIAGNOSTICS) > plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS)
@@ -2802,21 +4306,45 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      (Abies balsamea, Picea glauca, Pinus banksiana) species (together >=95% RIV);
         //      [N.B. role of Thuja occidentalis in boreal swamps still under review]
 
-        List<Pair<String,String>> BOREAL_REGION_values = new ArrayList();
-        BOREAL_REGION_values.add(new Pair("ecoregion", "212, 211, M211"));
-        PatternList BOREAL_REGION = new PatternList("BOREAL_REGION", BOREAL_REGION_values);
+        List<Pair<String,String>> BOREAL_REGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "212, 211, M211")
+        );
+        List<List<Pair<String,String>>> BOREAL_REGION_patterns = Arrays.asList(
+            BOREAL_REGION_pattern0
+        );
+        PatternList BOREAL_REGION = new PatternList("BOREAL_REGION", BOREAL_REGION_patterns);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Larix laricina"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Picea mariana"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Betula papyrifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Abies balsamea"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Picea glauca"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus banksiana"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.match(BOREAL_REGION)
@@ -2841,10 +4369,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -2869,17 +4404,37 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      boreal hardwoods Betula papyrifera, or other conifers Abies balsamea, Picea glauca,
         //      Pinus banksiana (together >=95% RIV);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Larix laricina"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Picea mariana"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Betula papyrifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Abies balsamea"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Picea glauca"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus banksiana"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
@@ -2958,10 +4513,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -2999,58 +4561,177 @@ public class ClassificationKeyEast extends ClassificationKey {
         //          Betula papyrifera, Carpinus caroliniana, Fraxinus americana, Nyssa sylvatica, Ostrya virginiana,
         //          Populus tremuloides, Prunus serotina, Quercus macrocarpa, Tilia americana (together >=50% RIV)
 
-        List<Pair<String,String>> ECOREGIONS_I_values = new ArrayList();
-        ECOREGIONS_I_values.add(new Pair("ecoregion", "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc, 222J, 222K, 222L, 222M, 222N, 222R, 222U"));
-        PatternList ECOREGIONS_I = new PatternList("ECOREGIONS_I", ECOREGIONS_I_values);
+        List<Pair<String,String>> ECOREGIONS_I_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc, 222J, 222K, 222L, 222M, 222N, 222R, 222U")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_I_patterns = Arrays.asList(
+            ECOREGIONS_I_pattern0
+        );
+        PatternList ECOREGIONS_I = new PatternList("ECOREGIONS_I", ECOREGIONS_I_patterns);
 
-        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values = new ArrayList();
-        STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Larix laricina"));
-        STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Picea mariana"));
-        STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Picea rubens"));
-        STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Populus balsamifera"));
-        STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Thuja occidentalis"));
-        PatternList STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS = new PatternList("STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS", STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<List<Pair<String,String>>> STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern0,
+            STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern1,
+            STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern2,
+            STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern3,
+            STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern4,
+            STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern5,
+            STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern6
+        );
+        PatternList STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS = new PatternList("STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS", STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_II_values = new ArrayList();
-        ECOREGIONS_II_values.add(new Pair("ecoregion", "212, M211, 211, 222I, 221A, 221B, 221C, 221D"));
-        PatternList ECOREGIONS_II = new PatternList("ECOREGIONS_II", ECOREGIONS_II_values);
+        List<Pair<String,String>> ECOREGIONS_II_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "212, M211, 211, 222I, 221A, 221B, 221C, 221D")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_II_patterns = Arrays.asList(
+            ECOREGIONS_II_pattern0
+        );
+        PatternList ECOREGIONS_II = new PatternList("ECOREGIONS_II", ECOREGIONS_II_patterns);
 
-        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values = new ArrayList();
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Acer rubrum"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharinum"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Chamaecyparis thyoides"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Larix laricina"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Picea mariana"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Picea rubens"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Pinus rigida"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Populus balsamifera"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Salix amygdaloides"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Thuja occidentalis"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus rubra"));
-        PatternList ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS = new PatternList("ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS", ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_values);
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Chamaecyparis thyoides")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus rigida")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Salix amygdaloides")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<List<Pair<String,String>>> ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_patterns = Arrays.asList(
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern0,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern1,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern2,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern3,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern4,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern5,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern6,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern7,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern8,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern9,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern10,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern11,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern12,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern13,
+            ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_pattern14
+        );
+        PatternList ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS = new PatternList("ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS", ECOREGIONALLY_STRONG_LAURENTIAN_ACADIAN_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Abies balsamea"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Acer nigrum"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Acer negundo"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Acer saccharum"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Betula alleghaniensis"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Betula papyrifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Fraxinus americana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Nyssa sylvatica"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Populus tremuloides"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Prunus serotina"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Quercus macrocarpa"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Tilia americana"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES_II = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_II", MODERATE_DIAGNOSTIC_SPECIES_II_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern0 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern1 = Arrays.asList(
+            new Pair("species", "Acer nigrum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern2 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern3 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern4 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern5 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern6 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern8 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern9 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern10 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern11 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern13 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_II_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern10,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern11,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern12,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern13
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES_II = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_II", MODERATE_DIAGNOSTIC_SPECIES_II_patterns);
 
         INodeMatch match = plot -> (
                (    plot.match(ECOREGIONS_I)
@@ -3084,47 +4765,157 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Morus rubra, Populus tremuloides,  Quercus bicolor, Quercus imbricaria, Quercus palustris,
         //     Quercus macrocarpa, Tilia americana (together >=50% RIV).
 
-        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values = new ArrayList();
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer negundo"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharinum"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya cordiformis"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya laciniosa"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis occidentalis"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Betula nigra"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides spp. monilifera"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix bebbiana"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix nigra"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix caroliniana"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix spp."));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus rubra"));
-        PatternList STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS", STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya laciniosa")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Betula nigra")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Populus deltoides spp. monilifera")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Salix bebbiana")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Salix spp.")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<List<Pair<String,String>>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern0,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern1,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern2,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern3,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern4,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern5,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern6,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern7,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern8,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern9,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern10,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern11,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern12,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern13,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern14,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern15,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern16
+        );
+        PatternList STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS", STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer negundo"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer saccharum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carya cordiformis"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carya illinoinensis"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Diospyros virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Fraxinus nigra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Gleditsia triacanthos"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Liriodendron tulipifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Liquidambar styraciflua"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Morus spp."));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Morus rubra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Populus tremuloides"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus bicolor"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus imbricaria"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus palustris"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus macrocarpa"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Tilia americana"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Carya illinoinensis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Gleditsia triacanthos")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+            new Pair("species", "Morus spp.")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+            new Pair("species", "Morus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus bicolor")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus palustris")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern11,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern12,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern13,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern14,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern15,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern16,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern17,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern18
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 50
@@ -3156,44 +4947,145 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Populus tremuloides, Salix bebbiana, Salix nigra, Tilia americana, Ulmus americana
         //     (together >=50% RIV).
 
-        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values = new ArrayList();
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Larix laricina"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus bicolor"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus palustris"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Salix amygdaloides"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Thuja occidentalis"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Picea rubens"));
-        PatternList STRONG_CENTRAL_SWAMP_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_SWAMP_DIAGNOSTICS", STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus bicolor")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus palustris")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Salix amygdaloides")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<List<Pair<String,String>>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern0,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern1,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern2,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern3,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern4,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern5,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern6,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern7,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern8,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern9,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern10
+        );
+        PatternList STRONG_CENTRAL_SWAMP_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_SWAMP_DIAGNOSTICS", STRONG_CENTRAL_SWAMP_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer saccharum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer saccharinum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer spicatum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Betula alleghaniensis"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carya cordiformis"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Fagus grandifolia"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Liriodendron tulipifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Liquidambar styraciflua"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Morus spp."));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Morus rubra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus alba"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus macrocarpa"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Populus balsamifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Populus tremuloides"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Salix bebbiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Salix nigra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Tilia americana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ulmus americana"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Acer spicatum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+            new Pair("species", "Morus spp.")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+            new Pair("species", "Morus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern16 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
+            new Pair("species", "Salix bebbiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern19 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern20 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern21 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern11,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern12,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern13,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern14,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern15,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern16,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern17,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern18,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern19,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern20,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern21
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS) >= 50
@@ -3214,9 +5106,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // ECOREGION is 212, M211, 211, 222I, 221A-221D
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "212, M211, 211, 222I, 221A, 221B, 221C, 221D"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "212, M211, 211, 222I, 221A, 221B, 221C, 221D")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
@@ -3237,43 +5133,133 @@ public class ClassificationKeyEast extends ClassificationKey {
         // OR
         // ii. Physiographic code = R (Riverine)
 
-        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values = new ArrayList();
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer negundo"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharinum"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya cordiformis"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Carya laciniosa"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Celtis occidentalis"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Betula nigra"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides spp. monilifera"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix bebbiana"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix nigra"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix caroliniana"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Salix spp."));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values.add(new Pair("species", "Ulmus rubra"));
-        PatternList STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS", STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharinum")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya laciniosa")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Betula nigra")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Populus deltoides spp. monilifera")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Salix bebbiana")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Salix nigra")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Salix caroliniana")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Salix spp.")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<List<Pair<String,String>>> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern0,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern1,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern2,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern3,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern4,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern5,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern6,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern7,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern8,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern9,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern10,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern11,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern12,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern13,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern14,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern15,
+            STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern16
+        );
+        PatternList STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS", STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values = new ArrayList();
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Larix laricina"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus bicolor"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus palustris"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Salix amygdaloides"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Thuja occidentalis"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values.add(new Pair("species", "Picea rubens"));
-        PatternList STRONG_CENTRAL_SWAMP_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_SWAMP_DIAGNOSTICS", STRONG_CENTRAL_SWAMP_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus bicolor")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus palustris")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Salix amygdaloides")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<List<Pair<String,String>>> STRONG_CENTRAL_SWAMP_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern0,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern1,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern2,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern3,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern4,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern5,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern6,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern7,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern8,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern9,
+            STRONG_CENTRAL_SWAMP_DIAGNOSTICS_pattern10
+        );
+        PatternList STRONG_CENTRAL_SWAMP_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_SWAMP_DIAGNOSTICS", STRONG_CENTRAL_SWAMP_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> RIVERINE_values = new ArrayList();
-        RIVERINE_values.add(new Pair("riverine", "yes"));
-        PatternList RIVERINE = new PatternList("RIVERINE", RIVERINE_values);
+        List<Pair<String,String>> RIVERINE_pattern0 = Arrays.asList(
+            new Pair("riverine", "yes")
+        );
+        List<List<Pair<String,String>>> RIVERINE_patterns = Arrays.asList(
+            RIVERINE_pattern0
+        );
+        PatternList RIVERINE = new PatternList("RIVERINE", RIVERINE_patterns);
 
         INodeMatch match = plot -> (
                plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) > plot.riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS)
@@ -3371,20 +5357,46 @@ public class ClassificationKeyEast extends ClassificationKey {
         // extend into EcoSubsections 232Da, 232Ga, 232Gb, but specific diagnostic species will 
         // need to be identified to key them out.]
 
-        List<Pair<String,String>> TROPICAL_LOCATION_values = new ArrayList();
-        TROPICAL_LOCATION_values.add(new Pair("state", "PR"));
-        TROPICAL_LOCATION_values.add(new Pair("state", "VI"));
-        TROPICAL_LOCATION_values.add(new Pair("state", "FL"));
-        TROPICAL_LOCATION_values.add(new Pair("ecoregion", "411A"));
-        PatternList TROPICAL_LOCATION = new PatternList("TROPICAL_LOCATION", TROPICAL_LOCATION_values);
+        List<Pair<String,String>> TROPICAL_LOCATION_pattern0 = Arrays.asList(
+            new Pair("state", "PR")
+        );
+        List<Pair<String,String>> TROPICAL_LOCATION_pattern1 = Arrays.asList(
+            new Pair("state", "VI")
+        );
+        List<Pair<String,String>> TROPICAL_LOCATION_pattern2 = Arrays.asList(
+            new Pair("state", "FL"),
+            new Pair("ecoregion", "411A")
+        );
+        List<List<Pair<String,String>>> TROPICAL_LOCATION_patterns = Arrays.asList(
+            TROPICAL_LOCATION_pattern0,
+            TROPICAL_LOCATION_pattern1,
+            TROPICAL_LOCATION_pattern2
+        );
+        PatternList TROPICAL_LOCATION = new PatternList("TROPICAL_LOCATION", TROPICAL_LOCATION_patterns);
 
-        List<Pair<String,String>> EXCLUDED_SPECIES_values = new ArrayList();
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Pinus elliottii"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Pinus palustris"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus virginiana"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus laurifolia"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Taxodium ascendens"));
-        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_values);
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Taxodium ascendens")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_SPECIES_patterns = Arrays.asList(
+            EXCLUDED_SPECIES_pattern0,
+            EXCLUDED_SPECIES_pattern1,
+            EXCLUDED_SPECIES_pattern2,
+            EXCLUDED_SPECIES_pattern3,
+            EXCLUDED_SPECIES_pattern4
+        );
+        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.match(TROPICAL_LOCATION) && plot.riv(EXCLUDED_SPECIES) < 20
@@ -3404,12 +5416,22 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical hardwood and tropical conifer forests found in Puerto Rico, U.S. Virgin Islands,
         // and in tropical Florida (EcoSection 411A)
 
-        List<Pair<String,String>> TROPICAL_ATLANTIC_values = new ArrayList();
-        TROPICAL_ATLANTIC_values.add(new Pair("state", "FL"));
-        TROPICAL_ATLANTIC_values.add(new Pair("ecoregion", "411A"));
-        TROPICAL_ATLANTIC_values.add(new Pair("state", "PR"));
-        TROPICAL_ATLANTIC_values.add(new Pair("state", "VI"));
-        PatternList TROPICAL_ATLANTIC = new PatternList("TROPICAL_ATLANTIC", TROPICAL_ATLANTIC_values);
+        List<Pair<String,String>> TROPICAL_ATLANTIC_pattern0 = Arrays.asList(
+            new Pair("state", "FL"),
+            new Pair("ecoregion", "411A")
+        );
+        List<Pair<String,String>> TROPICAL_ATLANTIC_pattern1 = Arrays.asList(
+            new Pair("state", "PR")
+        );
+        List<Pair<String,String>> TROPICAL_ATLANTIC_pattern2 = Arrays.asList(
+            new Pair("state", "VI")
+        );
+        List<List<Pair<String,String>>> TROPICAL_ATLANTIC_patterns = Arrays.asList(
+            TROPICAL_ATLANTIC_pattern0,
+            TROPICAL_ATLANTIC_pattern1,
+            TROPICAL_ATLANTIC_pattern2
+        );
+        PatternList TROPICAL_ATLANTIC = new PatternList("TROPICAL_ATLANTIC", TROPICAL_ATLANTIC_patterns);
 
         INodeMatch match = plot -> (
             plot.match(TROPICAL_ATLANTIC)
@@ -3437,30 +5459,70 @@ public class ClassificationKeyEast extends ClassificationKey {
         //  OR
         // iii. Ruderal (weedy natives and exotic) tree species with >=80% RIV
 
-        List<Pair<String,String>> TROPICAL_FLORIDA_values = new ArrayList();
-        TROPICAL_FLORIDA_values.add(new Pair("state", "FL"));
-        TROPICAL_FLORIDA_values.add(new Pair("ecoregion", "411A"));
-        PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_values);
+        List<Pair<String,String>> TROPICAL_FLORIDA_pattern0 = Arrays.asList(
+            new Pair("state", "FL"),
+            new Pair("ecoregion", "411A")
+        );
+        List<List<Pair<String,String>>> TROPICAL_FLORIDA_patterns = Arrays.asList(
+            TROPICAL_FLORIDA_pattern0
+        );
+        PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_patterns);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Bursera simaruba"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Coccoloba diversifolia"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Guapira discolor"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Metopium toxiferum"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sabal palmetto"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "other palms"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Bursera simaruba")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Coccoloba diversifolia")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Guapira discolor")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Metopium toxiferum")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "other palms")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_pattern4,
+            STRONG_DIAGNOSTIC_SPECIES_pattern5
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Coccothrinax argentata"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Conocarpus erectus"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sideroxylon salicifolium"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Thrinax morrisii"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Coccothrinax argentata")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Conocarpus erectus")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Sideroxylon salicifolium")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Thrinax morrisii")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> RUDERAL_SPECIES_values = new ArrayList();
-        RUDERAL_SPECIES_values.add(new Pair("ruderal", "yes"));
-        PatternList RUDERAL_SPECIES = new PatternList("RUDERAL_SPECIES", RUDERAL_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_SPECIES_patterns = Arrays.asList(
+            RUDERAL_SPECIES_pattern0
+        );
+        PatternList RUDERAL_SPECIES = new PatternList("RUDERAL_SPECIES", RUDERAL_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.match(TROPICAL_FLORIDA)
@@ -3486,10 +5548,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -3508,9 +5577,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Tree composition >= 50% Sabal palmetto RIV
 
-        List<Pair<String,String>> SABAL_PALMETTO_values = new ArrayList();
-        SABAL_PALMETTO_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList SABAL_PALMETTO = new PatternList("SABAL_PALMETTO", SABAL_PALMETTO_values);
+        List<Pair<String,String>> SABAL_PALMETTO_pattern0 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> SABAL_PALMETTO_patterns = Arrays.asList(
+            SABAL_PALMETTO_pattern0
+        );
+        PatternList SABAL_PALMETTO = new PatternList("SABAL_PALMETTO", SABAL_PALMETTO_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(SABAL_PALMETTO) >= 50
@@ -3531,15 +5604,37 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Guapira discolor, Metopium toxiferum, Conocarpus erectus, "other palms",
         // Sabal palmetto (>=20% RIV)
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Bursera simaruba"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Coccoloba diversifolia"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Guapira discolor"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Metopium toxiferum"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Conocarpus erectus"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "other palms"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Bursera simaruba")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Coccoloba diversifolia")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Guapira discolor")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Metopium toxiferum")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Conocarpus erectus")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "other palms")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_pattern4,
+            STRONG_DIAGNOSTIC_SPECIES_pattern5,
+            STRONG_DIAGNOSTIC_SPECIES_pattern6
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20
@@ -3613,10 +5708,17 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Stands found in Caribbean islands.
 
-        List<Pair<String,String>> CARIBBEAN_values = new ArrayList();
-        CARIBBEAN_values.add(new Pair("state", "PR"));
-        CARIBBEAN_values.add(new Pair("state", "VI"));
-        PatternList CARIBBEAN = new PatternList("CARIBBEAN", CARIBBEAN_values);
+        List<Pair<String,String>> CARIBBEAN_pattern0 = Arrays.asList(
+            new Pair("state", "PR")
+        );
+        List<Pair<String,String>> CARIBBEAN_pattern1 = Arrays.asList(
+            new Pair("state", "VI")
+        );
+        List<List<Pair<String,String>>> CARIBBEAN_patterns = Arrays.asList(
+            CARIBBEAN_pattern0,
+            CARIBBEAN_pattern1
+        );
+        PatternList CARIBBEAN = new PatternList("CARIBBEAN", CARIBBEAN_patterns);
 
         INodeMatch match = plot -> (
             plot.match(CARIBBEAN)
@@ -3639,10 +5741,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -3667,23 +5776,61 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Guapira discolor, Metopium toxiferum, "other palms", Sabal palmetto, Thrinax morrisii,
         //     Sideroxylon salicifolium (together >=50% RIV)
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus caribaea"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus caribaea")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Bursera simaruba"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Coccoloba diversifolia"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Coccothrinax argentata"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Conocarpus erectus"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Guapira discolor"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Metopium toxiferum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "other palms"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sabal palmetto"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Thrinax morrisii"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sideroxylon salicifolium"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Bursera simaruba")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Coccoloba diversifolia")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Coccothrinax argentata")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Conocarpus erectus")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Guapira discolor")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Metopium toxiferum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "other palms")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Thrinax morrisii")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Sideroxylon salicifolium")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 || (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(STRONG_DIAGNOSTIC_SPECIES) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)
@@ -3707,16 +5854,33 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     any combination of (in dry stands) Coccothrinax argentata, Thrinax morrisii,
         //     Sideroxylon salicifolium (together >=50% RIV);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus caribaea"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus caribaea")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Coccothrinax argentata"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Thrinax morrisii"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Sideroxylon salicifolium"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Coccothrinax argentata")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Thrinax morrisii")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Sideroxylon salicifolium")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 || (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(STRONG_DIAGNOSTIC_SPECIES) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)
@@ -3794,9 +5958,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         // and 411A [most stands in 411 belong with tropical types, but a few exceptions are
         // allowed, see couplet A]
 
-        List<Pair<String,String>> HUMID_TEMPERATE_OR_POLAR_values = new ArrayList();
-        HUMID_TEMPERATE_OR_POLAR_values.add(new Pair("ecoregion", "200, M200, 100, M100, 411A"));
-        PatternList HUMID_TEMPERATE_OR_POLAR = new PatternList("HUMID_TEMPERATE_OR_POLAR", HUMID_TEMPERATE_OR_POLAR_values);
+        List<Pair<String,String>> HUMID_TEMPERATE_OR_POLAR_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "200, M200, 100, M100, 411A")
+        );
+        List<List<Pair<String,String>>> HUMID_TEMPERATE_OR_POLAR_patterns = Arrays.asList(
+            HUMID_TEMPERATE_OR_POLAR_pattern0
+        );
+        PatternList HUMID_TEMPERATE_OR_POLAR = new PatternList("HUMID_TEMPERATE_OR_POLAR", HUMID_TEMPERATE_OR_POLAR_patterns);
 
         INodeMatch match = plot -> (
             plot.match(HUMID_TEMPERATE_OR_POLAR)
@@ -3825,34 +5993,91 @@ public class ClassificationKeyEast extends ClassificationKey {
         //    Plot found in Ecosections 231B, 231E, 231H, 232B, 232C, 232D, 232E, 232F, 232G, 232H, 232I, 232J, 232K, 232L, 234,
         //    411A excluding NJ, PA, KY, TN, IL
 
-        List<Pair<String,String>> ECOREGIONS_1_values = new ArrayList();
-        ECOREGIONS_1_values.add(new Pair("ecoregion", "231, 232, 234A, 234C"));
-        ECOREGIONS_1_values.add(new Pair("state", "!NJ, PA"));
-        PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_values);
+        List<Pair<String,String>> ECOREGIONS_1_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "231, 232, 234A, 234C"),
+            new Pair("state", "!NJ, PA")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_1_patterns = Arrays.asList(
+            ECOREGIONS_1_pattern0
+        );
+        PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_patterns);
 
-        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_values = new ArrayList();
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Aesculus pavia"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Halesia diptera"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Juniperus virginiana var. silicicola"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Magnolia grandiflora"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Pinus clausa"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Pinus glabra"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Pinus palustris"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Pinus elliottii"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus incana"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus laevis"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus laurifolia"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus margarettiae"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus minima"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus sinuata var. sinuata"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus virginiana"));
-        DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList DIAGNOSTIC_SPECIES_1 = new PatternList("DIAGNOSTIC_SPECIES_1", DIAGNOSTIC_SPECIES_1_values);
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern0 = Arrays.asList(
+            new Pair("species", "Aesculus pavia")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern1 = Arrays.asList(
+            new Pair("species", "Halesia diptera")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern2 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana var. silicicola")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern3 = Arrays.asList(
+            new Pair("species", "Magnolia grandiflora")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern5 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern7 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern8 = Arrays.asList(
+            new Pair("species", "Quercus incana")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus laevis")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus margarettiae")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus minima")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus sinuata var. sinuata")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_1_pattern15 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> DIAGNOSTIC_SPECIES_1_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_1_pattern0,
+            DIAGNOSTIC_SPECIES_1_pattern1,
+            DIAGNOSTIC_SPECIES_1_pattern2,
+            DIAGNOSTIC_SPECIES_1_pattern3,
+            DIAGNOSTIC_SPECIES_1_pattern4,
+            DIAGNOSTIC_SPECIES_1_pattern5,
+            DIAGNOSTIC_SPECIES_1_pattern6,
+            DIAGNOSTIC_SPECIES_1_pattern7,
+            DIAGNOSTIC_SPECIES_1_pattern8,
+            DIAGNOSTIC_SPECIES_1_pattern9,
+            DIAGNOSTIC_SPECIES_1_pattern10,
+            DIAGNOSTIC_SPECIES_1_pattern11,
+            DIAGNOSTIC_SPECIES_1_pattern12,
+            DIAGNOSTIC_SPECIES_1_pattern13,
+            DIAGNOSTIC_SPECIES_1_pattern14,
+            DIAGNOSTIC_SPECIES_1_pattern15
+        );
+        PatternList DIAGNOSTIC_SPECIES_1 = new PatternList("DIAGNOSTIC_SPECIES_1", DIAGNOSTIC_SPECIES_1_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_2_values = new ArrayList();
-        ECOREGIONS_2_values.add(new Pair("ecoregion", "231B, 231E, 231H, 232B, 232C, 232D, 232E, 232F, 232G, 232H, 232I, 232J, 232K, 232L, 234, 411A"));
-        ECOREGIONS_2_values.add(new Pair("state", "!NJ, PA, KY, TN, IL"));
-        PatternList ECOREGIONS_2 = new PatternList("ECOREGIONS_2", ECOREGIONS_2_values);
+        List<Pair<String,String>> ECOREGIONS_2_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "231B, 231E, 231H, 232B, 232C, 232D, 232E, 232F, 232G, 232H, 232I, 232J, 232K, 232L, 234, 411A"),
+            new Pair("state", "!NJ, PA, KY, TN, IL")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_2_patterns = Arrays.asList(
+            ECOREGIONS_2_pattern0
+        );
+        PatternList ECOREGIONS_2 = new PatternList("ECOREGIONS_2", ECOREGIONS_2_patterns);
 
         INodeMatch match = plot -> (
             (plot.match(ECOREGIONS_1) && plot.riv(DIAGNOSTIC_SPECIES_1) >= 5) || plot.match(ECOREGIONS_2)
@@ -3875,10 +6100,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -3904,40 +6136,105 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     b. Plot is in 231, 232 or 234D and tree composition as above, but with >=20% RIV; AND in combination with other species of Oxydendrum arboreum,
         //        Quercus alba, Quercus falcata, Quercus nigra (together >= 50% RIV)
 
-        List<Pair<String,String>> ECOREGIONS_1_values = new ArrayList();
-        ECOREGIONS_1_values.add(new Pair("ecoregion", "232F, 231E, 234D"));
-        PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_values);
+        List<Pair<String,String>> ECOREGIONS_1_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "232F, 231E, 234D")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_1_patterns = Arrays.asList(
+            ECOREGIONS_1_pattern0
+        );
+        PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_patterns);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Pinus taeda"));
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus arkansana"));
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus falcata"));
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus incana"));
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus margarettiae"));
-        STRONG_DIAGNOSTIC_SPECIES_1_values.add(new Pair("species", "Quercus stellata"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES_1 = new PatternList("STRONG_DIAGNOSTIC_SPECIES_1", STRONG_DIAGNOSTIC_SPECIES_1_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern0 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus arkansana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus incana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus margarettiae")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_1_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_1_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern4,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern5,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern6,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern7
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES_1 = new PatternList("STRONG_DIAGNOSTIC_SPECIES_1", STRONG_DIAGNOSTIC_SPECIES_1_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_2_values = new ArrayList();
-        ECOREGIONS_2_values.add(new Pair("ecoregion", "231, 232, 234D"));
-        PatternList ECOREGIONS_2 = new PatternList("ECOREGIONS_2", ECOREGIONS_2_values);
+        List<Pair<String,String>> ECOREGIONS_2_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "231, 232, 234D")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_2_patterns = Arrays.asList(
+            ECOREGIONS_2_pattern0
+        );
+        PatternList ECOREGIONS_2 = new PatternList("ECOREGIONS_2", ECOREGIONS_2_patterns);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_2_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Pinus taeda"));
-        STRONG_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Quercus marilandica"));
-        STRONG_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Quercus coccinea"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES_2 = new PatternList("STRONG_DIAGNOSTIC_SPECIES_2", STRONG_DIAGNOSTIC_SPECIES_2_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_2_pattern0 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_2_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_2_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_2_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_2_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_2_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus coccinea")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_2_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_2_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_2_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_2_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_2_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_2_pattern4,
+            STRONG_DIAGNOSTIC_SPECIES_2_pattern5
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES_2 = new PatternList("STRONG_DIAGNOSTIC_SPECIES_2", STRONG_DIAGNOSTIC_SPECIES_2_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_2_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Oxydendrum arboreum"));
-        MODERATE_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Quercus alba"));
-        MODERATE_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Quercus falcata"));
-        MODERATE_DIAGNOSTIC_SPECIES_2_values.add(new Pair("species", "Quercus nigra"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES_2 = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_2", MODERATE_DIAGNOSTIC_SPECIES_2_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_2_pattern0 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_2_pattern1 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_2_pattern2 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_2_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_2_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_2_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_2_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_2_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_2_pattern3
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES_2 = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_2", MODERATE_DIAGNOSTIC_SPECIES_2_patterns);
 
         INodeMatch match = plot -> (
             (plot.match(ECOREGIONS_1) && plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20)
@@ -3972,54 +6269,185 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Oxydendrum arboreum, Quercus alba, Quercus falcata, Quercus muehlenbergii, Quercus rubra,
         //     Quercus virginiana, Quercus nigra, Juniperus spp., Pinus taeda (together >=50% RIV)
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus pavia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia diptera"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia acuminata"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia grandiflora"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia virginiana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Pinus glabra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus michauxii"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia spp."));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. heterophylla"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. caroliniana"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Aesculus pavia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Halesia diptera")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Magnolia acuminata")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Magnolia grandiflora")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Tilia spp.")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Tilia americana var. heterophylla")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Tilia americana var. caroliniana")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10,
+            STRONG_MESIC_DIAGNOSTICS_pattern11,
+            STRONG_MESIC_DIAGNOSTICS_pattern12,
+            STRONG_MESIC_DIAGNOSTICS_pattern13,
+            STRONG_MESIC_DIAGNOSTICS_pattern14,
+            STRONG_MESIC_DIAGNOSTICS_pattern15,
+            STRONG_MESIC_DIAGNOSTICS_pattern16,
+            STRONG_MESIC_DIAGNOSTICS_pattern17
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_values = new ArrayList();
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus pavia"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya alba"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Celtis spp."));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Cornus florida"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Diospyros virginiana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia spp."));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia carolina"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liriodendron tulipifera"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia macrophylla"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Oxydendrum arboreum"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus muehlenbergii"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus virginiana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Juniperus spp."));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Pinus taeda"));
-        PatternList MODERATE_MESIC_DIAGNOSTICS = new PatternList("MODERATE_MESIC_DIAGNOSTICS", MODERATE_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Aesculus pavia")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Celtis spp.")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Cornus florida")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Halesia spp.")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Halesia carolina")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Magnolia macrophylla")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus muehlenbergii")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Juniperus spp.")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<List<Pair<String,String>>> MODERATE_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            MODERATE_MESIC_DIAGNOSTICS_pattern0,
+            MODERATE_MESIC_DIAGNOSTICS_pattern1,
+            MODERATE_MESIC_DIAGNOSTICS_pattern2,
+            MODERATE_MESIC_DIAGNOSTICS_pattern3,
+            MODERATE_MESIC_DIAGNOSTICS_pattern4,
+            MODERATE_MESIC_DIAGNOSTICS_pattern5,
+            MODERATE_MESIC_DIAGNOSTICS_pattern6,
+            MODERATE_MESIC_DIAGNOSTICS_pattern7,
+            MODERATE_MESIC_DIAGNOSTICS_pattern8,
+            MODERATE_MESIC_DIAGNOSTICS_pattern9,
+            MODERATE_MESIC_DIAGNOSTICS_pattern10,
+            MODERATE_MESIC_DIAGNOSTICS_pattern11,
+            MODERATE_MESIC_DIAGNOSTICS_pattern12,
+            MODERATE_MESIC_DIAGNOSTICS_pattern13,
+            MODERATE_MESIC_DIAGNOSTICS_pattern14,
+            MODERATE_MESIC_DIAGNOSTICS_pattern15,
+            MODERATE_MESIC_DIAGNOSTICS_pattern16,
+            MODERATE_MESIC_DIAGNOSTICS_pattern17,
+            MODERATE_MESIC_DIAGNOSTICS_pattern18,
+            MODERATE_MESIC_DIAGNOSTICS_pattern19,
+            MODERATE_MESIC_DIAGNOSTICS_pattern20,
+            MODERATE_MESIC_DIAGNOSTICS_pattern21,
+            MODERATE_MESIC_DIAGNOSTICS_pattern22,
+            MODERATE_MESIC_DIAGNOSTICS_pattern23,
+            MODERATE_MESIC_DIAGNOSTICS_pattern24
+        );
+        PatternList MODERATE_MESIC_DIAGNOSTICS = new PatternList("MODERATE_MESIC_DIAGNOSTICS", MODERATE_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
@@ -4049,42 +6477,121 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      Persea borbonia, Quercus falcata, Quercus incana, Quercus laevis, Quercus laurifolia, Quercus margarettiae,
         //      Quercus marilandica, Quercus nigra, Quercus virginiana or Sabal palmetto (together >=50% RIV).
 
-        List<Pair<String,String>> DIAGNOSTIC_SPECIES_I_values = new ArrayList();
-        DIAGNOSTIC_SPECIES_I_values.add(new Pair("species", "Pinus palustris"));
-        PatternList DIAGNOSTIC_SPECIES_I = new PatternList("DIAGNOSTIC_SPECIES_I", DIAGNOSTIC_SPECIES_I_values);
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_I_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> DIAGNOSTIC_SPECIES_I_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_I_pattern0
+        );
+        PatternList DIAGNOSTIC_SPECIES_I = new PatternList("DIAGNOSTIC_SPECIES_I", DIAGNOSTIC_SPECIES_I_patterns);
 
-        List<Pair<String,String>> DIAGNOSTIC_SPECIES_II_values = new ArrayList();
-        DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus clausa"));
-        DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus echinata"));
-        DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus elliottii"));
-        DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus palustris"));
-        DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus taeda"));
-        PatternList DIAGNOSTIC_SPECIES_II = new PatternList("DIAGNOSTIC_SPECIES_II", DIAGNOSTIC_SPECIES_II_values);
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_II_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_II_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_II_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_II_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_II_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<List<Pair<String,String>>> DIAGNOSTIC_SPECIES_II_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_II_pattern0,
+            DIAGNOSTIC_SPECIES_II_pattern1,
+            DIAGNOSTIC_SPECIES_II_pattern2,
+            DIAGNOSTIC_SPECIES_II_pattern3,
+            DIAGNOSTIC_SPECIES_II_pattern4
+        );
+        PatternList DIAGNOSTIC_SPECIES_II = new PatternList("DIAGNOSTIC_SPECIES_II", DIAGNOSTIC_SPECIES_II_patterns);
 
-        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_values = new ArrayList();
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus clausa"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus palustris"));
-        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> STRONG_LONGLEAF_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern0,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern1,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern2
+        );
+        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_values = new ArrayList();
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Carya illinoinensis"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Diospyros virginiana"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus taeda"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Persea borbonia"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus incana"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus laevis"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus margarettiae"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus marilandica"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Quercus virginiana"));
-        MODERATE_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList MODERATE_LONGLEAF_DIAGNOSTICS = new PatternList("MODERATE_LONGLEAF_DIAGNOSTICS", MODERATE_LONGLEAF_DIAGNOSTICS_values);
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya illinoinensis")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Quercus incana")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus laevis")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus margarettiae")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_LONGLEAF_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> MODERATE_LONGLEAF_DIAGNOSTICS_patterns = Arrays.asList(
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern0,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern1,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern2,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern3,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern4,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern5,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern6,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern7,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern8,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern9,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern10,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern11,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern12,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern13,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern14,
+            MODERATE_LONGLEAF_DIAGNOSTICS_pattern15
+        );
+        PatternList MODERATE_LONGLEAF_DIAGNOSTICS = new PatternList("MODERATE_LONGLEAF_DIAGNOSTICS", MODERATE_LONGLEAF_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(DIAGNOSTIC_SPECIES_I) >= 20
@@ -4118,51 +6625,165 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Quercus falcata, , Quercus nigra, Quercus pagoda, Quercus stellata, Pinus echinata, Pinus taeda,
         //     Ulmus alata (together >=50% RIV).
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values = new ArrayList();
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana var. silicicola"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Pinus glabra"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus incana"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus laevis"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus margarettiae"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus minima"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus virginiana"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS = new PatternList("STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS", STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana var. silicicola")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Quercus incana")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus laevis")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus margarettiae")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus minima")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern0,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern1,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern2,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern3,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern4,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern5,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern6,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern7,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern8
+        );
+        PatternList STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS = new PatternList("STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS", STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values = new ArrayList();
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Carya alba"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Carya glabra"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Celtis laevigata"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Celtis spp."));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Ilex opaca"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Juniperus spp."));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Magnolia grandiflora"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Oxydendrum arboreum"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "other palms"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Persea borbonia"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Prunus serotina"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Pinus taeda"));
-        MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Ulmus alata"));
-        PatternList MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS = new PatternList("MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS", MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values);
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Celtis laevigata")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Celtis spp.")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juniperus spp.")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Magnolia grandiflora")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "other palms")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Persea borbonia")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern25 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern26 = Arrays.asList(
+            new Pair("species", "Ulmus alata")
+        );
+        List<List<Pair<String,String>>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns = Arrays.asList(
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern0,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern1,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern2,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern3,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern4,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern5,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern6,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern7,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern8,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern9,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern10,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern11,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern12,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern13,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern14,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern15,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern16,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern17,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern18,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern19,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern20,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern21,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern22,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern23,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern24,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern25,
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern26
+        );
+        PatternList MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS = new PatternList("MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS", MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS) &&
@@ -4185,48 +6806,145 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Plot is in 232B-E, 232G, 255Da-Dc or 411A, AND
         // % RIV of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS > either STRONG LONGLEAF DIAGNOSTICS or STRONG MESIC DIAGNOSTICS
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values = new ArrayList();
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana var. silicicola"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Pinus glabra"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus incana"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus laevis"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus margarettiae"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus minima"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Quercus virginiana"));
-        STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        PatternList STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS = new PatternList("STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS", STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana var. silicicola")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Quercus incana")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus laevis")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus margarettiae")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus minima")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus virginiana")
+        );
+        List<Pair<String,String>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<List<Pair<String,String>>> STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern0,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern1,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern2,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern3,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern4,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern5,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern6,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern7,
+            STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern8
+        );
+        PatternList STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS = new PatternList("STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS", STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_values = new ArrayList();
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus clausa"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus palustris"));
-        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> STRONG_LONGLEAF_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern0,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern1,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern2
+        );
+        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus pavia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia diptera"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia acuminata"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia grandiflora"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia virginiana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Pinus glabra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus michauxii"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia spp."));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. heterophylla"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. caroliniana"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Aesculus pavia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Halesia diptera")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Magnolia acuminata")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Magnolia grandiflora")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Tilia spp.")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Tilia americana var. heterophylla")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Tilia americana var. caroliniana")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10,
+            STRONG_MESIC_DIAGNOSTICS_pattern11,
+            STRONG_MESIC_DIAGNOSTICS_pattern12,
+            STRONG_MESIC_DIAGNOSTICS_pattern13,
+            STRONG_MESIC_DIAGNOSTICS_pattern14,
+            STRONG_MESIC_DIAGNOSTICS_pattern15,
+            STRONG_MESIC_DIAGNOSTICS_pattern16,
+            STRONG_MESIC_DIAGNOSTICS_pattern17
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS) &&
@@ -4247,32 +6965,97 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // STRONG LONGLEAF DIAGNOSTICS %RIV > STRONG MESIC DIAGNOSTICS %RIV
 
-        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_values = new ArrayList();
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus clausa"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus elliottii"));
-        STRONG_LONGLEAF_DIAGNOSTICS_values.add(new Pair("species", "Pinus palustris"));
-        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Pinus clausa")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus elliottii")
+        );
+        List<Pair<String,String>> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus palustris")
+        );
+        List<List<Pair<String,String>>> STRONG_LONGLEAF_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern0,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern1,
+            STRONG_LONGLEAF_DIAGNOSTICS_pattern2
+        );
+        PatternList STRONG_LONGLEAF_DIAGNOSTICS = new PatternList("STRONG_LONGLEAF_DIAGNOSTICS", STRONG_LONGLEAF_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus pavia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia diptera"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia acuminata"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia grandiflora"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia virginiana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Pinus glabra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus michauxii"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Sabal palmetto"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia spp."));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. heterophylla"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. caroliniana"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Aesculus pavia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Halesia diptera")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Magnolia acuminata")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Magnolia grandiflora")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Magnolia virginiana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus glabra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus michauxii")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Sabal palmetto")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Tilia spp.")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Tilia americana var. heterophylla")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Tilia americana var. caroliniana")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10,
+            STRONG_MESIC_DIAGNOSTICS_pattern11,
+            STRONG_MESIC_DIAGNOSTICS_pattern12,
+            STRONG_MESIC_DIAGNOSTICS_pattern13,
+            STRONG_MESIC_DIAGNOSTICS_pattern14,
+            STRONG_MESIC_DIAGNOSTICS_pattern15,
+            STRONG_MESIC_DIAGNOSTICS_pattern16,
+            STRONG_MESIC_DIAGNOSTICS_pattern17
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_LONGLEAF_DIAGNOSTICS) > plot.riv(STRONG_MESIC_DIAGNOSTICS)
@@ -4367,10 +7150,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
-        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_values = new ArrayList();
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("ruderal", "yes"));
-        RUDERAL_OR_EXOTIC_SPECIES_values.add(new Pair("exotic", "yes"));
-        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_values);
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("ruderal", "yes")
+        );
+        List<Pair<String,String>> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("exotic", "yes")
+        );
+        List<List<Pair<String,String>>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_OR_EXOTIC_SPECIES_pattern0,
+            RUDERAL_OR_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
@@ -4397,38 +7187,105 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Celtis occidentalis, Crataegus spp., Juglans nigra, Juniperus scopulorum, Morus rubra, Pinus ponderosa,
         //     Prunus virginiana, Quercus rubra, Quercus muehlenbergii, Ulmus rubra (together >=50% RIV)
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "331, 332, 251A, 222Na"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "331, 332, 251A, 222Na")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_PLAINS_DIAGNOSTICS_values = new ArrayList();
-        STRONG_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        STRONG_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Populus tremuloides"));
-        STRONG_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        STRONG_PLAINS_DIAGNOSTICS_values.add(new Pair("species", "Ulmus rubra"));
-        PatternList STRONG_PLAINS_DIAGNOSTICS = new PatternList("STRONG_PLAINS_DIAGNOSTICS", STRONG_PLAINS_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_PLAINS_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_PLAINS_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> STRONG_PLAINS_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> STRONG_PLAINS_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_PLAINS_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<Pair<String,String>> STRONG_PLAINS_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<List<Pair<String,String>>> STRONG_PLAINS_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_PLAINS_DIAGNOSTICS_pattern0,
+            STRONG_PLAINS_DIAGNOSTICS_pattern1,
+            STRONG_PLAINS_DIAGNOSTICS_pattern2,
+            STRONG_PLAINS_DIAGNOSTICS_pattern3,
+            STRONG_PLAINS_DIAGNOSTICS_pattern4,
+            STRONG_PLAINS_DIAGNOSTICS_pattern5
+        );
+        PatternList STRONG_PLAINS_DIAGNOSTICS = new PatternList("STRONG_PLAINS_DIAGNOSTICS", STRONG_PLAINS_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> EXCLUDED_SPECIES_values = new ArrayList();
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Tilia americana"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Acer saccharum"));
-        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_values);
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_SPECIES_patterns = Arrays.asList(
+            EXCLUDED_SPECIES_pattern0,
+            EXCLUDED_SPECIES_pattern1
+        );
+        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Acer negundo"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Betula papyrifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Celtis occidentalis"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Crataegus spp."));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Juglans nigra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Juniperus scopulorum"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Morus rubra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Pinus ponderosa"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Prunus virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus rubra"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus muehlenbergii"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ulmus rubra"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Crataegus spp.")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Juniperus scopulorum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Morus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Pinus ponderosa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Prunus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus muehlenbergii")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern11
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.match(ECOREGIONS)
@@ -4469,85 +7326,277 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      Ostrya virginiana, Pinus strobus, Populus grandidentata, Populus tremuloides, Prunus serotina,
         //      Quercus ellipsoidalis, Quercus macrocarpa, Quercus rubra, Tilia americana, or Ulmus americana (>= 50% RIV)
 
-        List<Pair<String,String>> DIAGNOSTIC_SPECIES_I_values = new ArrayList();
-        DIAGNOSTIC_SPECIES_I_values.add(new Pair("species", "Abies balsamea"));
-        DIAGNOSTIC_SPECIES_I_values.add(new Pair("species", "Abies fraseri"));
-        DIAGNOSTIC_SPECIES_I_values.add(new Pair("species", "Picea rubens"));
-        PatternList DIAGNOSTIC_SPECIES_I = new PatternList("DIAGNOSTIC_SPECIES_I", DIAGNOSTIC_SPECIES_I_values);
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_I_pattern0 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_I_pattern1 = Arrays.asList(
+            new Pair("species", "Abies fraseri")
+        );
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_I_pattern2 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<List<Pair<String,String>>> DIAGNOSTIC_SPECIES_I_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_I_pattern0,
+            DIAGNOSTIC_SPECIES_I_pattern1,
+            DIAGNOSTIC_SPECIES_I_pattern2
+        );
+        PatternList DIAGNOSTIC_SPECIES_I = new PatternList("DIAGNOSTIC_SPECIES_I", DIAGNOSTIC_SPECIES_I_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_II_values = new ArrayList();
-        ECOREGIONS_II_values.add(new Pair("ecoregion", "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc, 222J, 222K, 222L, 222M, 222R, 222U"));
-        PatternList ECOREGIONS_II = new PatternList("ECOREGIONS_II", ECOREGIONS_II_values);
+        List<Pair<String,String>> ECOREGIONS_II_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc, 222J, 222K, 222L, 222M, 222R, 222U")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_II_patterns = Arrays.asList(
+            ECOREGIONS_II_pattern0
+        );
+        PatternList ECOREGIONS_II = new PatternList("ECOREGIONS_II", ECOREGIONS_II_patterns);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Acer pensylvanicum"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Acer spicatum"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Amelanchier spp."));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Betula alleghaniensis"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Betula papyrifera"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Betula populifolia"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Picea glauca"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Picea mariana"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus banksiana"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus resinosa"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Populus balsamifera"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Prunus pensylvanica"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Sorbus americana"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Thuja occidentalis"));
-        STRONG_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Tsuga canadensis"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES_II = new PatternList("STRONG_DIAGNOSTIC_SPECIES_II", STRONG_DIAGNOSTIC_SPECIES_II_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern0 = Arrays.asList(
+            new Pair("species", "Acer pensylvanicum")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern1 = Arrays.asList(
+            new Pair("species", "Acer spicatum")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern2 = Arrays.asList(
+            new Pair("species", "Amelanchier spp.")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern3 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern4 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern5 = Arrays.asList(
+            new Pair("species", "Betula populifolia")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern6 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern7 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern8 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern10 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern11 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern12 = Arrays.asList(
+            new Pair("species", "Prunus pensylvanica")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern13 = Arrays.asList(
+            new Pair("species", "Sorbus americana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern14 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_II_pattern15 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_II_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern4,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern5,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern6,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern7,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern8,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern9,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern10,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern11,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern12,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern13,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern14,
+            STRONG_DIAGNOSTIC_SPECIES_II_pattern15
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES_II = new PatternList("STRONG_DIAGNOSTIC_SPECIES_II", STRONG_DIAGNOSTIC_SPECIES_II_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Acer rubrum"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Acer saccharum"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Abies balsamea"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Abies fraseri"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Betula lenta"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Fagus grandifolia"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Fraxinus americana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Larix laricina"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Picea rubens"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Pinus strobus"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Populus grandidentata"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Populus tremuloides"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Prunus serotina"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Prunus virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Quercus macrocarpa"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Quercus rubra"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Tilia americana"));
-        MODERATE_DIAGNOSTIC_SPECIES_II_values.add(new Pair("species", "Ulmus americana"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES_II = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_II", MODERATE_DIAGNOSTIC_SPECIES_II_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern2 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern3 = Arrays.asList(
+            new Pair("species", "Abies fraseri")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern4 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern5 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern6 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern8 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern9 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern10 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern11 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern12 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern13 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern14 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern15 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern16 = Arrays.asList(
+            new Pair("species", "Prunus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern20 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_II_pattern21 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_II_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern10,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern11,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern12,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern13,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern14,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern15,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern16,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern17,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern18,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern19,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern20,
+            MODERATE_DIAGNOSTIC_SPECIES_II_pattern21
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES_II = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_II", MODERATE_DIAGNOSTIC_SPECIES_II_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_III_values = new ArrayList();
-        ECOREGIONS_III_values.add(new Pair("ecoregion", "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc"));
-        PatternList ECOREGIONS_III = new PatternList("ECOREGIONS_III", ECOREGIONS_III_values);
+        List<Pair<String,String>> ECOREGIONS_III_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "212, M211, 211A, 211B, 211C, 211D, 211E, 211Ja, 211Jb, 211Jc")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_III_patterns = Arrays.asList(
+            ECOREGIONS_III_pattern0
+        );
+        PatternList ECOREGIONS_III = new PatternList("ECOREGIONS_III", ECOREGIONS_III_patterns);
 
-        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_values = new ArrayList();
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Acer rubrum"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Acer saccharum"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Betula alleghaniensis"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Betula lenta"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Carpinus caroliniana"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Fraxinus americana"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Larix laricina"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Ostrya virginiana"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Populus grandidentata"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Populus tremuloides"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Prunus serotina"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Quercus rubra"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Tilia americana"));
-        STRONG_DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Ulmus americana"));
-        PatternList STRONG_DIAGNOSTIC_SPECIES_III = new PatternList("STRONG_DIAGNOSTIC_SPECIES_III", STRONG_DIAGNOSTIC_SPECIES_III_values);
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern0 = Arrays.asList(
+            new Pair("species", "Acer rubrum")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern2 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern3 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern4 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern5 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern6 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern8 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern9 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern10 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern11 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern12 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern13 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern17 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_DIAGNOSTIC_SPECIES_III_pattern18 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> STRONG_DIAGNOSTIC_SPECIES_III_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern1,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern2,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern4,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern5,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern6,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern7,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern8,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern9,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern10,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern11,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern12,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern13,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern14,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern15,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern16,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern17,
+            STRONG_DIAGNOSTIC_SPECIES_III_pattern18
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES_III = new PatternList("STRONG_DIAGNOSTIC_SPECIES_III", STRONG_DIAGNOSTIC_SPECIES_III_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(DIAGNOSTIC_SPECIES_I) >= 20
@@ -4577,29 +7626,85 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, 
         //     Prunus pensylvanica, Prunus serotina, Quercus rubra (together >=50% RIV)
 
-        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_values = new ArrayList();
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Picea mariana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus banksiana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus resinosa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<List<Pair<String,String>>> STRONG_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_DRY_DIAGNOSTICS_pattern0,
+            STRONG_DRY_DIAGNOSTICS_pattern1,
+            STRONG_DRY_DIAGNOSTICS_pattern2,
+            STRONG_DRY_DIAGNOSTICS_pattern3,
+            STRONG_DRY_DIAGNOSTICS_pattern4,
+            STRONG_DRY_DIAGNOSTICS_pattern5,
+            STRONG_DRY_DIAGNOSTICS_pattern6,
+            STRONG_DRY_DIAGNOSTICS_pattern7
+        );
+        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_values = new ArrayList();
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Amelanchier spp."));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Betula populifolia"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Betula papyrifera"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Populus grandidentata"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Populus tremuloides"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Prunus pensylvanica"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Prunus serotina"));
-        MODERATE_DIAGNOSTIC_SPECIES_values.add(new Pair("species", "Quercus rubra"));
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_values);
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Amelanchier spp.")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Betula populifolia")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Prunus pensylvanica")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<List<Pair<String,String>>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern6,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern7,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(STRONG_DRY_DIAGNOSTICS) >= 50
@@ -4625,31 +7730,101 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Picea mariana, Picea rubens, Populus balsamifera, Populus grandidentata, Quercus macrocarpa,
         // Quercus rubra, Thuja occidentalis, Tilia americana, Tsuga canadensis, Ulmus americana (>=20% RIV);
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Abies balsamea"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Abies fraseri"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer pensylvanicum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer spicatum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula alleghaniensis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula lenta"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Larix laricina"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Picea glauca"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Picea mariana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Picea rubens"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus balsamifera"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus grandidentata"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Thuja occidentalis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Abies fraseri")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Acer pensylvanicum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Acer spicatum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10,
+            STRONG_MESIC_DIAGNOSTICS_pattern11,
+            STRONG_MESIC_DIAGNOSTICS_pattern12,
+            STRONG_MESIC_DIAGNOSTICS_pattern13,
+            STRONG_MESIC_DIAGNOSTICS_pattern14,
+            STRONG_MESIC_DIAGNOSTICS_pattern15,
+            STRONG_MESIC_DIAGNOSTICS_pattern16,
+            STRONG_MESIC_DIAGNOSTICS_pattern17,
+            STRONG_MESIC_DIAGNOSTICS_pattern18,
+            STRONG_MESIC_DIAGNOSTICS_pattern19,
+            STRONG_MESIC_DIAGNOSTICS_pattern20,
+            STRONG_MESIC_DIAGNOSTICS_pattern21,
+            STRONG_MESIC_DIAGNOSTICS_pattern22
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 20
@@ -4669,42 +7844,137 @@ public class ClassificationKeyEast extends ClassificationKey {
         // % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS [if stands lacks both strong
         // dry and strong mesic diagnostics, plot will be assigned to the mesic]
 
-        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_values = new ArrayList();
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Picea mariana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus banksiana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus resinosa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<List<Pair<String,String>>> STRONG_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_DRY_DIAGNOSTICS_pattern0,
+            STRONG_DRY_DIAGNOSTICS_pattern1,
+            STRONG_DRY_DIAGNOSTICS_pattern2,
+            STRONG_DRY_DIAGNOSTICS_pattern3,
+            STRONG_DRY_DIAGNOSTICS_pattern4,
+            STRONG_DRY_DIAGNOSTICS_pattern5,
+            STRONG_DRY_DIAGNOSTICS_pattern6,
+            STRONG_DRY_DIAGNOSTICS_pattern7
+        );
+        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Abies balsamea"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Abies fraseri"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer pensylvanicum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer spicatum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula alleghaniensis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula lenta"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Larix laricina"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Picea glauca"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Picea mariana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Picea rubens"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus balsamifera"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus grandidentata"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Thuja occidentalis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Abies balsamea")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Abies fraseri")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Acer pensylvanicum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Acer spicatum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Larix laricina")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Picea glauca")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Picea mariana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Picea rubens")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Thuja occidentalis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10,
+            STRONG_MESIC_DIAGNOSTICS_pattern11,
+            STRONG_MESIC_DIAGNOSTICS_pattern12,
+            STRONG_MESIC_DIAGNOSTICS_pattern13,
+            STRONG_MESIC_DIAGNOSTICS_pattern14,
+            STRONG_MESIC_DIAGNOSTICS_pattern15,
+            STRONG_MESIC_DIAGNOSTICS_pattern16,
+            STRONG_MESIC_DIAGNOSTICS_pattern17,
+            STRONG_MESIC_DIAGNOSTICS_pattern18,
+            STRONG_MESIC_DIAGNOSTICS_pattern19,
+            STRONG_MESIC_DIAGNOSTICS_pattern20,
+            STRONG_MESIC_DIAGNOSTICS_pattern21,
+            STRONG_MESIC_DIAGNOSTICS_pattern22
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_DRY_DIAGNOSTICS) > plot.riv(STRONG_MESIC_DIAGNOSTICS)
@@ -4767,45 +8037,141 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Fraxinus quadrangulata, Morus rubra, Ostrya virginiana, Populus gradidentata, Prunus serotina,
         //     Quercus falcata (= var. falcata), Sassafras albidum (together >=50% RIV)
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "222, 223G, 251 ! 222I"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "222, 223G, 251 ! 222I")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_values = new ArrayList();
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya ovata"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus banksiana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus resinosa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Populus tremuloides"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus imbricaria"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus muehlenbergii"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Carya ovata")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus muehlenbergii")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<List<Pair<String,String>>> STRONG_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_DRY_DIAGNOSTICS_pattern0,
+            STRONG_DRY_DIAGNOSTICS_pattern1,
+            STRONG_DRY_DIAGNOSTICS_pattern2,
+            STRONG_DRY_DIAGNOSTICS_pattern3,
+            STRONG_DRY_DIAGNOSTICS_pattern4,
+            STRONG_DRY_DIAGNOSTICS_pattern5,
+            STRONG_DRY_DIAGNOSTICS_pattern6,
+            STRONG_DRY_DIAGNOSTICS_pattern7,
+            STRONG_DRY_DIAGNOSTICS_pattern8,
+            STRONG_DRY_DIAGNOSTICS_pattern9,
+            STRONG_DRY_DIAGNOSTICS_pattern10,
+            STRONG_DRY_DIAGNOSTICS_pattern11,
+            STRONG_DRY_DIAGNOSTICS_pattern12,
+            STRONG_DRY_DIAGNOSTICS_pattern13
+        );
+        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_values = new ArrayList();
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Betula papyrifera"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya alba"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya glabra"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya laciniosa"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Amelanchier spp."));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Cercis canadensis"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Cornus florida"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Diospyros virginiana"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus quadrangulata"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Morus rubra"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Populus grandidentata"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Prunus serotina"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        MODERATE_DRY_DIAGNOSTICS_values.add(new Pair("species", "Sassafras albidum"));
-        PatternList MODERATE_DRY_DIAGNOSTICS = new PatternList("MODERATE_DRY_DIAGNOSTICS", MODERATE_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya laciniosa")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Amelanchier spp.")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Cercis canadensis")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Cornus florida")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Fraxinus quadrangulata")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Morus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> MODERATE_DRY_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Sassafras albidum")
+        );
+        List<List<Pair<String,String>>> MODERATE_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            MODERATE_DRY_DIAGNOSTICS_pattern0,
+            MODERATE_DRY_DIAGNOSTICS_pattern1,
+            MODERATE_DRY_DIAGNOSTICS_pattern2,
+            MODERATE_DRY_DIAGNOSTICS_pattern3,
+            MODERATE_DRY_DIAGNOSTICS_pattern4,
+            MODERATE_DRY_DIAGNOSTICS_pattern5,
+            MODERATE_DRY_DIAGNOSTICS_pattern6,
+            MODERATE_DRY_DIAGNOSTICS_pattern7,
+            MODERATE_DRY_DIAGNOSTICS_pattern8,
+            MODERATE_DRY_DIAGNOSTICS_pattern9,
+            MODERATE_DRY_DIAGNOSTICS_pattern10,
+            MODERATE_DRY_DIAGNOSTICS_pattern11,
+            MODERATE_DRY_DIAGNOSTICS_pattern12,
+            MODERATE_DRY_DIAGNOSTICS_pattern13,
+            MODERATE_DRY_DIAGNOSTICS_pattern14,
+            MODERATE_DRY_DIAGNOSTICS_pattern15
+        );
+        PatternList MODERATE_DRY_DIAGNOSTICS = new PatternList("MODERATE_DRY_DIAGNOSTICS", MODERATE_DRY_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
                 plot.match(ECOREGIONS)
@@ -4843,77 +8209,253 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      Quercus spp or Carya spp. (Quercus alba, Quercus coccinea, Quercus ellipsoidalis, Quercus macrocarpa,
         //      Quercus prinus, Quercus velutina, Carya glabra, Carya ovata, Carya alba)
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "222, 223A, 223G, 251, 332 ! 222I"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "222, 223A, 223G, 251, 332 ! 222I")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer nigrum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus glabra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Asimina triloba"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya cordiformis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Celtis occidentalis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Gymnocladus dioicus"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Juglans cinerea"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liriodendron tulipifera"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus bicolor"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus palustris"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus rubra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer nigrum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Aesculus glabra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Asimina triloba")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Gymnocladus dioicus")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Juglans cinerea")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus bicolor")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus palustris")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10,
+            STRONG_MESIC_DIAGNOSTICS_pattern11,
+            STRONG_MESIC_DIAGNOSTICS_pattern12,
+            STRONG_MESIC_DIAGNOSTICS_pattern13,
+            STRONG_MESIC_DIAGNOSTICS_pattern14,
+            STRONG_MESIC_DIAGNOSTICS_pattern15,
+            STRONG_MESIC_DIAGNOSTICS_pattern16,
+            STRONG_MESIC_DIAGNOSTICS_pattern17,
+            STRONG_MESIC_DIAGNOSTICS_pattern18,
+            STRONG_MESIC_DIAGNOSTICS_pattern19,
+            STRONG_MESIC_DIAGNOSTICS_pattern20
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_values = new ArrayList();
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer negundo"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Amelanchier spp."));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula populifolia"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula papyrifera"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya ovalis"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Cornus florida"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Gleditsia triacanthos"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Juglans nigra"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus balsamifera"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus deltoides"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus grandidentata"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus tremuloides"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Prunus pensylvanica"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Prunus virginiana"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus imbricaria"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus muehlenbergii"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Sassafras albidum"));
-        MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus thomasii"));
-        PatternList MODERATE_MESIC_DIAGNOSTICS = new PatternList("MODERATE_MESIC_DIAGNOSTICS", MODERATE_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer negundo")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Amelanchier spp.")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Betula populifolia")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Carya ovalis")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Cornus florida")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Gleditsia triacanthos")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Populus balsamifera")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Populus deltoides")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Prunus pensylvanica")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Prunus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus muehlenbergii")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Sassafras albidum")
+        );
+        List<Pair<String,String>> MODERATE_MESIC_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Ulmus thomasii")
+        );
+        List<List<Pair<String,String>>> MODERATE_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            MODERATE_MESIC_DIAGNOSTICS_pattern0,
+            MODERATE_MESIC_DIAGNOSTICS_pattern1,
+            MODERATE_MESIC_DIAGNOSTICS_pattern2,
+            MODERATE_MESIC_DIAGNOSTICS_pattern3,
+            MODERATE_MESIC_DIAGNOSTICS_pattern4,
+            MODERATE_MESIC_DIAGNOSTICS_pattern5,
+            MODERATE_MESIC_DIAGNOSTICS_pattern6,
+            MODERATE_MESIC_DIAGNOSTICS_pattern7,
+            MODERATE_MESIC_DIAGNOSTICS_pattern8,
+            MODERATE_MESIC_DIAGNOSTICS_pattern9,
+            MODERATE_MESIC_DIAGNOSTICS_pattern10,
+            MODERATE_MESIC_DIAGNOSTICS_pattern11,
+            MODERATE_MESIC_DIAGNOSTICS_pattern12,
+            MODERATE_MESIC_DIAGNOSTICS_pattern13,
+            MODERATE_MESIC_DIAGNOSTICS_pattern14,
+            MODERATE_MESIC_DIAGNOSTICS_pattern15,
+            MODERATE_MESIC_DIAGNOSTICS_pattern16,
+            MODERATE_MESIC_DIAGNOSTICS_pattern17,
+            MODERATE_MESIC_DIAGNOSTICS_pattern18,
+            MODERATE_MESIC_DIAGNOSTICS_pattern19,
+            MODERATE_MESIC_DIAGNOSTICS_pattern20,
+            MODERATE_MESIC_DIAGNOSTICS_pattern21,
+            MODERATE_MESIC_DIAGNOSTICS_pattern22,
+            MODERATE_MESIC_DIAGNOSTICS_pattern23,
+            MODERATE_MESIC_DIAGNOSTICS_pattern24
+        );
+        PatternList MODERATE_MESIC_DIAGNOSTICS = new PatternList("MODERATE_MESIC_DIAGNOSTICS", MODERATE_MESIC_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> DIAGNOSTIC_SPECIES_III_values = new ArrayList();
-        DIAGNOSTIC_SPECIES_III_values.add(new Pair("species", "Quercus rubra"));
-        PatternList DIAGNOSTIC_SPECIES_III = new PatternList("DIAGNOSTIC_SPECIES_III", DIAGNOSTIC_SPECIES_III_values);
+        List<Pair<String,String>> DIAGNOSTIC_SPECIES_III_pattern0 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<List<Pair<String,String>>> DIAGNOSTIC_SPECIES_III_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_III_pattern0
+        );
+        PatternList DIAGNOSTIC_SPECIES_III = new PatternList("DIAGNOSTIC_SPECIES_III", DIAGNOSTIC_SPECIES_III_patterns);
 
-        List<Pair<String,String>> EXCLUDED_SPECIES_III_values = new ArrayList();
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Quercus alba"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Quercus coccinea"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Quercus macrocarpa"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Quercus prinus"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Quercus velutina"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Carya alba"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Carya glabra"));
-        EXCLUDED_SPECIES_III_values.add(new Pair("species", "Carya ovata"));
-        PatternList EXCLUDED_SPECIES_III = new PatternList("EXCLUDED_SPECIES_III", EXCLUDED_SPECIES_III_values);
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern0 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern1 = Arrays.asList(
+            new Pair("species", "Quercus coccinea")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern2 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus prinus")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern5 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern6 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern7 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_III_pattern8 = Arrays.asList(
+            new Pair("species", "Carya ovata")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_SPECIES_III_patterns = Arrays.asList(
+            EXCLUDED_SPECIES_III_pattern0,
+            EXCLUDED_SPECIES_III_pattern1,
+            EXCLUDED_SPECIES_III_pattern2,
+            EXCLUDED_SPECIES_III_pattern3,
+            EXCLUDED_SPECIES_III_pattern4,
+            EXCLUDED_SPECIES_III_pattern5,
+            EXCLUDED_SPECIES_III_pattern6,
+            EXCLUDED_SPECIES_III_pattern7,
+            EXCLUDED_SPECIES_III_pattern8
+        );
+        PatternList EXCLUDED_SPECIES_III = new PatternList("EXCLUDED_SPECIES_III", EXCLUDED_SPECIES_III_patterns);
 
         INodeMatch match = plot -> (
                 plot.match(ECOREGIONS)
@@ -4936,50 +8478,161 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Plot occurs in Ecoregions 222 (except not 222I), 251,
         // AND % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "222, 251 ! 222I"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "222, 251 ! 222I")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
-        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_values = new ArrayList();
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya ovata"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus banksiana"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus resinosa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Populus tremuloides"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus imbricaria"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus macrocarpa"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus muehlenbergii"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Carya ovata")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Pinus resinosa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus macrocarpa")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus muehlenbergii")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_DRY_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<List<Pair<String,String>>> STRONG_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_DRY_DIAGNOSTICS_pattern0,
+            STRONG_DRY_DIAGNOSTICS_pattern1,
+            STRONG_DRY_DIAGNOSTICS_pattern2,
+            STRONG_DRY_DIAGNOSTICS_pattern3,
+            STRONG_DRY_DIAGNOSTICS_pattern4,
+            STRONG_DRY_DIAGNOSTICS_pattern5,
+            STRONG_DRY_DIAGNOSTICS_pattern6,
+            STRONG_DRY_DIAGNOSTICS_pattern7,
+            STRONG_DRY_DIAGNOSTICS_pattern8,
+            STRONG_DRY_DIAGNOSTICS_pattern9,
+            STRONG_DRY_DIAGNOSTICS_pattern10,
+            STRONG_DRY_DIAGNOSTICS_pattern11,
+            STRONG_DRY_DIAGNOSTICS_pattern12,
+            STRONG_DRY_DIAGNOSTICS_pattern13
+        );
+        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer nigrum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus glabra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Asimina triloba"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya cordiformis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Celtis occidentalis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus nigra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Gymnocladus dioicus"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Juglans cinerea"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liriodendron tulipifera"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus bicolor"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus palustris"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus rubra"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer nigrum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Aesculus glabra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Asimina triloba")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Fraxinus nigra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Gymnocladus dioicus")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Juglans cinerea")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus bicolor")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus palustris")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10,
+            STRONG_MESIC_DIAGNOSTICS_pattern11,
+            STRONG_MESIC_DIAGNOSTICS_pattern12,
+            STRONG_MESIC_DIAGNOSTICS_pattern13,
+            STRONG_MESIC_DIAGNOSTICS_pattern14,
+            STRONG_MESIC_DIAGNOSTICS_pattern15,
+            STRONG_MESIC_DIAGNOSTICS_pattern16,
+            STRONG_MESIC_DIAGNOSTICS_pattern17,
+            STRONG_MESIC_DIAGNOSTICS_pattern18,
+            STRONG_MESIC_DIAGNOSTICS_pattern19,
+            STRONG_MESIC_DIAGNOSTICS_pattern20
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS) && plot.riv(STRONG_DRY_DIAGNOSTICS) > plot.riv(STRONG_MESIC_DIAGNOSTICS)
@@ -4998,9 +8651,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // other
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "222, 251 ! 222I"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "222, 251 ! 222I")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGIONS)
@@ -5043,98 +8700,329 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      (Quercus alba, Quercus coccinea, Quercus prinus, Quercus stellata, Quercus velutina, Carya glabra, Carya alba, Carya pallida)
         //      <20% RIV
 
-        List<Pair<String,String>> ECOREGIONS_1_values = new ArrayList();
-        ECOREGIONS_1_values.add(new Pair("ecoregion", "211F, 211G, 211Jd, 221, M221, 223B, 223C, 223D, 223E, 223F, 223G, 231A, 231C, 231D, 231I, 232"));
-        PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_values);
+        List<Pair<String,String>> ECOREGIONS_1_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "211F, 211G, 211Jd, 221, M221, 223B, 223C, 223D, 223E, 223F, 223G, 231A, 231C, 231D, 231I, 232")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_1_patterns = Arrays.asList(
+            ECOREGIONS_1_pattern0
+        );
+        PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_patterns);
 
-        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer nigrum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer pensylvanicum"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus flava"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula alleghaniensis"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula lenta"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia carolina"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia spp."));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia acuminata"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia tripetala"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. heterophylla"));
-        STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer nigrum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer pensylvanicum")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Aesculus flava")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Halesia carolina")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Halesia spp.")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Magnolia acuminata")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Magnolia tripetala")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Tilia americana var. heterophylla")
+        );
+        List<Pair<String,String>> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<List<Pair<String,String>>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_MESIC_DIAGNOSTICS_pattern0,
+            STRONG_MESIC_DIAGNOSTICS_pattern1,
+            STRONG_MESIC_DIAGNOSTICS_pattern2,
+            STRONG_MESIC_DIAGNOSTICS_pattern3,
+            STRONG_MESIC_DIAGNOSTICS_pattern4,
+            STRONG_MESIC_DIAGNOSTICS_pattern5,
+            STRONG_MESIC_DIAGNOSTICS_pattern6,
+            STRONG_MESIC_DIAGNOSTICS_pattern7,
+            STRONG_MESIC_DIAGNOSTICS_pattern8,
+            STRONG_MESIC_DIAGNOSTICS_pattern9,
+            STRONG_MESIC_DIAGNOSTICS_pattern10
+        );
+        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer nigrum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer pensylvanicum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus flava"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus glabra"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Asimina triloba"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula alleghaniensis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula lenta"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya cordiformis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Celtis occidentalis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia carolina"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia spp."));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liriodendron tulipifera"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia acuminata"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia fraseri"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia macrophylla"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia tripetala"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. heterophylla"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        PatternList ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS", ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer nigrum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer pensylvanicum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Aesculus flava")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Aesculus glabra")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Asimina triloba")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Halesia carolina")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Halesia spp.")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Magnolia acuminata")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Magnolia fraseri")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Magnolia macrophylla")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Magnolia tripetala")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Tilia americana var. heterophylla")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern25 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern0,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern1,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern2,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern3,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern6,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern7,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern8,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern9,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern10,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern11,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern12,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern13,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern14,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern15,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern16,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern17,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern18,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern19,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern20,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern21,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern22,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern23,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern24,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern25
+        );
+        PatternList ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS", ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values = new ArrayList();
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Amelanchier spp."));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula populifolia"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula papyrifera"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carpinus caroliniana"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya ovalis"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Cornus florida"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Gleditsia triacanthos"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Juglans cinerea"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Juglans nigra"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ostrya virginiana"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Oxydendrum arboreum"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Platanus occidentalis"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus grandidentata"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Populus tremuloides"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Prunus pensylvanica"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Prunus serotina"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Prunus virginiana"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus bicolor"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus imbricaria"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus muehlenbergii"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus phellos"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus rubra"));
-        ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus thomasii"));
-        PatternList ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS", ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Amelanchier spp.")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Betula populifolia")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Betula papyrifera")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Carya ovalis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Cornus florida")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Gleditsia triacanthos")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Juglans cinerea")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Platanus occidentalis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Populus grandidentata")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Populus tremuloides")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Prunus pensylvanica")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Prunus virginiana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus bicolor")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus muehlenbergii")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Quercus phellos")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern25 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern26 = Arrays.asList(
+            new Pair("species", "Ulmus rubra")
+        );
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern27 = Arrays.asList(
+            new Pair("species", "Ulmus thomasii")
+        );
+        List<List<Pair<String,String>>> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern0,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern1,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern2,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern3,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern4,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern5,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern6,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern7,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern8,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern9,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern10,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern11,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern12,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern13,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern14,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern15,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern16,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern17,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern18,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern19,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern20,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern21,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern22,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern23,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern24,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern25,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern26,
+            ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern27
+        );
+        PatternList ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS", ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS_values = new ArrayList();
-        ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        PatternList ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS = new PatternList("ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS", ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS_values);
+        List<Pair<String,String>> ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<List<Pair<String,String>>> ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS_patterns = Arrays.asList(
+            ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS_pattern0
+        );
+        PatternList ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS = new PatternList("ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS", ECOREGIONAL_MODERATE_MESIC_OAK_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> EXCLUDED_SPECIES_values = new ArrayList();
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus alba"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus coccinea"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus prinus"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus stellata"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Quercus velutina"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Carya glabra"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Carya alba"));
-        EXCLUDED_SPECIES_values.add(new Pair("species", "Carya pallida"));
-        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_values);
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern0 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern1 = Arrays.asList(
+            new Pair("species", "Quercus coccinea")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern2 = Arrays.asList(
+            new Pair("species", "Quercus prinus")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern3 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern4 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern5 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern6 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> EXCLUDED_SPECIES_pattern7 = Arrays.asList(
+            new Pair("species", "Carya pallida")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_SPECIES_patterns = Arrays.asList(
+            EXCLUDED_SPECIES_pattern0,
+            EXCLUDED_SPECIES_pattern1,
+            EXCLUDED_SPECIES_pattern2,
+            EXCLUDED_SPECIES_pattern3,
+            EXCLUDED_SPECIES_pattern4,
+            EXCLUDED_SPECIES_pattern5,
+            EXCLUDED_SPECIES_pattern6,
+            EXCLUDED_SPECIES_pattern7
+        );
+        PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_patterns);
 
         INodeMatch match = plot -> (
                 plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
@@ -5171,57 +9059,181 @@ public class ClassificationKeyEast extends ClassificationKey {
         // iii. Plot occurs in in 221H, 223, M223, 231, M231, 234, 255 [composition to be added; this could pull in
         //      mesic and dry stands that have low diagnostic trees and lots of ruderals, but ruderals <80%].
 
-        List<Pair<String,String>> EXCLUDED_STATES_values = new ArrayList();
-        EXCLUDED_STATES_values.add(new Pair("state", "!CT, DE, OH, MA, NJ, NY, PA, WV"));
-        PatternList EXCLUDED_STATES = new PatternList("EXCLUDED_STATES", EXCLUDED_STATES_values);
+        List<Pair<String,String>> EXCLUDED_STATES_pattern0 = Arrays.asList(
+            new Pair("state", "!CT, DE, OH, MA, NJ, NY, PA, WV")
+        );
+        List<List<Pair<String,String>>> EXCLUDED_STATES_patterns = Arrays.asList(
+            EXCLUDED_STATES_pattern0
+        );
+        PatternList EXCLUDED_STATES = new PatternList("EXCLUDED_STATES", EXCLUDED_STATES_patterns);
 
-        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values = new ArrayList();
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya pallida"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya texana"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Diospyros virginiana"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus quadrangulata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Juniperus ashei"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Oxydendrum arboreum"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Pinus taeda"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus marilandica"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Ulmus alata"));
-        PatternList STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS", STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya pallida")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya texana")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Fraxinus quadrangulata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Juniperus ashei")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Ulmus alata")
+        );
+        List<List<Pair<String,String>>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14
+        );
+        PatternList STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS", STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values = new ArrayList();
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Betula lenta"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya glabra"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya alba"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya ovata"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Cercis canadensis"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Cornus florida"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Diospyros virginiana"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Juglans nigra"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Liriodendron tulipifera"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Prunus serotina"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus coccinea"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus incana"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus laurifolia"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus pagoda"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus prinus"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        PatternList MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS", MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values);
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Carya ovata")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Cercis canadensis")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Cornus florida")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Juglans nigra")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus coccinea")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus incana")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus laurifolia")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus pagoda")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus prinus")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<List<Pair<String,String>>> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns = Arrays.asList(
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern15,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern16,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern17,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern18,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern19,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern20,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern21,
+            MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern22
+        );
+        PatternList MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS", MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> ECOREGIONS_values = new ArrayList();
-        ECOREGIONS_values.add(new Pair("ecoregion", "221H, 223, M223, 231, M231, 234, 255"));
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_values);
+        List<Pair<String,String>> ECOREGIONS_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "221H, 223, M223, 231, M231, 234, 255")
+        );
+        List<List<Pair<String,String>>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         INodeMatch match = plot -> (
                 plot.match(EXCLUDED_STATES) && plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) >= 50
@@ -5253,50 +9265,161 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Ostrya virginiana, Oxydendrum arboreum, Pinus banksiana, Prunus serotina, Prunus virginiana,
         //     Quercus muehlenbergii, Quercus rubra, Sassafras albidum (>=50% RIV)
 
-        List<Pair<String,String>> ECOREGION_values = new ArrayList();
-        ECOREGION_values.add(new Pair("ecoregion", "!212"));
-        PatternList ECOREGION = new PatternList("ECOREGION", ECOREGION_values);
+        List<Pair<String,String>> ECOREGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "!212")
+        );
+        List<List<Pair<String,String>>> ECOREGION_patterns = Arrays.asList(
+            ECOREGION_pattern0
+        );
+        PatternList ECOREGION = new PatternList("ECOREGION", ECOREGION_patterns);
 
-        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values = new ArrayList();
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya glabra"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya ovata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya alba"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Castanea dentata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus quadrangulata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus pungens"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus rigida"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus virginiana"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus coccinea"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus imbricaria"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ilicifolia"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus marilandica"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus prinus"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Tsuga caroliniana"));
-        PatternList STRONG_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("STRONG_APPALACHIAN_DRY_DIAGNOSTICS", STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya ovata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Castanea dentata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Fraxinus quadrangulata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus pungens")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus rigida")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Pinus virginiana")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus coccinea")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus ilicifolia")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus prinus")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Tsuga caroliniana")
+        );
+        List<List<Pair<String,String>>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern0,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern1,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern2,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern3,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern4,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern7,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern8,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern9,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern10,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern11,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern12,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern13,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern14,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern15,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern16,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern17,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern18,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern19,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern20,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern21,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern22
+        );
+        PatternList STRONG_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("STRONG_APPALACHIAN_DRY_DIAGNOSTICS", STRONG_APPALACHIAN_DRY_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values = new ArrayList();
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Amelanchier spp."));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carpinus caroliniana"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Cercis canadensis"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Cornus florida"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Ostrya virginiana"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Oxydendrum arboreum"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus banksiana"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Prunus serotina"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Prunus virginiana"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus muehlenbergii"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus rubra"));
-        MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Sassafras albidum"));
-        PatternList MODERATE_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("MODERATE_APPALACHIAN_DRY_DIAGNOSTICS", MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Amelanchier spp.")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carpinus caroliniana")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Cercis canadensis")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Cornus florida")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Ostrya virginiana")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Pinus banksiana")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Prunus serotina")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Prunus virginiana")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Quercus muehlenbergii")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus rubra")
+        );
+        List<Pair<String,String>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Sassafras albidum")
+        );
+        List<List<Pair<String,String>>> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern0,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern1,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern2,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern3,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern4,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern5,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern6,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern7,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern8,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern9,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern10,
+            MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern11
+        );
+        PatternList MODERATE_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("MODERATE_APPALACHIAN_DRY_DIAGNOSTICS", MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGION) && (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 || (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 && plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + plot.riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50))
@@ -5315,9 +9438,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // Plot is in Ecoregion 212
 
-        List<Pair<String,String>> ECOREGION_values = new ArrayList();
-        ECOREGION_values.add(new Pair("ecoregion", "212"));
-        PatternList ECOREGION = new PatternList("ECOREGION", ECOREGION_values);
+        List<Pair<String,String>> ECOREGION_pattern0 = Arrays.asList(
+            new Pair("ecoregion", "212")
+        );
+        List<List<Pair<String,String>>> ECOREGION_patterns = Arrays.asList(
+            ECOREGION_pattern0
+        );
+        PatternList ECOREGION = new PatternList("ECOREGION", ECOREGION_patterns);
 
         INodeMatch match = plot -> (
             plot.match(ECOREGION)
@@ -5336,77 +9463,269 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // %RIV of STRONG DRY SOUTH-CENTRAL DIAGNOSTICS > either STRONG APPALACHIAN DRY DIAGONOSTICS OR ECOREGIONAL STRONG MESIC DIAGNOSTICS
 
-        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values = new ArrayList();
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya pallida"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya texana"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Diospyros virginiana"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus quadrangulata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Juniperus ashei"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Oxydendrum arboreum"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Pinus taeda"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus marilandica"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Ulmus alata"));
-        PatternList STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS", STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya pallida")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya texana")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Fraxinus quadrangulata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Juniperus ashei")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Ulmus alata")
+        );
+        List<List<Pair<String,String>>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14
+        );
+        PatternList STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS", STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values = new ArrayList();
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya glabra"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya ovata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya alba"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Castanea dentata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus quadrangulata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus pungens"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus rigida"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus virginiana"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus coccinea"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus imbricaria"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ilicifolia"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus marilandica"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus prinus"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Tsuga caroliniana"));
-        PatternList STRONG_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("STRONG_APPALACHIAN_DRY_DIAGNOSTICS", STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya ovata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Castanea dentata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Fraxinus quadrangulata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus pungens")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus rigida")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Pinus virginiana")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus coccinea")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus ilicifolia")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus prinus")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Tsuga caroliniana")
+        );
+        List<List<Pair<String,String>>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern0,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern1,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern2,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern3,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern4,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern7,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern8,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern9,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern10,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern11,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern12,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern13,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern14,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern15,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern16,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern17,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern18,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern19,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern20,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern21,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern22
+        );
+        PatternList STRONG_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("STRONG_APPALACHIAN_DRY_DIAGNOSTICS", STRONG_APPALACHIAN_DRY_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer nigrum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer pensylvanicum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus flava"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus glabra"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Asimina triloba"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula alleghaniensis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula lenta"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya cordiformis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Celtis occidentalis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia carolina"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liriodendron tulipifera"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia acuminata"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia fraseri"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia macrophylla"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia tripetala"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. heterophylla"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        PatternList ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS", ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer nigrum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer pensylvanicum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Aesculus flava")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Aesculus glabra")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Asimina triloba")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Halesia carolina")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Magnolia acuminata")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Magnolia fraseri")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Magnolia macrophylla")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Magnolia tripetala")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Tilia americana var. heterophylla")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern0,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern1,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern2,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern3,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern6,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern7,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern8,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern9,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern10,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern11,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern12,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern13,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern14,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern15,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern16,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern17,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern18,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern19,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern20,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern21,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern22,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern23,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern24
+        );
+        PatternList ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS", ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
                plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS) > plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS)
@@ -5426,77 +9745,269 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // i. %RIV STRONG APPALACHIAN DRY DIAGNOSTICS > either STRONG DRY SOUTH-CENTRAL DIAGNOSTICS OR ECOREGIONAL STRONG MESIC DIAGNOSTICS
 
-        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values = new ArrayList();
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Acer barbatum"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya pallida"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Carya texana"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Diospyros virginiana"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus quadrangulata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Ilex opaca"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Juniperus ashei"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Oxydendrum arboreum"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Pinus taeda"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus marilandica"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus nigra"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values.add(new Pair("species", "Ulmus alata"));
-        PatternList STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS", STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer barbatum")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya pallida")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya texana")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Diospyros virginiana")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Fraxinus quadrangulata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Ilex opaca")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Juniperus ashei")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Oxydendrum arboreum")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus taeda")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus nigra")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Ulmus alata")
+        );
+        List<List<Pair<String,String>>> STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern0,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern1,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern2,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern3,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern4,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern5,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern6,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern7,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern8,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern11,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern12,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern13,
+            STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern14
+        );
+        PatternList STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS = new PatternList("STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS", STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values = new ArrayList();
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya glabra"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya ovata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Carya alba"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Castanea dentata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus quadrangulata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Juniperus virginiana"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Nyssa sylvatica"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus echinata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus pungens"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus rigida"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus strobus"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Pinus virginiana"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus alba"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus coccinea"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ellipsoidalis"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus falcata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus imbricaria"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus ilicifolia"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus marilandica"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus prinus"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus stellata"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Quercus velutina"));
-        STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values.add(new Pair("species", "Tsuga caroliniana"));
-        PatternList STRONG_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("STRONG_APPALACHIAN_DRY_DIAGNOSTICS", STRONG_APPALACHIAN_DRY_DIAGNOSTICS_values);
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Carya glabra")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Carya ovata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Carya alba")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Castanea dentata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Fraxinus quadrangulata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Juniperus virginiana")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Nyssa sylvatica")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Pinus echinata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Pinus pungens")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Pinus rigida")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Pinus strobus")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Pinus virginiana")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Quercus alba")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Quercus coccinea")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Quercus ellipsoidalis")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Quercus falcata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Quercus imbricaria")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Quercus ilicifolia")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Quercus marilandica")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Quercus prinus")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus stellata")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Quercus velutina")
+        );
+        List<Pair<String,String>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Tsuga caroliniana")
+        );
+        List<List<Pair<String,String>>> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_patterns = Arrays.asList(
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern0,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern1,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern2,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern3,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern4,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern7,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern8,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern9,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern10,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern11,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern12,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern13,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern14,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern15,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern16,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern17,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern18,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern19,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern20,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern21,
+            STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern22
+        );
+        PatternList STRONG_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("STRONG_APPALACHIAN_DRY_DIAGNOSTICS", STRONG_APPALACHIAN_DRY_DIAGNOSTICS_patterns);
 
-        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values = new ArrayList();
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer nigrum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer pensylvanicum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Acer saccharum"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus flava"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Aesculus glabra"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Asimina triloba"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula alleghaniensis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Betula lenta"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Carya cordiformis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Celtis occidentalis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fagus grandifolia"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus americana"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Fraxinus pennsylvanica"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Halesia carolina"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liriodendron tulipifera"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Liquidambar styraciflua"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia acuminata"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia fraseri"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia macrophylla"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Magnolia tripetala"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Quercus shumardii"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tilia americana var. heterophylla"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Tsuga canadensis"));
-        ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values.add(new Pair("species", "Ulmus americana"));
-        PatternList ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS", ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_values);
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
+            new Pair("species", "Acer nigrum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
+            new Pair("species", "Acer pensylvanicum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
+            new Pair("species", "Acer saccharum")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
+            new Pair("species", "Aesculus flava")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
+            new Pair("species", "Aesculus glabra")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
+            new Pair("species", "Asimina triloba")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
+            new Pair("species", "Betula alleghaniensis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
+            new Pair("species", "Betula lenta")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
+            new Pair("species", "Carya cordiformis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
+            new Pair("species", "Celtis occidentalis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
+            new Pair("species", "Fagus grandifolia")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
+            new Pair("species", "Fraxinus americana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern12 = Arrays.asList(
+            new Pair("species", "Fraxinus pennsylvanica")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
+            new Pair("species", "Halesia carolina")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
+            new Pair("species", "Liriodendron tulipifera")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
+            new Pair("species", "Liquidambar styraciflua")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
+            new Pair("species", "Magnolia acuminata")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
+            new Pair("species", "Magnolia fraseri")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern18 = Arrays.asList(
+            new Pair("species", "Magnolia macrophylla")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern19 = Arrays.asList(
+            new Pair("species", "Magnolia tripetala")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern20 = Arrays.asList(
+            new Pair("species", "Quercus shumardii")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern21 = Arrays.asList(
+            new Pair("species", "Tilia americana")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern22 = Arrays.asList(
+            new Pair("species", "Tilia americana var. heterophylla")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern23 = Arrays.asList(
+            new Pair("species", "Tsuga canadensis")
+        );
+        List<Pair<String,String>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern24 = Arrays.asList(
+            new Pair("species", "Ulmus americana")
+        );
+        List<List<Pair<String,String>>> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern0,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern1,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern2,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern3,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern6,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern7,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern8,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern9,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern10,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern11,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern12,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern13,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern14,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern15,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern16,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern17,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern18,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern19,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern20,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern21,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern22,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern23,
+            ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern24
+        );
+        PatternList ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS = new PatternList("ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS", ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
                plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) > plot.riv(STRONG_DRY_SOUTH_CENTRAL_DIAGNOSTICS)
