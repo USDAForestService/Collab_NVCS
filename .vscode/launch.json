@@ -8,6 +8,7 @@
         "mainClass": "nvcs.App",
         "projectName": "nvcs_java",
         "args": [
+          "west",
           "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/TEMP.txt",
           "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_output/JavaResults.out"
         ]

@@ -16,12 +16,15 @@ from time import process_time
 from nvcs_builder import configuration
 config = configuration.DebugConfig()
 
-def run(outfile, debugfile, dbfile, plottbl, temp_path, invyrs, where):
+def run(type, java_classes, outfile, debugfile, dbfile, plottbl, temp_path, invyrs, where):
 
-    print('Input file = %s' % (dbfile))
+    print('Input file = %s' % dbfile)
     print('Output file = %s' % outfile)
+    print('Debug file = %s' % debugfile)
+    print('Java Classifier Path = %s' % java_classes)
+    print('Type = %s' % type)
 
-    #Classify plots read from a sqlite db or text file
+    # Classify plots read from a SQLite DB
     logging.basicConfig(filename=debugfile, filemode='w', level=logging.DEBUG) # or ERROR
     with Timer() as t:
         with open(outfile, mode='w', encoding='utf-8') as f:
@@ -31,7 +34,7 @@ def run(outfile, debugfile, dbfile, plottbl, temp_path, invyrs, where):
                     ident = plot[0]
                     row_json = plot[1]
                     temp.write(f"{ident}\t{row_json}\n")
-            java_classify(temp_path, outfile)
+            java_classify(type, java_classes, temp_path, outfile)
     print('Run took %.03f sec.' % t.interval)
 
 def json_query(dbfile, tbl, invyrs, where):
@@ -81,13 +84,12 @@ def json_query(dbfile, tbl, invyrs, where):
     results = query_sqlite(dbfile, query)
     return results
 
-def java_classify(json_path, outfile):
-    java_classes = "C:/GitHub/FS-Enterprise/NVCS/nvcs_java/target/classes"
-    args = ['java', '-cp', java_classes, 'nvcs.App', json_path, outfile]
+def java_classify(type, java_classes, json_path, outfile):
+    type_param = "west" if type == "WestConfig" else "east"
+    args = ['java', '-cp', java_classes, 'nvcs.App', type_param, json_path, outfile]
     try:
         process = subprocess.run(args, capture_output=True, text=True, check=True)
-        if process.stderr != "":
-            raise Exception(process.stderr)
+        process.check_returncode()
         return process.stdout
     except subprocess.CalledProcessError as exception:
         raise Exception(exception.stderr)
@@ -104,7 +106,9 @@ class Timer:
 
 if __name__ == '__main__':
 
-    run(outfile=config.get(config.base, "Out_TestPath"),
+    run(type=config.target,
+        java_classes=config.get(config.base, "Out_JavaClassesBin"),
+        outfile=config.get(config.base, "Out_TestPath"),
         debugfile=config.get(config.target, "Out_DebugLogPath"),
         dbfile=config.get(config.target, "In_DbPath"),
         plottbl=config.get(config.target, "In_DbTable"),

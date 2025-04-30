@@ -20,10 +20,11 @@ import nvcs_utilities.JsonRow;
 public class App 
 {
     public static void main(String[] args) {
-        String inputPath = args[0];
-        String outputPath = args[1];
+        String type = args[0];
+        String inputPath = args[1];
+        String outputPath = args[2];
         List<String> outputLines = new ArrayList<>();
-        Classifier classifier = new Classifier(new ClassificationKeyWest());
+        Classifier classifier = getClassifierByType(type);
 
         try (Stream<String> stream = Files.lines(Paths.get(inputPath))) {
             stream.forEach(inLine -> {
@@ -53,13 +54,25 @@ public class App
     }
 
     public static Integer[] classifyWest(String json) {
-        Classifier classifier = new Classifier(new ClassificationKeyWest());
+        Classifier classifier = getClassifierByType("west");
         return classify(classifier, json);
     }
 
     public static Integer[] classifyEast(String json) {
-        Classifier classifier = new Classifier(new ClassificationKeyEast());
+        Classifier classifier = getClassifierByType("east");
         return classify(classifier, json);
+    }
+
+    private static Classifier getClassifierByType(String type) throws IllegalArgumentException {
+        if (type.equals("west")) {
+            return new Classifier(new ClassificationKeyWest()); 
+        }
+        else if (type.equals("east")) {
+            return new Classifier(new ClassificationKeyEast());
+        }
+        else {
+            throw new IllegalArgumentException("Invalid type provided");
+        }
     }
 
     private static Integer[] classify(Classifier classifier, String json) {
