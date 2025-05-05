@@ -39,7 +39,7 @@ def run(type, java_classes, outfile, debugfile, dbfile, plottbl, temp_path, invy
 
 def json_query(dbfile, tbl, invyrs, where):
     where = f"{where}" if where != "" else "TRUE"
-    invyr = f"INVYR IN ({invyrs.replace("[", "(").replace("]",")")})" if invyrs != "" else "TRUE"
+    invyr = f"INVYR IN ({invyrs.replace("[", "(").replace("]",")")})" if invyrs is not None else "TRUE"
     query = f"""
         SELECT
             IDENT,
