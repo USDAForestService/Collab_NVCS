@@ -65,7 +65,7 @@ public class Plot {
         return result;
     }
 
-    public float riv(PatternList pattlist) {
+    public double riv(PatternList pattlist) {
         float pct_riv;
         float match_riv = 0;
         float total_riv = 0;
@@ -84,10 +84,10 @@ public class Plot {
         else {
             pct_riv = (match_riv / total_riv) * 100;
         }
-        return pct_riv;
+        return Math.ceil(pct_riv * 100) / 100.0;
     }
 
-    public float spcov(PatternList pattlist) {
+    public double spcov(PatternList pattlist) {
         float match_spcov = 0;
         for (Tree tree : trees) {
             Map<String,Object> allAttrs = new HashMap<>();
@@ -97,7 +97,7 @@ public class Plot {
                 match_spcov += tree.spcov;
             }
         }
-        return match_spcov;
+        return Math.ceil(match_spcov * 100) / 100.0;
     }
 
     public float get_elevation() {
