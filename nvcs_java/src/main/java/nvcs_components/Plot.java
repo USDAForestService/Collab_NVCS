@@ -70,6 +70,7 @@ public class Plot {
         float match_riv = 0;
         float total_riv = 0;
         for (Tree tree : trees) {
+            if (tree.species.equals("")) continue;
             total_riv += tree.riv;
             Map<String,Object> allAttrs = new HashMap<>();
             allAttrs.putAll(attrs);
@@ -90,6 +91,7 @@ public class Plot {
     public double spcov(PatternList pattlist) {
         float match_spcov = 0;
         for (Tree tree : trees) {
+            if (tree.species.equals("")) continue;
             Map<String,Object> allAttrs = new HashMap<>();
             allAttrs.putAll(attrs);
             allAttrs.putAll(tree.attrs);

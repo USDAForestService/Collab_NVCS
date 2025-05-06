@@ -35,6 +35,7 @@ class Plot:
         match_riv = 0.0
         total_riv = 0.0
         for tree in self.trees:
+            if tree.species == "": continue
             total_riv += tree.riv;
             if pattlist.match_any({k:d.get(k) for d in (self.attrs, tree.attrs) for k in d}):
                 match_riv += tree.riv;
@@ -48,6 +49,7 @@ class Plot:
     def spcov(self, pattlist):
         match_spcov = 0.0
         for tree in self.trees:
+            if tree.species == "": continue
             if pattlist.match_any({k:d.get(k) for d in (self.attrs, tree.attrs) for k in d}):
                 match_spcov += tree.spcov;
         logging.debug('%s|spcov()::%s|%.1f', self.ident, pattlist.label, match_spcov)
