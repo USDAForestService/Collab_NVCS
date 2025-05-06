@@ -11,12 +11,12 @@ def _makevarcode(varname, alternatives):
     for idx, entry in enumerate(alternatives):
         pattern_name = f'{varname}_pattern{idx}'
         pattern_names.append(pattern_name)
-        varcode += f'{indent * 2}List<Pair<String,String>> {pattern_name} = Arrays.asList(\n'
+        varcode += f'{indent * 2}List<KeyValue> {pattern_name} = Arrays.asList(\n'
         for index, (key, value) in enumerate(entry.items()):
             comma = ',' if index < len(entry.items()) - 1 else ""
-            varcode += f'{indent * 3}new Pair<String,String>("{key}", "{value}"){comma}\n'
+            varcode += f'{indent * 3}new KeyValue("{key}", "{value}"){comma}\n'
         varcode += f'{indent * 2});\n'
-    varcode += f'{indent * 2}List<List<Pair<String,String>>> {varname}_patterns = Arrays.asList(\n'
+    varcode += f'{indent * 2}List<List<KeyValue>> {varname}_patterns = Arrays.asList(\n'
     for idx, pattern_name in enumerate(pattern_names):
         comma = ',' if idx < len(pattern_names) - 1 else ""
         varcode += f'{indent * 3}{pattern_name}{comma}\n'

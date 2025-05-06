@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import javafx.util.Pair;
 
 import nvcs_components.ClassificationKey;
+import nvcs_components.KeyValue;
 import nvcs_components.Node;
 import nvcs_interfaces.INodeMatch;
 import nvcs_patterns.Pattern;
