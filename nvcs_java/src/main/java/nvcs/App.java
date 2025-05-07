@@ -11,9 +11,12 @@ import nvcs_utilities.JsonRow;
 public class App 
 {
 
-    public static Integer[] nvcs_classify(String type, String json) {
+    public static String nvcs_classify(String type, String json) {
         Classifier classifier = getClassifierByType(type);
-        return classify(classifier, json);
+        Integer[] path = classify(classifier, json);
+        Integer classification = path.length > 0 ? path[path.length-1] : -1;
+        String returnJson = JsonParse.OutputToJson(classification, path);
+        return returnJson;
     }
 
     private static Classifier getClassifierByType(String type) throws IllegalArgumentException {

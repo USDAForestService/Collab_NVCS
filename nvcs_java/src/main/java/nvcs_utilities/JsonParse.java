@@ -1,8 +1,8 @@
 package nvcs_utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class JsonParse {
 
@@ -63,5 +63,30 @@ public class JsonParse {
         row.SPCOV = attributes.get("SPCOV") == null ? "0" : attributes.get("SPCOV");
 
         return row;
+    }
+
+    public static String OutputToJson(Integer classification, Integer[] path) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("{ ");
+        stringBuilder.append(String.format("\"classification\": \"%s\", ", classification));
+        stringBuilder.append(String.format("\"path\": %s", Arrays.toString(path)));
+        stringBuilder.append(" }");
+        return stringBuilder.toString();
+    }
+
+    public static Object[] JsonToOutput(String json) {
+        String classification = json
+            .split("^.*\\\"classification\\\": \\\"")[1]
+            .split("\"")[0];
+
+        String[] path = json
+            .split("^.*\\\"path\\\": \\[")[1]
+            .split("\\]")[0]
+            .split(", ");
+        
+        Object[] response = new Object[2];
+        response[0] = classification;
+        response[1] = path;
+        return response;
     }
 }

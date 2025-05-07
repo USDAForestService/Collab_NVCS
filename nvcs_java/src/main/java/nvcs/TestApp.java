@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import nvcs_utilities.JsonParse;
+
 public class TestApp {
 
     public static void main(String[] args) {
@@ -22,11 +24,12 @@ public class TestApp {
                 String[] split = inLine.split("\t");
                 String ident = split[0];
                 String json = split[1];
-                Integer[] path = App.nvcs_classify(type, json);
-                Integer solution = path.length > 0 ? path[path.length - 1] : -1;
-                if (path[path.length - 1] == -1)
+                String responseJson = App.nvcs_classify(type, json);
+                Object[] responseExtract = JsonParse.JsonToOutput(responseJson);
+                String solution = (String)responseExtract[0];
+                String[] path = (String[])responseExtract[1]; 
+                if (path.length > 0 && path[path.length - 1].equals("-1"))
                     path = Arrays.copyOf(path, path.length - 1);
-
                 String joinedPath = Stream.of(path).map(String::valueOf).collect(Collectors.joining(", "));
                 String outputLine = String.format("%s\t%s\t[%s]", ident, solution, joinedPath);
                 outputLines.add(outputLine);
@@ -43,5 +46,5 @@ public class TestApp {
             System.err.println("Error writing file: " + ex);
         }
     }
-    
+
 }
