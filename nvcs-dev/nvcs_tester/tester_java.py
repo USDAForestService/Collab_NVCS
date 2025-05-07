@@ -11,7 +11,7 @@ sys.path.append(parentDir + "/nvcs")
 
 from plot_io import query_sqlite
 import logging
-from time import process_time
+from time import perf_counter
 
 from nvcs_builder import configuration
 config = configuration.DebugConfig()
@@ -96,11 +96,11 @@ def java_classify(type, java_classes, json_path, outfile):
 
 class Timer:    
     def __enter__(self):
-        self.start = process_time()
+        self.start = perf_counter()
         return self
 
     def __exit__(self, *args):
-        self.end = process_time()
+        self.end = perf_counter()
         self.interval = self.end - self.start
                
 

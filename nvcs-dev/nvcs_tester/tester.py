@@ -19,7 +19,7 @@ sys.path.append(parentDir + "/nvcs")
 from classifier import Classifier
 from plot_io import read_sqlite, read_file
 import logging
-from time import process_time
+from time import perf_counter
 
 from nvcs_builder import configuration
 config = configuration.DebugConfig()
@@ -54,11 +54,11 @@ def run(outfile, debugfile, dbfile = None, plottbl = None, txtfile = None):
 
 class Timer:    
     def __enter__(self):
-        self.start = process_time()
+        self.start = perf_counter()
         return self
 
     def __exit__(self, *args):
-        self.end = process_time()
+        self.end = perf_counter()
         self.interval = self.end - self.start
                
 
