@@ -1,6 +1,7 @@
 package nvcs_components;
 
 public class KeyValue {
+    
     public String key;
     public String value;
 

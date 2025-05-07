@@ -3,9 +3,9 @@
     "configurations": [
       {
         "type": "java",
-        "name": "App",
+        "name": "TestApp",
         "request": "launch",
-        "mainClass": "nvcs.App",
+        "mainClass": "nvcs.TestApp",
         "projectName": "nvcs_java",
         "args": [
           "west",

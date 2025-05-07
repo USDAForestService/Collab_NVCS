@@ -86,7 +86,7 @@ def json_query(dbfile, tbl, invyrs, where):
 
 def java_classify(type, java_classes, json_path, outfile):
     type_param = "west" if type == "WestConfig" else "east"
-    args = ['java', '-cp', java_classes, 'nvcs.App', type_param, json_path, outfile]
+    args = ['java', '-cp', java_classes, 'nvcs.TestApp', type_param, json_path, outfile]
     try:
         process = subprocess.run(args, capture_output=True, text=True, check=True)
         process.check_returncode()
