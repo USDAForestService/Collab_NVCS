@@ -2,7 +2,7 @@ package nvcs_utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class JsonParse {
 
@@ -28,7 +28,7 @@ public class JsonParse {
         .replaceAll("\\}$", "");
 
         String[] jsonPairs = json.split(",");
-        HashMap<String,String> attributes = new HashMap<>();
+        TreeMap<String,String> attributes = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         for (String jsonPair : jsonPairs) {
             String[] splitJsonPair = jsonPair.split(":");
             String key = splitJsonPair[0].replaceAll("\"", "");
