@@ -28,7 +28,7 @@ def run(type, java_classes, outfile, debugfile, dbfile, plottbl, temp_path, invy
     logging.basicConfig(filename=debugfile, filemode='w', level=logging.DEBUG) # or ERROR
     with Timer() as t:
         with open(outfile, mode='w', encoding='utf-8') as f:
-            plots = json_query(dbfile, plottbl, invyrs, where)
+            plots = json_query(dbfile, plottbl, invyrs, where, type)
             with open(temp_path, mode='w', encoding='utf-8') as temp:
                 for plot in plots:
                     ident = plot[0]
@@ -37,8 +37,8 @@ def run(type, java_classes, outfile, debugfile, dbfile, plottbl, temp_path, invy
             java_classify(type, java_classes, temp_path, outfile)
     print('Run took %.03f sec.' % t.interval)
 
-def json_query(dbfile, tbl, invyrs, where):
-    where = f"{where}" if where != "" else "TRUE"
+def json_query(dbfile, tbl, invyrs, where, type):
+    where = f"{where}" if where is not None else "TRUE"
     invyr = f"INVYR IN ({invyrs.replace("[", "(").replace("]",")")})" if invyrs is not None else "TRUE"
     query = f"""
         SELECT
@@ -50,19 +50,19 @@ def json_query(dbfile, tbl, invyrs, where):
             IDENT,
             JSON_OBJECT(
                 'IDENT', IDENT,
-                'RSCD', RSCD,
-                'STATEAB', STATEAB,
+                'RSCD', {'RSCD' if type == 'WestConfig' else 'null'},
+                'STATEAB', {'STATEAB' if type == 'WestConfig' else 'null'},
                 'ECOREGION', ECOREGION,
                 'PLANTATION', PLANTATION,
                 'HYDRIC', HYDRIC,
                 'RIVERINE', RIVERINE,
-                'ELEVATION', ELEVATION,
-                'BALIVE', BALIVE,
-                'FBCOV', FBCOV,
-                'GRCOV', GRCOV,
-                'SHCOV', SHCOV,
-                'TTCOV', TTCOV,
-                'NTCOV', NTCOV,
+                'ELEVATION', {'ELEVATION' if type == 'WestConfig' else 'null'},
+                'BALIVE', {'BALIVE' if type == 'WestConfig' else 'null'},
+                'FBCOV', {'FBCOV' if type == 'WestConfig' else 'null'},
+                'GRCOV', {'GRCOV' if type == 'WestConfig' else 'null'},
+                'SHCOV', {'SHCOV' if type == 'WestConfig' else 'null'},
+                'TTCOV', {'TTCOV' if type == 'WestConfig' else 'null'},
+                'NTCOV', {'NTCOV' if type == 'WestConfig' else 'null'},
                 'SPECIES', SPECIES,
                 'RIV', RIV,
                 'WETLAND', WETLAND,
@@ -70,8 +70,8 @@ def json_query(dbfile, tbl, invyrs, where):
                 'EXOTIC', EXOTIC,
                 'SOFTWOODHARDWOOD', SOFTWOODHARDWOOD,
                 'PLANTED', PLANTED,
-                'TALLYTREE', TALLYTREE,
-                'SPCOV', SPCOV
+                'TALLYTREE', {'TALLYTREE' if type == 'WestConfig' else 'null'},
+                'SPCOV', {'SPCOV' if type == 'WestConfig' else 'null'}
             )
             ROW_JSON
             FROM {tbl}
