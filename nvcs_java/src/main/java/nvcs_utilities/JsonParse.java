@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 public class JsonParse {
 
-    public ArrayList<JsonRow> rows;
+    public ArrayList<TreeMap<String,String>> rows;
 
     public JsonParse(String json) {
         rows = new ArrayList<>();
@@ -17,50 +17,25 @@ public class JsonParse {
 
         String[] splitRows = rowsContent.split("\\},\\{");
         for (String row : splitRows) {
-            JsonRow jsonRow = parse(row);
+            TreeMap<String,String> jsonRow = parse(row);
             this.rows.add(jsonRow);
         }
     }
 
-    public static JsonRow parse(String json) {
+    public static TreeMap<String,String> parse(String json) {
         json = json
         .replaceAll("^\\{", "")
         .replaceAll("\\}$", "");
 
         String[] jsonPairs = json.split(",");
-        TreeMap<String,String> attributes = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        TreeMap<String,String> row = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         for (String jsonPair : jsonPairs) {
             String[] splitJsonPair = jsonPair.split(":");
             String key = splitJsonPair[0].replaceAll("\"", "");
             String value = splitJsonPair[1].replaceAll("\"", "");
             value = value.equals("null") ? null : value;
-            attributes.put(key, value);
+            row.put(key, value);
         }
-
-        JsonRow row = new JsonRow();
-        row.IDENT = attributes.get("IDENT") == null ? "" : attributes.get("IDENT");
-        row.RSCD = attributes.get("RSCD") == null ? "" : attributes.get("RSCD");
-        row.STATEAB = attributes.get("STATEAB") == null ? "" : attributes.get("STATEAB");
-        row.ECOREGION = attributes.get("ECOREGION") == null ? "" : attributes.get("ECOREGION");
-        row.PLANTATION = attributes.get("PLANTATION") == null ? "" : attributes.get("PLANTATION");
-        row.HYDRIC = attributes.get("HYDRIC") == null ? "" : attributes.get("HYDRIC");
-        row.RIVERINE = attributes.get("RIVERINE") == null ? "" : attributes.get("RIVERINE");
-        row.ELEVATION = attributes.get("ELEVATION") == null ? "" : attributes.get("ELEVATION");
-        row.BALIVE = attributes.get("BALIVE") == null ? "0" : attributes.get("BALIVE");
-        row.FBCOV = attributes.get("FBCOV") == null ? "0" : attributes.get("FBCOV");
-        row.GRCOV = attributes.get("GRCOV") == null ? "0" : attributes.get("GRCOV");
-        row.SHCOV = attributes.get("SHCOV") == null ? "0" : attributes.get("SHCOV");
-        row.TTCOV = attributes.get("TTCOV") == null ? "0" : attributes.get("TTCOV");
-        row.NTCOV = attributes.get("NTCOV") == null ? "0" : attributes.get("NTCOV");
-        row.SPECIES = attributes.get("SPECIES") == null ? "" : attributes.get("SPECIES");
-        row.RIV = attributes.get("RIV") == null ? "0" : attributes.get("RIV");
-        row.WETLAND = attributes.get("WETLAND") == null ? "" : attributes.get("WETLAND");
-        row.RUDERAL = attributes.get("RUDERAL") == null ? "" : attributes.get("RUDERAL");
-        row.EXOTIC = attributes.get("EXOTIC") == null ? "" : attributes.get("EXOTIC");
-        row.SOFTWOODHARDWOOD = attributes.get("SOFTWOODHARDWOOD") == null ? "" : attributes.get("SOFTWOODHARDWOOD");
-        row.PLANTED = attributes.get("PLANTED") == null ? "" : attributes.get("PLANTED");
-        row.TALLYTREE = attributes.get("TALLYTREE") == null ? "" : attributes.get("TALLYTREE");
-        row.SPCOV = attributes.get("SPCOV") == null ? "0" : attributes.get("SPCOV");
 
         return row;
     }

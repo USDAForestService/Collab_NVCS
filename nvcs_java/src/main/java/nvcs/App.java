@@ -1,12 +1,13 @@
 package nvcs;
 
+import java.util.TreeMap;
+
 import nvcs_components.Classifier;
 import nvcs_components.Node;
 import nvcs_components.Plot;
 import nvcs_components.Solution;
 import nvcs_components.Tree;
 import nvcs_utilities.JsonParse;
-import nvcs_utilities.JsonRow;
 
 public class App 
 {
@@ -34,35 +35,35 @@ public class App
     private static Integer[] classify(Classifier classifier, String json) {
         JsonParse jsonParse = new JsonParse(json);
         
-        JsonRow firstJsonRow = jsonParse.rows.get(0);
+        TreeMap<String,String> firstJsonRow = jsonParse.rows.get(0);
         Plot plot = new Plot(
-            firstJsonRow.IDENT,
-            firstJsonRow.RSCD,
-            firstJsonRow.STATEAB,
-            firstJsonRow.ECOREGION,
-            firstJsonRow.PLANTATION,
-            firstJsonRow.HYDRIC,
-            firstJsonRow.RIVERINE,
-            firstJsonRow.ELEVATION,
-            firstJsonRow.BALIVE,
-            firstJsonRow.FBCOV,
-            firstJsonRow.GRCOV,
-            firstJsonRow.SHCOV,
-            firstJsonRow.TTCOV,
-            firstJsonRow.NTCOV
+            firstJsonRow.get("IDENT"),
+            firstJsonRow.get("RSCD"),
+            firstJsonRow.get("STATEAB"),
+            firstJsonRow.get("ECOREGION"),
+            firstJsonRow.get("PLANTATION"),
+            firstJsonRow.get("HYDRIC"),
+            firstJsonRow.get("RIVERINE"),
+            firstJsonRow.get("ELEVATION"),
+            firstJsonRow.get("BALIVE"),
+            firstJsonRow.get("FBCOV"),
+            firstJsonRow.get("GRCOV"),
+            firstJsonRow.get("SHCOV"),
+            firstJsonRow.get("TTCOV"),
+            firstJsonRow.get("NTCOV")
         );
 
-        for (JsonRow jsonRow : jsonParse.rows) {
+        for (TreeMap<String,String> jsonRow : jsonParse.rows) {
             Tree tree = new Tree(
-                jsonRow.SPECIES,
-                jsonRow.RIV,
-                jsonRow.WETLAND,
-                jsonRow.RUDERAL,
-                jsonRow.EXOTIC,
-                jsonRow.SOFTWOODHARDWOOD,
-                jsonRow.PLANTED,
-                jsonRow.TALLYTREE,
-                jsonRow.SPCOV
+                jsonRow.get("SPECIES"),
+                jsonRow.get("RIV"),
+                jsonRow.get("WETLAND"),
+                jsonRow.get("RUDERAL"),
+                jsonRow.get("EXOTIC"),
+                jsonRow.get("SOFTWOODHARDWOOD"),
+                jsonRow.get("PLANTED"),
+                jsonRow.get("TALLYTREE"),
+                jsonRow.get("SPCOV")
             );
             plot.trees.add(tree);
         }

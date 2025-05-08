@@ -17,26 +17,26 @@ public class Tree {
     public Map<String,Object> attrs; 
 
     public Tree(String species, String riv, String wetland, String ruderal, String exotic, String softwoodhardwood, String planted, String tallytree, String spcov) {
-        this.species = species;
-        this.riv = Float.parseFloat(riv);
-        this.wetland = wetland;
-        this.ruderal = ruderal;
-        this.exotic = exotic;
-        this.softwoodhardwood = softwoodhardwood;
-        this.planted = planted;
-        this.tallytree = tallytree;
-        this.spcov = Float.parseFloat(spcov);
+        this.species = species != null ? species : "";
+        this.riv = Float.parseFloat(riv != null ? riv : "0");
+        this.wetland = wetland != null ? wetland : "";
+        this.ruderal = ruderal != null ? ruderal : "";
+        this.exotic = exotic != null ? exotic : "";
+        this.softwoodhardwood = softwoodhardwood != null ? softwoodhardwood : "";
+        this.planted = planted != null ? planted : "";
+        this.tallytree = tallytree != null ? tallytree : "";
+        this.spcov = Float.parseFloat(spcov != null ? spcov : "0");
 
         this.attrs = new HashMap<>();
-        this.attrs.put("species", species);
-        this.attrs.put("riv", riv);
-        this.attrs.put("wetland", wetland);
-        this.attrs.put("ruderal", ruderal);
-        this.attrs.put("exotic", exotic);
-        this.attrs.put("softwoodhardwood", softwoodhardwood);
-        this.attrs.put("planted", planted);
-        this.attrs.put("tallytree", tallytree);
-        this.attrs.put("spcov", spcov);
+        this.attrs.put("species", this.species);
+        this.attrs.put("riv", this.riv);
+        this.attrs.put("wetland", this.wetland);
+        this.attrs.put("ruderal", this.ruderal);
+        this.attrs.put("exotic", this.exotic);
+        this.attrs.put("softwoodhardwood", this.softwoodhardwood);
+        this.attrs.put("planted", this.planted);
+        this.attrs.put("tallytree", this.tallytree);
+        this.attrs.put("spcov", this.spcov);
     }
 
     @Override

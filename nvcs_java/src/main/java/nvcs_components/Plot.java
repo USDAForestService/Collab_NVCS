@@ -27,13 +27,13 @@ public class Plot {
     public Map<String,Object> attrs;
     
     public Plot(String ident, String rscd, String state, String ecoregion, String plantation, String hydric, String riverine, String elevation, String balive, String fbcov, String grcov, String shcov, String ttcov, String ntcov) {
-        this.ident = ident;
-        this.rscd = rscd;
-        this.state = state;
+        this.ident = ident != null ? ident : "";
+        this.rscd = rscd != null ? rscd : "";
+        this.state = state != null ? state : "";
         this.ecoregion = ecoregion != null ? ecoregion : "";
-        this.plantation = plantation;
-        this.hydric = hydric;
-        this.riverine = riverine;
+        this.plantation = plantation != null ? plantation : "";
+        this.hydric = hydric != null ? hydric : "";
+        this.riverine = riverine != null ? riverine : "";
         this.elevation = Float.parseFloat(elevation != null ? elevation : "0");
         this.balive = Float.parseFloat(balive != null ? balive : "0");
         this.fbcov = Float.parseFloat(fbcov != null ? fbcov : "0");
@@ -44,20 +44,20 @@ public class Plot {
         this.trees = new ArrayList<>();
 
         this.attrs = new HashMap<>();
-        this.attrs.put("ident", ident);
-        this.attrs.put("rscd", rscd);
-        this.attrs.put("state", state);
-        this.attrs.put("ecoregion", ecoregion);
-        this.attrs.put("plantation", plantation);
-        this.attrs.put("hydric", hydric);
-        this.attrs.put("riverine", riverine);
-        this.attrs.put("elevation", elevation);
-        this.attrs.put("balive", balive);
-        this.attrs.put("fbcov", fbcov);
-        this.attrs.put("grcov", grcov);
-        this.attrs.put("shcov", shcov);
-        this.attrs.put("ttcov", ttcov);
-        this.attrs.put("ntcov", ntcov);
+        this.attrs.put("ident", this.ident);
+        this.attrs.put("rscd", this.rscd);
+        this.attrs.put("state", this.state);
+        this.attrs.put("ecoregion", this.ecoregion);
+        this.attrs.put("plantation", this.plantation);
+        this.attrs.put("hydric", this.hydric);
+        this.attrs.put("riverine", this.riverine);
+        this.attrs.put("elevation", this.elevation);
+        this.attrs.put("balive", this.balive);
+        this.attrs.put("fbcov", this.fbcov);
+        this.attrs.put("grcov", this.grcov);
+        this.attrs.put("shcov", this.shcov);
+        this.attrs.put("ttcov", this.ttcov);
+        this.attrs.put("ntcov", this.ntcov);
     }
 
     public boolean match(PatternList pattlist) {
