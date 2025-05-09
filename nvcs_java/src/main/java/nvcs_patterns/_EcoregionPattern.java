@@ -29,7 +29,7 @@ public class _EcoregionPattern extends Pattern {
                 includepattern = null;
 
                 excludepattern = new ArrayList<>();
-                cleanedExpr = cleanedExpr.replaceAll("^\\s+!", "");
+                cleanedExpr = cleanedExpr.replaceAll("^!", "");
                 for (String splitExpr : cleanedExpr.split(",")) {
                     String stripped = splitExpr.trim();
                     excludepattern.add(stripped);
