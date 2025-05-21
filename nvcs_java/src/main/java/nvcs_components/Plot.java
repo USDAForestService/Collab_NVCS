@@ -85,7 +85,9 @@ public class Plot {
         else {
             pct_riv = (match_riv / total_riv) * 100;
         }
-        return Math.ceil(pct_riv * 100) / 100.0;
+        int precision = 3;
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(pct_riv * scale) / scale;
     }
 
     public double spcov(PatternList pattlist) {
@@ -99,7 +101,9 @@ public class Plot {
                 match_spcov += tree.spcov;
             }
         }
-        return Math.ceil(match_spcov * 100) / 100.0;
+        int precision = 3;
+        int scale = (int) Math.pow(10, precision);
+        return (double) Math.round(match_spcov * scale) / scale;
     }
 
     public float get_elevation() {
