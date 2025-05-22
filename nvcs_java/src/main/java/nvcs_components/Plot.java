@@ -23,10 +23,16 @@ public class Plot {
     public Float shcov;
     public Float ttcov;
     public Float ntcov;
+    public Float live_canopy_cvr_pct;
+    public String afforestation_cd;
+    public String land_cover_class_cd;
+    public String land_cover_class_cd_ret;
+    public String trtcd1;
+    public String trtcd2;
     public List<Tree> trees;
     public Map<String,Object> attrs;
     
-    public Plot(String ident, String rscd, String state, String ecoregion, String plantation, String hydric, String riverine, String elevation, String balive, String fbcov, String grcov, String shcov, String ttcov, String ntcov) {
+    public Plot(String ident, String rscd, String state, String ecoregion, String plantation, String hydric, String riverine, String elevation, String balive, String fbcov, String grcov, String shcov, String ttcov, String ntcov, String live_canopy_cvr_pct, String afforestation_cd, String land_cover_class_cd, String land_cover_class_cd_ret, String trtcd1, String trtcd2) {
         this.ident = ident != null ? ident : "";
         this.rscd = rscd != null ? rscd : "";
         this.state = state != null ? state : "";
@@ -41,6 +47,12 @@ public class Plot {
         this.shcov = Float.parseFloat(shcov != null ? shcov : "0");
         this.ttcov = Float.parseFloat(ttcov != null ? ttcov : "0");
         this.ntcov = Float.parseFloat(ntcov != null ? ntcov : "0");
+        this.live_canopy_cvr_pct = Float.parseFloat(live_canopy_cvr_pct != null ? ntcov : "0");
+        this.afforestation_cd = afforestation_cd != null ? afforestation_cd : "";
+        this.land_cover_class_cd = land_cover_class_cd != null ? land_cover_class_cd : "";
+        this.land_cover_class_cd_ret = land_cover_class_cd_ret != null ? land_cover_class_cd_ret : "";
+        this.trtcd1 = trtcd1 != null ? trtcd1 : "";
+        this.trtcd2 = trtcd2 != null ? trtcd2 : "";
         this.trees = new ArrayList<>();
 
         this.attrs = new HashMap<>();
@@ -132,6 +144,10 @@ public class Plot {
 
     public float get_ntcov() {
         return ntcov;
+    }
+
+    public float get_live_canopy_cvr_pct() {
+        return live_canopy_cvr_pct;
     }
 
     @Override

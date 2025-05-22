@@ -10,7 +10,12 @@ let InputFilterTypes = [
     "exotic",
     "softwoodhardwood",
     "planted",
-    "tallytree"
+    "tallytree",
+    "afforestation_cd",
+    "land_cover_class_cd",
+    "land_cover_class_cd_ret",
+    "trtcd1",
+    "trtcd2"
 ];
 let availableLevelColors = [
     "#000000",
