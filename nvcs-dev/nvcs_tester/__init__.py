@@ -1,1 +1,1 @@
-__all__ = ['plot_io', 'tester']
+__all__ = ['plot_io', 'tester', 'tester_java']
