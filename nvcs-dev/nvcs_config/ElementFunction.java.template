@@ -1,0 +1,18 @@
+    public Object[] element_<%internalid%>() {
+        
+        // <%name%>
+        // <%id%>
+
+        String level = "<%level%>";
+        String code = "<%id%>";
+
+        <%description%>
+
+        <%filters%>
+
+        INodeMatch match = plot -> (
+            <%trigger%>
+        );
+
+        return new Object[] { level, code, match };
+    }

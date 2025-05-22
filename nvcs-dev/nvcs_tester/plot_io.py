@@ -41,13 +41,18 @@ def read_csv(file_path):
         results = list(reader)
     return results
 
-def read_sqlite(dbfile, tbl):
-    from key_western_us import Plot
-    from key_western_us import Tree
+def read_sqlite(type, dbfile, tbl):
+    if type == 'WestConfig':
+        return read_sqlite_west(dbfile, tbl)
+    else:
+        return read_sqlite_east(dbfile, tbl)
+
+def read_sqlite_west(dbfile, tbl):
+    from key_western_us import Plot, Tree
     plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2'
     tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, SPCOV'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
-    sql = sql + ' WHERE STATEAB != "AK"'
+    sql = sql + ' WHERE STATEAB != "AK" ORDER BY IDENT'
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
     tree_cur = con.cursor()
@@ -57,7 +62,31 @@ def read_sqlite(dbfile, tbl):
         for tree_row in tree_cur.execute(sql):
             tree_row = list(tree_row)
             if tree_row[0] is None:
-                continue
+                tree_row[0] = ""
+            if tree_row[1] is None:
+                tree_row[1] = 0
+            if tree_row[8] is None:
+                tree_row[8] = 0
+            plot.trees.append(Tree(*tree_row))
+        yield plot
+    con.close()
+
+def read_sqlite_east(dbfile, tbl):
+    from key_eastern_us import Plot, Tree
+    plot_fields = 'IDENT, null, null, ECOREGION, PLANTATION, HYDRIC, RIVERINE, null, null, null, null, null, null, null, null, null, null, null, null, null'
+    tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, null, null'
+    sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
+    sql = sql + ' WHERE (TRUE) ORDER BY IDENT'
+    con = sqlite3.connect(dbfile)
+    cur = con.cursor()
+    tree_cur = con.cursor()
+    for row in cur.execute(sql):
+        plot = Plot(*row)
+        sql = 'SELECT ' + tree_fields + ' FROM ' + tbl + ' WHERE IDENT == "' + row[0] + '"'
+        for tree_row in tree_cur.execute(sql):
+            tree_row = list(tree_row)
+            if tree_row[0] is None:
+                tree_row[0] = ""
             if tree_row[1] is None:
                 tree_row[1] = 0
             if tree_row[8] is None:

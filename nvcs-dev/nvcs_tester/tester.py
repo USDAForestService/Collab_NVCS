@@ -19,7 +19,7 @@ sys.path.append(parentDir + "/nvcs")
 from classifier import Classifier
 from plot_io import read_sqlite, read_file
 import logging
-from time import process_time
+from time import perf_counter
 
 from nvcs_builder import configuration
 config = configuration.DebugConfig()
@@ -31,7 +31,7 @@ elif config.target == config.eastSection:
 elif config.target == config.alaskaSection:
     import key_alaska_us as classification_key
 
-def run(outfile, debugfile, dbfile = None, plottbl = None, txtfile = None):
+def run(type, outfile, debugfile, dbfile = None, plottbl = None, txtfile = None):
 
     print('Input file = %s' % (dbfile if dbfile is not None else txtfile))
     print('Output file = %s' % outfile)
@@ -43,7 +43,7 @@ def run(outfile, debugfile, dbfile = None, plottbl = None, txtfile = None):
     logging.basicConfig(filename=debugfile, filemode='w', level=logging.DEBUG) # or ERROR
     with Timer() as t:
         with open(outfile, mode='w', encoding='utf-8') as f:
-            plots = read_sqlite(dbfile, plottbl) if txtfile is None else read_file(txtfile)
+            plots = read_sqlite(type, dbfile, plottbl) if txtfile is None else read_file(txtfile)
             for plot in plots:
                 solution = classifier.classify(plot)
                 if solution.path[-1]:
@@ -54,20 +54,20 @@ def run(outfile, debugfile, dbfile = None, plottbl = None, txtfile = None):
 
 class Timer:    
     def __enter__(self):
-        self.start = process_time()
+        self.start = perf_counter()
         return self
 
     def __exit__(self, *args):
-        self.end = process_time()
+        self.end = perf_counter()
         self.interval = self.end - self.start
                
 
 if __name__ == '__main__':
 
-    run(outfile=config.get(config.target, "Out_TesterResultsPath"),
+    run(type=config.target,
+        outfile=config.get(config.target, "Out_TesterResultsPath"),
         debugfile=config.get(config.target, "Out_DebugLogPath"),
         dbfile=config.get(config.target, "In_DbPath"),
-        plottbl=config.get(config.target, "In_DbTable"),
-        txtfile=config.get(config.target, "In_TxtPath"))
+        plottbl=config.get(config.target, "In_DbTable"))
 
     pass

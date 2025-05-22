@@ -5,7 +5,7 @@ from pattern import PatternList
 import logging
 
 class Plot:
-    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, land_cover_class_cd_ret, trtcd1, trtcd2):
+    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov):
         self.attrs = dict()
         self.attrs['ident'] = ident
         self.attrs['rscd'] = rscd
@@ -21,12 +21,6 @@ class Plot:
         self.attrs['shcov'] = float(shcov or 0)
         self.attrs['ttcov'] = float(ttcov or 0)
         self.attrs['ntcov'] = float(ntcov or 0)
-        self.attrs['live_canopy_cvr_pct'] = float(live_canopy_cvr_pct or 0)
-        self.attrs['afforestation_cd'] = afforestation_cd or ""
-        self.attrs['land_cover_class_cd'] = land_cover_class_cd or ""
-        self.attrs['land_cover_class_cd_ret'] = land_cover_class_cd_ret or ""
-        self.attrs['trtcd1'] = trtcd1 or ""
-        self.attrs['trtcd2'] = trtcd2 or ""
         self.trees = list()
 
     def __getattr__(self, name):
@@ -41,6 +35,7 @@ class Plot:
         match_riv = 0.0
         total_riv = 0.0
         for tree in self.trees:
+            if tree.species == "": continue
             total_riv += tree.riv;
             if pattlist.match_any({k:d.get(k) for d in (self.attrs, tree.attrs) for k in d}):
                 match_riv += tree.riv;
@@ -49,15 +44,16 @@ class Plot:
         else:
             pct_riv = (match_riv / total_riv) * 100
         logging.debug('%s|riv()::%s|%.1f', self.ident, pattlist.label, pct_riv)
-        return pct_riv
+        return round(pct_riv, 3)
 
     def spcov(self, pattlist):
         match_spcov = 0.0
         for tree in self.trees:
+            if tree.species == "": continue
             if pattlist.match_any({k:d.get(k) for d in (self.attrs, tree.attrs) for k in d}):
                 match_spcov += tree.spcov;
         logging.debug('%s|spcov()::%s|%.1f', self.ident, pattlist.label, match_spcov)
-        return match_spcov
+        return round(match_spcov, 3)
 
     def get_elevation(self):
         logging.debug('%s|elevation()|%s', self.ident, self.elevation)
@@ -86,10 +82,6 @@ class Plot:
     def get_ntcov(self):
         logging.debug('%s|ntcov()|%s', self.ident, self.ntcov)
         return float(self.ntcov)
-
-    def get_live_canopy_cvr_pct(self):
-        logging.debug('%s|live_canopy_cvr_pct()|%s', self.ident, self.live_canopy_cvr_pct)
-        return float(self.live_canopy_cvr_pct)
 
     def __repr__(self):
         return "Plot(%r)" % (self.attrs)
