@@ -35,6 +35,7 @@ class Plot:
         match_riv = 0.0
         total_riv = 0.0
         for tree in self.trees:
+            if tree.species == "": continue
             total_riv += tree.riv;
             if pattlist.match_any({k:d.get(k) for d in (self.attrs, tree.attrs) for k in d}):
                 match_riv += tree.riv;
@@ -43,15 +44,16 @@ class Plot:
         else:
             pct_riv = (match_riv / total_riv) * 100
         logging.debug('%s|riv()::%s|%.1f', self.ident, pattlist.label, pct_riv)
-        return pct_riv
+        return round(pct_riv, 3)
 
     def spcov(self, pattlist):
         match_spcov = 0.0
         for tree in self.trees:
+            if tree.species == "": continue
             if pattlist.match_any({k:d.get(k) for d in (self.attrs, tree.attrs) for k in d}):
                 match_spcov += tree.spcov;
         logging.debug('%s|spcov()::%s|%.1f', self.ident, pattlist.label, match_spcov)
-        return match_spcov
+        return round(match_spcov, 3)
 
     def get_elevation(self):
         logging.debug('%s|elevation()|%s', self.ident, self.elevation)

@@ -1,0 +1,67 @@
+package nvcs;
+
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import nvcs_components.ClassificationKey;
+import nvcs_components.KeyValue;
+import nvcs_components.Node;
+import nvcs_interfaces.INodeMatch;
+import nvcs_patterns.Pattern;
+import nvcs_patterns.PatternList;
+
+public class <%classname%> extends ClassificationKey {
+    
+    public Map<Integer,Node> nodes;
+    public Node root_node;
+
+    public <%classname%>() {
+
+        Pattern.register("rscd", "Pattern");
+        Pattern.register("state", "Pattern");
+        Pattern.register("ecoregion", "_EcoregionPattern");
+        Pattern.register("plantation", "Pattern");
+        Pattern.register("hydric", "Pattern");
+        Pattern.register("riverine", "Pattern");
+        Pattern.register("species", "_EcoregionPattern");
+        Pattern.register("wetland", "Pattern");
+        Pattern.register("ruderal", "Pattern");
+        Pattern.register("exotic", "Pattern");
+        Pattern.register("softwoodhardwood", "Pattern");
+        Pattern.register("planted", "Pattern");
+        Pattern.register("tallytree", "Pattern");
+
+        nodes = new LinkedHashMap<>();
+        root_node = _setup();
+        super.root_node = root_node;
+    }
+
+    public Node _setup() {
+        nodes.put(0, new Node(0, null, element_000(), ""));
+<%hierarchy%>
+
+        for (Map.Entry<Integer,Node> entry : nodes.entrySet()) {
+            Integer ident = entry.getKey();
+            Node element = entry.getValue();
+            if (element.parent != null) {
+                nodes.get(element.parent).children.add(nodes.get(ident));
+            }
+        }
+
+        return nodes.get(0);
+    }
+
+    public Object[] element_000() {
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { "", "", match };
+    }
+    
+<%nodes%>
+
+}

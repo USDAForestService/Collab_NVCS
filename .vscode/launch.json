@@ -2,6 +2,18 @@
     "version": "0.2.0",
     "configurations": [
       {
+        "type": "java",
+        "name": "TestApp",
+        "request": "launch",
+        "mainClass": "nvcs.TestApp",
+        "projectName": "nvcs_java",
+        "args": [
+          "west",
+          "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/TEMP.txt",
+          "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_output/JavaResults.out"
+        ]
+      },
+      {
         "name": "Debug Main Process",
         "type": "node",
         "request": "launch",
@@ -10,7 +22,9 @@
         "windows": {
           "runtimeExecutable": "${workspaceFolder}/nvcs-client/node_modules/.bin/electron.cmd"
         },
-        "args" : ["."],
+        "args": [
+          "."
+        ],
         "outputCapture": "std"
       }
     ]
