@@ -108,7 +108,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], python_key_input_vw_name, python_key_input_vw_desc)
     
         # Run input data through the key
-        tester.run(outfile=in_KeyTestData['source_out'], debugfile=in_KeyTestData['source_debug'],
+        tester.run(type=in_KeyTestData["type"], outfile=in_KeyTestData['source_out'], debugfile=in_KeyTestData['source_debug'],
                    dbfile=out_Options["output_db"], plottbl=python_key_input_vw_name)
     
         # Run the outfile through the fixup and save to the new database
@@ -247,14 +247,16 @@ if __name__ == '__main__':
         "source_out": config.get(config.fullOutputSection, "Out_TesterResultsPath"),
         "source_debug": config.get(config.fullOutputSection, "Out_DebugLogPath"),
         "new_tbl_nm": config.get(config.fullOutputSection, "KeyTestDataName"),
-        "description": config.get(config.fullOutputSection, "KeyTestDataDesc")
+        "description": config.get(config.fullOutputSection, "KeyTestDataDesc"),
+        "type": config.get(config.base, "TargetConfig")
     }
 
     in_AnlyTestData = {
         "source": config.get(config.fullOutputSection, "In_DbPath"),
         "source_tbl_nm": config.get(config.fullOutputSection, "In_AnlyDbTable"),
         "new_tbl_nm": config.get(config.fullOutputSection, "AnlyTestDataName"),
-        "description": config.get(config.fullOutputSection, "AnlyTestDataDesc")
+        "description": config.get(config.fullOutputSection, "AnlyTestDataDesc"),
+        "type": config.get(config.base, "TargetConfig")
     }
 
     in_RefForestType = {
