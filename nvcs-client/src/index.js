@@ -504,7 +504,7 @@ async function fetchAvailableYears(event) {
   // Get source table & column
   const defaultConfigPath = getDefaultPythontConfigFilePath();
   const config = getPythonConfigFile(defaultConfigPath);
-  const table = config.FullOutputConfig.KeyTestDataName;
+  const table = config.FullOutputConfig.AnlyTestDataName;
   const column = "INVYR";
 
   // Execute Plot IO
