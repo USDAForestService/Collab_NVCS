@@ -52,7 +52,7 @@ def read_sqlite_west(dbfile, tbl):
     plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2'
     tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, SPCOV'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
-    sql = sql + ' WHERE STATEAB != "AK" ORDER BY IDENT'
+    sql = sql + ' WHERE RSCD IN (22, 23, 26, 33) ORDER BY IDENT'
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
     tree_cur = con.cursor()

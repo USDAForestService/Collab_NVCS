@@ -15,7 +15,7 @@ from nvcs_builder import configuration
 # Script variables
 ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
 
-def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_RefAlgNode, in_RefKeyOutput, in_KeyOutput, out_Options):
+def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefForestType, in_RefAlgNode, in_RefKeyOutput, in_KeyOutput, out_Options):
     if out_Options["skip_shared_tables"]:
         print("-" * 50)
         print("Skipping shared table and view generation")
@@ -33,17 +33,6 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
         ref_key_output_table_metadata = [[in_RefKeyOutput['new_tbl_nm'], get_formatted_date(), in_RefKeyOutput['description']]]
         plot_io.write_table_sqlite(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], ref_key_output_table_metadata,
                                    ref_key_output_table_columns, ref_key_output_table_definition)
-
-        # Prepare & create table containing unfiltered key input source
-        nvcs_key_test_data_definition, nvcs_key_test_data_columns = plot_io.table_info_sqlite(
-            in_KeyTestData['source'], in_KeyTestData['source_tbl_nm'], new_tbl=in_KeyTestData['new_tbl_nm'])
-        nvcs_key_test_data_rows = plot_io.query_sqlite(
-            in_KeyTestData['source'], f"SELECT * FROM {in_KeyTestData['source_tbl_nm']};")
-        plot_io.write_table_sqlite(out_Options["output_db"], in_KeyTestData['new_tbl_nm'], nvcs_key_test_data_rows,
-                             nvcs_key_test_data_columns, nvcs_key_test_data_definition)
-        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS NKTD_PK;")
-        plot_io.execute_sqlite(out_Options["output_db"], f"CREATE UNIQUE INDEX NKTD_PK ON {in_KeyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
-        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_KeyTestData['new_tbl_nm'], in_KeyTestData['description'])
 
         # Prepare & create table containing unfiltered analytical input source
         nvcs_analytical_test_data_definition, nvcs_analytical_test_data_columns = plot_io.table_info_sqlite(
@@ -103,20 +92,20 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, "
             "LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2, "
             "SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
-            f"TALLYTREE, SPCOV FROM {in_KeyTestData['new_tbl_nm']} "
+            f"TALLYTREE, SPCOV FROM {in_AnlyTestData['new_tbl_nm']} "
             f"WHERE INVYR = {inventory_year}{additional_where_clause};"
         )
         plot_io.create_view(out_Options["output_db"], python_key_input_vw_name, python_key_input_vw_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], python_key_input_vw_name, python_key_input_vw_desc)
     
         # Run input data through the key
-        tester.run(type=in_KeyTestData["type"], outfile=in_KeyTestData['source_out'], debugfile=in_KeyTestData['source_debug'],
+        tester.run(type=in_AnlyTestData["type"], outfile=in_AnlyTestData['source_out'], debugfile=in_AnlyTestData['source_debug'],
                    dbfile=out_Options["output_db"], plottbl=python_key_input_vw_name)
     
         # Run the outfile through the fixup and save to the new database
         key_output_nm = f"Y{inventory_year}_{in_KeyOutput['new_tbl_nm']}"
         key_output_desc = f"{in_KeyOutput['description']} [{inventory_year} plots only]"
-        fixup_keyout_v2.fixup(key_outfile=in_KeyTestData["source_out"], out_csv=in_KeyOutput["csv_output"],
+        fixup_keyout_v2.fixup(key_outfile=in_AnlyTestData["source_out"], out_csv=in_KeyOutput["csv_output"],
                               out_db=out_Options["output_db"], out_db_tbl=key_output_nm)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], key_output_nm, key_output_desc)
     
@@ -145,7 +134,7 @@ def generateFullOutput(in_ClassificationKey, in_KeyTestData, in_AnlyTestData, in
             "ANLY.COVER_NT_LAYER1, ANLY.COVER_FB_LAYER2, ANLY.COVER_SH_LAYER2, ANLY.COVER_GR_LAYER2, ANLY.COVER_TT_LAYER2, "
             "ANLY.COVER_NT_LAYER2, ANLY.COVER_FB_LAYER3, ANLY.COVER_SH_LAYER3, ANLY.COVER_GR_LAYER3, ANLY.COVER_TT_LAYER3, "
             "ANLY.COVER_NT_LAYER3, ANLY.COVER_FB_LAYER4, ANLY.COVER_SH_LAYER4, ANLY.COVER_GR_LAYER4, ANLY.COVER_TT_LAYER4, "
-            "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.CONDPROP_UNADJ, ANLY.NUM_FORCOND_PLOT, "
+            "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.CONDPRO_UNADJ, ANLY.NUM_FORCOND_PLOT, "
             "ANLY.LIVE_CANOPY_CVR_PCT, ANLY.AFFORESTATION_CD, ANLY.LAND_COVER_CLASS_CD, ANLY.LAND_COVER_CLASS_CD_RET, ANLY.TRTCD1, ANLY.TRTCD2 "
             f"FROM ({key_output_nm} AS 'KEY_OUTPUT' "
             f"INNER JOIN {nvcs_analytical_test_data_vw_name} AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
@@ -244,19 +233,11 @@ if __name__ == '__main__':
     elif config.target == config.alaskaSection:
         import key_alaska_us as classification_key
 
-    in_KeyTestData = {
-        "source": config.get(config.fullOutputSection, "In_DbPath"),
-        "source_tbl_nm": config.get(config.fullOutputSection, "In_TestDbTable"),
-        "source_out": config.get(config.fullOutputSection, "Out_TesterResultsPath"),
-        "source_debug": config.get(config.fullOutputSection, "Out_DebugLogPath"),
-        "new_tbl_nm": config.get(config.fullOutputSection, "KeyTestDataName"),
-        "description": config.get(config.fullOutputSection, "KeyTestDataDesc"),
-        "type": config.get(config.base, "TargetConfig")
-    }
-
     in_AnlyTestData = {
         "source": config.get(config.fullOutputSection, "In_DbPath"),
         "source_tbl_nm": config.get(config.fullOutputSection, "In_AnlyDbTable"),
+        "source_out": config.get(config.fullOutputSection, "Out_TesterResultsPath"),
+        "source_debug": config.get(config.fullOutputSection, "Out_DebugLogPath"),
         "new_tbl_nm": config.get(config.fullOutputSection, "AnlyTestDataName"),
         "description": config.get(config.fullOutputSection, "AnlyTestDataDesc"),
         "type": config.get(config.base, "TargetConfig")
@@ -292,5 +273,5 @@ if __name__ == '__main__':
         "skip_shared_tables": config.get_literal(config.fullOutputSection, "SkipSharedTables")
     }
 
-    generateFullOutput(classification_key, in_KeyTestData, in_AnlyTestData, in_RefForestType, in_RefAlgNode,
+    generateFullOutput(classification_key, in_AnlyTestData, in_RefForestType, in_RefAlgNode,
                        in_RefKeyOutput, in_KeyOutput, out_Options)
