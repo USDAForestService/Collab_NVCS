@@ -71,7 +71,13 @@ def json_query(dbfile, tbl, invyrs, where, type):
                 'SOFTWOODHARDWOOD', SOFTWOODHARDWOOD,
                 'PLANTED', PLANTED,
                 'TALLYTREE', {'TALLYTREE' if type == 'WestConfig' else 'null'},
-                'SPCOV', {'SPCOV' if type == 'WestConfig' else 'null'}
+                'SPCOV', {'SPCOV' if type == 'WestConfig' else 'null'},
+                'LIVE_CANOPY_CVR_PCT', LIVE_CANOPY_CVR_PCT,
+                'AFFORESTATION_CD', AFFORESTATION_CD,
+                'LAND_COVER_CLASS_CD', LAND_COVER_CLASS_CD,
+                'LAND_COVER_CLASS_CD_RET', LAND_COVER_CLASS_CD_RET,
+                'TRTCD1', TRTCD1,
+                'TRTCD2', TRTCD2
             )
             ROW_JSON
             FROM {tbl}

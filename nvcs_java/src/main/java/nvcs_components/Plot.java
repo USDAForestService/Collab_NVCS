@@ -47,7 +47,7 @@ public class Plot {
         this.shcov = Float.parseFloat(shcov != null ? shcov : "0");
         this.ttcov = Float.parseFloat(ttcov != null ? ttcov : "0");
         this.ntcov = Float.parseFloat(ntcov != null ? ntcov : "0");
-        this.live_canopy_cvr_pct = Float.parseFloat(live_canopy_cvr_pct != null ? ntcov : "0");
+        this.live_canopy_cvr_pct = Float.parseFloat(live_canopy_cvr_pct != null ? live_canopy_cvr_pct : "0");
         this.afforestation_cd = afforestation_cd != null ? afforestation_cd : "";
         this.land_cover_class_cd = land_cover_class_cd != null ? land_cover_class_cd : "";
         this.land_cover_class_cd_ret = land_cover_class_cd_ret != null ? land_cover_class_cd_ret : "";
@@ -70,6 +70,12 @@ public class Plot {
         this.attrs.put("shcov", this.shcov);
         this.attrs.put("ttcov", this.ttcov);
         this.attrs.put("ntcov", this.ntcov);
+        this.attrs.put("live_canopy_cvr_pct", this.live_canopy_cvr_pct);
+        this.attrs.put("afforestation_cd", this.afforestation_cd);
+        this.attrs.put("land_cover_class_cd", this.land_cover_class_cd);
+        this.attrs.put("land_cover_class_cd_ret", this.land_cover_class_cd_ret);
+        this.attrs.put("trtcd1", this.trtcd1);
+        this.attrs.put("trtcd2", this.trtcd2);
     }
 
     public boolean match(PatternList pattlist) {
