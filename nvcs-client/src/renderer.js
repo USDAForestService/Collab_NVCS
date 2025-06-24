@@ -1552,7 +1552,16 @@ function toggleNestedContent(button, type) {
         content.setAttribute("aria-expanded", true);
         button.innerText = `Hide Nested ${typeMessage}`;
     }
-} 
+}
+
+function generateAddressButton(alertId) {
+    let html = `
+        <button data-alert-id="${alertId}" onclick="openAddressAlertDialog('${alertId}')">
+            Address
+        </button>
+    `;
+    return html;
+}
 
 function checkMissingRequiredFields() {
     const invalidMissingRequired = findMissingRequiredFields();
@@ -1584,7 +1593,10 @@ function checkMissingRequiredFields() {
         for (const elementFilter of info.invalids) {
             html += `
                 <li>
-                    ${elementFilter.value}
+                    <span>
+                        ${elementFilter.value}
+                    </span>
+                    ${generateAddressButton(elementFilter.alertId)}
                 </li>
             `;
         }
@@ -1625,6 +1637,7 @@ function checkMissingTriggerParenthesesError() {
         html += `
             <li>
                 ${elementButton}
+                ${generateAddressButton(info.alertId)}
             </li>
         `
     }
@@ -1666,7 +1679,10 @@ function checkMissingFiltersInTrigger() {
         for (const elementFilter of info.invalids) {
             html += `
                 <li>
-                    ${elementFilter.value}
+                    <span>
+                        ${elementFilter.value}
+                    </span>
+                    ${generateAddressButton(elementFilter.alertId)}
                 </li>
             `;
         }
@@ -1731,7 +1747,10 @@ function checkInvalidBinaryValueError() {
 
                 html += `
                     <li>
-                        ${entry.value}
+                        <span>
+                            ${entry.value}
+                        </span>
+                        ${generateAddressButton(entry.alertId)}
                     </li>
                 `;
             }
@@ -1785,7 +1804,10 @@ function checkMissingNodeIdInNames() {
 
         html += `
                 <li>
-                    <b>Missing Node ID:</b> ${info.id}
+                    <span>
+                        <b>Missing Node ID:</b> ${info.id}
+                    </span>
+                    ${generateAddressButton(info.alertId)}
                 </li>
         `;
 
@@ -1836,6 +1858,9 @@ function checkUnconventionalFileNames() {
                 <li>
                     <b>Suggested Name:</b> ${info.suggestedName}
                 </li>
+                <li>
+                    ${generateAddressButton(info.alertId)}
+                </li>
         `;
 
         html += `
@@ -1884,6 +1909,7 @@ function checkDuplicateNodeIds() {
             html += `
             <li>
                 ${elementButton}
+                ${generateAddressButton(element.alertId)}
             </li>
             `;
         }
@@ -1952,9 +1978,7 @@ function checkInvalidSpeciesWarning() {
                         <span>
                             ${invalidSpeciesName}
                         </span>
-                        <button onclick="openConcernDialog()">
-                            Address
-                        </button>
+                        ${generateAddressButton(entry.alertId)}
                     </li>
                 `;
             }
@@ -2015,6 +2039,7 @@ function checkNonexistentDocumentElements() {
                     <button class='hierarchyNodeButton' onclick="openDocumentDialog('${info.section.name}','${element.index}')">
                         ${buttonText}
                     </button>
+                    ${generateAddressButton(element.alertId)}
                 </li>
             `;
         }
@@ -2055,6 +2080,7 @@ function checkMissingElementsInDocument() {
         html += `
             <li class='border-box-list-item'>
                 ${elementButton}
+                ${generateAddressButton(info.alertId)}
             </li>
         `
     }
@@ -2090,6 +2116,7 @@ function checkUnlabeledElementsInDocument() {
         html += `
             <li class='border-box-list-item'>
                 ${elementButton}
+                ${generateAddressButton(info.alertId)}
             </li>
         `
     }
@@ -2716,8 +2743,8 @@ async function openSettingsDialog() {
     showDialog(dialog);
 }
 
-function openConcernDialog() {
-    const dialog = document.getElementById("concern-dialog");
+function openAddressAlertDialog() {
+    const dialog = document.getElementById("address-alert-dialog");
     showDialog(dialog);
 }
 
