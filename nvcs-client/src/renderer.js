@@ -1584,7 +1584,7 @@ function checkMissingRequiredFields() {
         for (const elementFilter of info.invalids) {
             html += `
                 <li>
-                    ${elementFilter}
+                    ${elementFilter.value}
                 </li>
             `;
         }
@@ -1666,7 +1666,7 @@ function checkMissingFiltersInTrigger() {
         for (const elementFilter of info.invalids) {
             html += `
                 <li>
-                    ${elementFilter}
+                    ${elementFilter.value}
                 </li>
             `;
         }
@@ -1877,8 +1877,8 @@ function checkDuplicateNodeIds() {
                 <ul>
         `;
 
-        for (const button of info.buttons) {
-            const cloneButton = cloneElement(button, button.innerText + " (duplicate node ID)");
+        for (const element of info.invalids) {
+            const cloneButton = cloneElement(element.button, element.button.innerText + " (duplicate node ID)");
             const elementButton = cloneButton.outerHTML;
 
             html += `
@@ -1987,7 +1987,7 @@ function checkNonexistentDocumentElements() {
 
     let invalidReferenceCount = 0;
     for (const section of nonexistentElementsInfo)
-        invalidReferenceCount += section.elements.length;
+        invalidReferenceCount += section.invalids.length;
 
     let html = `
         <p>
@@ -2008,7 +2008,7 @@ function checkNonexistentDocumentElements() {
                 <ul>
         `;
 
-        for (const element of info.elements) {
+        for (const element of info.invalids) {
             const buttonText = element.sectionElement.content != "" ? element.sectionElement.content : "(blank)";
             html += `
                 <li>
@@ -2106,23 +2106,41 @@ function findMissingRequiredFields() {
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
         let invalids = [];
         if (element.hierarchyName == "")
-            invalids.push("Node Name");
+            invalids.push({
+                alertId: newGuid(),
+                value: "Node Name"
+            });
 
         if (element.fileName == "")
-            invalids.push("Node Description");
+            invalids.push({
+                alertId: newGuid(),
+                value: "Node File Name"
+            });
 
         if (element.node.description == "")
-            invalids.push("Node Description");
+            invalids.push({
+                alertId: newGuid(),
+                value: "Node Description"
+            });
 
         if (!element.parent)
-            invalids.push("Parent Node");
+            invalids.push({
+                alertId: newGuid(),
+                value: "Parent Node"
+            });
 
         if (element.node.trigger == "")
-            invalids.push("Node Trigger");
+            invalids.push({
+                alertId: newGuid(),
+                value: "Node Trigger"
+            });
 
         const filterNames = Object.keys(element.node.filters);
         if (filterNames.includes(""))
-            invalids.push("Node Filter Names");
+            invalids.push({
+                alertId: newGuid(),
+                value: "Node Filter Names"
+            });
         
         if (invalids.length == 0) 
             continue;
@@ -2149,7 +2167,8 @@ function findMissingTriggerParentheses() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName),
+            alertId: newGuid()
         });
     }
 
@@ -2207,7 +2226,8 @@ function findMissingNodeIdInNames() {
             hierarchyName: element.hierarchyName,
             element: element,
             button: findHierarchyButton(element.hierarchyName),
-            id: missingId
+            id: missingId,
+            alertId: newGuid()
         });
     }
 
@@ -2228,7 +2248,8 @@ function findUnconventionalFileNames() {
             element: element,
             button: findHierarchyButton(element.hierarchyName),
             fileName: fileName,
-            suggestedName: suggestedName
+            suggestedName: suggestedName,
+            alertId: newGuid()
         });
     }
 
@@ -2247,10 +2268,18 @@ function findDuplicateNodeIds() {
         if (elementsWithNodeId.length == 1) 
             continue;
 
+        const invalids = [];
+        for (const elementWithNodeId of elementsWithNodeId) {
+            invalids.push({
+                alertId: newGuid(),
+                hierarchyName: elementWithNodeId.hierarchyName,
+                button: findHierarchyButton(elementWithNodeId.hierarchyName)
+            })
+        }
+
         invalid.push({
             id: element.node.id,
-            elements: elementsWithNodeId,
-            buttons: elementsWithNodeId.map(i => findHierarchyButton(i.hierarchyName))
+            invalids: invalids,
         });
     }
 
@@ -2293,13 +2322,14 @@ function findNonexistentDocumentElements() {
             const sectionElementIndex = entry.section.content.indexOf(sectionElement);
             invalidElements.push({
                 sectionElement: sectionElement,
-                index: sectionElementIndex
+                index: sectionElementIndex,
+                alertId: newGuid()
             });
         }
 
         if (invalidElements.length == 0) continue;
         invalid.push({
-            elements: invalidElements,
+            invalids: invalidElements,
             section: entry.section
         });
     }
@@ -2329,7 +2359,8 @@ function findMissingElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName),
+            alertId: newGuid()
         });
     }
 
@@ -2346,7 +2377,8 @@ function findUnlabeledElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName),
+            alertId: newGuid()
         });
     }
 
@@ -2367,20 +2399,186 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
                 hierarchyName: element.hierarchyName,
                 invalids: [{
                     filter: filterKey,
-                    value: subFilterCombo
+                    value: subFilterCombo,
+                    alertId: newGuid()
                 }],
                 element: element,
-                button: findHierarchyButton(element.hierarchyName)
+                button: findHierarchyButton(element.hierarchyName),
             });
         }
         else {
             existingInvalid.invalids.push({
                 filter: filterKey,
-                value: subFilterCombo
+                value: subFilterCombo,
+                alertId: newGuid()
             });
         }
     }
     return invalidInfo;
+}
+
+function createFlattenedAlerts() {
+    const flattenedErrors = createFlattenedErrors();
+    const flattenedWarnings = createFlattenedWarnings();
+    const flattenedAlerts = [...flattenedErrors, ...flattenedWarnings];
+    return flattenedAlerts;
+}
+
+function createFlattenedErrors() {
+    const alerts = [];
+
+    for (const error of errors) {
+        if (error.name == "missing-required-fields") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        alertId: invalid.alertId,
+                        alertType: "error",
+                        alertSubtype: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.value} is a required field`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-trigger-parentheses") {
+            for (const source of error.source) {
+                alerts.push({
+                    alertId: source.alertId,
+                    alertType: "error",
+                    alertSubType: error.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node Trigger has mismatched parentheses"
+                });
+            }
+        }
+        else if (error.name == "invalid-trigger-filters") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        alertId: invalid.alertId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.value} references a nonexistent filter`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-binary") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        alertId: invalid.alertId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} - ${invalid.value} is not a valid binary assignment (yes/no)`
+                    });
+                }
+            }
+        }
+        else if (error.name == "nonexistent-document-elements") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        alertId: invalid.alertId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: `Document Section: ${source.section.name}`,
+                        targetProblem: `${invalid.sectionElement.content} is not a valid hierarchy node`
+                    });
+                }
+            }
+        }
+        else {
+            throw new Error("Invalid error type provided", error.name);
+        }
+    }
+
+    return alerts;
+}
+
+function createFlattenedWarnings() {
+    const alerts = [];
+
+    for (const warning of warnings) {
+        if (warning.name == "missing-node-id-in-name") {
+            for (const source of warning.source) {
+                alerts.push({
+                    alertId: source.alertId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: `Node ID ${source.id} is not present in the Node Name`
+                });
+            }
+        }
+        else if (warning.name == "unconventional-file-name") {
+            for (const source of warning.source) {
+                alerts.push({
+                    alertId: source.alertId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: `Node File Name ${source.fileName} is unconventional`
+                });
+            }
+        }
+        else if (warning.name == "duplicate-node-ids") {
+            for (const source of warning.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        alertId: invalid.alertId,
+                        alertType: "warning",
+                        alertSubType: warning.name,
+                        targetNode: invalid.hierarchyName,
+                        targetProblem: `Node ID ${source.id} is nonunique`
+                    });
+                }
+            }
+        }
+        else if (warning.name == "invalid-species") {
+            for (const source of warning.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        alertId: invalid.alertId,
+                        alertType: "warning",
+                        alertSubType: warning.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} - ${invalid.value} does not exist in the FIA species list`
+                    });
+                }
+            }
+        }
+        else if (warning.name == "missing-document-elements") {
+            for (const source of warning.source) {
+                alerts.push({
+                    alertId: source.alertId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node is not referenced in the generated Document viewer"
+                });
+            }
+        }
+        else if (warning.name == "unlabeled-document-elements") {
+            for (const source of warning.source) {
+                alerts.push({
+                    alertId: source.alertId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node has no label in the generated Document viewer"
+                });
+            }
+        }
+        else {
+            throw new Error("Invalid warning type provided", warning.name);
+        }
+    }
+
+    return alerts;
 }
 
 function findHierarchyButton(hierarchyName) {
@@ -2614,7 +2812,10 @@ function findMissingFiltersInTrigger(trigger, filters) {
     for (const reference of references) {
         const filter = reference.replace("match(", "").replace("riv(", "").replace("spcov(", "").replace(")", "");
         if (filters.includes(filter)) continue;
-        missing.push(reference);
+        missing.push({
+            alertId: newGuid(),
+            value: reference
+        });
     }
 
     return missing;
