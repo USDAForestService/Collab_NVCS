@@ -2743,7 +2743,16 @@ async function openSettingsDialog() {
     showDialog(dialog);
 }
 
-function openAddressAlertDialog() {
+function openAddressAlertDialog(alertId) {
+    const flattenedAlerts = createFlattenedAlerts();
+    const alert = flattenedAlerts.filter(i => i.alertId == alertId)[0];
+    
+    document.getElementById("alert-id").value = alert.alertId;
+    document.getElementById("alert-type").value = alert.alertType;
+    document.getElementById("alert-subtype").value = alert.alertSubType;
+    document.getElementById("alert-target-node").value = alert.targetNode;
+    document.getElementById("alert-target-problem").value = alert.targetProblem;
+
     const dialog = document.getElementById("address-alert-dialog");
     showDialog(dialog);
 }
