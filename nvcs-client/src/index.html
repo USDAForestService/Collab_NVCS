@@ -229,6 +229,30 @@
           </div>
         </div>
       </dialog>
+      <dialog id='concern-dialog' class="dialog">
+        <div class="header-container">
+          <div class="button-container">
+            <button class='close-btn' autofocus>Close</button>
+          </div>
+          <h2>Address Concern</h2>
+        </div>
+        <div class="body-container">
+          <div class="input-container">
+            <label for="concern-notes" class="key-holder">Notes:</label>
+            <textarea id="concern-notes" class="value-holder" title="Notes regarding the concern"></textarea>
+          </div>
+          <div class="input-container">
+            <label for="concern-addressed" class="key-holder">Is Concern Addressed:</label>
+            <input id="concern-addressed" type="checkbox" title="Has this concern been addressed?" />
+          </div>
+        </div>
+        <div class="footer-container">
+          <div class="button-container">
+            <button onclick="saveAddressedNotes()" title="Save changes regarding the concern">Save</button>
+            <button class='close-btn'>Close</button>
+          </div>
+        </div>
+      </dialog>
     </div>
     <div class="data-list-container">
       <datalist id="species-list" data-type="warning" data-missing-message="This species is not tracked"></datalist>

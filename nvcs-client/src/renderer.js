@@ -1949,7 +1949,12 @@ function checkInvalidSpeciesWarning() {
                 const invalidSpeciesName = entry.value;
                 html += `
                     <li>
-                        ${invalidSpeciesName}
+                        <span>
+                            ${invalidSpeciesName}
+                        </span>
+                        <button onclick="openConcernDialog()">
+                            Address
+                        </button>
                     </li>
                 `;
             }
@@ -2510,6 +2515,11 @@ async function openSettingsDialog() {
     updateSettingsDialogValues();
 
     const dialog = document.getElementById("settings-dialog");
+    showDialog(dialog);
+}
+
+function openConcernDialog() {
+    const dialog = document.getElementById("concern-dialog");
     showDialog(dialog);
 }
 
