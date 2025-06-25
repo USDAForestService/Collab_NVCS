@@ -31,6 +31,7 @@ let levelColorMap = {};
 let lineNumberCounter = 0;
 let warnings = [];
 let errors = [];
+let flattenedAlerts = [];
 let unsavedDialogChanges = false;
 let showTags = false;
 
@@ -466,6 +467,9 @@ function generateAlerts() {
     // Update counters
     document.getElementById("error-type-counter").innerText = `(${errors.length})`;
     document.getElementById("warning-type-counter").innerText = `(${warnings.length})`;
+
+    // Update flattened alerts
+    flattenedAlerts = createFlattenedAlerts();
 }
 
 function generateListEntry(element) {
@@ -1554,13 +1558,14 @@ function toggleNestedContent(button, type) {
     }
 }
 
-function generateAddressButton(alertId) {
+function generateAddressButton() {
+    let id = newGuid();
     let html = `
-        <button data-alert-id="${alertId}" onclick="openAddressAlertDialog('${alertId}')">
+        <button id="${id}">
             Address
         </button>
     `;
-    return html;
+    return [html, id];
 }
 
 function checkMissingRequiredFields() {
@@ -1591,12 +1596,14 @@ function checkMissingRequiredFields() {
         `;
 
         for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
             html += `
                 <li>
                     <span>
                         ${elementFilter.value}
                     </span>
-                    ${generateAddressButton(elementFilter.alertId)}
+                    ${addressButton}
                 </li>
             `;
         }
@@ -1634,10 +1641,12 @@ function checkMissingTriggerParenthesesError() {
     for (const info of invalidParentheses) {
         const cloneButton = cloneElement(info.button, info.button.innerText + " (mismatched parentheses)");
         const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
             <li>
                 ${elementButton}
-                ${generateAddressButton(info.alertId)}
+                ${addressButton}
             </li>
         `
     }
@@ -1677,12 +1686,14 @@ function checkMissingFiltersInTrigger() {
         `;
 
         for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
             html += `
                 <li>
                     <span>
                         ${elementFilter.value}
                     </span>
-                    ${generateAddressButton(elementFilter.alertId)}
+                    ${addressButton}
                 </li>
             `;
         }
@@ -1745,12 +1756,14 @@ function checkInvalidBinaryValueError() {
                 if (entry.filter != elementFilter) 
                     continue;
 
+                const [addressButton, addressId] = generateAddressButton();
+                entry.addressId = addressId;
                 html += `
                     <li>
                         <span>
                             ${entry.value}
                         </span>
-                        ${generateAddressButton(entry.alertId)}
+                        ${addressButton}
                     </li>
                 `;
             }
@@ -1802,12 +1815,14 @@ function checkMissingNodeIdInNames() {
                 <ul>
         `;
 
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
                 <li>
                     <span>
                         <b>Missing Node ID:</b> ${info.id}
                     </span>
-                    ${generateAddressButton(info.alertId)}
+                    ${addressButton}
                 </li>
         `;
 
@@ -1851,6 +1866,8 @@ function checkUnconventionalFileNames() {
                 <ul>
         `;
 
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
                 <li>
                     <b>File Name:</b> ${info.fileName}
@@ -1859,7 +1876,7 @@ function checkUnconventionalFileNames() {
                     <b>Suggested Name:</b> ${info.suggestedName}
                 </li>
                 <li>
-                    ${generateAddressButton(info.alertId)}
+                    ${addressButton}
                 </li>
         `;
 
@@ -1905,11 +1922,12 @@ function checkDuplicateNodeIds() {
         for (const element of info.invalids) {
             const cloneButton = cloneElement(element.button, element.button.innerText + " (duplicate node ID)");
             const elementButton = cloneButton.outerHTML;
-
+            const [addressButton, addressId] = generateAddressButton();
+            element.addressId = addressId;
             html += `
             <li>
                 ${elementButton}
-                ${generateAddressButton(element.alertId)}
+                ${addressButton}
             </li>
             `;
         }
@@ -1973,12 +1991,14 @@ function checkInvalidSpeciesWarning() {
                     continue;
 
                 const invalidSpeciesName = entry.value;
+                const [addressButton, addressId] = generateAddressButton();
+                entry.addressId = addressId;
                 html += `
                     <li>
                         <span>
                             ${invalidSpeciesName}
                         </span>
-                        ${generateAddressButton(entry.alertId)}
+                        ${addressButton}
                     </li>
                 `;
             }
@@ -2034,12 +2054,14 @@ function checkNonexistentDocumentElements() {
 
         for (const element of info.invalids) {
             const buttonText = element.sectionElement.content != "" ? element.sectionElement.content : "(blank)";
+            const [addressButton, addressId] = generateAddressButton();
+            element.addressId = addressId;
             html += `
                 <li>
                     <button class='hierarchyNodeButton' onclick="openDocumentDialog('${info.section.name}','${element.index}')">
                         ${buttonText}
                     </button>
-                    ${generateAddressButton(element.alertId)}
+                    ${addressButton}
                 </li>
             `;
         }
@@ -2077,10 +2099,12 @@ function checkMissingElementsInDocument() {
     for (const info of missingElementsInfo) {
         const cloneButton = cloneElement(info.button, info.button.innerText + " (missing document element)");
         const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
             <li class='border-box-list-item'>
                 ${elementButton}
-                ${generateAddressButton(info.alertId)}
+                ${addressButton}
             </li>
         `
     }
@@ -2113,10 +2137,12 @@ function checkUnlabeledElementsInDocument() {
     for (const info of unlabeledElementsInfo) {
         const cloneButton = cloneElement(info.button, info.button.innerText + " (unlabeled document element)");
         const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
             <li class='border-box-list-item'>
                 ${elementButton}
-                ${generateAddressButton(info.alertId)}
+                ${addressButton}
             </li>
         `
     }
@@ -2134,38 +2160,32 @@ function findMissingRequiredFields() {
         let invalids = [];
         if (element.hierarchyName == "")
             invalids.push({
-                alertId: newGuid(),
                 value: "Node Name"
             });
 
         if (element.fileName == "")
             invalids.push({
-                alertId: newGuid(),
                 value: "Node File Name"
             });
 
         if (element.node.description == "")
             invalids.push({
-                alertId: newGuid(),
                 value: "Node Description"
             });
 
         if (!element.parent)
             invalids.push({
-                alertId: newGuid(),
                 value: "Parent Node"
             });
 
         if (element.node.trigger == "")
             invalids.push({
-                alertId: newGuid(),
                 value: "Node Trigger"
             });
 
         const filterNames = Object.keys(element.node.filters);
         if (filterNames.includes(""))
             invalids.push({
-                alertId: newGuid(),
                 value: "Node Filter Names"
             });
         
@@ -2194,8 +2214,7 @@ function findMissingTriggerParentheses() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
-            alertId: newGuid()
+            button: findHierarchyButton(element.hierarchyName)
         });
     }
 
@@ -2253,8 +2272,7 @@ function findMissingNodeIdInNames() {
             hierarchyName: element.hierarchyName,
             element: element,
             button: findHierarchyButton(element.hierarchyName),
-            id: missingId,
-            alertId: newGuid()
+            id: missingId
         });
     }
 
@@ -2275,8 +2293,7 @@ function findUnconventionalFileNames() {
             element: element,
             button: findHierarchyButton(element.hierarchyName),
             fileName: fileName,
-            suggestedName: suggestedName,
-            alertId: newGuid()
+            suggestedName: suggestedName
         });
     }
 
@@ -2298,7 +2315,6 @@ function findDuplicateNodeIds() {
         const invalids = [];
         for (const elementWithNodeId of elementsWithNodeId) {
             invalids.push({
-                alertId: newGuid(),
                 hierarchyName: elementWithNodeId.hierarchyName,
                 button: findHierarchyButton(elementWithNodeId.hierarchyName)
             })
@@ -2349,8 +2365,7 @@ function findNonexistentDocumentElements() {
             const sectionElementIndex = entry.section.content.indexOf(sectionElement);
             invalidElements.push({
                 sectionElement: sectionElement,
-                index: sectionElementIndex,
-                alertId: newGuid()
+                index: sectionElementIndex
             });
         }
 
@@ -2386,8 +2401,7 @@ function findMissingElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
-            alertId: newGuid()
+            button: findHierarchyButton(element.hierarchyName)
         });
     }
 
@@ -2404,8 +2418,7 @@ function findUnlabeledElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
-            alertId: newGuid()
+            button: findHierarchyButton(element.hierarchyName)
         });
     }
 
@@ -2426,8 +2439,7 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
                 hierarchyName: element.hierarchyName,
                 invalids: [{
                     filter: filterKey,
-                    value: subFilterCombo,
-                    alertId: newGuid()
+                    value: subFilterCombo
                 }],
                 element: element,
                 button: findHierarchyButton(element.hierarchyName),
@@ -2436,8 +2448,7 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
         else {
             existingInvalid.invalids.push({
                 filter: filterKey,
-                value: subFilterCombo,
-                alertId: newGuid()
+                value: subFilterCombo
             });
         }
     }
@@ -2445,10 +2456,39 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
 }
 
 function createFlattenedAlerts() {
+    // Collect a flattened list of errors and warnings
     const flattenedErrors = createFlattenedErrors();
     const flattenedWarnings = createFlattenedWarnings();
-    const flattenedAlerts = [...flattenedErrors, ...flattenedWarnings];
-    return flattenedAlerts;
+    const newAlerts = [...flattenedErrors, ...flattenedWarnings];
+
+    for (const newAlert of newAlerts) {
+        // Attempt to find an already existing alert
+        const existingAlert = flattenedAlerts.filter(i => 
+            i.alertType == newAlert.alertType &&
+            i.alertSubType == newAlert.alertSubType &&
+            i.targetNode == newAlert.targetNode &&
+            i.targetProblem == newAlert.targetProblem
+        )[0];
+
+        // Either re-use or generate new alert ID, notes, and addressed values
+        if (existingAlert) {
+            newAlert.alertId = existingAlert.alertId;
+            newAlert.alertNotes = existingAlert.alertNotes;
+            newAlert.alertAddressed = existingAlert.alertAddressed;
+        }
+        else {
+            newAlert.alertId = newGuid();
+            newAlert.alertNotes = "";
+            newAlert.alertAddressed = false;
+        }
+
+        // Bind associated Address button to open with appropriate alert data
+        const addressButton = document.getElementById(newAlert.addressId);
+        addressButton.removeEventListener("click", openAddressAlertDialog);
+        addressButton.addEventListener("click", () => openAddressAlertDialog(newAlert.alertId));
+    }
+
+    return newAlerts;
 }
 
 function createFlattenedErrors() {
@@ -2459,7 +2499,7 @@ function createFlattenedErrors() {
             for (const source of error.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
-                        alertId: invalid.alertId,
+                        addressId: invalid.addressId,
                         alertType: "error",
                         alertSubtype: error.name,
                         targetNode: source.hierarchyName,
@@ -2471,7 +2511,7 @@ function createFlattenedErrors() {
         else if (error.name == "invalid-trigger-parentheses") {
             for (const source of error.source) {
                 alerts.push({
-                    alertId: source.alertId,
+                    addressId: source.addressId,
                     alertType: "error",
                     alertSubType: error.name,
                     targetNode: source.hierarchyName,
@@ -2483,7 +2523,7 @@ function createFlattenedErrors() {
             for (const source of error.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
-                        alertId: invalid.alertId,
+                        addressId: invalid.addressId,
                         alertType: "error",
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
@@ -2496,7 +2536,7 @@ function createFlattenedErrors() {
             for (const source of error.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
-                        alertId: invalid.alertId,
+                        addressId: invalid.addressId,
                         alertType: "error",
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
@@ -2509,7 +2549,7 @@ function createFlattenedErrors() {
             for (const source of error.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
-                        alertId: invalid.alertId,
+                        addressId: invalid.addressId,
                         alertType: "error",
                         alertSubType: error.name,
                         targetNode: `Document Section: ${source.section.name}`,
@@ -2533,7 +2573,7 @@ function createFlattenedWarnings() {
         if (warning.name == "missing-node-id-in-name") {
             for (const source of warning.source) {
                 alerts.push({
-                    alertId: source.alertId,
+                    addressId: source.addressId,
                     alertType: "warning",
                     alertSubType: warning.name,
                     targetNode: source.hierarchyName,
@@ -2544,7 +2584,7 @@ function createFlattenedWarnings() {
         else if (warning.name == "unconventional-file-name") {
             for (const source of warning.source) {
                 alerts.push({
-                    alertId: source.alertId,
+                    addressId: source.addressId,
                     alertType: "warning",
                     alertSubType: warning.name,
                     targetNode: source.hierarchyName,
@@ -2556,7 +2596,7 @@ function createFlattenedWarnings() {
             for (const source of warning.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
-                        alertId: invalid.alertId,
+                        addressId: invalid.addressId,
                         alertType: "warning",
                         alertSubType: warning.name,
                         targetNode: invalid.hierarchyName,
@@ -2569,7 +2609,7 @@ function createFlattenedWarnings() {
             for (const source of warning.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
-                        alertId: invalid.alertId,
+                        addressId: invalid.addressId,
                         alertType: "warning",
                         alertSubType: warning.name,
                         targetNode: source.hierarchyName,
@@ -2581,7 +2621,7 @@ function createFlattenedWarnings() {
         else if (warning.name == "missing-document-elements") {
             for (const source of warning.source) {
                 alerts.push({
-                    alertId: source.alertId,
+                    addressId: source.addressId,
                     alertType: "warning",
                     alertSubType: warning.name,
                     targetNode: source.hierarchyName,
@@ -2592,7 +2632,7 @@ function createFlattenedWarnings() {
         else if (warning.name == "unlabeled-document-elements") {
             for (const source of warning.source) {
                 alerts.push({
-                    alertId: source.alertId,
+                    addressId: source.addressId,
                     alertType: "warning",
                     alertSubType: warning.name,
                     targetNode: source.hierarchyName,
@@ -2744,7 +2784,6 @@ async function openSettingsDialog() {
 }
 
 function openAddressAlertDialog(alertId) {
-    const flattenedAlerts = createFlattenedAlerts();
     const alert = flattenedAlerts.filter(i => i.alertId == alertId)[0];
     
     document.getElementById("alert-id").value = alert.alertId;
@@ -2752,6 +2791,8 @@ function openAddressAlertDialog(alertId) {
     document.getElementById("alert-subtype").value = alert.alertSubType;
     document.getElementById("alert-target-node").value = alert.targetNode;
     document.getElementById("alert-target-problem").value = alert.targetProblem;
+    document.getElementById("alert-notes").value = alert.alertNotes;
+    document.getElementById("alert-addressed").value = alert.alertAddressed;
 
     const dialog = document.getElementById("address-alert-dialog");
     showDialog(dialog);
@@ -2849,7 +2890,6 @@ function findMissingFiltersInTrigger(trigger, filters) {
         const filter = reference.replace("match(", "").replace("riv(", "").replace("spcov(", "").replace(")", "");
         if (filters.includes(filter)) continue;
         missing.push({
-            alertId: newGuid(),
             value: reference
         });
     }
