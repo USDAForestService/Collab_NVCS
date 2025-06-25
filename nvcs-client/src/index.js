@@ -132,11 +132,21 @@ async function fetchExistingJson(event, targetPath) {
     documentStructureString = documentStructureData.toString();
   }
 
+  // Retrieve alerts JSON
+  let alertsJson;
+  const alertsPath = path.resolve((targetPath ?? getConfigurationPath()) + '/alerts.json');
+  if (fs.existsSync(alertsPath)) {
+    console.log(`- Target Alerts Path: ${alertsPath}`);
+    let alertsData = fs.readFileSync(alertsPath);
+    alertsJson = alertsData.toString();
+  }
+
   // Combine and return data
   let returnData = {
     json: allJsonData,
     hierarchy: hierarchyString,
-    documentStructure: documentStructureString
+    documentStructure: documentStructureString,
+    alerts: alertsJson
   }
 
   // Mark unaved as false
@@ -205,6 +215,10 @@ async function updateJson(event, directory, json, changes, documentStructure, al
   documentStructureJson = documentStructureJson.trim();
   fs.writeFileSync(documentStructurePath, documentStructureJson);
 
+  // Omit unnecessary button IDs
+  for (const alert of alerts)
+    delete alert.addressId;
+  
   // Update alerts file
   const alertsJson = JSON.stringify(alerts, null, 4);
   const alertsPath = path.resolve(path.join(newJsonDirectoryPath, "alerts.json"));

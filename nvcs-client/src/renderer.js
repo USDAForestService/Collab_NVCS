@@ -185,6 +185,7 @@ async function fetchJson(targetPath) {
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
     documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
+    flattenedAlerts = returnedData.alerts ? JSON.parse(returnedData.alerts) : [];
 
     // Generate objects from returned JSON and TXT data
     let hierarchySplit = nodeHierarchy.split('\r\n');
