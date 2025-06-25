@@ -146,7 +146,7 @@ async function fetchExistingJson(event, targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json, changes, documentStructure) {
+async function updateJson(event, directory, json, changes, documentStructure, alerts) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
@@ -204,6 +204,11 @@ async function updateJson(event, directory, json, changes, documentStructure) {
   let documentStructureJson = JSON.stringify(documentStructure, null, 4);
   documentStructureJson = documentStructureJson.trim();
   fs.writeFileSync(documentStructurePath, documentStructureJson);
+
+  // Update alerts file
+  const alertsJson = JSON.stringify(alerts, null, 4);
+  const alertsPath = path.resolve(path.join(newJsonDirectoryPath, "alerts.json"));
+  fs.writeFileSync(alertsPath, alertsJson);
 
   // Mark unaved as false
   unsavedChanges = false;

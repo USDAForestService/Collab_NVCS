@@ -1115,7 +1115,7 @@ async function updateJson() {
     try {
         const changes = detectHierarchyChanges();
         console.log(changes)
-        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes, documentStructure);
+        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes, documentStructure, flattenedAlerts);
         initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
