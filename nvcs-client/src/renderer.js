@@ -2792,10 +2792,29 @@ function openAddressAlertDialog(alertId) {
     document.getElementById("alert-target-node").value = alert.targetNode;
     document.getElementById("alert-target-problem").value = alert.targetProblem;
     document.getElementById("alert-notes").value = alert.alertNotes;
-    document.getElementById("alert-addressed").value = alert.alertAddressed;
+    document.getElementById("alert-addressed").checked = alert.alertAddressed;
 
     const dialog = document.getElementById("address-alert-dialog");
     showDialog(dialog);
+}
+
+function updateAddressAlertDialog() {
+    const message = "Are you sure you want to save these changes?";
+    const confirmation = confirm(message);
+    if (!confirmation)
+        return;
+
+    const alertId = document.getElementById("alert-id").value;
+    const alert = flattenedAlerts.filter(i => i.alertId == alertId)[0];
+    
+    const alertNotes = document.getElementById("alert-notes").value.trim();
+    alert.alertNotes = alertNotes;
+
+    const alertAddressed = document.getElementById("alert-addressed").checked;
+    alert.alertAddressed = alertAddressed;
+
+    const dialog = document.getElementById("address-alert-dialog");
+    dialog.close();
 }
 
 function updateSettingsDialogValues() {
