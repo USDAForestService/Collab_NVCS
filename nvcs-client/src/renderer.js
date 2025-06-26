@@ -2825,9 +2825,9 @@ function openAddressAlertDialog(alertId, addressId) {
     showDialog(dialog);
 }
 
-function updateAddressAlertDialog() {
+async function updateAddressAlertDialog() {
     const message = "Are you sure you want to save these changes?";
-    const confirmation = confirm(message);
+    const confirmation = await confirm(message);
     if (!confirmation)
         return;
 
@@ -2846,6 +2846,8 @@ function updateAddressAlertDialog() {
 
     const dialog = document.getElementById("address-alert-dialog");
     dialog.close();
+
+    stateChecker.modified = true;
 }
 
 function updateSettingsDialogValues() {
