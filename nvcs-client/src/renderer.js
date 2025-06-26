@@ -44,6 +44,7 @@ let unsavedDocumentStructure;
 let availableSpecies;
 let availableYears;
 let testSettings;
+let openedAddressId;
 
 displayApplicationVersion();
 
@@ -1565,8 +1566,28 @@ function generateAddressButton() {
         <button id="${id}">
             Address
         </button>
+        <span id="addressed-${id}">
+        </span>
     `;
     return [html, id];
+}
+
+function generateAddressedIcon() {
+    let html = `
+        <span class='checkmark' title='This alert has been addressed'>
+            ✔
+        </span>
+    `;
+    return html;
+}
+
+function generateUnaddressedIcon() {
+    let html = `
+        <span class='cross' title='This alert has not been addressed'>
+            ✘
+        </span>
+    `;
+    return html;
 }
 
 function checkMissingRequiredFields() {
@@ -2486,7 +2507,11 @@ function createFlattenedAlerts() {
         // Bind associated Address button to open with appropriate alert data
         const addressButton = document.getElementById(newAlert.addressId);
         addressButton.removeEventListener("click", openAddressAlertDialog);
-        addressButton.addEventListener("click", () => openAddressAlertDialog(newAlert.alertId));
+        addressButton.addEventListener("click", () => openAddressAlertDialog(newAlert.alertId, newAlert.addressId));
+
+        // Update associated addressed icon
+        const addressIcon = document.getElementById(`addressed-${newAlert.addressId}`);
+        addressIcon.innerHTML = newAlert.alertAddressed ? generateAddressedIcon() : generateUnaddressedIcon();
     }
 
     return newAlerts;
@@ -2784,7 +2809,8 @@ async function openSettingsDialog() {
     showDialog(dialog);
 }
 
-function openAddressAlertDialog(alertId) {
+function openAddressAlertDialog(alertId, addressId) {
+    openedAddressId = addressId;
     const alert = flattenedAlerts.filter(i => i.alertId == alertId)[0];
     
     document.getElementById("alert-id").value = alert.alertId;
@@ -2813,6 +2839,10 @@ function updateAddressAlertDialog() {
 
     const alertAddressed = document.getElementById("alert-addressed").checked;
     alert.alertAddressed = alertAddressed;
+
+    const addressedIcon = document.getElementById(`addressed-${openedAddressId}`);
+    addressedIcon.innerHTML = alertAddressed ? generateAddressedIcon() : generateUnaddressedIcon();
+    openedAddressId = null;
 
     const dialog = document.getElementById("address-alert-dialog");
     dialog.close();

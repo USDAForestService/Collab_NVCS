@@ -470,3 +470,19 @@ input:read-only {
 .flex-grow {
   flex-grow: 1;
 }
+
+.checkmark {
+  background: black;
+  color: lightgreen;
+  padding: 0 1px 0 3px;
+  vertical-align: middle;
+  margin: 0 3px;
+}
+
+.cross {
+  background: black;
+  color: orangered;
+  padding: 0 1px 0 3px;
+  vertical-align: middle;
+  margin: 0 3px;
+}
