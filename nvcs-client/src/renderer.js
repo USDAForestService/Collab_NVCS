@@ -169,7 +169,6 @@ async function fetchCustomJson() {
 
     await fetchJson(targetPath);
 
-    document.getElementById("btn-test-settings").disabled = false;
     document.getElementById("btn-open-json").disabled = false;
 }
 
@@ -243,8 +242,19 @@ async function fetchJson(targetPath) {
     // Fetch default test settings
     await getDefaultTestSettings();
 
+    // Require saving if alerts.json hasn't been generated yet
+    if (!returnedData.alerts && targetPath) {
+        stateChecker.modified = true;
+        const saveRequiredMessage = "This workspace hasn't been saved since the address alert system has been added. "
+            + "Please save the project again to generate all necesary files for testing.";
+        alert(saveRequiredMessage)
+    }
+    else
+    {
+        stateChecker.modified = false;
+    }
+
     // Update HTML elements
-    stateChecker.modified = false;
     generatePages(hierarchy);
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-update-json").setAttribute("title", 
