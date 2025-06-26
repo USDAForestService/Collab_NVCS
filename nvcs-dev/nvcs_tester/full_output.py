@@ -77,11 +77,11 @@ def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefForestType, 
     if in_RefKeyAlerts["source"] is not None:
         ref_key_alerts_definition = (
             f"CREATE TABLE '{in_RefKeyAlerts['new_tbl_nm']}' ("
-            "'ALERTID', 'ALERTTYPE', 'ALERTSUBTYPE', 'TARGETNODE', 'TARGETPROBLEM',"
-            "'ALERTNOTES', 'ALERTADDRESSED')"
+            "'ALERT_ID', 'ALERT_TYPE', 'ALERT_SUBTYPE', 'TARGET_NODE', 'TARGET_PROBLEM',"
+            "'ALERT_NOTES', 'ALERT_ADDRESSED')"
         )
-        ref_key_alerts_columns = ['ALERTID', 'ALERTTYPE', 'ALERTSUBTYPE', 'TARGETNODE', 'TARGETPROBLEM',
-                                            'ALERTNOTES', 'ALERTADDRESSED']
+        ref_key_alerts_columns = ['ALERT_ID', 'ALERT_TYPE', 'ALERT_SUBTYPE', 'TARGET_NODE', 'TARGET_PROBLEM',
+                                            'ALERT_NOTES', 'ALERT_ADDRESSED']
         ref_key_alerts_json = plot_io.read_json(in_RefKeyAlerts["source"])
         ref_key_alerts_rows = [
             [row['alertId'], row['alertType'], row['alertSubType'], row['targetNode'], row['targetProblem'], row['alertNotes'], 'Y' if row['alertAddressed'] is True else 'N']
