@@ -2527,7 +2527,7 @@ function createFlattenedErrors() {
                     alerts.push({
                         addressId: invalid.addressId,
                         alertType: "error",
-                        alertSubtype: error.name,
+                        alertSubType: error.name,
                         targetNode: source.hierarchyName,
                         targetProblem: `${invalid.value} is a required field`
                     });

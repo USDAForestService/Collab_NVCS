@@ -5,6 +5,7 @@ Created on Mar 28, 2013
 @author: ctoney
 - 2024-02-01 add read_sqlite()
 '''
+import json
 import sqlite3
 import csv
 import sys
@@ -39,6 +40,12 @@ def read_csv(file_path):
     with open(file_path, newline='', encoding='utf-8') as f:
         reader = csv.reader(f)
         results = list(reader)
+    return results
+
+def read_json(file_path):
+    with open(file_path, newline='', encoding='utf-8') as f:
+        json_data = json.load(f)
+        results = list(json_data)
     return results
 
 def read_sqlite(type, dbfile, tbl):

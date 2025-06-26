@@ -15,7 +15,7 @@ from nvcs_builder import configuration
 # Script variables
 ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
 
-def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefForestType, in_RefAlgNode, in_RefKeyOutput, in_KeyOutput, out_Options):
+def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefForestType, in_RefAlgNode, in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options):
     if out_Options["skip_shared_tables"]:
         print("-" * 50)
         print("Skipping shared table and view generation")
@@ -72,6 +72,23 @@ def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefForestType, 
     plot_io.write_table_sqlite(out_Options["output_db"], in_RefAlgNode["new_tbl_nm"], ref_nvcs_algorithm_node_rows,
                             ref_nvcs_algorithm_node_columns, ref_nvcs_algorithm_node_definition)
     write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefAlgNode['new_tbl_nm'], in_RefAlgNode['description'])
+
+    # Prepare & create table containing alerts for the given hierarchy workspace if available
+    if in_RefKeyAlerts["source"] is not None:
+        ref_key_alerts_definition = (
+            f"CREATE TABLE '{in_RefKeyAlerts['new_tbl_nm']}' ("
+            "'ALERTID', 'ALERTTYPE', 'ALERTSUBTYPE', 'TARGETNODE', 'TARGETPROBLEM',"
+            "'ALERTNOTES', 'ALERTADDRESSED')"
+        )
+        ref_key_alerts_columns = ['ALERTID', 'ALERTTYPE', 'ALERTSUBTYPE', 'TARGETNODE', 'TARGETPROBLEM',
+                                            'ALERTNOTES', 'ALERTADDRESSED']
+        ref_key_alerts_json = plot_io.read_json(in_RefKeyAlerts["source"])
+        ref_key_alerts_rows = [
+            [row['alertId'], row['alertType'], row['alertSubType'], row['targetNode'], row['targetProblem'], row['alertNotes'], 'Y' if row['alertAddressed'] is True else 'N']
+            for row in ref_key_alerts_json]
+        plot_io.write_table_sqlite(out_Options["output_db"], in_RefKeyAlerts['new_tbl_nm'], ref_key_alerts_rows,
+                                ref_key_alerts_columns, ref_key_alerts_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefKeyAlerts['new_tbl_nm'], in_RefKeyAlerts['description'])
 
     for inventory_year in out_Options["inventory_years"]:
         print("-" * 50)
@@ -254,6 +271,12 @@ if __name__ == '__main__':
         "description": config.get(config.fullOutputSection, "RefAlgNodeDesc")
     }
 
+    in_RefKeyAlerts = {
+        "source": config.get(config.fullOutputSection, "In_Alerts"),
+        "new_tbl_nm": config.get(config.fullOutputSection, "RefKeyAlertsName"),
+        "description": config.get(config.fullOutputSection, "RefKeyAlertsDesc")
+    }
+
     in_RefKeyOutput = {
         "new_tbl_nm": config.get(config.fullOutputSection, "RefKeyOutputName"),
         "description": config.get(config.fullOutputSection, "RefKeyOutputDesc")
@@ -274,4 +297,4 @@ if __name__ == '__main__':
     }
 
     generateFullOutput(classification_key, in_AnlyTestData, in_RefForestType, in_RefAlgNode,
-                       in_RefKeyOutput, in_KeyOutput, out_Options)
+                       in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options)
