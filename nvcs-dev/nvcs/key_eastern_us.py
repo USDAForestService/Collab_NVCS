@@ -7,13 +7,13 @@ import logging
 class Plot:
     def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, trtcd1, trtcd2, trtcd3, trtyr1, trtyr2, trtyr3):
         self.attrs = dict()
-        self.attrs['ident'] = ident
-        self.attrs['rscd'] = rscd
-        self.attrs['state'] = state
-        self.attrs['ecoregion'] = ecoregion or ""
-        self.attrs['plantation'] = plantation
-        self.attrs['hydric'] = hydric
-        self.attrs['riverine'] = riverine
+        self.attrs['ident'] = str(ident or "")
+        self.attrs['rscd'] = str(rscd or "")
+        self.attrs['state'] = str(state or "")
+        self.attrs['ecoregion'] = str(ecoregion or "")
+        self.attrs['plantation'] = str(plantation or "")
+        self.attrs['hydric'] = str(hydric or "")
+        self.attrs['riverine'] = str(riverine or "")
         self.attrs['elevation'] = float(elevation or 0)
         self.attrs['balive'] = float(balive or 0)
         self.attrs['fbcov'] = float(fbcov or 0)
@@ -22,11 +22,11 @@ class Plot:
         self.attrs['ttcov'] = float(ttcov or 0)
         self.attrs['ntcov'] = float(ntcov or 0)
         self.attrs['live_canopy_cvr_pct'] = float(live_canopy_cvr_pct or 0)
-        self.attrs['afforestation_cd'] = afforestation_cd or ""
-        self.attrs['land_cover_class_cd'] = land_cover_class_cd or ""
-        self.attrs['trtcd1'] = trtcd1 or ""
-        self.attrs['trtcd2'] = trtcd2 or ""
-        self.attrs['trtcd3'] = trtcd3 or ""
+        self.attrs['afforestation_cd'] = str(afforestation_cd or "")
+        self.attrs['land_cover_class_cd'] = str(land_cover_class_cd or "")
+        self.attrs['trtcd1'] = str(trtcd1 or "")
+        self.attrs['trtcd2'] = str(trtcd2 or "")
+        self.attrs['trtcd3'] = str(trtcd3 or "")
         self.attrs['trtyr1'] = float(trtyr1 or 0)
         self.attrs['trtyr2'] = float(trtyr2 or 0)
         self.attrs['trtyr3'] = float(trtyr3 or 0)
@@ -114,15 +114,15 @@ class Plot:
 class Tree:
     def __init__(self, species, riv, wetland, ruderal, exotic, softwoodhardwood, planted, tallytree, spcov):
         self.attrs = dict()
-        self.attrs['species'] = species
-        self.attrs['riv'] = float(riv)
-        self.attrs['wetland'] = wetland
-        self.attrs['ruderal'] = ruderal
-        self.attrs['exotic'] = exotic
-        self.attrs['softwoodhardwood'] = softwoodhardwood
-        self.attrs['planted'] = planted
-        self.attrs['tallytree'] = tallytree
-        self.attrs['spcov'] = float(spcov)
+        self.attrs['species'] = str(species or "")
+        self.attrs['riv'] = float(riv or 0)
+        self.attrs['wetland'] = str(wetland or "")
+        self.attrs['ruderal'] = str(ruderal or "")
+        self.attrs['exotic'] = str(exotic or "")
+        self.attrs['softwoodhardwood'] = str(softwoodhardwood or "")
+        self.attrs['planted'] = str(planted or "")
+        self.attrs['tallytree'] = str(tallytree or "")
+        self.attrs['spcov'] = float(spcov or 0)
 
     def __getattr__(self, name):
         return self.attrs[name]
