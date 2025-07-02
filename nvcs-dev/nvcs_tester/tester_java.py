@@ -75,9 +75,12 @@ def json_query(dbfile, tbl, invyrs, where, type):
                 'LIVE_CANOPY_CVR_PCT', LIVE_CANOPY_CVR_PCT,
                 'AFFORESTATION_CD', AFFORESTATION_CD,
                 'LAND_COVER_CLASS_CD', LAND_COVER_CLASS_CD,
-                'LAND_COVER_CLASS_CD_RET', LAND_COVER_CLASS_CD_RET,
                 'TRTCD1', TRTCD1,
-                'TRTCD2', TRTCD2
+                'TRTCD2', TRTCD2,
+                'TRTCD3', TRTCD3,
+                'TRTYR1', TRTYR1,
+                'TRTYR2', TRTYR2,
+                'TRTYR3', TRTYR3
             )
             ROW_JSON
             FROM {tbl}

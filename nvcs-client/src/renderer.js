@@ -13,9 +13,12 @@ let InputFilterTypes = [
     "tallytree",
     "afforestation_cd",
     "land_cover_class_cd",
-    "land_cover_class_cd_ret",
     "trtcd1",
-    "trtcd2"
+    "trtcd2",
+    "trtcd3",
+    "trtyr1",
+    "trtyr2",
+    "trtyr3"
 ];
 let availableLevelColors = [
     "#000000",

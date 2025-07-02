@@ -54,9 +54,12 @@ public class App
             firstJsonRow.get("LIVE_CANOPY_CVR_PCT"),
             firstJsonRow.get("AFFORESTATION_CD"),
             firstJsonRow.get("LAND_COVER_CLASS_CD"),
-            firstJsonRow.get("LAND_COVER_CLASS_CD_RET"),
             firstJsonRow.get("TRTCD1"),
-            firstJsonRow.get("TRTCD2")
+            firstJsonRow.get("TRTCD2"),
+            firstJsonRow.get("TRTCD3"),
+            firstJsonRow.get("TRTYR1"),
+            firstJsonRow.get("TRTYR2"),
+            firstJsonRow.get("TRTYR3")
         );
 
         for (TreeMap<String,String> jsonRow : jsonParse.rows) {

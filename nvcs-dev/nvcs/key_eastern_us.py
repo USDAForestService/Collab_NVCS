@@ -5,7 +5,7 @@ from pattern import PatternList
 import logging
 
 class Plot:
-    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, land_cover_class_cd_ret, trtcd1, trtcd2):
+    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, trtcd1, trtcd2, trtcd3, trtyr1, trtyr2, trtyr3):
         self.attrs = dict()
         self.attrs['ident'] = ident
         self.attrs['rscd'] = rscd
@@ -24,9 +24,12 @@ class Plot:
         self.attrs['live_canopy_cvr_pct'] = float(live_canopy_cvr_pct or 0)
         self.attrs['afforestation_cd'] = afforestation_cd or ""
         self.attrs['land_cover_class_cd'] = land_cover_class_cd or ""
-        self.attrs['land_cover_class_cd_ret'] = land_cover_class_cd_ret or ""
         self.attrs['trtcd1'] = trtcd1 or ""
         self.attrs['trtcd2'] = trtcd2 or ""
+        self.attrs['trtcd3'] = trtcd3 or ""
+        self.attrs['trtyr1'] = trtyr1 or ""
+        self.attrs['trtyr2'] = trtyr2 or ""
+        self.attrs['trtyr3'] = trtyr3 or ""
         self.trees = list()
 
     def __getattr__(self, name):
@@ -176,9 +179,12 @@ Pattern.register('planted', Pattern)
 Pattern.register('tallytree', Pattern)
 Pattern.register('afforestation_cd', Pattern)
 Pattern.register('land_cover_class_cd', Pattern)
-Pattern.register('land_cover_class_cd_ret', Pattern)
 Pattern.register('trtcd1', Pattern)
 Pattern.register('trtcd2', Pattern)
+Pattern.register('trtcd3', Pattern)
+Pattern.register('trtyr1', Pattern)
+Pattern.register('trtyr2', Pattern)
+Pattern.register('trtyr3', Pattern)
 
 class ClassificationKey:
     def __init__(self):
