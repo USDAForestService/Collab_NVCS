@@ -27,9 +27,9 @@ class Plot:
         self.attrs['trtcd1'] = trtcd1 or ""
         self.attrs['trtcd2'] = trtcd2 or ""
         self.attrs['trtcd3'] = trtcd3 or ""
-        self.attrs['trtyr1'] = trtyr1 or ""
-        self.attrs['trtyr2'] = trtyr2 or ""
-        self.attrs['trtyr3'] = trtyr3 or ""
+        self.attrs['trtyr1'] = float(trtyr1 or 0)
+        self.attrs['trtyr2'] = float(trtyr2 or 0)
+        self.attrs['trtyr3'] = float(trtyr3 or 0)
         self.trees = list()
 
     def __getattr__(self, name):
@@ -95,6 +95,18 @@ class Plot:
     def get_live_canopy_cvr_pct(self):
         logging.debug('%s|live_canopy_cvr_pct()|%s', self.ident, self.live_canopy_cvr_pct)
         return float(self.live_canopy_cvr_pct)
+    
+    def get_trtyr1(self):
+        logging.debug('%s|trtyr1()|%s', self.ident, self.trtyr1)
+        return float(self.trtyr1)
+    
+    def get_trtyr2(self):
+        logging.debug('%s|trtyr2()|%s', self.ident, self.trtyr2)
+        return float(self.trtyr2)
+    
+    def get_trtyr3(self):
+        logging.debug('%s|trtyr3()|%s', self.ident, self.trtyr3)
+        return float(self.trtyr3)
 
     def __repr__(self):
         return "Plot(%r)" % (self.attrs)
@@ -182,9 +194,6 @@ Pattern.register('land_cover_class_cd', Pattern)
 Pattern.register('trtcd1', Pattern)
 Pattern.register('trtcd2', Pattern)
 Pattern.register('trtcd3', Pattern)
-Pattern.register('trtyr1', Pattern)
-Pattern.register('trtyr2', Pattern)
-Pattern.register('trtyr3', Pattern)
 
 class ClassificationKey:
     def __init__(self):

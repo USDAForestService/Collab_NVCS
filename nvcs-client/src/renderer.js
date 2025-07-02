@@ -15,10 +15,7 @@ let InputFilterTypes = [
     "land_cover_class_cd",
     "trtcd1",
     "trtcd2",
-    "trtcd3",
-    "trtyr1",
-    "trtyr2",
-    "trtyr3"
+    "trtcd3"
 ];
 let availableLevelColors = [
     "#000000",

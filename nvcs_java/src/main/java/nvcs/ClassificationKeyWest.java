@@ -37,9 +37,6 @@ public class ClassificationKeyWest extends ClassificationKey {
         Pattern.register("trtcd1", "Pattern");
         Pattern.register("trtcd2", "Pattern");
         Pattern.register("trtcd3", "Pattern");
-        Pattern.register("trtyr1", "Pattern");
-        Pattern.register("trtyr2", "Pattern");
-        Pattern.register("trtyr3", "Pattern");
 
         nodes = new LinkedHashMap<>();
         root_node = _setup();

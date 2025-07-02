@@ -29,9 +29,9 @@ public class Plot {
     public String trtcd1;
     public String trtcd2;
     public String trtcd3;
-    public String trtyr1;
-    public String trtyr2;
-    public String trtyr3;
+    public Float trtyr1;
+    public Float trtyr2;
+    public Float trtyr3;
     public List<Tree> trees;
     public Map<String,Object> attrs;
     
@@ -56,9 +56,9 @@ public class Plot {
         this.trtcd1 = trtcd1 != null ? trtcd1 : "";
         this.trtcd2 = trtcd2 != null ? trtcd2 : "";
         this.trtcd3 = trtcd3 != null ? trtcd3 : "";
-        this.trtyr1 = trtyr1 != null ? trtyr1 : "";
-        this.trtyr2 = trtyr2 != null ? trtyr2 : "";
-        this.trtyr3 = trtyr3 != null ? trtyr3 : "";
+        this.trtyr1 = Float.parseFloat(trtyr1 != null ? trtyr1 : "0");
+        this.trtyr2 = Float.parseFloat(trtyr2 != null ? trtyr2 : "0");
+        this.trtyr3 = Float.parseFloat(trtyr3 != null ? trtyr3 : "0");
         this.trees = new ArrayList<>();
 
         this.attrs = new HashMap<>();
@@ -163,6 +163,18 @@ public class Plot {
 
     public float get_live_canopy_cvr_pct() {
         return live_canopy_cvr_pct;
+    }
+
+    public float get_trtyr1() {
+        return trtyr1;
+    }
+
+    public float get_trtyr2() {
+        return trtyr2;
+    }
+
+    public float get_trtyr3() {
+        return trtyr3;
     }
 
     @Override
