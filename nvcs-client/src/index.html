@@ -229,6 +229,50 @@
           </div>
         </div>
       </dialog>
+      <dialog id='address-alert-dialog' class="dialog">
+        <div class="header-container">
+          <div class="button-container">
+            <button class='close-btn' autofocus>Close</button>
+          </div>
+          <h2>Address Alert</h2>
+        </div>
+        <div class="body-container">
+          <div class="input-container">
+            <label for="alert-id" class="key-holder">Alert ID:</label>
+            <input id="alert-id" class="value-holder" title="Unique identifier for the alert" readonly />
+          </div>
+          <div class="input-container">
+            <label for="alert-type" class="key-holder">Alert Type:</label>
+            <input id="alert-type" class="value-holder" title="Either a warning or an error" readonly />
+          </div>
+          <div class="input-container">
+            <label for="alert-subtype" class="key-holder">Alert Subtype:</label>
+            <input id="alert-subtype" class="value-holder" title="What category of error or warning this alert belongs to" readonly />
+          </div>
+          <div class="input-container">
+            <label for="alert-target-node" class="key-holder">Node Name:</label>
+            <input id="alert-target-node" class="value-holder" title="Name of the node causing the alert" readonly />
+          </div>
+          <div class="input-container">
+            <label for="alert-target-problem" class="key-holder">Problem:</label>
+            <textarea id="alert-target-problem" class="value-holder" title="The problem with the associated node" readonly></textarea>
+          </div>
+          <div class="input-container">
+            <label for="alert-notes" class="key-holder">Notes:</label>
+            <textarea id="alert-notes" class="value-holder" title="Notes regarding the alert"></textarea>
+          </div>
+          <div class="input-container">
+            <label for="alert-addressed" class="key-holder">Is Alert Addressed:</label>
+            <input id="alert-addressed" type="checkbox" title="Has this alert been addressed?" />
+          </div>
+        </div>
+        <div class="footer-container">
+          <div class="button-container">
+            <button onclick="updateAddressAlertDialog()" title="Save changes regarding the alert">Save</button>
+            <button class='close-btn'>Close</button>
+          </div>
+        </div>
+      </dialog>
     </div>
     <div class="data-list-container">
       <datalist id="species-list" data-type="warning" data-missing-message="This species is not tracked"></datalist>

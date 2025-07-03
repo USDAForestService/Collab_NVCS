@@ -5,28 +5,31 @@ from pattern import PatternList
 import logging
 
 class Plot:
-    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, land_cover_class_cd_ret, trtcd1, trtcd2):
+    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, trtcd1, trtcd2, trtcd3, trtyr1, trtyr2, trtyr3):
         self.attrs = dict()
-        self.attrs['ident'] = ident
-        self.attrs['rscd'] = rscd
-        self.attrs['state'] = state
-        self.attrs['ecoregion'] = ecoregion or ""
-        self.attrs['plantation'] = plantation
-        self.attrs['hydric'] = hydric
-        self.attrs['riverine'] = riverine
-        self.attrs['elevation'] = float(elevation or 0)
-        self.attrs['balive'] = float(balive or 0)
-        self.attrs['fbcov'] = float(fbcov or 0)
-        self.attrs['grcov'] = float(grcov or 0)
-        self.attrs['shcov'] = float(shcov or 0)
-        self.attrs['ttcov'] = float(ttcov or 0)
-        self.attrs['ntcov'] = float(ntcov or 0)
-        self.attrs['live_canopy_cvr_pct'] = float(live_canopy_cvr_pct or 0)
-        self.attrs['afforestation_cd'] = afforestation_cd or ""
-        self.attrs['land_cover_class_cd'] = land_cover_class_cd or ""
-        self.attrs['land_cover_class_cd_ret'] = land_cover_class_cd_ret or ""
-        self.attrs['trtcd1'] = trtcd1 or ""
-        self.attrs['trtcd2'] = trtcd2 or ""
+        self.attrs['ident'] = str(ident if ident is not None else "")
+        self.attrs['rscd'] = str(rscd if rscd is not None else "")
+        self.attrs['state'] = str(state if state is not None else "")
+        self.attrs['ecoregion'] = str(ecoregion if ecoregion is not None else "")
+        self.attrs['plantation'] = str(plantation if plantation is not None else "")
+        self.attrs['hydric'] = str(hydric if hydric is not None else "")
+        self.attrs['riverine'] = str(riverine if riverine is not None else "")
+        self.attrs['elevation'] = float(elevation if elevation is not None else 0)
+        self.attrs['balive'] = float(balive if balive is not None else 0)
+        self.attrs['fbcov'] = float(fbcov if fbcov is not None else 0)
+        self.attrs['grcov'] = float(grcov if grcov is not None else 0)
+        self.attrs['shcov'] = float(shcov if shcov is not None else 0)
+        self.attrs['ttcov'] = float(ttcov if ttcov is not None else 0)
+        self.attrs['ntcov'] = float(ntcov if ntcov is not None else 0)
+        self.attrs['live_canopy_cvr_pct'] = float(live_canopy_cvr_pct if live_canopy_cvr_pct is not None else 0)
+        self.attrs['afforestation_cd'] = str(afforestation_cd if afforestation_cd is not None else "")
+        self.attrs['land_cover_class_cd'] = str(land_cover_class_cd if land_cover_class_cd is not None else "")
+        self.attrs['trtcd1'] = str(trtcd1 if trtcd1 is not None else "")
+        self.attrs['trtcd2'] = str(trtcd2 if trtcd2 is not None else "")
+        self.attrs['trtcd3'] = str(trtcd3 if trtcd3 is not None else "")
+        self.attrs['trtyr1'] = float(trtyr1 if trtyr1 is not None else 0)
+        self.attrs['trtyr2'] = float(trtyr2 if trtyr2 is not None else 0)
+        self.attrs['trtyr3'] = float(trtyr3 if trtyr3 is not None else 0)
         self.trees = list()
 
     def __getattr__(self, name):
@@ -92,6 +95,18 @@ class Plot:
     def get_live_canopy_cvr_pct(self):
         logging.debug('%s|live_canopy_cvr_pct()|%s', self.ident, self.live_canopy_cvr_pct)
         return float(self.live_canopy_cvr_pct)
+    
+    def get_trtyr1(self):
+        logging.debug('%s|trtyr1()|%s', self.ident, self.trtyr1)
+        return float(self.trtyr1)
+    
+    def get_trtyr2(self):
+        logging.debug('%s|trtyr2()|%s', self.ident, self.trtyr2)
+        return float(self.trtyr2)
+    
+    def get_trtyr3(self):
+        logging.debug('%s|trtyr3()|%s', self.ident, self.trtyr3)
+        return float(self.trtyr3)
 
     def __repr__(self):
         return "Plot(%r)" % (self.attrs)
@@ -99,15 +114,15 @@ class Plot:
 class Tree:
     def __init__(self, species, riv, wetland, ruderal, exotic, softwoodhardwood, planted, tallytree, spcov):
         self.attrs = dict()
-        self.attrs['species'] = species
-        self.attrs['riv'] = float(riv)
-        self.attrs['wetland'] = wetland
-        self.attrs['ruderal'] = ruderal
-        self.attrs['exotic'] = exotic
-        self.attrs['softwoodhardwood'] = softwoodhardwood
-        self.attrs['planted'] = planted
-        self.attrs['tallytree'] = tallytree
-        self.attrs['spcov'] = float(spcov)
+        self.attrs['species'] = str(species if species is not None else "")
+        self.attrs['riv'] = float(riv if riv is not None else 0)
+        self.attrs['wetland'] = str(wetland if wetland is not None else "")
+        self.attrs['ruderal'] = str(ruderal if ruderal is not None else "")
+        self.attrs['exotic'] = str(exotic if exotic is not None else "")
+        self.attrs['softwoodhardwood'] = str(softwoodhardwood if softwoodhardwood is not None else "")
+        self.attrs['planted'] = str(planted if planted is not None else "")
+        self.attrs['tallytree'] = str(tallytree if tallytree is not None else "")
+        self.attrs['spcov'] = float(spcov if spcov is not None else 0)
 
     def __getattr__(self, name):
         return self.attrs[name]
@@ -176,9 +191,9 @@ Pattern.register('planted', Pattern)
 Pattern.register('tallytree', Pattern)
 Pattern.register('afforestation_cd', Pattern)
 Pattern.register('land_cover_class_cd', Pattern)
-Pattern.register('land_cover_class_cd_ret', Pattern)
 Pattern.register('trtcd1', Pattern)
 Pattern.register('trtcd2', Pattern)
+Pattern.register('trtcd3', Pattern)
 
 class ClassificationKey:
     def __init__(self):

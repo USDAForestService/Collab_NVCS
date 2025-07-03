@@ -5,6 +5,7 @@ Created on Mar 28, 2013
 @author: ctoney
 - 2024-02-01 add read_sqlite()
 '''
+import json
 import sqlite3
 import csv
 import sys
@@ -41,6 +42,12 @@ def read_csv(file_path):
         results = list(reader)
     return results
 
+def read_json(file_path):
+    with open(file_path, newline='', encoding='utf-8') as f:
+        json_data = json.load(f)
+        results = list(json_data)
+    return results
+
 def read_sqlite(type, dbfile, tbl):
     if type == 'WestConfig':
         return read_sqlite_west(dbfile, tbl)
@@ -49,10 +56,10 @@ def read_sqlite(type, dbfile, tbl):
 
 def read_sqlite_west(dbfile, tbl):
     from key_western_us import Plot, Tree
-    plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2'
+    plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, TRTCD1, TRTCD2, TRTCD3, TRTYR1, TRTYR2, TRTYR3'
     tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, SPCOV'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
-    sql = sql + ' WHERE STATEAB != "AK" ORDER BY IDENT'
+    sql = sql + ' WHERE RSCD IN (22, 23, 26, 33) ORDER BY IDENT'
     con = sqlite3.connect(dbfile)
     cur = con.cursor()
     tree_cur = con.cursor()
@@ -73,7 +80,7 @@ def read_sqlite_west(dbfile, tbl):
 
 def read_sqlite_east(dbfile, tbl):
     from key_eastern_us import Plot, Tree
-    plot_fields = 'IDENT, null, null, ECOREGION, PLANTATION, HYDRIC, RIVERINE, null, null, null, null, null, null, null, null, null, null, null, null, null'
+    plot_fields = 'IDENT, null, null, ECOREGION, PLANTATION, HYDRIC, RIVERINE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null'
     tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, null, null'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
     sql = sql + ' WHERE (TRUE) ORDER BY IDENT'

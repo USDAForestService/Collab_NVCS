@@ -13,9 +13,9 @@ let InputFilterTypes = [
     "tallytree",
     "afforestation_cd",
     "land_cover_class_cd",
-    "land_cover_class_cd_ret",
     "trtcd1",
-    "trtcd2"
+    "trtcd2",
+    "trtcd3"
 ];
 let availableLevelColors = [
     "#000000",
@@ -31,6 +31,7 @@ let levelColorMap = {};
 let lineNumberCounter = 0;
 let warnings = [];
 let errors = [];
+let flattenedAlerts = [];
 let unsavedDialogChanges = false;
 let showTags = false;
 
@@ -43,6 +44,7 @@ let unsavedDocumentStructure;
 let availableSpecies;
 let availableYears;
 let testSettings;
+let openedAddressId;
 
 displayApplicationVersion();
 
@@ -167,7 +169,6 @@ async function fetchCustomJson() {
 
     await fetchJson(targetPath);
 
-    document.getElementById("btn-test-settings").disabled = false;
     document.getElementById("btn-open-json").disabled = false;
 }
 
@@ -184,6 +185,7 @@ async function fetchJson(targetPath) {
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
     documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
+    flattenedAlerts = returnedData.alerts ? JSON.parse(returnedData.alerts) : [];
 
     // Generate objects from returned JSON and TXT data
     let hierarchySplit = nodeHierarchy.split('\r\n');
@@ -240,8 +242,19 @@ async function fetchJson(targetPath) {
     // Fetch default test settings
     await getDefaultTestSettings();
 
+    // Require saving if alerts.json hasn't been generated yet
+    if (!returnedData.alerts && targetPath) {
+        stateChecker.modified = true;
+        const saveRequiredMessage = "This workspace hasn't been saved since the address alert system has been added. "
+            + "Please save the project again to generate all necesary files for testing.";
+        alert(saveRequiredMessage)
+    }
+    else
+    {
+        stateChecker.modified = false;
+    }
+
     // Update HTML elements
-    stateChecker.modified = false;
     generatePages(hierarchy);
     document.getElementById("btn-update-json").disabled = false;
     document.getElementById("btn-update-json").setAttribute("title", 
@@ -466,6 +479,9 @@ function generateAlerts() {
     // Update counters
     document.getElementById("error-type-counter").innerText = `(${errors.length})`;
     document.getElementById("warning-type-counter").innerText = `(${warnings.length})`;
+
+    // Update flattened alerts
+    flattenedAlerts = createFlattenedAlerts();
 }
 
 function generateListEntry(element) {
@@ -1111,7 +1127,7 @@ async function updateJson() {
     try {
         const changes = detectHierarchyChanges();
         console.log(changes)
-        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes, documentStructure);
+        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes, documentStructure, flattenedAlerts);
         initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
@@ -1552,7 +1568,37 @@ function toggleNestedContent(button, type) {
         content.setAttribute("aria-expanded", true);
         button.innerText = `Hide Nested ${typeMessage}`;
     }
-} 
+}
+
+function generateAddressButton() {
+    let id = newGuid();
+    let html = `
+        <button id="${id}">
+            Address
+        </button>
+        <span id="addressed-${id}">
+        </span>
+    `;
+    return [html, id];
+}
+
+function generateAddressedIcon() {
+    let html = `
+        <span class='checkmark' title='This alert has been addressed'>
+            ✔
+        </span>
+    `;
+    return html;
+}
+
+function generateUnaddressedIcon() {
+    let html = `
+        <span class='cross' title='This alert has not been addressed'>
+            ✘
+        </span>
+    `;
+    return html;
+}
 
 function checkMissingRequiredFields() {
     const invalidMissingRequired = findMissingRequiredFields();
@@ -1582,9 +1628,14 @@ function checkMissingRequiredFields() {
         `;
 
         for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
             html += `
                 <li>
-                    ${elementFilter}
+                    <span>
+                        ${elementFilter.value}
+                    </span>
+                    ${addressButton}
                 </li>
             `;
         }
@@ -1622,9 +1673,12 @@ function checkMissingTriggerParenthesesError() {
     for (const info of invalidParentheses) {
         const cloneButton = cloneElement(info.button, info.button.innerText + " (mismatched parentheses)");
         const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
             <li>
                 ${elementButton}
+                ${addressButton}
             </li>
         `
     }
@@ -1664,9 +1718,14 @@ function checkMissingFiltersInTrigger() {
         `;
 
         for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
             html += `
                 <li>
-                    ${elementFilter}
+                    <span>
+                        ${elementFilter.value}
+                    </span>
+                    ${addressButton}
                 </li>
             `;
         }
@@ -1729,9 +1788,14 @@ function checkInvalidBinaryValueError() {
                 if (entry.filter != elementFilter) 
                     continue;
 
+                const [addressButton, addressId] = generateAddressButton();
+                entry.addressId = addressId;
                 html += `
                     <li>
-                        ${entry.value}
+                        <span>
+                            ${entry.value}
+                        </span>
+                        ${addressButton}
                     </li>
                 `;
             }
@@ -1783,9 +1847,14 @@ function checkMissingNodeIdInNames() {
                 <ul>
         `;
 
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
                 <li>
-                    <b>Missing Node ID:</b> ${info.id}
+                    <span>
+                        <b>Missing Node ID:</b> ${info.id}
+                    </span>
+                    ${addressButton}
                 </li>
         `;
 
@@ -1829,12 +1898,17 @@ function checkUnconventionalFileNames() {
                 <ul>
         `;
 
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
                 <li>
                     <b>File Name:</b> ${info.fileName}
                 </li>
                 <li>
                     <b>Suggested Name:</b> ${info.suggestedName}
+                </li>
+                <li>
+                    ${addressButton}
                 </li>
         `;
 
@@ -1877,13 +1951,15 @@ function checkDuplicateNodeIds() {
                 <ul>
         `;
 
-        for (const button of info.buttons) {
-            const cloneButton = cloneElement(button, button.innerText + " (duplicate node ID)");
+        for (const element of info.invalids) {
+            const cloneButton = cloneElement(element.button, element.button.innerText + " (duplicate node ID)");
             const elementButton = cloneButton.outerHTML;
-
+            const [addressButton, addressId] = generateAddressButton();
+            element.addressId = addressId;
             html += `
             <li>
                 ${elementButton}
+                ${addressButton}
             </li>
             `;
         }
@@ -1947,9 +2023,14 @@ function checkInvalidSpeciesWarning() {
                     continue;
 
                 const invalidSpeciesName = entry.value;
+                const [addressButton, addressId] = generateAddressButton();
+                entry.addressId = addressId;
                 html += `
                     <li>
-                        ${invalidSpeciesName}
+                        <span>
+                            ${invalidSpeciesName}
+                        </span>
+                        ${addressButton}
                     </li>
                 `;
             }
@@ -1982,7 +2063,7 @@ function checkNonexistentDocumentElements() {
 
     let invalidReferenceCount = 0;
     for (const section of nonexistentElementsInfo)
-        invalidReferenceCount += section.elements.length;
+        invalidReferenceCount += section.invalids.length;
 
     let html = `
         <p>
@@ -2003,13 +2084,16 @@ function checkNonexistentDocumentElements() {
                 <ul>
         `;
 
-        for (const element of info.elements) {
+        for (const element of info.invalids) {
             const buttonText = element.sectionElement.content != "" ? element.sectionElement.content : "(blank)";
+            const [addressButton, addressId] = generateAddressButton();
+            element.addressId = addressId;
             html += `
                 <li>
                     <button class='hierarchyNodeButton' onclick="openDocumentDialog('${info.section.name}','${element.index}')">
                         ${buttonText}
                     </button>
+                    ${addressButton}
                 </li>
             `;
         }
@@ -2047,9 +2131,12 @@ function checkMissingElementsInDocument() {
     for (const info of missingElementsInfo) {
         const cloneButton = cloneElement(info.button, info.button.innerText + " (missing document element)");
         const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
             <li class='border-box-list-item'>
                 ${elementButton}
+                ${addressButton}
             </li>
         `
     }
@@ -2082,9 +2169,12 @@ function checkUnlabeledElementsInDocument() {
     for (const info of unlabeledElementsInfo) {
         const cloneButton = cloneElement(info.button, info.button.innerText + " (unlabeled document element)");
         const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
         html += `
             <li class='border-box-list-item'>
                 ${elementButton}
+                ${addressButton}
             </li>
         `
     }
@@ -2101,23 +2191,35 @@ function findMissingRequiredFields() {
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
         let invalids = [];
         if (element.hierarchyName == "")
-            invalids.push("Node Name");
+            invalids.push({
+                value: "Node Name"
+            });
 
         if (element.fileName == "")
-            invalids.push("Node Description");
+            invalids.push({
+                value: "Node File Name"
+            });
 
         if (element.node.description == "")
-            invalids.push("Node Description");
+            invalids.push({
+                value: "Node Description"
+            });
 
         if (!element.parent)
-            invalids.push("Parent Node");
+            invalids.push({
+                value: "Parent Node"
+            });
 
         if (element.node.trigger == "")
-            invalids.push("Node Trigger");
+            invalids.push({
+                value: "Node Trigger"
+            });
 
         const filterNames = Object.keys(element.node.filters);
         if (filterNames.includes(""))
-            invalids.push("Node Filter Names");
+            invalids.push({
+                value: "Node Filter Names"
+            });
         
         if (invalids.length == 0) 
             continue;
@@ -2242,10 +2344,17 @@ function findDuplicateNodeIds() {
         if (elementsWithNodeId.length == 1) 
             continue;
 
+        const invalids = [];
+        for (const elementWithNodeId of elementsWithNodeId) {
+            invalids.push({
+                hierarchyName: elementWithNodeId.hierarchyName,
+                button: findHierarchyButton(elementWithNodeId.hierarchyName)
+            })
+        }
+
         invalid.push({
             id: element.node.id,
-            elements: elementsWithNodeId,
-            buttons: elementsWithNodeId.map(i => findHierarchyButton(i.hierarchyName))
+            invalids: invalids,
         });
     }
 
@@ -2294,7 +2403,7 @@ function findNonexistentDocumentElements() {
 
         if (invalidElements.length == 0) continue;
         invalid.push({
-            elements: invalidElements,
+            invalids: invalidElements,
             section: entry.section
         });
     }
@@ -2365,7 +2474,7 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
                     value: subFilterCombo
                 }],
                 element: element,
-                button: findHierarchyButton(element.hierarchyName)
+                button: findHierarchyButton(element.hierarchyName),
             });
         }
         else {
@@ -2376,6 +2485,203 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
         }
     }
     return invalidInfo;
+}
+
+function createFlattenedAlerts() {
+    // Collect a flattened list of errors and warnings
+    const flattenedErrors = createFlattenedErrors();
+    const flattenedWarnings = createFlattenedWarnings();
+    const newAlerts = [...flattenedErrors, ...flattenedWarnings];
+
+    for (const newAlert of newAlerts) {
+        // Attempt to find an already existing alert
+        const existingAlert = flattenedAlerts.filter(i => 
+            i.alertType == newAlert.alertType &&
+            i.alertSubType == newAlert.alertSubType &&
+            i.targetNode == newAlert.targetNode &&
+            i.targetProblem == newAlert.targetProblem
+        )[0];
+
+        // Either re-use or generate new alert ID, notes, and addressed values
+        if (existingAlert) {
+            newAlert.alertId = existingAlert.alertId;
+            newAlert.alertNotes = existingAlert.alertNotes;
+            newAlert.alertAddressed = existingAlert.alertAddressed;
+        }
+        else {
+            newAlert.alertId = newGuid();
+            newAlert.alertNotes = "";
+            newAlert.alertAddressed = false;
+        }
+
+        // Bind associated Address button to open with appropriate alert data
+        const addressButton = document.getElementById(newAlert.addressId);
+        addressButton.removeEventListener("click", openAddressAlertDialog);
+        addressButton.addEventListener("click", () => openAddressAlertDialog(newAlert.alertId, newAlert.addressId));
+
+        // Update associated addressed icon
+        const addressIcon = document.getElementById(`addressed-${newAlert.addressId}`);
+        addressIcon.innerHTML = newAlert.alertAddressed ? generateAddressedIcon() : generateUnaddressedIcon();
+    }
+
+    return newAlerts;
+}
+
+function createFlattenedErrors() {
+    const alerts = [];
+
+    for (const error of errors) {
+        if (error.name == "missing-required-fields") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.value} is a required field`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-trigger-parentheses") {
+            for (const source of error.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "error",
+                    alertSubType: error.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node Trigger has mismatched parentheses"
+                });
+            }
+        }
+        else if (error.name == "invalid-trigger-filters") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.value} references a nonexistent filter`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-binary") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} - ${invalid.value} is not a valid binary assignment (yes/no)`
+                    });
+                }
+            }
+        }
+        else if (error.name == "nonexistent-document-elements") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: `Document Section: ${source.section.name}`,
+                        targetProblem: `${invalid.sectionElement.content} is not a valid hierarchy node`
+                    });
+                }
+            }
+        }
+        else {
+            throw new Error("Invalid error type provided", error.name);
+        }
+    }
+
+    return alerts;
+}
+
+function createFlattenedWarnings() {
+    const alerts = [];
+
+    for (const warning of warnings) {
+        if (warning.name == "missing-node-id-in-name") {
+            for (const source of warning.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: `Node ID ${source.id} is not present in the Node Name`
+                });
+            }
+        }
+        else if (warning.name == "unconventional-file-name") {
+            for (const source of warning.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: `Node File Name ${source.fileName} is unconventional`
+                });
+            }
+        }
+        else if (warning.name == "duplicate-node-ids") {
+            for (const source of warning.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "warning",
+                        alertSubType: warning.name,
+                        targetNode: invalid.hierarchyName,
+                        targetProblem: `Node ID ${source.id} is nonunique`
+                    });
+                }
+            }
+        }
+        else if (warning.name == "invalid-species") {
+            for (const source of warning.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "warning",
+                        alertSubType: warning.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} - ${invalid.value} does not exist in the FIA species list`
+                    });
+                }
+            }
+        }
+        else if (warning.name == "missing-document-elements") {
+            for (const source of warning.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node is not referenced in the generated Document viewer"
+                });
+            }
+        }
+        else if (warning.name == "unlabeled-document-elements") {
+            for (const source of warning.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "warning",
+                    alertSubType: warning.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node has no label in the generated Document viewer"
+                });
+            }
+        }
+        else {
+            throw new Error("Invalid warning type provided", warning.name);
+        }
+    }
+
+    return alerts;
 }
 
 function findHierarchyButton(hierarchyName) {
@@ -2513,6 +2819,47 @@ async function openSettingsDialog() {
     showDialog(dialog);
 }
 
+function openAddressAlertDialog(alertId, addressId) {
+    openedAddressId = addressId;
+    const alert = flattenedAlerts.filter(i => i.alertId == alertId)[0];
+    
+    document.getElementById("alert-id").value = alert.alertId;
+    document.getElementById("alert-type").value = alert.alertType;
+    document.getElementById("alert-subtype").value = alert.alertSubType;
+    document.getElementById("alert-target-node").value = alert.targetNode;
+    document.getElementById("alert-target-problem").value = alert.targetProblem;
+    document.getElementById("alert-notes").value = alert.alertNotes;
+    document.getElementById("alert-addressed").checked = alert.alertAddressed;
+
+    const dialog = document.getElementById("address-alert-dialog");
+    showDialog(dialog);
+}
+
+async function updateAddressAlertDialog() {
+    const message = "Are you sure you want to save these changes?";
+    const confirmation = await confirm(message);
+    if (!confirmation)
+        return;
+
+    const alertId = document.getElementById("alert-id").value;
+    const alert = flattenedAlerts.filter(i => i.alertId == alertId)[0];
+    
+    const alertNotes = document.getElementById("alert-notes").value.trim();
+    alert.alertNotes = alertNotes;
+
+    const alertAddressed = document.getElementById("alert-addressed").checked;
+    alert.alertAddressed = alertAddressed;
+
+    const addressedIcon = document.getElementById(`addressed-${openedAddressId}`);
+    addressedIcon.innerHTML = alertAddressed ? generateAddressedIcon() : generateUnaddressedIcon();
+    openedAddressId = null;
+
+    const dialog = document.getElementById("address-alert-dialog");
+    dialog.close();
+
+    stateChecker.modified = true;
+}
+
 function updateSettingsDialogValues() {
     updateAvailableYears();
     document.getElementById("settings-additional-where").value = testSettings.additionalWhere;
@@ -2604,7 +2951,9 @@ function findMissingFiltersInTrigger(trigger, filters) {
     for (const reference of references) {
         const filter = reference.replace("match(", "").replace("riv(", "").replace("spcov(", "").replace(")", "");
         if (filters.includes(filter)) continue;
-        missing.push(reference);
+        missing.push({
+            value: reference
+        });
     }
 
     return missing;

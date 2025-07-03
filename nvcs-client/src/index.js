@@ -132,11 +132,21 @@ async function fetchExistingJson(event, targetPath) {
     documentStructureString = documentStructureData.toString();
   }
 
+  // Retrieve alerts JSON
+  let alertsJson;
+  const alertsPath = path.resolve((targetPath ?? getConfigurationPath()) + '/alerts.json');
+  if (fs.existsSync(alertsPath)) {
+    console.log(`- Target Alerts Path: ${alertsPath}`);
+    let alertsData = fs.readFileSync(alertsPath);
+    alertsJson = alertsData.toString();
+  }
+
   // Combine and return data
   let returnData = {
     json: allJsonData,
     hierarchy: hierarchyString,
-    documentStructure: documentStructureString
+    documentStructure: documentStructureString,
+    alerts: alertsJson
   }
 
   // Mark unaved as false
@@ -146,7 +156,7 @@ async function fetchExistingJson(event, targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json, changes, documentStructure) {
+async function updateJson(event, directory, json, changes, documentStructure, alerts) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
@@ -204,6 +214,15 @@ async function updateJson(event, directory, json, changes, documentStructure) {
   let documentStructureJson = JSON.stringify(documentStructure, null, 4);
   documentStructureJson = documentStructureJson.trim();
   fs.writeFileSync(documentStructurePath, documentStructureJson);
+
+  // Omit unnecessary button IDs
+  for (const alert of alerts)
+    delete alert.addressId;
+  
+  // Update alerts file
+  const alertsJson = JSON.stringify(alerts, null, 4);
+  const alertsPath = path.resolve(path.join(newJsonDirectoryPath, "alerts.json"));
+  fs.writeFileSync(alertsPath, alertsJson);
 
   // Mark unaved as false
   unsavedChanges = false;
@@ -307,6 +326,7 @@ async function executeTester(event, targetPath, testSettings) {
   config.Config.ProjectRoot = getProjectResourcePath();
   config.WestConfig.In_ConfigPath = path.resolve(targetPath);
   config.FullOutputConfig.SkipSharedTables = "True";
+  config.FullOutputConfig.In_Alerts = path.resolve(path.join(targetPath, "alerts.json"));
   config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
   config.FullOutputConfig.Out_TesterResultsPath = getOutPath();
   config.FullOutputConfig.Out_DebugLogPath = getDebugLogPath();
@@ -504,7 +524,7 @@ async function fetchAvailableYears(event) {
   // Get source table & column
   const defaultConfigPath = getDefaultPythontConfigFilePath();
   const config = getPythonConfigFile(defaultConfigPath);
-  const table = config.FullOutputConfig.KeyTestDataName;
+  const table = config.FullOutputConfig.AnlyTestDataName;
   const column = "INVYR";
 
   // Execute Plot IO
