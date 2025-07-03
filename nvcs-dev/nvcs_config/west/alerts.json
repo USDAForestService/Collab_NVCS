@@ -1,0 +1,1334 @@
+[
+    {
+        "alertType": "error",
+        "alertSubType": "missing-required-fields",
+        "targetNode": "Vancouverian Ruderal Forest (G801)",
+        "targetProblem": "Node Description is a required field",
+        "alertId": "id713f19b4ddafa",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Natural (including ruderal) Forests",
+        "targetProblem": "Node ID (C01) is not present in the Node Name",
+        "alertId": "id915954d7f7749",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Temperate Flooded & Swamp Forest Formation",
+        "targetProblem": "Node ID (F026) is not present in the Node Name",
+        "alertId": "ida55a647f834fc",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Great Plains Temperate Flooded & Swamp Forests",
+        "targetProblem": "Node ID (F026) is not present in the Node Name",
+        "alertId": "id7354080b47527",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Western North American Temperate Flooded & Swamp Forests",
+        "targetProblem": "Node ID (F026) is not present in the Node Name",
+        "alertId": "id6f705372fca83",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Western North American Flooded Ruderal Forests - Vancouverian",
+        "targetProblem": "Node ID (D193) is not present in the Node Name",
+        "alertId": "id0b68be2e99d6b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Western North American Flooded Ruderal Forests - Rocky Mountain",
+        "targetProblem": "Node ID (D195) is not present in the Node Name",
+        "alertId": "idd41b636007786",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Temperate & Boreal Forest & Woodland Subclass",
+        "targetProblem": "Node ID (S15) is not present in the Node Name",
+        "alertId": "id7670395207172",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Eastern North American Forest & Woodland Natural Forests",
+        "targetProblem": "Node ID (D008) is not present in the Node Name",
+        "alertId": "id2832fd14b3ec1",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Eastern North American Ruderal Forests",
+        "targetProblem": "Node ID (D008) is not present in the Node Name",
+        "alertId": "id4f275222cb729",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Warm Temperate Forest & Woodland Formation",
+        "targetProblem": "Node ID (F018) is not present in the Node Name",
+        "alertId": "id5db352754d9db",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Madrean Natural Forests & Woodlands",
+        "targetProblem": "Node ID (D331) is not present in the Node Name",
+        "alertId": "id27fa566adcbec",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Western North American Ruderal Forests - Madrean-Balconian",
+        "targetProblem": "Node ID (D060) is not present in the Node Name",
+        "alertId": "id06f8eef963af9",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Cool Temperate Forest & Woodland Formation",
+        "targetProblem": "Node ID (F008) is not present in the Node Name",
+        "alertId": "idf84b39b293234",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Southern Great Plains Forest & Woodland (M544)",
+        "targetProblem": "Node File Name southern-great-plains-forest-&-woodland-m544.json is unconventional",
+        "alertId": "idc060427da7d4a",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Edwards Plateau Dry-Mesic Hardwood Forest (G028)",
+        "targetProblem": "Node File Name edwards-plateau-dry-mesic-hardwood-forest-g028.json is unconventional",
+        "alertId": "id41772ef2b8923",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Edwards Plateau Dry Woodland (G126)",
+        "targetProblem": "Node File Name edwards-plateau-dry-woodland-g126.json is unconventional",
+        "alertId": "id5a1d2fb614074",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Northern Great Plains Forest & Woodland (M545)",
+        "targetProblem": "Node File Name northern-great-plains-forest-&-woodland-m545.json is unconventional",
+        "alertId": "id2b5b9a60632d",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Great Plains Bur Oak Forest & Woodland(G329)",
+        "targetProblem": "Node File Name great-plains-bur-oak-forest-&-woodlandg329.json is unconventional",
+        "alertId": "id069a74efb9f32",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Northwestern Great Plains Aspen Woodland (G328)",
+        "targetProblem": "Node File Name northwestern-great-plains-aspen-woodland-g328.json is unconventional",
+        "alertId": "id0ffcc2447a745",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Madrean Forest & Woodland Division (D331)",
+        "targetProblem": "Node File Name madrean-forest-&-woodland-division-d331.json is unconventional",
+        "alertId": "id9176ef3020ba5",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Madrean Pinyon - Juniper Woodland (G200)",
+        "targetProblem": "Node File Name madrean-pinyon juniper-woodland-G200.json is unconventional",
+        "alertId": "id41031dbf12ff5",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Vancouverian Coastal Rainforest (M024)",
+        "targetProblem": "Node File Name vancouverian-coastal-rainforest-m024.json is unconventional",
+        "alertId": "idae11b2fcc850b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Pacific Mountains Forest & Woodland Division (D339)",
+        "targetProblem": "Node File Name pacific-mountains-forest-&-woodland-division-d339.json is unconventional",
+        "alertId": "id6fb8c1015433c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Cascadian Oregon White Oak - Conifer Forest & Woodland (G206)",
+        "targetProblem": "Node File Name cascadian-oregon-white-oak-conifer-forest-&-oodland-G206.json is unconventional",
+        "alertId": "idcb30761532ca4",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Vancouverian Ruderal Forest (G801)",
+        "targetProblem": "Node File Name vancouverian-ruderal-forest-g801.json is unconventional",
+        "alertId": "id4c6a8fd1c4d56",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Rocky Mountain Foothills & Montane Forest & Woodland (D337)",
+        "targetProblem": "Node File Name rocky-mountain-foothills-&-montane-forest-&-woodland-d337.json is unconventional",
+        "alertId": "iddb44fab83c818",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)",
+        "targetProblem": "Node File Name western-cordilleran-subalpine-high-montane-forest-&-woodland-d336.json is unconventional",
+        "alertId": "id66bff9e3238e5",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Temperate Flooded & Swamp Forest Formation",
+        "targetProblem": "Node ID F026 is nonunique",
+        "alertId": "ideb4fcaad692e2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Great Plains Temperate Flooded & Swamp Forests",
+        "targetProblem": "Node ID F026 is nonunique",
+        "alertId": "id69b4ffc889148",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Western North American Temperate Flooded & Swamp Forests",
+        "targetProblem": "Node ID F026 is nonunique",
+        "alertId": "id92a63620ba844",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Vancouverian Flooded & Swamp Forest Division (D193)",
+        "targetProblem": "Node ID D193 is nonunique",
+        "alertId": "id30ad6b977fbfa",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Western North American Flooded Ruderal Forests - Vancouverian",
+        "targetProblem": "Node ID D193 is nonunique",
+        "alertId": "id715613a6ba3e3",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)",
+        "targetProblem": "Node ID D195 is nonunique",
+        "alertId": "id7135ae619ded6",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Western North American Flooded Ruderal Forests - Rocky Mountain",
+        "targetProblem": "Node ID D195 is nonunique",
+        "alertId": "id91101b22e74d9",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Eastern North American Forest & Woodland Division (D008)",
+        "targetProblem": "Node ID D008 is nonunique",
+        "alertId": "id6f9f4b1f751cd",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Eastern North American Forest & Woodland Natural Forests",
+        "targetProblem": "Node ID D008 is nonunique",
+        "alertId": "id92b236d87a337",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Eastern North American Ruderal Forests",
+        "targetProblem": "Node ID D008 is nonunique",
+        "alertId": "id67e00f359a188",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Madrean Forest & Woodland Division (D331)",
+        "targetProblem": "Node ID D331 is nonunique",
+        "alertId": "idf337c00ccb06a",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "duplicate-node-ids",
+        "targetNode": "Madrean Natural Forests & Woodlands",
+        "targetProblem": "Node ID D331 is nonunique",
+        "alertId": "id605a69e91bd9",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Flooded & Swamp Forest Division (D062)",
+        "targetProblem": "SPECIES_1 - species: Sabal palmetto does not exist in the FIA species list",
+        "alertId": "ida5f0d06d3a604",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Flooded & Swamp Forest Division (D062)",
+        "targetProblem": "SPECIES_2 - species: Sideroxylon lanuginosum does not exist in the FIA species list",
+        "alertId": "id29c383d8d2b14",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Flooded & Swamp Forest Division (D062)",
+        "targetProblem": "SPECIES_3 - species: Fraxinus albicans does not exist in the FIA species list",
+        "alertId": "ide39c64df5ee2f",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Flooded & Swamp Forest Division (D062)",
+        "targetProblem": "SPECIES_3 - species: Quercus fusiformis does not exist in the FIA species list",
+        "alertId": "id766063787fc2d",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern Great Plains Floodplain Forest (G784)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Sideroxylon lanuginosum does not exist in the FIA species list",
+        "alertId": "id9b0bc01def1ab",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern Great Plains Floodplain Forest (G784)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Fraxinus albicans does not exist in the FIA species list",
+        "alertId": "idd821bc6a94d33",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern Great Plains Floodplain Forest (G784)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus fusiformis does not exist in the FIA species list",
+        "alertId": "id86aa7b8b004cb",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "North-Central Pacific Lowland Riparian Forest (G851)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Populus trichocarpa does not exist in the FIA species list",
+        "alertId": "idfc2e09454bc38",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Western North American Interior Flooded Forest Division (D013)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Phaulothamnus spinescens does not exist in the FIA species list",
+        "alertId": "id9477e5dde754d",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Western North American Interior Flooded Forest Division (D013)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Sabal mexicana does not exist in the FIA species list",
+        "alertId": "id818d4bd3a9268",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Western North American Interior Flooded Forest Division (D013)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Washingtonia filifera does not exist in the FIA species list",
+        "alertId": "id38acc05aacc91",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Western North American Interior Flooded Forest Division (D013)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Hesperocyparis arizonica does not exist in the FIA species list",
+        "alertId": "id2a50fd26e2546",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Western North American Interior Flooded Forest Division (D013)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Taxodium mucronatum does not exist in the FIA species list",
+        "alertId": "id809ce724c1a65",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Tamaulipan Riparian Scrub Forest (G549)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Phaulothamnus spinescens does not exist in the FIA species list",
+        "alertId": "id706ffbb54769e",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Tamaulipan Riparian Scrub Forest (G549)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Sabal mexicana does not exist in the FIA species list",
+        "alertId": "id5aeb4154304b4",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Tamaulipan Riparian Scrub Forest (G549)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Taxodium mucronatum does not exist in the FIA species list",
+        "alertId": "idfef23ba8ed283",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southwest Warm Desert Riparian Forest (G109)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Washingtonia filifera does not exist in the FIA species list",
+        "alertId": "id59686dfae28a6",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Great Plains Temperate Forests",
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Aesculus pavia does not exist in the FIA species list",
+        "alertId": "id02403b4bb47d8",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Great Plains Temperate Forests",
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Persea borbonia does not exist in the FIA species list",
+        "alertId": "id39f9cec5a36bc",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Great Plains Temperate Forests",
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Sabal palmetto does not exist in the FIA species list",
+        "alertId": "idfb598d81c0cbb",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Aesculus pavia does not exist in the FIA species list",
+        "alertId": "id45f6490eacd64",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus margarettiae does not exist in the FIA species list",
+        "alertId": "id8d8cee6646eb5",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Sabal palmetto does not exist in the FIA species list",
+        "alertId": "id0db41d8b9dbdf",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Persea borbonia does not exist in the FIA species list",
+        "alertId": "id557467aa99a8b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Coastal Live Oak - Hickory - Palmetto Forest (G798)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus hemisphaerica does not exist in the FIA species list",
+        "alertId": "idd4958518aba69",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Coastal Live Oak - Hickory - Palmetto Forest (G798)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Sabal palmetto does not exist in the FIA species list",
+        "alertId": "id99154831e9d48",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus fusiformis does not exist in the FIA species list",
+        "alertId": "id1197489c3d3a8",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Zanthoxylum hirsutum does not exist in the FIA species list",
+        "alertId": "id74a996064dbf2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Eastern North American Forest & Woodland Division (D008)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus fusiformis does not exist in the FIA species list",
+        "alertId": "id65ceda01e06c3",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Southern & South-Central Oak - Pine Forest & Woodland (M016)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus fusiformis does not exist in the FIA species list",
+        "alertId": "id8dd45d3966332",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Western Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Carya tomentosa does not exist in the FIA species list",
+        "alertId": "ida77ad29ec0431",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Western Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Pinus palustris does not exist in the FIA species list",
+        "alertId": "id47450edbd728",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Warm Temperate Forest & Woodland Formation",
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Quercus albocincta does not exist in the FIA species list",
+        "alertId": "id8f5f6adec18d2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Warm Temperate Forest & Woodland Formation",
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Quercus vaseyana does not exist in the FIA species list",
+        "alertId": "id43a2751770ea7",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Warm Temperate Forest & Woodland Formation",
+        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Quercus albocincta does not exist in the FIA species list",
+        "alertId": "id666ded552129e",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Warm Temperate Forest & Woodland Formation",
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Quercus albocincta does not exist in the FIA species list",
+        "alertId": "idc85c79db27e6c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Californian Conifer Forest & Woodland (G198)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis abramsiana does not exist in the FIA species list",
+        "alertId": "idb50dc23678032",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Californian Conifer Forest & Woodland (G198)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Pinus torreyana does not exist in the FIA species list",
+        "alertId": "id8b4d15ec3921",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Californian Conifer Forest & Woodland (G198)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Pinus quadrifolia does not exist in the FIA species list",
+        "alertId": "id990e8d4e9c8b2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Madrean Forest & Woodland Division (D331)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus albocincta does not exist in the FIA species list",
+        "alertId": "id38a0bc55c65be",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Madrean Forest & Woodland Division (D331)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus vaseyana does not exist in the FIA species list",
+        "alertId": "idfed1eebeff1ef",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Madrean Montane Forest & Woodland (M011)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus albocincta does not exist in the FIA species list",
+        "alertId": "id1f07d5b2edc8b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)",
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Abies coahuilensis does not exist in the FIA species list",
+        "alertId": "idc57b22495ad35",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus fulva does not exist in the FIA species list",
+        "alertId": "ideb844e63f1a92",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus viminea does not exist in the FIA species list",
+        "alertId": "id1ebcd460875e1",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: placeholder - add moderate diagnostic does not exist in the FIA species list",
+        "alertId": "id264767a6ff0e7",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)",
+        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: PLACEHOLDER - INSERT P2 VEG does not exist in the FIA species list",
+        "alertId": "idc4d247f853d09",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Southern Great Plains Forest & Woodland (M544)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id138e3fe236dd8",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Cross Timbers Forest & Woodland (G887)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "ida6667ee274daa",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Edwards Plateau Dry-Mesic Hardwood Forest (G028)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "idc51460e1f8f67",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Edwards Plateau Dry Woodland (G126)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "ide436570e88f1",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Northern Great Plains Forest & Woodland (M545)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "idc307ffc44bb1",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Great Plains Bur Oak Forest & Woodland(G329)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id32c2bc2be60e9",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Northeastern Great Plains Aspen Woodland (G146)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id66a7732ec4905",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Northwestern Great Plains Aspen Woodland (G328)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id8db14fb3a9553",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Great Plains Mesic Forest & Woodland (G145)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id77558f38878c1",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Vancouverian Ruderal Forest (G801)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id27ae59ba95c8b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Forest Plantations",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id594dea136c29c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Natural (including ruderal) Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id28d1b2ac647cc",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Wetland Forest & Woodlands",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id44eda26ae3842",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Temperate Flooded & Swamp Forest Formation",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id2248dc9ce9f4a",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Great Plains Temperate Flooded & Swamp Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "iddcf24574ae11b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Eastern North American-Great Plains Flooded & Swamp Forest Division (D011)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idef19fc2346354",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Eastern North American Ruderal Flooded & Swamp Forest (M302)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idbe0d6b1bcd97",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Southeastern North American Flooded & Swamp Forest Division (D062)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id155be4889eb62",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Southeastern North American Ruderal Flooded & Swamp Forest (M310)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id1b8eb961b0c6b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western North American Temperate Flooded & Swamp Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id52e554b8601c7",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Vancouverian Flooded & Swamp Forest Division (D193)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id1fe150ad1533a",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western North American Flooded Ruderal Forests - Vancouverian",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "ide8517b4aaab3b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idf677fe038f5c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western North American Flooded Ruderal Forests - Rocky Mountain",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "iddc599b84fe23c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western North American Interior Flooded Forest Division (D013)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idd8a095e51dca8",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Interior West Ruderal Flooded & Swamp Forest & Woodland (M298)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id7615e0e5d9d99",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Upland Forest & Woodlands",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idbf62c623afc8c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Temperate & Boreal Forest & Woodland Subclass",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id96ce86bf7389d",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Great Plains Temperate Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idd9c2bfe0ddd71",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "North American Great Plains Forest & Woodland Division (D326)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id8dabdd854f86d",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Southern Great Plains Forest & Woodland (M544)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id8c0307b0d49f8",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Cross Timbers Forest & Woodland (G887)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id1102c6215439c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Edwards Plateau Dry-Mesic Hardwood Forest (G028)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id45f1c1b1e09d4",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Edwards Plateau Dry Woodland (G126)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id9ba5f99eada8c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Northern Great Plains Forest & Woodland (M545)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idc6887a31b85a2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Great Plains Bur Oak Forest & Woodland(G329)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idcc499922c8685",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Northeastern Great Plains Aspen Woodland (G146)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id36c41c780bf47",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Northwestern Great Plains Aspen Woodland (G328)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id0d01b1ef1893f",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Great Plains Mesic Forest & Woodland (G145)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id2c11e82fa8b0b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Great Plains Ruderal Woodland (M524)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "ida3e77505ee788",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id96a2ae32a8e99",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Southeastern North American Ruderal Forest (M305)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id493670f8e7629",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Eastern North American Forest & Woodland Division (D008)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idd3adfe18729e1",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Eastern North American Forest & Woodland Natural Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idce6cbb1afe207",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Eastern North American Ruderal Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idb54d1149f7cb9",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Eastern North American Ruderal Forest (M013)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idb0933b976558f",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western North American Temperate Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "iddc3e81b3c1535",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Warm Temperate Forest & Woodland Formation",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id135dc8ffe0897",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Californian Forest & Woodland Division (D007)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id9a6044aa06d4a",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Californian Ruderal Forest (M513)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id72e2d5f7be3a3",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Madrean Forest & Woodland Division (D331)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id9d3a88eb70dbd",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Madrean Natural Forests & Woodlands",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id8093bede97281",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western North American Ruderal Forests - Madrean-Balconian",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id4a0046af52fcd",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Cool Temperate Forest & Woodland Formation",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id57cef53abad02",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Pacific Coast Temperate Rainforest Division (D338)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id2a7dec6f66a21",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western North American Pinyon-Juniper Woodland & Scrub Division (D010)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id2e3d42a71cca4",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Pacific Mountains Forest & Woodland Division (D339)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id3f7e08767d492",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Vancouverian Ruderal Forest (M405)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id9045dd020d3ef",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Vancouverian Ruderal Forest (G801)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id59a1b1ed34664",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Rocky Mountain Foothills & Montane Forest & Woodland (D337)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id96f8d0be39b16",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id254f41d42c8e1",
+        "alertNotes": "",
+        "alertAddressed": false
+    }
+]
