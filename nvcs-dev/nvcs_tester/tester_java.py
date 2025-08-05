@@ -75,6 +75,7 @@ def json_query(dbfile, tbl, invyrs, where, type):
                 'LIVE_CANOPY_CVR_PCT', {'LIVE_CANOPY_CVR_PCT' if type == 'WestConfig' else 'null'},
                 'AFFORESTATION_CD', {'AFFORESTATION_CD' if type == 'WestConfig' else 'null'},
                 'LAND_COVER_CLASS_CD', {'LAND_COVER_CLASS_CD' if type == 'WestConfig' else 'null'},
+                'LAND_COVER_CLASS_CD_RET', {'LAND_COVER_CLASS_CD_RET' if type == 'WestConfig' else 'null'},
                 'TRTCD1', {'TRTCD1' if type == 'WestConfig' else 'null'},
                 'TRTCD2', {'TRTCD2' if type == 'WestConfig' else 'null'},
                 'TRTCD3', {'TRTCD3' if type == 'WestConfig' else 'null'},

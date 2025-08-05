@@ -26,6 +26,7 @@ public class Plot {
     public Float live_canopy_cvr_pct;
     public String afforestation_cd;
     public String land_cover_class_cd;
+    public String land_cover_class_cd_ret;
     public String trtcd1;
     public String trtcd2;
     public String trtcd3;
@@ -35,7 +36,7 @@ public class Plot {
     public List<Tree> trees;
     public Map<String,Object> attrs;
     
-    public Plot(String ident, String rscd, String state, String ecoregion, String plantation, String hydric, String riverine, String elevation, String balive, String fbcov, String grcov, String shcov, String ttcov, String ntcov, String live_canopy_cvr_pct, String afforestation_cd, String land_cover_class_cd, String trtcd1, String trtcd2, String trtcd3, String trtyr1, String trtyr2, String trtyr3) {
+    public Plot(String ident, String rscd, String state, String ecoregion, String plantation, String hydric, String riverine, String elevation, String balive, String fbcov, String grcov, String shcov, String ttcov, String ntcov, String live_canopy_cvr_pct, String afforestation_cd, String land_cover_class_cd, String land_cover_class_cd_ret, String trtcd1, String trtcd2, String trtcd3, String trtyr1, String trtyr2, String trtyr3) {
         this.ident = ident != null ? ident : "";
         this.rscd = rscd != null ? rscd : "";
         this.state = state != null ? state : "";
@@ -53,6 +54,7 @@ public class Plot {
         this.live_canopy_cvr_pct = Float.parseFloat(live_canopy_cvr_pct != null ? live_canopy_cvr_pct : "0");
         this.afforestation_cd = afforestation_cd != null ? afforestation_cd : "";
         this.land_cover_class_cd = land_cover_class_cd != null ? land_cover_class_cd : "";
+        this.land_cover_class_cd_ret = land_cover_class_cd_ret != null ? land_cover_class_cd_ret : "";
         this.trtcd1 = trtcd1 != null ? trtcd1 : "";
         this.trtcd2 = trtcd2 != null ? trtcd2 : "";
         this.trtcd3 = trtcd3 != null ? trtcd3 : "";
@@ -79,6 +81,7 @@ public class Plot {
         this.attrs.put("live_canopy_cvr_pct", this.live_canopy_cvr_pct);
         this.attrs.put("afforestation_cd", this.afforestation_cd);
         this.attrs.put("land_cover_class_cd", this.land_cover_class_cd);
+        this.attrs.put("land_cover_class_cd_ret", this.land_cover_class_cd_ret);
         this.attrs.put("trtcd1", this.trtcd1);
         this.attrs.put("trtcd2", this.trtcd2);
         this.attrs.put("trtcd3", this.trtcd3);

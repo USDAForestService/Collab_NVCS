@@ -5,7 +5,7 @@ from pattern import PatternList
 import logging
 
 class Plot:
-    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, trtcd1, trtcd2, trtcd3, trtyr1, trtyr2, trtyr3):
+    def __init__(self, ident, rscd, state, ecoregion, plantation, hydric, riverine, elevation, balive, fbcov, grcov, shcov, ttcov, ntcov, live_canopy_cvr_pct, afforestation_cd, land_cover_class_cd, land_cover_class_cd_ret, trtcd1, trtcd2, trtcd3, trtyr1, trtyr2, trtyr3):
         self.attrs = dict()
         self.attrs['ident'] = str(ident if ident is not None else "")
         self.attrs['rscd'] = str(rscd if rscd is not None else "")
@@ -24,6 +24,7 @@ class Plot:
         self.attrs['live_canopy_cvr_pct'] = float(live_canopy_cvr_pct if live_canopy_cvr_pct is not None else 0)
         self.attrs['afforestation_cd'] = str(afforestation_cd if afforestation_cd is not None else "")
         self.attrs['land_cover_class_cd'] = str(land_cover_class_cd if land_cover_class_cd is not None else "")
+        self.attrs['land_cover_class_cd_ret'] = str(land_cover_class_cd_ret if land_cover_class_cd_ret is not None else "")
         self.attrs['trtcd1'] = str(trtcd1 if trtcd1 is not None else "")
         self.attrs['trtcd2'] = str(trtcd2 if trtcd2 is not None else "")
         self.attrs['trtcd3'] = str(trtcd3 if trtcd3 is not None else "")
@@ -191,6 +192,7 @@ Pattern.register('planted', Pattern)
 Pattern.register('tallytree', Pattern)
 Pattern.register('afforestation_cd', Pattern)
 Pattern.register('land_cover_class_cd', Pattern)
+Pattern.register('land_cover_class_cd_ret', Pattern)
 Pattern.register('trtcd1', Pattern)
 Pattern.register('trtcd2', Pattern)
 Pattern.register('trtcd3', Pattern)
