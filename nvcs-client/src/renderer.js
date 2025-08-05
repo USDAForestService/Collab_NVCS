@@ -13,6 +13,7 @@ let InputFilterTypes = [
     "tallytree",
     "afforestation_cd",
     "land_cover_class_cd",
+    "land_cover_class_cd_ret",
     "trtcd1",
     "trtcd2",
     "trtcd3"

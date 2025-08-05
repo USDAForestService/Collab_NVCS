@@ -34,6 +34,7 @@ public class <%classname%> extends ClassificationKey {
         Pattern.register("tallytree", "Pattern");
         Pattern.register("afforestation_cd", "Pattern");
         Pattern.register("land_cover_class_cd", "Pattern");
+        Pattern.register("land_cover_class_cd_ret", "Pattern");
         Pattern.register("trtcd1", "Pattern");
         Pattern.register("trtcd2", "Pattern");
         Pattern.register("trtcd3", "Pattern");
