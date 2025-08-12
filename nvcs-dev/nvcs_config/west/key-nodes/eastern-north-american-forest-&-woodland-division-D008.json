@@ -20,9 +20,9 @@
             "diagnostic species Acer negundo, Amelanchier spp., Betula papyrifera,",
             "Carya cordiformis, Cercis canadensis, Diospyros virginiana,",
             "Gleditsia triacanthos, Juglans nigra, Juniperus ashei,",
-            "Juniperus virginiana, Morus rubra, Ostrya virginiana,",
+            "Juniperus virginiana , Morus rubra, Ostrya virginiana,",
             "Populus balsamifera, Populus deltoides, Prunus pensylvanica,",
-            "Prunus serotina, Prunus virginiana, Quercus fusiformis,",
+            "Prunus serotina, Prunus virginiana, Quercus virginiana (=Quercus virgiana ssp. fusiformis),",
             "Quercus marilandica, Quercus stellata,",
             "Quercus shumardii, Ulmus alata, or Ulmus crassifolia",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
@@ -144,9 +144,6 @@
                     "species": "Prunus virginiana"
                 },
                 {
-                    "species": "Quercus fusiformis"
-                },
-                {
                     "species": "Quercus marilandica"
                 },
                 {
@@ -160,11 +157,16 @@
                 },
                 {
                     "species": "Ulmus crassifolia"
+                },
+                {
+                    "species": "Quercus virginiana"
                 }
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes",
+                    "exotic": "yes"
+                },
+                {
                     "tallytree": "yes"
                 }
             ]

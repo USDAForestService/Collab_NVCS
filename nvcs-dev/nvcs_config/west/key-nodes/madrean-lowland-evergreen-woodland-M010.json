@@ -5,7 +5,7 @@
         "level": "macrogroup",
         "description": [
             "Plot location and tree composition are as follows:",
-            "i. Located in ECOREGION 322, 313C, M313, 321, AND",
+            "i. Located in ECOREGION 322, 313C, M313, 321, 315 AND",
             "tree composition dominated by one or more of STRONG DIAGNOSTIC species",
             "Juniperus coahuilensis, Juniperus deppeana, Juniperus flaccida,",
             "Juniperus pinchotii, Pinus cembroides, Pinus discolor,",
@@ -20,7 +20,7 @@
             "but with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any combination",
             "of Arbutus arizonica, Arbutus xalapensis, Juniperus monosperma,",
             "Pinus arizonica, Pinus edulis, Pinus engelmannii, Pinus leiophylla",
-            "Pinus strobiformis, Quercus hypoleucoides, and Quercus rugosa",
+            "Pinus strobiformis, Quercus hypoleucoides, Quercus gambelii and Quercus rugosa",
             "(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%))"
         ],
         "trigger": [
@@ -31,7 +31,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "322, 313C, M313, 321"
+                    "ecoregion": "322, 313C, M313, 321, 315"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
@@ -105,6 +105,9 @@
                 },
                 {
                     "species": "Quercus rugosa"
+                },
+                {
+                    "species": "Quercus gambelii"
                 }
             ]
         }

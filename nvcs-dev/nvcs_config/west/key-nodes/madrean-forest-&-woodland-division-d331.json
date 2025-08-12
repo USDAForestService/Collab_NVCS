@@ -8,23 +8,23 @@
             "i. EITHER",
             "a. Tree composition contains one or more of STRONG diagnostic tree",
             "species Juniperus ashei, Juniperus coahuilensis, Juniperus deppeana,",
-            "Juniperus flaccida, Pinus arizonica, Pinus cembroides, Pinus discolor,",
+            "Juniperus flaccida, Juniperus pinchotii, Pinus arizonica, Pinus cembroides, Pinus discolor,",
             "Pinus engelmannii, Pinus leiophylla, Pinus strobiformis,",
             "Prosopis glandulosa, Prosopis velutina, Quercus albocincta,",
             "Quercus arizonica, Quercus chrysolepis, Quercus emoryi,",
             "Quercus grisea, Quercus hypoleucoides, Quercus oblongifolia,",
             "or Quercus rugosa (=>50% RIV),",
             "[Additional tree species not tracked by FIA include",
-            "Juniperus arizonica, Quercus buckleyi, Quercus fusiformis,",
+            "Juniperus arizonica, Pinus monophylla, Quercus buckleyi, Quercus fusiformis,",
             "Quercus gravesii, Quercus vaseyana, or Ulmus crassifolia]",
             "OR",
             "b. The above tree species, but with =>20% RIV AND other MODERATE",
             "diagnostic species any combination of Abies concolor,",
             "Acer grandidentatum, Arbutus arizonica, Arbutus xalapensis,",
             "Celtis laevigata, Fraxinus albicans, Juglans major, Juglans nigra,",
-            "Juniperus monosperma, Juniperus osteosperma, Juniperus pinchotii, Pinus edulis,",
+            "Juniperus monosperma, Juniperus osteosperma, Pinus edulis,",
             "Pinus ponderosa, Pinus remota, Pseudotsuga menziesii,",
-            "Prunus serotina, Quercus macrocarpa, Quercus muehlenbergii, or Quercus vaseyana",
+            "Prunus serotina, Quercus gambelii, Quercus macrocarpa, Quercus muehlenbergii, or Quercus vaseyana",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),",
             "[Additional tree species not tracked by FIA include Quercus laceyi]",
             "OR",
@@ -104,6 +104,12 @@
                 },
                 {
                     "species": "Quercus rugosa"
+                },
+                {
+                    "species": "Juniperus pinchotii"
+                },
+                {
+                    "species": "Pinus monophylla"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -138,9 +144,6 @@
                     "species": "Juniperus osteosperma"
                 },
                 {
-                    "species": "Juniperus pinchotii"
-                },
-                {
                     "species": "Pinus edulis"
                 },
                 {
@@ -163,6 +166,9 @@
                 },
                 {
                     "species": "Quercus vaseyana"
+                },
+                {
+                    "species": "Quercus gambelii"
                 }
             ],
             "EXOTIC_TREE_SPP": [

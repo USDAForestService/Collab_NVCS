@@ -1,0 +1,52 @@
+{
+    "node": {
+        "name": "Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)",
+        "id": "G223",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION 331A, 331D, 331K, 331N, M261G, M242B,",
+            "M242C, M242D – only eastern ecosubsections M242Dd, M242De, M242Df,",
+            "M242Dg, M242Dh, 341G, 342, M331A, M331B, M331D, M331J, M332, M333",
+            "and tree composition dominated by one or more of",
+            "STRONG DIAGNOSTIC species Pinus albicaulis, Abies lasiocarpa, or",
+            "Larix lyallii (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species",
+            "Picea engelmannii or Pseudotsuga menziesii in any combination of (>=30% RIV; i.e., together",
+            "STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "331A, 331D, 331K, 331N, M261G, M242B, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 341G, 342, M331A, M331B, M331D, M331J, M332, M333"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Pinus albicaulis"
+                },
+                {
+                    "species": "Abies lasiocarpa"
+                },
+                {
+                    "species": "Larix lyallii"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Picea engelmannii"
+                },
+                {
+                    "species": "Pseudotsuga menziesii"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "low vegetative cover",
+        "id": "",
+        "level": "",
+        "description": [
+            "grassland"
+        ],
+        "trigger": [
+            "grcov()<3 and shcov()<3 and fbcov()<3"
+        ],
+        "filters": {}
+    }
+}

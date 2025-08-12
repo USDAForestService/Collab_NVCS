@@ -12,7 +12,7 @@
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of Juniperus scopulorum or",
+            "combination of Juniperus scopulorum or Juniperus deppeana",
             "[PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES]",
             "(>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)"
         ],
@@ -38,6 +38,9 @@
             "MODERATE_DIAGNOSTIC_SPECIES": [
                 {
                     "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Juniperus deppeana"
                 }
             ]
         }

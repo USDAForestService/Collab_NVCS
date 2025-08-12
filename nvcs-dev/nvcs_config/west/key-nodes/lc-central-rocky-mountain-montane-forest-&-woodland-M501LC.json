@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "LC Central Rocky Mountain Montane Forest & Woodland (M501LC)",
+        "id": "M501LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

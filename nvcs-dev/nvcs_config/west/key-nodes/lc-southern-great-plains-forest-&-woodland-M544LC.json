@@ -1,0 +1,20 @@
+{
+    "node": {
+        "name": "LC Southern Great Plains Forest & Woodland (M544LC)",
+        "id": "M544LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above."
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "251E, 251F, 255A, 255E, 315, 321B, 332F, 231E, 255B"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Natural (including ruderal) Forests (C01)",
+        "id": "C01",
+        "level": "class",
+        "description": [
+            "Natural (including ruderal) forests"
+        ],
+        "trigger": [
+            "TRUE"
+        ],
+        "filters": {}
+    }
+}

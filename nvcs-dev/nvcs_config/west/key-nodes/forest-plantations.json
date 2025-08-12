@@ -11,8 +11,7 @@
             "AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic."
         ],
         "trigger": [
-            "match(PLANTATION)",
-            "and (riv(PLANTED_EXOTIC) > 0 or riv(PLANTED_POPULUS) > 0)"
+            "FALSE"
         ],
         "filters": {
             "PLANTATION": [
