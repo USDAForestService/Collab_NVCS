@@ -448,7 +448,7 @@ function addDocumentElementChildrenContent(element, descendantLimitType, isHeade
     let childTagCounter = 1;
     const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
     for (const child of element.children) {
-        if (!designatedTypes.includes(child.node.level))
+        if (!designatedTypes.includes(child.node.level.toLowerCase()))
             continue;
 
         let childHeaderTag = "";
@@ -496,7 +496,7 @@ function duplicateLeadingSpaces(text, times = 2) {
 
 
 function getEligibleTypesByLimit(type) {
-    let designatedChildTypes = ["class", "subclass", "formation"];
+    let designatedChildTypes = ["class", "subclass", "biome", "subbiome", "formation"];
     if (type == "Division")
         designatedChildTypes.push(...["division"]);
     else if (type == "Macrogroup")
@@ -619,7 +619,7 @@ function generateDocumentNamesForElement(element, descendantLimitType, headerTag
         let childTagCounter = 1;
         const designatedTypes = getEligibleTypesByLimit(descendantLimitType);
         for (const child of element.children) {
-            if (!designatedTypes.includes(child.node.level))
+            if (!designatedTypes.includes(child.node.level.toLowerCase()))
                 continue;
             const childHeaderTag = headerTag ? `${headerTag}.${childTagCounter}` : null;
             html += generateDocumentNamesForElement(child, descendantLimitType, childHeaderTag);
@@ -652,7 +652,7 @@ function getDocumentHeaderTagForElement(element) {
 }
 
 function getDescendantElementsByType(descendants, rootElement, types) {
-    if (!types.includes(rootElement.node.level))
+    if (!types.includes(rootElement.node.level.toLowerCase()))
         return descendants;
 
     descendants.push(rootElement);
