@@ -46,140 +46,151 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Node _setup() {
         nodes.put(0, new Node(0, null, element_000(), ""));
-        nodes.put(  1,  new Node(  1,   0, element_001(), "Forest Plantations"));
-        nodes.put(  2,  new Node(  2,   0, element_002(), "Natural (including ruderal) Forests"));
-        nodes.put(  3,  new Node(  3,   2, element_003(), "Wetland Forest & Woodlands"));
-        nodes.put(  4,  new Node(  4,   3, element_004(), "Temperate Flooded & Swamp Forest Formation"));
-        nodes.put(  5,  new Node(  5,   4, element_005(), "Great Plains Temperate Flooded & Swamp Forests"));
-        nodes.put(  6,  new Node(  6,   5, element_006(), "Eastern North American-Great Plains Flooded & Swamp Forest Division (D011)"));
-        nodes.put(  7,  new Node(  7,   6, element_007(), "Great Plains Flooded & Swamp Forest (M028)"));
-        nodes.put(  8,  new Node(  8,   7, element_008(), "Great Plains Cottonwood - Green Ash Floodplain Forest (G147)"));
-        nodes.put(  9,  new Node(  9,   6, element_009(), "Eastern North American Ruderal Flooded & Swamp Forest (M302)"));
-        nodes.put( 10,  new Node( 10,   5, element_010(), "Southeastern North American Flooded & Swamp Forest Division (D062)"));
-        nodes.put( 11,  new Node( 11,  10, element_011(), "Southern Great Plains Floodplain Forest & Woodland (M154)"));
-        nodes.put( 12,  new Node( 12,  11, element_012(), "Southeastern Great Plains Floodplain Forest (G784)"));
-        nodes.put( 13,  new Node( 13,  10, element_013(), "Southeastern North American Ruderal Flooded & Swamp Forest (M310)"));
-        nodes.put( 14,  new Node( 14,   4, element_014(), "Western North American Temperate Flooded & Swamp Forests"));
-        nodes.put( 15,  new Node( 15,  14, element_015(), "Vancouverian Flooded & Swamp Forest Division (D193)"));
-        nodes.put( 16,  new Node( 16,  15, element_016(), "Vancouverian Flooded & Swamp Forest (M035)"));
-        nodes.put( 17,  new Node( 17,  16, element_017(), "North-Central Pacific Montane Riparian & Seepage Swamp Forest (G507)"));
-        nodes.put( 18,  new Node( 18,  16, element_018(), "North-Central Pacific Maritime Lowland Swamp Forest (G853)"));
-        nodes.put( 19,  new Node( 19,  16, element_019(), "North-Central Pacific Lowland Riparian Forest (G851)"));
-        nodes.put( 20,  new Node( 20,  15, element_020(), "Western North American Flooded Ruderal Forests - Vancouverian"));
-        nodes.put( 21,  new Node( 21,  14, element_021(), "Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)"));
-        nodes.put( 22,  new Node( 22,  21, element_022(), "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)"));
-        nodes.put( 23,  new Node( 23,  22, element_023(), "Rocky Mountain-Great Basin Swamp Forest (G505)"));
-        nodes.put( 24,  new Node( 24,  22, element_024(), "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (G506)"));
-        nodes.put( 25,  new Node( 25,  22, element_025(), "Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)"));
-        nodes.put( 26,  new Node( 26,  21, element_026(), "Western North American Flooded Ruderal Forests - Rocky Mountain"));
-        nodes.put( 27,  new Node( 27,  14, element_027(), "Western North American Interior Flooded Forest Division (D013)"));
-        nodes.put( 28,  new Node( 28,  27, element_028(), "Interior Warm & Cool Desert Riparian Forest (M036)"));
-        nodes.put( 29,  new Node( 29,  28, element_029(), "Tamaulipan Riparian Scrub Forest (G549)"));
-        nodes.put( 30,  new Node( 30,  28, element_030(), "Californian Mediterranean Riparian Forest (G113)"));
-        nodes.put( 31,  new Node( 31,  28, element_031(), "Southwest Warm Desert Riparian Forest (G109)"));
-        nodes.put( 32,  new Node( 32,  28, element_032(), "Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)"));
-        nodes.put( 33,  new Node( 33,  27, element_033(), "Interior West Ruderal Flooded & Swamp Forest & Woodland (M298)"));
-        nodes.put( 34,  new Node( 34,   2, element_034(), "Upland Forest & Woodlands"));
-        nodes.put( 35,  new Node( 35,  34, element_035(), "Temperate & Boreal Forest & Woodland Subclass"));
-        nodes.put( 36,  new Node( 36,  35, element_036(), "Great Plains Temperate Forests"));
-        nodes.put( 37,  new Node( 37,  36, element_037(), "North American Great Plains Forest & Woodland Division (D326)"));
-        nodes.put( 38,  new Node( 38,  37, element_038(), "Southern Great Plains Forest & Woodland (M544)"));
-        nodes.put( 39,  new Node( 39,  38, element_039(), "Cross Timbers Forest & Woodland (G887)"));
-        nodes.put( 40,  new Node( 40,  38, element_040(), "Edwards Plateau Dry-Mesic Hardwood Forest (G028)"));
-        nodes.put( 41,  new Node( 41,  38, element_041(), "Edwards Plateau Dry Woodland (G126)"));
-        nodes.put( 42,  new Node( 42,  37, element_042(), "Northern Great Plains Forest & Woodland (M545)"));
-        nodes.put( 43,  new Node( 43,  42, element_043(), "Great Plains Bur Oak Forest & Woodland(G329)"));
-        nodes.put( 44,  new Node( 44,  42, element_044(), "Northeastern Great Plains Aspen Woodland (G146)"));
-        nodes.put( 45,  new Node( 45,  42, element_045(), "Northwestern Great Plains Aspen Woodland (G328)"));
-        nodes.put( 46,  new Node( 46,  42, element_046(), "Great Plains Mesic Forest & Woodland (G145)"));
-        nodes.put( 47,  new Node( 47,  37, element_047(), "Great Plains Ruderal Woodland (M524)"));
-        nodes.put( 48,  new Node( 48,  36, element_048(), "Southeastern North American Forest & Woodland Division (D006)"));
-        nodes.put( 49,  new Node( 49,  48, element_049(), "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)"));
-        nodes.put( 50,  new Node( 50,  49, element_050(), "Coastal Live Oak - Hickory - Palmetto Forest (G798)"));
-        nodes.put( 51,  new Node( 51,  49, element_051(), "Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)"));
-        nodes.put( 52,  new Node( 52,  48, element_052(), "Southeastern North American Ruderal Forest (M305)"));
-        nodes.put( 53,  new Node( 53,  36, element_053(), "Eastern North American Forest & Woodland Division (D008)"));
-        nodes.put( 54,  new Node( 54,  53, element_054(), "Eastern North American Forest & Woodland Natural Forests"));
-        nodes.put( 55,  new Node( 55,  54, element_055(), "Central Midwest Oak Forest, Woodland & Savanna (M012)"));
-        nodes.put( 56,  new Node( 56,  55, element_056(), "North-Central Oak - Hickory Forest & Woodland (G649)"));
-        nodes.put( 57,  new Node( 57,  54, element_057(), "Southern & South-Central Oak - Pine Forest & Woodland (M016)"));
-        nodes.put( 58,  new Node( 58,  57, element_058(), "Western Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)"));
-        nodes.put( 59,  new Node( 59,  53, element_059(), "Eastern North American Ruderal Forests"));
-        nodes.put( 60,  new Node( 60,  59, element_060(), "Eastern North American Ruderal Forest (M013)"));
-        nodes.put( 61,  new Node( 61,  35, element_061(), "Western North American Temperate Forests"));
-        nodes.put( 62,  new Node( 62,  61, element_062(), "Warm Temperate Forest & Woodland Formation"));
-        nodes.put( 63,  new Node( 63,  62, element_063(), "Californian Forest & Woodland Division (D007)"));
-        nodes.put( 64,  new Node( 64,  63, element_064(), "Californian Forest & Woodland (M009)"));
-        nodes.put( 65,  new Node( 65,  64, element_065(), "Californian Conifer Forest & Woodland (G198)"));
-        nodes.put( 66,  new Node( 66,  64, element_066(), "Californian Broadleaf Forest & Woodland (G195)"));
-        nodes.put( 67,  new Node( 67,  63, element_067(), "Californian Ruderal Forest (M513)"));
-        nodes.put( 68,  new Node( 68,  62, element_068(), "Madrean Forest & Woodland Division (D331)"));
-        nodes.put( 69,  new Node( 69,  68, element_069(), "Madrean Natural Forests & Woodlands"));
-        nodes.put( 70,  new Node( 70,  69, element_070(), "Madrean Lowland Evergreen Woodland (M010)"));
-        nodes.put( 71,  new Node( 71,  70, element_071(), "Madrean Pinyon - Juniper Woodland (G200)"));
-        nodes.put( 72,  new Node( 72,  70, element_072(), "Madrean Encinal (G201)"));
-        nodes.put( 73,  new Node( 73,  70, element_073(), "Madrean Juniper Open Woodland (G487)"));
-        nodes.put( 74,  new Node( 74,  69, element_074(), "Madrean Montane Forest & Woodland (M011)"));
-        nodes.put( 75,  new Node( 75,  74, element_075(), "Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)"));
-        nodes.put( 76,  new Node( 76,  74, element_076(), "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)"));
-        nodes.put( 77,  new Node( 77,  68, element_077(), "Western North American Ruderal Forests - Madrean-Balconian"));
-        nodes.put( 78,  new Node( 78,  61, element_078(), "Cool Temperate Forest & Woodland Formation"));
-        nodes.put( 79,  new Node( 79,  78, element_079(), "Pacific Coast Temperate Rainforest Division (D338)"));
-        nodes.put( 80,  new Node( 80,  79, element_080(), "Vancouverian Coastal Rainforest (M024)"));
-        nodes.put( 81,  new Node( 81,  80, element_081(), "Vancouverian Dry Coastal Beach Pine Forest & Woodland (G205)"));
-        nodes.put( 82,  new Node( 82,  80, element_082(), "Californian Coastal Redwood Forest (G235)"));
-        nodes.put( 83,  new Node( 83,  80, element_083(), "North Pacific Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)"));
-        nodes.put( 84,  new Node( 84,  80, element_084(), "North Pacific Maritime Douglas-fir - Western Hemlock Rainforest (G240)"));
-        nodes.put( 85,  new Node( 85,  80, element_085(), "North-Central Pacific Maritime Silver Fir - Western Hemlock Rainforest (G241)"));
-        nodes.put( 86,  new Node( 86,  80, element_086(), "North-Central Pacific Western Hemlock - Sitka Spruce Rainforest (G751)"));
-        nodes.put( 87,  new Node( 87,  78, element_087(), "Western North American Pinyon-Juniper Woodland & Scrub Division (D010)"));
-        nodes.put( 88,  new Node( 88,  87, element_088(), "Intermountain Pinyon-Juniper Woodland (M896)"));
-        nodes.put( 89,  new Node( 89,  88, element_089(), "Intermountain Western Juniper Open Woodland (G248)"));
-        nodes.put( 90,  new Node( 90,  88, element_090(), "Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)"));
-        nodes.put( 91,  new Node( 91,  88, element_091(), "Great Basin Pinyon - Juniper Woodland (G899)"));
-        nodes.put( 92,  new Node( 92,  88, element_092(), "Colorado Plateau Pinyon - Juniper Woodland (G900)"));
-        nodes.put( 93,  new Node( 93,  88, element_093(), "Intermountain Utah Juniper Open Woodland (G105)"));
-        nodes.put( 94,  new Node( 94,  87, element_094(), "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)"));
-        nodes.put( 95,  new Node( 95,  94, element_095(), "Southern Rocky Mountain Pinyon - Juniper Woodland (G253)"));
-        nodes.put( 96,  new Node( 96,  94, element_096(), "Southern Rocky Mountain Juniper Open Woodland (G252)"));
-        nodes.put( 97,  new Node( 97,  78, element_097(), "Pacific Mountains Forest & Woodland Division (D339)"));
-        nodes.put( 98,  new Node( 98,  97, element_098(), "Southern Vancouverian Dry Foothill Forest & Woodland (M886)"));
-        nodes.put( 99,  new Node( 99,  98, element_099(), "Cascadian Oregon White Oak - Conifer Forest & Woodland (G206)"));
-        nodes.put(100,  new Node(100,  98, element_100(), "Californian Moist Coastal Mixed Evergreen Forest (G208)"));
-        nodes.put(101,  new Node(101,  98, element_101(), "Southern Vancouverian Dry Douglas-fir - Madrone Woodland (G800)"));
-        nodes.put(102,  new Node(102,  97, element_102(), "Southern Vancouverian Montane-Foothill Forest (M023)"));
-        nodes.put(103,  new Node(103, 102, element_103(), "Californian Montane Conifer Forest & Woodland (G344)"));
-        nodes.put(104,  new Node(104,  97, element_104(), "Vancouverian Ruderal Forest (M405)"));
-        nodes.put(105,  new Node(105, 104, element_105(), "Vancouverian Ruderal Forest (G801)"));
-        nodes.put(106,  new Node(106,  78, element_106(), "Rocky Mountain Foothills & Montane Forest & Woodland (D337)"));
-        nodes.put(107,  new Node(107, 106, element_107(), "Southern Rocky Mountain Lower Montane Forest (M022)"));
-        nodes.put(108,  new Node(108, 107, element_108(), "Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)"));
-        nodes.put(109,  new Node(109, 107, element_109(), "Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)"));
-        nodes.put(110,  new Node(110, 107, element_110(), "Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)"));
-        nodes.put(111,  new Node(111, 107, element_111(), "Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)"));
-        nodes.put(112,  new Node(112, 106, element_112(), "Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)"));
-        nodes.put(113,  new Node(113, 112, element_113(), "Central Rocky Mountain Montane White Spruce Forest (G345)"));
-        nodes.put(114,  new Node(114, 112, element_114(), "Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)"));
-        nodes.put(115,  new Node(115, 112, element_115(), "Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)"));
-        nodes.put(116,  new Node(116, 112, element_116(), "Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)"));
-        nodes.put(117,  new Node(117, 112, element_117(), "Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)"));
-        nodes.put(118,  new Node(118, 112, element_118(), "Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)"));
-        nodes.put(119,  new Node(119, 106, element_119(), "Central Rocky Mountain Mesic Lower Montane Forest (M500)"));
-        nodes.put(120,  new Node(120, 119, element_120(), "East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)"));
-        nodes.put(121,  new Node(121, 119, element_121(), "Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)"));
-        nodes.put(122,  new Node(122, 119, element_122(), "Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)"));
-        nodes.put(123,  new Node(123,  78, element_123(), "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)"));
-        nodes.put(124,  new Node(124, 123, element_124(), "Rocky Mountain Subalpine-High Montane Forest (M020)"));
-        nodes.put(125,  new Node(125, 124, element_125(), "Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)"));
-        nodes.put(126,  new Node(126, 124, element_126(), "Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)"));
-        nodes.put(127,  new Node(127, 124, element_127(), "Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)"));
-        nodes.put(128,  new Node(128, 124, element_128(), "Rocky Mountain Lodgepole Pine Forest & Woodland (G220)"));
-        nodes.put(129,  new Node(129, 124, element_129(), "Rocky Mountain Limber Pine Subalpine-Montane Woodland (G101)"));
-        nodes.put(130,  new Node(130, 124, element_130(), "Central Rocky Mountain Whitebark Pine - Subalpine Larch Forest & Woodland (G223)"));
-        nodes.put(131,  new Node(131, 123, element_131(), "Vancouverian Subalpine-High Montane Forest (M025)"));
-        nodes.put(132,  new Node(132, 131, element_132(), "Sierra-Cascade Cold-Dry Subalpine Woodland (G243)"));
-        nodes.put(133,  new Node(133, 131, element_133(), "Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)"));
-        nodes.put(134,  new Node(134, 131, element_134(), "North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)"));
+        nodes.put(  1,  new Node(  1,   0, element_001(), "Test No to Low Trees"));
+        nodes.put(  2,  new Node(  2,   1, element_002(), "live canopy cover over 10"));
+        nodes.put(  3,  new Node(  3,   1, element_003(), "Western North American Grassland & Shrubland (D022)"));
+        nodes.put(  4,  new Node(  4,   1, element_004(), "low vegetative cover"));
+        nodes.put(  5,  new Node(  5,   0, element_005(), "Forest Plantations"));
+        nodes.put(  6,  new Node(  6,   0, element_006(), "Natural (including ruderal) Forests (C01)"));
+        nodes.put(  7,  new Node(  7,   6, element_007(), "Wetland Forest & Woodlands"));
+        nodes.put(  8,  new Node(  8,   7, element_008(), "Temperate Flooded & Swamp Forest Formation (F026)"));
+        nodes.put(  9,  new Node(  9,   8, element_009(), "Great Plains Temperate Flooded & Swamp Forests (F026)"));
+        nodes.put( 10,  new Node( 10,   9, element_010(), "Eastern North American-Great Plains Flooded & Swamp Forest Division (D011)"));
+        nodes.put( 11,  new Node( 11,  10, element_011(), "Great Plains Flooded & Swamp Forest (M028)"));
+        nodes.put( 12,  new Node( 12,  11, element_012(), "Great Plains Cottonwood - Willow Floodplain Forest (G147)"));
+        nodes.put( 13,  new Node( 13,  10, element_013(), "Eastern North American Ruderal Flooded & Swamp Forest (M302)"));
+        nodes.put( 14,  new Node( 14,   9, element_014(), "Southeastern North American Flooded & Swamp Forest Division (D062)"));
+        nodes.put( 15,  new Node( 15,  14, element_015(), "Southern Great Plains Floodplain Forest & Woodland (M154)"));
+        nodes.put( 16,  new Node( 16,  15, element_016(), "Southeastern Great Plains Floodplain Forest (G784)"));
+        nodes.put( 17,  new Node( 17,  14, element_017(), "Southeastern North American Ruderal Flooded & Swamp Forest (M310)"));
+        nodes.put( 18,  new Node( 18,   8, element_018(), "Western North American Temperate Flooded & Swamp Forests (F026)"));
+        nodes.put( 19,  new Node( 19,  18, element_019(), "North Pacific Forested Wetland (D193)"));
+        nodes.put( 20,  new Node( 20,  19, element_020(), "North Pacific Forested Wetland(M035)"));
+        nodes.put( 21,  new Node( 21,  20, element_021(), "North-Central Pacific Montane Riparian & Seepage Swamp Forest (G507)"));
+        nodes.put( 22,  new Node( 22,  20, element_022(), "North-Central Pacific Maritime Lowland Swamp (G853)"));
+        nodes.put( 23,  new Node( 23,  20, element_023(), "North-Central Pacific Lowland Riparian Forest (G851)"));
+        nodes.put( 24,  new Node( 24,  19, element_024(), "North Pacific Forested Wetland Ruderal Forests (D193)"));
+        nodes.put( 25,  new Node( 25,  18, element_025(), "Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)"));
+        nodes.put( 26,  new Node( 26,  25, element_026(), "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)"));
+        nodes.put( 27,  new Node( 27,  26, element_027(), "Rocky Mountain-Great Basin Swamp Forest (G505)"));
+        nodes.put( 28,  new Node( 28,  26, element_028(), "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (G506)"));
+        nodes.put( 29,  new Node( 29,  26, element_029(), "Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)"));
+        nodes.put( 30,  new Node( 30,  25, element_030(), "Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)"));
+        nodes.put( 31,  new Node( 31,  18, element_031(), "Western North American Arid Flooded Forest (D013)"));
+        nodes.put( 32,  new Node( 32,  31, element_032(), "Western Arid Lowland Flooded Forest (M036)"));
+        nodes.put( 33,  new Node( 33,  32, element_033(), "Tamaulipan Flooded Forest (G549)"));
+        nodes.put( 34,  new Node( 34,  32, element_034(), "Californian Mediterranean Riparian Forest (G113)"));
+        nodes.put( 35,  new Node( 35,  32, element_035(), "Southwest Warm Desert Riparian Forest (G109)"));
+        nodes.put( 36,  new Node( 36,  32, element_036(), "Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)"));
+        nodes.put( 37,  new Node( 37,  31, element_037(), "Western Arid Ruderal Riparian Forest & Scrub (M298)"));
+        nodes.put( 38,  new Node( 38,   6, element_038(), "Upland Forest & Woodlands"));
+        nodes.put( 39,  new Node( 39,  38, element_039(), "Temperate & Boreal Forest & Woodland Subclass (B02)"));
+        nodes.put( 40,  new Node( 40,  39, element_040(), "Great Plains Temperate Forests"));
+        nodes.put( 41,  new Node( 41,  40, element_041(), "North American Great Plains Forest & Woodland Division (D322)"));
+        nodes.put( 42,  new Node( 42,  41, element_042(), "Southern Great Plains Forest & Woodland (M544)"));
+        nodes.put( 43,  new Node( 43,  42, element_043(), "Cross Timbers Woodland (G887)"));
+        nodes.put( 44,  new Node( 44,  42, element_044(), "Edwards Plateau Dry-Mesic Hardwood Forest (G028)"));
+        nodes.put( 45,  new Node( 45,  42, element_045(), "Edwards Plateau Dry Woodland (G126)"));
+        nodes.put( 46,  new Node( 46,  41, element_046(), "Northern Great Plains Forest & Woodland (M545)"));
+        nodes.put( 47,  new Node( 47,  46, element_047(), "Great Plains Bur Oak Forest & Woodland(G329)"));
+        nodes.put( 48,  new Node( 48,  46, element_048(), "Northern Tallgrass Oak Aspen Woodland (G146)"));
+        nodes.put( 49,  new Node( 49,  46, element_049(), "Northwestern Great Plains Aspen Woodland (G328)"));
+        nodes.put( 50,  new Node( 50,  46, element_050(), "Northern Great Plains Mesic Forest & Woodland (G145)"));
+        nodes.put( 51,  new Node( 51,  41, element_051(), "Great Plains Ruderal Woodland (M524)"));
+        nodes.put( 52,  new Node( 52,  41, element_052(), "LC Southern Great Plains Forest & Woodland (M544LC)"));
+        nodes.put( 53,  new Node( 53,  41, element_053(), "LC Northern Great Plains Forest & Woodland (M545LC)"));
+        nodes.put( 54,  new Node( 54,  40, element_054(), "Southeastern North American Forest & Woodland Division (D006)"));
+        nodes.put( 55,  new Node( 55,  54, element_055(), "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)"));
+        nodes.put( 56,  new Node( 56,  55, element_056(), "Southeast Maritime Live Oak - Palmetto Forest (G798)"));
+        nodes.put( 57,  new Node( 57,  55, element_057(), "Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)"));
+        nodes.put( 58,  new Node( 58,  54, element_058(), "Southeastern North American Ruderal Forest (M305)"));
+        nodes.put( 59,  new Node( 59,  40, element_059(), "Eastern North American Forest & Woodland Division (D008)"));
+        nodes.put( 60,  new Node( 60,  59, element_060(), "Eastern North American Forest & Woodland Natural Forests (D008)"));
+        nodes.put( 61,  new Node( 61,  60, element_061(), "Central Midwest Oak Forest, Woodland & Savanna (M012)"));
+        nodes.put( 62,  new Node( 62,  61, element_062(), "Midwest Oak Hickory Forest (G990)"));
+        nodes.put( 63,  new Node( 63,  60, element_063(), "South - Central Oak - Pine Forest & Woodland (M540)"));
+        nodes.put( 64,  new Node( 64,  63, element_064(), "West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)"));
+        nodes.put( 65,  new Node( 65,  59, element_065(), "Eastern North American Ruderal Forests (D008)"));
+        nodes.put( 66,  new Node( 66,  65, element_066(), "Eastern North American Ruderal Forest (M013)"));
+        nodes.put( 67,  new Node( 67,  39, element_067(), "Western North American Temperate Forests"));
+        nodes.put( 68,  new Node( 68,  67, element_068(), "Warm Temperate Forest & Woodland (S54)"));
+        nodes.put( 69,  new Node( 69,  68, element_069(), "Californian Forest & Woodland Division (D007)"));
+        nodes.put( 70,  new Node( 70,  69, element_070(), "Californian Forest & Woodland (M009)"));
+        nodes.put( 71,  new Node( 71,  70, element_071(), "Californian Conifer Forest & Woodland (G198)"));
+        nodes.put( 72,  new Node( 72,  70, element_072(), "Californian Broadleaf Forest & Woodland (G195)"));
+        nodes.put( 73,  new Node( 73,  69, element_073(), "Californian Ruderal Forest (M513)"));
+        nodes.put( 74,  new Node( 74,  68, element_074(), "Madrean Forest & Woodland Division (D331)"));
+        nodes.put( 75,  new Node( 75,  74, element_075(), "Madrean Natural Forests & Woodlands (D331)"));
+        nodes.put( 76,  new Node( 76,  75, element_076(), "Madrean Lowland Evergreen Woodland (M010)"));
+        nodes.put( 77,  new Node( 77,  76, element_077(), "Madrean Pinyon - Juniper Woodland (G200)"));
+        nodes.put( 78,  new Node( 78,  76, element_078(), "Madrean Encinal (G201)"));
+        nodes.put( 79,  new Node( 79,  76, element_079(), "Madrean Juniper Open Woodland (G487)"));
+        nodes.put( 80,  new Node( 80,  75, element_080(), "Madrean Montane Forest & Woodland (M011)"));
+        nodes.put( 81,  new Node( 81,  80, element_081(), "Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)"));
+        nodes.put( 82,  new Node( 82,  80, element_082(), "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)"));
+        nodes.put( 83,  new Node( 83,  74, element_083(), "Western North American Ruderal Forests - Madrean-Balconian (D060)"));
+        nodes.put( 84,  new Node( 84,  74, element_084(), "LC Madrean Montane Forest & Woodland (M011LC)"));
+        nodes.put( 85,  new Node( 85,  67, element_085(), "Cool Temperate Forest & Woodland Subbiome(S92)"));
+        nodes.put( 86,  new Node( 86,  85, element_086(), "North American Pacific Coast Temperate Rainforest (D338)"));
+        nodes.put( 87,  new Node( 87,  86, element_087(), "North Pacific Coastal Rainforest (M024)"));
+        nodes.put( 88,  new Node( 88,  87, element_088(), "Coastal Redwood Forest (G235)"));
+        nodes.put( 89,  new Node( 89,  87, element_089(), "Coastal Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)"));
+        nodes.put( 90,  new Node( 90,  87, element_090(), "Coastal Douglas-fir - Western Hemlock Rainforest (G240)"));
+        nodes.put( 91,  new Node( 91,  87, element_091(), "Coastal Silver Fir - Western Hemlock Rainforest(G241)"));
+        nodes.put( 92,  new Node( 92,  87, element_092(), "Coastal Western Hemlock - Sitka Spruce Rainforest (G751)"));
+        nodes.put( 93,  new Node( 93,  85, element_093(), "Western North American Pinyon-Juniper Woodland & Scrub Division (D010)"));
+        nodes.put( 94,  new Node( 94,  93, element_094(), "Intermountain Pinyon-Juniper Woodland (M896)"));
+        nodes.put( 95,  new Node( 95,  94, element_095(), "Intermountain Western Juniper Open Woodland (G248)"));
+        nodes.put( 96,  new Node( 96,  94, element_096(), "Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)"));
+        nodes.put( 97,  new Node( 97,  94, element_097(), "Great Basin Pinyon - Juniper Woodland (G899)"));
+        nodes.put( 98,  new Node( 98,  94, element_098(), "Colorado Plateau Pinyon - Juniper Woodland (G900)"));
+        nodes.put( 99,  new Node( 99,  94, element_099(), "Intermountain Utah Juniper Open Woodland (G105)"));
+        nodes.put(100,  new Node(100,  93, element_100(), "Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)"));
+        nodes.put(101,  new Node(101, 100, element_101(), "Southern Rocky Mountain Pinyon - Juniper Woodland (G253)"));
+        nodes.put(102,  new Node(102, 100, element_102(), "Southern Rocky Mountain Juniper Open Woodland (G252)"));
+        nodes.put(103,  new Node(103,  93, element_103(), "LC Intermountain Pinyon-Juniper Woodland (M896LC)"));
+        nodes.put(104,  new Node(104,  85, element_104(), "Californian-North Pacific Foothills Forest & Woodland (D339)"));
+        nodes.put(105,  new Node(105, 104, element_105(), "Californian-North Pacific Vancouverian Dry Foothill Forest & Woodland (M886)"));
+        nodes.put(106,  new Node(106, 105, element_106(), "Cascadian Oregon White Oak - Conifer Forest & Woodland (G206)"));
+        nodes.put(107,  new Node(107, 105, element_107(), "Californian Moist Coastal Mixed Evergreen Forest (G208)"));
+        nodes.put(108,  new Node(108, 105, element_108(), "North Pacific Douglas-fir - Madrone Dry Woodland (G800)"));
+        nodes.put(109,  new Node(109, 105, element_109(), "Coastal Shore Pine Forest & Woodland (G205)"));
+        nodes.put(110,  new Node(110, 104, element_110(), "Sierran-Californian Montane-Foothill Forest & Woodland (M023)"));
+        nodes.put(111,  new Node(111, 110, element_111(), "Californian Montane Conifer Forest & Woodland (G344)"));
+        nodes.put(112,  new Node(112, 104, element_112(), "Vancouverian Ruderal Forest (M405)"));
+        nodes.put(113,  new Node(113, 112, element_113(), "North Pacific Ruderal Forest (G801)"));
+        nodes.put(114,  new Node(114, 104, element_114(), "LC Californian-North Pacific Vancouverian Dry Foothill Forest & Woodland (M886LC)"));
+        nodes.put(115,  new Node(115,  85, element_115(), "Rocky Mountain Foothills & Montane Forest & Woodland (D337)"));
+        nodes.put(116,  new Node(116, 115, element_116(), "Southern Rocky Mountain Montane Forest & Woodland (M022)"));
+        nodes.put(117,  new Node(117, 116, element_117(), "Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)"));
+        nodes.put(118,  new Node(118, 116, element_118(), "Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)"));
+        nodes.put(119,  new Node(119, 116, element_119(), "Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)"));
+        nodes.put(120,  new Node(120, 116, element_120(), "Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)"));
+        nodes.put(121,  new Node(121, 115, element_121(), "Central Rocky Mountain Montane Forest & Woodland (M501)"));
+        nodes.put(122,  new Node(122, 121, element_122(), "Central Rocky Mountain Montane White Spruce Forest (G345)"));
+        nodes.put(123,  new Node(123, 121, element_123(), "Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)"));
+        nodes.put(124,  new Node(124, 121, element_124(), "Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)"));
+        nodes.put(125,  new Node(125, 121, element_125(), "Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)"));
+        nodes.put(126,  new Node(126, 121, element_126(), "Central Rocky Mountain Douglas-fir Mesic Forest (G215)"));
+        nodes.put(127,  new Node(127, 121, element_127(), "Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)"));
+        nodes.put(128,  new Node(128, 115, element_128(), "Central Rocky Mountain-Interior Moist Montane Forest (M500)"));
+        nodes.put(129,  new Node(129, 128, element_129(), "East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)"));
+        nodes.put(130,  new Node(130, 128, element_130(), "Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)"));
+        nodes.put(131,  new Node(131, 128, element_131(), "Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)"));
+        nodes.put(132,  new Node(132, 115, element_132(), "LC Central Rocky Mountain Montane Forest & Woodland (M501LC)"));
+        nodes.put(133,  new Node(133,  85, element_133(), "Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)"));
+        nodes.put(134,  new Node(134, 133, element_134(), "Rocky Mountain Subalpine-Upper Montane Forest & Woodland (M020)"));
+        nodes.put(135,  new Node(135, 134, element_135(), "Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)"));
+        nodes.put(136,  new Node(136, 134, element_136(), "Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)"));
+        nodes.put(137,  new Node(137, 134, element_137(), "Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)"));
+        nodes.put(138,  new Node(138, 134, element_138(), "Rocky Mountain Lodgepole Pine Forest & Woodland (G220)"));
+        nodes.put(139,  new Node(139, 134, element_139(), "Rocky Mountain Montane-Subalpine Limber Pine Woodland (G101)"));
+        nodes.put(140,  new Node(140, 134, element_140(), "Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)"));
+        nodes.put(141,  new Node(141, 133, element_141(), "Vancouverian Subalpine-High Montane Forest (M025)"));
+        nodes.put(142,  new Node(142, 141, element_142(), "Sierra-Cascade Cold-Dry Subalpine Woodland (G243)"));
+        nodes.put(143,  new Node(143, 141, element_143(), "Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)"));
+        nodes.put(144,  new Node(144, 141, element_144(), "North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)"));
+        nodes.put(145,  new Node(145, 133, element_145(), "LC Rocky Mountain Subalpine-High Montane Forest (M020LC)"));
 
         for (Map.Entry<Integer,Node> entry : nodes.entrySet()) {
             Integer ident = entry.getKey();
@@ -202,6 +213,74 @@ public class ClassificationKeyWest extends ClassificationKey {
     }
 
     public Object[] element_001() {
+
+        // Test No to Low Trees
+        // 
+
+        String level = "";
+        String code = "";
+
+        // No to low trees.
+
+        INodeMatch match = plot -> (
+            plot.get_balive() < 1
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_002() {
+
+        // live canopy cover over 10
+        // B02
+
+        String level = "Biome";
+        String code = "B02";
+
+        // No to low basal area but with live canopy > 10
+
+        INodeMatch match = plot -> (
+            plot.get_live_canopy_cvr_pct() > 10
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_003() {
+
+        // Western North American Grassland & Shrubland (D022)
+        // 
+
+        String level = "";
+        String code = "";
+
+        // Testing shrubland versus grassland.
+
+        INodeMatch match = plot -> (
+            plot.get_shcov()> 3 || plot.get_grcov()> 3 || plot.get_fbcov()>3
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_004() {
+
+        // low vegetative cover
+        // 
+
+        String level = "";
+        String code = "";
+
+        // grassland
+
+        INodeMatch match = plot -> (
+            plot.get_grcov()<3 && plot.get_shcov()<3 && plot.get_fbcov()<3
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_005() {
 
         // Forest Plantations
         // 
@@ -248,16 +327,15 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList PLANTED_POPULUS = new PatternList("PLANTED_POPULUS", PLANTED_POPULUS_patterns);
 
         INodeMatch match = plot -> (
-            plot.match(PLANTATION)
-           && (plot.riv(PLANTED_EXOTIC) > 0 || plot.riv(PLANTED_POPULUS) > 0)
+            false
         );
 
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_002() {
+    public Object[] element_006() {
 
-        // Natural (including ruderal) Forests
+        // Natural (including ruderal) Forests (C01)
         // C01
 
         String level = "class";
@@ -272,7 +350,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_003() {
+    public Object[] element_007() {
 
         // Wetland Forest & Woodlands
         // 
@@ -490,15 +568,15 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_004() {
+    public Object[] element_008() {
 
-        // Temperate Flooded & Swamp Forest Formation
+        // Temperate Flooded & Swamp Forest Formation (F026)
         // F026
 
         String level = "formation";
         String code = "F026";
 
-        //   Tree-dominated wetlands in a temperate climate that is influenced by minerotrophic
+        // Tree-dominated wetlands in a temperate climate that is influenced by minerotrophic
         //   groundwater, either on mineral or organic soils. The vegetation is dominated by broad-leaved
         //   or needle-leaved trees, generally over 10% tree cover, and the substrate is either a
         //   wood-rich peat or a mineral soil on floodplains.
@@ -510,9 +588,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_005() {
+    public Object[] element_009() {
 
-        // Great Plains Temperate Flooded & Swamp Forests
+        // Great Plains Temperate Flooded & Swamp Forests (F026)
         // F026
 
         String level = "formation";
@@ -635,7 +713,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_006() {
+    public Object[] element_010() {
 
         // Eastern North American-Great Plains Flooded & Swamp Forest Division (D011)
         // D011
@@ -739,7 +817,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_007() {
+    public Object[] element_011() {
 
         // Great Plains Flooded & Swamp Forest (M028)
         // M028
@@ -769,9 +847,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_008() {
+    public Object[] element_012() {
 
-        // Great Plains Cottonwood - Green Ash Floodplain Forest (G147)
+        // Great Plains Cottonwood - Willow Floodplain Forest (G147)
         // G147
 
         String level = "group";
@@ -842,7 +920,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_009() {
+    public Object[] element_013() {
 
         // Eastern North American Ruderal Flooded & Swamp Forest (M302)
         // M302
@@ -872,7 +950,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_010() {
+    public Object[] element_014() {
 
         // Southeastern North American Flooded & Swamp Forest Division (D062)
         // D062
@@ -894,7 +972,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // or Ulmus americana (=>50% RIV);
         // OR Tree composition as above, but with =>20% RIV; AND other species are
         // any combination of Acer negundo, Prosopis glandulosa
-        // Fraxinus albicans, Prunus serotina, and Quercus fusiformis
+        // Fraxinus texensis, Prunus serotina, and Quercus virginiana
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
         // [Additional tree species not tracked by FIA include Ulmus crassifolia]
         // OR
@@ -909,11 +987,14 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_patterns);
 
         List<KeyValue> ECOREGIONS_2_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "315"),
+            new KeyValue("ecoregion", "315")
+        );
+        List<KeyValue> ECOREGIONS_2_pattern1 = Arrays.asList(
             new KeyValue("state", "OK, TX")
         );
         List<List<KeyValue>> ECOREGIONS_2_patterns = Arrays.asList(
-            ECOREGIONS_2_pattern0
+            ECOREGIONS_2_pattern0,
+            ECOREGIONS_2_pattern1
         );
         PatternList ECOREGIONS_2 = new PatternList("ECOREGIONS_2", ECOREGIONS_2_patterns);
 
@@ -967,19 +1048,19 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Sapindus saponaria var. drummondii")
         );
         List<KeyValue> SPECIES_2_pattern11 = Arrays.asList(
-            new KeyValue("species", "Sideroxylon lanuginosum")
-        );
-        List<KeyValue> SPECIES_2_pattern12 = Arrays.asList(
             new KeyValue("species", "Taxodium distichum")
         );
-        List<KeyValue> SPECIES_2_pattern13 = Arrays.asList(
+        List<KeyValue> SPECIES_2_pattern12 = Arrays.asList(
             new KeyValue("species", "Quercus macrocarpa")
         );
-        List<KeyValue> SPECIES_2_pattern14 = Arrays.asList(
+        List<KeyValue> SPECIES_2_pattern13 = Arrays.asList(
             new KeyValue("species", "Quercus shumardii")
         );
-        List<KeyValue> SPECIES_2_pattern15 = Arrays.asList(
+        List<KeyValue> SPECIES_2_pattern14 = Arrays.asList(
             new KeyValue("species", "Ulmus americana")
+        );
+        List<KeyValue> SPECIES_2_pattern15 = Arrays.asList(
+            new KeyValue("species", "Sideroxylon lanuginosum ssp. lanuginosum")
         );
         List<List<KeyValue>> SPECIES_2_patterns = Arrays.asList(
             SPECIES_2_pattern0,
@@ -1008,13 +1089,13 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Prosopis glandulosa")
         );
         List<KeyValue> SPECIES_3_pattern2 = Arrays.asList(
-            new KeyValue("species", "Fraxinus albicans")
-        );
-        List<KeyValue> SPECIES_3_pattern3 = Arrays.asList(
             new KeyValue("species", "Prunus serotina")
         );
+        List<KeyValue> SPECIES_3_pattern3 = Arrays.asList(
+            new KeyValue("species", "Fraxinus texensis")
+        );
         List<KeyValue> SPECIES_3_pattern4 = Arrays.asList(
-            new KeyValue("species", "Quercus fusiformis")
+            new KeyValue("species", "Quercus virginiana")
         );
         List<List<KeyValue>> SPECIES_3_patterns = Arrays.asList(
             SPECIES_3_pattern0,
@@ -1042,7 +1123,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_011() {
+    public Object[] element_015() {
 
         // Southern Great Plains Floodplain Forest & Woodland (M154)
         // M154
@@ -1072,7 +1153,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_012() {
+    public Object[] element_016() {
 
         // Southeastern Great Plains Floodplain Forest (G784)
         // G784
@@ -1090,9 +1171,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-        // combination of Acer negundo, Fraxinus albicans, Fraxinus pennsylvanica,
+        // combination of Acer negundo, Fraxinus texensis, Fraxinus pennsylvanica,
         // Juglans microcarpa, Prosopis glandulosa, Prunus serotina,
-        // or Quercus fusiformis (>=30% RIV; i.e., together STRONG and MODERATE
+        // or Quercus virginiana (>=30% RIV; i.e., together STRONG and MODERATE
         // diagnostic species RIV =>50%)
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
@@ -1125,13 +1206,13 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Sapindus saponaria var. drummondii")
         );
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
-            new KeyValue("species", "Sideroxylon lanuginosum")
-        );
-        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
             new KeyValue("species", "Taxodium distichum")
         );
-        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
             new KeyValue("species", "Ulmus crassifolia")
+        );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new KeyValue("species", "Sideroxylon lanuginosum ssp. lanuginosum")
         );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
@@ -1151,22 +1232,22 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Acer negundo")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("species", "Fraxinus albicans")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
             new KeyValue("species", "Fraxinus pennsylvanica")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
             new KeyValue("species", "Juglans microcarpa")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Prosopis glandulosa")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
             new KeyValue("species", "Prunus serotina")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new KeyValue("species", "Quercus virginiana")
+        );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
-            new KeyValue("species", "Quercus fusiformis")
+            new KeyValue("species", "Fraxinus texensis")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
@@ -1188,7 +1269,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_013() {
+    public Object[] element_017() {
 
         // Southeastern North American Ruderal Flooded & Swamp Forest (M310)
         // M310
@@ -1218,9 +1299,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_014() {
+    public Object[] element_018() {
 
-        // Western North American Temperate Flooded & Swamp Forests
+        // Western North American Temperate Flooded & Swamp Forests (F026)
         // F026
 
         String level = "formation";
@@ -1244,9 +1325,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_015() {
+    public Object[] element_019() {
 
-        // Vancouverian Flooded & Swamp Forest Division (D193)
+        // North Pacific Forested Wetland (D193)
         // D193
 
         String level = "division";
@@ -1406,9 +1487,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_016() {
+    public Object[] element_020() {
 
-        // Vancouverian Flooded & Swamp Forest (M035)
+        // North Pacific Forested Wetland(M035)
         // M035
 
         String level = "macrogroup";
@@ -1436,7 +1517,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_017() {
+    public Object[] element_021() {
 
         // North-Central Pacific Montane Riparian & Seepage Swamp Forest (G507)
         // G507
@@ -1526,9 +1607,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_018() {
+    public Object[] element_022() {
 
-        // North-Central Pacific Maritime Lowland Swamp Forest (G853)
+        // North-Central Pacific Maritime Lowland Swamp (G853)
         // G853
 
         String level = "group";
@@ -1610,7 +1691,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_019() {
+    public Object[] element_023() {
 
         // North-Central Pacific Lowland Riparian Forest (G851)
         // G851
@@ -1622,7 +1703,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // M242A, M242B, M242D, 261A, 263 and tree
         // composition dominated by one or more of STRONG DIAGNOSTIC species
         // Abies grandis, Alnus rhombifolia, Alnus rubra, Fraxinus latifolia,
-        // Picea sitchensis, or Populus trichocarpa (RIV=>50%),
+        // Picea sitchensis, or Populus balsamifera ssp. trichocarpa (RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
@@ -1656,7 +1737,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Picea sitchensis")
         );
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
-            new KeyValue("species", "Populus trichocarpa")
+            new KeyValue("species", "Populus balsamifera ssp. trichocarpa")
         );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
@@ -1717,9 +1798,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_020() {
+    public Object[] element_024() {
 
-        // Western North American Flooded Ruderal Forests - Vancouverian
+        // North Pacific Forested Wetland Ruderal Forests (D193)
         // D193
 
         String level = "division";
@@ -1747,7 +1828,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_021() {
+    public Object[] element_025() {
 
         // Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)
         // D195
@@ -1917,7 +1998,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_022() {
+    public Object[] element_026() {
 
         // Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)
         // M034
@@ -1947,7 +2028,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_023() {
+    public Object[] element_027() {
 
         // Rocky Mountain-Great Basin Swamp Forest (G505)
         // G505
@@ -2048,7 +2129,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_024() {
+    public Object[] element_028() {
 
         // Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (G506)
         // G506
@@ -2143,7 +2224,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_025() {
+    public Object[] element_029() {
 
         // Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)
         // G796
@@ -2204,9 +2285,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_026() {
+    public Object[] element_030() {
 
-        // Western North American Flooded Ruderal Forests - Rocky Mountain
+        // Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)
         // D195
 
         String level = "division";
@@ -2234,9 +2315,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_027() {
+    public Object[] element_031() {
 
-        // Western North American Interior Flooded Forest Division (D013)
+        // Western North American Arid Flooded Forest (D013)
         // D013
 
         String level = "division";
@@ -2258,9 +2339,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Acacia farnesiana, Acer negundo, Celtis ehrenbergiana, Celtis laevigata, Fraxinus anomala, Fraxinus velutina,
         // Salix amygdaloides, Salix nigra, Salix gooddingii, Salix laevigata, Sapindus saponaria, Ailanthus altissima,
         // Eucalyptus spp., Ulmus pumila, Acer macrophyllum, Acer grandidentatum, Alnus rubra, Fraxinus latifolia,
-        // Hesperocyparis arizonica, Populus angustifolia, Prosopis pubescens, Prosopis velutina, Quercus arizonica, 
+        // Cupressus arizonica, Populus angustifolia, Prosopis pubescens, Prosopis velutina, Quercus arizonica, 
         // Quercus emoryi, Quercus oblongifolia, Quercus agrifolia, Quercus gambelii, Quercus lobata, Quercus douglasii,
-        // Quercus kelloggii, Robinia neomexicana, Salix lasiolepis, Salix lutea, Taxodium mucronatum, 
+        // Quercus kelloggii, Robinia neomexicana, Salix lasiolepis, Salix lutea, Taxodium distichum, 
         // and Umbellularia californica
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
@@ -2429,55 +2510,55 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Fraxinus latifolia")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
-            new KeyValue("species", "Hesperocyparis arizonica")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern19 = Arrays.asList(
             new KeyValue("species", "Populus angustifolia")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern20 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern19 = Arrays.asList(
             new KeyValue("species", "Prosopis pubescens")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern21 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern20 = Arrays.asList(
             new KeyValue("species", "Prosopis velutina")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern22 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern21 = Arrays.asList(
             new KeyValue("species", "Quercus arizonica")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern23 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern22 = Arrays.asList(
             new KeyValue("species", "Quercus emoryi")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern24 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern23 = Arrays.asList(
             new KeyValue("species", "Quercus oblongifolia")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern25 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern24 = Arrays.asList(
             new KeyValue("species", "Quercus agrifolia")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern26 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern25 = Arrays.asList(
             new KeyValue("species", "Quercus gambelii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern27 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern26 = Arrays.asList(
             new KeyValue("species", "Quercus lobata")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern28 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern27 = Arrays.asList(
             new KeyValue("species", "Quercus douglasii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern29 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern28 = Arrays.asList(
             new KeyValue("species", "Quercus kelloggii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern30 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern29 = Arrays.asList(
             new KeyValue("species", "Robinia neomexicana")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern31 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern30 = Arrays.asList(
             new KeyValue("species", "Salix lasiolepis")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern32 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern31 = Arrays.asList(
             new KeyValue("species", "Salix lutea")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern32 = Arrays.asList(
+            new KeyValue("species", "Umbellularia californica")
+        );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern33 = Arrays.asList(
-            new KeyValue("species", "Taxodium mucronatum")
+            new KeyValue("species", "Cupressus arizonica")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern34 = Arrays.asList(
-            new KeyValue("species", "Umbellularia californica")
+            new KeyValue("species", "Taxodium distichum")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
@@ -2536,9 +2617,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_028() {
+    public Object[] element_032() {
 
-        // Interior Warm & Cool Desert Riparian Forest (M036)
+        // Western Arid Lowland Flooded Forest (M036)
         // M036
 
         String level = "macrogroup";
@@ -2566,9 +2647,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_029() {
+    public Object[] element_033() {
 
-        // Tamaulipan Riparian Scrub Forest (G549)
+        // Tamaulipan Flooded Forest (G549)
         // G549
 
         String level = "group";
@@ -2681,7 +2762,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_030() {
+    public Object[] element_034() {
 
         // Californian Mediterranean Riparian Forest (G113)
         // G113
@@ -2795,7 +2876,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_031() {
+    public Object[] element_035() {
 
         // Southwest Warm Desert Riparian Forest (G109)
         // G109
@@ -2928,7 +3009,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_032() {
+    public Object[] element_036() {
 
         // Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)
         // G107
@@ -3039,9 +3120,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_033() {
+    public Object[] element_037() {
 
-        // Interior West Ruderal Flooded & Swamp Forest & Woodland (M298)
+        // Western Arid Ruderal Riparian Forest & Scrub (M298)
         // M298
 
         String level = "macrogroup";
@@ -3074,7 +3155,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_034() {
+    public Object[] element_038() {
 
         // Upland Forest & Woodlands
         // 
@@ -3091,13 +3172,13 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_035() {
+    public Object[] element_039() {
 
-        // Temperate & Boreal Forest & Woodland Subclass
-        // S15
+        // Temperate & Boreal Forest & Woodland Subclass (B02)
+        // B02
 
-        String level = "subclass";
-        String code = "S15";
+        String level = "Biome";
+        String code = "B02";
 
         // other
 
@@ -3108,7 +3189,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_036() {
+    public Object[] element_040() {
 
         // Great Plains Temperate Forests
         // 
@@ -3383,9 +3464,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_037() {
+    public Object[] element_041() {
 
-        // North American Great Plains Forest & Woodland Division (D326)
+        // North American Great Plains Forest & Woodland Division (D322)
         // D326
 
         String level = "division";
@@ -3398,12 +3479,12 @@ public class ClassificationKeyWest extends ClassificationKey {
         // a. Tree composition dominated by one or more of STRONG diagnostic
         // broadleaf trees Diospyros texana, Fraxinus pennsylvanica, Gleditsia triacanthos, Juglans nigra, Juniperus virginiana,
         // Populus deltoides, Populus tremuloides, Prosopis glandulosa, Prosopis velutina, Quercus macrocarpa,
-        // Quercus marilandica, Quercus stellata, Quercus virginiana, Ulmus americana,
+        // Quercus marilandica, Quercus stellata, Quercus virginiana, Sideroxylon lanuginosum ssp. lanuginosum, Ulmus americana,
         // Ulmus crassifolia or Ulmus rubra (=>50% RIV),
         // OR
         // b. The above tree species, but with =>20% RIV AND other MODERATE
         // diagnostic species, any combination of Acer negundo,
-        // Betula papyrifera, Celtis occidentalis, Crataegus spp.,
+        // Betula papyrifera, Celtis laevigata, Celtis occidentalis, Crataegus spp.,
         // Juglans nigra, Juniperus ashei, Juniperus pinchotii, Juniperus scopulorum, Morus rubra, Pinus ponderosa,
         // Populus grandidentata, Populus balsamifera, Ostrya virginiana
         // Prunus virginiana, or Quercus muehlenbergii
@@ -3489,6 +3570,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_1_pattern17 = Arrays.asList(
             new KeyValue("species", "Populus deltoides")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_1_pattern18 = Arrays.asList(
+            new KeyValue("species", "Sideroxylon lanuginosum ssp. lanuginosum")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_1_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_1_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_1_pattern1,
@@ -3507,7 +3591,8 @@ public class ClassificationKeyWest extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_1_pattern14,
             STRONG_DIAGNOSTIC_SPECIES_1_pattern15,
             STRONG_DIAGNOSTIC_SPECIES_1_pattern16,
-            STRONG_DIAGNOSTIC_SPECIES_1_pattern17
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern17,
+            STRONG_DIAGNOSTIC_SPECIES_1_pattern18
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES_1 = new PatternList("STRONG_DIAGNOSTIC_SPECIES_1", STRONG_DIAGNOSTIC_SPECIES_1_patterns);
 
@@ -3550,6 +3635,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
             new KeyValue("species", "Quercus muehlenbergii")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
+            new KeyValue("species", "Celtis laevigata")
+        );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
             MODERATE_DIAGNOSTIC_SPECIES_pattern1,
@@ -3563,7 +3651,8 @@ public class ClassificationKeyWest extends ClassificationKey {
             MODERATE_DIAGNOSTIC_SPECIES_pattern9,
             MODERATE_DIAGNOSTIC_SPECIES_pattern10,
             MODERATE_DIAGNOSTIC_SPECIES_pattern11,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern12
+            MODERATE_DIAGNOSTIC_SPECIES_pattern12,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern13
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -3585,7 +3674,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_038() {
+    public Object[] element_042() {
 
         // Southern Great Plains Forest & Woodland (M544)
         // M544
@@ -3719,9 +3808,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_039() {
+    public Object[] element_043() {
 
-        // Cross Timbers Forest & Woodland (G887)
+        // Cross Timbers Woodland (G887)
         // G887
 
         String level = "group";
@@ -3810,7 +3899,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_040() {
+    public Object[] element_044() {
 
         // Edwards Plateau Dry-Mesic Hardwood Forest (G028)
         // G028
@@ -3921,7 +4010,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_041() {
+    public Object[] element_045() {
 
         // Edwards Plateau Dry Woodland (G126)
         // G126
@@ -4018,7 +4107,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_042() {
+    public Object[] element_046() {
 
         // Northern Great Plains Forest & Woodland (M545)
         // M545
@@ -4048,7 +4137,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_043() {
+    public Object[] element_047() {
 
         // Great Plains Bur Oak Forest & Woodland(G329)
         // G329
@@ -4120,9 +4209,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_044() {
+    public Object[] element_048() {
 
-        // Northeastern Great Plains Aspen Woodland (G146)
+        // Northern Tallgrass Oak Aspen Woodland (G146)
         // G146
 
         String level = "group";
@@ -4192,7 +4281,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_045() {
+    public Object[] element_049() {
 
         // Northwestern Great Plains Aspen Woodland (G328)
         // G328
@@ -4268,9 +4357,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_046() {
+    public Object[] element_050() {
 
-        // Great Plains Mesic Forest & Woodland (G145)
+        // Northern Great Plains Mesic Forest & Woodland (G145)
         // G145
 
         String level = "group";
@@ -4369,7 +4458,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_047() {
+    public Object[] element_051() {
 
         // Great Plains Ruderal Woodland (M524)
         // M524
@@ -4399,7 +4488,49 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_048() {
+    public Object[] element_052() {
+
+        // LC Southern Great Plains Forest & Woodland (M544LC)
+        // M544LC
+
+        String level = "macrogroup";
+        String code = "M544LC";
+
+        // Not as above.
+
+        List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
+            new KeyValue("ecoregion", "251E, 251F, 255A, 255E, 315, 321B, 332F, 231E, 255B")
+        );
+        List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
+
+        INodeMatch match = plot -> (
+            plot.match(ECOREGIONS)
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_053() {
+
+        // LC Northern Great Plains Forest & Woodland (M545LC)
+        // M545LC
+
+        String level = "macrogroup";
+        String code = "M545LC";
+
+        // Not as above.
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_054() {
 
         // Southeastern North American Forest & Woodland Division (D006)
         // D006
@@ -4524,7 +4655,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_049() {
+    public Object[] element_055() {
 
         // Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)
         // M885
@@ -4558,9 +4689,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_050() {
+    public Object[] element_056() {
 
-        // Coastal Live Oak - Hickory - Palmetto Forest (G798)
+        // Southeast Maritime Live Oak - Palmetto Forest (G798)
         // G798
 
         String level = "group";
@@ -4613,7 +4744,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_051() {
+    public Object[] element_057() {
 
         // Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)
         // G799
@@ -4624,7 +4755,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION 315E
         // and tree composition dominated by one or more of
-        // STRONG DIAGNOSTIC species Quercus fusiformis (RIV=>50%),
+        // STRONG DIAGNOSTIC species Quercus virginiana (=Quercus virgiana ssp. fusiformis) (RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
@@ -4640,7 +4771,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
 
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("species", "Quercus fusiformis")
+            new KeyValue("species", "Quercus virginiana")
         );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0
@@ -4672,7 +4803,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_052() {
+    public Object[] element_058() {
 
         // Southeastern North American Ruderal Forest (M305)
         // M305
@@ -4706,7 +4837,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_053() {
+    public Object[] element_059() {
 
         // Eastern North American Forest & Woodland Division (D008)
         // D008
@@ -4730,9 +4861,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         // diagnostic species Acer negundo, Amelanchier spp., Betula papyrifera,
         // Carya cordiformis, Cercis canadensis, Diospyros virginiana,
         // Gleditsia triacanthos, Juglans nigra, Juniperus ashei,
-        // Juniperus virginiana, Morus rubra, Ostrya virginiana,
+        // Juniperus virginiana , Morus rubra, Ostrya virginiana,
         // Populus balsamifera, Populus deltoides, Prunus pensylvanica,
-        // Prunus serotina, Prunus virginiana, Quercus fusiformis,
+        // Prunus serotina, Prunus virginiana, Quercus virginiana (=Quercus virgiana ssp. fusiformis),
         // Quercus marilandica, Quercus stellata,
         // Quercus shumardii, Ulmus alata, or Ulmus crassifolia
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
@@ -4867,22 +4998,22 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Prunus virginiana")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
-            new KeyValue("species", "Quercus fusiformis")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
             new KeyValue("species", "Quercus marilandica")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern19 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
             new KeyValue("species", "Quercus stellata")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern20 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern19 = Arrays.asList(
             new KeyValue("species", "Quercus shumardii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern21 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern20 = Arrays.asList(
             new KeyValue("species", "Ulmus alata")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern22 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern21 = Arrays.asList(
             new KeyValue("species", "Ulmus crassifolia")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern22 = Arrays.asList(
+            new KeyValue("species", "Quercus virginiana")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
@@ -4912,11 +5043,14 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes"),
+            new KeyValue("exotic", "yes")
+        );
+        List<KeyValue> EXOTIC_TREE_SPP_pattern1 = Arrays.asList(
             new KeyValue("tallytree", "yes")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
-            EXOTIC_TREE_SPP_pattern0
+            EXOTIC_TREE_SPP_pattern0,
+            EXOTIC_TREE_SPP_pattern1
         );
         PatternList EXOTIC_TREE_SPP = new PatternList("EXOTIC_TREE_SPP", EXOTIC_TREE_SPP_patterns);
 
@@ -4930,9 +5064,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_054() {
+    public Object[] element_060() {
 
-        // Eastern North American Forest & Woodland Natural Forests
+        // Eastern North American Forest & Woodland Natural Forests (D008)
         // D008
 
         String level = "division";
@@ -4960,7 +5094,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_055() {
+    public Object[] element_061() {
 
         // Central Midwest Oak Forest, Woodland & Savanna (M012)
         // M012
@@ -5066,9 +5200,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_056() {
+    public Object[] element_062() {
 
-        // North-Central Oak - Hickory Forest & Woodland (G649)
+        // Midwest Oak Hickory Forest (G990)
         // G649
 
         String level = "group";
@@ -5143,9 +5277,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_057() {
+    public Object[] element_063() {
 
-        // Southern & South-Central Oak - Pine Forest & Woodland (M016)
+        // South - Central Oak - Pine Forest & Woodland (M540)
         // M016
 
         String level = "macrogroup";
@@ -5160,7 +5294,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // AND other species are any combination of MODERATE DRY SOUTH-CENTRAL
         // DIAGNOSTICS Carya cordiformis, Cercis canadensis,
         // Diospyros virginiana, Juglans nigra, Juniperus ashei,
-        // Juniperus virginiana, Prunus serotina, Quercus fusiformis,
+        // Juniperus virginiana, Prunus serotina, Quercus virginiana,
         // Quercus marilandica, Quercus stellata, Quercus shumardii,
         // Ulmus alata, or Ulmus crassifolia
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV).
@@ -5215,22 +5349,22 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Prunus serotina")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
-            new KeyValue("species", "Quercus fusiformis")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
             new KeyValue("species", "Quercus marilandica")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
             new KeyValue("species", "Quercus stellata")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
             new KeyValue("species", "Quercus shumardii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
             new KeyValue("species", "Ulmus alata")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
             new KeyValue("species", "Ulmus crassifolia")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+            new KeyValue("species", "Quercus virginiana")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
@@ -5258,9 +5392,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_058() {
+    public Object[] element_064() {
 
-        // Western Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)
+        // West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)
         // G013
 
         String level = "group";
@@ -5339,9 +5473,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_059() {
+    public Object[] element_065() {
 
-        // Eastern North American Ruderal Forests
+        // Eastern North American Ruderal Forests (D008)
         // D008
 
         String level = "division";
@@ -5373,7 +5507,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_060() {
+    public Object[] element_066() {
 
         // Eastern North American Ruderal Forest (M013)
         // M013
@@ -5402,7 +5536,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_061() {
+    public Object[] element_067() {
 
         // Western North American Temperate Forests
         // 
@@ -5428,9 +5562,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_062() {
+    public Object[] element_068() {
 
-        // Warm Temperate Forest & Woodland Formation
+        // Warm Temperate Forest & Woodland (S54)
         // F018
 
         String level = "formation";
@@ -6091,7 +6225,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_063() {
+    public Object[] element_069() {
 
         // Californian Forest & Woodland Division (D007)
         // D007
@@ -6295,7 +6429,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_064() {
+    public Object[] element_070() {
 
         // Californian Forest & Woodland (M009)
         // M009
@@ -6325,7 +6459,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_065() {
+    public Object[] element_071() {
 
         // Californian Conifer Forest & Woodland (G198)
         // G198
@@ -6496,7 +6630,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_066() {
+    public Object[] element_072() {
 
         // Californian Broadleaf Forest & Woodland (G195)
         // G195
@@ -6587,7 +6721,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_067() {
+    public Object[] element_073() {
 
         // Californian Ruderal Forest (M513)
         // M513
@@ -6617,7 +6751,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_068() {
+    public Object[] element_074() {
 
         // Madrean Forest & Woodland Division (D331)
         // D331
@@ -6629,23 +6763,23 @@ public class ClassificationKeyWest extends ClassificationKey {
         // i. EITHER
         // a. Tree composition contains one or more of STRONG diagnostic tree
         // species Juniperus ashei, Juniperus coahuilensis, Juniperus deppeana,
-        // Juniperus flaccida, Pinus arizonica, Pinus cembroides, Pinus discolor,
+        // Juniperus flaccida, Juniperus pinchotii, Pinus arizonica, Pinus cembroides, Pinus discolor,
         // Pinus engelmannii, Pinus leiophylla, Pinus strobiformis,
         // Prosopis glandulosa, Prosopis velutina, Quercus albocincta,
         // Quercus arizonica, Quercus chrysolepis, Quercus emoryi,
         // Quercus grisea, Quercus hypoleucoides, Quercus oblongifolia,
         // or Quercus rugosa (=>50% RIV),
         // [Additional tree species not tracked by FIA include
-        // Juniperus arizonica, Quercus buckleyi, Quercus fusiformis,
+        // Juniperus arizonica, Pinus monophylla, Quercus buckleyi, Quercus fusiformis,
         // Quercus gravesii, Quercus vaseyana, or Ulmus crassifolia]
         // OR
         // b. The above tree species, but with =>20% RIV AND other MODERATE
         // diagnostic species any combination of Abies concolor,
         // Acer grandidentatum, Arbutus arizonica, Arbutus xalapensis,
         // Celtis laevigata, Fraxinus albicans, Juglans major, Juglans nigra,
-        // Juniperus monosperma, Juniperus osteosperma, Juniperus pinchotii, Pinus edulis,
+        // Juniperus monosperma, Juniperus osteosperma, Pinus edulis,
         // Pinus ponderosa, Pinus remota, Pseudotsuga menziesii,
-        // Prunus serotina, Quercus macrocarpa, Quercus muehlenbergii, or Quercus vaseyana
+        // Prunus serotina, Quercus gambelii, Quercus macrocarpa, Quercus muehlenbergii, or Quercus vaseyana
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
         // [Additional tree species not tracked by FIA include Quercus laceyi]
         // OR
@@ -6721,6 +6855,12 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern19 = Arrays.asList(
             new KeyValue("species", "Quercus rugosa")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern20 = Arrays.asList(
+            new KeyValue("species", "Juniperus pinchotii")
+        );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern21 = Arrays.asList(
+            new KeyValue("species", "Pinus monophylla")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
@@ -6741,7 +6881,9 @@ public class ClassificationKeyWest extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_pattern16,
             STRONG_DIAGNOSTIC_SPECIES_pattern17,
             STRONG_DIAGNOSTIC_SPECIES_pattern18,
-            STRONG_DIAGNOSTIC_SPECIES_pattern19
+            STRONG_DIAGNOSTIC_SPECIES_pattern19,
+            STRONG_DIAGNOSTIC_SPECIES_pattern20,
+            STRONG_DIAGNOSTIC_SPECIES_pattern21
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -6776,31 +6918,31 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Juniperus osteosperma")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
-            new KeyValue("species", "Juniperus pinchotii")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
             new KeyValue("species", "Pinus edulis")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
             new KeyValue("species", "Pinus ponderosa")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
             new KeyValue("species", "Pinus remota")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern14 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
             new KeyValue("species", "Pseudotsuga menziesii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern15 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern14 = Arrays.asList(
             new KeyValue("species", "Prunus serotina")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern16 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern15 = Arrays.asList(
             new KeyValue("species", "Quercus macrocarpa")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern16 = Arrays.asList(
             new KeyValue("species", "Quercus muehlenbergii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
             new KeyValue("species", "Quercus vaseyana")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
+            new KeyValue("species", "Quercus gambelii")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
@@ -6843,9 +6985,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_069() {
+    public Object[] element_075() {
 
-        // Madrean Natural Forests & Woodlands
+        // Madrean Natural Forests & Woodlands (D331)
         // D331
 
         String level = "division";
@@ -6873,7 +7015,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_070() {
+    public Object[] element_076() {
 
         // Madrean Lowland Evergreen Woodland (M010)
         // M010
@@ -6882,7 +7024,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "M010";
 
         // Plot location and tree composition are as follows:
-        // i. Located in ECOREGION 322, 313C, M313, 321, AND
+        // i. Located in ECOREGION 322, 313C, M313, 321, 315 AND
         // tree composition dominated by one or more of STRONG DIAGNOSTIC species
         // Juniperus coahuilensis, Juniperus deppeana, Juniperus flaccida,
         // Juniperus pinchotii, Pinus cembroides, Pinus discolor,
@@ -6897,11 +7039,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // but with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any combination
         // of Arbutus arizonica, Arbutus xalapensis, Juniperus monosperma,
         // Pinus arizonica, Pinus edulis, Pinus engelmannii, Pinus leiophylla
-        // Pinus strobiformis, Quercus hypoleucoides, and Quercus rugosa
+        // Pinus strobiformis, Quercus hypoleucoides, Quercus gambelii and Quercus rugosa
         // (>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%))
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "322, 313C, M313, 321")
+            new KeyValue("ecoregion", "322, 313C, M313, 321, 315")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -6994,6 +7136,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
             new KeyValue("species", "Quercus rugosa")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+            new KeyValue("species", "Quercus gambelii")
+        );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
             MODERATE_DIAGNOSTIC_SPECIES_pattern1,
@@ -7004,7 +7149,8 @@ public class ClassificationKeyWest extends ClassificationKey {
             MODERATE_DIAGNOSTIC_SPECIES_pattern6,
             MODERATE_DIAGNOSTIC_SPECIES_pattern7,
             MODERATE_DIAGNOSTIC_SPECIES_pattern8,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern9
+            MODERATE_DIAGNOSTIC_SPECIES_pattern9,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -7017,7 +7163,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_071() {
+    public Object[] element_077() {
 
         // Madrean Pinyon - Juniper Woodland (G200)
         // G200
@@ -7026,11 +7172,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "G200";
 
         // Plot location and tree composition are as follows:
-        // i. Located in ECOREGION 313D?, 315H?, 315A, 313B, M313A, M313B, 321,
+        // i. Located in ECOREGION 313D?, 315, 313B, M313A, M313B, 321,
         // 313A, 322A, 313C, 322B and tree composition dominated by one or more
         // of STRONG DIAGNOSTIC species Juniperus coahuilensis, Juniperus deppeana,
         // Juniperus flaccida, Juniperus pinchotii, Pinus cembroides,
-        // Pinus discolor, Pinus edulis, or Pinus remota (RIV=>50%),
+        // Pinus discolor, Pinus edulis, or Pinus monophylla, Pinus remota (RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
@@ -7044,7 +7190,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Quercus hypoleucoides, or Quercus rugosa (RIV >=1%)
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "ECOREGION 313D, 315H, 315A, 313B, M313A, M313B, 321, 313A, 322A, 313C, 322B")
+            new KeyValue("ecoregion", "313D, 315, 313B, M313A, M313B, 321, 313A, 322A, 313C, 322B")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -7075,6 +7221,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
             new KeyValue("species", "Juniperus deppeana")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new KeyValue("species", "Pinus monophylla")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
@@ -7083,7 +7232,8 @@ public class ClassificationKeyWest extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_pattern4,
             STRONG_DIAGNOSTIC_SPECIES_pattern5,
             STRONG_DIAGNOSTIC_SPECIES_pattern6,
-            STRONG_DIAGNOSTIC_SPECIES_pattern7
+            STRONG_DIAGNOSTIC_SPECIES_pattern7,
+            STRONG_DIAGNOSTIC_SPECIES_pattern8
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -7145,7 +7295,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_072() {
+    public Object[] element_078() {
 
         // Madrean Encinal (G201)
         // G201
@@ -7161,7 +7311,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-        // combination of Arbutus arizonica, Arbutus xalapensis (>=30% RIV;
+        // combination of Arbutus arizonica, Arbutus xalapensis, Quercus gambelii, or Pinus ponderosa (>=30% RIV;
         // i.e., together STRONG and MODERATE diagnostic species RIV =>50%),
         // OR
         // iii. Located in above ECOREGION, and tree composition as i. above,
@@ -7204,9 +7354,17 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
             new KeyValue("species", "Arbutus xalapensis")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new KeyValue("species", "Pinus ponderosa")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new KeyValue("species", "Quercus gambelii")
+        );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern1
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -7256,7 +7414,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_073() {
+    public Object[] element_079() {
 
         // Madrean Juniper Open Woodland (G487)
         // G487
@@ -7273,7 +7431,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-        // combination of Juniperus monosperma (>=30% RIV; i.e., together STRONG
+        // combination of Juniperus monosperma, Prosopis glandulosa, or Prosopis velutina (>=30% RIV; i.e., together STRONG
         // and MODERATE diagnostic species RIV =>50%)
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
@@ -7299,8 +7457,16 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
             new KeyValue("species", "Juniperus monosperma")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new KeyValue("species", "Prosopis glandulosa")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new KeyValue("species", "Prosopis velutina")
+        );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
-            MODERATE_DIAGNOSTIC_SPECIES_pattern0
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -7313,7 +7479,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_074() {
+    public Object[] element_080() {
 
         // Madrean Montane Forest & Woodland (M011)
         // M011
@@ -7324,7 +7490,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION 322, 313C, M313, 321, 315, AND tree composition
         // dominated by one or more of STRONG DIAGNOSTIC species
-        // Juniperus deppeana, Pinus arizonica, Pinus engelmannii, Pinus leiophylla,
+        // Juniperus deppeana, Pinus arizonica, Pinus engelmannii, Pinus leiophylla, Pinus ponderosa,
         // Pinus strobiformis,
         // Quercus albocincta, Quercus arizonica, Quercus chrysolepis, Quercus emoryi,
         // Quercus grisea, Quercus hypoleucoides, or Quercus rugosa (RIV=>20%),
@@ -7335,7 +7501,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // but with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any
         // combination of Abies concolor, Acer grandidentatum, Arbutus arizonica,
         // Arbutus xalapensis, Juniperus flaccida, Pinus cembroides,
-        // Pinus discolor, Pinus edulis, Pinus ponderosa, Pseudotsuga menziesii
+        // Pinus discolor, Pinus edulis, Pseudotsuga menziesii
         // Quercus gravesii and Quercus muehlenbergii
         // (>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
 
@@ -7383,6 +7549,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
             new KeyValue("species", "Quercus rugosa")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
+            new KeyValue("species", "Pinus ponderosa")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
@@ -7395,7 +7564,8 @@ public class ClassificationKeyWest extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_pattern8,
             STRONG_DIAGNOSTIC_SPECIES_pattern9,
             STRONG_DIAGNOSTIC_SPECIES_pattern10,
-            STRONG_DIAGNOSTIC_SPECIES_pattern11
+            STRONG_DIAGNOSTIC_SPECIES_pattern11,
+            STRONG_DIAGNOSTIC_SPECIES_pattern12
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -7424,15 +7594,12 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Pinus edulis")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
-            new KeyValue("species", "Pinus ponderosa")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
             new KeyValue("species", "Pseudotsuga menziesii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
             new KeyValue("species", "Quercus gravesii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern10 = Arrays.asList(
             new KeyValue("species", "Quercus muehlenbergii")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
@@ -7446,8 +7613,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             MODERATE_DIAGNOSTIC_SPECIES_pattern7,
             MODERATE_DIAGNOSTIC_SPECIES_pattern8,
             MODERATE_DIAGNOSTIC_SPECIES_pattern9,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern10,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern11
+            MODERATE_DIAGNOSTIC_SPECIES_pattern10
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -7460,7 +7626,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_075() {
+    public Object[] element_081() {
 
         // Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)
         // G202
@@ -7569,7 +7735,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_076() {
+    public Object[] element_082() {
 
         // Madrean Lower Montane Pine - Oak Forest & Woodland (G203)
         // G203
@@ -7695,9 +7861,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_077() {
+    public Object[] element_083() {
 
-        // Western North American Ruderal Forests - Madrean-Balconian
+        // Western North American Ruderal Forests - Madrean-Balconian (D060)
         // D060
 
         String level = "division";
@@ -7725,9 +7891,26 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_078() {
+    public Object[] element_084() {
 
-        // Cool Temperate Forest & Woodland Formation
+        // LC Madrean Montane Forest & Woodland (M011LC)
+        // M011LC
+
+        String level = "macrogroup";
+        String code = "M011LC";
+
+        // Not as above.
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_085() {
+
+        // Cool Temperate Forest & Woodland Subbiome(S92)
         // F008
 
         String level = "formation";
@@ -7745,9 +7928,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_079() {
+    public Object[] element_086() {
 
-        // Pacific Coast Temperate Rainforest Division (D338)
+        // North American Pacific Coast Temperate Rainforest (D338)
         // D338
 
         String level = "division";
@@ -7776,7 +7959,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //   OR 
         //   c.  Any EXOTIC = yes tree species =>80% RIV
         // 
-        // ###TRANSLATES TO:
+        // TRANSLATES TO:
         // 
         // Plot location and tree composition are as follows:
         // STRONG DIAGNOSTICS RIV 50% or more
@@ -8059,9 +8242,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_080() {
+    public Object[] element_087() {
 
-        // Vancouverian Coastal Rainforest (M024)
+        // North Pacific Coastal Rainforest (M024)
         // M024
 
         String level = "macrogroup";
@@ -8076,81 +8259,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_081() {
+    public Object[] element_088() {
 
-        // Vancouverian Dry Coastal Beach Pine Forest & Woodland (G205)
-        // G205
-
-        String level = "group";
-        String code = "G205";
-
-        // Plot location and tree composition are as follows:
-        // i. Located in ECOREGION 242, M242A, M261A, 263
-        // and tree composition dominated by one or more of STRONG
-        // DIAGNOSTIC species Pinus contorta(RIV=>50%),
-        // OR
-        // ii. Located in above ECOREGION, and tree composition as above, but
-        // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-        // combination of Abies grandis, Arbutus menziesii, Pinus muricata, Picea sitchensis, Pseudotsuga menziesii  or
-        // Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
-        // together STRONG and MODERATE diagnostic species RIV =>50%)
-
-        List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "242, M242A, M261A, 263")
-        );
-        List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
-            ECOREGIONS_pattern0
-        );
-        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
-
-        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus contorta")
-        );
-        List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
-            STRONG_DIAGNOSTIC_SPECIES_pattern0
-        );
-        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
-
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("species", "Abies grandis")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("species", "Arbutus menziesii")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
-            new KeyValue("species", "Pinus muricata")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
-            new KeyValue("species", "Tsuga heterophylla")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
-            new KeyValue("species", "Picea sitchensis")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
-            new KeyValue("species", "Pseudotsuga menziesii")
-        );
-        List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
-            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern5
-        );
-        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
-
-        INodeMatch match = plot -> (
-            plot.match(ECOREGIONS) && 
-           ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
-           (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
-        );
-
-        return new Object[] { level, code, match };
-    }
-
-    public Object[] element_082() {
-
-        // Californian Coastal Redwood Forest (G235)
+        // Coastal Redwood Forest (G235)
         // G235
 
         String level = "group";
@@ -8225,9 +8336,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_083() {
+    public Object[] element_089() {
 
-        // North Pacific Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)
+        // Coastal Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)
         // G237
 
         String level = "group";
@@ -8319,9 +8430,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_084() {
+    public Object[] element_090() {
 
-        // North Pacific Maritime Douglas-fir - Western Hemlock Rainforest (G240)
+        // Coastal Douglas-fir - Western Hemlock Rainforest (G240)
         // G240
 
         String level = "group";
@@ -8392,9 +8503,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_085() {
+    public Object[] element_091() {
 
-        // North-Central Pacific Maritime Silver Fir - Western Hemlock Rainforest (G241)
+        // Coastal Silver Fir - Western Hemlock Rainforest(G241)
         // G241
 
         String level = "group";
@@ -8465,9 +8576,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_086() {
+    public Object[] element_092() {
 
-        // North-Central Pacific Western Hemlock - Sitka Spruce Rainforest (G751)
+        // Coastal Western Hemlock - Sitka Spruce Rainforest (G751)
         // G751
 
         String level = "group";
@@ -8569,7 +8680,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_087() {
+    public Object[] element_093() {
 
         // Western North American Pinyon-Juniper Woodland & Scrub Division (D010)
         // D010
@@ -8579,24 +8690,24 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Tree composition and ecology matching one of the following options:
         // i.  Located in ECOREGION M242C, M261D, M261E, M261G, M262B, 313, M313, 315,
-        //   321, 322, 331I, 331J, M331, M332, 341, M341, 342
+        //   321, 322, 331B, 331I, 331J, M331, M332, 341, M341, 342
         // AND
         // ii.  EITHER
         //   a.  Tree composition dominated by one or more of STRONG diagnostic
         //   tree species Cercocarpus ledifolius, Juniperus monosperma,
-        //   Juniperus occidentalis, Juniperus osteosperma, Pinus edulis, or
+        //   Juniperus occidentalis, Juniperus osteosperma, Juniperus scopulorum, Pinus edulis, or
         //   Pinus monophylla (=>50% RIV),
         //   OR
         //   b.  The above tree species, but with =>20% RIV AND other MODERATE 
         //   diagnostic species of Juniperus californica, Juniperus deppeana,
-        //   Juniperus grandis, Juniperus scopulorum, Pinus jeffreyi,
+        //   Juniperus grandis, Pinus jeffreyi,
         //   Pinus ponderosa, or Quercus gambelii (>=30% RIV; i.e.,
         //   together STRONG and MODERATE diagnostic species =>50% RIV)
         //   OR
         //   c.  Any EXOTIC = yes tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "M242C, M261D, M261E, M261G, M262B, 313, M313, 315, 321, 322, 331I, 331J, M331, M332, 341, M341, 342")
+            new KeyValue("ecoregion", "M242C, M261D, M261E, M261G, M262B, 313, M313, 315, 321, 322, 331B, 331I, 331J, M331, M332, 341, M341, 342")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -8621,13 +8732,17 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
             new KeyValue("species", "Pinus monophylla")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
+            new KeyValue("species", "Juniperus scopulorum")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
             STRONG_DIAGNOSTIC_SPECIES_pattern2,
             STRONG_DIAGNOSTIC_SPECIES_pattern3,
             STRONG_DIAGNOSTIC_SPECIES_pattern4,
-            STRONG_DIAGNOSTIC_SPECIES_pattern5
+            STRONG_DIAGNOSTIC_SPECIES_pattern5,
+            STRONG_DIAGNOSTIC_SPECIES_pattern6
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -8638,15 +8753,12 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Juniperus deppeana")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
-            new KeyValue("species", "Juniperus scopulorum")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Pinus jeffreyi")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Pinus ponderosa")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
             new KeyValue("species", "Quercus gambelii")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
@@ -8654,8 +8766,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             MODERATE_DIAGNOSTIC_SPECIES_pattern1,
             MODERATE_DIAGNOSTIC_SPECIES_pattern2,
             MODERATE_DIAGNOSTIC_SPECIES_pattern3,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern5
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -8677,7 +8788,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_088() {
+    public Object[] element_094() {
 
         // Intermountain Pinyon-Juniper Woodland (M896)
         // M896
@@ -8765,7 +8876,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_089() {
+    public Object[] element_095() {
 
         // Intermountain Western Juniper Open Woodland (G248)
         // G248
@@ -8827,7 +8938,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_090() {
+    public Object[] element_096() {
 
         // Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)
         // G249
@@ -8882,7 +8993,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_091() {
+    public Object[] element_097() {
 
         // Great Basin Pinyon - Juniper Woodland (G899)
         // G899
@@ -8895,12 +9006,12 @@ public class ClassificationKeyWest extends ClassificationKey {
         // 341D, 341E, 341F, 341G, 342B, 342C, 342J, M261F, M261E, M261G,
         // M262B, M331D, M341A, M341D, M341C
         // and tree composition dominated by the STRONG
-        // DIAGNOSTIC species Pinus monophylla (RIV=>50%),
+        // DIAGNOSTIC species Juniperus osteosperma or Pinus monophylla (RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of
         // Cercocarpus ledifolius, Juniperus californica, Juniperus occidentalis,
-        // Juniperus osteosperma or Pinus jeffreyi (>=30% RIV; i.e., together
+        // or Pinus jeffreyi (>=30% RIV; i.e., together
         // STRONG and MODERATE diagnostic species RIV =>50%)
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
@@ -8914,8 +9025,12 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
             new KeyValue("species", "Pinus monophylla")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new KeyValue("species", "Juniperus osteosperma")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
-            STRONG_DIAGNOSTIC_SPECIES_pattern0
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -8926,20 +9041,16 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Juniperus californica")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
-            new KeyValue("species", "Juniperus osteosperma")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Pinus jeffreyi")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Juniperus occidentalis")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
             MODERATE_DIAGNOSTIC_SPECIES_pattern1,
             MODERATE_DIAGNOSTIC_SPECIES_pattern2,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern4
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -8952,7 +9063,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_092() {
+    public Object[] element_098() {
 
         // Colorado Plateau Pinyon - Juniper Woodland (G900)
         // G900
@@ -8962,19 +9073,19 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Plot location and tree composition are as follows:
         // i. Located in ECOREGION 322B, 342E, 342D, 331I, 315A, 315H, 313,
-        // 322A, M313A, M313B, M331D, M331E, M331F, M331G, M331H, M331I, 331J,
+        // 322A, M313A, M313B, M331, 331J,
         // 342G, 341A, 341B, 341C, 341F, M341B, M341C
         // and tree composition dominated by one or more of STRONG DIAGNOSTIC
-        // species Pinus edulis (RIV=>50%),
+        // species Juniperus osteosperma or Pinus edulis (RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any
-        // combination of Juniperus monosperma, Juniperus osteosperma, Quercus gambelii, Quercus grisea  or
+        // combination of Juniperus monosperma, Quercus gambelii, Quercus grisea  or
         // Juniperus scopulorum (>=30% RIV; i.e., together STRONG and MODERATE
         // diagnostic species RIV =>50%)
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "322B, 342E, 342D, 331I, 315A, 315H, 313, 322A, M313A, M313B, M331D, M331E, M331F, M331G, M331H, M331I, 331J, 342G, 341A, 341B, 341C, 341F, M341B, M341C")
+            new KeyValue("ecoregion", "322B, 342E, 342D, 331I, 315A, 315H, 313, 322A, M313A, M313B, M331, 331J, 342G, 341A, 341B, 341C, 341F, M341B, M341C")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -8984,8 +9095,12 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
             new KeyValue("species", "Pinus edulis")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new KeyValue("species", "Juniperus osteosperma")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
-            STRONG_DIAGNOSTIC_SPECIES_pattern0
+            STRONG_DIAGNOSTIC_SPECIES_pattern0,
+            STRONG_DIAGNOSTIC_SPECIES_pattern1
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -8993,23 +9108,19 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Juniperus monosperma")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("species", "Juniperus osteosperma")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
             new KeyValue("species", "Juniperus scopulorum")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
             new KeyValue("species", "Quercus gambelii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Quercus grisea")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
             MODERATE_DIAGNOSTIC_SPECIES_pattern1,
             MODERATE_DIAGNOSTIC_SPECIES_pattern2,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern4
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -9022,7 +9133,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_093() {
+    public Object[] element_099() {
 
         // Intermountain Utah Juniper Open Woodland (G105)
         // G105
@@ -9089,7 +9200,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_094() {
+    public Object[] element_100() {
 
         // Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)
         // M897
@@ -9105,7 +9216,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>10% RIV AND with other MODERATE DIAGNOSTIC species in any
-        // combination of Juniperus scopulorum or
+        // combination of Juniperus scopulorum or Juniperus deppeana
         // [PLACEHOLDER - INSERT P2 DIAGNOSTIC SPECIES]
         // (>=40% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
 
@@ -9132,8 +9243,12 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
             new KeyValue("species", "Juniperus scopulorum")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new KeyValue("species", "Juniperus deppeana")
+        );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
-            MODERATE_DIAGNOSTIC_SPECIES_pattern0
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -9146,7 +9261,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_095() {
+    public Object[] element_101() {
 
         // Southern Rocky Mountain Pinyon - Juniper Woodland (G253)
         // G253
@@ -9212,7 +9327,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_096() {
+    public Object[] element_102() {
 
         // Southern Rocky Mountain Juniper Open Woodland (G252)
         // G252
@@ -9264,9 +9379,26 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_097() {
+    public Object[] element_103() {
 
-        // Pacific Mountains Forest & Woodland Division (D339)
+        // LC Intermountain Pinyon-Juniper Woodland (M896LC)
+        // M896LC
+
+        String level = "macrogroup";
+        String code = "M896LC";
+
+        // Not as above.
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_104() {
+
+        // Californian-North Pacific Foothills Forest & Woodland (D339)
         // D339
 
         String level = "division";
@@ -9286,7 +9418,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //     OR 
         //     e.  The above tree species, but with =>10% RIV AND other MODERATE 
         //     diagnostic species, any combination of Abies bracteata, Acer circinatum, Acer macrophyllum, 
-        //     Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, 
+        //     Arbutus menziesii, Callitropsis nootkatensis, Cornus nuttallii, Frangula purshiana, Picea breweriana, 
         //     Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus muricata, 
         //     Pinus washoensis, Populus balsamifera ssp. trichocarpa, 
         //     Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and MODERATE 
@@ -9301,10 +9433,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         //   AND 
         //   iv.  EITHER 
         //       a.  Tree composition dominated by one or more of STRONG diagnostic tree 
-        //           species Abies concolor, Abies grandis, Abies lasiocarpa, Abies magnifica, Abies shastensis [Abies magnifica var. shastensis], Abies procera, Calocedrus decurrens, , Chrysolepis chrysophylla, Juniperus occidentalis, Notholithocarpus densiflorus, Pinus jeffreyi, Pinus monticola, Quercus chrysolepis, Quercus garryana, Quercus kelloggii, Sequoiadendron giganteum, Taxus brevifolia, or Umbellularia californica (=>20% RIV) 
+        //           species Abies amabilis, Abies concolor, Abies grandis, Abies lasiocarpa, Abies magnifica, Abies shastensis [Abies magnifica var. shastensis], Abies procera, Calocedrus decurrens, , Chrysolepis chrysophylla, Juniperus occidentalis, Notholithocarpus densiflorus, Pinus jeffreyi, Pinus monticola, Quercus chrysolepis, Quercus garryana, Quercus kelloggii, Sequoiadendron giganteum, Taxus brevifolia, Tsuga mertensiana, or Umbellularia californica (=>20% RIV) 
         //       OR 
         //       b.  The above tree species, but with =>10% RIV AND other MODERATE 
-        //           diagnostic species, any combination of Abies bracteata, Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and 
+        //           diagnostic species, any combination of Abies bracteata, Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus contorta, Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and 
         //           MODERATE diagnostic species =>50% RIV) 
         //       OR 
         //       d.  Any EXOTIC = yes tree species =>80% RIV
@@ -9371,6 +9503,15 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_I_pattern17 = Arrays.asList(
             new KeyValue("species", "Juniperus occidentalis")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_I_pattern18 = Arrays.asList(
+            new KeyValue("species", "Abies amabilis")
+        );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_I_pattern19 = Arrays.asList(
+            new KeyValue("species", "Tsuga mertensiana")
+        );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_I_pattern20 = Arrays.asList(
+            new KeyValue("species", "Callitropsis nootkatensis")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_I_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_I_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_I_pattern1,
@@ -9389,7 +9530,10 @@ public class ClassificationKeyWest extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_I_pattern14,
             STRONG_DIAGNOSTIC_SPECIES_I_pattern15,
             STRONG_DIAGNOSTIC_SPECIES_I_pattern16,
-            STRONG_DIAGNOSTIC_SPECIES_I_pattern17
+            STRONG_DIAGNOSTIC_SPECIES_I_pattern17,
+            STRONG_DIAGNOSTIC_SPECIES_I_pattern18,
+            STRONG_DIAGNOSTIC_SPECIES_I_pattern19,
+            STRONG_DIAGNOSTIC_SPECIES_I_pattern20
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES_I = new PatternList("STRONG_DIAGNOSTIC_SPECIES_I", STRONG_DIAGNOSTIC_SPECIES_I_patterns);
 
@@ -9435,6 +9579,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_I_pattern13 = Arrays.asList(
             new KeyValue("species", "Pseudotsuga macrocarpa")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_I_pattern14 = Arrays.asList(
+            new KeyValue("species", "Pinus contorta")
+        );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_I_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_I_pattern0,
             MODERATE_DIAGNOSTIC_SPECIES_I_pattern1,
@@ -9449,7 +9596,8 @@ public class ClassificationKeyWest extends ClassificationKey {
             MODERATE_DIAGNOSTIC_SPECIES_I_pattern10,
             MODERATE_DIAGNOSTIC_SPECIES_I_pattern11,
             MODERATE_DIAGNOSTIC_SPECIES_I_pattern12,
-            MODERATE_DIAGNOSTIC_SPECIES_I_pattern13
+            MODERATE_DIAGNOSTIC_SPECIES_I_pattern13,
+            MODERATE_DIAGNOSTIC_SPECIES_I_pattern14
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES_I = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_I", MODERATE_DIAGNOSTIC_SPECIES_I_patterns);
 
@@ -9641,9 +9789,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_098() {
+    public Object[] element_105() {
 
-        // Southern Vancouverian Dry Foothill Forest & Woodland (M886)
+        // Californian-North Pacific Vancouverian Dry Foothill Forest & Woodland (M886)
         // M886
 
         String level = "macrogroup";
@@ -9770,7 +9918,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_099() {
+    public Object[] element_106() {
 
         // Cascadian Oregon White Oak - Conifer Forest & Woodland (G206)
         // G206
@@ -9844,7 +9992,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_100() {
+    public Object[] element_107() {
 
         // Californian Moist Coastal Mixed Evergreen Forest (G208)
         // G208
@@ -9940,9 +10088,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_101() {
+    public Object[] element_108() {
 
-        // Southern Vancouverian Dry Douglas-fir - Madrone Woodland (G800)
+        // North Pacific Douglas-fir - Madrone Dry Woodland (G800)
         // G800
 
         String level = "group";
@@ -10018,9 +10166,81 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_102() {
+    public Object[] element_109() {
 
-        // Southern Vancouverian Montane-Foothill Forest (M023)
+        // Coastal Shore Pine Forest & Woodland (G205)
+        // G205
+
+        String level = "group";
+        String code = "G205";
+
+        // Plot location and tree composition are as follows:
+        // i. Located in ECOREGION 242, M242A, M261A, 263
+        // and tree composition dominated by one or more of STRONG
+        // DIAGNOSTIC species Pinus contorta(RIV=>50%),
+        // OR
+        // ii. Located in above ECOREGION, and tree composition as above, but
+        // with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
+        // combination of Abies grandis, Arbutus menziesii, Pinus muricata, Picea sitchensis, Pseudotsuga menziesii  or
+        // Tsuga heterophylla [PLACEHOLDER – INSERT P2 VEG] (>=30% RIV; i.e.,
+        // together STRONG and MODERATE diagnostic species RIV =>50%)
+
+        List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
+            new KeyValue("ecoregion", "242, M242A, M261A, 263")
+        );
+        List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
+            ECOREGIONS_pattern0
+        );
+        PatternList ECOREGIONS = new PatternList("ECOREGIONS", ECOREGIONS_patterns);
+
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new KeyValue("species", "Pinus contorta")
+        );
+        List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            STRONG_DIAGNOSTIC_SPECIES_pattern0
+        );
+        PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
+
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
+            new KeyValue("species", "Abies grandis")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
+            new KeyValue("species", "Arbutus menziesii")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
+            new KeyValue("species", "Pinus muricata")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
+            new KeyValue("species", "Tsuga heterophylla")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new KeyValue("species", "Picea sitchensis")
+        );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+            new KeyValue("species", "Pseudotsuga menziesii")
+        );
+        List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
+            MODERATE_DIAGNOSTIC_SPECIES_pattern0,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern1,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern2,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern5
+        );
+        PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
+
+        INodeMatch match = plot -> (
+            plot.match(ECOREGIONS) && 
+           ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
+           (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_110() {
+
+        // Sierran-Californian Montane-Foothill Forest & Woodland (M023)
         // M023
 
         String level = "macrogroup";
@@ -10134,7 +10354,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_103() {
+    public Object[] element_111() {
 
         // Californian Montane Conifer Forest & Woodland (G344)
         // G344
@@ -10256,7 +10476,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_104() {
+    public Object[] element_112() {
 
         // Vancouverian Ruderal Forest (M405)
         // M405
@@ -10281,15 +10501,15 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_105() {
+    public Object[] element_113() {
 
-        // Vancouverian Ruderal Forest (G801)
+        // North Pacific Ruderal Forest (G801)
         // G801
 
         String level = "group";
         String code = "G801";
 
-        // 
+        // Plots with greater than 80% non-native RIV.
 
         INodeMatch match = plot -> (
             true
@@ -10298,7 +10518,24 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_106() {
+    public Object[] element_114() {
+
+        // LC Californian-North Pacific Vancouverian Dry Foothill Forest & Woodland (M886LC)
+        // M886LC
+
+        String level = "macrogroup";
+        String code = "M886LC";
+
+        // Not as above.
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_115() {
 
         // Rocky Mountain Foothills & Montane Forest & Woodland (D337)
         // D337
@@ -10308,7 +10545,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
         // Tree composition and ecology matching one of the following options:
         // i.  Elevation below 2800 meters and located in ECOREGION M242C,
-        //     M242D – only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,
+        //     M242D – only eastern ecosubsections M242D,
         //     313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331,
         //     M332, M333, M334, 341, M341, 342   
         // AND
@@ -10318,7 +10555,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //     Acer grandidentatum, Juniperus scopulorum, Larix lyallii,
         //     Larix occidentalis, Picea glauca, Picea pungens, Pinus contorta,
         //     Pinus flexilis, Pinus ponderosa, Pinus longaeva, Populus tremuloides, Pseudotsuga menziesii,
-        //     Quercus gambelii, Thuja plicata,  or Tsuga heterophylla (=>50% RIV),
+        //     Quercus gambelii, Thuja plicata, Tsuga heterophylla, or Tsuga mertensiana (=>50% RIV),
         //     [Additional species not tracked by FIA Picea engelmannii x glauca hybrids]
         //     OR
         //     b.  The above tree species, but with =>20% RIV AND other MODERATE
@@ -10332,7 +10569,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //     c.  Any EXOTIC = yes tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331, M332, M333, M334, 341, M341, 342")
+            new KeyValue("ecoregion", "M242C, M242D, 313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331, M332, M333, M334, 341, M341, 342")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -10393,6 +10630,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern17 = Arrays.asList(
             new KeyValue("species", "Pinus longaeva")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern18 = Arrays.asList(
+            new KeyValue("species", "Tsuga mertensiana")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
@@ -10411,7 +10651,8 @@ public class ClassificationKeyWest extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_pattern14,
             STRONG_DIAGNOSTIC_SPECIES_pattern15,
             STRONG_DIAGNOSTIC_SPECIES_pattern16,
-            STRONG_DIAGNOSTIC_SPECIES_pattern17
+            STRONG_DIAGNOSTIC_SPECIES_pattern17,
+            STRONG_DIAGNOSTIC_SPECIES_pattern18
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -10494,9 +10735,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_107() {
+    public Object[] element_116() {
 
-        // Southern Rocky Mountain Lower Montane Forest (M022)
+        // Southern Rocky Mountain Montane Forest & Woodland (M022)
         // M022
 
         String level = "macrogroup";
@@ -10616,7 +10857,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_108() {
+    public Object[] element_117() {
 
         // Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)
         // G102
@@ -10701,7 +10942,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_109() {
+    public Object[] element_118() {
 
         // Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)
         // G225
@@ -10776,7 +11017,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_110() {
+    public Object[] element_119() {
 
         // Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)
         // G226
@@ -10865,7 +11106,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_111() {
+    public Object[] element_120() {
 
         // Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)
         // G103
@@ -10962,9 +11203,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_112() {
+    public Object[] element_121() {
 
-        // Central Rocky Mountain Dry Lower Montane-Foothill Forest (M501)
+        // Central Rocky Mountain Montane Forest & Woodland (M501)
         // M501
 
         String level = "macrogroup";
@@ -10977,13 +11218,13 @@ public class ClassificationKeyWest extends ClassificationKey {
         // AND ASPECT is between 157 and 203
         // AND tree composition dominated
         // by one or more of STRONG DRY DIAGNOSTIC species
-        // Juniperus osteosperma, Juniperus scopulorum, Picea glauca, Pinus contorta, Pinus ponderosa, Populus tremuloides, Pseudotsuga menziesii
+        // Abies lasiocarpa, Juniperus osteosperma, Juniperus scopulorum, Picea engelmannii, Picea glauca, Pinus contorta, Pinus ponderosa, Populus tremuloides, Pseudotsuga menziesii
         // Pinus flexilis(RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
         // with =>20% RIV, AND with other MODERATE DIAGNOSTIC species in any
         // combination of Acer negundo, Betula papyrifera,
-        // Fraxinus pennsylvanica, Picea engelmannii, Quercus macrocarpa,
+        // Fraxinus pennsylvanica, Quercus macrocarpa,
         // or Ulmus americana
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
 
@@ -11019,6 +11260,12 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
             new KeyValue("species", "Pinus contorta")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+            new KeyValue("species", "Abies lasiocarpa")
+        );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+            new KeyValue("species", "Picea engelmannii")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
@@ -11027,7 +11274,9 @@ public class ClassificationKeyWest extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_pattern4,
             STRONG_DIAGNOSTIC_SPECIES_pattern5,
             STRONG_DIAGNOSTIC_SPECIES_pattern6,
-            STRONG_DIAGNOSTIC_SPECIES_pattern7
+            STRONG_DIAGNOSTIC_SPECIES_pattern7,
+            STRONG_DIAGNOSTIC_SPECIES_pattern8,
+            STRONG_DIAGNOSTIC_SPECIES_pattern9
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -11041,12 +11290,9 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("species", "Fraxinus pennsylvanica")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
-            new KeyValue("species", "Picea engelmannii")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
             new KeyValue("species", "Quercus macrocarpa")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
             new KeyValue("species", "Ulmus americana")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
@@ -11054,8 +11300,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             MODERATE_DIAGNOSTIC_SPECIES_pattern1,
             MODERATE_DIAGNOSTIC_SPECIES_pattern2,
             MODERATE_DIAGNOSTIC_SPECIES_pattern3,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern4,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern5
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -11068,7 +11313,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_113() {
+    public Object[] element_122() {
 
         // Central Rocky Mountain Montane White Spruce Forest (G345)
         // G345
@@ -11077,7 +11322,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "G345";
 
         // Plot location and tree composition are as follows:
-        // i. Located in ECOREGION M334A and tree composition dominated by one
+        // i. Located in ECOREGION M334A, 331Dh, 331Ea, 331Fb, 331Fd, 331Fj, 331Ge, 331Gf, 331Kb, 331Kf, 331La, 331Ma, 331Mc, 331Me, 331Mi and tree composition dominated by one
         // or more of STRONG DIAGNOSTIC species Picea glauca or Populus tremuloides (RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
@@ -11088,7 +11333,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // diagnostic species RIV =>50%)
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "M334A")
+            new KeyValue("ecoregion", "M334A, 331Dh, 331Ea, 331Fb, 331Fd, 331Fj, 331Ge, 331Gf, 331Kb, 331Kf, 331La, 331Ma, 331Mc, 331Me, 331Mi")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -11140,7 +11385,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_114() {
+    public Object[] element_123() {
 
         // Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)
         // G216
@@ -11230,7 +11475,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_115() {
+    public Object[] element_124() {
 
         // Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)
         // G209
@@ -11292,7 +11537,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_116() {
+    public Object[] element_125() {
 
         // Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)
         // G213
@@ -11357,9 +11602,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_117() {
+    public Object[] element_126() {
 
-        // Central Rocky Mountain Mesic-Moist Mixed Conifer Forest (G215)
+        // Central Rocky Mountain Douglas-fir Mesic Forest (G215)
         // G215
 
         String level = "group";
@@ -11431,7 +11676,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_118() {
+    public Object[] element_127() {
 
         // Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)
         // G210
@@ -11440,11 +11685,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         String code = "G210";
 
         // Plot location and tree composition are as follows:
-        // i. Located in ECOREGION M261G, 331D, 342A, 342B, 342F, 342G, M331J,
+        // i. Located in ECOREGION M261G, 331D, 342A, 342B, 342F, 342G,
         // M242C, M242D - only eastern ecosubsections M242Dd, M242De, M242Df,
         // M242Dg, M242Dh, 331A, 331G, 331K, 331N, 342C, 342D, 342H, 342I, M332,
-        // M333, M331A, M331B, M331D and tree composition dominated by one or
-        // more of STRONG DIAGNOSTIC species Pinus contorta, Pinus ponderosa, Picea engelmannii, or
+        // M333, M331 and tree composition dominated by one or
+        // more of STRONG DIAGNOSTIC species Abies lasiocarpa, Pinus contorta, Pinus ponderosa, Picea engelmannii, or
         // Pseudotsuga menziesii (RIV=>50%),
         // OR
         // ii. Located in above ECOREGION, and tree composition as above, but
@@ -11454,7 +11699,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // and MODERATE diagnostic species RIV =>50%)
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "M261G, 331D, 342A, 342B, 342F, 342G, M331J, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 331A, 331G, 331K, 331N, 342C, 342D, 342H, 342I, M332, M333, M331A, M331B, M331D")
+            new KeyValue("ecoregion", "M261G, 331D, 342A, 342B, 342F, 342G, M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 331A, 331G, 331K, 331N, 342C, 342D, 342H, 342I, M332, M333, M331")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -11473,11 +11718,15 @@ public class ClassificationKeyWest extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Pinus contorta")
         );
+        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new KeyValue("species", "Abies lasiocarpa")
+        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
             STRONG_DIAGNOSTIC_SPECIES_pattern2,
-            STRONG_DIAGNOSTIC_SPECIES_pattern3
+            STRONG_DIAGNOSTIC_SPECIES_pattern3,
+            STRONG_DIAGNOSTIC_SPECIES_pattern4
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -11506,9 +11755,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_119() {
+    public Object[] element_128() {
 
-        // Central Rocky Mountain Mesic Lower Montane Forest (M500)
+        // Central Rocky Mountain-Interior Moist Montane Forest (M500)
         // M500
 
         String level = "macrogroup";
@@ -11608,7 +11857,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_120() {
+    public Object[] element_129() {
 
         // East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)
         // G212
@@ -11682,7 +11931,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_121() {
+    public Object[] element_130() {
 
         // Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)
         // G217
@@ -11769,7 +12018,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_122() {
+    public Object[] element_131() {
 
         // Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)
         // G211
@@ -11853,7 +12102,24 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_123() {
+    public Object[] element_132() {
+
+        // LC Central Rocky Mountain Montane Forest & Woodland (M501LC)
+        // M501LC
+
+        String level = "macrogroup";
+        String code = "M501LC";
+
+        // Not as above.
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_133() {
 
         // Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)
         // D336
@@ -11882,7 +12148,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //     f.  Any EXOTIC = yes tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "242A, 242B, 242C, M242A, M242B, M242C, M242D, M261; 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331, M332, M333, M334, 341, M341, 342")
+            new KeyValue("ecoregion", "242A, 242B, 242C, M242A, M242B, M242C, M242D, M261, 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331, M332, M333, M334, 341, M341, 342")
         );
         List<List<KeyValue>> ECOREGIONS_patterns = Arrays.asList(
             ECOREGIONS_pattern0
@@ -12008,9 +12274,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_124() {
+    public Object[] element_134() {
 
-        // Rocky Mountain Subalpine-High Montane Forest (M020)
+        // Rocky Mountain Subalpine-Upper Montane Forest & Woodland (M020)
         // M020
 
         String level = "macrogroup";
@@ -12112,7 +12378,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_125() {
+    public Object[] element_135() {
 
         // Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)
         // G222
@@ -12156,7 +12422,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_126() {
+    public Object[] element_136() {
 
         // Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)
         // G218
@@ -12223,7 +12489,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_127() {
+    public Object[] element_137() {
 
         // Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)
         // G219
@@ -12289,7 +12555,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_128() {
+    public Object[] element_138() {
 
         // Rocky Mountain Lodgepole Pine Forest & Woodland (G220)
         // G220
@@ -12363,9 +12629,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_129() {
+    public Object[] element_139() {
 
-        // Rocky Mountain Limber Pine Subalpine-Montane Woodland (G101)
+        // Rocky Mountain Montane-Subalpine Limber Pine Woodland (G101)
         // G101
 
         String level = "group";
@@ -12454,9 +12720,9 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_130() {
+    public Object[] element_140() {
 
-        // Central Rocky Mountain Whitebark Pine - Subalpine Larch Forest & Woodland (G223)
+        // Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)
         // G223
 
         String level = "group";
@@ -12520,7 +12786,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_131() {
+    public Object[] element_141() {
 
         // Vancouverian Subalpine-High Montane Forest (M025)
         // M025
@@ -12729,7 +12995,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_132() {
+    public Object[] element_142() {
 
         // Sierra-Cascade Cold-Dry Subalpine Woodland (G243)
         // G243
@@ -12802,7 +13068,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_133() {
+    public Object[] element_143() {
 
         // Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)
         // G749
@@ -12888,7 +13154,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_134() {
+    public Object[] element_144() {
 
         // North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)
         // G849
@@ -12952,6 +13218,23 @@ public class ClassificationKeyWest extends ClassificationKey {
             plot.match(ECOREGIONS) && 
            ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ||
            (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_145() {
+
+        // LC Rocky Mountain Subalpine-High Montane Forest (M020LC)
+        // M020LC
+
+        String level = "macrogroup";
+        String code = "M020LC";
+
+        // Not as above.
+
+        INodeMatch match = plot -> (
+            true
         );
 
         return new Object[] { level, code, match };
