@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "LC Intermountain Pinyon-Juniper Woodland (M896LC)",
+        "id": "M896LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

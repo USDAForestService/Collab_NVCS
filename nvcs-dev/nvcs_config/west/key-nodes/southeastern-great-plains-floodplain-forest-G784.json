@@ -14,9 +14,9 @@
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of Acer negundo, Fraxinus albicans, Fraxinus pennsylvanica,",
+            "combination of Acer negundo, Fraxinus texensis, Fraxinus pennsylvanica,",
             "Juglans microcarpa, Prosopis glandulosa, Prunus serotina,",
-            "or Quercus fusiformis (>=30% RIV; i.e., together STRONG and MODERATE",
+            "or Quercus virginiana (>=30% RIV; i.e., together STRONG and MODERATE",
             "diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -53,21 +53,18 @@
                     "species": "Sapindus saponaria var. drummondii"
                 },
                 {
-                    "species": "Sideroxylon lanuginosum"
-                },
-                {
                     "species": "Taxodium distichum"
                 },
                 {
                     "species": "Ulmus crassifolia"
+                },
+                {
+                    "species": "Sideroxylon lanuginosum ssp. lanuginosum"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
                 {
                     "species": "Acer negundo"
-                },
-                {
-                    "species": "Fraxinus albicans"
                 },
                 {
                     "species": "Fraxinus pennsylvanica"
@@ -82,7 +79,10 @@
                     "species": "Prunus serotina"
                 },
                 {
-                    "species": "Quercus fusiformis"
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Fraxinus texensis"
                 }
             ]
         }

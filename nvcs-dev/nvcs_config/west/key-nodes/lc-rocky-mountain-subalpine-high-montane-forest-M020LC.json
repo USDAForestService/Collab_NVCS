@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "LC Rocky Mountain Subalpine-High Montane Forest (M020LC)",
+        "id": "M020LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

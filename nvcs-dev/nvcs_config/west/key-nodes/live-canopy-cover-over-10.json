@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "live canopy cover over 10",
+        "id": "B02",
+        "level": "Biome",
+        "description": [
+            "No to low basal area but with live canopy > 10"
+        ],
+        "trigger": [
+            "live_canopy_cvr_pct() > 10"
+        ],
+        "filters": {}
+    }
+}

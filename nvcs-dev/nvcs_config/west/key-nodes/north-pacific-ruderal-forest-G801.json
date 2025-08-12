@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "North Pacific Ruderal Forest (G801)",
+        "id": "G801",
+        "level": "group",
+        "description": [
+            "Plots with greater than 80% non-native RIV."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

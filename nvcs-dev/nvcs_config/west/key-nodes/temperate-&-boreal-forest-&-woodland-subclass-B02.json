@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Temperate & Boreal Forest & Woodland Subclass (B02)",
+        "id": "B02",
+        "level": "Biome",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

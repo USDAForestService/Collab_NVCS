@@ -12,7 +12,7 @@
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of Arbutus arizonica, Arbutus xalapensis (>=30% RIV;",
+            "combination of Arbutus arizonica, Arbutus xalapensis, Quercus gambelii, or Pinus ponderosa (>=30% RIV;",
             "i.e., together STRONG and MODERATE diagnostic species RIV =>50%),",
             "OR",
             "iii. Located in above ECOREGION, and tree composition as i. above,",
@@ -53,6 +53,12 @@
                 },
                 {
                     "species": "Arbutus xalapensis"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Quercus gambelii"
                 }
             ],
             "OTHER_INDICATOR_SPECIES": [

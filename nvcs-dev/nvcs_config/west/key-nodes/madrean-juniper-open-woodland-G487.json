@@ -13,7 +13,7 @@
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of Juniperus monosperma (>=30% RIV; i.e., together STRONG",
+            "combination of Juniperus monosperma, Prosopis glandulosa, or Prosopis velutina (>=30% RIV; i.e., together STRONG",
             "and MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -38,6 +38,12 @@
             "MODERATE_DIAGNOSTIC_SPECIES": [
                 {
                     "species": "Juniperus monosperma"
+                },
+                {
+                    "species": "Prosopis glandulosa"
+                },
+                {
+                    "species": "Prosopis velutina"
                 }
             ]
         }

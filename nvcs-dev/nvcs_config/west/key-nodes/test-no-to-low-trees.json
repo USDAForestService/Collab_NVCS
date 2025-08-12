@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Test No to Low Trees",
+        "id": "",
+        "level": "",
+        "description": [
+            "No to low trees."
+        ],
+        "trigger": [
+            "balive() < 1"
+        ],
+        "filters": {}
+    }
+}

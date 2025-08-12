@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Western North American Grassland & Shrubland (D022)",
+        "id": "",
+        "level": "",
+        "description": [
+            "Testing shrubland versus grassland."
+        ],
+        "trigger": [
+            "shcov()> 3 or grcov()> 3 or fbcov()>3"
+        ],
+        "filters": {}
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "LC Madrean Montane Forest & Woodland (M011LC)",
+        "id": "M011LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

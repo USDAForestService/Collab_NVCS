@@ -18,7 +18,7 @@
             "or Ulmus americana (=>50% RIV);",
             "OR Tree composition as above, but with =>20% RIV; AND other species are",
             "any combination of Acer negundo, Prosopis glandulosa",
-            "Fraxinus albicans, Prunus serotina, and Quercus fusiformis",
+            "Fraxinus texensis, Prunus serotina, and Quercus virginiana",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),",
             "[Additional tree species not tracked by FIA include Ulmus crassifolia]",
             "OR",
@@ -37,7 +37,9 @@
             ],
             "ECOREGIONS_2": [
                 {
-                    "ecoregion": "315",
+                    "ecoregion": "315"
+                },
+                {
                     "state": "OK, TX"
                 }
             ],
@@ -87,9 +89,6 @@
                     "species": "Sapindus saponaria var. drummondii"
                 },
                 {
-                    "species": "Sideroxylon lanuginosum"
-                },
-                {
                     "species": "Taxodium distichum"
                 },
                 {
@@ -100,6 +99,9 @@
                 },
                 {
                     "species": "Ulmus americana"
+                },
+                {
+                    "species": "Sideroxylon lanuginosum ssp. lanuginosum"
                 }
             ],
             "SPECIES_3": [
@@ -110,13 +112,13 @@
                     "species": "Prosopis glandulosa"
                 },
                 {
-                    "species": "Fraxinus albicans"
-                },
-                {
                     "species": "Prunus serotina"
                 },
                 {
-                    "species": "Quercus fusiformis"
+                    "species": "Fraxinus texensis"
+                },
+                {
+                    "species": "Quercus virginiana"
                 }
             ],
             "EXOTIC_TREE_SPP": [

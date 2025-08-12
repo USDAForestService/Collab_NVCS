@@ -9,12 +9,12 @@
             "341D, 341E, 341F, 341G, 342B, 342C, 342J, M261F, M261E, M261G,",
             "M262B, M331D, M341A, M341D, M341C",
             "and tree composition dominated by the STRONG",
-            "DIAGNOSTIC species Pinus monophylla (RIV=>50%),",
+            "DIAGNOSTIC species Juniperus osteosperma or Pinus monophylla (RIV=>50%),",
             "OR",
             "ii. Located in above ECOREGION, and tree composition as above, but",
             "with =>20% RIV, AND with other MODERATE DIAGNOSTIC species of",
             "Cercocarpus ledifolius, Juniperus californica, Juniperus occidentalis,",
-            "Juniperus osteosperma or Pinus jeffreyi (>=30% RIV; i.e., together",
+            "or Pinus jeffreyi (>=30% RIV; i.e., together",
             "STRONG and MODERATE diagnostic species RIV =>50%)"
         ],
         "trigger": [
@@ -31,6 +31,9 @@
             "STRONG_DIAGNOSTIC_SPECIES": [
                 {
                     "species": "Pinus monophylla"
+                },
+                {
+                    "species": "Juniperus osteosperma"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -39,9 +42,6 @@
                 },
                 {
                     "species": "Juniperus californica"
-                },
-                {
-                    "species": "Juniperus osteosperma"
                 },
                 {
                     "species": "Pinus jeffreyi"

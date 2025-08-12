@@ -34,7 +34,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "242A, 242B, 242C, M242A, M242B, M242C, M242D, M261; 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331, M332, M333, M334, 341, M341, 342"
+                    "ecoregion": "242A, 242B, 242C, M242A, M242B, M242C, M242D, M261, 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331, M332, M333, M334, 341, M341, 342"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [

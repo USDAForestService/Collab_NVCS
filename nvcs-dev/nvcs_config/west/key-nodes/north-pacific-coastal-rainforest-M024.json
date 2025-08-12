@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "North Pacific Coastal Rainforest (M024)",
+        "id": "M024",
+        "level": "macrogroup",
+        "description": [
+            "Only macrogroup"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

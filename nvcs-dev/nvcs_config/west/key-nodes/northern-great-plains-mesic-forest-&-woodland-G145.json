@@ -1,0 +1,77 @@
+{
+    "node": {
+        "name": "Northern Great Plains Mesic Forest & Woodland (G145)",
+        "id": "G145",
+        "level": "group",
+        "description": [
+            "Plot location and tree composition are as follows:",
+            "i. Located in ECOREGION ECOREGION 222, 251, 315F, 315B, 332, 331 – ",
+            "exclude 331A and 331J and tree composition dominated by one or more",
+            "of STRONG DIAGNOSTIC species Betula papyrifera, Fraxinus pennsylvanica,",
+            "Juniperus scopulorum, Populus tremuloides, Ulmus americana, Juniperus virginiana, or",
+            "Ulmus rubra, Morus rubra (RIV=>50%),",
+            "OR",
+            "ii. Located in above ECOREGION, and tree composition as above, but",
+            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
+            "combination of Acer negundo, Celtis occidentalis, Populus deltoides, or Quercus macrocarpa (>=30% RIV; i.e.,",
+            "together STRONG and MODERATE diagnostic species RIV =>50%)"
+        ],
+        "trigger": [
+            "(match(ECOREGIONS) and not match(ECOREGIONS_EXCL)) and",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "222, 251, 315F, 315B, 332, 331"
+                }
+            ],
+            "ECOREGIONS_EXCL": [
+                {
+                    "ecoregion": "331A, 331J"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Ulmus americana"
+                },
+                {
+                    "species": "Ulmus rubra"
+                },
+                {
+                    "species": "Morus rubra"
+                },
+                {
+                    "species": "Juniperus virginiana"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Populus deltoides"
+                }
+            ]
+        }
+    }
+}

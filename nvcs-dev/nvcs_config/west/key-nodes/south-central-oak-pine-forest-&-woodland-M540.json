@@ -1,0 +1,89 @@
+{
+    "node": {
+        "name": "South - Central Oak - Pine Forest & Woodland (M540)",
+        "id": "M016",
+        "level": "macrogroup",
+        "description": [
+            "Tree composition dominated by one of the following:",
+            "i. Located in ECOREGION 315, 332, AND Tree composition dominated by",
+            "one or more of the STRONG DRY SOUTH-CENTRAL DIAGNOSTICS Carya texana,",
+            "Quercus falcata, Quercus rubra, or Quercus velutina (=>50% RIV);",
+            "OR",
+            "ii. States and Tree composition as above, but with =>20% RIV;",
+            "AND other species are any combination of MODERATE DRY SOUTH-CENTRAL",
+            "DIAGNOSTICS Carya cordiformis, Cercis canadensis,",
+            "Diospyros virginiana, Juglans nigra, Juniperus ashei,",
+            "Juniperus virginiana, Prunus serotina, Quercus virginiana,",
+            "Quercus marilandica, Quercus stellata, Quercus shumardii,",
+            "Ulmus alata, or Ulmus crassifolia",
+            "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)."
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and ",
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
+            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "315, 332"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Carya texana"
+                },
+                {
+                    "species": "Quercus falcata"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus velutina"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Cercis canadensis"
+                },
+                {
+                    "species": "Diospyros virginiana"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Juniperus ashei"
+                },
+                {
+                    "species": "Juniperus virginiana"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus marilandica"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Quercus shumardii"
+                },
+                {
+                    "species": "Ulmus alata"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                },
+                {
+                    "species": "Quercus virginiana"
+                }
+            ]
+        }
+    }
+}

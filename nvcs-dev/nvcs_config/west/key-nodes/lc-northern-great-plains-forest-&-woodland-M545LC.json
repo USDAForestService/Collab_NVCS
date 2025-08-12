@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "LC Northern Great Plains Forest & Woodland (M545LC)",
+        "id": "M545LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

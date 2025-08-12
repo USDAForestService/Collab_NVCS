@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "LC Californian-North Pacific Vancouverian Dry Foothill Forest & Woodland (M886LC)",
+        "id": "M886LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

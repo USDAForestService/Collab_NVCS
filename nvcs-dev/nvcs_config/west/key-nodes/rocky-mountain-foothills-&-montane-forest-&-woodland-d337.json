@@ -6,7 +6,7 @@
         "description": [
             "Tree composition and ecology matching one of the following options:",
             "i.  Elevation below 2800 meters and located in ECOREGION M242C,",
-            "    M242D – only eastern ecosubsections M242Dd, M242De, M242Df, M242Dg, M242Dh,",
+            "    M242D – only eastern ecosubsections M242D,",
             "    313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331,",
             "    M332, M333, M334, 341, M341, 342   ",
             "AND",
@@ -16,7 +16,7 @@
             "    Acer grandidentatum, Juniperus scopulorum, Larix lyallii,",
             "    Larix occidentalis, Picea glauca, Picea pungens, Pinus contorta,",
             "    Pinus flexilis, Pinus ponderosa, Pinus longaeva, Populus tremuloides, Pseudotsuga menziesii,",
-            "    Quercus gambelii, Thuja plicata,  or Tsuga heterophylla (=>50% RIV),",
+            "    Quercus gambelii, Thuja plicata, Tsuga heterophylla, or Tsuga mertensiana (=>50% RIV),",
             "    [Additional species not tracked by FIA Picea engelmannii x glauca hybrids]",
             "    OR",
             "    b.  The above tree species, but with =>20% RIV AND other MODERATE",
@@ -39,7 +39,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "M242C, M242Dd, M242De, M242Df, M242Dg, M242Dh, 313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331, M332, M333, M334, 341, M341, 342"
+                    "ecoregion": "M242C, M242D, 313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331, M332, M333, M334, 341, M341, 342"
                 }
             ],
             "STRONG_DIAGNOSTIC_SPECIES": [
@@ -96,6 +96,9 @@
                 },
                 {
                     "species": "Pinus longaeva"
+                },
+                {
+                    "species": "Tsuga mertensiana"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
