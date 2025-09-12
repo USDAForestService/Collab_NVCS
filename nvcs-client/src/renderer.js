@@ -142,7 +142,15 @@ async function fetchPackagedJson() {
     if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
-    await fetchJson();
+    try {
+        const packagedJsonType = document.getElementById("packaged-json-type").value;
+        const returnedData = await window.electronAPI.fetchPackagedJson(packagedJsonType);
+        await handleReturnedHierarchy(returnedData);
+    }
+    catch (error) {
+        alert(error);
+        return;
+    }
 
     document.getElementById("json-directory-path").value = "";
     document.getElementById("btn-test-settings").disabled = true;
@@ -168,21 +176,19 @@ async function fetchCustomJson() {
         return;
     }
 
-    await fetchJson(targetPath);
-
-    document.getElementById("btn-open-json").disabled = false;
-}
-
-async function fetchJson(targetPath) {
-    // Query for JSON and TXT data
-    let returnedData;
     try {
-        returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        const returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        await handleReturnedHierarchy(returnedData);
     }
     catch (error) {
         alert(error);
         return;
     }
+
+    document.getElementById("btn-open-json").disabled = false;
+}
+
+async function handleReturnedHierarchy(returnedData) {
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
     documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };

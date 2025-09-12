@@ -60,6 +60,7 @@ app.whenReady().then(() => {
     createDefaultConfigFile();
 
   ipcMain.handle('fetch-existing-json', fetchExistingJson);
+  ipcMain.handle('fetch-packaged-json', fetchPackagedJson);
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
@@ -96,10 +97,22 @@ app.on('window-all-closed', () => {
 // code. You can also put them in separate files and import them here.
 
 async function fetchExistingJson(event, targetPath) {
-  console.log('INVOKED: fetxhExistingJson');
+  console.log('INVOKED: fetchExistingJson');
 
   // Retrieve Key Node JSON files
-  const jsonDirectory = path.resolve((targetPath ?? getConfigurationPath()) + '/key-nodes/');
+  return await fetchJson(targetPath);
+}
+
+async function fetchPackagedJson(event, packagedJsonType) {
+  console.log('INVOKED: fetchPackagedJson');
+
+  // Retrieve Key Node JSON files
+  const targetPath = getConfigurationPath(packagedJsonType);
+  return await fetchJson(targetPath);
+}
+
+async function fetchJson(targetPath) {
+  const jsonDirectory = path.resolve(targetPath + '/key-nodes/');
   console.log(`- Target JSON Directory: ${jsonDirectory}`);
 
   let cleanedJsonData = [];
@@ -117,7 +130,7 @@ async function fetchExistingJson(event, targetPath) {
   let allJsonData = `[${cleanedJsonData.join(',')}]`;
 
   // Retrieve Key Hierarchy TXT file
-  const hierarchyPath = path.resolve((targetPath ?? getConfigurationPath()) + '/key-hierarchy.txt');
+  const hierarchyPath = path.resolve(targetPath + '/key-hierarchy.txt');
   console.log(`- Target Hierarchy Path: ${hierarchyPath}`);
 
   let hierarchyData = fs.readFileSync(hierarchyPath);
@@ -125,7 +138,7 @@ async function fetchExistingJson(event, targetPath) {
 
   // Retrieve document structure JSON
   let documentStructureString;
-  const documentStructurePath = path.resolve((targetPath ?? getConfigurationPath()) + '/document.json');
+  const documentStructurePath = path.resolve(targetPath + '/document.json');
   if (fs.existsSync(documentStructurePath)) {
     console.log(`- Target Document Structure Path: ${documentStructurePath}`);
     let documentStructureData = fs.readFileSync(documentStructurePath);
@@ -134,7 +147,7 @@ async function fetchExistingJson(event, targetPath) {
 
   // Retrieve alerts JSON
   let alertsJson;
-  const alertsPath = path.resolve((targetPath ?? getConfigurationPath()) + '/alerts.json');
+  const alertsPath = path.resolve(targetPath + '/alerts.json');
   if (fs.existsSync(alertsPath)) {
     console.log(`- Target Alerts Path: ${alertsPath}`);
     let alertsData = fs.readFileSync(alertsPath);
@@ -235,7 +248,7 @@ async function fetchSpecies(event) {
   console.log("INVOKED: fetchSpecies")
 
   // Find species file
-  const speciesPath = path.resolve(getConfigurationPath() + '/species.csv');
+  const speciesPath = path.resolve(getConfigurationPath("west") + '/species.csv');
   console.log(`- Target Species File: ${speciesPath}`);
 
   // Extract species from file
@@ -247,8 +260,8 @@ async function fetchSpecies(event) {
   return species;
 }
 
-function getConfigurationPath() {
-  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_config/west')
+function getConfigurationPath(packagedJsonType) {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_config/' + packagedJsonType)
   return path.resolve(relative);
 }
 

@@ -26,9 +26,9 @@
           <div class="label-content-container">
             <label for="packaged-json-type">Packaged JSON Type:</label>
             <select id="packaged-json-type" title="Only enabled options have been packaged into the current application">
-              <option disabled>alaska</option>
-              <option disabled>east</option>
-              <option selected>west</option>
+              <option value="alaska" disabled>alaska</option>
+              <option value="east">east</option>
+              <option value="west" selected>west</option>
             </select>
             <button id="btn-fetch-packaged-json" onclick="fetchPackagedJson()" title="Loads pre-packaged JSON configuration settings for the selected type">Load Packaged JSON</button>
           </div>
