@@ -145,7 +145,7 @@ async function fetchPackagedJson() {
     try {
         const packagedJsonType = document.getElementById("packaged-json-type").value;
         const returnedData = await window.electronAPI.fetchPackagedJson(packagedJsonType);
-        await handleReturnedHierarchy(returnedData);
+        await handleReturnedHierarchy(returnedData, false);
     }
     catch (error) {
         alert(error);
@@ -178,7 +178,7 @@ async function fetchCustomJson() {
 
     try {
         const returnedData = await window.electronAPI.fetchExistingJson(targetPath);
-        await handleReturnedHierarchy(returnedData);
+        await handleReturnedHierarchy(returnedData, true);
     }
     catch (error) {
         alert(error);
@@ -188,7 +188,7 @@ async function fetchCustomJson() {
     document.getElementById("btn-open-json").disabled = false;
 }
 
-async function handleReturnedHierarchy(returnedData) {
+async function handleReturnedHierarchy(returnedData, isCustom) {
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
     documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
@@ -250,7 +250,7 @@ async function handleReturnedHierarchy(returnedData) {
     await getDefaultTestSettings();
 
     // Require saving if alerts.json hasn't been generated yet
-    if (!returnedData.alerts && targetPath) {
+    if (!returnedData.alerts && isCustom) {
         stateChecker.modified = true;
         const saveRequiredMessage = "This workspace hasn't been saved since the address alert system has been added. "
             + "Please save the project again to generate all necesary files for testing.";
