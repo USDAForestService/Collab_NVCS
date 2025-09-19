@@ -15,7 +15,7 @@ from nvcs_builder import configuration
 # Script variables
 ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
 
-def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefForestType, in_RefAlgNode, in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options):
+def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefSpecies, in_RefForestType, in_RefAlgNode, in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options):
     if out_Options["skip_shared_tables"]:
         print("-" * 50)
         print("Skipping shared table and view generation")
@@ -46,6 +46,15 @@ def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefForestType, 
                                f"CREATE INDEX NATD_PK ON {in_AnlyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_AnlyTestData['new_tbl_nm'], in_AnlyTestData['description'])
 
+        # Prepare & create table containing REF_SPECIES_NVCS data
+        ref_species_definition, ref_species_columns = plot_io.table_info_sqlite(
+            in_RefSpecies['source'], in_RefSpecies['source_tbl_nm'], new_tbl=in_RefSpecies['new_tbl_nm'])
+        ref_species_rows = plot_io.query_sqlite(
+            in_RefSpecies['source'], f"SELECT * FROM {in_RefSpecies['source_tbl_nm']};")
+        plot_io.write_table_sqlite(out_Options["output_db"], in_RefSpecies['new_tbl_nm'], ref_species_rows,
+                             ref_species_columns, ref_species_definition)
+        write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefSpecies['new_tbl_nm'], in_RefSpecies['description'])
+        
         # Prepare & create table containing REF_FOREST_TYPE values
         fs_fiadb_ref_forest_type_definition = (
             f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
@@ -260,6 +269,13 @@ if __name__ == '__main__':
         "type": config.get(config.base, "TargetConfig")
     }
 
+    in_RefSpecies = {
+        "source": config.get(config.fullOutputSection, "In_DbPath"),
+        "source_tbl_nm": config.get(config.target, "In_RefSpeciesDbTable"),
+        "new_tbl_nm": config.get(config.fullOutputSection, "RefSpeciesName"),
+        "description": config.get(config.fullOutputSection, "RefSpeciesDesc")
+    }
+
     in_RefForestType = {
         "source": config.get(config.fullOutputSection, "In_RefForestTypeDataPath"),
         "new_tbl_nm": config.get(config.fullOutputSection, "RefForestTypeName"),
@@ -296,5 +312,5 @@ if __name__ == '__main__':
         "skip_shared_tables": config.get_literal(config.fullOutputSection, "SkipSharedTables")
     }
 
-    generateFullOutput(classification_key, in_AnlyTestData, in_RefForestType, in_RefAlgNode,
+    generateFullOutput(classification_key, in_AnlyTestData, in_RefSpecies, in_RefForestType, in_RefAlgNode,
                        in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options)
