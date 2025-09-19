@@ -247,13 +247,24 @@ async function updateJson(event, directory, json, changes, documentStructure, al
 async function fetchSpecies(event) {
   console.log("INVOKED: fetchSpecies")
 
-  // Find species file
-  const speciesPath = path.resolve(getConfigurationPath("west") + '/species.csv');
-  console.log(`- Target Species File: ${speciesPath}`);
+  // Get Python path
+  const pythonPath = getPythonPath();
+  console.log("- Target Python Path:", pythonPath);
 
-  // Extract species from file
-  const fileContent = fs.readFileSync(speciesPath, 'utf-8');
-  const species = fileContent.split("\r\n");
+  // Execute Plot IO
+  console.log("- Executing Plot IO Script...");
+  const scriptPath = getPlotIoPyPath();
+  const dbPath = getSharedTablePath();
+  const table = "REF_SPECIES_NVCS";
+  const column = "SCIENTIFIC_NAME";
+  const results = await execFile(pythonPath, [scriptPath, "get_unique_values_sqlite", dbPath, table, column]);
+  console.log("- Plot IO  Results", results);
+
+  // Parse results
+  let species = results.stdout.replace('[', '').replace(']\r\n', '').split(',');
+  species = species.map(i => 
+    i.trim().replaceAll("'", "")
+  ).filter(i => i != "None");
 
   // Return species
   console.log("- RETURNING RESULTS");
