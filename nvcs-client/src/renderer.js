@@ -46,6 +46,7 @@ let availableSpecies;
 let availableYears;
 let testSettings;
 let openedAddressId;
+let currentHierarchyType;
 
 displayApplicationVersion();
 
@@ -145,6 +146,7 @@ async function fetchPackagedJson() {
     try {
         const packagedJsonType = document.getElementById("packaged-json-type").value;
         const returnedData = await window.electronAPI.fetchPackagedJson(packagedJsonType);
+        currentHierarchyType = packagedJsonType;
         await handleReturnedHierarchy(returnedData, false);
     }
     catch (error) {
@@ -303,7 +305,7 @@ async function fetchSettings() {
 
 async function fetchAvailableYears() {
     try {
-        const response = await electronAPI.fetchYears();
+        const response = await electronAPI.fetchYears(currentHierarchyType);
         availableYears = convertStringToNumbersList(response);
         console.log("Fetched and Converted Available Years", availableYears);
         return availableYears;
@@ -333,7 +335,7 @@ async function updateAvailableYears() {
 async function updateAvailableSpecies() {
     let returnedData;
     try {
-        returnedData = await window.electronAPI.fetchSpecies();
+        returnedData = await window.electronAPI.fetchSpecies(currentHierarchyType);
     }
     catch (error) {
         alert(error);

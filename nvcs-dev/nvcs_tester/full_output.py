@@ -261,7 +261,7 @@ if __name__ == '__main__':
 
     in_AnlyTestData = {
         "source": config.get(config.fullOutputSection, "In_DbPath"),
-        "source_tbl_nm": config.get(config.fullOutputSection, "In_AnlyDbTable"),
+        "source_tbl_nm": config.get(config.target, "In_AnlyDbTable"),
         "source_out": config.get(config.fullOutputSection, "Out_TesterResultsPath"),
         "source_debug": config.get(config.fullOutputSection, "Out_DebugLogPath"),
         "new_tbl_nm": config.get(config.fullOutputSection, "AnlyTestDataName"),

@@ -244,7 +244,7 @@ async function updateJson(event, directory, json, changes, documentStructure, al
   return true;
 }
 
-async function fetchSpecies(event) {
+async function fetchSpecies(event, type) {
   console.log("INVOKED: fetchSpecies")
 
   // Get Python path
@@ -254,7 +254,7 @@ async function fetchSpecies(event) {
   // Execute Plot IO
   console.log("- Executing Plot IO Script...");
   const scriptPath = getPlotIoPyPath();
-  const dbPath = getSharedTablePath();
+  const dbPath = getSharedTablePath(type);
   const table = "REF_SPECIES_NVCS";
   const column = "SCIENTIFIC_NAME";
   const results = await execFile(pythonPath, [scriptPath, "get_unique_values_sqlite", dbPath, table, column]);
@@ -458,10 +458,17 @@ function getProjectResourcePath() {
   return path.resolve(relative);
 }
 
-function getSharedTablePath() {
-  let relativeTable = "west_shared_tables.db";
+function getSharedTablePath(type) {
+
+  let table = "";
+  if (type == "west")
+    table = "west_shared_tables.db";
+  else if (type == "east")
+    table = "east_shared_tables.db";
+
+  let relativeTable = table;
   if (!app.isPackaged)
-    relativeTable = "nvcs-data/run_output/west/west_shared_tables.db";
+    relativeTable = "nvcs-data/run_output/west/" + table;
 
   let relative = path.join(getProjectResourcePath(), relativeTable);
   return path.resolve(relative);
@@ -539,7 +546,7 @@ async function fetchSettings(event) {
   return response;
 }
 
-async function fetchAvailableYears(event) {
+async function fetchAvailableYears(event, type) {
   console.log("INVOKED: fetchAvailableYears");
 
   const pythonPath = getPythonPath();
@@ -554,7 +561,7 @@ async function fetchAvailableYears(event) {
   // Execute Plot IO
   console.log("- Executing Plot IO Script...");
   const scriptPath = getPlotIoPyPath();
-  const dbPath = getSharedTablePath();
+  const dbPath = getSharedTablePath(type);
   const results = await execFile(pythonPath, [scriptPath, "get_unique_values_sqlite", dbPath, table, column]);
   console.log("- Plot IO  Results", results);
 
