@@ -2807,6 +2807,7 @@ function convertStringToNumbersList(stringList) {
 async function getDefaultTestSettings() {
     let defaultSettings = await fetchSettings();
     testSettings = {};
+    testSettings.type = currentHierarchyType;
     testSettings.inventoryYears = convertStringToNumbersList(defaultSettings.inventoryYears);
     testSettings.additionalWhere = defaultSettings.additionalWhere;
     testSettings.keepExisting = false;

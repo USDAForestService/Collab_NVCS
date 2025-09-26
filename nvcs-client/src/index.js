@@ -367,7 +367,7 @@ async function executeTester(event, targetPath, testSettings) {
   let copyTablePath =  parseIniPath(config.FullOutputConfig.Out_DbPath, config);
   if (!testSettings.keepExisting || !fs.existsSync(copyTablePath)) {
     console.log("- Creating base SQLite output file...")
-    let sharedTablePath = getSharedTablePath();
+    let sharedTablePath = getSharedTablePath(testSettings.type);
     fs.copyFileSync(sharedTablePath, copyTablePath);
   }
 
