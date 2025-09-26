@@ -15,7 +15,7 @@ from nvcs_builder import configuration
 # Script variables
 ref_key_output_table_columns = ['TABLE_NAME', 'CREATED_DATE', 'DESCRIPTION']
 
-def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefSpecies, in_RefForestType, in_RefAlgNode, in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options):
+def generateFullOutput(type, in_ClassificationKey, in_AnlyTestData, in_RefSpecies, in_RefForestType, in_RefAlgNode, in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options):
     if out_Options["skip_shared_tables"]:
         print("-" * 50)
         print("Skipping shared table and view generation")
@@ -112,15 +112,26 @@ def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefSpecies, in_
         # Create a filtered input view
         python_key_input_vw_name = f"Y{inventory_year}_PYTHON_KEY_INPUT_VW"
         python_key_input_vw_desc = f"View containing filtered input data fed through the classification key [{inventory_year} plots only]"
-        python_key_input_vw_definition = (
-            f"CREATE VIEW '{python_key_input_vw_name}' AS "
-            "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
-            "ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, "
-            "LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2, TRTCD3, TRTYR1, TRTYR2, TRTYR3, "
-            "SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
-            f"TALLYTREE, SPCOV FROM {in_AnlyTestData['new_tbl_nm']} "
-            f"WHERE INVYR = {inventory_year}{additional_where_clause};"
-        )
+        if type == "west":
+            python_key_input_vw_definition = (
+                f"CREATE VIEW '{python_key_input_vw_name}' AS "
+                "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
+                "ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, "
+                "LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2, TRTCD3, TRTYR1, TRTYR2, TRTYR3, "
+                "SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
+                f"TALLYTREE, SPCOV FROM {in_AnlyTestData['new_tbl_nm']} "
+                f"WHERE INVYR = {inventory_year}{additional_where_clause};"
+            )
+        elif type == "east":
+            python_key_input_vw_definition = (
+                f"CREATE VIEW '{python_key_input_vw_name}' AS "
+                "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
+                "ELEVATION, "
+                "LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2, TRTCD3, TRTYR1, TRTYR2, TRTYR3, "
+                "SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, "
+                f"TALLYTREE FROM {in_AnlyTestData['new_tbl_nm']} "
+                f"WHERE INVYR = {inventory_year}{additional_where_clause};"
+            )
         plot_io.create_view(out_Options["output_db"], python_key_input_vw_name, python_key_input_vw_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], python_key_input_vw_name, python_key_input_vw_desc)
     
@@ -148,24 +159,40 @@ def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefSpecies, in_
 
         analytical_data_w_key_output_yw_nm = f"Y{inventory_year}_ANALYTICAL_DATA_W_KEY_OUTPUT_VW"
         analytical_data_w_key_output_yw_desc = f"View containing filtered analytical data joined with classification results and forest types [{inventory_year} plots only]"
-        analytical_data_w_key_output_yw_definition = (
-            f"CREATE VIEW '{analytical_data_w_key_output_yw_nm}' AS "
-            "SELECT KEY_OUTPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_OUTPUT.solution_desc, "
-            "KEY_OUTPUT.last_node_desc, ANLY.ECOREGION, ANLY.EPA_ECO_REGION, ANLY.USACE_SWC, ANLY.PLANTATION, ANLY.HYDRIC, "
-            "ANLY.RIVERINE, ANLY.ELEVATION, ANLY.PHYSCLCD, ANLY.TOPO_POSITION, ANLY.BALIVE, ANLY.ASPECT, ANLY.SLOPE, "
-            "ANLY.FOR_TYPE, FFRFT.MEANING AS FOR_TYPE_NAME, ANLY.HAB_TYPE, ANLY.SYMBOL, ANLY.SPECIES, "
-            "ANLY.RIV, ANLY.WETLAND, ANLY.RUDERAL, ANLY.EXOTIC, ANLY.SOFTWOODHARDWOOD, ANLY.PLANTED, ANLY.TALLYTREE, "
-            "ANLY.SPCOV, ANLY.RIV_UNDERSTORY, ANLY.RIV_OVERSTORY, ANLY.LAYER_NUMBER, ANLY.FBCOV, ANLY.SHCOV, ANLY.GRCOV, "
-            "ANLY.TTCOV, ANLY.NTCOV, ANLY.COVER_FB_LAYER1, ANLY.COVER_SH_LAYER1, ANLY.COVER_GR_LAYER1, ANLY.COVER_TT_LAYER1, "
-            "ANLY.COVER_NT_LAYER1, ANLY.COVER_FB_LAYER2, ANLY.COVER_SH_LAYER2, ANLY.COVER_GR_LAYER2, ANLY.COVER_TT_LAYER2, "
-            "ANLY.COVER_NT_LAYER2, ANLY.COVER_FB_LAYER3, ANLY.COVER_SH_LAYER3, ANLY.COVER_GR_LAYER3, ANLY.COVER_TT_LAYER3, "
-            "ANLY.COVER_NT_LAYER3, ANLY.COVER_FB_LAYER4, ANLY.COVER_SH_LAYER4, ANLY.COVER_GR_LAYER4, ANLY.COVER_TT_LAYER4, "
-            "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.CONDPRO_UNADJ, ANLY.NUM_FORCOND_PLOT, "
-            "ANLY.LIVE_CANOPY_CVR_PCT, ANLY.AFFORESTATION_CD, ANLY.LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, ANLY.TRTCD1, ANLY.TRTCD2, ANLY.TRTCD3, ANLY.TRTYR1, ANLY.TRTYR2, ANLY.TRTYR3 "
-            f"FROM ({key_output_nm} AS 'KEY_OUTPUT' "
-            f"INNER JOIN {nvcs_analytical_test_data_vw_name} AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
-            f"INNER JOIN {in_RefForestType['new_tbl_nm']} AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
-        )
+        if type == "west":
+            analytical_data_w_key_output_yw_definition = (
+                f"CREATE VIEW '{analytical_data_w_key_output_yw_nm}' AS "
+                "SELECT KEY_OUTPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_OUTPUT.solution_desc, "
+                "KEY_OUTPUT.last_node_desc, ANLY.ECOREGION, ANLY.EPA_ECO_REGION, ANLY.USACE_SWC, ANLY.PLANTATION, ANLY.HYDRIC, "
+                "ANLY.RIVERINE, ANLY.ELEVATION, ANLY.PHYSCLCD, ANLY.TOPO_POSITION, ANLY.BALIVE, ANLY.ASPECT, ANLY.SLOPE, "
+                "ANLY.FOR_TYPE, FFRFT.MEANING AS FOR_TYPE_NAME, ANLY.HAB_TYPE, ANLY.SYMBOL, ANLY.SPECIES, "
+                "ANLY.RIV, ANLY.WETLAND, ANLY.RUDERAL, ANLY.EXOTIC, ANLY.SOFTWOODHARDWOOD, ANLY.PLANTED, ANLY.TALLYTREE, "
+                "ANLY.SPCOV, ANLY.RIV_UNDERSTORY, ANLY.RIV_OVERSTORY, ANLY.LAYER_NUMBER, ANLY.FBCOV, ANLY.SHCOV, ANLY.GRCOV, "
+                "ANLY.TTCOV, ANLY.NTCOV, ANLY.COVER_FB_LAYER1, ANLY.COVER_SH_LAYER1, ANLY.COVER_GR_LAYER1, ANLY.COVER_TT_LAYER1, "
+                "ANLY.COVER_NT_LAYER1, ANLY.COVER_FB_LAYER2, ANLY.COVER_SH_LAYER2, ANLY.COVER_GR_LAYER2, ANLY.COVER_TT_LAYER2, "
+                "ANLY.COVER_NT_LAYER2, ANLY.COVER_FB_LAYER3, ANLY.COVER_SH_LAYER3, ANLY.COVER_GR_LAYER3, ANLY.COVER_TT_LAYER3, "
+                "ANLY.COVER_NT_LAYER3, ANLY.COVER_FB_LAYER4, ANLY.COVER_SH_LAYER4, ANLY.COVER_GR_LAYER4, ANLY.COVER_TT_LAYER4, "
+                "ANLY.COVER_NT_LAYER4, ANLY.REL_DENSITY_SEEDLING, ANLY.CONDPRO_UNADJ, ANLY.NUM_FORCOND_PLOT, "
+                "ANLY.LIVE_CANOPY_CVR_PCT, ANLY.AFFORESTATION_CD, ANLY.LAND_COVER_CLASS_CD, ANLY.LAND_COVER_CLASS_CD_RET, ANLY.TRTCD1, ANLY.TRTCD2, ANLY.TRTCD3, ANLY.TRTYR1, ANLY.TRTYR2, ANLY.TRTYR3 "
+                f"FROM ({key_output_nm} AS 'KEY_OUTPUT' "
+                f"INNER JOIN {nvcs_analytical_test_data_vw_name} AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
+                f"INNER JOIN {in_RefForestType['new_tbl_nm']} AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
+            )
+        elif type == "east":
+            analytical_data_w_key_output_yw_definition = (
+                f"CREATE VIEW '{analytical_data_w_key_output_yw_nm}' AS "
+                "SELECT KEY_OUTPUT.ident, ANLY.PLT_CN, ANLY.INVYR, ANLY.RSCD, ANLY.STATECD, ANLY.STATEAB, KEY_OUTPUT.solution_desc, "
+                "KEY_OUTPUT.last_node_desc, ANLY.ECOREGION, ANLY.EPA_ECO_REGION, ANLY.USACE_SWC, ANLY.PLANTATION, ANLY.HYDRIC, "
+                "ANLY.RIVERINE, ANLY.ELEVATION, ANLY.PHYSCLCD, ANLY.TOPO_POSITION, ANLY.BALIVE, ANLY.ASPECT, ANLY.SLOPE, "
+                "ANLY.FOR_TYPE, FFRFT.MEANING AS FOR_TYPE_NAME, ANLY.HAB_TYPE, ANLY.SYMBOL, ANLY.SPECIES, "
+                "ANLY.RIV, ANLY.WETLAND, ANLY.RUDERAL, ANLY.EXOTIC, ANLY.SOFTWOODHARDWOOD, ANLY.PLANTED, ANLY.TALLYTREE, "
+                "ANLY.RIV_UNDERSTORY, ANLY.RIV_OVERSTORY, "
+                "ANLY.REL_DENSITY_SEEDLING, ANLY.CONDPRO_UNADJ, ANLY.NUM_FORCOND_PLOT, "
+                "ANLY.LIVE_CANOPY_CVR_PCT, ANLY.AFFORESTATION_CD, ANLY.LAND_COVER_CLASS_CD, ANLY.LAND_COVER_CLASS_CD_RET, ANLY.TRTCD1, ANLY.TRTCD2, ANLY.TRTCD3, ANLY.TRTYR1, ANLY.TRTYR2, ANLY.TRTYR3 "
+                f"FROM ({key_output_nm} AS 'KEY_OUTPUT' "
+                f"INNER JOIN {nvcs_analytical_test_data_vw_name} AS 'ANLY' ON KEY_OUTPUT.IDENT = ANLY.IDENT) "
+                f"INNER JOIN {in_RefForestType['new_tbl_nm']} AS 'FFRFT' ON ANLY.FOR_TYPE = FFRFT.VALUE;"
+            )
         plot_io.create_view(out_Options["output_db"], analytical_data_w_key_output_yw_nm, analytical_data_w_key_output_yw_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], analytical_data_w_key_output_yw_nm, analytical_data_w_key_output_yw_desc)
 
@@ -182,15 +209,25 @@ def generateFullOutput(in_ClassificationKey, in_AnlyTestData, in_RefSpecies, in_
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], count_cond_by_solution_vw_nm, count_cond_by_solution_vw_desc)
 
         count_cond_by_solution_v2_vw_nm = f"Y{inventory_year}_COUNT_COND_BY_SOLUTION_V2_VW"
-        count_cond_by_solution_v2_vw_desc = f"View containing frequency of group-level terminal node classifications [{inventory_year} plots only]"
-        count_cond_by_solution_v2_vw_definition = (
-            f"CREATE VIEW '{count_cond_by_solution_v2_vw_nm}' AS "
-            "SELECT RNAN.ident AS node_id, RNAN.description, "
-            f"CCBS.CountOfident FROM {in_RefAlgNode['new_tbl_nm']} AS 'RNAN' "
-            f"LEFT JOIN {count_cond_by_solution_vw_nm} as 'CCBS' ON CCBS.solution_id = RNAN.ident "
-            "WHERE (((RNAN.nvc_level)='group' OR (RNAN.nvc_level)='unclassified')) "
-            "ORDER BY RNAN.ident;"
-        )
+        count_cond_by_solution_v2_vw_desc = f"View containing frequency of terminal node classifications [{inventory_year} plots only]"
+        if type == "west":
+            count_cond_by_solution_v2_vw_definition = (
+                f"CREATE VIEW '{count_cond_by_solution_v2_vw_nm}' AS "
+                "SELECT RNAN.ident AS node_id, RNAN.description, "
+                f"CCBS.CountOfident FROM {in_RefAlgNode['new_tbl_nm']} AS 'RNAN' "
+                f"LEFT JOIN {count_cond_by_solution_vw_nm} as 'CCBS' ON CCBS.solution_id = RNAN.ident "
+                "WHERE (((RNAN.nvc_level)='group' OR (RNAN.nvc_level)='unclassified')) "
+                "ORDER BY RNAN.ident;"
+            )
+        elif type == "east":
+            count_cond_by_solution_v2_vw_definition = (
+                f"CREATE VIEW '{count_cond_by_solution_v2_vw_nm}' AS "
+                "SELECT RNAN.ident AS node_id, RNAN.description, "
+                f"CCBS.CountOfident FROM {in_RefAlgNode['new_tbl_nm']} AS 'RNAN' "
+                f"LEFT JOIN {count_cond_by_solution_vw_nm} as 'CCBS' ON CCBS.solution_id = RNAN.ident "
+                "WHERE (((RNAN.nvc_level)='macrogroup' OR (RNAN.nvc_level)='unclassified')) "
+                "ORDER BY RNAN.ident;"
+            )
         plot_io.create_view(out_Options["output_db"], count_cond_by_solution_v2_vw_nm, count_cond_by_solution_v2_vw_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], count_cond_by_solution_v2_vw_nm, count_cond_by_solution_v2_vw_desc)
 
@@ -254,10 +291,13 @@ if __name__ == '__main__':
 
     if config.target == config.westSection:
         import key_western_us as classification_key
+        type = "west"
     elif config.target == config.eastSection:
         import key_eastern_us as classification_key
+        type = "east"
     elif config.target == config.alaskaSection:
         import key_alaska_us as classification_key
+        type = "alaska"
 
     in_AnlyTestData = {
         "source": config.get(config.fullOutputSection, "In_DbPath"),
@@ -312,5 +352,5 @@ if __name__ == '__main__':
         "skip_shared_tables": config.get_literal(config.fullOutputSection, "SkipSharedTables")
     }
 
-    generateFullOutput(classification_key, in_AnlyTestData, in_RefSpecies, in_RefForestType, in_RefAlgNode,
+    generateFullOutput(type, classification_key, in_AnlyTestData, in_RefSpecies, in_RefForestType, in_RefAlgNode,
                        in_RefKeyAlerts, in_RefKeyOutput, in_KeyOutput, out_Options)
