@@ -348,7 +348,14 @@ async function executeTester(event, targetPath, testSettings) {
   
   let config = getPythonConfigFile();
   config.Config.ProjectRoot = getProjectResourcePath();
-  config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+  if (testSettings.type == "west") {
+    config.Config.TargetConfig = "WestConfig";
+    config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+  }
+  else if (testSettings.type == "east") {
+    config.Config.TargetConfig = "EastConfig";
+    config.EastConfig.In_ConfigPath = path.resolve(targetPath);
+  }
   config.FullOutputConfig.SkipSharedTables = "True";
   config.FullOutputConfig.In_Alerts = path.resolve(path.join(targetPath, "alerts.json"));
   config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
