@@ -5,7 +5,7 @@ const { contextBridge, ipcRenderer } = require('electron')
 contextBridge.exposeInMainWorld('electronAPI', {
     fetchExistingJson: (targetPath) => ipcRenderer.invoke('fetch-existing-json', targetPath),
     fetchPackagedJson: (packagedJsonType) => ipcRenderer.invoke('fetch-packaged-json', packagedJsonType),
-    updateJson: (directory, json, changes, documentStructure, alerts) => ipcRenderer.invoke('update-json', directory, json, changes, documentStructure, alerts),
+    updateJson: (config) => ipcRenderer.invoke('update-json', config),
     fetchSpecies: (type) => ipcRenderer.invoke('fetch-species', type),
     openBrowse: (targetPath) => ipcRenderer.invoke('open-browse', targetPath),
     openSaveDirectory: (targetPath) => ipcRenderer.invoke('open-save-directory', targetPath),

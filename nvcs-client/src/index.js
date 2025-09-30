@@ -169,11 +169,11 @@ async function fetchJson(targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json, changes, documentStructure, alerts) {
+async function updateJson(event, request) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
-  const newJsonDirectoryPath = path.resolve(directory);
+  const newJsonDirectoryPath = path.resolve(request.directory);
   if (!fs.existsSync(newJsonDirectoryPath))
     fs.mkdirSync(newJsonDirectoryPath);
 
@@ -188,12 +188,12 @@ async function updateJson(event, directory, json, changes, documentStructure, al
   let hierarchyContent = "";
 
   // Filter away the root
-  json = json.filter(i => i.hierarchyName != "ROOT");
+  request.json = request.json.filter(i => i.hierarchyName != "ROOT");
 
   // Sort JSON on hierarchy line number
-  json.sort((a, b) => { return a.hierarchyLineNumber - b.hierarchyLineNumber });
+  request.json.sort((a, b) => { return a.hierarchyLineNumber - b.hierarchyLineNumber });
 
-  for (const entry of json) {
+  for (const entry of request.json) {
     // Store hierarchy element content
     const hierarchyName = entry.hierarchyName;
     const hierarchyLevel = entry.hierarchyLevel;
@@ -218,24 +218,32 @@ async function updateJson(event, directory, json, changes, documentStructure, al
   let existingChangeLogEntry = "";
   if (fs.existsSync(changeLogPath))
     existingChangeLogEntry = fs.readFileSync(changeLogPath);
-  const newChangeLogEntry = generateChangeLogEntry(changes);
+  const newChangeLogEntry = generateChangeLogEntry(request.changes);
   const updatedChangeLog = newChangeLogEntry + existingChangeLogEntry;
   fs.writeFileSync(changeLogPath, updatedChangeLog);
 
   // Update document structure
   const documentStructurePath = path.resolve(path.join(newJsonDirectoryPath, "document.json"));
-  let documentStructureJson = JSON.stringify(documentStructure, null, 4);
+  let documentStructureJson = JSON.stringify(request.documentStructure, null, 4);
   documentStructureJson = documentStructureJson.trim();
   fs.writeFileSync(documentStructurePath, documentStructureJson);
 
   // Omit unnecessary button IDs
-  for (const alert of alerts)
+  for (const alert of request.alerts)
     delete alert.addressId;
   
   // Update alerts file
-  const alertsJson = JSON.stringify(alerts, null, 4);
+  const alertsJson = JSON.stringify(request.alerts, null, 4);
   const alertsPath = path.resolve(path.join(newJsonDirectoryPath, "alerts.json"));
   fs.writeFileSync(alertsPath, alertsJson);
+
+  // Update configuration file
+  const configPath = path.resolve(path.join(newJsonDirectoryPath, "config.json"));
+  const config = {
+    type: request.type
+  };
+  const configJson = JSON.stringify(config, null, 4).trim();
+  fs.writeFileSync(configPath, configJson);
 
   // Mark unaved as false
   unsavedChanges = false;
