@@ -167,6 +167,18 @@ main {
   background: lightgray;
 }
 
+.save-prevention {
+  background-color: black;
+  border-radius: 5px;
+  padding: 1px 4px;
+  margin: 0 5px;
+  border: 1px solid lightgray;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 1px 2px black;
+}
+
 .node-level-tag {
   background-color: lightcoral;
   border-radius: 5px;

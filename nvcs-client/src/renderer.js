@@ -268,16 +268,27 @@ async function handleReturnedHierarchy(returnedData, isCustom) {
 
     // Update HTML elements
     generatePages(hierarchy);
-    document.getElementById("btn-update-json").disabled = false;
-    document.getElementById("btn-update-json").setAttribute("title", 
-        "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
-    );
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("btn-toggle-levels").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
     document.getElementById("btn-search-hierarchy").disabled = false;
     document.getElementById("btn-show-document").disabled = false;
     document.getElementById("btn-document-editor").disabled = false;
+}
+
+function handleSaveButton() {
+    if (errors.filter(i => i.name == "duplicate-names").length > 0) {
+        document.getElementById("btn-update-json").disabled = true;
+        document.getElementById("btn-update-json").setAttribute("title", 
+            "Please remediate all save-preventing errors to enable this button"
+        );
+    }
+    else {
+        document.getElementById("btn-update-json").disabled = false;
+        document.getElementById("btn-update-json").setAttribute("title", 
+            "Browse for a directory to save your key-nodes folder and key-hierarchy.txt file"
+        );
+    }
 }
 
 async function fetchDocumentStructure(targetPath) {
@@ -435,6 +446,9 @@ function generatePages(hierarchy) {
 
     // Display alerts if any
     checkForProblems();
+
+    // Handle buttons
+    handleSaveButton();
 }
 
 function generateHierarchyHTML(hierarchy) {
@@ -1486,6 +1500,7 @@ function checkForProblems() {
     warnings = [];
 
     // Check hierarchy errors
+    checkDuplicateNames();
     checkMissingRequiredFields();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
@@ -1619,6 +1634,49 @@ function generateUnaddressedIcon() {
         </span>
     `;
     return html;
+}
+
+function checkDuplicateNames() {
+    const duplicateNames = findDuplicateNames();
+    if (duplicateNames.length == 0)
+        return;
+    console.error("Invalid duplicate names", duplicateNames);
+
+    let html = `
+        <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
+            Duplicate names detected within ${duplicateNames.length} hierarchy elements!
+            All hierarchy names must be unique. Please find all duplicate names in the hierarchy and ensure each
+            value is unique. You may use the search functionality to jump to the first instance of the name
+            that appears in the hierarchy. Saving will be prevented until duplicates are remediated.
+            <button id='btn-toggle-duplicate-names-errors' aria-describedby="nested-duplicate-names-errors" aria-controls='nested-duplicate-names-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-duplicate-names-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Duplicate Names" hidden>
+    `;
+
+    for (const info of duplicateNames) {
+        const name = info.value;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
+
+        html += `
+            <li class='border-box-list-item'>
+                <span>
+                    ${name}
+                </span>
+                ${addressButton}    
+            </li>
+            
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("duplicate-names", html, duplicateNames);
 }
 
 function checkMissingRequiredFields() {
@@ -2207,6 +2265,31 @@ function checkUnlabeledElementsInDocument() {
     createWarning("unlabeled-document-elements", html, unlabeledElementsInfo);
 }
 
+function findDuplicateNames() {
+    let invalid = [];
+    const names = [];
+    const duplicates = [];
+
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const name = element.hierarchyName;
+        if (names.includes(name)) {
+            duplicates.push(name);
+        }
+        else {
+            names.push(name);
+        }
+    }
+
+    const uniqueDuplicates = [...duplicates];
+    for (const duplicate of uniqueDuplicates) {
+        invalid.push({
+            value: duplicate
+        });
+    }
+
+    return invalid;
+}
+
 function findMissingRequiredFields() {
     let invalid = [];
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
@@ -2552,7 +2635,18 @@ function createFlattenedErrors() {
     const alerts = [];
 
     for (const error of errors) {
-        if (error.name == "missing-required-fields") {
+        if (error.name == "duplicate-names") {
+            for (const source of error.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "error",
+                    alertSubType: error.name,
+                    targetNode: source.value,
+                    targetProblem: `${source.value} is a duplicate name`
+                });
+            }
+        }
+        else if (error.name == "missing-required-fields") {
             for (const source of error.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
