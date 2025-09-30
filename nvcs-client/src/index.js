@@ -154,12 +154,22 @@ async function fetchJson(targetPath) {
     alertsJson = alertsData.toString();
   }
 
+  // Retrieve config JSON
+  let configJson;
+  const configPath = path.resolve(targetPath + "/config.json");
+  if (fs.existsSync(configPath)) {
+    console.log(`- Target Config Path: ${configPath}`);
+    let configData = fs.readFileSync(configPath);
+    configJson = configData.toString();
+  }
+
   // Combine and return data
   let returnData = {
     json: allJsonData,
     hierarchy: hierarchyString,
     documentStructure: documentStructureString,
-    alerts: alertsJson
+    alerts: alertsJson,
+    config: configJson
   }
 
   // Mark unaved as false

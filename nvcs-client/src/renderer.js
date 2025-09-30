@@ -146,7 +146,6 @@ async function fetchPackagedJson() {
     try {
         const packagedJsonType = document.getElementById("packaged-json-type").value;
         const returnedData = await window.electronAPI.fetchPackagedJson(packagedJsonType);
-        currentHierarchyType = packagedJsonType;
         await handleReturnedHierarchy(returnedData, false);
     }
     catch (error) {
@@ -191,6 +190,10 @@ async function fetchCustomJson() {
 }
 
 async function handleReturnedHierarchy(returnedData, isCustom) {
+    const returnedConfig = JSON.parse(returnedData.config ?? "{}");
+    currentHierarchyType = returnedConfig?.type ?? "west";
+    console.log("Current Hierarchy Type ", currentHierarchyType);
+
     nodeJson = JSON.parse(returnedData.json);
     nodeHierarchy = returnedData.hierarchy;
     documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
@@ -1135,7 +1138,7 @@ async function updateJson() {
 
     try {
         const changes = detectHierarchyChanges();
-        const config = {
+        const request = {
             type: currentHierarchyType,
             directory: newDirectoryName,
             json: hierarchy,
@@ -1143,9 +1146,9 @@ async function updateJson() {
             documentStructure: documentStructure,
             alerts: flattenedAlerts
         };
-        console.log(config);
+        console.log(request);
 
-        await window.electronAPI.updateJson(config);
+        await window.electronAPI.updateJson(request);
         initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
