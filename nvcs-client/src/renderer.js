@@ -277,7 +277,11 @@ async function handleReturnedHierarchy(returnedData, isCustom) {
 }
 
 function handleSaveButton() {
-    if (errors.filter(i => i.name == "duplicate-names").length > 0) {
+    const savePreventingErrors = [
+        "duplicate-names",
+        "missing-required-fields"
+    ];
+    if (errors.filter(i => savePreventingErrors.includes(i.name)).length > 0) {
         document.getElementById("btn-update-json").disabled = true;
         document.getElementById("btn-update-json").setAttribute("title", 
             "Please remediate all save-preventing errors to enable this button"
@@ -1687,8 +1691,10 @@ function checkMissingRequiredFields() {
 
     let html = `
         <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
             Missing required fields within ${invalidMissingRequired.length} hierarchy elements!
             All required fields must be provided or the classification key may fail to build.
+            Saving will be prevented until all required fields are provided.
             <button id='btn-toggle-nested-missing-required-errors' aria-describedby="nested-missing-required-errors" aria-controls='nested-missing-required-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
@@ -2299,7 +2305,7 @@ function findMissingRequiredFields() {
                 value: "Node Name"
             });
 
-        if (element.fileName == "")
+        if (!element.fileName || element.fileName == "")
             invalids.push({
                 value: "Node File Name"
             });
