@@ -296,9 +296,9 @@ function handleSaveButton() {
     }
 }
 
-async function fetchDocumentStructure(targetPath) {
+async function fetchDocumentStructure() {
     try {
-        const returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        const returnedData = await window.electronAPI.fetchPackagedJson(currentHierarchyType);
         const returnedDocumentStructure =  returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
         return returnedDocumentStructure;
     }
