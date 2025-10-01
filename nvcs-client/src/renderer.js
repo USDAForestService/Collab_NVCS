@@ -1694,18 +1694,34 @@ function checkDuplicateNames() {
     `;
 
     for (const info of duplicateNames) {
-        const name = info.value;
-        const [addressButton, addressId] = generateAddressButton();
-        info.addressId = addressId;
-
         html += `
             <li class='border-box-list-item'>
                 <span>
-                    ${name}
+                    ${info.value}
                 </span>
-                ${addressButton}    
+                <ul>            
+        `;
+
+        for (const invalid of info.invalids) {
+            const cloneButton = cloneElement(invalid.button, invalid.button.innerText + " (duplicate)");
+            const elementButton = cloneButton.outerHTML;
+            const [addressButton, addressId] = generateAddressButton();
+            invalid.addressId = addressId;
+
+            html += `
+                <li>
+                    ${elementButton}
+                    <span>
+                        LINE: ${invalid.hierarchyLineNumber}
+                    </span>
+                    ${addressButton}    
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
             </li>
-            
         `;
     }
 
@@ -2321,8 +2337,17 @@ function findDuplicateNames() {
 
     const uniqueDuplicates = [...duplicates];
     for (const duplicate of uniqueDuplicates) {
+        const invalids = [];
+        const elementsWithSharedName = hierarchy.filter(i => i.hierarchyName == duplicate);
+        for (const elementWithSharedName of elementsWithSharedName) {
+            invalids.push({
+                hierarchyLineNumber: elementWithSharedName.hierarchyLineNumber,
+                button: findHierarchyButton(elementWithSharedName.hierarchyName, elementWithSharedName.hierarchyLineNumber)
+            });
+        }
         invalid.push({
-            value: duplicate
+            value: duplicate,
+            invalids: invalids
         });
     }
 
@@ -2676,13 +2701,15 @@ function createFlattenedErrors() {
     for (const error of errors) {
         if (error.name == "duplicate-names") {
             for (const source of error.source) {
-                alerts.push({
-                    addressId: source.addressId,
-                    alertType: "error",
-                    alertSubType: error.name,
-                    targetNode: source.value,
-                    targetProblem: `${source.value} is a duplicate name`
-                });
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: `${source.value} | LINE: ${invalid.hierarchyLineNumber}`,
+                        targetProblem: `${source.value} is a duplicate name`
+                    });
+                }
             }
         }
         else if (error.name == "missing-required-fields") {
