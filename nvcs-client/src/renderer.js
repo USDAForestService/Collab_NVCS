@@ -1409,7 +1409,8 @@ async function deleteHierarchyElement() {
 
     // Get associated element
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
-    const element = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
+    const openedLine = document.getElementById("node-hierarchyLineNumber").value;
+    const element = hierarchy.filter(i => i.hierarchyName == openedHierarchyName && i.hierarchyLineNumber == openedLine)[0];
 
     // Only allow deleting if children elements are empty
     if (element.children.length > 0) {
