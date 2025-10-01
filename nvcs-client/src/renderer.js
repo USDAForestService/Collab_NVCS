@@ -427,7 +427,7 @@ function createEmptyHierarchyElement() {
         fileName: "",
         hierarchyName: "",
         hierarchyLevel: null,
-        hierarchyLineNumber: null,
+        hierarchyLineNumber: "",
         node: {
             name: "",
             id: "",
@@ -519,7 +519,7 @@ function generateListEntry(element) {
     let nodeTagColor = levelColorMap[element.node.level];
     let nodeTagHidden = showTags ? "" : "hidden";
     let nodeTag = `<span class="node-level-tag" style="background-color: ${nodeTagColor};" ${nodeTagHidden}>${element.node.level != "" ? element.node.level : "none"}</span>`
-    returnString += `${nodeTag}<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
+    returnString += `${nodeTag}<button data-hierarchy-name='${element.hierarchyName}' data-line-number='${element.hierarchyLineNumber}' class='hierarchyNodeButton' onclick='openJsonDialog(event)'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
@@ -528,7 +528,12 @@ function generateListEntry(element) {
     return returnString;
 }
 
-function openJsonDialog(hierarchyName) {
+function openJsonDialog(event) {
+    // Extract target hierarchy element from passed event
+    const button = event.target;
+    const hierarchyName = button?.getAttribute("data-hierarchy-name");
+    let hierarchyLineNumber = button?.getAttribute("data-line-number");
+
     // Open the dialog
     unsavedDialogChanges = false;
     clearMarkedValidationFields();
@@ -536,7 +541,7 @@ function openJsonDialog(hierarchyName) {
     showDialog(dialog);
 
     // Gather opened dialog context
-    const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
+    const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyLineNumber == hierarchyLineNumber)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
     console.log("Opened Hierarchy Element", hierarchyElement);
 
@@ -582,7 +587,8 @@ function openJsonDialog(hierarchyName) {
     if (!isRoot) {
         let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
         document.getElementById("parent-hierarchy-list").innerHTML = nodeParentOptions;
-        inputParentNode.value = hierarchyElement.parent?.hierarchyName ?? "";
+        const parent = hierarchyElement.parent;
+        inputParentNode.value = parent ? `${parent.hierarchyName} | LINE: ${parent.hierarchyLineNumber}` : "";
     }
     else  {
         const unavailableMessage = "Cannot be assigned to a parent";
@@ -781,6 +787,7 @@ function newGuid() {
 async function saveJsonChanges() {
     // Get input fields
     let inputHierarchyName = document.getElementById("node-hierarchyName")
+    let inputHierarchyLineNumber = document.getElementById("node-hierarchyLineNumber")
     let inputFileName = document.getElementById("node-fileName")
     let inputNodeDescription = document.getElementById("node-nodeDescription")
     let inputNodeID = document.getElementById("node-nodeID")
@@ -789,6 +796,7 @@ async function saveJsonChanges() {
 
     // Extract dialog values
     let openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    let openedHierarchyLineNumber = inputHierarchyLineNumber.value.trim();
     let isRoot = openedHierarchyName == "ROOT";
     let hierarchyName = inputHierarchyName.value.trim();
     let fileName = inputFileName.value.trim();
@@ -802,16 +810,21 @@ async function saveJsonChanges() {
         return;
 
     // Find hierarchy element to change
-    let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
+    let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName && i.hierarchyLineNumber == openedHierarchyLineNumber)[0];
 
     // Update hierarchy name
     newHierarchyElement.hierarchyName = hierarchyName;
     newHierarchyElement.fileName = fileName;
+    
+    // Determine if name change warrants a new node
+    if (hierarchyName != newHierarchyElement.node.name) {
+        newHierarchyElement.node = structuredClone(newHierarchyElement.node);
+        newHierarchyElement.node.name = hierarchyName;
+    }
 
     // Update node data
     newHierarchyElement.node.id = nodeID;
     newHierarchyElement.node.level = nodeLevel;
-    newHierarchyElement.node.name = hierarchyName;
 
     // Update node description data
     newHierarchyElement.node.description = [];
@@ -846,8 +859,11 @@ async function saveJsonChanges() {
 
     // Update node parent relationship
     if (!isRoot) {
-        let newParentName = document.getElementById("node-parentNode").value;
-        let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
+        let newParentInput = document.getElementById("node-parentNode").value;
+        let newParentInputSplit = newParentInput.split(" | LINE: ");
+        let newParentName = newParentInputSplit[0];
+        let newParentLine = newParentInputSplit[1];
+        let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName && i.hierarchyLineNumber == newParentLine)[0];
         let previousParent = newHierarchyElement.parent;
         if (previousParent != newParentElement) {
             if (previousParent)
@@ -1017,10 +1033,16 @@ function findInvalidsForNodeDescription(newMarkedElements) {
 function findInvalidsForParentNode(newMarkedElements) {
     const inputHierarchyName = document.getElementById("node-hierarchyName")
     const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
-    const inputParentNode = document.getElementById("node-parentNode")
-    const parentNode = inputParentNode.value.trim();
+    const inputParentNode = document.getElementById("node-parentNode");
+    const inputParentNodeSplit = inputParentNode.value.split(" | LINE: ");
+    const parentNodeName = inputParentNodeSplit[0]?.trim();
+    const parentNodeLine = inputParentNodeSplit[1]?.trim();
 
-    const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
+    const otherElementAsParent = hierarchy.filter(i => 
+        i.hierarchyName == parentNodeName && 
+        i.hierarchyLineNumber == parentNodeLine && 
+        i.hierarchyName != openedHierarchyName
+    );
     if (otherElementAsParent.length == 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element", "error");
     }
@@ -1213,11 +1235,12 @@ function generateElementOptions(elements, selectedElement = null, disabledElemen
     for (const element of elements) {
         const blankSpace = "&nbsp;";
         const name = element.hierarchyName;
+        const line = element.hierarchyLineNumber;
         const levelIndicator = `[L${element.hierarchyLevel}]`;
         const tabSpaces = element.hierarchyLevel >= 0 ? blankSpace.repeat(element.hierarchyLevel) : "";
         const selected = element == selectedElement ? "selected" : "";
         const disabled = disabledElements?.includes(element) ? "disabled" : "";
-        html += `<option value="${name}" ${selected} ${disabled}>${tabSpaces}${name} ${levelIndicator}</option>`;
+        html += `<option value="${name} | LINE: ${line}" ${selected} ${disabled}>${tabSpaces}${name} ${levelIndicator} (line: ${line})</option>`;
     }
 
     return html;
@@ -1414,7 +1437,11 @@ async function deleteHierarchyElement() {
 function addHierarchyElement() {
     const element = createEmptyHierarchyElement();
     hierarchy.push(element);
-    openJsonDialog(element.hierarchyName);
+
+    const emptyButton = document.createElement("button");
+    emptyButton.setAttribute("data-hierarchy-name", element.hierarchyName);
+    emptyButton.setAttribute("data-line-number", element.hierarchyLineNumber);
+    openJsonDialog({target: emptyButton});
 }
 
 function suggestFileName() {
@@ -1456,13 +1483,16 @@ function generateFileNameFromValue(nodeName) {
 
 function searchHierarchy() {
     const searchId = document.getElementById("search-hierarchy").value;
-    if (!searchId) {
+    const searchIdSplit = searchId.split(" | LINE: ");
+    const hierarchyName = searchIdSplit[0];
+    const hierarchyLineNumber = searchIdSplit[1]; 
+    if (!hierarchyName) {
         const message = "Please use the available options to select an existing hierarchy element"
         alert(message);
         return;
     }
 
-    let element = findHierarchyButton(searchId);
+    let element = findHierarchyButton(hierarchyName, hierarchyLineNumber);
     if (!element) {
         const message = "Provided hierarchy element does not exist";
         alert(message);
@@ -2337,7 +2367,7 @@ function findMissingRequiredFields() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             invalids: invalids
         });
     }
@@ -2356,7 +2386,7 @@ function findMissingTriggerParentheses() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
         });
     }
 
@@ -2382,7 +2412,7 @@ function findMissingTriggerFilters() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             invalids: invalids
         });
     }
@@ -2413,7 +2443,7 @@ function findMissingNodeIdInNames() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             id: missingId
         });
     }
@@ -2433,7 +2463,7 @@ function findUnconventionalFileNames() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             fileName: fileName,
             suggestedName: suggestedName
         });
@@ -2458,7 +2488,7 @@ function findDuplicateNodeIds() {
         for (const elementWithNodeId of elementsWithNodeId) {
             invalids.push({
                 hierarchyName: elementWithNodeId.hierarchyName,
-                button: findHierarchyButton(elementWithNodeId.hierarchyName)
+                button: findHierarchyButton(elementWithNodeId.hierarchyName, elementWithNodeId.hierarchyLineNumber)
             })
         }
 
@@ -2543,7 +2573,7 @@ function findMissingElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
         });
     }
 
@@ -2560,7 +2590,7 @@ function findUnlabeledElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
         });
     }
 
@@ -2584,7 +2614,7 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
                     value: subFilterCombo
                 }],
                 element: element,
-                button: findHierarchyButton(element.hierarchyName),
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             });
         }
         else {
@@ -2805,8 +2835,8 @@ function createFlattenedWarnings() {
     return alerts;
 }
 
-function findHierarchyButton(hierarchyName) {
-    let selector = `#detected-json-container button[data-hierarchy-name='${hierarchyName}']`;
+function findHierarchyButton(hierarchyName, hierarchyLineNumber) {
+    let selector = `#detected-json-container button[data-hierarchy-name='${hierarchyName}'][data-line-number='${hierarchyLineNumber}']`;
     let element = document.querySelector(selector);
     return element;   
 }
