@@ -877,8 +877,10 @@ async function saveJsonChanges() {
     let newChildNodes = [];
     let childNodeInputs = document.querySelectorAll(".child-node-container input");
     for (const childNodeInput of childNodeInputs) {
-        const childName = childNodeInput.value;
-        const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName)[0];
+        const childSplit = childNodeInput.value.split(" | LINE: ");
+        const childName = childSplit[0];
+        const childLine = childSplit[1];
+        const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName && i.hierarchyLineNumber == childLine)[0];
         newChildNodes.push(associatedChildNode);
     }
     newHierarchyElement.children = newChildNodes;
@@ -1008,7 +1010,7 @@ function findInvalidsForFilePath(newMarkedElements) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type", "error");
     }
 
-    const othersWithFileName = hierarchy.filter(i => i.hierarchyName != openedHierarchyName && i.fileName.toLowerCase() == fileName.toLowerCase());
+    const othersWithFileName = hierarchy.filter(i => i.hierarchyName != openedHierarchyName && i.fileName?.toLowerCase() == fileName.toLowerCase());
     if (othersWithFileName.length > 0)
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must be unique", "error");
     
@@ -1269,7 +1271,7 @@ function generateChildNodeInputs(element) {
 
         for (let i = 0; i < element.children.length; i++) {
             const child = element.children[i];
-            const childName = child.hierarchyName;
+            const childName = `${child.hierarchyName} | LINE: ${child.hierarchyLineNumber}`;
             const identifier = newGuid();
             html += `
                 <div id="${identifier}" class="sub-content-container child-node-container">
