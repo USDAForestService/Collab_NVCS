@@ -279,6 +279,7 @@ async function handleReturnedHierarchy(returnedData, isCustom) {
 function handleSaveButton() {
     const savePreventingErrors = [
         "duplicate-names",
+        "duplicate-files",
         "missing-required-fields"
     ];
     if (errors.filter(i => savePreventingErrors.includes(i.name)).length > 0) {
@@ -1538,6 +1539,7 @@ function checkForProblems() {
 
     // Check hierarchy errors
     checkDuplicateNames();
+    checkDuplicateFiles();
     checkMissingRequiredFields();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
@@ -1731,6 +1733,65 @@ function checkDuplicateNames() {
 
     createError("duplicate-names", html, duplicateNames);
 }
+
+function checkDuplicateFiles() {
+    const duplicatefiles = findDuplicateFiles();
+    if (duplicatefiles.length == 0)
+        return;
+    console.error("Invalid duplicate files", duplicatefiles);
+
+    let html = `
+        <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
+            Duplicate file names detected within ${duplicatefiles.length} hierarchy elements!
+            All hierarchy files must be unique. Please find all duplicate file names in the hierarchy and ensure each
+            value is unique. Saving will be prevented until duplicates are remediated.
+            <button id='btn-toggle-duplicate-files-errors' aria-describedby="nested-duplicate-files-errors" aria-controls='nested-duplicate-files-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-duplicate-files-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Duplicate Files" hidden>
+    `;
+
+    for (const info of duplicatefiles) {
+        html += `
+            <li class='border-box-list-item'>
+                <span>
+                    ${info.value}
+                </span>
+                <ul>            
+        `;
+
+        for (const invalid of info.invalids) {
+            const cloneButton = cloneElement(invalid.button, invalid.button.innerText + " (duplicate file)");
+            const elementButton = cloneButton.outerHTML;
+            const [addressButton, addressId] = generateAddressButton();
+            invalid.addressId = addressId;
+
+            html += `
+                <li>
+                    ${elementButton}
+                    <span>
+                        LINE: ${invalid.hierarchyLineNumber}
+                    </span>
+                    ${addressButton}    
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("duplicate-files", html, duplicatefiles);
+}
+
 
 function checkMissingRequiredFields() {
     const invalidMissingRequired = findMissingRequiredFields();
@@ -2354,6 +2415,41 @@ function findDuplicateNames() {
     return invalid;
 }
 
+function findDuplicateFiles() {
+    let invalid = [];
+    const files = [];
+    const duplicates = [];
+
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const file = element.fileName;
+        if (files.includes(file)) {
+            duplicates.push(file);
+        }
+        else {
+            files.push(file);
+        }
+    }
+
+    const uniqueDuplicates = [...duplicates];
+    for (const duplicate of uniqueDuplicates) {
+        const invalids = [];
+        const elementsWithSharedFile = hierarchy.filter(i => i.fileName == duplicate);
+        for (const elementWithSharedFile of elementsWithSharedFile) {
+            invalids.push({
+                hierarchyName: elementsWithSharedFile.hierarchyName,
+                hierarchyLineNumber: elementWithSharedFile.hierarchyLineNumber,
+                button: findHierarchyButton(elementWithSharedFile.hierarchyName, elementWithSharedFile.hierarchyLineNumber)
+            });
+        }
+        invalid.push({
+            value: duplicate,
+            invalids: invalids
+        });
+    }
+
+    return invalid;
+}
+
 function findMissingRequiredFields() {
     let invalid = [];
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
@@ -2708,6 +2804,19 @@ function createFlattenedErrors() {
                         alertSubType: error.name,
                         targetNode: `${source.value} | LINE: ${invalid.hierarchyLineNumber}`,
                         targetProblem: `${source.value} is a duplicate name`
+                    });
+                }
+            }
+        }
+        else if (error.name == "duplicate-files") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: `${invalid.hierarchyName} | LINE: ${invalid.hierarchyLineNumber}`,
+                        targetProblem: `${source.value} is a duplicate file name`
                     });
                 }
             }
