@@ -980,12 +980,13 @@ function performDocumentDialogValidations(displayAlert) {
 
 
 function findInvalidsForNodeName(newMarkedElements) {
-    const inputHierarchyName = document.getElementById("node-hierarchyName")
-    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputHierarchyName = document.getElementById("node-hierarchyName");
+    const inputHierarchyLineNumber = document.getElementById("node-hierarchyLineNumber");
+    const hierarchyLineNumber = inputHierarchyLineNumber.value.trim();
     const inputNodeId = document.getElementById("node-nodeID");
     const nodeId = inputNodeId.value.trim();
     const hierarchyName = inputHierarchyName.value.trim();
-    const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
+    const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyLineNumber != hierarchyLineNumber);
 
     if (hierarchyName == "") {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is required", "error");
@@ -1003,7 +1004,8 @@ function findInvalidsForNodeName(newMarkedElements) {
 
 function findInvalidsForFilePath(newMarkedElements) {
     const inputHierarchyName = document.getElementById("node-hierarchyName")
-    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputHierarchyLineNumber = document.getElementById("node-hierarchyLineNumber");
+    const hierarchyLineNumber = inputHierarchyLineNumber.value.trim();
     const inputFileName = document.getElementById("node-fileName")
     const fileName = inputFileName.value.trim();
 
@@ -1011,7 +1013,7 @@ function findInvalidsForFilePath(newMarkedElements) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type", "error");
     }
 
-    const othersWithFileName = hierarchy.filter(i => i.hierarchyName != openedHierarchyName && i.fileName?.toLowerCase() == fileName.toLowerCase());
+    const othersWithFileName = hierarchy.filter(i => i.hierarchyLineNumber != hierarchyLineNumber && i.fileName?.toLowerCase() == fileName.toLowerCase());
     if (othersWithFileName.length > 0)
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must be unique", "error");
     
