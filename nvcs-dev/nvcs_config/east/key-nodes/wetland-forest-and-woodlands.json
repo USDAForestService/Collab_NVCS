@@ -61,8 +61,8 @@
 
    "filters": {
       "HYDRIC_OR_RIVERINE": [
-        {"hydric": "yes"},
-        {"riverine": "yes"}
+        {"hydric": "Y"},
+        {"riverine": "Y"}
       ],
       "W1": [
         {"wetland": "obl"}
@@ -74,16 +74,16 @@
         {"wetland": "fac"}
       ],
       "WETLAND": [
-        {"wetland": "obl, facw", "exotic": "no"}
+        {"wetland": "obl, facw", "exotic": "N"}
       ],
       "UPLAND": [
-        {"wetland": "upl", "exotic": "no"}
+        {"wetland": "upl", "exotic": "N"}
       ],
       "ECOREGIONS_III": [
         {"ecoregion": "231E, 231G, 255"}
       ],
       "RIVERINE": [
-        {"riverine": "yes"}
+        {"riverine": "Y"}
       ],
       "SPECIES_III": [
         {"species": "Gleditsia triacanthos"},

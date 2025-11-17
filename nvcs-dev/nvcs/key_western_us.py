@@ -434,16 +434,16 @@ def element_005():
     # AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic.
 
     PLANTATION = PatternList('PLANTATION',
-        {'plantation': 'yes'}
+        {'plantation': 'Y'}
     )
 
     PLANTED_EXOTIC = PatternList('PLANTED_EXOTIC',
-        {'planted': 'yes'},
-        {'exotic': 'yes'}
+        {'planted': 'Y'},
+        {'exotic': 'Y'}
     )
 
     PLANTED_POPULUS = PatternList('PLANTED_POPULUS',
-        {'planted': 'yes'},
+        {'planted': 'Y'},
         {'species': 'Populus'}
     )
 
@@ -529,12 +529,12 @@ def element_007():
     )
 
     RIVERINE = PatternList('RIVERINE',
-        {'riverine': 'yes'}
+        {'riverine': 'Y'}
     )
 
     HYDRIC_OR_RIVERINE = PatternList('HYDRIC_OR_RIVERINE',
-        {'hydric': 'yes'},
-        {'riverine': 'yes'}
+        {'hydric': 'Y'},
+        {'riverine': 'Y'}
     )
 
     W1 = PatternList('W1',
@@ -543,7 +543,7 @@ def element_007():
 
     W1_UNDERSTORY = PatternList('W1_UNDERSTORY',
         {'wetland': 'OBL'},
-        {'tallytree': 'no'}
+        {'tallytree': 'N'}
     )
 
     W2 = PatternList('W2',
@@ -552,7 +552,7 @@ def element_007():
 
     W2_UNDERSTORY = PatternList('W2_UNDERSTORY',
         {'wetland': 'FACW'},
-        {'tallytree': 'no'}
+        {'tallytree': 'N'}
     )
 
     W3 = PatternList('W3',
@@ -561,24 +561,24 @@ def element_007():
 
     WI = PatternList('WI',
         {'wetland': 'OBL, FACW'},
-        {'exotic': 'no'}
+        {'exotic': 'N'}
     )
 
     WI_UNDERSTORY = PatternList('WI_UNDERSTORY',
         {'wetland': 'OBL, FACW'},
-        {'exotic': 'no'},
-        {'tallytree': 'no'}
+        {'exotic': 'N'},
+        {'tallytree': 'N'}
     )
 
     UI = PatternList('UI',
         {'wetland': 'UPL'},
-        {'exotic': 'no'}
+        {'exotic': 'N'}
     )
 
     UI_UNDERSTORY = PatternList('UI_UNDERSTORY',
         {'wetland': 'UPL'},
-        {'exotic': 'no'},
-        {'tallytree': 'no'}
+        {'exotic': 'N'},
+        {'tallytree': 'N'}
     )
 
     Populus_fremontii = PatternList('Populus_fremontii',
@@ -695,7 +695,7 @@ def element_010():
     # Acer negundo, Acer saccharinum, Celtis laevigata, Platanus occidentalis, or Ulmus americana
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '332, M334, 331'}
@@ -722,7 +722,7 @@ def element_010():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -746,11 +746,11 @@ def element_011():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -818,11 +818,11 @@ def element_013():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
-    # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+    # Tree composition dominated by EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -857,7 +857,7 @@ def element_014():
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
     # [Additional tree species not tracked by FIA include Ulmus crassifolia]
     # OR
-    # iii. Located in above ECOREGION and any EXOTIC = yes tree species =>80% RIV
+    # iii. Located in above ECOREGION and any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS_1 = PatternList('ECOREGIONS_1',
         {'ecoregion': '315'}
@@ -902,7 +902,7 @@ def element_014():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -925,11 +925,11 @@ def element_015():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1008,11 +1008,11 @@ def element_017():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
-    # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+    # Tree composition dominated by EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1068,7 +1068,7 @@ def element_019():
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
     # [Additional tree species not tracked by FIA include Pinus contorta var. murrayana]
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '242, M242, 261A, M261, 263'}
@@ -1106,7 +1106,7 @@ def element_019():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1130,11 +1130,11 @@ def element_020():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1307,11 +1307,11 @@ def element_024():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
-    # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+    # Tree composition dominated by EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1346,7 +1346,7 @@ def element_025():
     # and Populus deltoides
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': 'M242C, M242D, 313, M313, 315, 322, 331A, M331, M332, M333, M334, 341, M341, 342'}
@@ -1386,7 +1386,7 @@ def element_025():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1410,11 +1410,11 @@ def element_026():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1584,11 +1584,11 @@ def element_030():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
-    # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+    # Tree composition dominated by EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1627,7 +1627,7 @@ def element_031():
     # and Umbellularia californica
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '261, M261, 262, M262, 313, M313, 315, 321, 322, M331, 341, M341, 342'}
@@ -1699,7 +1699,7 @@ def element_031():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1723,11 +1723,11 @@ def element_032():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1980,13 +1980,13 @@ def element_037():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously). Tree
-    # composition dominated by ruderal native or EXOTIC = yes
+    # composition dominated by ruderal native or EXOTIC = Y
     # (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division
 
     RUDERAL_OR_EXOTIC = PatternList('RUDERAL_OR_EXOTIC',
-        {'exotic': 'yes'},
-        {'ruderal': 'yes'}
+        {'exotic': 'Y'},
+        {'ruderal': 'Y'}
     )
 
     def match(plot):
@@ -2160,7 +2160,7 @@ def element_041():
     # Prunus virginiana, or Quercus muehlenbergii
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS_1 = PatternList('ECOREGIONS_1',
         {'ecoregion': '222, 231, 251, 255, 315, 321, 331, 332'}
@@ -2214,7 +2214,7 @@ def element_041():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2448,11 +2448,11 @@ def element_046():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2660,11 +2660,11 @@ def element_051():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
-    # Tree composition dominated by ruderal native or EXOTIC = yes (>= 80% RIV)
+    # Tree composition dominated by ruderal native or EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2734,7 +2734,7 @@ def element_054():
     # Persea borbonia, Prunus serotina, Quercus marilandica, Quercus stellata,
     # or Ulmus alata (>=40% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '315E'}
@@ -2765,7 +2765,7 @@ def element_054():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2789,12 +2789,12 @@ def element_055():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2894,12 +2894,12 @@ def element_058():
     # native vegetation that invades natural stands or vegetation that
     # dominates on formerly cleared and/or planted sites but which has been
     # allowed to succeed more-or-less spontaneously). Tree composition
-    # dominated by ruderal native or EXOTIC = yes (>= 80% RIV)
+    # dominated by ruderal native or EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2939,7 +2939,7 @@ def element_059():
     # Quercus shumardii, Ulmus alata, or Ulmus crassifolia
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '315, 332'}
@@ -2991,8 +2991,8 @@ def element_059():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'},
-        {'tallytree': 'yes'}
+        {'exotic': 'Y'},
+        {'tallytree': 'Y'}
     )
 
     def match(plot):
@@ -3016,11 +3016,11 @@ def element_060():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3245,12 +3245,12 @@ def element_065():
     # native vegetation that invades natural stands or vegetation that
     # dominates on formerly cleared and/or planted sites but which has been
     # allowed to succeed more-or-less spontaneously). Tree composition
-    # dominated by ruderal native or EXOTIC = yes (>= 80% RIV)
+    # dominated by ruderal native or EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3270,8 +3270,8 @@ def element_066():
     # Only one Macrogroup
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3528,7 +3528,7 @@ def element_069():
     # or Pseudotsuga menziesii
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
     # AND
     # ii. Located in ECOREGION M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262
 
@@ -3580,7 +3580,7 @@ def element_069():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3604,11 +3604,11 @@ def element_070():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # EXOTIC = yes (< 20% RIV)
+    # EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3757,11 +3757,11 @@ def element_073():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
-    # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+    # Tree composition dominated by EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER] – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3802,7 +3802,7 @@ def element_074():
     # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
     # [Additional tree species not tracked by FIA include Quercus laceyi]
     # OR
-    # c. Any EXOTIC = yes tree species =>80% RIV
+    # c. Any EXOTIC = Y tree species =>80% RIV
     # AND
     # ii. Located in ECOREGION 322, 313, M313, 321, 315
 
@@ -3858,7 +3858,7 @@ def element_074():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3882,11 +3882,11 @@ def element_075():
     # little or no evidence of trees in a row, no very recent logging,
     # understory mowing, etc. (trees may be early successional pole-sized
     # trees following logging or blowdowns). Tree composition is dominated by
-    # ruderal native or EXOTIC = yes (< 20% RIV)
+    # ruderal native or EXOTIC = Y (< 20% RIV)
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -4336,11 +4336,11 @@ def element_083():
     # weedy native vegetation that invades natural stands or vegetation
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
-    # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+    # Tree composition dominated by EXOTIC = Y (>= 80% RIV)
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -4413,7 +4413,7 @@ def element_086():
     #   Umbellularia californica (>=30% RIV; i.e., together STRONG and
     #   MODERATE diagnostic species RIV =>50%) 
     #   OR 
-    #   c.  Any EXOTIC = yes tree species =>80% RIV
+    #   c.  Any EXOTIC = Y tree species =>80% RIV
     # 
     # TRANSLATES TO:
     # 
@@ -4483,7 +4483,7 @@ def element_086():
     #   or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
     #   diagnostic species RIV =>50%)
     # OR
-    #   vii. Any EXOTIC = yes tree species >= 80%
+    #   vii. Any EXOTIC = Y tree species >= 80%
 
     ECOREGIONS_1 = PatternList('ECOREGIONS_1',
         {'ecoregion': '242A, M242, 261A, M261A, M261B, 263'}
@@ -4546,7 +4546,7 @@ def element_086():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -4843,7 +4843,7 @@ def element_093():
     #   Pinus ponderosa, or Quercus gambelii (>=30% RIV; i.e.,
     #   together STRONG and MODERATE diagnostic species =>50% RIV)
     #   OR
-    #   c.  Any EXOTIC = yes tree species =>80% RIV
+    #   c.  Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': 'M242C, M261D, M261E, M261G, M262B, 313, M313, 315, 321, 322, 331B, 331I, 331J, M331, M332, 341, M341, 342'}
@@ -4868,7 +4868,7 @@ def element_093():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -5317,7 +5317,7 @@ def element_104():
     #     Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and MODERATE 
     #     diagnostic species =>50% RIV) 
     #     OR 
-    #     f.  Any EXOTIC = yes tree species =>80% RIV 
+    #     f.  Any EXOTIC = Y tree species =>80% RIV 
     # OR 
     #   M242C and M242D Exclusion/Exception for Pinus contorta, Pinus ponderosa, and 
     #   Pseudotsuga menziesii: Tree composition and ecology matching one of the 
@@ -5332,7 +5332,7 @@ def element_104():
     #           diagnostic species, any combination of Abies bracteata, Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus contorta, Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and 
     #           MODERATE diagnostic species =>50% RIV) 
     #       OR 
-    #       d.  Any EXOTIC = yes tree species =>80% RIV
+    #       d.  Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS_I = PatternList('ECOREGIONS_I',
         {'ecoregion': '242, M242, M261, 261A, 262, 263, 341D'}
@@ -5381,7 +5381,7 @@ def element_104():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     ECOREGIONS_II = PatternList('ECOREGIONS_II',
@@ -5831,7 +5831,7 @@ def element_112():
     # Only one Macrogroup
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -5903,7 +5903,7 @@ def element_115():
     #     Quercus macrocarpa, or Ulmus americana (>=30% RIV; i.e., together STRONG
     #     and MODERATE diagnostic species =>50% RIV) 
     #     OR
-    #     c.  Any EXOTIC = yes tree species =>80% RIV
+    #     c.  Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': 'M242C, M242D, 313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331, M332, M333, M334, 341, M341, 342'}
@@ -5949,7 +5949,7 @@ def element_115():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -6813,7 +6813,7 @@ def element_133():
     #     Pinus jeffreyi, Pinus monticola, or Tsuga heterophylla
     #     (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
     #     OR
-    #     f.  Any EXOTIC = yes tree species =>80% RIV
+    #     f.  Any EXOTIC = Y tree species =>80% RIV
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '242A, 242B, 242C, M242A, M242B, M242C, M242D, M261, 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331, M332, M333, M334, 341, M341, 342'}
@@ -6849,7 +6849,7 @@ def element_133():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):

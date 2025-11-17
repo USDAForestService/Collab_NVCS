@@ -54,7 +54,7 @@
         {"species": "Picea rubens"}
       ],
       "RIVERINE": [
-        {"riverine": "yes"}
+        {"riverine": "Y"}
       ]
    }
 

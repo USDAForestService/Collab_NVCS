@@ -8,7 +8,7 @@
             "weedy native vegetation that invades natural stands or vegetation",
             "that dominates on formerly cleared and/or planted sites but which",
             "has been allowed to succeed more-or-less spontaneously). Tree",
-            "composition dominated by ruderal native or EXOTIC = yes",
+            "composition dominated by ruderal native or EXOTIC = Y",
             "(>= 80% RIV)",
             "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division"
         ],
@@ -18,10 +18,10 @@
         "filters": {
             "RUDERAL_OR_EXOTIC": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 },
                 {
-                    "ruderal": "yes"
+                    "ruderal": "Y"
                 }
             ]
         }

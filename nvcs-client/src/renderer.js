@@ -1949,7 +1949,7 @@ function checkInvalidBinaryValueError() {
     let html = `
         <p>
             Invalid binary values have been detected within ${invalidBinaryValues.length} hierarchy elements!
-            These binary filters should only have their inputs set to "yes" or "no".
+            These binary filters should only have their inputs set to "Y" or "N".
             <button id='btn-toggle-invalid-binary-errors' aria-describedby="nested-binary-errors" aria-controls='nested-binary-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
@@ -2868,7 +2868,7 @@ function createFlattenedErrors() {
                         alertType: "error",
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
-                        targetProblem: `${invalid.filter} - ${invalid.value} is not a valid binary assignment (yes/no)`
+                        targetProblem: `${invalid.filter} - ${invalid.value} is not a valid binary assignment (Y/N)`
                     });
                 }
             }

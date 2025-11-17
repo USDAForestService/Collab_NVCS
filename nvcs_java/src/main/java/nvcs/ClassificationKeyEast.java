@@ -230,7 +230,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // = "Clear evidence of artificial regeneration," Condition Table, Miles et al. 2001)
 
         List<KeyValue> PLANTATION_pattern0 = Arrays.asList(
-            new KeyValue("plantation", "yes")
+            new KeyValue("plantation", "Y")
         );
         List<List<KeyValue>> PLANTATION_patterns = Arrays.asList(
             PLANTATION_pattern0
@@ -351,7 +351,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         List<KeyValue> NATIVE_CONIFERS_pattern0 = Arrays.asList(
             new KeyValue("softwoodhardwood", "S"),
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> NATIVE_CONIFERS_patterns = Arrays.asList(
             NATIVE_CONIFERS_pattern0
@@ -360,7 +360,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         List<KeyValue> EXOTIC_CONIFERS_pattern0 = Arrays.asList(
             new KeyValue("softwoodhardwood", "S"),
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_CONIFERS_patterns = Arrays.asList(
             EXOTIC_CONIFERS_pattern0
@@ -428,7 +428,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         List<KeyValue> NATIVE_HARDWOODS_pattern0 = Arrays.asList(
             new KeyValue("softwoodhardwood", "H"),
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> NATIVE_HARDWOODS_patterns = Arrays.asList(
             NATIVE_HARDWOODS_pattern0
@@ -437,7 +437,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         List<KeyValue> EXOTIC_HARDWOODS_pattern0 = Arrays.asList(
             new KeyValue("softwoodhardwood", "H"),
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_HARDWOODS_patterns = Arrays.asList(
             EXOTIC_HARDWOODS_pattern0
@@ -570,7 +570,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Appendix A) with RIV > exotic conifers
 
         List<KeyValue> NATIVE_CONIFERS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "no"),
+            new KeyValue("exotic", "N"),
             new KeyValue("softwoodhardwood", "S")
         );
         List<List<KeyValue>> NATIVE_CONIFERS_patterns = Arrays.asList(
@@ -579,7 +579,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList NATIVE_CONIFERS = new PatternList("NATIVE_CONIFERS", NATIVE_CONIFERS_patterns);
 
         List<KeyValue> EXOTIC_CONIFERS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes"),
+            new KeyValue("exotic", "Y"),
             new KeyValue("softwoodhardwood", "S")
         );
         List<List<KeyValue>> EXOTIC_CONIFERS_patterns = Arrays.asList(
@@ -1788,7 +1788,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Appendix A) with RIV > exotic hardwoods.
 
         List<KeyValue> NATIVE_HARDWOODS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "no"),
+            new KeyValue("exotic", "N"),
             new KeyValue("softwoodhardwood", "H")
         );
         List<List<KeyValue>> NATIVE_HARDWOODS_patterns = Arrays.asList(
@@ -1797,7 +1797,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList NATIVE_HARDWOODS = new PatternList("NATIVE_HARDWOODS", NATIVE_HARDWOODS_patterns);
 
         List<KeyValue> EXOTIC_HARDWOODS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes"),
+            new KeyValue("exotic", "Y"),
             new KeyValue("softwoodhardwood", "H")
         );
         List<List<KeyValue>> EXOTIC_HARDWOODS_patterns = Arrays.asList(
@@ -2277,10 +2277,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         //      Fraxinus nigra, Larix laricina, Picea mariana, Populus balsamifera, and Thuja occidentalis have a combined RIV >= 25%
 
         List<KeyValue> HYDRIC_OR_RIVERINE_pattern0 = Arrays.asList(
-            new KeyValue("hydric", "yes")
+            new KeyValue("hydric", "Y")
         );
         List<KeyValue> HYDRIC_OR_RIVERINE_pattern1 = Arrays.asList(
-            new KeyValue("riverine", "yes")
+            new KeyValue("riverine", "Y")
         );
         List<List<KeyValue>> HYDRIC_OR_RIVERINE_patterns = Arrays.asList(
             HYDRIC_OR_RIVERINE_pattern0,
@@ -2314,7 +2314,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         List<KeyValue> WETLAND_pattern0 = Arrays.asList(
             new KeyValue("wetland", "obl, facw"),
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> WETLAND_patterns = Arrays.asList(
             WETLAND_pattern0
@@ -2323,7 +2323,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         List<KeyValue> UPLAND_pattern0 = Arrays.asList(
             new KeyValue("wetland", "upl"),
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> UPLAND_patterns = Arrays.asList(
             UPLAND_pattern0
@@ -2339,7 +2339,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList ECOREGIONS_III = new PatternList("ECOREGIONS_III", ECOREGIONS_III_patterns);
 
         List<KeyValue> RIVERINE_pattern0 = Arrays.asList(
-            new KeyValue("riverine", "yes")
+            new KeyValue("riverine", "Y")
         );
         List<List<KeyValue>> RIVERINE_patterns = Arrays.asList(
             RIVERINE_pattern0
@@ -2506,10 +2506,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -2729,10 +2729,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -3032,10 +3032,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -4376,10 +4376,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -4520,10 +4520,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -5260,7 +5260,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList STRONG_CENTRAL_SWAMP_DIAGNOSTICS = new PatternList("STRONG_CENTRAL_SWAMP_DIAGNOSTICS", STRONG_CENTRAL_SWAMP_DIAGNOSTICS_patterns);
 
         List<KeyValue> RIVERINE_pattern0 = Arrays.asList(
-            new KeyValue("riverine", "yes")
+            new KeyValue("riverine", "Y")
         );
         List<List<KeyValue>> RIVERINE_patterns = Arrays.asList(
             RIVERINE_pattern0
@@ -5523,7 +5523,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> RUDERAL_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<List<KeyValue>> RUDERAL_SPECIES_patterns = Arrays.asList(
             RUDERAL_SPECIES_pattern0
@@ -5555,10 +5555,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -5748,10 +5748,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -6107,10 +6107,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,
@@ -7157,10 +7157,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_SPECIES_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_SPECIES_pattern0,

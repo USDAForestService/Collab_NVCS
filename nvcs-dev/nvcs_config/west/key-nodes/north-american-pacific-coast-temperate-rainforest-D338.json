@@ -25,7 +25,7 @@
             "  Umbellularia californica (>=30% RIV; i.e., together STRONG and",
             "  MODERATE diagnostic species RIV =>50%) ",
             "  OR ",
-            "  c.  Any EXOTIC = yes tree species =>80% RIV",
+            "  c.  Any EXOTIC = Y tree species =>80% RIV",
             "",
             "TRANSLATES TO:",
             "",
@@ -95,7 +95,7 @@
             "  or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE",
             "  diagnostic species RIV =>50%)",
             "OR",
-            "  vii. Any EXOTIC = yes tree species >= 80%"
+            "  vii. Any EXOTIC = Y tree species >= 80%"
         ],
         "trigger": [
             "(match(ECOREGIONS_1) and riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) or",
@@ -247,7 +247,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

@@ -8,7 +8,7 @@
             "little or no evidence of trees in a row, no very recent logging,",
             "understory mowing, etc. (trees may be early successional pole-sized",
             "trees following logging or blowdowns). Tree composition is dominated by",
-            "EXOTIC = yes (< 20% RIV)",
+            "EXOTIC = Y (< 20% RIV)",
             "(See Appendix xx [PLACEHOLDER])"
         ],
         "trigger": [
@@ -17,7 +17,7 @@
         "filters": {
             "EXOTIC": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

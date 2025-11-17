@@ -14,7 +14,7 @@
             "or Pseudotsuga menziesii",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
             "OR",
-            "c. Any EXOTIC = yes tree species =>80% RIV",
+            "c. Any EXOTIC = Y tree species =>80% RIV",
             "AND",
             "ii. Located in ECOREGION M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262"
         ],
@@ -147,7 +147,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

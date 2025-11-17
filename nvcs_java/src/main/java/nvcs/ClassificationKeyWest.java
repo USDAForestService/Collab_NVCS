@@ -295,7 +295,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic.
 
         List<KeyValue> PLANTATION_pattern0 = Arrays.asList(
-            new KeyValue("plantation", "yes")
+            new KeyValue("plantation", "Y")
         );
         List<List<KeyValue>> PLANTATION_patterns = Arrays.asList(
             PLANTATION_pattern0
@@ -303,10 +303,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList PLANTATION = new PatternList("PLANTATION", PLANTATION_patterns);
 
         List<KeyValue> PLANTED_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("planted", "yes")
+            new KeyValue("planted", "Y")
         );
         List<KeyValue> PLANTED_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> PLANTED_EXOTIC_patterns = Arrays.asList(
             PLANTED_EXOTIC_pattern0,
@@ -315,7 +315,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList PLANTED_EXOTIC = new PatternList("PLANTED_EXOTIC", PLANTED_EXOTIC_patterns);
 
         List<KeyValue> PLANTED_POPULUS_pattern0 = Arrays.asList(
-            new KeyValue("planted", "yes")
+            new KeyValue("planted", "Y")
         );
         List<KeyValue> PLANTED_POPULUS_pattern1 = Arrays.asList(
             new KeyValue("species", "Populus")
@@ -418,7 +418,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList ECOREGIONS_IV = new PatternList("ECOREGIONS_IV", ECOREGIONS_IV_patterns);
 
         List<KeyValue> RIVERINE_pattern0 = Arrays.asList(
-            new KeyValue("riverine", "yes")
+            new KeyValue("riverine", "Y")
         );
         List<List<KeyValue>> RIVERINE_patterns = Arrays.asList(
             RIVERINE_pattern0
@@ -426,10 +426,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList RIVERINE = new PatternList("RIVERINE", RIVERINE_patterns);
 
         List<KeyValue> HYDRIC_OR_RIVERINE_pattern0 = Arrays.asList(
-            new KeyValue("hydric", "yes")
+            new KeyValue("hydric", "Y")
         );
         List<KeyValue> HYDRIC_OR_RIVERINE_pattern1 = Arrays.asList(
-            new KeyValue("riverine", "yes")
+            new KeyValue("riverine", "Y")
         );
         List<List<KeyValue>> HYDRIC_OR_RIVERINE_patterns = Arrays.asList(
             HYDRIC_OR_RIVERINE_pattern0,
@@ -449,7 +449,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "OBL")
         );
         List<KeyValue> W1_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> W1_UNDERSTORY_patterns = Arrays.asList(
             W1_UNDERSTORY_pattern0,
@@ -469,7 +469,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "FACW")
         );
         List<KeyValue> W2_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> W2_UNDERSTORY_patterns = Arrays.asList(
             W2_UNDERSTORY_pattern0,
@@ -489,7 +489,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "OBL, FACW")
         );
         List<KeyValue> WI_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> WI_patterns = Arrays.asList(
             WI_pattern0,
@@ -501,10 +501,10 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "OBL, FACW")
         );
         List<KeyValue> WI_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<KeyValue> WI_UNDERSTORY_pattern2 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> WI_UNDERSTORY_patterns = Arrays.asList(
             WI_UNDERSTORY_pattern0,
@@ -517,7 +517,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "UPL")
         );
         List<KeyValue> UI_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> UI_patterns = Arrays.asList(
             UI_pattern0,
@@ -529,10 +529,10 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "UPL")
         );
         List<KeyValue> UI_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<KeyValue> UI_UNDERSTORY_pattern2 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> UI_UNDERSTORY_patterns = Arrays.asList(
             UI_UNDERSTORY_pattern0,
@@ -733,7 +733,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Acer negundo, Acer saccharinum, Celtis laevigata, Platanus occidentalis, or Ulmus americana
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "332, M334, 331")
@@ -800,7 +800,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -829,11 +829,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -932,11 +932,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
-        // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+        // Tree composition dominated by EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -976,7 +976,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
         // [Additional tree species not tracked by FIA include Ulmus crassifolia]
         // OR
-        // iii. Located in above ECOREGION and any EXOTIC = yes tree species =>80% RIV
+        // iii. Located in above ECOREGION and any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_1_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "315")
@@ -1107,7 +1107,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList SPECIES_3 = new PatternList("SPECIES_3", SPECIES_3_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -1135,11 +1135,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1281,11 +1281,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
-        // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+        // Tree composition dominated by EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1351,7 +1351,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
         // [Additional tree species not tracked by FIA include Pinus contorta var. murrayana]
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "242, M242, 261A, M261, 263")
@@ -1470,7 +1470,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -1499,11 +1499,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1810,11 +1810,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
-        // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+        // Tree composition dominated by EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1854,7 +1854,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // and Populus deltoides
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "M242C, M242D, 313, M313, 315, 322, 331A, M331, M332, M333, M334, 341, M341, 342")
@@ -1981,7 +1981,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -2010,11 +2010,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -2297,11 +2297,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
-        // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+        // Tree composition dominated by EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -2345,7 +2345,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // and Umbellularia californica
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "261, M261, 262, M262, 313, M313, 315, 321, 322, M331, 341, M341, 342")
@@ -2600,7 +2600,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -2629,11 +2629,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -3132,15 +3132,15 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously). Tree
-        // composition dominated by ruderal native or EXOTIC = yes
+        // composition dominated by ruderal native or EXOTIC = Y
         // (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division
 
         List<KeyValue> RUDERAL_OR_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_pattern0,
@@ -3490,7 +3490,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Prunus virginiana, or Quercus muehlenbergii
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_1_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "222, 231, 251, 255, 315, 321, 331, 332")
@@ -3657,7 +3657,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -4119,11 +4119,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -4470,11 +4470,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
-        // Tree composition dominated by ruderal native or EXOTIC = yes (>= 80% RIV)
+        // Tree composition dominated by ruderal native or EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -4555,7 +4555,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Persea borbonia, Prunus serotina, Quercus marilandica, Quercus stellata,
         // or Ulmus alata (>=40% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "315E")
@@ -4638,7 +4638,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -4667,14 +4667,14 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -4815,14 +4815,14 @@ public class ClassificationKeyWest extends ClassificationKey {
         // native vegetation that invades natural stands or vegetation that
         // dominates on formerly cleared and/or planted sites but which has been
         // allowed to succeed more-or-less spontaneously). Tree composition
-        // dominated by ruderal native or EXOTIC = yes (>= 80% RIV)
+        // dominated by ruderal native or EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -4868,7 +4868,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Quercus shumardii, Ulmus alata, or Ulmus crassifolia
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "315, 332")
@@ -5043,10 +5043,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<KeyValue> EXOTIC_TREE_SPP_pattern1 = Arrays.asList(
-            new KeyValue("tallytree", "yes")
+            new KeyValue("tallytree", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0,
@@ -5076,11 +5076,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -5485,14 +5485,14 @@ public class ClassificationKeyWest extends ClassificationKey {
         // native vegetation that invades natural stands or vegetation that
         // dominates on formerly cleared and/or planted sites but which has been
         // allowed to succeed more-or-less spontaneously). Tree composition
-        // dominated by ruderal native or EXOTIC = yes (>= 80% RIV)
+        // dominated by ruderal native or EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -5518,10 +5518,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Only one Macrogroup
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -6243,7 +6243,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // or Pseudotsuga menziesii
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
         // AND
         // ii. Located in ECOREGION M242B, 342B, 263, M261, 341D, 341F, 262, 322, 261, M262
 
@@ -6412,7 +6412,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -6441,11 +6441,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // EXOTIC = yes (< 20% RIV)
+        // EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -6733,11 +6733,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
-        // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+        // Tree composition dominated by EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER] – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -6783,7 +6783,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),
         // [Additional tree species not tracked by FIA include Quercus laceyi]
         // OR
-        // c. Any EXOTIC = yes tree species =>80% RIV
+        // c. Any EXOTIC = Y tree species =>80% RIV
         // AND
         // ii. Located in ECOREGION 322, 313, M313, 321, 315
 
@@ -6968,7 +6968,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -6997,11 +6997,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // little or no evidence of trees in a row, no very recent logging,
         // understory mowing, etc. (trees may be early successional pole-sized
         // trees following logging or blowdowns). Tree composition is dominated by
-        // ruderal native or EXOTIC = yes (< 20% RIV)
+        // ruderal native or EXOTIC = Y (< 20% RIV)
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -7873,11 +7873,11 @@ public class ClassificationKeyWest extends ClassificationKey {
         // weedy native vegetation that invades natural stands or vegetation
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
-        // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
+        // Tree composition dominated by EXOTIC = Y (>= 80% RIV)
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -7957,7 +7957,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //   Umbellularia californica (>=30% RIV; i.e., together STRONG and
         //   MODERATE diagnostic species RIV =>50%) 
         //   OR 
-        //   c.  Any EXOTIC = yes tree species =>80% RIV
+        //   c.  Any EXOTIC = Y tree species =>80% RIV
         // 
         // TRANSLATES TO:
         // 
@@ -8027,7 +8027,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //   or Umbellularia californica (>=30% RIV; i.e., together STRONG and MODERATE
         //   diagnostic species RIV =>50%)
         // OR
-        //   vii. Any EXOTIC = yes tree species >= 80%
+        //   vii. Any EXOTIC = Y tree species >= 80%
 
         List<KeyValue> ECOREGIONS_1_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "242A, M242, 261A, M261A, M261B, 263")
@@ -8222,7 +8222,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -8704,7 +8704,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //   Pinus ponderosa, or Quercus gambelii (>=30% RIV; i.e.,
         //   together STRONG and MODERATE diagnostic species =>50% RIV)
         //   OR
-        //   c.  Any EXOTIC = yes tree species =>80% RIV
+        //   c.  Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "M242C, M261D, M261E, M261G, M262B, 313, M313, 315, 321, 322, 331B, 331I, 331J, M331, M332, 341, M341, 342")
@@ -8771,7 +8771,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -9424,7 +9424,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //     Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and MODERATE 
         //     diagnostic species =>50% RIV) 
         //     OR 
-        //     f.  Any EXOTIC = yes tree species =>80% RIV 
+        //     f.  Any EXOTIC = Y tree species =>80% RIV 
         // OR 
         //   M242C and M242D Exclusion/Exception for Pinus contorta, Pinus ponderosa, and 
         //   Pseudotsuga menziesii: Tree composition and ecology matching one of the 
@@ -9439,7 +9439,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //           diagnostic species, any combination of Abies bracteata, Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus contorta, Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and 
         //           MODERATE diagnostic species =>50% RIV) 
         //       OR 
-        //       d.  Any EXOTIC = yes tree species =>80% RIV
+        //       d.  Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_I_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "242, M242, M261, 261A, 262, 263, 341D")
@@ -9602,7 +9602,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES_I = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_I", MODERATE_DIAGNOSTIC_SPECIES_I_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -10487,7 +10487,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Only one Macrogroup
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -10566,7 +10566,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //     Quercus macrocarpa, or Ulmus americana (>=30% RIV; i.e., together STRONG
         //     and MODERATE diagnostic species =>50% RIV) 
         //     OR
-        //     c.  Any EXOTIC = yes tree species =>80% RIV
+        //     c.  Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "M242C, M242D, 313A, 313B, 313C, 313D, 315A, 315B, 315F, 315H, 321, M313, 322A, 331, M331, M332, M333, M334, 341, M341, 342")
@@ -10717,7 +10717,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -12145,7 +12145,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         //     Pinus jeffreyi, Pinus monticola, or Tsuga heterophylla
         //     (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)
         //     OR
-        //     f.  Any EXOTIC = yes tree species =>80% RIV
+        //     f.  Any EXOTIC = Y tree species =>80% RIV
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "242A, 242B, 242C, M242A, M242B, M242C, M242D, M261, 313A, 313B, 313C, M313, 315A, 315H, 321A, 322A, 322B, 331, M331, M332, M333, M334, 341, M341, 342")
@@ -12256,7 +12256,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0

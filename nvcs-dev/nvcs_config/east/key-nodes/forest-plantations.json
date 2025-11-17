@@ -22,7 +22,7 @@
 
    "filters": {
       "PLANTATION": [
-        {"plantation": "yes"}
+        {"plantation": "Y"}
       ]
    }
 

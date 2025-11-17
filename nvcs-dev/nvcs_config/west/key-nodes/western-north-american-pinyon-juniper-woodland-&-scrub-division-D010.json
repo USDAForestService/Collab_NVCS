@@ -20,7 +20,7 @@
             "  Pinus ponderosa, or Quercus gambelii (>=30% RIV; i.e.,",
             "  together STRONG and MODERATE diagnostic species =>50% RIV)",
             "  OR",
-            "  c.  Any EXOTIC = yes tree species =>80% RIV"
+            "  c.  Any EXOTIC = Y tree species =>80% RIV"
         ],
         "trigger": [
             "match(ECOREGIONS)",
@@ -76,7 +76,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }
