@@ -193,8 +193,8 @@ async function handleReturnedHierarchy(returnedData, isCustom) {
     const returnedConfig = JSON.parse(returnedData.config ?? "{}");
     currentHierarchyType = returnedConfig?.type ?? "west";
     console.log("Current Hierarchy Type ", currentHierarchyType);
-
-    nodeJson = JSON.parse(returnedData.json);
+    const cleanedJson = cleanUpNodeJson(returnedData.json);
+    nodeJson = JSON.parse(cleanedJson);
     nodeHierarchy = returnedData.hierarchy;
     documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
     flattenedAlerts = returnedData.alerts ? JSON.parse(returnedData.alerts) : [];
@@ -274,6 +274,13 @@ async function handleReturnedHierarchy(returnedData, isCustom) {
     document.getElementById("btn-search-hierarchy").disabled = false;
     document.getElementById("btn-show-document").disabled = false;
     document.getElementById("btn-document-editor").disabled = false;
+}
+
+function cleanUpNodeJson(json) {
+    // Handle use of old binary terminology
+    return json
+        .replaceAll("\"yes\"", "\"Y\"")
+        .replaceAll("\"no\"", "\"N\"");
 }
 
 function handleSaveButton() {
