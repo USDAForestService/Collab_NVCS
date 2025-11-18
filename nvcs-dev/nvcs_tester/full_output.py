@@ -56,16 +56,10 @@ def generateFullOutput(type, in_ClassificationKey, in_AnlyTestData, in_RefSpecie
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefSpecies['new_tbl_nm'], in_RefSpecies['description'])
         
         # Prepare & create table containing REF_FOREST_TYPE values
-        fs_fiadb_ref_forest_type_definition = (
-            f"CREATE TABLE '{in_RefForestType['new_tbl_nm']}' ("
-            "'VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',"
-            "'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',"
-            "'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE')"
-        )
-        fs_fiadb_ref_forest_type_columns = ['VALUE', 'MEANING', 'TYPGRPCD', 'MANUAL_START', 'MANUAL_END',
-                                            'ALLOWED_IN_FIELD', 'CREATED_BY', 'CREATED_DATE', 'CREATED_IN_INSTANCE',
-                                            'MODIFIED_BY', 'MODIFIED_DATE', 'MODIFIED_IN_INSTANCE']
-        fs_fiadb_ref_forest_type_rows = plot_io.read_csv(in_RefForestType["source"])
+        fs_fiadb_ref_forest_type_definition, fs_fiadb_ref_forest_type_columns = plot_io.table_info_sqlite(
+            in_RefForestType['source'], in_RefForestType['source_tbl_nm'], new_tbl=in_RefForestType['new_tbl_nm'])
+        fs_fiadb_ref_forest_type_rows = plot_io.query_sqlite(
+            in_RefForestType['source'], f"SELECT * FROM {in_RefForestType['source_tbl_nm']};")
         plot_io.write_table_sqlite(out_Options["output_db"], in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
                              fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefForestType['new_tbl_nm'], in_RefForestType['description'])
@@ -319,7 +313,8 @@ if __name__ == '__main__':
     }
 
     in_RefForestType = {
-        "source": config.get(config.fullOutputSection, "In_RefForestTypeDataPath"),
+        "source": config.get(config.fullOutputSection, "In_DbPath"),
+        "source_tbl_nm": config.get(config.fullOutputSection, "RefForestTypeName"),
         "new_tbl_nm": config.get(config.fullOutputSection, "RefForestTypeName"),
         "description": config.get(config.fullOutputSection, "RefForestTypeDesc")
     }
