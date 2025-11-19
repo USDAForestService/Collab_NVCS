@@ -41,9 +41,9 @@ def generateFullOutput(type, in_ClassificationKey, in_AnlyTestData, in_RefSpecie
             in_AnlyTestData['source'], f"SELECT * FROM {in_AnlyTestData['source_tbl_nm']};")
         plot_io.write_table_sqlite(out_Options["output_db"], in_AnlyTestData['new_tbl_nm'], nvcs_analytical_test_data_rows,
                              nvcs_analytical_test_data_columns, nvcs_analytical_test_data_definition)
-        plot_io.execute_sqlite(out_Options["output_db"], f"DROP INDEX IF EXISTS NATD_PK;")
+        plot_io.execute_sqlite(out_Options["output_db"], "DROP INDEX IF EXISTS NATD_PK;")
         plot_io.execute_sqlite(out_Options["output_db"],
-                               f"CREATE INDEX NATD_PK ON {in_AnlyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
+                               f"CREATE UNIQUE INDEX NATD_PK ON {in_AnlyTestData['new_tbl_nm']} (IDENT, SYMBOL);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_AnlyTestData['new_tbl_nm'], in_AnlyTestData['description'])
 
         # Prepare & create table containing REF_SPECIES_NVCS data
@@ -53,15 +53,24 @@ def generateFullOutput(type, in_ClassificationKey, in_AnlyTestData, in_RefSpecie
             in_RefSpecies['source'], f"SELECT * FROM {in_RefSpecies['source_tbl_nm']};")
         plot_io.write_table_sqlite(out_Options["output_db"], in_RefSpecies['new_tbl_nm'], ref_species_rows,
                              ref_species_columns, ref_species_definition)
+        plot_io.execute_sqlite(out_Options["output_db"], "DROP INDEX IF EXISTS RSN_PK;")
+        plot_io.execute_sqlite(out_Options["output_db"],
+                               f"CREATE UNIQUE INDEX RSN_PK ON {in_RefSpecies['new_tbl_nm']} (CN);")
+        plot_io.execute_sqlite(out_Options["output_db"], "DROP INDEX IF EXISTS RSN_UK;")
+        plot_io.execute_sqlite(out_Options["output_db"],
+                               f"CREATE UNIQUE INDEX RSN_UK ON {in_RefSpecies['new_tbl_nm']} (SYMBOL);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefSpecies['new_tbl_nm'], in_RefSpecies['description'])
         
         # Prepare & create table containing REF_FOREST_TYPE values
-        fs_fiadb_ref_forest_type_definition, fs_fiadb_ref_forest_type_columns = plot_io.table_info_sqlite(
+        ref_forest_type_definition, ref_forest_type_columns = plot_io.table_info_sqlite(
             in_RefForestType['source'], in_RefForestType['source_tbl_nm'], new_tbl=in_RefForestType['new_tbl_nm'])
-        fs_fiadb_ref_forest_type_rows = plot_io.query_sqlite(
+        ref_forest_type_rows = plot_io.query_sqlite(
             in_RefForestType['source'], f"SELECT * FROM {in_RefForestType['source_tbl_nm']};")
-        plot_io.write_table_sqlite(out_Options["output_db"], in_RefForestType['new_tbl_nm'], fs_fiadb_ref_forest_type_rows,
-                             fs_fiadb_ref_forest_type_columns, fs_fiadb_ref_forest_type_definition)
+        plot_io.write_table_sqlite(out_Options["output_db"], in_RefForestType['new_tbl_nm'], ref_forest_type_rows,
+                             ref_forest_type_columns, ref_forest_type_definition)
+        plot_io.execute_sqlite(out_Options["output_db"], "DROP INDEX IF EXISTS RFT_PK;")
+        plot_io.execute_sqlite(out_Options["output_db"],
+                               f"CREATE UNIQUE INDEX RFT_PK ON {in_RefForestType['new_tbl_nm']} (VALUE);")
         write_metadata(out_Options["output_db"], in_RefKeyOutput["new_tbl_nm"], in_RefForestType['new_tbl_nm'], in_RefForestType['description'])
 
     # Prepare & create table containing NVCS classifications, IDs, and codes
@@ -307,7 +316,7 @@ if __name__ == '__main__':
 
     in_RefSpecies = {
         "source": config.get(config.fullOutputSection, "In_DbPath"),
-        "source_tbl_nm": config.get(config.target, "In_RefSpeciesDbTable"),
+        "source_tbl_nm": config.get(config.fullOutputSection, "RefSpeciesName"),
         "new_tbl_nm": config.get(config.fullOutputSection, "RefSpeciesName"),
         "description": config.get(config.fullOutputSection, "RefSpeciesDesc")
     }
