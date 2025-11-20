@@ -666,7 +666,7 @@ def element_015():
 
     SOUTHERN_PINES = PatternList('SOUTHERN_PINES',
         {'species': 'Pinus echinata'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'},
         {'species': 'Pinus taeda'},
         {'species': 'Pinus clausa'}
@@ -702,7 +702,7 @@ def element_016():
     )
 
     SLASH_PINE = PatternList('SLASH_PINE',
-        {'species': 'Pinus elliottii'}
+        {'species': 'Pinus elliottii var. elliottii'}
     )
 
     LOBLOLLY_PINE = PatternList('LOBLOLLY_PINE',
@@ -743,7 +743,7 @@ def element_017():
     )
 
     SLASH_PINE = PatternList('SLASH_PINE',
-        {'species': 'Pinus elliottii'}
+        {'species': 'Pinus elliottii var. elliottii'}
     )
 
     LOBLOLLY_PINE = PatternList('LOBLOLLY_PINE',
@@ -784,7 +784,7 @@ def element_018():
     )
 
     SLASH_PINE = PatternList('SLASH_PINE',
-        {'species': 'Pinus elliottii'}
+        {'species': 'Pinus elliottii var. elliottii'}
     )
 
     LOBLOLLY_PINE = PatternList('LOBLOLLY_PINE',
@@ -825,7 +825,7 @@ def element_019():
     )
 
     SLASH_PINE = PatternList('SLASH_PINE',
-        {'species': 'Pinus elliottii'}
+        {'species': 'Pinus elliottii var. elliottii'}
     )
 
     LOBLOLLY_PINE = PatternList('LOBLOLLY_PINE',
@@ -866,7 +866,7 @@ def element_020():
     )
 
     SLASH_PINE = PatternList('SLASH_PINE',
-        {'species': 'Pinus elliottii'}
+        {'species': 'Pinus elliottii var. elliottii'}
     )
 
     LOBLOLLY_PINE = PatternList('LOBLOLLY_PINE',
@@ -957,7 +957,7 @@ def element_023():
         {'species': 'Pinus clausa'},
         {'species': 'Pinus echinata'},
         {'species': 'Pinus edulis'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus flexilis'},
         {'species': 'Pinus glabra'},
@@ -1280,7 +1280,7 @@ def element_034():
     COMMON_EXOTIC_CONIFERS = PatternList('COMMON_EXOTIC_CONIFERS',
         {'species': 'Pinus sylvestris'},
         {'species': 'Picea abies'},
-        {'species': 'Larix spp.'}
+        {'species': 'Larix'}
     )
 
     NORTHERN_REGION = PatternList('NORTHERN_REGION',
@@ -1312,7 +1312,7 @@ def element_035():
 
     NORWAY_SPRUCE_LARCH = PatternList('NORWAY_SPRUCE_LARCH',
         {'species': 'Picea abies'},
-        {'species': 'Larix spp.'}
+        {'species': 'Larix'}
     )
 
     def match(plot):
@@ -1341,7 +1341,7 @@ def element_036():
 
     OTHER_EXOTIC_CONIFERS = PatternList('OTHER_EXOTIC_CONIFERS',
         {'species': 'Pinus sylvestris'},
-        {'species': 'Larix spp.'}
+        {'species': 'Larix'}
     )
 
     def match(plot):
@@ -1365,7 +1365,7 @@ def element_037():
     #     of Pinus sylvestris or Picea abies alone or in combination <25% RIV
 
     LARIX_SPP = PatternList('LARIX_SPP',
-        {'species': 'Larix spp.'}
+        {'species': 'Larix'}
     )
 
     OTHER_EXOTIC_CONIFERS = PatternList('OTHER_EXOTIC_CONIFERS',
@@ -1517,7 +1517,7 @@ def element_044():
     )
 
     POPULUS_SPP = PatternList('POPULUS_SPP',
-        {'species': 'Populus spp.'}
+        {'species': 'Populus'}
     )
 
     BLACK_LOCUST = PatternList('BLACK_LOCUST',
@@ -1546,7 +1546,7 @@ def element_045():
 
     ASPEN = PatternList('ASPEN',
         {'species': 'Populus tremuloides'},
-        {'species': 'Populus spp.'}
+        {'species': 'Populus'}
     )
 
     BLACK_WALNUT = PatternList('BLACK_WALNUT',
@@ -1590,7 +1590,7 @@ def element_046():
     )
 
     POPULUS_SPP = PatternList('POPULUS_SPP',
-        {'species': 'Populus spp.'}
+        {'species': 'Populus'}
     )
 
     def match(plot):
@@ -1934,7 +1934,7 @@ def element_058():
 
     EXCLUDED_SPECIES = PatternList('EXCLUDED_SPECIES',
         {'species': 'Persea borbonia'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Quercus virginiana'},
         {'species': 'Taxodium ascendens'}
     )
@@ -2245,7 +2245,7 @@ def element_070():
 
     DIAGNOSTIC_SPECIES = PatternList('DIAGNOSTIC_SPECIES',
         {'species': 'Chamaecyparis thyoides'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus glabra'},
         {'species': 'Pinus palustris'},
         {'species': 'Pinus serotina'},
@@ -2345,7 +2345,7 @@ def element_072():
         {'species': 'Juglans nigra'},
         {'species': 'Juglans major'},
         {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Quercus shumardii'},
         {'species': 'Quercus virginiana'},
         {'species': 'Salix nigra'},
@@ -2407,7 +2407,7 @@ def element_073():
         {'species': 'Liquidambar styraciflua'},
         {'species': 'Nyssa biflora'},
         {'species': 'Persea borbonia'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus serotina'},
         {'species': 'Pinus taeda'},
         {'species': 'Taxodium distichum'},
@@ -2487,7 +2487,7 @@ def element_075():
         {'species': 'Carya aquatica'},
         {'species': 'Betula nigra'},
         {'species': 'Carya illinoinensis'},
-        {'species': 'Celtis laevigata'},
+        {'species': 'Celtis laevigata var. reticulata'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Fraxinus profunda'},
         {'species': 'Liquidambar styraciflua'},
@@ -2498,7 +2498,7 @@ def element_075():
         {'species': 'Nyssa ogeche'},
         {'species': 'Planera aquatica'},
         {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Quercus pagoda'},
         {'species': 'Quercus laurifolia'},
         {'species': 'Quercus lyrata'},
@@ -2528,7 +2528,7 @@ def element_075():
         {'species': 'Magnolia grandiflora'},
         {'species': 'Magnolia virginiana'},
         {'species': 'Nyssa sylvatica'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus glabra'},
         {'species': 'Pinus taeda'},
         {'species': 'Quercus macrocarpa'},
@@ -2567,7 +2567,7 @@ def element_076():
 
     STRONG_LONGLEAF_DIAGNOSTICS = PatternList('STRONG_LONGLEAF_DIAGNOSTICS',
         {'species': 'Pinus clausa'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'}
     )
 
@@ -2588,7 +2588,7 @@ def element_076():
         {'species': 'Carya aquatica'},
         {'species': 'Betula nigra'},
         {'species': 'Carya illinoinensis'},
-        {'species': 'Celtis laevigata'},
+        {'species': 'Celtis laevigata var. reticulata'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Fraxinus profunda'},
         {'species': 'Liquidambar styraciflua'},
@@ -2599,7 +2599,7 @@ def element_076():
         {'species': 'Nyssa ogeche'},
         {'species': 'Planera aquatica'},
         {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Quercus pagoda'},
         {'species': 'Quercus laurifolia'},
         {'species': 'Quercus lyrata'},
@@ -2641,7 +2641,7 @@ def element_077():
 
     STRONG_LONGLEAF_DIAGNOSTICS = PatternList('STRONG_LONGLEAF_DIAGNOSTICS',
         {'species': 'Pinus clausa'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'}
     )
 
@@ -2662,7 +2662,7 @@ def element_077():
         {'species': 'Carya aquatica'},
         {'species': 'Betula nigra'},
         {'species': 'Carya illinoinensis'},
-        {'species': 'Celtis laevigata'},
+        {'species': 'Celtis laevigata var. reticulata'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Fraxinus profunda'},
         {'species': 'Liquidambar styraciflua'},
@@ -2673,7 +2673,7 @@ def element_077():
         {'species': 'Nyssa ogeche'},
         {'species': 'Planera aquatica'},
         {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Quercus pagoda'},
         {'species': 'Quercus laurifolia'},
         {'species': 'Quercus lyrata'},
@@ -2713,7 +2713,7 @@ def element_078():
 
     STRONG_LONGLEAF_DIAGNOSTICS = PatternList('STRONG_LONGLEAF_DIAGNOSTICS',
         {'species': 'Pinus clausa'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'}
     )
 
@@ -2734,7 +2734,7 @@ def element_078():
         {'species': 'Carya aquatica'},
         {'species': 'Betula nigra'},
         {'species': 'Carya illinoinensis'},
-        {'species': 'Celtis laevigata'},
+        {'species': 'Celtis laevigata var. reticulata'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Fraxinus profunda'},
         {'species': 'Liquidambar styraciflua'},
@@ -2745,7 +2745,7 @@ def element_078():
         {'species': 'Nyssa ogeche'},
         {'species': 'Planera aquatica'},
         {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Quercus pagoda'},
         {'species': 'Quercus laurifolia'},
         {'species': 'Quercus lyrata'},
@@ -3133,17 +3133,17 @@ def element_091():
         {'species': 'Acer saccharinum'},
         {'species': 'Carya cordiformis'},
         {'species': 'Carya laciniosa'},
-        {'species': 'Celtis laevigata'},
+        {'species': 'Celtis laevigata var. reticulata'},
         {'species': 'Celtis occidentalis'},
         {'species': 'Betula nigra'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Populus deltoides spp. monilifera'},
         {'species': 'Salix bebbiana'},
         {'species': 'Salix nigra'},
         {'species': 'Salix caroliniana'},
-        {'species': 'Salix spp.'},
+        {'species': 'Salix'},
         {'species': 'Ulmus americana'},
         {'species': 'Ulmus rubra'}
     )
@@ -3160,7 +3160,7 @@ def element_091():
         {'species': 'Gleditsia triacanthos'},
         {'species': 'Liriodendron tulipifera'},
         {'species': 'Liquidambar styraciflua'},
-        {'species': 'Morus spp.'},
+        {'species': 'Morus'},
         {'species': 'Morus rubra'},
         {'species': 'Populus tremuloides'},
         {'species': 'Quercus bicolor'},
@@ -3225,7 +3225,7 @@ def element_092():
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Liriodendron tulipifera'},
         {'species': 'Liquidambar styraciflua'},
-        {'species': 'Morus spp.'},
+        {'species': 'Morus'},
         {'species': 'Morus rubra'},
         {'species': 'Ostrya virginiana'},
         {'species': 'Quercus alba'},
@@ -3283,17 +3283,17 @@ def element_094():
         {'species': 'Acer saccharinum'},
         {'species': 'Carya cordiformis'},
         {'species': 'Carya laciniosa'},
-        {'species': 'Celtis laevigata'},
+        {'species': 'Celtis laevigata var. reticulata'},
         {'species': 'Celtis occidentalis'},
         {'species': 'Betula nigra'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Populus deltoides spp. monilifera'},
         {'species': 'Salix bebbiana'},
         {'species': 'Salix nigra'},
         {'species': 'Salix caroliniana'},
-        {'species': 'Salix spp.'},
+        {'species': 'Salix'},
         {'species': 'Ulmus americana'},
         {'species': 'Ulmus rubra'}
     )
@@ -3414,7 +3414,7 @@ def element_099():
     )
 
     EXCLUDED_SPECIES = PatternList('EXCLUDED_SPECIES',
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'},
         {'species': 'Quercus virginiana'},
         {'species': 'Quercus laurifolia'},
@@ -3690,7 +3690,7 @@ def element_110():
     #     Sideroxylon salicifolium (together >=50% RIV)
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus caribaea'}
     )
 
@@ -3729,7 +3729,7 @@ def element_111():
     #     Sideroxylon salicifolium (together >=50% RIV);
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus caribaea'}
     )
 
@@ -3853,7 +3853,7 @@ def element_116():
         {'species': 'Pinus clausa'},
         {'species': 'Pinus glabra'},
         {'species': 'Pinus palustris'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Quercus incana'},
         {'species': 'Quercus laevis'},
         {'species': 'Quercus laurifolia'},
@@ -3998,10 +3998,10 @@ def element_119():
         {'species': 'Quercus phellos'},
         {'species': 'Quercus shumardii'},
         {'species': 'Sabal palmetto'},
-        {'species': 'Tilia spp.'},
+        {'species': 'Tilia'},
         {'species': 'Tilia americana'},
         {'species': 'Tilia americana var. heterophylla'},
-        {'species': 'Tilia americana var. caroliniana'}
+        {'species': 'Tilia americana'}
     )
 
     MODERATE_MESIC_DIAGNOSTICS = PatternList('MODERATE_MESIC_DIAGNOSTICS',
@@ -4009,12 +4009,12 @@ def element_119():
         {'species': 'Aesculus pavia'},
         {'species': 'Carpinus caroliniana'},
         {'species': 'Carya alba'},
-        {'species': 'Celtis spp.'},
-        {'species': 'Celtis laevigata'},
+        {'species': 'Celtis'},
+        {'species': 'Celtis laevigata var. reticulata'},
         {'species': 'Cornus florida'},
         {'species': 'Diospyros virginiana'},
         {'species': 'Fraxinus americana'},
-        {'species': 'Halesia spp.'},
+        {'species': 'Halesia'},
         {'species': 'Halesia carolina'},
         {'species': 'Liquidambar styraciflua'},
         {'species': 'Liriodendron tulipifera'},
@@ -4028,7 +4028,7 @@ def element_119():
         {'species': 'Quercus rubra'},
         {'species': 'Quercus virginiana'},
         {'species': 'Quercus nigra'},
-        {'species': 'Juniperus spp.'},
+        {'species': 'Juniperus'},
         {'species': 'Pinus taeda'}
     )
 
@@ -4066,14 +4066,14 @@ def element_120():
     DIAGNOSTIC_SPECIES_II = PatternList('DIAGNOSTIC_SPECIES_II',
         {'species': 'Pinus clausa'},
         {'species': 'Pinus echinata'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'},
         {'species': 'Pinus taeda'}
     )
 
     STRONG_LONGLEAF_DIAGNOSTICS = PatternList('STRONG_LONGLEAF_DIAGNOSTICS',
         {'species': 'Pinus clausa'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'}
     )
 
@@ -4149,12 +4149,12 @@ def element_121():
         {'species': 'Carpinus caroliniana'},
         {'species': 'Carya alba'},
         {'species': 'Carya glabra'},
-        {'species': 'Celtis laevigata'},
-        {'species': 'Celtis spp.'},
+        {'species': 'Celtis laevigata var. reticulata'},
+        {'species': 'Celtis'},
         {'species': 'Fraxinus americana'},
         {'species': 'Ilex opaca'},
-        {'species': 'Juniperus spp.'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Liquidambar styraciflua'},
         {'species': 'Magnolia grandiflora'},
         {'species': 'Nyssa sylvatica'},
@@ -4211,7 +4211,7 @@ def element_122():
 
     STRONG_LONGLEAF_DIAGNOSTICS = PatternList('STRONG_LONGLEAF_DIAGNOSTICS',
         {'species': 'Pinus clausa'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'}
     )
 
@@ -4230,10 +4230,10 @@ def element_122():
         {'species': 'Quercus phellos'},
         {'species': 'Quercus shumardii'},
         {'species': 'Sabal palmetto'},
-        {'species': 'Tilia spp.'},
+        {'species': 'Tilia'},
         {'species': 'Tilia americana'},
         {'species': 'Tilia americana var. heterophylla'},
-        {'species': 'Tilia americana var. caroliniana'}
+        {'species': 'Tilia americana'}
     )
 
     def match(plot):
@@ -4256,7 +4256,7 @@ def element_123():
 
     STRONG_LONGLEAF_DIAGNOSTICS = PatternList('STRONG_LONGLEAF_DIAGNOSTICS',
         {'species': 'Pinus clausa'},
-        {'species': 'Pinus elliottii'},
+        {'species': 'Pinus elliottii var. elliottii'},
         {'species': 'Pinus palustris'}
     )
 
@@ -4275,10 +4275,10 @@ def element_123():
         {'species': 'Quercus phellos'},
         {'species': 'Quercus shumardii'},
         {'species': 'Sabal palmetto'},
-        {'species': 'Tilia spp.'},
+        {'species': 'Tilia'},
         {'species': 'Tilia americana'},
         {'species': 'Tilia americana var. heterophylla'},
-        {'species': 'Tilia americana var. caroliniana'}
+        {'species': 'Tilia americana'}
     )
 
     def match(plot):
@@ -4404,7 +4404,7 @@ def element_129():
 
     STRONG_PLAINS_DIAGNOSTICS = PatternList('STRONG_PLAINS_DIAGNOSTICS',
         {'species': 'Fraxinus pennsylvanica'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Populus tremuloides'},
         {'species': 'Quercus macrocarpa'},
         {'species': 'Ulmus americana'},
@@ -4420,7 +4420,7 @@ def element_129():
         {'species': 'Acer negundo'},
         {'species': 'Betula papyrifera'},
         {'species': 'Celtis occidentalis'},
-        {'species': 'Crataegus spp.'},
+        {'species': 'Crataegus'},
         {'species': 'Juglans nigra'},
         {'species': 'Juniperus scopulorum'},
         {'species': 'Morus rubra'},
@@ -4482,7 +4482,7 @@ def element_130():
     STRONG_DIAGNOSTIC_SPECIES_II = PatternList('STRONG_DIAGNOSTIC_SPECIES_II',
         {'species': 'Acer pensylvanicum'},
         {'species': 'Acer spicatum'},
-        {'species': 'Amelanchier spp.'},
+        {'species': 'Amelanchier'},
         {'species': 'Betula alleghaniensis'},
         {'species': 'Betula papyrifera'},
         {'species': 'Betula populifolia'},
@@ -4588,7 +4588,7 @@ def element_131():
     )
 
     MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Amelanchier spp.'},
+        {'species': 'Amelanchier'},
         {'species': 'Betula populifolia'},
         {'species': 'Betula papyrifera'},
         {'species': 'Carpinus caroliniana'},
@@ -4767,7 +4767,7 @@ def element_136():
 
     STRONG_DRY_DIAGNOSTICS = PatternList('STRONG_DRY_DIAGNOSTICS',
         {'species': 'Carya ovata'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Pinus banksiana'},
         {'species': 'Pinus resinosa'},
         {'species': 'Pinus strobus'},
@@ -4787,7 +4787,7 @@ def element_136():
         {'species': 'Carya alba'},
         {'species': 'Carya glabra'},
         {'species': 'Carya laciniosa'},
-        {'species': 'Amelanchier spp.'},
+        {'species': 'Amelanchier'},
         {'species': 'Carpinus caroliniana'},
         {'species': 'Cercis canadensis'},
         {'species': 'Cornus florida'},
@@ -4843,7 +4843,7 @@ def element_137():
     STRONG_MESIC_DIAGNOSTICS = PatternList('STRONG_MESIC_DIAGNOSTICS',
         {'species': 'Acer nigrum'},
         {'species': 'Acer saccharum'},
-        {'species': 'Aesculus glabra'},
+        {'species': 'Aesculus glabra var. arguta'},
         {'species': 'Asimina triloba'},
         {'species': 'Carya cordiformis'},
         {'species': 'Celtis occidentalis'},
@@ -4867,7 +4867,7 @@ def element_137():
     MODERATE_MESIC_DIAGNOSTICS = PatternList('MODERATE_MESIC_DIAGNOSTICS',
         {'species': 'Acer barbatum'},
         {'species': 'Acer negundo'},
-        {'species': 'Amelanchier spp.'},
+        {'species': 'Amelanchier'},
         {'species': 'Betula populifolia'},
         {'species': 'Betula papyrifera'},
         {'species': 'Carpinus caroliniana'},
@@ -4878,7 +4878,7 @@ def element_137():
         {'species': 'Ostrya virginiana'},
         {'species': 'Pinus strobus'},
         {'species': 'Populus balsamifera'},
-        {'species': 'Populus deltoides'},
+        {'species': 'Populus deltoides ssp. monilifera'},
         {'species': 'Populus grandidentata'},
         {'species': 'Populus tremuloides'},
         {'species': 'Prunus pensylvanica'},
@@ -4934,7 +4934,7 @@ def element_138():
 
     STRONG_DRY_DIAGNOSTICS = PatternList('STRONG_DRY_DIAGNOSTICS',
         {'species': 'Carya ovata'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Pinus banksiana'},
         {'species': 'Pinus resinosa'},
         {'species': 'Pinus strobus'},
@@ -4952,7 +4952,7 @@ def element_138():
     STRONG_MESIC_DIAGNOSTICS = PatternList('STRONG_MESIC_DIAGNOSTICS',
         {'species': 'Acer nigrum'},
         {'species': 'Acer saccharum'},
-        {'species': 'Aesculus glabra'},
+        {'species': 'Aesculus glabra var. arguta'},
         {'species': 'Asimina triloba'},
         {'species': 'Carya cordiformis'},
         {'species': 'Celtis occidentalis'},
@@ -5044,7 +5044,7 @@ def element_140():
         {'species': 'Betula alleghaniensis'},
         {'species': 'Betula lenta'},
         {'species': 'Halesia carolina'},
-        {'species': 'Halesia spp.'},
+        {'species': 'Halesia'},
         {'species': 'Magnolia acuminata'},
         {'species': 'Magnolia tripetala'},
         {'species': 'Tilia americana var. heterophylla'},
@@ -5056,7 +5056,7 @@ def element_140():
         {'species': 'Acer pensylvanicum'},
         {'species': 'Acer saccharum'},
         {'species': 'Aesculus flava'},
-        {'species': 'Aesculus glabra'},
+        {'species': 'Aesculus glabra var. arguta'},
         {'species': 'Asimina triloba'},
         {'species': 'Betula alleghaniensis'},
         {'species': 'Betula lenta'},
@@ -5066,7 +5066,7 @@ def element_140():
         {'species': 'Fraxinus americana'},
         {'species': 'Fraxinus pennsylvanica'},
         {'species': 'Halesia carolina'},
-        {'species': 'Halesia spp.'},
+        {'species': 'Halesia'},
         {'species': 'Liriodendron tulipifera'},
         {'species': 'Liquidambar styraciflua'},
         {'species': 'Magnolia acuminata'},
@@ -5082,7 +5082,7 @@ def element_140():
 
     ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS = PatternList('ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS',
         {'species': 'Acer barbatum'},
-        {'species': 'Amelanchier spp.'},
+        {'species': 'Amelanchier'},
         {'species': 'Betula populifolia'},
         {'species': 'Betula papyrifera'},
         {'species': 'Carpinus caroliniana'},
@@ -5192,7 +5192,7 @@ def element_141():
         {'species': 'Cornus florida'},
         {'species': 'Diospyros virginiana'},
         {'species': 'Juglans nigra'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Liriodendron tulipifera'},
         {'species': 'Liquidambar styraciflua'},
         {'species': 'Nyssa sylvatica'},
@@ -5251,7 +5251,7 @@ def element_142():
         {'species': 'Carya alba'},
         {'species': 'Castanea dentata'},
         {'species': 'Fraxinus quadrangulata'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Nyssa sylvatica'},
         {'species': 'Pinus echinata'},
         {'species': 'Pinus pungens'},
@@ -5272,7 +5272,7 @@ def element_142():
     )
 
     MODERATE_APPALACHIAN_DRY_DIAGNOSTICS = PatternList('MODERATE_APPALACHIAN_DRY_DIAGNOSTICS',
-        {'species': 'Amelanchier spp.'},
+        {'species': 'Amelanchier'},
         {'species': 'Carpinus caroliniana'},
         {'species': 'Cercis canadensis'},
         {'species': 'Cornus florida'},
@@ -5346,7 +5346,7 @@ def element_144():
         {'species': 'Carya alba'},
         {'species': 'Castanea dentata'},
         {'species': 'Fraxinus quadrangulata'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Nyssa sylvatica'},
         {'species': 'Pinus echinata'},
         {'species': 'Pinus pungens'},
@@ -5371,7 +5371,7 @@ def element_144():
         {'species': 'Acer pensylvanicum'},
         {'species': 'Acer saccharum'},
         {'species': 'Aesculus flava'},
-        {'species': 'Aesculus glabra'},
+        {'species': 'Aesculus glabra var. arguta'},
         {'species': 'Asimina triloba'},
         {'species': 'Betula alleghaniensis'},
         {'species': 'Betula lenta'},
@@ -5435,7 +5435,7 @@ def element_145():
         {'species': 'Carya alba'},
         {'species': 'Castanea dentata'},
         {'species': 'Fraxinus quadrangulata'},
-        {'species': 'Juniperus virginiana'},
+        {'species': 'Juniperus virginiana var. silicicola'},
         {'species': 'Nyssa sylvatica'},
         {'species': 'Pinus echinata'},
         {'species': 'Pinus pungens'},
@@ -5460,7 +5460,7 @@ def element_145():
         {'species': 'Acer pensylvanicum'},
         {'species': 'Acer saccharum'},
         {'species': 'Aesculus flava'},
-        {'species': 'Aesculus glabra'},
+        {'species': 'Aesculus glabra var. arguta'},
         {'species': 'Asimina triloba'},
         {'species': 'Betula alleghaniensis'},
         {'species': 'Betula lenta'},

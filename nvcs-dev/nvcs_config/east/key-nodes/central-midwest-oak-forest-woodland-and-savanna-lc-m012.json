@@ -24,7 +24,7 @@
       ],
       "STRONG_DRY_DIAGNOSTICS": [
         {"species": "Carya ovata"},
-        {"species": "Juniperus virginiana"},
+        {"species": "Juniperus virginiana var. silicicola"},
         {"species": "Pinus banksiana"},
         {"species": "Pinus resinosa"},
         {"species": "Pinus strobus"},
@@ -41,7 +41,7 @@
       "STRONG_MESIC_DIAGNOSTICS": [
         {"species": "Acer nigrum"},
         {"species": "Acer saccharum"},
-        {"species": "Aesculus glabra"},
+        {"species": "Aesculus glabra var. arguta"},
         {"species": "Asimina triloba"},
         {"species": "Carya cordiformis"},
         {"species": "Celtis occidentalis"},

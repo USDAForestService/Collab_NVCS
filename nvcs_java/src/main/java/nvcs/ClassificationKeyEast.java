@@ -615,7 +615,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus echinata")
         );
         List<KeyValue> SOUTHERN_PINES_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> SOUTHERN_PINES_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -678,7 +678,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
         List<KeyValue> SLASH_PINE_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<List<KeyValue>> SLASH_PINE_patterns = Arrays.asList(
             SLASH_PINE_pattern0
@@ -740,7 +740,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
         List<KeyValue> SLASH_PINE_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<List<KeyValue>> SLASH_PINE_patterns = Arrays.asList(
             SLASH_PINE_pattern0
@@ -802,7 +802,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
         List<KeyValue> SLASH_PINE_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<List<KeyValue>> SLASH_PINE_patterns = Arrays.asList(
             SLASH_PINE_pattern0
@@ -864,7 +864,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
         List<KeyValue> SLASH_PINE_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<List<KeyValue>> SLASH_PINE_patterns = Arrays.asList(
             SLASH_PINE_pattern0
@@ -926,7 +926,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList LONGLEAF_PINE = new PatternList("LONGLEAF_PINE", LONGLEAF_PINE_patterns);
 
         List<KeyValue> SLASH_PINE_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<List<KeyValue>> SLASH_PINE_patterns = Arrays.asList(
             SLASH_PINE_pattern0
@@ -1070,7 +1070,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus edulis")
         );
         List<KeyValue> NATIVE_NORTHERN_PINES_pattern6 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> NATIVE_NORTHERN_PINES_pattern7 = Arrays.asList(
             new KeyValue("species", "Pinus elliottii var. elliottii")
@@ -1550,7 +1550,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Picea abies")
         );
         List<KeyValue> COMMON_EXOTIC_CONIFERS_pattern2 = Arrays.asList(
-            new KeyValue("species", "Larix spp.")
+            new KeyValue("species", "Larix")
         );
         List<List<KeyValue>> COMMON_EXOTIC_CONIFERS_patterns = Arrays.asList(
             COMMON_EXOTIC_CONIFERS_pattern0,
@@ -1599,7 +1599,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Picea abies")
         );
         List<KeyValue> NORWAY_SPRUCE_LARCH_pattern1 = Arrays.asList(
-            new KeyValue("species", "Larix spp.")
+            new KeyValue("species", "Larix")
         );
         List<List<KeyValue>> NORWAY_SPRUCE_LARCH_patterns = Arrays.asList(
             NORWAY_SPRUCE_LARCH_pattern0,
@@ -1640,7 +1640,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus sylvestris")
         );
         List<KeyValue> OTHER_EXOTIC_CONIFERS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Larix spp.")
+            new KeyValue("species", "Larix")
         );
         List<List<KeyValue>> OTHER_EXOTIC_CONIFERS_patterns = Arrays.asList(
             OTHER_EXOTIC_CONIFERS_pattern0,
@@ -1670,7 +1670,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     of Pinus sylvestris or Picea abies alone or in combination <25% RIV
 
         List<KeyValue> LARIX_SPP_pattern0 = Arrays.asList(
-            new KeyValue("species", "Larix spp.")
+            new KeyValue("species", "Larix")
         );
         List<List<KeyValue>> LARIX_SPP_patterns = Arrays.asList(
             LARIX_SPP_pattern0
@@ -1866,7 +1866,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList QUAKING_ASPEN = new PatternList("QUAKING_ASPEN", QUAKING_ASPEN_patterns);
 
         List<KeyValue> POPULUS_SPP_pattern0 = Arrays.asList(
-            new KeyValue("species", "Populus spp.")
+            new KeyValue("species", "Populus")
         );
         List<List<KeyValue>> POPULUS_SPP_patterns = Arrays.asList(
             POPULUS_SPP_pattern0
@@ -1906,7 +1906,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Populus tremuloides")
         );
         List<KeyValue> ASPEN_pattern1 = Arrays.asList(
-            new KeyValue("species", "Populus spp.")
+            new KeyValue("species", "Populus")
         );
         List<List<KeyValue>> ASPEN_patterns = Arrays.asList(
             ASPEN_pattern0,
@@ -1976,7 +1976,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList QUAKING_ASPEN = new PatternList("QUAKING_ASPEN", QUAKING_ASPEN_patterns);
 
         List<KeyValue> POPULUS_SPP_pattern0 = Arrays.asList(
-            new KeyValue("species", "Populus spp.")
+            new KeyValue("species", "Populus")
         );
         List<List<KeyValue>> POPULUS_SPP_patterns = Arrays.asList(
             POPULUS_SPP_pattern0
@@ -2439,7 +2439,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Persea borbonia")
         );
         List<KeyValue> EXCLUDED_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> EXCLUDED_SPECIES_pattern2 = Arrays.asList(
             new KeyValue("species", "Quercus virginiana")
@@ -2873,7 +2873,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Chamaecyparis thyoides")
         );
         List<KeyValue> DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> DIAGNOSTIC_SPECIES_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus glabra")
@@ -3100,7 +3100,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Platanus occidentalis")
         );
         List<KeyValue> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern7 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS_pattern8 = Arrays.asList(
             new KeyValue("species", "Quercus shumardii")
@@ -3245,7 +3245,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Persea borbonia")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
             new KeyValue("species", "Pinus serotina")
@@ -3393,7 +3393,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya illinoinensis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Fraxinus pennsylvanica")
@@ -3426,7 +3426,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Platanus occidentalis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
             new KeyValue("species", "Quercus pagoda")
@@ -3541,7 +3541,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Nyssa sylvatica")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern13 = Arrays.asList(
             new KeyValue("species", "Pinus glabra")
@@ -3625,7 +3625,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus clausa")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -3690,7 +3690,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya illinoinensis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Fraxinus pennsylvanica")
@@ -3723,7 +3723,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Platanus occidentalis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
             new KeyValue("species", "Quercus pagoda")
@@ -3833,7 +3833,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus clausa")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -3898,7 +3898,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya illinoinensis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Fraxinus pennsylvanica")
@@ -3931,7 +3931,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Platanus occidentalis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
             new KeyValue("species", "Quercus pagoda")
@@ -4039,7 +4039,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus clausa")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -4104,7 +4104,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya illinoinensis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Fraxinus pennsylvanica")
@@ -4137,7 +4137,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Platanus occidentalis")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> STRONG_FLOODPLAIN_DIAGNOSTICS_pattern16 = Arrays.asList(
             new KeyValue("species", "Quercus pagoda")
@@ -4784,7 +4784,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya laciniosa")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Celtis occidentalis")
@@ -4799,7 +4799,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Platanus occidentalis")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
             new KeyValue("species", "Populus deltoides spp. monilifera")
@@ -4814,7 +4814,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Salix caroliniana")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
-            new KeyValue("species", "Salix spp.")
+            new KeyValue("species", "Salix")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
             new KeyValue("species", "Ulmus americana")
@@ -4877,7 +4877,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Liquidambar styraciflua")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
-            new KeyValue("species", "Morus spp.")
+            new KeyValue("species", "Morus")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
             new KeyValue("species", "Morus rubra")
@@ -5035,7 +5035,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Liquidambar styraciflua")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern11 = Arrays.asList(
-            new KeyValue("species", "Morus spp.")
+            new KeyValue("species", "Morus")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern12 = Arrays.asList(
             new KeyValue("species", "Morus rubra")
@@ -5152,7 +5152,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya laciniosa")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Celtis occidentalis")
@@ -5167,7 +5167,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Platanus occidentalis")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern9 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern10 = Arrays.asList(
             new KeyValue("species", "Populus deltoides spp. monilifera")
@@ -5182,7 +5182,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Salix caroliniana")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern14 = Arrays.asList(
-            new KeyValue("species", "Salix spp.")
+            new KeyValue("species", "Salix")
         );
         List<KeyValue> STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS_pattern15 = Arrays.asList(
             new KeyValue("species", "Ulmus americana")
@@ -5381,7 +5381,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList TROPICAL_LOCATION = new PatternList("TROPICAL_LOCATION", TROPICAL_LOCATION_patterns);
 
         List<KeyValue> EXCLUDED_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> EXCLUDED_SPECIES_pattern1 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -5783,7 +5783,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Sideroxylon salicifolium (together >=50% RIV)
 
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
             new KeyValue("species", "Pinus caribaea")
@@ -5861,7 +5861,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Sideroxylon salicifolium (together >=50% RIV);
 
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
             new KeyValue("species", "Pinus caribaea")
@@ -6030,7 +6030,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus palustris")
         );
         List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern7 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern8 = Arrays.asList(
             new KeyValue("species", "Quercus incana")
@@ -6318,7 +6318,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Sabal palmetto")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
-            new KeyValue("species", "Tilia spp.")
+            new KeyValue("species", "Tilia")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
             new KeyValue("species", "Tilia americana")
@@ -6327,7 +6327,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Tilia americana var. heterophylla")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
-            new KeyValue("species", "Tilia americana var. caroliniana")
+            new KeyValue("species", "Tilia americana")
         );
         List<List<KeyValue>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
             STRONG_MESIC_DIAGNOSTICS_pattern0,
@@ -6364,10 +6364,10 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya alba")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Celtis spp.")
+            new KeyValue("species", "Celtis")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
             new KeyValue("species", "Cornus florida")
@@ -6379,7 +6379,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Fraxinus americana")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
-            new KeyValue("species", "Halesia spp.")
+            new KeyValue("species", "Halesia")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
             new KeyValue("species", "Halesia carolina")
@@ -6421,7 +6421,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Quercus nigra")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern23 = Arrays.asList(
-            new KeyValue("species", "Juniperus spp.")
+            new KeyValue("species", "Juniperus")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern24 = Arrays.asList(
             new KeyValue("species", "Pinus taeda")
@@ -6498,7 +6498,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus echinata")
         );
         List<KeyValue> DIAGNOSTIC_SPECIES_II_pattern2 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> DIAGNOSTIC_SPECIES_II_pattern3 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -6519,7 +6519,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus clausa")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -6695,10 +6695,10 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya glabra")
         );
         List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern5 = Arrays.asList(
-            new KeyValue("species", "Celtis laevigata")
+            new KeyValue("species", "Celtis laevigata var. reticulata")
         );
         List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern6 = Arrays.asList(
-            new KeyValue("species", "Celtis spp.")
+            new KeyValue("species", "Celtis")
         );
         List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern7 = Arrays.asList(
             new KeyValue("species", "Fraxinus americana")
@@ -6707,10 +6707,10 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Ilex opaca")
         );
         List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern9 = Arrays.asList(
-            new KeyValue("species", "Juniperus spp.")
+            new KeyValue("species", "Juniperus")
         );
         List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern10 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern11 = Arrays.asList(
             new KeyValue("species", "Liquidambar styraciflua")
@@ -6864,7 +6864,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus clausa")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -6919,7 +6919,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Sabal palmetto")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
-            new KeyValue("species", "Tilia spp.")
+            new KeyValue("species", "Tilia")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
             new KeyValue("species", "Tilia americana")
@@ -6928,7 +6928,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Tilia americana var. heterophylla")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
-            new KeyValue("species", "Tilia americana var. caroliniana")
+            new KeyValue("species", "Tilia americana")
         );
         List<List<KeyValue>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
             STRONG_MESIC_DIAGNOSTICS_pattern0,
@@ -6975,7 +6975,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Pinus clausa")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus elliottii")
+            new KeyValue("species", "Pinus elliottii var. elliottii")
         );
         List<KeyValue> STRONG_LONGLEAF_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus palustris")
@@ -7030,7 +7030,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Sabal palmetto")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
-            new KeyValue("species", "Tilia spp.")
+            new KeyValue("species", "Tilia")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
             new KeyValue("species", "Tilia americana")
@@ -7039,7 +7039,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Tilia americana var. heterophylla")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
-            new KeyValue("species", "Tilia americana var. caroliniana")
+            new KeyValue("species", "Tilia americana")
         );
         List<List<KeyValue>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
             STRONG_MESIC_DIAGNOSTICS_pattern0,
@@ -7205,7 +7205,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Fraxinus pennsylvanica")
         );
         List<KeyValue> STRONG_PLAINS_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> STRONG_PLAINS_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Populus tremuloides")
@@ -7251,7 +7251,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Celtis occidentalis")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
-            new KeyValue("species", "Crataegus spp.")
+            new KeyValue("species", "Crataegus")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
             new KeyValue("species", "Juglans nigra")
@@ -7363,7 +7363,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Acer spicatum")
         );
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_II_pattern2 = Arrays.asList(
-            new KeyValue("species", "Amelanchier spp.")
+            new KeyValue("species", "Amelanchier")
         );
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_II_pattern3 = Arrays.asList(
             new KeyValue("species", "Betula alleghaniensis")
@@ -7669,7 +7669,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_patterns);
 
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern0 = Arrays.asList(
-            new KeyValue("species", "Amelanchier spp.")
+            new KeyValue("species", "Amelanchier")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern1 = Arrays.asList(
             new KeyValue("species", "Betula populifolia")
@@ -8055,7 +8055,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya ovata")
         );
         List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus banksiana")
@@ -8124,7 +8124,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya laciniosa")
         );
         List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Amelanchier spp.")
+            new KeyValue("species", "Amelanchier")
         );
         List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Carpinus caroliniana")
@@ -8230,7 +8230,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Acer saccharum")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
-            new KeyValue("species", "Aesculus glabra")
+            new KeyValue("species", "Aesculus glabra var. arguta")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
             new KeyValue("species", "Asimina triloba")
@@ -8318,7 +8318,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Acer negundo")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
-            new KeyValue("species", "Amelanchier spp.")
+            new KeyValue("species", "Amelanchier")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
             new KeyValue("species", "Betula populifolia")
@@ -8351,7 +8351,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Populus balsamifera")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern13 = Arrays.asList(
-            new KeyValue("species", "Populus deltoides")
+            new KeyValue("species", "Populus deltoides ssp. monilifera")
         );
         List<KeyValue> MODERATE_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
             new KeyValue("species", "Populus grandidentata")
@@ -8496,7 +8496,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Carya ovata")
         );
         List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Pinus banksiana")
@@ -8559,7 +8559,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Acer saccharum")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
-            new KeyValue("species", "Aesculus glabra")
+            new KeyValue("species", "Aesculus glabra var. arguta")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
             new KeyValue("species", "Asimina triloba")
@@ -8733,7 +8733,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Halesia carolina")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
-            new KeyValue("species", "Halesia spp.")
+            new KeyValue("species", "Halesia")
         );
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
             new KeyValue("species", "Magnolia acuminata")
@@ -8775,7 +8775,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Aesculus flava")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Aesculus glabra")
+            new KeyValue("species", "Aesculus glabra var. arguta")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Asimina triloba")
@@ -8805,7 +8805,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Halesia carolina")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern14 = Arrays.asList(
-            new KeyValue("species", "Halesia spp.")
+            new KeyValue("species", "Halesia")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern15 = Arrays.asList(
             new KeyValue("species", "Liriodendron tulipifera")
@@ -8874,7 +8874,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Acer barbatum")
         );
         List<KeyValue> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Amelanchier spp.")
+            new KeyValue("species", "Amelanchier")
         );
         List<KeyValue> ECOREGIONAL_MODERATE_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
             new KeyValue("species", "Betula populifolia")
@@ -9165,7 +9165,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Juglans nigra")
         );
         List<KeyValue> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern9 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> MODERATE_DRY_SOUTH_CENTRAL_DIAGNOSTICS_pattern10 = Arrays.asList(
             new KeyValue("species", "Liriodendron tulipifera")
@@ -9295,7 +9295,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Fraxinus quadrangulata")
         );
         List<KeyValue> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
             new KeyValue("species", "Nyssa sylvatica")
@@ -9376,7 +9376,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList STRONG_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("STRONG_APPALACHIAN_DRY_DIAGNOSTICS", STRONG_APPALACHIAN_DRY_DIAGNOSTICS_patterns);
 
         List<KeyValue> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
-            new KeyValue("species", "Amelanchier spp.")
+            new KeyValue("species", "Amelanchier")
         );
         List<KeyValue> MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
             new KeyValue("species", "Carpinus caroliniana")
@@ -9549,7 +9549,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Fraxinus quadrangulata")
         );
         List<KeyValue> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
             new KeyValue("species", "Nyssa sylvatica")
@@ -9642,7 +9642,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Aesculus flava")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Aesculus glabra")
+            new KeyValue("species", "Aesculus glabra var. arguta")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Asimina triloba")
@@ -9831,7 +9831,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Fraxinus quadrangulata")
         );
         List<KeyValue> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
-            new KeyValue("species", "Juniperus virginiana")
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
         );
         List<KeyValue> STRONG_APPALACHIAN_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
             new KeyValue("species", "Nyssa sylvatica")
@@ -9924,7 +9924,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Aesculus flava")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Aesculus glabra")
+            new KeyValue("species", "Aesculus glabra var. arguta")
         );
         List<KeyValue> ECOREGIONAL_STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
             new KeyValue("species", "Asimina triloba")

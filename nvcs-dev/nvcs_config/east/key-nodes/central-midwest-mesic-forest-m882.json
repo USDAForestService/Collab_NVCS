@@ -44,7 +44,7 @@
       "STRONG_MESIC_DIAGNOSTICS": [
         {"species": "Acer nigrum"},
         {"species": "Acer saccharum"},
-        {"species": "Aesculus glabra"},
+        {"species": "Aesculus glabra var. arguta"},
         {"species": "Asimina triloba"},
         {"species": "Carya cordiformis"},
         {"species": "Celtis occidentalis"},
@@ -67,7 +67,7 @@
       "MODERATE_MESIC_DIAGNOSTICS": [
         {"species": "Acer barbatum"},
         {"species": "Acer negundo"},
-        {"species": "Amelanchier spp."},
+        {"species": "Amelanchier"},
         {"species": "Betula populifolia"},
         {"species": "Betula papyrifera"},
         {"species": "Carpinus caroliniana"},
@@ -78,7 +78,7 @@
         {"species": "Ostrya virginiana"},
         {"species": "Pinus strobus"},
         {"species": "Populus balsamifera"},
-        {"species": "Populus deltoides"},
+        {"species": "Populus deltoides ssp. monilifera"},
         {"species": "Populus grandidentata"},
         {"species": "Populus tremuloides"},
         {"species": "Prunus pensylvanica"},

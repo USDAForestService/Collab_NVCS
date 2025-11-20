@@ -27,7 +27,7 @@
    "filters": {
       "SOUTHERN_PINES": [
         {"species": "Pinus echinata"},
-        {"species": "Pinus elliottii"},
+        {"species": "Pinus elliottii var. elliottii"},
         {"species": "Pinus palustris"},
         {"species": "Pinus taeda"},
         {"species": "Pinus clausa"}
