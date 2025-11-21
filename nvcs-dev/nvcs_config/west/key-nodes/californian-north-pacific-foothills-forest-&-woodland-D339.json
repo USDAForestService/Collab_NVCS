@@ -24,7 +24,7 @@
             "    Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and MODERATE ",
             "    diagnostic species =>50% RIV) ",
             "    OR ",
-            "    f.  Any EXOTIC = Y tree species =>80% RIV ",
+            "    f.  Any EXOTIC = yes tree species =>80% RIV ",
             "OR ",
             "  M242C and M242D Exclusion/Exception for Pinus contorta, Pinus ponderosa, and ",
             "  Pseudotsuga menziesii: Tree composition and ecology matching one of the ",
@@ -39,7 +39,7 @@
             "          diagnostic species, any combination of Abies bracteata, Abies concolor var. lowiana, Acer circinatum, Acer macrophyllum, Arbutus menziesii, Cornus nuttallii, Frangula purshiana, Picea breweriana, Pinus coulteri, Pinus flexilis, Pinus lambertiana, Pinus contorta, Pinus muricata, Pinus washoensis, Populus balsamifera ssp. trichocarpa, Pseudotsuga macrocarpa (>=40% RIV; i.e., together STRONG and ",
             "          MODERATE diagnostic species =>50% RIV) ",
             "      OR ",
-            "      d.  Any EXOTIC = Y tree species =>80% RIV"
+            "      d.  Any EXOTIC = yes tree species =>80% RIV"
         ],
         "trigger": [
             "elevation() < 2400 and match(ECOREGIONS_I) and",
@@ -173,7 +173,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ],
             "ECOREGIONS_II": [

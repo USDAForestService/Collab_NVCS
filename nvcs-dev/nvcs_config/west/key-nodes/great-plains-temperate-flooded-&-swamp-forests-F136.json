@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "Great Plains Temperate Flooded & Swamp Forests (F026)",
-        "id": "F026",
-        "level": "formation",
+        "name": "Great Plains Temperate Flooded & Swamp Forests (F136)",
+        "id": "F136",
+        "level": "Ecobiome",
         "description": [
             "Forests found in ECOREGION 315, 331, 332, M334, AND",
             "tree composition is dominated by one or more of Acer negundo, Betula occidentalis",

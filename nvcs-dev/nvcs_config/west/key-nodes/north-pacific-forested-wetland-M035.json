@@ -1,26 +1,23 @@
 {
     "node": {
-        "name": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
-        "id": "M885",
+        "name": "North Pacific Forested Wetland (M035)",
+        "id": "M035",
         "level": "macrogroup",
         "description": [
             "Vegetation in a relatively natural state, dominated by native species,",
             "little or no evidence of trees in a row, no very recent logging,",
             "understory mowing, etc. (trees may be early successional pole-sized",
             "trees following logging or blowdowns). Tree composition is dominated by",
-            "ruderal native or EXOTIC = Y (< 20% RIV)",
-            "(See Appendix xx [PLACEHOLDER])"
+            "ruderal native or EXOTIC = yes (< 20% RIV)",
+            "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)"
         ],
         "trigger": [
-            "riv(RUDERAL_EXOTIC) < 20"
+            "riv(EXOTIC) < 20"
         ],
         "filters": {
-            "RUDERAL_EXOTIC": [
+            "EXOTIC": [
                 {
-                    "ruderal": "Y"
-                },
-                {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

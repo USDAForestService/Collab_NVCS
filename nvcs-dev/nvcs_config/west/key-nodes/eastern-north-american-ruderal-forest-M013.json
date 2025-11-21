@@ -12,10 +12,10 @@
         "filters": {
             "RUDERAL_EXOTIC": [
                 {
-                    "ruderal": "Y"
+                    "ruderal": "yes"
                 },
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

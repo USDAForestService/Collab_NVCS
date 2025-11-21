@@ -26,7 +26,7 @@
             "and Umbellularia californica",
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
             "OR",
-            "c. Any EXOTIC = Y tree species =>80% RIV"
+            "c. Any EXOTIC = yes tree species =>80% RIV"
         ],
         "trigger": [
             "match(ECOREGIONS) and ",
@@ -223,7 +223,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

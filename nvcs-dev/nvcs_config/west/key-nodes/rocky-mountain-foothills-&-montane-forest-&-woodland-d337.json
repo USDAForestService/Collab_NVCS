@@ -27,7 +27,7 @@
             "    Quercus macrocarpa, or Ulmus americana (>=30% RIV; i.e., together STRONG",
             "    and MODERATE diagnostic species =>50% RIV) ",
             "    OR",
-            "    c.  Any EXOTIC = Y tree species =>80% RIV"
+            "    c.  Any EXOTIC = yes tree species =>80% RIV"
         ],
         "trigger": [
             "elevation() < 2800 and match(ECOREGIONS) and ",
@@ -99,6 +99,9 @@
                 },
                 {
                     "species": "Tsuga mertensiana"
+                },
+                {
+                    "species": "Picea engelmannii"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -140,14 +143,11 @@
                 },
                 {
                     "species": "Prunus virginiana"
-                },
-                {
-                    "species": "Picea engelmannii"
                 }
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

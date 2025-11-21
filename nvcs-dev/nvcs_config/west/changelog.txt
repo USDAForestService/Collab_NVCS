@@ -1,0 +1,7 @@
+### Saved at 2025-11-21T20:03:21.646Z (UTC):
++ Added element "East Cascades Moist-Mesic Grand Fir - Douglas-fir (G212)"
+- Removed element "East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)"
+~ Updated element "Central Rocky Mountain-Interior Moist Montane Forest (M500)"
+	+ Added Child Element "East Cascades Moist-Mesic Grand Fir - Douglas-fir (G212)" at position "0"
+	+ Removed Child Element "East Cascades Moist-Mesic Grand Fir - Douglas-fir Forest (G212)" at position "0"
+

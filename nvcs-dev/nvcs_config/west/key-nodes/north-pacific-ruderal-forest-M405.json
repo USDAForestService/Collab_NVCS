@@ -1,6 +1,6 @@
 {
     "node": {
-        "name": "Vancouverian Ruderal Forest (M405)",
+        "name": "North Pacific Ruderal Forest (M405)",
         "id": "M405",
         "level": "macrogroup",
         "description": [
@@ -12,7 +12,7 @@
         "filters": {
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

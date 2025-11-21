@@ -22,7 +22,7 @@
             "    Pinus jeffreyi, Pinus monticola, or Tsuga heterophylla",
             "    (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV)",
             "    OR",
-            "    f.  Any EXOTIC = Y tree species =>80% RIV"
+            "    f.  Any EXOTIC = yes tree species =>80% RIV"
         ],
         "trigger": [
             "elevation() > 2100 and match(ECOREGIONS) and ",
@@ -112,7 +112,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

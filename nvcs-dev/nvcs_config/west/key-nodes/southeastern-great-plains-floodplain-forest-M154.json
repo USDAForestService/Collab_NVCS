@@ -1,6 +1,6 @@
 {
     "node": {
-        "name": "Southern Great Plains Floodplain Forest & Woodland (M154)",
+        "name": "Southeastern Great Plains Floodplain Forest (M154)",
         "id": "M154",
         "level": "macrogroup",
         "description": [
@@ -8,7 +8,7 @@
             "little or no evidence of trees in a row, no very recent logging,",
             "understory mowing, etc. (trees may be early successional pole-sized",
             "trees following logging or blowdowns). Tree composition is dominated by",
-            "ruderal native or EXOTIC = Y (< 20% RIV)",
+            "ruderal native or EXOTIC = yes (< 20% RIV)",
             "(See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)"
         ],
         "trigger": [
@@ -17,7 +17,7 @@
         "filters": {
             "EXOTIC": [
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

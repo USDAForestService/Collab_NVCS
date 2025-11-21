@@ -1,6 +1,6 @@
 {
     "node": {
-        "name": "Southeastern North American Flooded & Swamp Forest Division (D062)",
+        "name": "Southeastern North American Flooded Forest & Swamp Division (D062)",
         "id": "D062",
         "level": "division",
         "description": [
@@ -22,7 +22,7 @@
             "(>=30% RIV; i.e., together STRONG and MODERATE diagnostic species =>50% RIV),",
             "[Additional tree species not tracked by FIA include Ulmus crassifolia]",
             "OR",
-            "iii. Located in above ECOREGION and any EXOTIC = Y tree species =>80% RIV"
+            "iii. Located in above ECOREGION and any EXOTIC = yes tree species =>80% RIV"
         ],
         "trigger": [
             "( match(ECOREGIONS_1) and riv(SPECIES_1) >= 20 )",
@@ -123,7 +123,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "Y"
+                    "exotic": "yes"
                 }
             ]
         }

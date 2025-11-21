@@ -1,8 +1,8 @@
 {
     "node": {
         "name": "Warm Temperate Forest & Woodland (S54)",
-        "id": "F018",
-        "level": "formation",
+        "id": "S54",
+        "level": "Subbiome",
         "description": [
             "i. Located in ECOREGION M242B, 261, M261, 262, M262, 263, 313C, M313,",
             "315, 321, 322, 331B, 331J, M331F, M331G, 341F, 342B",
