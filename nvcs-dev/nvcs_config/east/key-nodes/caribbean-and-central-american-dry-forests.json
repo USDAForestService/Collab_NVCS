@@ -25,7 +25,7 @@
 
    "filters": {
       "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Pinus elliottii"},
+        {"species": "Pinus elliottii var. elliottii"},
         {"species": "Pinus caribaea"}
       ],
       "MODERATE_DIAGNOSTIC_SPECIES": [

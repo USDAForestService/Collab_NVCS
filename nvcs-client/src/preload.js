@@ -4,15 +4,16 @@ const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('electronAPI', {
     fetchExistingJson: (targetPath) => ipcRenderer.invoke('fetch-existing-json', targetPath),
-    updateJson: (directory, json, changes, documentStructure, alerts) => ipcRenderer.invoke('update-json', directory, json, changes, documentStructure, alerts),
-    fetchSpecies: () => ipcRenderer.invoke('fetch-species'),
+    fetchPackagedJson: (packagedJsonType) => ipcRenderer.invoke('fetch-packaged-json', packagedJsonType),
+    updateJson: (config) => ipcRenderer.invoke('update-json', config),
+    fetchSpecies: (type) => ipcRenderer.invoke('fetch-species', type),
     openBrowse: (targetPath) => ipcRenderer.invoke('open-browse', targetPath),
     openSaveDirectory: (targetPath) => ipcRenderer.invoke('open-save-directory', targetPath),
     openSaveDocument: (targetPath) => ipcRenderer.invoke('open-save-document', targetPath),
     executeTester: (targetPath, testSettings) => ipcRenderer.invoke('execute-tester', targetPath, testSettings),
     openDirectory: (targetPath) => ipcRenderer.invoke('open-directory', targetPath),
     fetchSettings: () => ipcRenderer.invoke('fetch-settings'),
-    fetchYears: () => ipcRenderer.invoke('fetch-years'),
+    fetchYears: (type) => ipcRenderer.invoke('fetch-years', type),
     markUnsavedChanges: (value) => ipcRenderer.invoke('mark-unsaved-changes', value),
     getApplicationVersion: () => ipcRenderer.invoke('get-application-version'),
     saveDocumentWordFormat: (targetPath, html) => ipcRenderer.invoke('save-document-word-format', targetPath, html)

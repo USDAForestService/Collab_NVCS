@@ -99,6 +99,9 @@
                 },
                 {
                     "species": "Tsuga mertensiana"
+                },
+                {
+                    "species": "Picea engelmannii"
                 }
             ],
             "MODERATE_DIAGNOSTIC_SPECIES": [
@@ -140,14 +143,11 @@
                 },
                 {
                     "species": "Prunus virginiana"
-                },
-                {
-                    "species": "Picea engelmannii"
                 }
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

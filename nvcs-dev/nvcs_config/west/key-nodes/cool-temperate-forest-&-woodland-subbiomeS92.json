@@ -1,8 +1,8 @@
 {
     "node": {
         "name": "Cool Temperate Forest & Woodland Subbiome(S92)",
-        "id": "F008",
-        "level": "formation",
+        "id": "S92",
+        "level": "Subbiome",
         "description": [
             "Not as above, Temperate deciduous forests and woodlands, temperate",
             "needle-leaved forests and woodlands, and temperate rainforests,",

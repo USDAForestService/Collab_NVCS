@@ -60,6 +60,7 @@ app.whenReady().then(() => {
     createDefaultConfigFile();
 
   ipcMain.handle('fetch-existing-json', fetchExistingJson);
+  ipcMain.handle('fetch-packaged-json', fetchPackagedJson);
   ipcMain.handle('update-json', updateJson);
   ipcMain.handle('fetch-species', fetchSpecies);
   ipcMain.handle('open-browse', openBrowseDialog);
@@ -96,10 +97,22 @@ app.on('window-all-closed', () => {
 // code. You can also put them in separate files and import them here.
 
 async function fetchExistingJson(event, targetPath) {
-  console.log('INVOKED: fetxhExistingJson');
+  console.log('INVOKED: fetchExistingJson');
 
   // Retrieve Key Node JSON files
-  const jsonDirectory = path.resolve((targetPath ?? getConfigurationPath()) + '/key-nodes/');
+  return await fetchJson(targetPath);
+}
+
+async function fetchPackagedJson(event, packagedJsonType) {
+  console.log('INVOKED: fetchPackagedJson');
+
+  // Retrieve Key Node JSON files
+  const targetPath = getConfigurationPath(packagedJsonType);
+  return await fetchJson(targetPath);
+}
+
+async function fetchJson(targetPath) {
+  const jsonDirectory = path.resolve(targetPath + '/key-nodes/');
   console.log(`- Target JSON Directory: ${jsonDirectory}`);
 
   let cleanedJsonData = [];
@@ -117,7 +130,7 @@ async function fetchExistingJson(event, targetPath) {
   let allJsonData = `[${cleanedJsonData.join(',')}]`;
 
   // Retrieve Key Hierarchy TXT file
-  const hierarchyPath = path.resolve((targetPath ?? getConfigurationPath()) + '/key-hierarchy.txt');
+  const hierarchyPath = path.resolve(targetPath + '/key-hierarchy.txt');
   console.log(`- Target Hierarchy Path: ${hierarchyPath}`);
 
   let hierarchyData = fs.readFileSync(hierarchyPath);
@@ -125,7 +138,7 @@ async function fetchExistingJson(event, targetPath) {
 
   // Retrieve document structure JSON
   let documentStructureString;
-  const documentStructurePath = path.resolve((targetPath ?? getConfigurationPath()) + '/document.json');
+  const documentStructurePath = path.resolve(targetPath + '/document.json');
   if (fs.existsSync(documentStructurePath)) {
     console.log(`- Target Document Structure Path: ${documentStructurePath}`);
     let documentStructureData = fs.readFileSync(documentStructurePath);
@@ -134,11 +147,20 @@ async function fetchExistingJson(event, targetPath) {
 
   // Retrieve alerts JSON
   let alertsJson;
-  const alertsPath = path.resolve((targetPath ?? getConfigurationPath()) + '/alerts.json');
+  const alertsPath = path.resolve(targetPath + '/alerts.json');
   if (fs.existsSync(alertsPath)) {
     console.log(`- Target Alerts Path: ${alertsPath}`);
     let alertsData = fs.readFileSync(alertsPath);
     alertsJson = alertsData.toString();
+  }
+
+  // Retrieve config JSON
+  let configJson;
+  const configPath = path.resolve(targetPath + "/config.json");
+  if (fs.existsSync(configPath)) {
+    console.log(`- Target Config Path: ${configPath}`);
+    let configData = fs.readFileSync(configPath);
+    configJson = configData.toString();
   }
 
   // Combine and return data
@@ -146,7 +168,8 @@ async function fetchExistingJson(event, targetPath) {
     json: allJsonData,
     hierarchy: hierarchyString,
     documentStructure: documentStructureString,
-    alerts: alertsJson
+    alerts: alertsJson,
+    config: configJson
   }
 
   // Mark unaved as false
@@ -156,11 +179,11 @@ async function fetchExistingJson(event, targetPath) {
   return returnData;
 }
 
-async function updateJson(event, directory, json, changes, documentStructure, alerts) {
+async function updateJson(event, request) {
   console.log('INVOKED: updateJson');
 
   // Attempt to make new config directory
-  const newJsonDirectoryPath = path.resolve(directory);
+  const newJsonDirectoryPath = path.resolve(request.directory);
   if (!fs.existsSync(newJsonDirectoryPath))
     fs.mkdirSync(newJsonDirectoryPath);
 
@@ -175,12 +198,12 @@ async function updateJson(event, directory, json, changes, documentStructure, al
   let hierarchyContent = "";
 
   // Filter away the root
-  json = json.filter(i => i.hierarchyName != "ROOT");
+  request.json = request.json.filter(i => i.hierarchyName != "ROOT");
 
   // Sort JSON on hierarchy line number
-  json.sort((a, b) => { return a.hierarchyLineNumber - b.hierarchyLineNumber });
+  request.json.sort((a, b) => { return a.hierarchyLineNumber - b.hierarchyLineNumber });
 
-  for (const entry of json) {
+  for (const entry of request.json) {
     // Store hierarchy element content
     const hierarchyName = entry.hierarchyName;
     const hierarchyLevel = entry.hierarchyLevel;
@@ -205,24 +228,32 @@ async function updateJson(event, directory, json, changes, documentStructure, al
   let existingChangeLogEntry = "";
   if (fs.existsSync(changeLogPath))
     existingChangeLogEntry = fs.readFileSync(changeLogPath);
-  const newChangeLogEntry = generateChangeLogEntry(changes);
+  const newChangeLogEntry = generateChangeLogEntry(request.changes);
   const updatedChangeLog = newChangeLogEntry + existingChangeLogEntry;
   fs.writeFileSync(changeLogPath, updatedChangeLog);
 
   // Update document structure
   const documentStructurePath = path.resolve(path.join(newJsonDirectoryPath, "document.json"));
-  let documentStructureJson = JSON.stringify(documentStructure, null, 4);
+  let documentStructureJson = JSON.stringify(request.documentStructure, null, 4);
   documentStructureJson = documentStructureJson.trim();
   fs.writeFileSync(documentStructurePath, documentStructureJson);
 
   // Omit unnecessary button IDs
-  for (const alert of alerts)
+  for (const alert of request.alerts)
     delete alert.addressId;
   
   // Update alerts file
-  const alertsJson = JSON.stringify(alerts, null, 4);
+  const alertsJson = JSON.stringify(request.alerts, null, 4);
   const alertsPath = path.resolve(path.join(newJsonDirectoryPath, "alerts.json"));
   fs.writeFileSync(alertsPath, alertsJson);
+
+  // Update configuration file
+  const configPath = path.resolve(path.join(newJsonDirectoryPath, "config.json"));
+  const config = {
+    type: request.type
+  };
+  const configJson = JSON.stringify(config, null, 4).trim();
+  fs.writeFileSync(configPath, configJson);
 
   // Mark unaved as false
   unsavedChanges = false;
@@ -231,24 +262,35 @@ async function updateJson(event, directory, json, changes, documentStructure, al
   return true;
 }
 
-async function fetchSpecies(event) {
+async function fetchSpecies(event, type) {
   console.log("INVOKED: fetchSpecies")
 
-  // Find species file
-  const speciesPath = path.resolve(getConfigurationPath() + '/species.csv');
-  console.log(`- Target Species File: ${speciesPath}`);
+  // Get Python path
+  const pythonPath = getPythonPath();
+  console.log("- Target Python Path:", pythonPath);
 
-  // Extract species from file
-  const fileContent = fs.readFileSync(speciesPath, 'utf-8');
-  const species = fileContent.split("\r\n");
+  // Execute Plot IO
+  console.log("- Executing Plot IO Script...");
+  const scriptPath = getPlotIoPyPath();
+  const dbPath = getSharedTablePath(type);
+  const table = "REF_SPECIES_NVCS";
+  const column = "SCIENTIFIC_NAME";
+  const results = await execFile(pythonPath, [scriptPath, "get_unique_values_sqlite", dbPath, table, column]);
+  console.log("- Plot IO  Results", results);
+
+  // Parse results
+  let species = results.stdout.replace('[', '').replace(']\r\n', '').split(',');
+  species = species.map(i => 
+    i.trim().replaceAll("'", "")
+  ).filter(i => i != "None");
 
   // Return species
   console.log("- RETURNING RESULTS");
   return species;
 }
 
-function getConfigurationPath() {
-  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_config/west')
+function getConfigurationPath(packagedJsonType) {
+  let relative = path.join(getProjectResourcePath(), 'nvcs-dev/nvcs_config/' + packagedJsonType)
   return path.resolve(relative);
 }
 
@@ -324,7 +366,14 @@ async function executeTester(event, targetPath, testSettings) {
   
   let config = getPythonConfigFile();
   config.Config.ProjectRoot = getProjectResourcePath();
-  config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+  if (testSettings.type == "west") {
+    config.Config.TargetConfig = "WestConfig";
+    config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+  }
+  else if (testSettings.type == "east") {
+    config.Config.TargetConfig = "EastConfig";
+    config.EastConfig.In_ConfigPath = path.resolve(targetPath);
+  }
   config.FullOutputConfig.SkipSharedTables = "True";
   config.FullOutputConfig.In_Alerts = path.resolve(path.join(targetPath, "alerts.json"));
   config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
@@ -343,7 +392,7 @@ async function executeTester(event, targetPath, testSettings) {
   let copyTablePath =  parseIniPath(config.FullOutputConfig.Out_DbPath, config);
   if (!testSettings.keepExisting || !fs.existsSync(copyTablePath)) {
     console.log("- Creating base SQLite output file...")
-    let sharedTablePath = getSharedTablePath();
+    let sharedTablePath = getSharedTablePath(testSettings.type);
     fs.copyFileSync(sharedTablePath, copyTablePath);
   }
 
@@ -434,10 +483,21 @@ function getProjectResourcePath() {
   return path.resolve(relative);
 }
 
-function getSharedTablePath() {
-  let relativeTable = "west_shared_tables.db";
-  if (!app.isPackaged)
-    relativeTable = "nvcs-data/run_output/west/west_shared_tables.db";
+function getSharedTablePath(type) {
+
+  let table = "";
+  if (type == "west")
+    table = "west_shared_tables.db";
+  else if (type == "east")
+    table = "east_shared_tables.db";
+
+  let relativeTable = table;
+  if (!app.isPackaged) {
+    if (type == "west")
+      relativeTable = "nvcs-data/run_output/west/" + table;
+    else if (type == "east")
+      relativeTable = "nvcs-data/run_output/east/" + table;
+  }
 
   let relative = path.join(getProjectResourcePath(), relativeTable);
   return path.resolve(relative);
@@ -515,7 +575,7 @@ async function fetchSettings(event) {
   return response;
 }
 
-async function fetchAvailableYears(event) {
+async function fetchAvailableYears(event, type) {
   console.log("INVOKED: fetchAvailableYears");
 
   const pythonPath = getPythonPath();
@@ -530,7 +590,7 @@ async function fetchAvailableYears(event) {
   // Execute Plot IO
   console.log("- Executing Plot IO Script...");
   const scriptPath = getPlotIoPyPath();
-  const dbPath = getSharedTablePath();
+  const dbPath = getSharedTablePath(type);
   const results = await execFile(pythonPath, [scriptPath, "get_unique_values_sqlite", dbPath, table, column]);
   console.log("- Plot IO  Results", results);
 

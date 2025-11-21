@@ -1,6 +1,6 @@
 {
     "node": {
-        "name": "Rocky Mountain-Great Basin Montane Flooded & Swamp Forest Division (D195)",
+        "name": "Rocky Mountain-Great Basin Montane Flooded Forest& Swamp Division (D195)",
         "id": "D195",
         "level": "division",
         "description": [
@@ -123,7 +123,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

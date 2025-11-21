@@ -23,8 +23,8 @@
 
    "filters": {
       "RUDERAL_OR_EXOTIC_SPECIES": [
-        {"ruderal": "yes"},
-        {"exotic": "yes"}
+        {"ruderal": "Y"},
+        {"exotic": "Y"}
       ]
    }
 

@@ -20,10 +20,10 @@
 
    "filters": {
       "NATIVE_CONIFERS": [
-        {"exotic": "no", "softwoodhardwood": "S"}
+        {"exotic": "N", "softwoodhardwood": "S"}
       ],
       "EXOTIC_CONIFERS": [
-        {"exotic": "yes", "softwoodhardwood": "S"}
+        {"exotic": "Y", "softwoodhardwood": "S"}
       ]
    }
 

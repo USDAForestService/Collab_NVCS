@@ -16,20 +16,20 @@
         "filters": {
             "PLANTATION": [
                 {
-                    "plantation": "yes"
+                    "plantation": "Y"
                 }
             ],
             "PLANTED_EXOTIC": [
                 {
-                    "planted": "yes"
+                    "planted": "Y"
                 },
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ],
             "PLANTED_POPULUS": [
                 {
-                    "planted": "yes"
+                    "planted": "Y"
                 },
                 {
                     "species": "Populus"

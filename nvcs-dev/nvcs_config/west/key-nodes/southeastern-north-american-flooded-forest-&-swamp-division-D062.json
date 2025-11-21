@@ -1,6 +1,6 @@
 {
     "node": {
-        "name": "Southeastern North American Flooded & Swamp Forest Division (D062)",
+        "name": "Southeastern North American Flooded Forest & Swamp Division (D062)",
         "id": "D062",
         "level": "division",
         "description": [
@@ -123,7 +123,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

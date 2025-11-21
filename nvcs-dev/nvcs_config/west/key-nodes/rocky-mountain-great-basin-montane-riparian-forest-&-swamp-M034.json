@@ -1,7 +1,7 @@
 {
     "node": {
-        "name": "North Pacific Forested Wetland(M035)",
-        "id": "M035",
+        "name": "Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)",
+        "id": "M034",
         "level": "macrogroup",
         "description": [
             "Vegetation in a relatively natural state, dominated by native species,",
@@ -17,7 +17,7 @@
         "filters": {
             "EXOTIC": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

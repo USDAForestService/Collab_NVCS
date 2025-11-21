@@ -38,7 +38,7 @@
         {"species": "Quercus velutina"}
       ],
       "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Amelanchier spp."},
+        {"species": "Amelanchier"},
         {"species": "Betula populifolia"},
         {"species": "Betula papyrifera"},
         {"species": "Carpinus caroliniana"},

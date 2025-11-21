@@ -20,7 +20,7 @@
    "filters": {
       "STRONG_LONGLEAF_DIAGNOSTICS": [
         {"species": "Pinus clausa"},
-        {"species": "Pinus elliottii"},
+        {"species": "Pinus elliottii var. elliottii"},
         {"species": "Pinus palustris"}
       ],
       "STRONG_MESIC_DIAGNOSTICS": [
@@ -38,10 +38,10 @@
         {"species": "Quercus phellos"},
         {"species": "Quercus shumardii"},
         {"species": "Sabal palmetto"},
-        {"species": "Tilia spp."},
+        {"species": "Tilia"},
         {"species": "Tilia americana"},
         {"species": "Tilia americana var. heterophylla"},
-        {"species": "Tilia americana var. caroliniana"}
+        {"species": "Tilia americana"}
       ]
    }
 

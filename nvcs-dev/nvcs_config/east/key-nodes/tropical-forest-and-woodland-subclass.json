@@ -30,7 +30,7 @@
         {"state": "FL", "ecoregion": "411A"}
       ],
       "EXCLUDED_SPECIES": [
-        {"species": "Pinus elliottii"},
+        {"species": "Pinus elliottii var. elliottii"},
         {"species": "Pinus palustris"},
         {"species": "Quercus virginiana"},
         {"species": "Quercus laurifolia"},

@@ -1,7 +1,7 @@
 {
     "node": {
-        "name": "Great Plains Flooded & Swamp Forest (M028)",
-        "id": "M028",
+        "name": "Southeastern Great Plains Floodplain Forest (M154)",
+        "id": "M154",
         "level": "macrogroup",
         "description": [
             "Vegetation in a relatively natural state, dominated by native species,",
@@ -17,7 +17,7 @@
         "filters": {
             "EXOTIC": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

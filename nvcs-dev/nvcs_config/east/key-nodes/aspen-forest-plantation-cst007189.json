@@ -23,7 +23,7 @@
    "filters": {
       "ASPEN": [
         {"species": "Populus tremuloides"},
-        {"species": "Populus spp."}
+        {"species": "Populus"}
       ],
       "BLACK_WALNUT": [
         {"species": "Juglans nigra"}

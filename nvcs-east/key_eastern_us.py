@@ -284,7 +284,7 @@ def element_001():
     # = "Clear evidence of artificial regeneration," Condition Table, Miles et al. 2001)
 
     PLANTATION = PatternList('PLANTATION',
-        {'plantation': 'yes'}
+        {'plantation': 'Y'}
     )
 
     def match(plot):
@@ -358,11 +358,11 @@ def element_005():
     # Species of native conifers have > RIV than exotic species
 
     NATIVE_CONIFERS = PatternList('NATIVE_CONIFERS',
-        {'softwoodhardwood': 'S', 'exotic': 'no'}
+        {'softwoodhardwood': 'S', 'exotic': 'N'}
     )
 
     EXOTIC_CONIFERS = PatternList('EXOTIC_CONIFERS',
-        {'softwoodhardwood': 'S', 'exotic': 'yes'}
+        {'softwoodhardwood': 'S', 'exotic': 'Y'}
     )
 
     def match(plot):
@@ -409,11 +409,11 @@ def element_008():
     # Species of native hardwoods have > RIV than exotic species
 
     NATIVE_HARDWOODS = PatternList('NATIVE_HARDWOODS',
-        {'softwoodhardwood': 'H', 'exotic': 'no'}
+        {'softwoodhardwood': 'H', 'exotic': 'N'}
     )
 
     EXOTIC_HARDWOODS = PatternList('EXOTIC_HARDWOODS',
-        {'softwoodhardwood': 'H', 'exotic': 'yes'}
+        {'softwoodhardwood': 'H', 'exotic': 'Y'}
     )
 
     def match(plot):
@@ -506,11 +506,11 @@ def element_014():
     # Appendix A) with RIV > exotic conifers
 
     NATIVE_CONIFERS = PatternList('NATIVE_CONIFERS',
-        {'exotic': 'no', 'softwoodhardwood': 'S'}
+        {'exotic': 'N', 'softwoodhardwood': 'S'}
     )
 
     EXOTIC_CONIFERS = PatternList('EXOTIC_CONIFERS',
-        {'exotic': 'yes', 'softwoodhardwood': 'S'}
+        {'exotic': 'Y', 'softwoodhardwood': 'S'}
     )
 
     def match(plot):
@@ -1251,11 +1251,11 @@ def element_042():
     # Appendix A) with RIV > exotic hardwoods.
 
     NATIVE_HARDWOODS = PatternList('NATIVE_HARDWOODS',
-        {'exotic': 'no', 'softwoodhardwood': 'H'}
+        {'exotic': 'N', 'softwoodhardwood': 'H'}
     )
 
     EXOTIC_HARDWOODS = PatternList('EXOTIC_HARDWOODS',
-        {'exotic': 'yes', 'softwoodhardwood': 'H'}
+        {'exotic': 'Y', 'softwoodhardwood': 'H'}
     )
 
     def match(plot):
@@ -1587,8 +1587,8 @@ def element_057():
     #      Fraxinus nigra, Larix laricina, Picea mariana, Populus balsamifera, and Thuja occidentalis have a combined RIV >= 25%
 
     HYDRIC_OR_RIVERINE = PatternList('HYDRIC_OR_RIVERINE',
-        {'hydric': 'yes'},
-        {'riverine': 'yes'}
+        {'hydric': 'Y'},
+        {'riverine': 'Y'}
     )
 
     W1 = PatternList('W1',
@@ -1604,11 +1604,11 @@ def element_057():
     )
 
     WETLAND = PatternList('WETLAND',
-        {'wetland': 'obl, facw', 'exotic': 'no'}
+        {'wetland': 'obl, facw', 'exotic': 'N'}
     )
 
     UPLAND = PatternList('UPLAND',
-        {'wetland': 'upl', 'exotic': 'no'}
+        {'wetland': 'upl', 'exotic': 'N'}
     )
 
     ECOREGIONS_III = PatternList('ECOREGIONS_III',
@@ -1616,7 +1616,7 @@ def element_057():
     )
 
     RIVERINE = PatternList('RIVERINE',
-        {'riverine': 'yes'}
+        {'riverine': 'Y'}
     )
 
     SPECIES_III = PatternList('SPECIES_III',
@@ -1709,8 +1709,8 @@ def element_059():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1845,8 +1845,8 @@ def element_065():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2004,8 +2004,8 @@ def element_071():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2555,8 +2555,8 @@ def element_084():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2652,8 +2652,8 @@ def element_089():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2945,7 +2945,7 @@ def element_094():
     )
 
     RIVERINE = PatternList('RIVERINE',
-        {'riverine': 'yes'}
+        {'riverine': 'Y'}
     )
 
     def match(plot):
@@ -3101,7 +3101,7 @@ def element_101():
     )
 
     RUDERAL_SPECIES = PatternList('RUDERAL_SPECIES',
-        {'ruderal': 'yes'}
+        {'ruderal': 'Y'}
     )
 
     def match(plot):
@@ -3125,8 +3125,8 @@ def element_102():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3250,8 +3250,8 @@ def element_109():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3452,8 +3452,8 @@ def element_117():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3900,8 +3900,8 @@ def element_128():
     # needs to be refined for this Division)
 
     RUDERAL_OR_EXOTIC_SPECIES = PatternList('RUDERAL_OR_EXOTIC_SPECIES',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):

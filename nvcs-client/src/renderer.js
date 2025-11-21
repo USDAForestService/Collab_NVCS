@@ -46,6 +46,7 @@ let availableSpecies;
 let availableYears;
 let testSettings;
 let openedAddressId;
+let currentHierarchyType;
 
 displayApplicationVersion();
 
@@ -142,7 +143,15 @@ async function fetchPackagedJson() {
     if (hierarchy?.length > 0 && !await confirm(loadMessage))
         return;
 
-    await fetchJson();
+    try {
+        const packagedJsonType = document.getElementById("packaged-json-type").value;
+        const returnedData = await window.electronAPI.fetchPackagedJson(packagedJsonType);
+        await handleReturnedHierarchy(returnedData, false);
+    }
+    catch (error) {
+        alert(error);
+        return;
+    }
 
     document.getElementById("json-directory-path").value = "";
     document.getElementById("btn-test-settings").disabled = true;
@@ -168,22 +177,24 @@ async function fetchCustomJson() {
         return;
     }
 
-    await fetchJson(targetPath);
-
-    document.getElementById("btn-open-json").disabled = false;
-}
-
-async function fetchJson(targetPath) {
-    // Query for JSON and TXT data
-    let returnedData;
     try {
-        returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        const returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        await handleReturnedHierarchy(returnedData, true);
     }
     catch (error) {
         alert(error);
         return;
     }
-    nodeJson = JSON.parse(returnedData.json);
+
+    document.getElementById("btn-open-json").disabled = false;
+}
+
+async function handleReturnedHierarchy(returnedData, isCustom) {
+    const returnedConfig = JSON.parse(returnedData.config ?? "{}");
+    currentHierarchyType = returnedConfig?.type ?? "west";
+    console.log("Current Hierarchy Type ", currentHierarchyType);
+    const cleanedJson = cleanUpNodeJson(returnedData.json);
+    nodeJson = JSON.parse(cleanedJson);
     nodeHierarchy = returnedData.hierarchy;
     documentStructure = returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
     flattenedAlerts = returnedData.alerts ? JSON.parse(returnedData.alerts) : [];
@@ -244,7 +255,7 @@ async function fetchJson(targetPath) {
     await getDefaultTestSettings();
 
     // Require saving if alerts.json hasn't been generated yet
-    if (!returnedData.alerts && targetPath) {
+    if (!returnedData.alerts && isCustom) {
         stateChecker.modified = true;
         const saveRequiredMessage = "This workspace hasn't been saved since the address alert system has been added. "
             + "Please save the project again to generate all necesary files for testing.";
@@ -257,10 +268,6 @@ async function fetchJson(targetPath) {
 
     // Update HTML elements
     generatePages(hierarchy);
-    document.getElementById("btn-update-json").disabled = false;
-    document.getElementById("btn-update-json").setAttribute("title", 
-        "Browse for a direcory to save your key-nodes folder and key-hierarchy.txt file"
-    );
     document.getElementById("btn-add-element").disabled = false;
     document.getElementById("btn-toggle-levels").disabled = false;
     document.getElementById("search-hierarchy").disabled = false;
@@ -269,9 +276,36 @@ async function fetchJson(targetPath) {
     document.getElementById("btn-document-editor").disabled = false;
 }
 
-async function fetchDocumentStructure(targetPath) {
+function cleanUpNodeJson(json) {
+    // Handle use of old binary terminology
+    return json
+        .replaceAll("\"yes\"", "\"Y\"")
+        .replaceAll("\"no\"", "\"N\"");
+}
+
+function handleSaveButton() {
+    const savePreventingErrors = [
+        "duplicate-names",
+        "duplicate-files",
+        "missing-required-fields"
+    ];
+    if (errors.filter(i => savePreventingErrors.includes(i.name)).length > 0) {
+        document.getElementById("btn-update-json").disabled = true;
+        document.getElementById("btn-update-json").setAttribute("title", 
+            "Please remediate all save-preventing errors to enable this button"
+        );
+    }
+    else {
+        document.getElementById("btn-update-json").disabled = false;
+        document.getElementById("btn-update-json").setAttribute("title", 
+            "Browse for a directory to save your key-nodes folder and key-hierarchy.txt file"
+        );
+    }
+}
+
+async function fetchDocumentStructure() {
     try {
-        const returnedData = await window.electronAPI.fetchExistingJson(targetPath);
+        const returnedData = await window.electronAPI.fetchPackagedJson(currentHierarchyType);
         const returnedDocumentStructure =  returnedData.documentStructure ? JSON.parse(returnedData.documentStructure) : { sections: [] };
         return returnedDocumentStructure;
     }
@@ -297,7 +331,7 @@ async function fetchSettings() {
 
 async function fetchAvailableYears() {
     try {
-        const response = await electronAPI.fetchYears();
+        const response = await electronAPI.fetchYears(currentHierarchyType);
         availableYears = convertStringToNumbersList(response);
         console.log("Fetched and Converted Available Years", availableYears);
         return availableYears;
@@ -327,7 +361,7 @@ async function updateAvailableYears() {
 async function updateAvailableSpecies() {
     let returnedData;
     try {
-        returnedData = await window.electronAPI.fetchSpecies();
+        returnedData = await window.electronAPI.fetchSpecies(currentHierarchyType);
     }
     catch (error) {
         alert(error);
@@ -401,7 +435,7 @@ function createEmptyHierarchyElement() {
         fileName: "",
         hierarchyName: "",
         hierarchyLevel: null,
-        hierarchyLineNumber: null,
+        hierarchyLineNumber: "",
         node: {
             name: "",
             id: "",
@@ -424,6 +458,9 @@ function generatePages(hierarchy) {
 
     // Display alerts if any
     checkForProblems();
+
+    // Handle buttons
+    handleSaveButton();
 }
 
 function generateHierarchyHTML(hierarchy) {
@@ -490,7 +527,7 @@ function generateListEntry(element) {
     let nodeTagColor = levelColorMap[element.node.level];
     let nodeTagHidden = showTags ? "" : "hidden";
     let nodeTag = `<span class="node-level-tag" style="background-color: ${nodeTagColor};" ${nodeTagHidden}>${element.node.level != "" ? element.node.level : "none"}</span>`
-    returnString += `${nodeTag}<button data-hierarchy-name='${element.hierarchyName}' class='hierarchyNodeButton' onclick='openJsonDialog("${element.hierarchyName}")'>${element.hierarchyName}</button>`;
+    returnString += `${nodeTag}<button data-hierarchy-name='${element.hierarchyName}' data-line-number='${element.hierarchyLineNumber}' class='hierarchyNodeButton' onclick='openJsonDialog(event)'>${element.hierarchyName}</button>`;
     returnString += "<ul>";
     for (let child of element.children)
         returnString += generateListEntry(child);
@@ -499,7 +536,12 @@ function generateListEntry(element) {
     return returnString;
 }
 
-function openJsonDialog(hierarchyName) {
+function openJsonDialog(event) {
+    // Extract target hierarchy element from passed event
+    const button = event.target;
+    const hierarchyName = button?.getAttribute("data-hierarchy-name");
+    let hierarchyLineNumber = button?.getAttribute("data-line-number");
+
     // Open the dialog
     unsavedDialogChanges = false;
     clearMarkedValidationFields();
@@ -507,7 +549,7 @@ function openJsonDialog(hierarchyName) {
     showDialog(dialog);
 
     // Gather opened dialog context
-    const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName)[0];
+    const hierarchyElement = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyLineNumber == hierarchyLineNumber)[0];
     const isRoot = hierarchyElement.hierarchyName == "ROOT";
     console.log("Opened Hierarchy Element", hierarchyElement);
 
@@ -553,7 +595,8 @@ function openJsonDialog(hierarchyName) {
     if (!isRoot) {
         let nodeParentOptions = generateParentNodeOptions(hierarchyElement);
         document.getElementById("parent-hierarchy-list").innerHTML = nodeParentOptions;
-        inputParentNode.value = hierarchyElement.parent?.hierarchyName ?? "";
+        const parent = hierarchyElement.parent;
+        inputParentNode.value = parent ? `${parent.hierarchyName} | LINE: ${parent.hierarchyLineNumber}` : "";
     }
     else  {
         const unavailableMessage = "Cannot be assigned to a parent";
@@ -752,6 +795,7 @@ function newGuid() {
 async function saveJsonChanges() {
     // Get input fields
     let inputHierarchyName = document.getElementById("node-hierarchyName")
+    let inputHierarchyLineNumber = document.getElementById("node-hierarchyLineNumber")
     let inputFileName = document.getElementById("node-fileName")
     let inputNodeDescription = document.getElementById("node-nodeDescription")
     let inputNodeID = document.getElementById("node-nodeID")
@@ -760,6 +804,7 @@ async function saveJsonChanges() {
 
     // Extract dialog values
     let openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    let openedHierarchyLineNumber = inputHierarchyLineNumber.value.trim();
     let isRoot = openedHierarchyName == "ROOT";
     let hierarchyName = inputHierarchyName.value.trim();
     let fileName = inputFileName.value.trim();
@@ -773,16 +818,21 @@ async function saveJsonChanges() {
         return;
 
     // Find hierarchy element to change
-    let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
+    let newHierarchyElement = hierarchy.filter(i => i.hierarchyName == openedHierarchyName && i.hierarchyLineNumber == openedHierarchyLineNumber)[0];
 
     // Update hierarchy name
     newHierarchyElement.hierarchyName = hierarchyName;
     newHierarchyElement.fileName = fileName;
+    
+    // Determine if name change warrants a new node
+    if (hierarchyName != newHierarchyElement.node.name) {
+        newHierarchyElement.node = structuredClone(newHierarchyElement.node);
+        newHierarchyElement.node.name = hierarchyName;
+    }
 
     // Update node data
     newHierarchyElement.node.id = nodeID;
     newHierarchyElement.node.level = nodeLevel;
-    newHierarchyElement.node.name = hierarchyName;
 
     // Update node description data
     newHierarchyElement.node.description = [];
@@ -817,8 +867,11 @@ async function saveJsonChanges() {
 
     // Update node parent relationship
     if (!isRoot) {
-        let newParentName = document.getElementById("node-parentNode").value;
-        let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName)[0];
+        let newParentInput = document.getElementById("node-parentNode").value;
+        let newParentInputSplit = newParentInput.split(" | LINE: ");
+        let newParentName = newParentInputSplit[0];
+        let newParentLine = newParentInputSplit[1];
+        let newParentElement = hierarchy.filter(i => i.hierarchyName == newParentName && i.hierarchyLineNumber == newParentLine)[0];
         let previousParent = newHierarchyElement.parent;
         if (previousParent != newParentElement) {
             if (previousParent)
@@ -832,8 +885,10 @@ async function saveJsonChanges() {
     let newChildNodes = [];
     let childNodeInputs = document.querySelectorAll(".child-node-container input");
     for (const childNodeInput of childNodeInputs) {
-        const childName = childNodeInput.value;
-        const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName)[0];
+        const childSplit = childNodeInput.value.split(" | LINE: ");
+        const childName = childSplit[0];
+        const childLine = childSplit[1];
+        const associatedChildNode = hierarchy.filter(i => i.hierarchyName == childName && i.hierarchyLineNumber == childLine)[0];
         newChildNodes.push(associatedChildNode);
     }
     newHierarchyElement.children = newChildNodes;
@@ -932,12 +987,13 @@ function performDocumentDialogValidations(displayAlert) {
 
 
 function findInvalidsForNodeName(newMarkedElements) {
-    const inputHierarchyName = document.getElementById("node-hierarchyName")
-    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputHierarchyName = document.getElementById("node-hierarchyName");
+    const inputHierarchyLineNumber = document.getElementById("node-hierarchyLineNumber");
+    const hierarchyLineNumber = inputHierarchyLineNumber.value.trim();
     const inputNodeId = document.getElementById("node-nodeID");
     const nodeId = inputNodeId.value.trim();
     const hierarchyName = inputHierarchyName.value.trim();
-    const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyName != openedHierarchyName);
+    const otherElementsWithName = hierarchy.filter(i => i.hierarchyName == hierarchyName && i.hierarchyLineNumber != hierarchyLineNumber);
 
     if (hierarchyName == "") {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputHierarchyName, "Node name is required", "error");
@@ -955,7 +1011,8 @@ function findInvalidsForNodeName(newMarkedElements) {
 
 function findInvalidsForFilePath(newMarkedElements) {
     const inputHierarchyName = document.getElementById("node-hierarchyName")
-    const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
+    const inputHierarchyLineNumber = document.getElementById("node-hierarchyLineNumber");
+    const hierarchyLineNumber = inputHierarchyLineNumber.value.trim();
     const inputFileName = document.getElementById("node-fileName")
     const fileName = inputFileName.value.trim();
 
@@ -963,7 +1020,7 @@ function findInvalidsForFilePath(newMarkedElements) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must end with the '.json' file type", "error");
     }
 
-    const othersWithFileName = hierarchy.filter(i => i.hierarchyName != openedHierarchyName && i.fileName.toLowerCase() == fileName.toLowerCase());
+    const othersWithFileName = hierarchy.filter(i => i.hierarchyLineNumber != hierarchyLineNumber && i.fileName?.toLowerCase() == fileName.toLowerCase());
     if (othersWithFileName.length > 0)
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFileName, "File name must be unique", "error");
     
@@ -988,10 +1045,16 @@ function findInvalidsForNodeDescription(newMarkedElements) {
 function findInvalidsForParentNode(newMarkedElements) {
     const inputHierarchyName = document.getElementById("node-hierarchyName")
     const openedHierarchyName = inputHierarchyName.getAttribute("data-opened-name");
-    const inputParentNode = document.getElementById("node-parentNode")
-    const parentNode = inputParentNode.value.trim();
+    const inputParentNode = document.getElementById("node-parentNode");
+    const inputParentNodeSplit = inputParentNode.value.split(" | LINE: ");
+    const parentNodeName = inputParentNodeSplit[0]?.trim();
+    const parentNodeLine = inputParentNodeSplit[1]?.trim();
 
-    const otherElementAsParent = hierarchy.filter(i => i.hierarchyName == parentNode && i.hierarchyName != openedHierarchyName);
+    const otherElementAsParent = hierarchy.filter(i => 
+        i.hierarchyName == parentNodeName && 
+        i.hierarchyLineNumber == parentNodeLine && 
+        i.hierarchyName != openedHierarchyName
+    );
     if (otherElementAsParent.length == 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputParentNode, "Parent node is required and must be assigned to a valid hierarchy element", "error");
     }
@@ -1127,8 +1190,17 @@ async function updateJson() {
 
     try {
         const changes = detectHierarchyChanges();
-        console.log(changes)
-        await window.electronAPI.updateJson(newDirectoryName, hierarchy, changes, documentStructure, flattenedAlerts);
+        const request = {
+            type: currentHierarchyType,
+            directory: newDirectoryName,
+            json: hierarchy,
+            changes: changes,
+            documentStructure: documentStructure,
+            alerts: flattenedAlerts
+        };
+        console.log(request);
+
+        await window.electronAPI.updateJson(request);
         initialHierarchy = structuredClone(hierarchy);
         const message = `Successfully saved changes to: ${newDirectoryName}`;
         alert(message);
@@ -1175,11 +1247,12 @@ function generateElementOptions(elements, selectedElement = null, disabledElemen
     for (const element of elements) {
         const blankSpace = "&nbsp;";
         const name = element.hierarchyName;
+        const line = element.hierarchyLineNumber;
         const levelIndicator = `[L${element.hierarchyLevel}]`;
         const tabSpaces = element.hierarchyLevel >= 0 ? blankSpace.repeat(element.hierarchyLevel) : "";
         const selected = element == selectedElement ? "selected" : "";
         const disabled = disabledElements?.includes(element) ? "disabled" : "";
-        html += `<option value="${name}" ${selected} ${disabled}>${tabSpaces}${name} ${levelIndicator}</option>`;
+        html += `<option value="${name} | LINE: ${line}" ${selected} ${disabled}>${tabSpaces}${name} ${levelIndicator} (line: ${line})</option>`;
     }
 
     return html;
@@ -1208,7 +1281,7 @@ function generateChildNodeInputs(element) {
 
         for (let i = 0; i < element.children.length; i++) {
             const child = element.children[i];
-            const childName = child.hierarchyName;
+            const childName = `${child.hierarchyName} | LINE: ${child.hierarchyLineNumber}`;
             const identifier = newGuid();
             html += `
                 <div id="${identifier}" class="sub-content-container child-node-container">
@@ -1346,7 +1419,8 @@ async function deleteHierarchyElement() {
 
     // Get associated element
     const openedHierarchyName = document.getElementById("node-hierarchyName").getAttribute("data-opened-name");
-    const element = hierarchy.filter(i => i.hierarchyName == openedHierarchyName)[0];
+    const openedLine = document.getElementById("node-hierarchyLineNumber").value;
+    const element = hierarchy.filter(i => i.hierarchyName == openedHierarchyName && i.hierarchyLineNumber == openedLine)[0];
 
     // Only allow deleting if children elements are empty
     if (element.children.length > 0) {
@@ -1376,7 +1450,11 @@ async function deleteHierarchyElement() {
 function addHierarchyElement() {
     const element = createEmptyHierarchyElement();
     hierarchy.push(element);
-    openJsonDialog(element.hierarchyName);
+
+    const emptyButton = document.createElement("button");
+    emptyButton.setAttribute("data-hierarchy-name", element.hierarchyName);
+    emptyButton.setAttribute("data-line-number", element.hierarchyLineNumber);
+    openJsonDialog({target: emptyButton});
 }
 
 function suggestFileName() {
@@ -1418,13 +1496,16 @@ function generateFileNameFromValue(nodeName) {
 
 function searchHierarchy() {
     const searchId = document.getElementById("search-hierarchy").value;
-    if (!searchId) {
+    const searchIdSplit = searchId.split(" | LINE: ");
+    const hierarchyName = searchIdSplit[0];
+    const hierarchyLineNumber = searchIdSplit[1]; 
+    if (!hierarchyName) {
         const message = "Please use the available options to select an existing hierarchy element"
         alert(message);
         return;
     }
 
-    let element = findHierarchyButton(searchId);
+    let element = findHierarchyButton(hierarchyName, hierarchyLineNumber);
     if (!element) {
         const message = "Provided hierarchy element does not exist";
         alert(message);
@@ -1466,6 +1547,8 @@ function checkForProblems() {
     warnings = [];
 
     // Check hierarchy errors
+    checkDuplicateNames();
+    checkDuplicateFiles();
     checkMissingRequiredFields();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
@@ -1601,6 +1684,124 @@ function generateUnaddressedIcon() {
     return html;
 }
 
+function checkDuplicateNames() {
+    const duplicateNames = findDuplicateNames();
+    if (duplicateNames.length == 0)
+        return;
+    console.error("Invalid duplicate names", duplicateNames);
+
+    let html = `
+        <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
+            Duplicate names detected within ${duplicateNames.length} hierarchy elements!
+            All hierarchy names must be unique. Please find all duplicate names in the hierarchy and ensure each
+            value is unique. You may use the search functionality to jump to the first instance of the name
+            that appears in the hierarchy. Saving will be prevented until duplicates are remediated.
+            <button id='btn-toggle-duplicate-names-errors' aria-describedby="nested-duplicate-names-errors" aria-controls='nested-duplicate-names-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-duplicate-names-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Duplicate Names" hidden>
+    `;
+
+    for (const info of duplicateNames) {
+        html += `
+            <li class='border-box-list-item'>
+                <span>
+                    ${info.value}
+                </span>
+                <ul>            
+        `;
+
+        for (const invalid of info.invalids) {
+            const cloneButton = cloneElement(invalid.button, invalid.button.innerText + " (duplicate)");
+            const elementButton = cloneButton.outerHTML;
+            const [addressButton, addressId] = generateAddressButton();
+            invalid.addressId = addressId;
+
+            html += `
+                <li>
+                    ${elementButton}
+                    <span>
+                        LINE: ${invalid.hierarchyLineNumber}
+                    </span>
+                    ${addressButton}    
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("duplicate-names", html, duplicateNames);
+}
+
+function checkDuplicateFiles() {
+    const duplicatefiles = findDuplicateFiles();
+    if (duplicatefiles.length == 0)
+        return;
+    console.error("Invalid duplicate files", duplicatefiles);
+
+    let html = `
+        <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
+            Duplicate file names detected within ${duplicatefiles.length} hierarchy elements!
+            All hierarchy files must be unique. Please find all duplicate file names in the hierarchy and ensure each
+            value is unique. Saving will be prevented until duplicates are remediated.
+            <button id='btn-toggle-duplicate-files-errors' aria-describedby="nested-duplicate-files-errors" aria-controls='nested-duplicate-files-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-duplicate-files-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Duplicate Files" hidden>
+    `;
+
+    for (const info of duplicatefiles) {
+        html += `
+            <li class='border-box-list-item'>
+                <span>
+                    ${info.value}
+                </span>
+                <ul>            
+        `;
+
+        for (const invalid of info.invalids) {
+            const cloneButton = cloneElement(invalid.button, invalid.button.innerText + " (duplicate file)");
+            const elementButton = cloneButton.outerHTML;
+            const [addressButton, addressId] = generateAddressButton();
+            invalid.addressId = addressId;
+
+            html += `
+                <li>
+                    ${elementButton}
+                    <span>
+                        LINE: ${invalid.hierarchyLineNumber}
+                    </span>
+                    ${addressButton}    
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("duplicate-files", html, duplicatefiles);
+}
+
+
 function checkMissingRequiredFields() {
     const invalidMissingRequired = findMissingRequiredFields();
     if (invalidMissingRequired.length == 0)
@@ -1609,8 +1810,10 @@ function checkMissingRequiredFields() {
 
     let html = `
         <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
             Missing required fields within ${invalidMissingRequired.length} hierarchy elements!
             All required fields must be provided or the classification key may fail to build.
+            Saving will be prevented until all required fields are provided.
             <button id='btn-toggle-nested-missing-required-errors' aria-describedby="nested-missing-required-errors" aria-controls='nested-missing-required-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
@@ -1753,7 +1956,7 @@ function checkInvalidBinaryValueError() {
     let html = `
         <p>
             Invalid binary values have been detected within ${invalidBinaryValues.length} hierarchy elements!
-            These binary filters should only have their inputs set to "yes" or "no".
+            These binary filters should only have their inputs set to "Y" or "N".
             <button id='btn-toggle-invalid-binary-errors' aria-describedby="nested-binary-errors" aria-controls='nested-binary-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
@@ -2187,6 +2390,75 @@ function checkUnlabeledElementsInDocument() {
     createWarning("unlabeled-document-elements", html, unlabeledElementsInfo);
 }
 
+function findDuplicateNames() {
+    let invalid = [];
+    const names = [];
+    const duplicates = [];
+
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const name = element.hierarchyName;
+        if (names.includes(name)) {
+            duplicates.push(name);
+        }
+        else {
+            names.push(name);
+        }
+    }
+
+    const uniqueDuplicates = [...duplicates];
+    for (const duplicate of uniqueDuplicates) {
+        const invalids = [];
+        const elementsWithSharedName = hierarchy.filter(i => i.hierarchyName == duplicate);
+        for (const elementWithSharedName of elementsWithSharedName) {
+            invalids.push({
+                hierarchyLineNumber: elementWithSharedName.hierarchyLineNumber,
+                button: findHierarchyButton(elementWithSharedName.hierarchyName, elementWithSharedName.hierarchyLineNumber)
+            });
+        }
+        invalid.push({
+            value: duplicate,
+            invalids: invalids
+        });
+    }
+
+    return invalid;
+}
+
+function findDuplicateFiles() {
+    let invalid = [];
+    const files = [];
+    const duplicates = [];
+
+    for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
+        const file = element.fileName;
+        if (files.includes(file)) {
+            duplicates.push(file);
+        }
+        else {
+            files.push(file);
+        }
+    }
+
+    const uniqueDuplicates = [...duplicates];
+    for (const duplicate of uniqueDuplicates) {
+        const invalids = [];
+        const elementsWithSharedFile = hierarchy.filter(i => i.fileName == duplicate);
+        for (const elementWithSharedFile of elementsWithSharedFile) {
+            invalids.push({
+                hierarchyName: elementsWithSharedFile.hierarchyName,
+                hierarchyLineNumber: elementWithSharedFile.hierarchyLineNumber,
+                button: findHierarchyButton(elementWithSharedFile.hierarchyName, elementWithSharedFile.hierarchyLineNumber)
+            });
+        }
+        invalid.push({
+            value: duplicate,
+            invalids: invalids
+        });
+    }
+
+    return invalid;
+}
+
 function findMissingRequiredFields() {
     let invalid = [];
     for (const element of hierarchy.filter(i => i.hierarchyName != "ROOT")) {
@@ -2196,7 +2468,7 @@ function findMissingRequiredFields() {
                 value: "Node Name"
             });
 
-        if (element.fileName == "")
+        if (!element.fileName || element.fileName == "")
             invalids.push({
                 value: "Node File Name"
             });
@@ -2228,7 +2500,7 @@ function findMissingRequiredFields() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             invalids: invalids
         });
     }
@@ -2247,7 +2519,7 @@ function findMissingTriggerParentheses() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
         });
     }
 
@@ -2273,7 +2545,7 @@ function findMissingTriggerFilters() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             invalids: invalids
         });
     }
@@ -2304,7 +2576,7 @@ function findMissingNodeIdInNames() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             id: missingId
         });
     }
@@ -2324,7 +2596,7 @@ function findUnconventionalFileNames() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName),
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             fileName: fileName,
             suggestedName: suggestedName
         });
@@ -2349,7 +2621,7 @@ function findDuplicateNodeIds() {
         for (const elementWithNodeId of elementsWithNodeId) {
             invalids.push({
                 hierarchyName: elementWithNodeId.hierarchyName,
-                button: findHierarchyButton(elementWithNodeId.hierarchyName)
+                button: findHierarchyButton(elementWithNodeId.hierarchyName, elementWithNodeId.hierarchyLineNumber)
             })
         }
 
@@ -2434,7 +2706,7 @@ function findMissingElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
         });
     }
 
@@ -2451,7 +2723,7 @@ function findUnlabeledElementsInDocument() {
         invalid.push({
             hierarchyName: element.hierarchyName,
             element: element,
-            button: findHierarchyButton(element.hierarchyName)
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
         });
     }
 
@@ -2475,7 +2747,7 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
                     value: subFilterCombo
                 }],
                 element: element,
-                button: findHierarchyButton(element.hierarchyName),
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
             });
         }
         else {
@@ -2532,7 +2804,33 @@ function createFlattenedErrors() {
     const alerts = [];
 
     for (const error of errors) {
-        if (error.name == "missing-required-fields") {
+        if (error.name == "duplicate-names") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: `${source.value} | LINE: ${invalid.hierarchyLineNumber}`,
+                        targetProblem: `${source.value} is a duplicate name`
+                    });
+                }
+            }
+        }
+        else if (error.name == "duplicate-files") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: `${invalid.hierarchyName} | LINE: ${invalid.hierarchyLineNumber}`,
+                        targetProblem: `${source.value} is a duplicate file name`
+                    });
+                }
+            }
+        }
+        else if (error.name == "missing-required-fields") {
             for (const source of error.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
@@ -2577,7 +2875,7 @@ function createFlattenedErrors() {
                         alertType: "error",
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
-                        targetProblem: `${invalid.filter} - ${invalid.value} is not a valid binary assignment (yes/no)`
+                        targetProblem: `${invalid.filter} - ${invalid.value} is not a valid binary assignment (Y/N)`
                     });
                 }
             }
@@ -2685,8 +2983,8 @@ function createFlattenedWarnings() {
     return alerts;
 }
 
-function findHierarchyButton(hierarchyName) {
-    let selector = `#detected-json-container button[data-hierarchy-name='${hierarchyName}']`;
+function findHierarchyButton(hierarchyName, hierarchyLineNumber) {
+    let selector = `#detected-json-container button[data-hierarchy-name='${hierarchyName}'][data-line-number='${hierarchyLineNumber}']`;
     let element = document.querySelector(selector);
     return element;   
 }
@@ -2799,6 +3097,7 @@ function convertStringToNumbersList(stringList) {
 async function getDefaultTestSettings() {
     let defaultSettings = await fetchSettings();
     testSettings = {};
+    testSettings.type = currentHierarchyType;
     testSettings.inventoryYears = convertStringToNumbersList(defaultSettings.inventoryYears);
     testSettings.additionalWhere = defaultSettings.additionalWhere;
     testSettings.keepExisting = false;

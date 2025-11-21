@@ -23,7 +23,7 @@
 
    "filters": {
       "LARIX_SPP": [
-        {"species": "Larix spp."}
+        {"species": "Larix"}
       ],
       "OTHER_EXOTIC_CONIFERS": [
         {"species": "Pinus sylvestris"},

@@ -35,7 +35,7 @@
       ],
       "STRONG_DRY_DIAGNOSTICS": [
         {"species": "Carya ovata"},
-        {"species": "Juniperus virginiana"},
+        {"species": "Juniperus virginiana var. silicicola"},
         {"species": "Pinus banksiana"},
         {"species": "Pinus resinosa"},
         {"species": "Pinus strobus"},
@@ -54,7 +54,7 @@
         {"species": "Carya alba"},
         {"species": "Carya glabra"},
         {"species": "Carya laciniosa"},
-        {"species": "Amelanchier spp."},
+        {"species": "Amelanchier"},
         {"species": "Carpinus caroliniana"},
         {"species": "Cercis canadensis"},
         {"species": "Cornus florida"},

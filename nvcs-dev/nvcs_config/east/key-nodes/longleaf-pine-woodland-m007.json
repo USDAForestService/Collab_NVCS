@@ -37,13 +37,13 @@
       "DIAGNOSTIC_SPECIES_II": [
         {"species": "Pinus clausa"},
         {"species": "Pinus echinata"},
-        {"species": "Pinus elliottii"},
+        {"species": "Pinus elliottii var. elliottii"},
         {"species": "Pinus palustris"},
         {"species": "Pinus taeda"}
       ],
       "STRONG_LONGLEAF_DIAGNOSTICS": [
         {"species": "Pinus clausa"},
-        {"species": "Pinus elliottii"},
+        {"species": "Pinus elliottii var. elliottii"},
         {"species": "Pinus palustris"}
       ],
       "MODERATE_LONGLEAF_DIAGNOSTICS": [

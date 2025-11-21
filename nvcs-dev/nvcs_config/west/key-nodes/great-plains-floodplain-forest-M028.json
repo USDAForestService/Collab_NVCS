@@ -1,7 +1,7 @@
 {
     "node": {
-        "name": "Rocky Mountain-Great Basin Montane Riparian & Swamp Forest (M034)",
-        "id": "M034",
+        "name": "Great Plains Floodplain Forest (M028)",
+        "id": "M028",
         "level": "macrogroup",
         "description": [
             "Vegetation in a relatively natural state, dominated by native species,",
@@ -17,7 +17,7 @@
         "filters": {
             "EXOTIC": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

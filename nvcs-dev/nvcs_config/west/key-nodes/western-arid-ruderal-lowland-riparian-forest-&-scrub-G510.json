@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)",
+        "id": "G510",
+        "level": "Group",
+        "description": [
+            "test"
+        ],
+        "trigger": [
+            "TRUE"
+        ],
+        "filters": {}
+    }
+}

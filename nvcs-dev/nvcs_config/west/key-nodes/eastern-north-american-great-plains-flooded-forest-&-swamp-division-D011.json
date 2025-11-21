@@ -1,6 +1,6 @@
 {
     "node": {
-        "name": "Eastern North American-Great Plains Flooded & Swamp Forest Division (D011)",
+        "name": "Eastern North American-Great Plains Flooded Forest & Swamp Division (D011)",
         "id": "D011",
         "level": "division",
         "description": [
@@ -71,7 +71,7 @@
             ],
             "EXOTIC_TREE_SPP": [
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

@@ -1,6 +1,6 @@
 {
     "node": {
-        "name": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest (M885)",
+        "name": "Southeastern Coastal Plain Evergreen Oak Forest (M885)",
         "id": "M885",
         "level": "macrogroup",
         "description": [
@@ -17,10 +17,10 @@
         "filters": {
             "RUDERAL_EXOTIC": [
                 {
-                    "ruderal": "yes"
+                    "ruderal": "Y"
                 },
                 {
-                    "exotic": "yes"
+                    "exotic": "Y"
                 }
             ]
         }

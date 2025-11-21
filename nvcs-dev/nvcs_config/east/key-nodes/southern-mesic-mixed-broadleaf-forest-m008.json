@@ -46,22 +46,22 @@
         {"species": "Quercus phellos"},
         {"species": "Quercus shumardii"},
         {"species": "Sabal palmetto"},
-        {"species": "Tilia spp."},
+        {"species": "Tilia"},
         {"species": "Tilia americana"},
         {"species": "Tilia americana var. heterophylla"},
-        {"species": "Tilia americana var. caroliniana"}
+        {"species": "Tilia americana"}
       ],
       "MODERATE_MESIC_DIAGNOSTICS": [
         {"species": "Acer rubrum"},
         {"species": "Aesculus pavia"},
         {"species": "Carpinus caroliniana"},
         {"species": "Carya alba"},
-        {"species": "Celtis spp."},
-        {"species": "Celtis laevigata"},
+        {"species": "Celtis"},
+        {"species": "Celtis laevigata var. reticulata"},
         {"species": "Cornus florida"},
         {"species": "Diospyros virginiana"},
         {"species": "Fraxinus americana"},
-        {"species": "Halesia spp."},
+        {"species": "Halesia"},
         {"species": "Halesia carolina"},
         {"species": "Liquidambar styraciflua"},
         {"species": "Liriodendron tulipifera"},
@@ -75,7 +75,7 @@
         {"species": "Quercus rubra"},
         {"species": "Quercus virginiana"},
         {"species": "Quercus nigra"},
-        {"species": "Juniperus spp."},
+        {"species": "Juniperus"},
         {"species": "Pinus taeda"}
       ]
    }

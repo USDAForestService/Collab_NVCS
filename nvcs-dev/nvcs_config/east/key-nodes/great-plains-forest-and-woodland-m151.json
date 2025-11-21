@@ -34,7 +34,7 @@
       ],
       "STRONG_PLAINS_DIAGNOSTICS": [
         {"species": "Fraxinus pennsylvanica"},
-        {"species": "Juniperus virginiana"},
+        {"species": "Juniperus virginiana var. silicicola"},
         {"species": "Populus tremuloides"},
         {"species": "Quercus macrocarpa"},
         {"species": "Ulmus americana"},
@@ -48,7 +48,7 @@
         {"species": "Acer negundo"},
         {"species": "Betula papyrifera"},
         {"species": "Celtis occidentalis"},
-        {"species": "Crataegus spp."},
+        {"species": "Crataegus"},
         {"species": "Juglans nigra"},
         {"species": "Juniperus scopulorum"},
         {"species": "Morus rubra"},

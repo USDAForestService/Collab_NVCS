@@ -27,7 +27,7 @@
       "COMMON_EXOTIC_CONIFERS": [
         {"species": "Pinus sylvestris"},
         {"species": "Picea abies"},
-        {"species": "Larix spp."}
+        {"species": "Larix"}
       ],
       "NORTHERN_REGION": [
         {"ecoregion": "210, M210, 220, M220, 330, 251"}

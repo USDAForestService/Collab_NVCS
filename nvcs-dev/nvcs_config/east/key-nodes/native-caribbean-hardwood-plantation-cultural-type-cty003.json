@@ -19,10 +19,10 @@
 
    "filters": {
       "NATIVE_HARDWOODS": [
-        {"softwoodhardwood": "H", "exotic": "no"}
+        {"softwoodhardwood": "H", "exotic": "N"}
       ],
       "EXOTIC_HARDWOODS": [
-        {"softwoodhardwood": "H", "exotic": "yes"}
+        {"softwoodhardwood": "H", "exotic": "Y"}
       ]
    }
 
