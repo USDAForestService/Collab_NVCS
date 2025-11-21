@@ -492,8 +492,12 @@ function getSharedTablePath(type) {
     table = "east_shared_tables.db";
 
   let relativeTable = table;
-  if (!app.isPackaged)
-    relativeTable = "nvcs-data/run_output/west/" + table;
+  if (!app.isPackaged) {
+    if (type == "west")
+      relativeTable = "nvcs-data/run_output/west/" + table;
+    else if (type == "east")
+      relativeTable = "nvcs-data/run_output/east/" + table;
+  }
 
   let relative = path.join(getProjectResourcePath(), relativeTable);
   return path.resolve(relative);
