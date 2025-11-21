@@ -296,7 +296,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic.
 
         List<KeyValue> PLANTATION_pattern0 = Arrays.asList(
-            new KeyValue("plantation", "yes")
+            new KeyValue("plantation", "Y")
         );
         List<List<KeyValue>> PLANTATION_patterns = Arrays.asList(
             PLANTATION_pattern0
@@ -304,10 +304,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList PLANTATION = new PatternList("PLANTATION", PLANTATION_patterns);
 
         List<KeyValue> PLANTED_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("planted", "yes")
+            new KeyValue("planted", "Y")
         );
         List<KeyValue> PLANTED_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> PLANTED_EXOTIC_patterns = Arrays.asList(
             PLANTED_EXOTIC_pattern0,
@@ -316,7 +316,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList PLANTED_EXOTIC = new PatternList("PLANTED_EXOTIC", PLANTED_EXOTIC_patterns);
 
         List<KeyValue> PLANTED_POPULUS_pattern0 = Arrays.asList(
-            new KeyValue("planted", "yes")
+            new KeyValue("planted", "Y")
         );
         List<KeyValue> PLANTED_POPULUS_pattern1 = Arrays.asList(
             new KeyValue("species", "Populus")
@@ -419,7 +419,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList ECOREGIONS_IV = new PatternList("ECOREGIONS_IV", ECOREGIONS_IV_patterns);
 
         List<KeyValue> RIVERINE_pattern0 = Arrays.asList(
-            new KeyValue("riverine", "yes")
+            new KeyValue("riverine", "Y")
         );
         List<List<KeyValue>> RIVERINE_patterns = Arrays.asList(
             RIVERINE_pattern0
@@ -427,10 +427,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList RIVERINE = new PatternList("RIVERINE", RIVERINE_patterns);
 
         List<KeyValue> HYDRIC_OR_RIVERINE_pattern0 = Arrays.asList(
-            new KeyValue("hydric", "yes")
+            new KeyValue("hydric", "Y")
         );
         List<KeyValue> HYDRIC_OR_RIVERINE_pattern1 = Arrays.asList(
-            new KeyValue("riverine", "yes")
+            new KeyValue("riverine", "Y")
         );
         List<List<KeyValue>> HYDRIC_OR_RIVERINE_patterns = Arrays.asList(
             HYDRIC_OR_RIVERINE_pattern0,
@@ -450,7 +450,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "OBL")
         );
         List<KeyValue> W1_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> W1_UNDERSTORY_patterns = Arrays.asList(
             W1_UNDERSTORY_pattern0,
@@ -470,7 +470,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "FACW")
         );
         List<KeyValue> W2_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> W2_UNDERSTORY_patterns = Arrays.asList(
             W2_UNDERSTORY_pattern0,
@@ -490,7 +490,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "OBL, FACW")
         );
         List<KeyValue> WI_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> WI_patterns = Arrays.asList(
             WI_pattern0,
@@ -502,10 +502,10 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "OBL, FACW")
         );
         List<KeyValue> WI_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<KeyValue> WI_UNDERSTORY_pattern2 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> WI_UNDERSTORY_patterns = Arrays.asList(
             WI_UNDERSTORY_pattern0,
@@ -518,7 +518,7 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "UPL")
         );
         List<KeyValue> UI_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<List<KeyValue>> UI_patterns = Arrays.asList(
             UI_pattern0,
@@ -530,10 +530,10 @@ public class ClassificationKeyWest extends ClassificationKey {
             new KeyValue("wetland", "UPL")
         );
         List<KeyValue> UI_UNDERSTORY_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "no")
+            new KeyValue("exotic", "N")
         );
         List<KeyValue> UI_UNDERSTORY_pattern2 = Arrays.asList(
-            new KeyValue("tallytree", "no")
+            new KeyValue("tallytree", "N")
         );
         List<List<KeyValue>> UI_UNDERSTORY_patterns = Arrays.asList(
             UI_UNDERSTORY_pattern0,
@@ -801,7 +801,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -834,7 +834,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -937,7 +937,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1108,7 +1108,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList SPECIES_3 = new PatternList("SPECIES_3", SPECIES_3_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -1140,7 +1140,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1286,7 +1286,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1471,7 +1471,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -1504,7 +1504,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1815,7 +1815,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -1982,7 +1982,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -2015,7 +2015,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -2302,7 +2302,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -2601,7 +2601,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -2634,7 +2634,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -3138,10 +3138,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division
 
         List<KeyValue> RUDERAL_OR_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<KeyValue> RUDERAL_OR_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<List<KeyValue>> RUDERAL_OR_EXOTIC_patterns = Arrays.asList(
             RUDERAL_OR_EXOTIC_pattern0,
@@ -3675,7 +3675,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -4141,7 +4141,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -4492,7 +4492,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -4656,7 +4656,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -4689,10 +4689,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -4837,10 +4837,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -5061,10 +5061,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<KeyValue> EXOTIC_TREE_SPP_pattern1 = Arrays.asList(
-            new KeyValue("tallytree", "yes")
+            new KeyValue("tallytree", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0,
@@ -5098,7 +5098,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -5507,10 +5507,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -5536,10 +5536,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Only one Macrogroup
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("ruderal", "yes")
+            new KeyValue("ruderal", "Y")
         );
         List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
             RUDERAL_EXOTIC_pattern0,
@@ -6430,7 +6430,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -6463,7 +6463,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -6755,7 +6755,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER] – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -6986,7 +6986,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -7019,7 +7019,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -7895,7 +7895,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_patterns = Arrays.asList(
             EXOTIC_pattern0
@@ -8240,7 +8240,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -8789,7 +8789,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -9620,7 +9620,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES_I = new PatternList("MODERATE_DIAGNOSTIC_SPECIES_I", MODERATE_DIAGNOSTIC_SPECIES_I_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -10505,7 +10505,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Only one Macrogroup
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -10735,7 +10735,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0
@@ -12274,7 +12274,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
         List<KeyValue> EXOTIC_TREE_SPP_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "yes")
+            new KeyValue("exotic", "Y")
         );
         List<List<KeyValue>> EXOTIC_TREE_SPP_patterns = Arrays.asList(
             EXOTIC_TREE_SPP_pattern0

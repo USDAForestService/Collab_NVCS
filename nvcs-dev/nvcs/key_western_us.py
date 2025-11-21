@@ -435,16 +435,16 @@ def element_005():
     # AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic.
 
     PLANTATION = PatternList('PLANTATION',
-        {'plantation': 'yes'}
+        {'plantation': 'Y'}
     )
 
     PLANTED_EXOTIC = PatternList('PLANTED_EXOTIC',
-        {'planted': 'yes'},
-        {'exotic': 'yes'}
+        {'planted': 'Y'},
+        {'exotic': 'Y'}
     )
 
     PLANTED_POPULUS = PatternList('PLANTED_POPULUS',
-        {'planted': 'yes'},
+        {'planted': 'Y'},
         {'species': 'Populus'}
     )
 
@@ -530,12 +530,12 @@ def element_007():
     )
 
     RIVERINE = PatternList('RIVERINE',
-        {'riverine': 'yes'}
+        {'riverine': 'Y'}
     )
 
     HYDRIC_OR_RIVERINE = PatternList('HYDRIC_OR_RIVERINE',
-        {'hydric': 'yes'},
-        {'riverine': 'yes'}
+        {'hydric': 'Y'},
+        {'riverine': 'Y'}
     )
 
     W1 = PatternList('W1',
@@ -544,7 +544,7 @@ def element_007():
 
     W1_UNDERSTORY = PatternList('W1_UNDERSTORY',
         {'wetland': 'OBL'},
-        {'tallytree': 'no'}
+        {'tallytree': 'N'}
     )
 
     W2 = PatternList('W2',
@@ -553,7 +553,7 @@ def element_007():
 
     W2_UNDERSTORY = PatternList('W2_UNDERSTORY',
         {'wetland': 'FACW'},
-        {'tallytree': 'no'}
+        {'tallytree': 'N'}
     )
 
     W3 = PatternList('W3',
@@ -562,24 +562,24 @@ def element_007():
 
     WI = PatternList('WI',
         {'wetland': 'OBL, FACW'},
-        {'exotic': 'no'}
+        {'exotic': 'N'}
     )
 
     WI_UNDERSTORY = PatternList('WI_UNDERSTORY',
         {'wetland': 'OBL, FACW'},
-        {'exotic': 'no'},
-        {'tallytree': 'no'}
+        {'exotic': 'N'},
+        {'tallytree': 'N'}
     )
 
     UI = PatternList('UI',
         {'wetland': 'UPL'},
-        {'exotic': 'no'}
+        {'exotic': 'N'}
     )
 
     UI_UNDERSTORY = PatternList('UI_UNDERSTORY',
         {'wetland': 'UPL'},
-        {'exotic': 'no'},
-        {'tallytree': 'no'}
+        {'exotic': 'N'},
+        {'tallytree': 'N'}
     )
 
     Populus_fremontii = PatternList('Populus_fremontii',
@@ -723,7 +723,7 @@ def element_010():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -751,7 +751,7 @@ def element_011():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -823,7 +823,7 @@ def element_013():
     # (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -903,7 +903,7 @@ def element_014():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -930,7 +930,7 @@ def element_015():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1013,7 +1013,7 @@ def element_017():
     # (See Appendix xx [PLACEHOLDER] - needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1107,7 +1107,7 @@ def element_019():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1135,7 +1135,7 @@ def element_020():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1312,7 +1312,7 @@ def element_024():
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1387,7 +1387,7 @@ def element_025():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1415,7 +1415,7 @@ def element_026():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1589,7 +1589,7 @@ def element_030():
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1700,7 +1700,7 @@ def element_031():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1728,7 +1728,7 @@ def element_032():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -1986,8 +1986,8 @@ def element_037():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division
 
     RUDERAL_OR_EXOTIC = PatternList('RUDERAL_OR_EXOTIC',
-        {'exotic': 'yes'},
-        {'ruderal': 'yes'}
+        {'exotic': 'Y'},
+        {'ruderal': 'Y'}
     )
 
     def match(plot):
@@ -2231,7 +2231,7 @@ def element_042():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2469,7 +2469,7 @@ def element_047():
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2681,7 +2681,7 @@ def element_052():
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2782,7 +2782,7 @@ def element_055():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2810,8 +2810,8 @@ def element_056():
     # (See Appendix xx [PLACEHOLDER])
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -2915,8 +2915,8 @@ def element_059():
     # (See Appendix xx [PLACEHOLDER])
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3008,8 +3008,8 @@ def element_060():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'},
-        {'tallytree': 'yes'}
+        {'exotic': 'Y'},
+        {'tallytree': 'Y'}
     )
 
     def match(plot):
@@ -3037,7 +3037,7 @@ def element_061():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3266,8 +3266,8 @@ def element_066():
     # (See Appendix xx [PLACEHOLDER])
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3287,8 +3287,8 @@ def element_067():
     # Only one Macrogroup
 
     RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'ruderal': 'yes'},
-        {'exotic': 'yes'}
+        {'ruderal': 'Y'},
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3597,7 +3597,7 @@ def element_070():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3625,7 +3625,7 @@ def element_071():
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3778,7 +3778,7 @@ def element_074():
     # (See Appendix xx [PLACEHOLDER] – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3875,7 +3875,7 @@ def element_075():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -3903,7 +3903,7 @@ def element_076():
     # (See Appendix xx [PLACEHOLDER]) – needs to be refined for this Division)
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -4357,7 +4357,7 @@ def element_084():
     # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -4563,7 +4563,7 @@ def element_087():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -4885,7 +4885,7 @@ def element_094():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -5398,7 +5398,7 @@ def element_105():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     ECOREGIONS_II = PatternList('ECOREGIONS_II',
@@ -5848,7 +5848,7 @@ def element_113():
     # Only one Macrogroup
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -5966,7 +5966,7 @@ def element_116():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
@@ -6866,7 +6866,7 @@ def element_134():
     )
 
     EXOTIC_TREE_SPP = PatternList('EXOTIC_TREE_SPP',
-        {'exotic': 'yes'}
+        {'exotic': 'Y'}
     )
 
     def match(plot):
