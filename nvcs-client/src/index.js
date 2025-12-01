@@ -369,10 +369,12 @@ async function executeTester(event, targetPath, testSettings) {
   if (testSettings.type == "west") {
     config.Config.TargetConfig = "WestConfig";
     config.WestConfig.In_ConfigPath = path.resolve(targetPath);
+    config.WestConfig.AdditionalWhereClause = testSettings.additionalWhere;
   }
   else if (testSettings.type == "east") {
     config.Config.TargetConfig = "EastConfig";
     config.EastConfig.In_ConfigPath = path.resolve(targetPath);
+    config.EastConfig.AdditionalWhereClause = testSettings.additionalWhere;
   }
   config.FullOutputConfig.SkipSharedTables = "True";
   config.FullOutputConfig.In_Alerts = path.resolve(path.join(targetPath, "alerts.json"));
@@ -381,7 +383,6 @@ async function executeTester(event, targetPath, testSettings) {
   config.FullOutputConfig.Out_DebugLogPath = getDebugLogPath();
   config.FullOutputConfig.Out_FixupCsvPath = getFixupCsvPath();
   config.FullOutputConfig.InventoryYears = `[${testSettings.inventoryYears.join(',')}]`;
-  config.FullOutputConfig.AdditionalWhereClause = testSettings.additionalWhere;
   setPythonConfigFile(config);
 
   console.log("- Executing Builder Script...");
@@ -560,15 +561,21 @@ async function openDirectory(event, targetPath) {
   return true;
 }
 
-async function fetchSettings(event) {
+async function fetchSettings(event, type) {
   console.log("INVOKED: fetchSettings");
 
   const defaultPath = getDefaultPythontConfigFilePath();
   const config = getPythonConfigFile(defaultPath);
+
+  let additionalWhere;
+  if (type == "west")
+    additionalWhere = config.WestConfig.AdditionalWhereClause;
+  else if (type == "east")
+    additionalWhere = config.EastConfig.AdditionalWhereClause;
   
   const response = {
     inventoryYears: config.FullOutputConfig.InventoryYears,
-    additionalWhere: config.FullOutputConfig.AdditionalWhereClause
+    additionalWhere: additionalWhere
   };
 
   console.log("- RETURNING RESULTS");

@@ -316,9 +316,9 @@ async function fetchDocumentStructure() {
     }
 }
 
-async function fetchSettings() {
+async function fetchSettings(currentHierarchyType) {
     try {
-        const response = await electronAPI.fetchSettings();
+        const response = await electronAPI.fetchSettings(currentHierarchyType);
         console.log("Fetched Test Settings", response);
         return response;
     }
@@ -3095,7 +3095,7 @@ function convertStringToNumbersList(stringList) {
 }
 
 async function getDefaultTestSettings() {
-    let defaultSettings = await fetchSettings();
+    let defaultSettings = await fetchSettings(currentHierarchyType);
     testSettings = {};
     testSettings.type = currentHierarchyType;
     testSettings.inventoryYears = convertStringToNumbersList(defaultSettings.inventoryYears);
