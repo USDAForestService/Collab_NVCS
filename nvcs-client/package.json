@@ -1,7 +1,7 @@
 {
   "name": "nvcs-configuration-tool",
   "productName": "NVCS Configuration Tool",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "NVCS Configuration Tool",
   "main": "src/index.js",
   "scripts": {
