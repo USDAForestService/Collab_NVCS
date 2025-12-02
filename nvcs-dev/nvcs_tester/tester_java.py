@@ -124,6 +124,6 @@ if __name__ == '__main__':
         plottbl=config.get(config.target, "In_DbTable"),
         temp_path=config.get(config.base, "In_TempPath"),
         invyrs=config.get(config.fullOutputSection, "InventoryYears"),
-        where=config.get(config.fullOutputSection, "AdditionalWhereClause"))
+        where=config.get(config.target, "AdditionalWhereClause"))
 
     pass

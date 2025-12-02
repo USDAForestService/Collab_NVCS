@@ -353,7 +353,7 @@ if __name__ == '__main__':
 
     out_Options = {
         "inventory_years": config.get_literal(config.fullOutputSection, "InventoryYears"),
-        "additional_where_clause": config.get(config.fullOutputSection, "AdditionalWhereClause"),
+        "additional_where_clause": config.get(config.target, "AdditionalWhereClause"),
         "output_db": config.get(config.fullOutputSection, "Out_DbPath"),
         "skip_shared_tables": config.get_literal(config.fullOutputSection, "SkipSharedTables")
     }

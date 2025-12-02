@@ -12,7 +12,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     openSaveDocument: (targetPath) => ipcRenderer.invoke('open-save-document', targetPath),
     executeTester: (targetPath, testSettings) => ipcRenderer.invoke('execute-tester', targetPath, testSettings),
     openDirectory: (targetPath) => ipcRenderer.invoke('open-directory', targetPath),
-    fetchSettings: () => ipcRenderer.invoke('fetch-settings'),
+    fetchSettings: (type) => ipcRenderer.invoke('fetch-settings', type),
     fetchYears: (type) => ipcRenderer.invoke('fetch-years', type),
     markUnsavedChanges: (value) => ipcRenderer.invoke('mark-unsaved-changes', value),
     getApplicationVersion: () => ipcRenderer.invoke('get-application-version'),
