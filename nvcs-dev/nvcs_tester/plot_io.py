@@ -80,8 +80,8 @@ def read_sqlite_west(dbfile, tbl):
 
 def read_sqlite_east(dbfile, tbl):
     from key_eastern_us import Plot, Tree
-    plot_fields = 'IDENT, null, null, ECOREGION, PLANTATION, HYDRIC, RIVERINE, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null'
-    tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, null, null'
+    plot_fields = 'IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2, TRTCD3, TRTYR1, TRTYR2, TRTYR3'
+    tree_fields = 'SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, SOFTWOODHARDWOOD, PLANTED, TALLYTREE, null'
     sql = 'SELECT DISTINCT ' + plot_fields + ' FROM ' + tbl
     sql = sql + ' WHERE (TRUE) ORDER BY IDENT'
     con = sqlite3.connect(dbfile)
