@@ -23,7 +23,7 @@ public class Pattern {
             String cleanedExpr = expr.replaceAll("^\\s+", "");
             negated = cleanedExpr.startsWith("!");
             pattern = new ArrayList<>();
-            for (String splitExpr : cleanedExpr.split(",")) {
+            for (String splitExpr : cleanedExpr.replace("!", "").split(",")) {
                 String stripped = splitExpr.trim();
                 pattern.add(stripped);
             }

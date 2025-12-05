@@ -130,7 +130,7 @@ def generateFullOutput(type, in_ClassificationKey, in_AnlyTestData, in_RefSpecie
             python_key_input_vw_definition = (
                 f"CREATE VIEW '{python_key_input_vw_name}' AS "
                 "SELECT IDENT, RSCD, STATEAB, ECOREGION, PLANTATION, HYDRIC, RIVERINE, "
-                "ELEVATION, "
+                "ELEVATION, BALIVE, FBCOV, GRCOV, SHCOV, TTCOV, NTCOV, "
                 "LIVE_CANOPY_CVR_PCT, AFFORESTATION_CD, LAND_COVER_CLASS_CD, LAND_COVER_CLASS_CD_RET, TRTCD1, TRTCD2, TRTCD3, TRTYR1, TRTYR2, TRTYR3, "
                 "SPECIES, RIV, WETLAND, RUDERAL, EXOTIC, "
                 "SOFTWOODHARDWOOD, PLANTED, "
