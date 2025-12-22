@@ -1,27 +1,20 @@
-{"node": {
-
-   "name":
-      "Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)",
-
-   "id":
-      "Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "ECOREGION is 212, M211, 211, 222I, 221A-221D"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS)"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "212, M211, 211, 222I, 221A, 221B, 221C, 221D"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)",
+        "id": "Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest LC (M504)",
+        "level": "macrogroup",
+        "description": [
+            "ECOREGION is 212, M211, 211, 222I, 221A-221D"
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "212, M211, 211, 222I, 221A, 221B, 221C, 221D"
+                }
+            ]
+        }
+    }
+}

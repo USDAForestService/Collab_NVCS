@@ -1,44 +1,45 @@
-{"node": {
-
-   "name":
-      "Red Spruce Forest Plantation (CST004758)",
-
-   "id":
-      "Red Spruce Forest Plantation (CST004758)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "Tree composition dominated by Picea rubens, i.e., Picea rubens >=25% RIV,",
-      "and exceeds each species of Abies balsamea, Larix laricina, Picea glauca, and Picea mariana."
-   ],
-
-   "trigger": [
-      "    riv(RED_SPRUCE) >= 25",
-      "and riv(RED_SPRUCE) > riv(BALSAM_FIR)",
-      "and riv(RED_SPRUCE) > riv(NATIVE_TAMARACK)",
-      "and riv(RED_SPRUCE) > riv(WHITE_SPRUCE)",
-      "and riv(RED_SPRUCE) > riv(BLACK_SPRUCE)"
-   ],
-
-   "filters": {
-      "BALSAM_FIR": [
-        {"species": "Abies balsamea"}
-      ],
-      "NATIVE_TAMARACK": [
-        {"species": "Larix laricina"}
-      ],
-      "RED_SPRUCE": [
-        {"species": "Picea rubens"}
-      ],
-      "WHITE_SPRUCE": [
-        {"species": "Picea glauca"}
-      ],
-      "BLACK_SPRUCE": [
-        {"species": "Picea mariana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Red Spruce Forest Plantation (CST004758)",
+        "id": "Red Spruce Forest Plantation (CST004758)",
+        "level": "subtype",
+        "description": [
+            "Tree composition dominated by Picea rubens, i.e., Picea rubens >=25% RIV,",
+            "and exceeds each species of Abies balsamea, Larix laricina, Picea glauca, and Picea mariana."
+        ],
+        "trigger": [
+            "    riv(RED_SPRUCE) >= 25",
+            "and riv(RED_SPRUCE) > riv(BALSAM_FIR)",
+            "and riv(RED_SPRUCE) > riv(NATIVE_TAMARACK)",
+            "and riv(RED_SPRUCE) > riv(WHITE_SPRUCE)",
+            "and riv(RED_SPRUCE) > riv(BLACK_SPRUCE)"
+        ],
+        "filters": {
+            "BALSAM_FIR": [
+                {
+                    "species": "Abies balsamea"
+                }
+            ],
+            "NATIVE_TAMARACK": [
+                {
+                    "species": "Larix laricina"
+                }
+            ],
+            "RED_SPRUCE": [
+                {
+                    "species": "Picea rubens"
+                }
+            ],
+            "WHITE_SPRUCE": [
+                {
+                    "species": "Picea glauca"
+                }
+            ],
+            "BLACK_SPRUCE": [
+                {
+                    "species": "Picea mariana"
+                }
+            ]
+        }
+    }
+}

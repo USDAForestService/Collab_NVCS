@@ -1,44 +1,45 @@
-{"node": {
-
-   "name":
-      "Sand Pine Forest Plantation (CST007168)",
-
-   "id":
-      "Sand Pine Forest Plantation (CST007168)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "Tree composition dominated by Pinus clausa >= 25% RIV, and exceeds each",
-      "species of Pinus echinata, Pinus palustris, Pinus elliottii and Pinus taeda"
-   ],
-
-   "trigger": [
-      "    riv(SAND_PINE) >= 25",
-      "and riv(SAND_PINE) > riv(SHORTLEAF_PINE)",
-      "and riv(SAND_PINE) > riv(LONGLEAF_PINE)",
-      "and riv(SAND_PINE) > riv(SLASH_PINE)",
-      "and riv(SAND_PINE) > riv(LOBLOLLY_PINE)"
-   ],
-
-   "filters": {
-      "SHORTLEAF_PINE": [
-        {"species": "Pinus echinata"}
-      ],
-      "LONGLEAF_PINE": [
-        {"species": "Pinus palustris"}
-      ],
-      "SLASH_PINE": [
-        {"species": "Pinus elliottii var. elliottii"}
-      ],
-      "LOBLOLLY_PINE": [
-        {"species": "Pinus taeda"}
-      ],
-      "SAND_PINE": [
-        {"species": "Pinus clausa"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Sand Pine Forest Plantation (CST007168)",
+        "id": "Sand Pine Forest Plantation (CST007168)",
+        "level": "subtype",
+        "description": [
+            "Tree composition dominated by Pinus clausa >= 25% RIV, and exceeds each",
+            "species of Pinus echinata, Pinus palustris, Pinus elliottii and Pinus taeda"
+        ],
+        "trigger": [
+            "    riv(SAND_PINE) >= 25",
+            "and riv(SAND_PINE) > riv(SHORTLEAF_PINE)",
+            "and riv(SAND_PINE) > riv(LONGLEAF_PINE)",
+            "and riv(SAND_PINE) > riv(SLASH_PINE)",
+            "and riv(SAND_PINE) > riv(LOBLOLLY_PINE)"
+        ],
+        "filters": {
+            "SHORTLEAF_PINE": [
+                {
+                    "species": "Pinus echinata"
+                }
+            ],
+            "LONGLEAF_PINE": [
+                {
+                    "species": "Pinus palustris"
+                }
+            ],
+            "SLASH_PINE": [
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                }
+            ],
+            "LOBLOLLY_PINE": [
+                {
+                    "species": "Pinus taeda"
+                }
+            ],
+            "SAND_PINE": [
+                {
+                    "species": "Pinus clausa"
+                }
+            ]
+        }
+    }
+}

@@ -1,28 +1,23 @@
-{"node": {
-
-   "name":
-      "Caribbean Forest",
-
-   "id":
-      "Caribbean Forest",
-
-   "level":
-      "division",
-
-   "description": [
-      "Stands found in Caribbean islands."
-   ],
-
-   "trigger": [
-      "match(CARIBBEAN)"
-   ],
-
-   "filters": {
-      "CARIBBEAN": [
-        {"state": "PR"},
-        {"state": "VI"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Forest",
+        "id": "Caribbean Forest",
+        "level": "division",
+        "description": [
+            "Stands found in Caribbean islands."
+        ],
+        "trigger": [
+            "match(CARIBBEAN)"
+        ],
+        "filters": {
+            "CARIBBEAN": [
+                {
+                    "state": "PR"
+                },
+                {
+                    "state": "VI"
+                }
+            ]
+        }
+    }
+}

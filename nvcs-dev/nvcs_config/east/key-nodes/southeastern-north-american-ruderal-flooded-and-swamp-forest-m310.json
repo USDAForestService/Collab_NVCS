@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Southeastern North American Ruderal Flooded & Swamp Forest (M310)",
-
-   "id":
-      "Southeastern North American Ruderal Flooded & Swamp Forest (M310)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Southeastern North American Ruderal Flooded & Swamp Forest (M310)",
+        "id": "Southeastern North American Ruderal Flooded & Swamp Forest (M310)",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

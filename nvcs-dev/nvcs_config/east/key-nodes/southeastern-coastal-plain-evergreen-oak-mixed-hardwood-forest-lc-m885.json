@@ -1,66 +1,119 @@
-{"node": {
-
-   "name":
-      "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)",
-
-   "id":
-      "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot is in 232B-E, 232G, 255Da-Dc or 411A, AND",
-      "% RIV of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS > either STRONG LONGLEAF DIAGNOSTICS or STRONG MESIC DIAGNOSTICS"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and",
-      "  (   riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) > riv(STRONG_LONGLEAF_DIAGNOSTICS)",
-      "   or riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) > riv(STRONG_MESIC_DIAGNOSTICS))"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A"}
-      ],
-      "STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS": [
-        {"species": "Juniperus virginiana var. silicicola"},
-        {"species": "Pinus glabra"},
-        {"species": "Quercus incana"},
-        {"species": "Quercus laevis"},
-        {"species": "Quercus laurifolia"},
-        {"species": "Quercus margarettiae"},
-        {"species": "Quercus minima"},
-        {"species": "Quercus virginiana"},
-        {"species": "Sabal palmetto"}
-      ],
-      "STRONG_LONGLEAF_DIAGNOSTICS": [
-        {"species": "Pinus clausa"},
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus palustris"}
-      ],
-      "STRONG_MESIC_DIAGNOSTICS": [
-        {"species": "Acer barbatum"},
-        {"species": "Aesculus pavia"},
-        {"species": "Fagus grandifolia"},
-        {"species": "Halesia diptera"},
-        {"species": "Ilex opaca"},
-        {"species": "Magnolia acuminata"},
-        {"species": "Magnolia grandiflora"},
-        {"species": "Magnolia virginiana"},
-        {"species": "Pinus glabra"},
-        {"species": "Quercus michauxii"},
-        {"species": "Quercus pagoda"},
-        {"species": "Quercus phellos"},
-        {"species": "Quercus shumardii"},
-        {"species": "Sabal palmetto"},
-        {"species": "Tilia"},
-        {"species": "Tilia americana"},
-        {"species": "Tilia americana var. heterophylla"},
-        {"species": "Tilia americana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)",
+        "id": "Southeastern Coastal Plain Evergreen Oak - Mixed Hardwood Forest LC (M885)",
+        "level": "macrogroup",
+        "description": [
+            "Plot is in 232B-E, 232G, 255Da-Dc or 411A, AND",
+            "% RIV of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS > either STRONG LONGLEAF DIAGNOSTICS or STRONG MESIC DIAGNOSTICS"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and",
+            "  (   riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) > riv(STRONG_LONGLEAF_DIAGNOSTICS)",
+            "   or riv(STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS) > riv(STRONG_MESIC_DIAGNOSTICS))"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "232B, 232C, 232D, 232E, 232G, 255Da, 255Db, 255Dc, 411A"
+                }
+            ],
+            "STRONG_OAK_MIXED_HARDWOOD_DIAGNOSTICS": [
+                {
+                    "species": "Juniperus virginiana var. silicicola"
+                },
+                {
+                    "species": "Pinus glabra"
+                },
+                {
+                    "species": "Quercus incana"
+                },
+                {
+                    "species": "Quercus laevis"
+                },
+                {
+                    "species": "Quercus laurifolia"
+                },
+                {
+                    "species": "Quercus margarettiae"
+                },
+                {
+                    "species": "Quercus minima"
+                },
+                {
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Sabal palmetto"
+                }
+            ],
+            "STRONG_LONGLEAF_DIAGNOSTICS": [
+                {
+                    "species": "Pinus clausa"
+                },
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus palustris"
+                }
+            ],
+            "STRONG_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Acer barbatum"
+                },
+                {
+                    "species": "Aesculus pavia"
+                },
+                {
+                    "species": "Fagus grandifolia"
+                },
+                {
+                    "species": "Halesia diptera"
+                },
+                {
+                    "species": "Ilex opaca"
+                },
+                {
+                    "species": "Magnolia acuminata"
+                },
+                {
+                    "species": "Magnolia grandiflora"
+                },
+                {
+                    "species": "Magnolia virginiana"
+                },
+                {
+                    "species": "Pinus glabra"
+                },
+                {
+                    "species": "Quercus michauxii"
+                },
+                {
+                    "species": "Quercus pagoda"
+                },
+                {
+                    "species": "Quercus phellos"
+                },
+                {
+                    "species": "Quercus shumardii"
+                },
+                {
+                    "species": "Sabal palmetto"
+                },
+                {
+                    "species": "Tilia"
+                },
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Tilia americana var. heterophylla"
+                },
+                {
+                    "species": "Tilia americana"
+                }
+            ]
+        }
+    }
+}

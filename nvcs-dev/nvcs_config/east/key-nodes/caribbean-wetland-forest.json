@@ -1,28 +1,23 @@
-{"node": {
-
-   "name":
-      "Caribbean Wetland Forest",
-
-   "id":
-      "Caribbean Wetland Forest",
-
-   "level":
-      "division",
-
-   "description": [
-      "Tropical wetland forests found in Puerto Rico, U.S. Virgin Islands and other Caribbean territories"
-   ],
-
-   "trigger": [
-      "match(CARIBBEAN)"
-   ],
-
-   "filters": {
-      "CARIBBEAN": [
-        {"state": "PR"},
-        {"state": "VI"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Wetland Forest",
+        "id": "Caribbean Wetland Forest",
+        "level": "division",
+        "description": [
+            "Tropical wetland forests found in Puerto Rico, U.S. Virgin Islands and other Caribbean territories"
+        ],
+        "trigger": [
+            "match(CARIBBEAN)"
+        ],
+        "filters": {
+            "CARIBBEAN": [
+                {
+                    "state": "PR"
+                },
+                {
+                    "state": "VI"
+                }
+            ]
+        }
+    }
+}

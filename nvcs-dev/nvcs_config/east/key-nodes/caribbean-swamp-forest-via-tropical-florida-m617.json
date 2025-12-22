@@ -1,53 +1,66 @@
-{"node": {
-
-   "name":
-      "Caribbean Swamp Forest via tropical Florida (M617)",
-
-   "id":
-      "Caribbean Swamp Forest via tropical Florida (M617)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      " i. Tree composition dominated by Annona glabra, Fraxinus caroliniana,",
-      "    Salix caroliniana, Taxodium distichum, Sabal palmetto (>=50% RIV); stands only",
-      "    found in EcoSection 411A [note FIA database does not list these species];",
-      "OR",
-      "ii. Tree composition as above, but with >=20% RIV, AND other species are any",
-      "    combination of Conocarpus erectus, Magnolia virginiana, Persea borbonia,",
-      "    Salix caroliniana, other palms (together >=50% RIV);",
-      "",
-      "[Note that because FIA does not list many of these species in their database,",
-      " this type may overlap with MG 7, since Magnolia virginiana and Persea borbonia",
-      " are diagnostic in that MG]"
-   ],
-
-   "trigger": [
-      "     match(ECOREGION)",
-      "and (    riv(STRONG_DIAGNOSTIC_SPECIES) >= 50",
-      "     or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))"
-   ],
-
-   "filters": {
-      "ECOREGION": [
-        {"ecoregion": "411A"}
-      ],
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Annona glabra"},
-        {"species": "Fraxinus caroliniana"},
-        {"species": "Salix caroliniana"},
-        {"species": "Taxodium distichum"},
-        {"species": "Sabal palmetto"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Conocarpus erectus"},
-        {"species": "Magnolia virginiana"},
-        {"species": "Persea borbonia"},
-        {"species": "Salix caroliniana"},
-        {"species": "other palms"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Swamp Forest via tropical Florida (M617)",
+        "id": "Caribbean Swamp Forest via tropical Florida (M617)",
+        "level": "macrogroup",
+        "description": [
+            " i. Tree composition dominated by Annona glabra, Fraxinus caroliniana,",
+            "    Salix caroliniana, Taxodium distichum, Sabal palmetto (>=50% RIV); stands only",
+            "    found in EcoSection 411A [note FIA database does not list these species];",
+            "OR",
+            "ii. Tree composition as above, but with >=20% RIV, AND other species are any",
+            "    combination of Conocarpus erectus, Magnolia virginiana, Persea borbonia,",
+            "    Salix caroliniana, other palms (together >=50% RIV);",
+            "",
+            "[Note that because FIA does not list many of these species in their database,",
+            " this type may overlap with MG 7, since Magnolia virginiana and Persea borbonia",
+            " are diagnostic in that MG]"
+        ],
+        "trigger": [
+            "     match(ECOREGION)",
+            "and (    riv(STRONG_DIAGNOSTIC_SPECIES) >= 50",
+            "     or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))"
+        ],
+        "filters": {
+            "ECOREGION": [
+                {
+                    "ecoregion": "411A"
+                }
+            ],
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Annona glabra"
+                },
+                {
+                    "species": "Fraxinus caroliniana"
+                },
+                {
+                    "species": "Salix caroliniana"
+                },
+                {
+                    "species": "Taxodium distichum"
+                },
+                {
+                    "species": "Sabal palmetto"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Conocarpus erectus"
+                },
+                {
+                    "species": "Magnolia virginiana"
+                },
+                {
+                    "species": "Persea borbonia"
+                },
+                {
+                    "species": "Salix caroliniana"
+                },
+                {
+                    "species": "other palms"
+                }
+            ]
+        }
+    }
+}

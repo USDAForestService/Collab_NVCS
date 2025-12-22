@@ -1,35 +1,40 @@
-{"node": {
-
-   "name":
-      "Caribbean Coastal Lowland Dry Forest (M134)",
-
-   "id":
-      "Caribbean Coastal Lowland Dry Forest (M134)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Tree composition dominated by one or more of Bursera simaruba, Coccoloba diversifolia,",
-      "Guapira discolor, Metopium toxiferum, Conocarpus erectus, \"other palms\",",
-      "Sabal palmetto (>=20% RIV)"
-   ],
-
-   "trigger": [
-      "riv(STRONG_DIAGNOSTIC_SPECIES) >= 20"
-   ],
-
-   "filters": {
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Bursera simaruba"},
-        {"species": "Coccoloba diversifolia"},
-        {"species": "Guapira discolor"},
-        {"species": "Metopium toxiferum"},
-        {"species": "Conocarpus erectus"},
-        {"species": "other palms"},
-        {"species": "Sabal palmetto"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Coastal Lowland Dry Forest (M134)",
+        "id": "Caribbean Coastal Lowland Dry Forest (M134)",
+        "level": "macrogroup",
+        "description": [
+            "Tree composition dominated by one or more of Bursera simaruba, Coccoloba diversifolia,",
+            "Guapira discolor, Metopium toxiferum, Conocarpus erectus, \"other palms\",",
+            "Sabal palmetto (>=20% RIV)"
+        ],
+        "trigger": [
+            "riv(STRONG_DIAGNOSTIC_SPECIES) >= 20"
+        ],
+        "filters": {
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Bursera simaruba"
+                },
+                {
+                    "species": "Coccoloba diversifolia"
+                },
+                {
+                    "species": "Guapira discolor"
+                },
+                {
+                    "species": "Metopium toxiferum"
+                },
+                {
+                    "species": "Conocarpus erectus"
+                },
+                {
+                    "species": "other palms"
+                },
+                {
+                    "species": "Sabal palmetto"
+                }
+            ]
+        }
+    }
+}

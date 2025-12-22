@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Temperate & Boreal Wetland Forest",
-
-   "id":
-      "Temperate & Boreal Wetland Forest",
-
-   "level":
-      "division",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Temperate & Boreal Wetland Forest",
+        "id": "Temperate & Boreal Wetland Forest",
+        "level": "division",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

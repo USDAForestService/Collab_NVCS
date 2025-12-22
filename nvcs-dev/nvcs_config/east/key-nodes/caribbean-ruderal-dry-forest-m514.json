@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Caribbean Ruderal Dry Forest (M514)",
-
-   "id":
-      "Caribbean Ruderal Dry Forest (M514)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Ruderal Dry Forest (M514)",
+        "id": "Caribbean Ruderal Dry Forest (M514)",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

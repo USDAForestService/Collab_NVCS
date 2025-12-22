@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "North American Boreal Conifer Poor Swamp LC (M299)",
-
-   "id":
-      "North American Boreal Conifer Poor Swamp LC (M299)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "North American Boreal Conifer Poor Swamp LC (M299)",
+        "id": "North American Boreal Conifer Poor Swamp LC (M299)",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

@@ -1,31 +1,30 @@
-{"node": {
-
-   "name":
-      "Western Atlantic & Caribbean Mangrove (M005)",
-
-   "id":
-      "Western Atlantic & Caribbean Mangrove (M005)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Tree composition dominated by one or more of Avicennia germinans, Conocarpus erectus,",
-      "Laguncularia racemosa, Rhizophora mangle (>=20% RIV);"
-   ],
-
-   "trigger": [
-      "riv(STRONG_DIAGNOSTIC_SPECIES) >= 20"
-   ],
-
-   "filters": {
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Avicennia germinans"},
-        {"species": "Conocarpus erectus"},
-        {"species": "Laguncularia racemosa"},
-        {"species": "Rhizophora mangle"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Western Atlantic & Caribbean Mangrove (M005)",
+        "id": "Western Atlantic & Caribbean Mangrove (M005)",
+        "level": "macrogroup",
+        "description": [
+            "Tree composition dominated by one or more of Avicennia germinans, Conocarpus erectus,",
+            "Laguncularia racemosa, Rhizophora mangle (>=20% RIV);"
+        ],
+        "trigger": [
+            "riv(STRONG_DIAGNOSTIC_SPECIES) >= 20"
+        ],
+        "filters": {
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Avicennia germinans"
+                },
+                {
+                    "species": "Conocarpus erectus"
+                },
+                {
+                    "species": "Laguncularia racemosa"
+                },
+                {
+                    "species": "Rhizophora mangle"
+                }
+            ]
+        }
+    }
+}

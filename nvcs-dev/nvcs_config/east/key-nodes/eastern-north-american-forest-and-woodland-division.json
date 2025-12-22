@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Eastern North American Forest & Woodland Division",
-
-   "id":
-      "Eastern North American Forest & Woodland Division",
-
-   "level":
-      "division",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Eastern North American Forest & Woodland Division",
+        "id": "Eastern North American Forest & Woodland Division",
+        "level": "division",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

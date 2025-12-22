@@ -1,49 +1,82 @@
-{"node": {
-
-   "name":
-      "Longleaf Pine Woodland LC1 (M007)",
-
-   "id":
-      "Longleaf Pine Woodland LC1 (M007)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "STRONG LONGLEAF DIAGNOSTICS %RIV > STRONG MESIC DIAGNOSTICS %RIV"
-   ],
-
-   "trigger": [
-      "riv(STRONG_LONGLEAF_DIAGNOSTICS) > riv(STRONG_MESIC_DIAGNOSTICS)"
-   ],
-
-   "filters": {
-      "STRONG_LONGLEAF_DIAGNOSTICS": [
-        {"species": "Pinus clausa"},
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus palustris"}
-      ],
-      "STRONG_MESIC_DIAGNOSTICS": [
-        {"species": "Acer barbatum"},
-        {"species": "Aesculus pavia"},
-        {"species": "Fagus grandifolia"},
-        {"species": "Halesia diptera"},
-        {"species": "Ilex opaca"},
-        {"species": "Magnolia acuminata"},
-        {"species": "Magnolia grandiflora"},
-        {"species": "Magnolia virginiana"},
-        {"species": "Pinus glabra"},
-        {"species": "Quercus michauxii"},
-        {"species": "Quercus pagoda"},
-        {"species": "Quercus phellos"},
-        {"species": "Quercus shumardii"},
-        {"species": "Sabal palmetto"},
-        {"species": "Tilia"},
-        {"species": "Tilia americana"},
-        {"species": "Tilia americana var. heterophylla"},
-        {"species": "Tilia americana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Longleaf Pine Woodland LC1 (M007)",
+        "id": "Longleaf Pine Woodland LC1 (M007)",
+        "level": "macrogroup",
+        "description": [
+            "STRONG LONGLEAF DIAGNOSTICS %RIV > STRONG MESIC DIAGNOSTICS %RIV"
+        ],
+        "trigger": [
+            "riv(STRONG_LONGLEAF_DIAGNOSTICS) > riv(STRONG_MESIC_DIAGNOSTICS)"
+        ],
+        "filters": {
+            "STRONG_LONGLEAF_DIAGNOSTICS": [
+                {
+                    "species": "Pinus clausa"
+                },
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus palustris"
+                }
+            ],
+            "STRONG_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Acer barbatum"
+                },
+                {
+                    "species": "Aesculus pavia"
+                },
+                {
+                    "species": "Fagus grandifolia"
+                },
+                {
+                    "species": "Halesia diptera"
+                },
+                {
+                    "species": "Ilex opaca"
+                },
+                {
+                    "species": "Magnolia acuminata"
+                },
+                {
+                    "species": "Magnolia grandiflora"
+                },
+                {
+                    "species": "Magnolia virginiana"
+                },
+                {
+                    "species": "Pinus glabra"
+                },
+                {
+                    "species": "Quercus michauxii"
+                },
+                {
+                    "species": "Quercus pagoda"
+                },
+                {
+                    "species": "Quercus phellos"
+                },
+                {
+                    "species": "Quercus shumardii"
+                },
+                {
+                    "species": "Sabal palmetto"
+                },
+                {
+                    "species": "Tilia"
+                },
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Tilia americana var. heterophylla"
+                },
+                {
+                    "species": "Tilia americana"
+                }
+            ]
+        }
+    }
+}

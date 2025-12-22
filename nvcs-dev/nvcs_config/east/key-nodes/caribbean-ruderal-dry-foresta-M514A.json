@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "Temperate & Boreal Forests",
-        "id": "Temperate & Boreal Forests",
-        "level": "division",
+        "name": "Caribbean Ruderal Dry ForestA (M514A)",
+        "id": "Caribbean Ruderal Dry ForestA (M514A)",
+        "level": "macrogroup",
         "description": [
             "other"
         ],

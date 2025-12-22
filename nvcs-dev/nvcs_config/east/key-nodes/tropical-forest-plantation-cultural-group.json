@@ -1,30 +1,28 @@
-{"node": {
-
-   "name":
-      "Tropical Forest Plantation Cultural Group",
-
-   "id":
-      "Tropical Forest Plantation Cultural Group",
-
-   "level":
-      "group",
-
-   "description": [
-      "Conifer & Hardwood plantations found in the tropics, including Puerto Rico, U.S. Virgin Islands,",
-      "and tropical Florida (EcoSection 411A)"
-   ],
-
-   "trigger": [
-      "match(TROPICAL_LOCATION)"
-   ],
-
-   "filters": {
-      "TROPICAL_LOCATION": [
-        {"state": "PR"},
-        {"state": "VI"},
-        {"state": "FL", "ecoregion": "411A"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Tropical Forest Plantation Cultural Group",
+        "id": "Tropical Forest Plantation Cultural Group",
+        "level": "group",
+        "description": [
+            "Conifer & Hardwood plantations found in the tropics, including Puerto Rico, U.S. Virgin Islands,",
+            "and tropical Florida (EcoSection 411A)"
+        ],
+        "trigger": [
+            "match(TROPICAL_LOCATION)"
+        ],
+        "filters": {
+            "TROPICAL_LOCATION": [
+                {
+                    "state": "PR"
+                },
+                {
+                    "state": "VI"
+                },
+                {
+                    "state": "FL",
+                    "ecoregion": "411A"
+                }
+            ]
+        }
+    }
+}

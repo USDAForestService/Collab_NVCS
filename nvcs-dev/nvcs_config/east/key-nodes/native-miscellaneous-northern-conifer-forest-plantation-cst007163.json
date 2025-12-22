@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)",
-
-   "id":
-      "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)",
+        "id": "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)",
+        "level": "subtype",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

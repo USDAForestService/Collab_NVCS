@@ -1,111 +1,216 @@
-{"node": {
-
-   "name":
-      "Central Midwest Mesic Forest (M882)",
-
-   "id":
-      "Central Midwest Mesic Forest (M882)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Stands found in Ecoregion 222, 223A, 223G, 251, 332) [excludes 222I, includes Ozarks ecoregion]",
-      "AND tree composition dominated by one or more of the following:",
-      "  i. Tree composition dominated by one or more of the STRONG MESIC DIAGNOSTICS: Acer nigrum, Acer saccharum,",
-      "     Aesculus glabra, Asimina triloba, Carya cordiformis, Celtis occidentalis, Fagus grandifolia, Fraxinus americana,",
-      "     Fraxinus nigra, Fraxinus pennsylvanica, Gymnocladus dioicus, Juglans cinerea, Liriodendron tulipifera,",
-      "     Liquidambar styraciflua, Nyssa sylvatica, Platanus occidentalis, Quercus bicolor, Quercus palustris,",
-      "     Tilia americana, Ulmus rubra, Ulmus americana (>=50% RIV).",
-      " OR",
-      " ii. Tree composition as above, but with >=20% RIV and other species are any combination of MODERATE MESIC DIAGNOSTICS",
-      "     Acer barbatum, Acer negundo, Amelanchier spp., Betula populifolia,  Betula papyrifera, Carpinus caroliniana,",
-      "     Carya ovalis, Cornus florida, Gleditsia triacanthos, Juglans nigra, Ostrya virginiana, Pinus strobus,",
-      "     Populus balsamifera, Populus deltoides, Populus grandidentata, Populus tremuloides, Prunus pensylvanica,",
-      "     Prunus virginiana, Quercus imbricaria, Quercus muehlenbergii, Quercus pagoda, Quercus rubra, Quercus shumardii,",
-      "     Sassafras albidum, Ulmus thomasii (together >=50% RIV)",
-      " OR",
-      "iii. Tree composition dominated by Quercus rubra with >=20% RIV, AND <20% RIV of other species are any combination of",
-      "     Quercus spp or Carya spp. (Quercus alba, Quercus coccinea, Quercus ellipsoidalis, Quercus macrocarpa,",
-      "     Quercus prinus, Quercus velutina, Carya glabra, Carya ovata, Carya alba)"
-   ],
-
-   "trigger": [
-      "    match(ECOREGIONS)",
-      "and (    riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
-      "     or (riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and riv(STRONG_MESIC_DIAGNOSTICS) + riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)",
-      "     or (riv(DIAGNOSTIC_SPECIES_III) >= 20 and riv(EXCLUDED_SPECIES_III) < 20))"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "222, 223A, 223G, 251, 332 ! 222I"}
-      ],
-      "STRONG_MESIC_DIAGNOSTICS": [
-        {"species": "Acer nigrum"},
-        {"species": "Acer saccharum"},
-        {"species": "Aesculus glabra var. arguta"},
-        {"species": "Asimina triloba"},
-        {"species": "Carya cordiformis"},
-        {"species": "Celtis occidentalis"},
-        {"species": "Fagus grandifolia"},
-        {"species": "Fraxinus americana"},
-        {"species": "Fraxinus nigra"},
-        {"species": "Fraxinus pennsylvanica"},
-        {"species": "Gymnocladus dioicus"},
-        {"species": "Juglans cinerea"},
-        {"species": "Liriodendron tulipifera"},
-        {"species": "Liquidambar styraciflua"},
-        {"species": "Nyssa sylvatica"},
-        {"species": "Platanus occidentalis"},
-        {"species": "Quercus bicolor"},
-        {"species": "Quercus palustris"},
-        {"species": "Tilia americana"},
-        {"species": "Ulmus rubra"},
-        {"species": "Ulmus americana"}
-      ],
-      "MODERATE_MESIC_DIAGNOSTICS": [
-        {"species": "Acer barbatum"},
-        {"species": "Acer negundo"},
-        {"species": "Amelanchier"},
-        {"species": "Betula populifolia"},
-        {"species": "Betula papyrifera"},
-        {"species": "Carpinus caroliniana"},
-        {"species": "Carya ovalis"},
-        {"species": "Cornus florida"},
-        {"species": "Gleditsia triacanthos"},
-        {"species": "Juglans nigra"},
-        {"species": "Ostrya virginiana"},
-        {"species": "Pinus strobus"},
-        {"species": "Populus balsamifera"},
-        {"species": "Populus deltoides ssp. monilifera"},
-        {"species": "Populus grandidentata"},
-        {"species": "Populus tremuloides"},
-        {"species": "Prunus pensylvanica"},
-        {"species": "Prunus virginiana"},
-        {"species": "Quercus imbricaria"},
-        {"species": "Quercus muehlenbergii"},
-        {"species": "Quercus pagoda"},
-        {"species": "Quercus rubra"},
-        {"species": "Quercus shumardii"},
-        {"species": "Sassafras albidum"},
-        {"species": "Ulmus thomasii"}
-      ],
-      "DIAGNOSTIC_SPECIES_III": [
-        {"species": "Quercus rubra"}
-      ],
-      "EXCLUDED_SPECIES_III": [
-        {"species": "Quercus alba"},
-        {"species": "Quercus coccinea"},
-        {"species": "Quercus ellipsoidalis"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Quercus prinus"},
-        {"species": "Quercus velutina"},
-        {"species": "Carya alba"},
-        {"species": "Carya glabra"},
-        {"species": "Carya ovata"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Central Midwest Mesic Forest (M882)",
+        "id": "Central Midwest Mesic Forest (M882)",
+        "level": "macrogroup",
+        "description": [
+            "Stands found in Ecoregion 222, 223A, 223G, 251, 332) [excludes 222I, includes Ozarks ecoregion]",
+            "AND tree composition dominated by one or more of the following:",
+            "  i. Tree composition dominated by one or more of the STRONG MESIC DIAGNOSTICS: Acer nigrum, Acer saccharum,",
+            "     Aesculus glabra, Asimina triloba, Carya cordiformis, Celtis occidentalis, Fagus grandifolia, Fraxinus americana,",
+            "     Fraxinus nigra, Fraxinus pennsylvanica, Gymnocladus dioicus, Juglans cinerea, Liriodendron tulipifera,",
+            "     Liquidambar styraciflua, Nyssa sylvatica, Platanus occidentalis, Quercus bicolor, Quercus palustris,",
+            "     Tilia americana, Ulmus rubra, Ulmus americana (>=50% RIV).",
+            " OR",
+            " ii. Tree composition as above, but with >=20% RIV and other species are any combination of MODERATE MESIC DIAGNOSTICS",
+            "     Acer barbatum, Acer negundo, Amelanchier spp., Betula populifolia,  Betula papyrifera, Carpinus caroliniana,",
+            "     Carya ovalis, Cornus florida, Gleditsia triacanthos, Juglans nigra, Ostrya virginiana, Pinus strobus,",
+            "     Populus balsamifera, Populus deltoides, Populus grandidentata, Populus tremuloides, Prunus pensylvanica,",
+            "     Prunus virginiana, Quercus imbricaria, Quercus muehlenbergii, Quercus pagoda, Quercus rubra, Quercus shumardii,",
+            "     Sassafras albidum, Ulmus thomasii (together >=50% RIV)",
+            " OR",
+            "iii. Tree composition dominated by Quercus rubra with >=20% RIV, AND <20% RIV of other species are any combination of",
+            "     Quercus spp or Carya spp. (Quercus alba, Quercus coccinea, Quercus ellipsoidalis, Quercus macrocarpa,",
+            "     Quercus prinus, Quercus velutina, Carya glabra, Carya ovata, Carya alba)"
+        ],
+        "trigger": [
+            "    match(ECOREGIONS)",
+            "and (    riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
+            "     or (riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and riv(STRONG_MESIC_DIAGNOSTICS) + riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)",
+            "     or (riv(DIAGNOSTIC_SPECIES_III) >= 20 and riv(EXCLUDED_SPECIES_III) < 20))"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "222, 223A, 223G, 251, 332 ! 222I"
+                }
+            ],
+            "STRONG_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Acer nigrum"
+                },
+                {
+                    "species": "Acer saccharum"
+                },
+                {
+                    "species": "Aesculus glabra var. arguta"
+                },
+                {
+                    "species": "Asimina triloba"
+                },
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Fagus grandifolia"
+                },
+                {
+                    "species": "Fraxinus americana"
+                },
+                {
+                    "species": "Fraxinus nigra"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Gymnocladus dioicus"
+                },
+                {
+                    "species": "Juglans cinerea"
+                },
+                {
+                    "species": "Liriodendron tulipifera"
+                },
+                {
+                    "species": "Liquidambar styraciflua"
+                },
+                {
+                    "species": "Nyssa sylvatica"
+                },
+                {
+                    "species": "Platanus occidentalis"
+                },
+                {
+                    "species": "Quercus bicolor"
+                },
+                {
+                    "species": "Quercus palustris"
+                },
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Ulmus rubra"
+                },
+                {
+                    "species": "Ulmus americana"
+                }
+            ],
+            "MODERATE_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Acer barbatum"
+                },
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Betula populifolia"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Carpinus caroliniana"
+                },
+                {
+                    "species": "Carya ovalis"
+                },
+                {
+                    "species": "Cornus florida"
+                },
+                {
+                    "species": "Gleditsia triacanthos"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Populus deltoides ssp. monilifera"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Prunus pensylvanica"
+                },
+                {
+                    "species": "Prunus virginiana"
+                },
+                {
+                    "species": "Quercus imbricaria"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Quercus pagoda"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus shumardii"
+                },
+                {
+                    "species": "Sassafras albidum"
+                },
+                {
+                    "species": "Ulmus thomasii"
+                }
+            ],
+            "DIAGNOSTIC_SPECIES_III": [
+                {
+                    "species": "Quercus rubra"
+                }
+            ],
+            "EXCLUDED_SPECIES_III": [
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus coccinea"
+                },
+                {
+                    "species": "Quercus ellipsoidalis"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus prinus"
+                },
+                {
+                    "species": "Quercus velutina"
+                },
+                {
+                    "species": "Carya alba"
+                },
+                {
+                    "species": "Carya glabra"
+                },
+                {
+                    "species": "Carya ovata"
+                }
+            ]
+        }
+    }
+}

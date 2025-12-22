@@ -1,43 +1,50 @@
-{"node": {
-
-   "name":
-      "Native Northern Conifer Plantation",
-
-   "id":
-      "Native Northern Conifer Plantation",
-
-   "level":
-      "type",
-
-   "description": [
-      " i. Species are native conifers dominated by one or more of the following with >=25% RIV:",
-      "    Pinus banksiana, Pinus resinosa, Pinus strobus, Abies balsamea, Larix laricina, Picea glauca,",
-      "    or Picea mariana [note - this list represents the expected list of common northern native pine",
-      "    plantation species types. If other common native pine plantation species are identified, they",
-      "    should be added to this list and additional couplets added below]",
-      "OR",
-      "ii. Species not as above, but found in ecoregion divisions 211, M211, 212, 221, M221, 222,",
-      "    M222, 251, 223, M223, 231, M231"
-   ],
-
-   "trigger": [
-      "riv(NORTHERN_PINES) >= 25 or match(ECOREGIONS)"
-   ],
-
-   "filters": {
-      "NORTHERN_PINES": [
-        {"species": "Pinus banksiana"},
-        {"species": "Pinus resinosa"},
-        {"species": "Pinus strobus"},
-        {"species": "Abies balsamea"},
-        {"species": "Larix laricina"},
-        {"species": "Picea glauca"},
-        {"species": "Picea mariana"}
-      ],
-      "ECOREGIONS": [
-        {"ecoregion": "211, M211, 212, 221, M221, 222, M222, 251, 223, M223, 231, M231"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Northern Conifer Plantation",
+        "id": "Native Northern Conifer Plantation",
+        "level": "type",
+        "description": [
+            " i. Species are native conifers dominated by one or more of the following with >=25% RIV:",
+            "    Pinus banksiana, Pinus resinosa, Pinus strobus, Abies balsamea, Larix laricina, Picea glauca,",
+            "    or Picea mariana [note - this list represents the expected list of common northern native pine",
+            "    plantation species types. If other common native pine plantation species are identified, they",
+            "    should be added to this list and additional couplets added below]",
+            "OR",
+            "ii. Species not as above, but found in ecoregion divisions 211, M211, 212, 221, M221, 222,",
+            "    M222, 251, 223, M223, 231, M231"
+        ],
+        "trigger": [
+            "riv(NORTHERN_PINES) >= 25 or match(ECOREGIONS)"
+        ],
+        "filters": {
+            "NORTHERN_PINES": [
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Abies balsamea"
+                },
+                {
+                    "species": "Larix laricina"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Picea mariana"
+                }
+            ],
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "211, M211, 212, 221, M221, 222, M222, 251, 223, M223, 231, M231"
+                }
+            ]
+        }
+    }
+}

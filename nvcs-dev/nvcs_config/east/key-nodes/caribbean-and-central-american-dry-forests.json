@@ -1,46 +1,61 @@
-{"node": {
-
-   "name":
-      "Caribbean & Central American Dry Forests",
-
-   "id":
-      "Caribbean & Central American Dry Forests",
-
-   "level":
-      "division",
-
-   "description": [
-      " i. Tree composition dominated by Pinus elliottii (= var. densa) or Pinus caribaea, alone or in",
-      "    combination (>=50% RIV)",
-      "OR",
-      "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of (in",
-      "    dry stands) Bursera simaruba, Coccoloba diversifolia, Coccothrinax argentata, Conocarpus erectus,",
-      "    Guapira discolor, Metopium toxiferum, \"other palms\", Sabal palmetto, Thrinax morrisii,",
-      "    Sideroxylon salicifolium (together >=50% RIV)"
-   ],
-
-   "trigger": [
-      "riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
-   ],
-
-   "filters": {
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus caribaea"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Bursera simaruba"},
-        {"species": "Coccoloba diversifolia"},
-        {"species": "Coccothrinax argentata"},
-        {"species": "Conocarpus erectus"},
-        {"species": "Guapira discolor"},
-        {"species": "Metopium toxiferum"},
-        {"species": "other palms"},
-        {"species": "Sabal palmetto"},
-        {"species": "Thrinax morrisii"},
-        {"species": "Sideroxylon salicifolium"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean & Central American Dry Forests",
+        "id": "Caribbean & Central American Dry Forests",
+        "level": "division",
+        "description": [
+            " i. Tree composition dominated by Pinus elliottii (= var. densa) or Pinus caribaea, alone or in",
+            "    combination (>=50% RIV)",
+            "OR",
+            "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of (in",
+            "    dry stands) Bursera simaruba, Coccoloba diversifolia, Coccothrinax argentata, Conocarpus erectus,",
+            "    Guapira discolor, Metopium toxiferum, \"other palms\", Sabal palmetto, Thrinax morrisii,",
+            "    Sideroxylon salicifolium (together >=50% RIV)"
+        ],
+        "trigger": [
+            "riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+        ],
+        "filters": {
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus caribaea"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Bursera simaruba"
+                },
+                {
+                    "species": "Coccoloba diversifolia"
+                },
+                {
+                    "species": "Coccothrinax argentata"
+                },
+                {
+                    "species": "Conocarpus erectus"
+                },
+                {
+                    "species": "Guapira discolor"
+                },
+                {
+                    "species": "Metopium toxiferum"
+                },
+                {
+                    "species": "other palms"
+                },
+                {
+                    "species": "Sabal palmetto"
+                },
+                {
+                    "species": "Thrinax morrisii"
+                },
+                {
+                    "species": "Sideroxylon salicifolium"
+                }
+            ]
+        }
+    }
+}

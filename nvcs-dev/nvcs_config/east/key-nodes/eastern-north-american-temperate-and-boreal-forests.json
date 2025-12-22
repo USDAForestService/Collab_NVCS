@@ -1,31 +1,24 @@
-{"node": {
-
-   "name":
-      "Eastern North American Temperate & Boreal Forests",
-
-   "id":
-      "Eastern North American Temperate & Boreal Forests",
-
-   "level":
-      "division",
-
-   "description": [
-      "Forests found in EcoDomain Humid Temperate (200 or M200) of the eastern United States",
-      "and Canada, and EcoDomain Polar (100 or M100) east of Alberta and the Yukon [need to",
-      "improve east-west boreal line using tree species., e.g., Pinus banksiana, Abies balsamea],",
-      "and 411A [most stands in 411 belong with tropical types, but a few exceptions are",
-      "allowed, see couplet A]"
-   ],
-
-   "trigger": [
-      "match(HUMID_TEMPERATE_OR_POLAR)"
-   ],
-
-   "filters": {
-      "HUMID_TEMPERATE_OR_POLAR": [
-        {"ecoregion": "200, M200, 100, M100, 411A"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Eastern North American Temperate & Boreal Forests",
+        "id": "Eastern North American Temperate & Boreal Forests",
+        "level": "division",
+        "description": [
+            "Forests found in EcoDomain Humid Temperate (200 or M200) of the eastern United States",
+            "and Canada, and EcoDomain Polar (100 or M100) east of Alberta and the Yukon [need to",
+            "improve east-west boreal line using tree species., e.g., Pinus banksiana, Abies balsamea],",
+            "and 411A [most stands in 411 belong with tropical types, but a few exceptions are",
+            "allowed, see couplet A]"
+        ],
+        "trigger": [
+            "match(HUMID_TEMPERATE_OR_POLAR)"
+        ],
+        "filters": {
+            "HUMID_TEMPERATE_OR_POLAR": [
+                {
+                    "ecoregion": "200, M200, 100, M100, 411A"
+                }
+            ]
+        }
+    }
+}

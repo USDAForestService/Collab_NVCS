@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Central Forest macrogroups",
-
-   "id":
-      "Central Forest macrogroups",
-
-   "level":
-      "division",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Central Forest macrogroups",
+        "id": "Central Forest macrogroups",
+        "level": "division",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

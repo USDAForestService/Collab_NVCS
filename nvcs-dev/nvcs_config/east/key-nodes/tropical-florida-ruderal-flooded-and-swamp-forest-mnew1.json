@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Tropical Florida Ruderal Flooded & Swamp Forest (Mnew1)",
-
-   "id":
-      "Tropical Florida Ruderal Flooded & Swamp Forest (Mnew1)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Only one macrogroup."
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Tropical Florida Ruderal Flooded & Swamp Forest (Mnew1)",
+        "id": "Tropical Florida Ruderal Flooded & Swamp Forest (Mnew1)",
+        "level": "macrogroup",
+        "description": [
+            "Only one macrogroup."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

@@ -1,70 +1,115 @@
-{"node": {
-
-   "name":
-      "Southern Great Plains Floodplain Forest & Woodland (M154)",
-
-   "id":
-      "Southern Great Plains Floodplain Forest & Woodland (M154)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Stands found in Ecoregion 255B-D, 315C-E, 315G, 321B AND Tree composition dominated by:",
-      " i. Tree composition dominated by one or more of STRONG SOUTHERN GREAT PLAINS DIAGNOSTICS,",
-      "    Carya illinoinensis, Celtis laevigata var. reticulata, Fraxinus pennsylvanica, Juglans microcarpa,",
-      "    Juglans nigra, Juglans major, Platanus occidentalis, Populus deltoides, Quercus shumardii,",
-      "    Quercus virginiana, Salix nigra Taxodium distichum, Ulmus americana, Ulmus crassifolia (>=50% RIV);",
-      "OR",
-      "ii. Tree composition as above, but with >=20% RIV; AND other species are any combination of",
-      "    MODERATE DIAGNOSTICS, Acer negundo, Celtis occidentalis, iospyros virginiana, Gleditsia triacanthos,",
-      "    Juglans nigra, Maclura pomifera, Prosopis glandulosa, Quercus macrocarpa, Quercus nigra,",
-      "    Sapindus saponaria var. drummondii, Sideroxylon lanuginosum ssp. lanuginosum,",
-      "    Ulmus crassifolia (together >=50% RIV)"
-   ],
-
-   "trigger": [
-      "     match(ECOREGIONS)",
-      "and (    riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 50",
-      "     or (    riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 20",
-      "         and riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "255B, 255C, 255D, 315C, 315D, 315E, 315G, 321B"}
-      ],
-      "STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS": [
-        {"species": "Carya illinoinensis"},
-        {"species": "Celtis laevigata var. reticulata"},
-        {"species": "Fraxinus pennsylvanica"},
-        {"species": "Juglans microcarpa"},
-        {"species": "Juglans nigra"},
-        {"species": "Juglans major"},
-        {"species": "Platanus occidentalis"},
-        {"species": "Populus deltoides ssp. monilifera"},
-        {"species": "Quercus shumardii"},
-        {"species": "Quercus virginiana"},
-        {"species": "Salix nigra"},
-        {"species": "Taxodium distichum"},
-        {"species": "Ulmus americana"},
-        {"species": "Ulmus crassifolia"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Acer negundo"},
-        {"species": "Celtis occidentalis"},
-        {"species": "Diospyros virginiana"},
-        {"species": "Gleditsia triacanthos"},
-        {"species": "Juglans nigra"},
-        {"species": "Maclura pomifera"},
-        {"species": "Prosopis glandulosa"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Quercus nigra"},
-        {"species": "Sapindus saponaria var. drummondii"},
-        {"species": "Sideroxylon lanuginosum ssp. lanuginosum"},
-        {"species": "Ulmus crassifolia"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Southern Great Plains Floodplain Forest & Woodland (M154)",
+        "id": "Southern Great Plains Floodplain Forest & Woodland (M154)",
+        "level": "macrogroup",
+        "description": [
+            "Stands found in Ecoregion 255B-D, 315C-E, 315G, 321B AND Tree composition dominated by:",
+            " i. Tree composition dominated by one or more of STRONG SOUTHERN GREAT PLAINS DIAGNOSTICS,",
+            "    Carya illinoinensis, Celtis laevigata var. reticulata, Fraxinus pennsylvanica, Juglans microcarpa,",
+            "    Juglans nigra, Juglans major, Platanus occidentalis, Populus deltoides, Quercus shumardii,",
+            "    Quercus virginiana, Salix nigra Taxodium distichum, Ulmus americana, Ulmus crassifolia (>=50% RIV);",
+            "OR",
+            "ii. Tree composition as above, but with >=20% RIV; AND other species are any combination of",
+            "    MODERATE DIAGNOSTICS, Acer negundo, Celtis occidentalis, iospyros virginiana, Gleditsia triacanthos,",
+            "    Juglans nigra, Maclura pomifera, Prosopis glandulosa, Quercus macrocarpa, Quercus nigra,",
+            "    Sapindus saponaria var. drummondii, Sideroxylon lanuginosum ssp. lanuginosum,",
+            "    Ulmus crassifolia (together >=50% RIV)"
+        ],
+        "trigger": [
+            "     match(ECOREGIONS)",
+            "and (    riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 50",
+            "     or (    riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 20",
+            "         and riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "255B, 255C, 255D, 315C, 315D, 315E, 315G, 321B"
+                }
+            ],
+            "STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS": [
+                {
+                    "species": "Carya illinoinensis"
+                },
+                {
+                    "species": "Celtis laevigata var. reticulata"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Juglans microcarpa"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Juglans major"
+                },
+                {
+                    "species": "Platanus occidentalis"
+                },
+                {
+                    "species": "Populus deltoides ssp. monilifera"
+                },
+                {
+                    "species": "Quercus shumardii"
+                },
+                {
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Salix nigra"
+                },
+                {
+                    "species": "Taxodium distichum"
+                },
+                {
+                    "species": "Ulmus americana"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Diospyros virginiana"
+                },
+                {
+                    "species": "Gleditsia triacanthos"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Maclura pomifera"
+                },
+                {
+                    "species": "Prosopis glandulosa"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus nigra"
+                },
+                {
+                    "species": "Sapindus saponaria var. drummondii"
+                },
+                {
+                    "species": "Sideroxylon lanuginosum ssp. lanuginosum"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                }
+            ]
+        }
+    }
+}

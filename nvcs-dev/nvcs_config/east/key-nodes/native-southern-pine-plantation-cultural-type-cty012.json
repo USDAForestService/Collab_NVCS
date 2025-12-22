@@ -1,41 +1,44 @@
-{"node": {
-
-   "name":
-      "Native Southern Pine Plantation Cultural Type (CTY012)",
-
-   "id":
-      "Native Southern Pine Plantation Cultural Type (CTY012)",
-
-   "level":
-      "type",
-
-   "description": [
-      " i. Species are native conifers Pinus spp. with >=25% RIV:  Pinus echinata, Pinus elliottii,",
-      "    Pinus palustris, Pinus taeda, Pinus clausa. [note - this list represents the expected",
-      "    list of common southern native pine plantation species types.  If other common native",
-      "    pine plantationspecies are identified, they should be added to this list and",
-      "    additional couplets added below]",
-      "OR",
-      "ii. Species are native conifers found in ecoregion divisions 230, M230, 310 and",
-      "    ecoprovince 255"
-   ],
-
-   "trigger": [
-      "riv(SOUTHERN_PINES) >= 25 or match(ECOREGIONS)"
-   ],
-
-   "filters": {
-      "SOUTHERN_PINES": [
-        {"species": "Pinus echinata"},
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus palustris"},
-        {"species": "Pinus taeda"},
-        {"species": "Pinus clausa"}
-      ],
-      "ECOREGIONS": [
-        {"ecoregion": "230, M230, 310, 255"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Southern Pine Plantation Cultural Type (CTY012)",
+        "id": "Native Southern Pine Plantation Cultural Type (CTY012)",
+        "level": "type",
+        "description": [
+            " i. Species are native conifers Pinus spp. with >=25% RIV:  Pinus echinata, Pinus elliottii,",
+            "    Pinus palustris, Pinus taeda, Pinus clausa. [note - this list represents the expected",
+            "    list of common southern native pine plantation species types.  If other common native",
+            "    pine plantationspecies are identified, they should be added to this list and",
+            "    additional couplets added below]",
+            "OR",
+            "ii. Species are native conifers found in ecoregion divisions 230, M230, 310 and",
+            "    ecoprovince 255"
+        ],
+        "trigger": [
+            "riv(SOUTHERN_PINES) >= 25 or match(ECOREGIONS)"
+        ],
+        "filters": {
+            "SOUTHERN_PINES": [
+                {
+                    "species": "Pinus echinata"
+                },
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus palustris"
+                },
+                {
+                    "species": "Pinus taeda"
+                },
+                {
+                    "species": "Pinus clausa"
+                }
+            ],
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "230, M230, 310, 255"
+                }
+            ]
+        }
+    }
+}

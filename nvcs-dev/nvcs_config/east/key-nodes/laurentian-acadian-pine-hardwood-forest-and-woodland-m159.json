@@ -1,55 +1,82 @@
-{"node": {
-
-   "name":
-      "Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)",
-
-   "id":
-      "Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      " i. Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana,",
-      "    Pinus banksiana, Pinus resinosa, Pinus strobus, Quercus alba, Quercus ellipsoidalis,",
-      "    Quercus macrocarpa, Quercus velutina (>=50% RIV);",
-      "OR",
-      "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination",
-      "    of MODERATE DRY DIAGNOSTICS Amelanchier spp., Betula populifolia, Betula papyrifera, ",
-      "    Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, ",
-      "    Prunus pensylvanica, Prunus serotina, Quercus rubra (together >=50% RIV)"
-   ],
-
-   "trigger": [
-      "    riv(STRONG_DRY_DIAGNOSTICS) >= 50",
-      "or (    riv(STRONG_DRY_DIAGNOSTICS) >= 20",
-      "    and riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
-   ],
-
-   "filters": {
-      "STRONG_DRY_DIAGNOSTICS": [
-        {"species": "Picea mariana"},
-        {"species": "Pinus banksiana"},
-        {"species": "Pinus resinosa"},
-        {"species": "Pinus strobus"},
-        {"species": "Quercus alba"},
-        {"species": "Quercus ellipsoidalis"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Quercus velutina"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Amelanchier"},
-        {"species": "Betula populifolia"},
-        {"species": "Betula papyrifera"},
-        {"species": "Carpinus caroliniana"},
-        {"species": "Ostrya virginiana"},
-        {"species": "Populus grandidentata"},
-        {"species": "Populus tremuloides"},
-        {"species": "Prunus pensylvanica"},
-        {"species": "Prunus serotina"},
-        {"species": "Quercus rubra"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)",
+        "id": "Laurentian-Acadian Pine Hardwood Forest & Woodland (M159)",
+        "level": "macrogroup",
+        "description": [
+            " i. Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana,",
+            "    Pinus banksiana, Pinus resinosa, Pinus strobus, Quercus alba, Quercus ellipsoidalis,",
+            "    Quercus macrocarpa, Quercus velutina (>=50% RIV);",
+            "OR",
+            "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination",
+            "    of MODERATE DRY DIAGNOSTICS Amelanchier spp., Betula populifolia, Betula papyrifera, ",
+            "    Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, ",
+            "    Prunus pensylvanica, Prunus serotina, Quercus rubra (together >=50% RIV)"
+        ],
+        "trigger": [
+            "    riv(STRONG_DRY_DIAGNOSTICS) >= 50",
+            "or (    riv(STRONG_DRY_DIAGNOSTICS) >= 20",
+            "    and riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+        ],
+        "filters": {
+            "STRONG_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Picea mariana"
+                },
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus ellipsoidalis"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus velutina"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Betula populifolia"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Carpinus caroliniana"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Prunus pensylvanica"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus rubra"
+                }
+            ]
+        }
+    }
+}

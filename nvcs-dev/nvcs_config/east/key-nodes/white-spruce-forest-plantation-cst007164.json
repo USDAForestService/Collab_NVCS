@@ -1,45 +1,46 @@
-{"node": {
-
-   "name":
-      "White Spruce Forest Plantation (CST007164)",
-
-   "id":
-      "White Spruce Forest Plantation (CST007164)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "Tree composition dominated by Picea glauca >=25% RIV,",
-      "and exceeds each species of Abies balsamea, Larix laricina,",
-      "Picea rubens and Picea mariana."
-   ],
-
-   "trigger": [
-      "    riv(WHITE_SPRUCE) >= 25",
-      "and riv(WHITE_SPRUCE) > riv(BALSAM_FIR)",
-      "and riv(WHITE_SPRUCE) > riv(NATIVE_TAMARACK)",
-      "and riv(WHITE_SPRUCE) > riv(RED_SPRUCE)",
-      "and riv(WHITE_SPRUCE) > riv(BLACK_SPRUCE)"
-   ],
-
-   "filters": {
-      "WHITE_SPRUCE": [
-        {"species": "Picea glauca"}
-      ],
-      "BALSAM_FIR": [
-        {"species": "Abies balsamea"}
-      ],
-      "NATIVE_TAMARACK": [
-        {"species": "Larix laricina"}
-      ],
-      "RED_SPRUCE": [
-        {"species": "Picea rubens"}
-      ],
-      "BLACK_SPRUCE": [
-        {"species": "Picea mariana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "White Spruce Forest Plantation (CST007164)",
+        "id": "White Spruce Forest Plantation (CST007164)",
+        "level": "subtype",
+        "description": [
+            "Tree composition dominated by Picea glauca >=25% RIV,",
+            "and exceeds each species of Abies balsamea, Larix laricina,",
+            "Picea rubens and Picea mariana."
+        ],
+        "trigger": [
+            "    riv(WHITE_SPRUCE) >= 25",
+            "and riv(WHITE_SPRUCE) > riv(BALSAM_FIR)",
+            "and riv(WHITE_SPRUCE) > riv(NATIVE_TAMARACK)",
+            "and riv(WHITE_SPRUCE) > riv(RED_SPRUCE)",
+            "and riv(WHITE_SPRUCE) > riv(BLACK_SPRUCE)"
+        ],
+        "filters": {
+            "WHITE_SPRUCE": [
+                {
+                    "species": "Picea glauca"
+                }
+            ],
+            "BALSAM_FIR": [
+                {
+                    "species": "Abies balsamea"
+                }
+            ],
+            "NATIVE_TAMARACK": [
+                {
+                    "species": "Larix laricina"
+                }
+            ],
+            "RED_SPRUCE": [
+                {
+                    "species": "Picea rubens"
+                }
+            ],
+            "BLACK_SPRUCE": [
+                {
+                    "species": "Picea mariana"
+                }
+            ]
+        }
+    }
+}
