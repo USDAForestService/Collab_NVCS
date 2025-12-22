@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Miscellaneous Caribbean Plantation Cultural Type (CTYP19)",
-
-   "id":
-      "Miscellaneous Caribbean Plantation Cultural Type (CTYP19)",
-
-   "level":
-      "type",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Miscellaneous Caribbean Plantation Cultural Type (CTYP19)",
+        "id": "Miscellaneous Caribbean Plantation Cultural Type (CTYP19)",
+        "level": "type",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

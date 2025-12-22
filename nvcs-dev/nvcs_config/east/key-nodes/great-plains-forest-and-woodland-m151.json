@@ -1,64 +1,97 @@
-{"node": {
-
-   "name":
-      "Great Plains Forest & Woodland (M151)",
-
-   "id":
-      "Great Plains Forest & Woodland (M151)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      " i. Plot occurs in Ecoprovince 331, 332, 251A, or 222Na, and tree composition dominated by one or more of",
-      "    STRONG PLAINS DIAGNOSTICS Fraxinus pennsylvanica, Juniperus virginiana, Populus tremuloides,",
-      "    Quercus macrocarpa, Ulmus americana, Ulmus rubra (>=50% RIV) AND Tilia americana and",
-      "    Acer saccharum, singly or in combination < 5% RIV;",
-      "OR",
-      "ii. Plot occurs in Ecoprovince 331, 332, 251A, or 222Na, and tree composition as above, but with >=20% RIV, AND",
-      "    other species are any combination of MODERATE PLAINS DIAGNOSTICS Acer negundo, Betula papyrifera,",
-      "    Celtis occidentalis, Crataegus spp., Juglans nigra, Juniperus scopulorum, Morus rubra, Pinus ponderosa,",
-      "    Prunus virginiana, Quercus rubra, Quercus muehlenbergii, Ulmus rubra (together >=50% RIV)"
-   ],
-
-   "trigger": [
-      "    match(ECOREGIONS)",
-      "and riv(EXCLUDED_SPECIES) < 5",
-      "and (    riv(STRONG_PLAINS_DIAGNOSTICS) >= 50",
-      "     or (riv(STRONG_PLAINS_DIAGNOSTICS) >= 20 and riv(STRONG_PLAINS_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "331, 332, 251A, 222Na"}
-      ],
-      "STRONG_PLAINS_DIAGNOSTICS": [
-        {"species": "Fraxinus pennsylvanica"},
-        {"species": "Juniperus virginiana var. silicicola"},
-        {"species": "Populus tremuloides"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Ulmus americana"},
-        {"species": "Ulmus rubra"}
-      ],
-      "EXCLUDED_SPECIES": [
-        {"species": "Tilia americana"},
-        {"species": "Acer saccharum"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Acer negundo"},
-        {"species": "Betula papyrifera"},
-        {"species": "Celtis occidentalis"},
-        {"species": "Crataegus"},
-        {"species": "Juglans nigra"},
-        {"species": "Juniperus scopulorum"},
-        {"species": "Morus rubra"},
-        {"species": "Pinus ponderosa"},
-        {"species": "Prunus virginiana"},
-        {"species": "Quercus rubra"},
-        {"species": "Quercus muehlenbergii"},
-        {"species": "Ulmus rubra"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Great Plains Forest & Woodland (M151)",
+        "id": "Great Plains Forest & Woodland (M151)",
+        "level": "macrogroup",
+        "description": [
+            " i. Plot occurs in Ecoprovince 331, 332, 251A, or 222Na, and tree composition dominated by one or more of",
+            "    STRONG PLAINS DIAGNOSTICS Fraxinus pennsylvanica, Juniperus virginiana, Populus tremuloides,",
+            "    Quercus macrocarpa, Ulmus americana, Ulmus rubra (>=50% RIV) AND Tilia americana and",
+            "    Acer saccharum, singly or in combination < 5% RIV;",
+            "OR",
+            "ii. Plot occurs in Ecoprovince 331, 332, 251A, or 222Na, and tree composition as above, but with >=20% RIV, AND",
+            "    other species are any combination of MODERATE PLAINS DIAGNOSTICS Acer negundo, Betula papyrifera,",
+            "    Celtis occidentalis, Crataegus spp., Juglans nigra, Juniperus scopulorum, Morus rubra, Pinus ponderosa,",
+            "    Prunus virginiana, Quercus rubra, Quercus muehlenbergii, Ulmus rubra (together >=50% RIV)"
+        ],
+        "trigger": [
+            "    match(ECOREGIONS)",
+            "and riv(EXCLUDED_SPECIES) < 5",
+            "and (    riv(STRONG_PLAINS_DIAGNOSTICS) >= 50",
+            "     or (riv(STRONG_PLAINS_DIAGNOSTICS) >= 20 and riv(STRONG_PLAINS_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "331, 332, 251A, 222Na"
+                }
+            ],
+            "STRONG_PLAINS_DIAGNOSTICS": [
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Juniperus virginiana var. silicicola"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Ulmus americana"
+                },
+                {
+                    "species": "Ulmus rubra"
+                }
+            ],
+            "EXCLUDED_SPECIES": [
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Acer saccharum"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Crataegus"
+                },
+                {
+                    "species": "Juglans nigra"
+                },
+                {
+                    "species": "Juniperus scopulorum"
+                },
+                {
+                    "species": "Morus rubra"
+                },
+                {
+                    "species": "Pinus ponderosa"
+                },
+                {
+                    "species": "Prunus virginiana"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Ulmus rubra"
+                }
+            ]
+        }
+    }
+}

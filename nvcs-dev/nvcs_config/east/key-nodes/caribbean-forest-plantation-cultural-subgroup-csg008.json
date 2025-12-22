@@ -1,30 +1,28 @@
-{"node": {
-
-   "name":
-      "Caribbean Forest Plantation Cultural Subgroup (CSG008)",
-
-   "id":
-      "Caribbean Forest Plantation Cultural Subgroup (CSG008)",
-
-   "level":
-      "subgroup",
-
-   "description": [
-      "Tropical forest plantations found in the Caribbean region,",
-      "including Puerto Rico, U.S. Virgin Islands, and tropical Florida (EcoSection 411A)"
-   ],
-
-   "trigger": [
-      "match(CARIBBEAN)"
-   ],
-
-   "filters": {
-      "CARIBBEAN": [
-        {"state": "PR"},
-        {"state": "VI"},
-        {"state": "FL", "ecoregion": "411A"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Forest Plantation Cultural Subgroup (CSG008)",
+        "id": "Caribbean Forest Plantation Cultural Subgroup (CSG008)",
+        "level": "subgroup",
+        "description": [
+            "Tropical forest plantations found in the Caribbean region,",
+            "including Puerto Rico, U.S. Virgin Islands, and tropical Florida (EcoSection 411A)"
+        ],
+        "trigger": [
+            "match(CARIBBEAN)"
+        ],
+        "filters": {
+            "CARIBBEAN": [
+                {
+                    "state": "PR"
+                },
+                {
+                    "state": "VI"
+                },
+                {
+                    "state": "FL",
+                    "ecoregion": "411A"
+                }
+            ]
+        }
+    }
+}

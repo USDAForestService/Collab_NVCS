@@ -1,29 +1,25 @@
-{"node": {
-
-   "name":
-      "Eastern North American Temperate Forest Plantation Cultural Subgroup (CSG005)",
-
-   "id":
-      "Eastern North American Temperate Forest Plantation Cultural Subgroup (CSG005)",
-
-   "level":
-      "subgroup",
-
-   "description": [
-      "Plantations found in eastern temperate region of North America (EcoProvince 210,",
-      "M210, 220, M220, 230, M230, 250, 310-Texas part only, and 330"
-   ],
-
-   "trigger": [
-      "match(EASTERN_TEMPERATE_REGION)"
-   ],
-
-   "filters": {
-      "EASTERN_TEMPERATE_REGION": [
-        {"ecoregion": "210, M210, 220, M220, 230, M230, 250, 330"},
-        {"ecoregion": "310", "state": "TX"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Eastern North American Temperate Forest Plantation Cultural Subgroup (CSG005)",
+        "id": "Eastern North American Temperate Forest Plantation Cultural Subgroup (CSG005)",
+        "level": "subgroup",
+        "description": [
+            "Plantations found in eastern temperate region of North America (EcoProvince 210,",
+            "M210, 220, M220, 230, M230, 250, 310-Texas part only, and 330"
+        ],
+        "trigger": [
+            "match(EASTERN_TEMPERATE_REGION)"
+        ],
+        "filters": {
+            "EASTERN_TEMPERATE_REGION": [
+                {
+                    "ecoregion": "210, M210, 220, M220, 230, M230, 250, 330"
+                },
+                {
+                    "ecoregion": "310",
+                    "state": "TX"
+                }
+            ]
+        }
+    }
+}

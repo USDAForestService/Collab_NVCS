@@ -1,77 +1,140 @@
-{"node": {
-
-   "name":
-      "Central Hardwood Floodplain Forest (M029)",
-
-   "id":
-      "Central Hardwood Floodplain Forest (M029)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      " i. Tree composition dominated by one or more of STRONG CENTRAL FLOODPLAIN DIAGNOSTICS",
-      "    Acer negundo, Acer saccharinum, Carya cordiformis, Carya laciniosa, Celtis laevigata,",
-      "    Celtis occidentalis, Betula nigra, Fraxinus pennsylvanica, Platanus occidentalis,",
-      "    Populus deltoides, Populus deltoides spp. monilifera, Salix bebbiana, Salix nigra,",
-      "    Salix caroliniana, Salix spp., Ulmus americana, Ulmus rubra (>=50% RIV);",
-      "OR",
-      "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination",
-      "    of MODERATE DIAGNOSTICS Acer rubrum, Acer negundo, Acer saccharum, Carpinus caroliniana,",
-      "    Carya cordiformis, Carya illinoinensis, Diospyros virginiana, Fraxinus nigra,",
-      "    Gleditsia triacanthos, Liriodendron tulipifera, Liquidambar styraciflua, Morus spp.,",
-      "    Morus rubra, Populus tremuloides,  Quercus bicolor, Quercus imbricaria, Quercus palustris,",
-      "    Quercus macrocarpa, Tilia americana (together >=50% RIV)."
-   ],
-
-   "trigger": [
-      "    riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 50",
-      "or (    riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 20",
-      "    and riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
-   ],
-
-   "filters": {
-      "STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS": [
-        {"species": "Acer negundo"},
-        {"species": "Acer saccharinum"},
-        {"species": "Carya cordiformis"},
-        {"species": "Carya laciniosa"},
-        {"species": "Celtis laevigata var. reticulata"},
-        {"species": "Celtis occidentalis"},
-        {"species": "Betula nigra"},
-        {"species": "Fraxinus pennsylvanica"},
-        {"species": "Platanus occidentalis"},
-        {"species": "Populus deltoides ssp. monilifera"},
-        {"species": "Populus deltoides spp. monilifera"},
-        {"species": "Salix bebbiana"},
-        {"species": "Salix nigra"},
-        {"species": "Salix caroliniana"},
-        {"species": "Salix"},
-        {"species": "Ulmus americana"},
-        {"species": "Ulmus rubra"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Acer rubrum"},
-        {"species": "Acer negundo"},
-        {"species": "Acer saccharum"},
-        {"species": "Carpinus caroliniana"},
-        {"species": "Carya cordiformis"},
-        {"species": "Carya illinoinensis"},
-        {"species": "Diospyros virginiana"},
-        {"species": "Fraxinus nigra"},
-        {"species": "Gleditsia triacanthos"},
-        {"species": "Liriodendron tulipifera"},
-        {"species": "Liquidambar styraciflua"},
-        {"species": "Morus"},
-        {"species": "Morus rubra"},
-        {"species": "Populus tremuloides"},
-        {"species": "Quercus bicolor"},
-        {"species": "Quercus imbricaria"},
-        {"species": "Quercus palustris"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Tilia americana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Central Hardwood Floodplain Forest (M029)",
+        "id": "Central Hardwood Floodplain Forest (M029)",
+        "level": "macrogroup",
+        "description": [
+            " i. Tree composition dominated by one or more of STRONG CENTRAL FLOODPLAIN DIAGNOSTICS",
+            "    Acer negundo, Acer saccharinum, Carya cordiformis, Carya laciniosa, Celtis laevigata,",
+            "    Celtis occidentalis, Betula nigra, Fraxinus pennsylvanica, Platanus occidentalis,",
+            "    Populus deltoides, Populus deltoides spp. monilifera, Salix bebbiana, Salix nigra,",
+            "    Salix caroliniana, Salix spp., Ulmus americana, Ulmus rubra (>=50% RIV);",
+            "OR",
+            "ii. Tree composition as above, but with >=20% RIV, AND other species are any combination",
+            "    of MODERATE DIAGNOSTICS Acer rubrum, Acer negundo, Acer saccharum, Carpinus caroliniana,",
+            "    Carya cordiformis, Carya illinoinensis, Diospyros virginiana, Fraxinus nigra,",
+            "    Gleditsia triacanthos, Liriodendron tulipifera, Liquidambar styraciflua, Morus spp.,",
+            "    Morus rubra, Populus tremuloides,  Quercus bicolor, Quercus imbricaria, Quercus palustris,",
+            "    Quercus macrocarpa, Tilia americana (together >=50% RIV)."
+        ],
+        "trigger": [
+            "    riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 50",
+            "or (    riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 20",
+            "    and riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+        ],
+        "filters": {
+            "STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS": [
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Acer saccharinum"
+                },
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Carya laciniosa"
+                },
+                {
+                    "species": "Celtis laevigata var. reticulata"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Betula nigra"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Platanus occidentalis"
+                },
+                {
+                    "species": "Populus deltoides ssp. monilifera"
+                },
+                {
+                    "species": "Populus deltoides spp. monilifera"
+                },
+                {
+                    "species": "Salix bebbiana"
+                },
+                {
+                    "species": "Salix nigra"
+                },
+                {
+                    "species": "Salix caroliniana"
+                },
+                {
+                    "species": "Salix"
+                },
+                {
+                    "species": "Ulmus americana"
+                },
+                {
+                    "species": "Ulmus rubra"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Acer rubrum"
+                },
+                {
+                    "species": "Acer negundo"
+                },
+                {
+                    "species": "Acer saccharum"
+                },
+                {
+                    "species": "Carpinus caroliniana"
+                },
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Carya illinoinensis"
+                },
+                {
+                    "species": "Diospyros virginiana"
+                },
+                {
+                    "species": "Fraxinus nigra"
+                },
+                {
+                    "species": "Gleditsia triacanthos"
+                },
+                {
+                    "species": "Liriodendron tulipifera"
+                },
+                {
+                    "species": "Liquidambar styraciflua"
+                },
+                {
+                    "species": "Morus"
+                },
+                {
+                    "species": "Morus rubra"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Quercus bicolor"
+                },
+                {
+                    "species": "Quercus imbricaria"
+                },
+                {
+                    "species": "Quercus palustris"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Tilia americana"
+                }
+            ]
+        }
+    }
+}

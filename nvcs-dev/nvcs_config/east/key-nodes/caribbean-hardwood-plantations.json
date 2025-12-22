@@ -1,27 +1,20 @@
-{"node": {
-
-   "name":
-      "Caribbean Hardwood Plantations",
-
-   "id":
-      "Caribbean Hardwood Plantations",
-
-   "level":
-      "type",
-
-   "description": [
-      "Caribbean species are hardwoods >=25% RIV"
-   ],
-
-   "trigger": [
-      "riv(HARDWOODS) >= 25"
-   ],
-
-   "filters": {
-      "HARDWOODS": [
-        {"softwoodhardwood": "H"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Hardwood Plantations",
+        "id": "Caribbean Hardwood Plantations",
+        "level": "type",
+        "description": [
+            "Caribbean species are hardwoods >=25% RIV"
+        ],
+        "trigger": [
+            "riv(HARDWOODS) >= 25"
+        ],
+        "filters": {
+            "HARDWOODS": [
+                {
+                    "softwoodhardwood": "H"
+                }
+            ]
+        }
+    }
+}

@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Eastern North American Ruderal Flooded & Swamp Forest (M302)",
-
-   "id":
-      "Eastern North American Ruderal Flooded & Swamp Forest (M302)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Eastern North American Ruderal Flooded & Swamp Forest (M302)",
+        "id": "Eastern North American Ruderal Flooded & Swamp Forest (M302)",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Upland Forest & Woodlands",
-
-   "id":
-      "Upland Forest & Woodlands",
-
-   "level":
-      "division",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Upland Forest & Woodlands",
+        "id": "Upland Forest & Woodlands",
+        "level": "division",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

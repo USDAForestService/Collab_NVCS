@@ -1,38 +1,39 @@
-{"node": {
-
-   "name":
-      "Caribbean-Mesoamerican Pine Forest (M296)",
-
-   "id":
-      "Caribbean-Mesoamerican Pine Forest (M296)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      " i. Tree composition dominated by Pinus elliottii (var. densa) or Pinus caribaea,",
-      "    alone or in combination (>=50% RIV);",
-      "OR",
-      "ii. Tree composition as above, but with >=20% RIV, AND other species are",
-      "    any combination of (in dry stands) Coccothrinax argentata, Thrinax morrisii,",
-      "    Sideroxylon salicifolium (together >=50% RIV);"
-   ],
-
-   "trigger": [
-      "riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
-   ],
-
-   "filters": {
-      "STRONG_DIAGNOSTIC_SPECIES": [
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus caribaea"}
-      ],
-      "MODERATE_DIAGNOSTIC_SPECIES": [
-        {"species": "Coccothrinax argentata"},
-        {"species": "Thrinax morrisii"},
-        {"species": "Sideroxylon salicifolium"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean-Mesoamerican Pine Forest (M296)",
+        "id": "Caribbean-Mesoamerican Pine Forest (M296)",
+        "level": "macrogroup",
+        "description": [
+            " i. Tree composition dominated by Pinus elliottii (var. densa) or Pinus caribaea,",
+            "    alone or in combination (>=50% RIV);",
+            "OR",
+            "ii. Tree composition as above, but with >=20% RIV, AND other species are",
+            "    any combination of (in dry stands) Coccothrinax argentata, Thrinax morrisii,",
+            "    Sideroxylon salicifolium (together >=50% RIV);"
+        ],
+        "trigger": [
+            "riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+        ],
+        "filters": {
+            "STRONG_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus caribaea"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Coccothrinax argentata"
+                },
+                {
+                    "species": "Thrinax morrisii"
+                },
+                {
+                    "species": "Sideroxylon salicifolium"
+                }
+            ]
+        }
+    }
+}

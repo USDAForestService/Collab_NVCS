@@ -1,27 +1,20 @@
-{"node": {
-
-   "name":
-      "Native Northern Hardwood Forest Plantation Cultural Type (CTY016)",
-
-   "id":
-      "Native Northern Hardwood Forest Plantation Cultural Type (CTY016)",
-
-   "level":
-      "type",
-
-   "description": [
-      "Stands found in ecodivisions 210, M210, 220, M220, 330 and ecoprovince 251."
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS)"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "210, M210, 220, M220, 330, 251"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Northern Hardwood Forest Plantation Cultural Type (CTY016)",
+        "id": "Native Northern Hardwood Forest Plantation Cultural Type (CTY016)",
+        "level": "type",
+        "description": [
+            "Stands found in ecodivisions 210, M210, 220, M220, 330 and ecoprovince 251."
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "210, M210, 220, M220, 330, 251"
+                }
+            ]
+        }
+    }
+}

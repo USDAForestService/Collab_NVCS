@@ -1,35 +1,32 @@
-{"node": {
-
-   "name":
-      "Larch Forest Plantation (CST006408)",
-
-   "id":
-      "Larch Forest Plantation (CST006408)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      " i. Tree composition dominated by Larix spp. with >=50% RIV",
-      "OR",
-      "ii. Tree composition dominated by Larix spp., but with >=25% RIV, AND species",
-      "    of Pinus sylvestris or Picea abies alone or in combination <25% RIV"
-   ],
-
-   "trigger": [
-      "    riv(LARIX_SPP) >= 50",
-      "or (riv(LARIX_SPP) >= 25 and riv(OTHER_EXOTIC_CONIFERS) < 25)"
-   ],
-
-   "filters": {
-      "LARIX_SPP": [
-        {"species": "Larix"}
-      ],
-      "OTHER_EXOTIC_CONIFERS": [
-        {"species": "Pinus sylvestris"},
-        {"species": "Picea abies"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Larch Forest Plantation (CST006408)",
+        "id": "Larch Forest Plantation (CST006408)",
+        "level": "subtype",
+        "description": [
+            " i. Tree composition dominated by Larix spp. with >=50% RIV",
+            "OR",
+            "ii. Tree composition dominated by Larix spp., but with >=25% RIV, AND species",
+            "    of Pinus sylvestris or Picea abies alone or in combination <25% RIV"
+        ],
+        "trigger": [
+            "    riv(LARIX_SPP) >= 50",
+            "or (riv(LARIX_SPP) >= 25 and riv(OTHER_EXOTIC_CONIFERS) < 25)"
+        ],
+        "filters": {
+            "LARIX_SPP": [
+                {
+                    "species": "Larix"
+                }
+            ],
+            "OTHER_EXOTIC_CONIFERS": [
+                {
+                    "species": "Pinus sylvestris"
+                },
+                {
+                    "species": "Picea abies"
+                }
+            ]
+        }
+    }
+}

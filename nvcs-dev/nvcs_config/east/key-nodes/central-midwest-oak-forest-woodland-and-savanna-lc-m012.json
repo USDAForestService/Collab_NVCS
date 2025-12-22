@@ -1,67 +1,130 @@
-{"node": {
-
-   "name":
-      "Central Midwest Oak Forest, Woodland & Savanna LC (M012)",
-
-   "id":
-      "Central Midwest Oak Forest, Woodland & Savanna LC (M012)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot occurs in Ecoregions 222 (except not 222I), 251,",
-      "AND % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS"
-   ],
-
-   "trigger": [
-      "match(ECOREGIONS) and riv(STRONG_DRY_DIAGNOSTICS) > riv(STRONG_MESIC_DIAGNOSTICS)"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "222, 251 ! 222I"}
-      ],
-      "STRONG_DRY_DIAGNOSTICS": [
-        {"species": "Carya ovata"},
-        {"species": "Juniperus virginiana var. silicicola"},
-        {"species": "Pinus banksiana"},
-        {"species": "Pinus resinosa"},
-        {"species": "Pinus strobus"},
-        {"species": "Populus tremuloides"},
-        {"species": "Quercus alba"},
-        {"species": "Quercus ellipsoidalis"},
-        {"species": "Quercus imbricaria"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Quercus rubra"},
-        {"species": "Quercus muehlenbergii"},
-        {"species": "Quercus stellata"},
-        {"species": "Quercus velutina"}
-      ],
-      "STRONG_MESIC_DIAGNOSTICS": [
-        {"species": "Acer nigrum"},
-        {"species": "Acer saccharum"},
-        {"species": "Aesculus glabra var. arguta"},
-        {"species": "Asimina triloba"},
-        {"species": "Carya cordiformis"},
-        {"species": "Celtis occidentalis"},
-        {"species": "Fagus grandifolia"},
-        {"species": "Fraxinus americana"},
-        {"species": "Fraxinus nigra"},
-        {"species": "Fraxinus pennsylvanica"},
-        {"species": "Gymnocladus dioicus"},
-        {"species": "Juglans cinerea"},
-        {"species": "Liriodendron tulipifera"},
-        {"species": "Liquidambar styraciflua"},
-        {"species": "Nyssa sylvatica"},
-        {"species": "Platanus occidentalis"},
-        {"species": "Quercus bicolor"},
-        {"species": "Quercus palustris"},
-        {"species": "Tilia americana"},
-        {"species": "Ulmus rubra"},
-        {"species": "Ulmus americana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Central Midwest Oak Forest, Woodland & Savanna LC (M012)",
+        "id": "Central Midwest Oak Forest, Woodland & Savanna LC (M012)",
+        "level": "macrogroup",
+        "description": [
+            "Plot occurs in Ecoregions 222 (except not 222I), 251,",
+            "AND % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS"
+        ],
+        "trigger": [
+            "match(ECOREGIONS) and riv(STRONG_DRY_DIAGNOSTICS) > riv(STRONG_MESIC_DIAGNOSTICS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "222, 251 ! 222I"
+                }
+            ],
+            "STRONG_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Carya ovata"
+                },
+                {
+                    "species": "Juniperus virginiana var. silicicola"
+                },
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus ellipsoidalis"
+                },
+                {
+                    "species": "Quercus imbricaria"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Quercus velutina"
+                }
+            ],
+            "STRONG_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Acer nigrum"
+                },
+                {
+                    "species": "Acer saccharum"
+                },
+                {
+                    "species": "Aesculus glabra var. arguta"
+                },
+                {
+                    "species": "Asimina triloba"
+                },
+                {
+                    "species": "Carya cordiformis"
+                },
+                {
+                    "species": "Celtis occidentalis"
+                },
+                {
+                    "species": "Fagus grandifolia"
+                },
+                {
+                    "species": "Fraxinus americana"
+                },
+                {
+                    "species": "Fraxinus nigra"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Gymnocladus dioicus"
+                },
+                {
+                    "species": "Juglans cinerea"
+                },
+                {
+                    "species": "Liriodendron tulipifera"
+                },
+                {
+                    "species": "Liquidambar styraciflua"
+                },
+                {
+                    "species": "Nyssa sylvatica"
+                },
+                {
+                    "species": "Platanus occidentalis"
+                },
+                {
+                    "species": "Quercus bicolor"
+                },
+                {
+                    "species": "Quercus palustris"
+                },
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Ulmus rubra"
+                },
+                {
+                    "species": "Ulmus americana"
+                }
+            ]
+        }
+    }
+}

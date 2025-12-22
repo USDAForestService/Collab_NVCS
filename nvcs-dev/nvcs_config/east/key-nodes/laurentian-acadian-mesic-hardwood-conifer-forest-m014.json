@@ -1,54 +1,91 @@
-{"node": {
-
-   "name":
-      "Laurentian-Acadian Mesic Hardwood - Conifer Forest (M014)",
-
-   "id":
-      "Laurentian-Acadian Mesic Hardwood - Conifer Forest (M014)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Tree composition dominated by any one or more of the hardwoods and/or conifers",
-      "STRONG MESIC DIAGNOSTICS Abies balsamea, Abies fraseri, Acer pensylvanicum,",
-      "Acer saccharum, Acer spicatum, Betula alleghaniensis, Betula lenta, Fagus grandifolia,",
-      "Fraxinus americana, Fraxinus nigra, Fraxinus pennsylvanica, Larix laricina, Picea glauca,",
-      "Picea mariana, Picea rubens, Populus balsamifera, Populus grandidentata, Quercus macrocarpa,",
-      "Quercus rubra, Thuja occidentalis, Tilia americana, Tsuga canadensis, Ulmus americana (>=20% RIV);"
-   ],
-
-   "trigger": [
-      "riv(STRONG_MESIC_DIAGNOSTICS) >= 20"
-   ],
-
-   "filters": {
-      "STRONG_MESIC_DIAGNOSTICS": [
-        {"species": "Abies balsamea"},
-        {"species": "Abies fraseri"},
-        {"species": "Acer pensylvanicum"},
-        {"species": "Acer saccharum"},
-        {"species": "Acer spicatum"},
-        {"species": "Betula alleghaniensis"},
-        {"species": "Betula lenta"},
-        {"species": "Fagus grandifolia"},
-        {"species": "Fraxinus americana"},
-        {"species": "Fraxinus nigra"},
-        {"species": "Fraxinus pennsylvanica"},
-        {"species": "Larix laricina"},
-        {"species": "Picea glauca"},
-        {"species": "Picea mariana"},
-        {"species": "Picea rubens"},
-        {"species": "Populus balsamifera"},
-        {"species": "Populus grandidentata"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Quercus rubra"},
-        {"species": "Thuja occidentalis"},
-        {"species": "Tilia americana"},
-        {"species": "Tsuga canadensis"},
-        {"species": "Ulmus americana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Laurentian-Acadian Mesic Hardwood - Conifer Forest (M014)",
+        "id": "Laurentian-Acadian Mesic Hardwood - Conifer Forest (M014)",
+        "level": "macrogroup",
+        "description": [
+            "Tree composition dominated by any one or more of the hardwoods and/or conifers",
+            "STRONG MESIC DIAGNOSTICS Abies balsamea, Abies fraseri, Acer pensylvanicum,",
+            "Acer saccharum, Acer spicatum, Betula alleghaniensis, Betula lenta, Fagus grandifolia,",
+            "Fraxinus americana, Fraxinus nigra, Fraxinus pennsylvanica, Larix laricina, Picea glauca,",
+            "Picea mariana, Picea rubens, Populus balsamifera, Populus grandidentata, Quercus macrocarpa,",
+            "Quercus rubra, Thuja occidentalis, Tilia americana, Tsuga canadensis, Ulmus americana (>=20% RIV);"
+        ],
+        "trigger": [
+            "riv(STRONG_MESIC_DIAGNOSTICS) >= 20"
+        ],
+        "filters": {
+            "STRONG_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Abies balsamea"
+                },
+                {
+                    "species": "Abies fraseri"
+                },
+                {
+                    "species": "Acer pensylvanicum"
+                },
+                {
+                    "species": "Acer saccharum"
+                },
+                {
+                    "species": "Acer spicatum"
+                },
+                {
+                    "species": "Betula alleghaniensis"
+                },
+                {
+                    "species": "Betula lenta"
+                },
+                {
+                    "species": "Fagus grandifolia"
+                },
+                {
+                    "species": "Fraxinus americana"
+                },
+                {
+                    "species": "Fraxinus nigra"
+                },
+                {
+                    "species": "Fraxinus pennsylvanica"
+                },
+                {
+                    "species": "Larix laricina"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Picea mariana"
+                },
+                {
+                    "species": "Picea rubens"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Thuja occidentalis"
+                },
+                {
+                    "species": "Tilia americana"
+                },
+                {
+                    "species": "Tsuga canadensis"
+                },
+                {
+                    "species": "Ulmus americana"
+                }
+            ]
+        }
+    }
+}

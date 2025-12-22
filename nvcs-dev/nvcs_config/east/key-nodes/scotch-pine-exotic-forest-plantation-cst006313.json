@@ -1,35 +1,32 @@
-{"node": {
-
-   "name":
-      "Scotch Pine Exotic Forest Plantation (CST006313)",
-
-   "id":
-      "Scotch Pine Exotic Forest Plantation (CST006313)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      " i. Tree composition dominated by Pinus sylvestris with >=50% RIV",
-      "OR",
-      "ii. The above tree species, but with >=25% RIV, AND planted Picea abies or",
-      "    Larix spp. alone or in combination <25%"
-   ],
-
-   "trigger": [
-      "    riv(SCOTCH_PINE) >= 50",
-      "or (riv(SCOTCH_PINE) >= 25 and riv(NORWAY_SPRUCE_LARCH) < 25)"
-   ],
-
-   "filters": {
-      "SCOTCH_PINE": [
-        {"species": "Pinus sylvestris"}
-      ],
-      "NORWAY_SPRUCE_LARCH": [
-        {"species": "Picea abies"},
-        {"species": "Larix"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Scotch Pine Exotic Forest Plantation (CST006313)",
+        "id": "Scotch Pine Exotic Forest Plantation (CST006313)",
+        "level": "subtype",
+        "description": [
+            " i. Tree composition dominated by Pinus sylvestris with >=50% RIV",
+            "OR",
+            "ii. The above tree species, but with >=25% RIV, AND planted Picea abies or",
+            "    Larix spp. alone or in combination <25%"
+        ],
+        "trigger": [
+            "    riv(SCOTCH_PINE) >= 50",
+            "or (riv(SCOTCH_PINE) >= 25 and riv(NORWAY_SPRUCE_LARCH) < 25)"
+        ],
+        "filters": {
+            "SCOTCH_PINE": [
+                {
+                    "species": "Pinus sylvestris"
+                }
+            ],
+            "NORWAY_SPRUCE_LARCH": [
+                {
+                    "species": "Picea abies"
+                },
+                {
+                    "species": "Larix"
+                }
+            ]
+        }
+    }
+}

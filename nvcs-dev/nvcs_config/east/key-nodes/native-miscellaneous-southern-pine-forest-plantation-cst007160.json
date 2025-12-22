@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Native Miscellaneous Southern Pine Forest Plantation (CST007160)",
-
-   "id":
-      "Native Miscellaneous Southern Pine Forest Plantation (CST007160)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Miscellaneous Southern Pine Forest Plantation (CST007160)",
+        "id": "Native Miscellaneous Southern Pine Forest Plantation (CST007160)",
+        "level": "subtype",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)",
-
-   "id":
-      "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)",
+        "id": "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)",
+        "level": "subtype",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

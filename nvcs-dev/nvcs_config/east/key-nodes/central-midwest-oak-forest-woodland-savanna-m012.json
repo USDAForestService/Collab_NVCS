@@ -1,73 +1,126 @@
-{"node": {
-
-   "name":
-      "Central Midwest Oak Forest, Woodland & Savanna (M012)",
-
-   "id":
-      "Central Midwest Oak Forest, Woodland & Savanna (M012)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "Plot occurs in Ecoregion 222, 223G, 251 [excludes 222I, exclude Ozarks ecoregion] AND",
-      " i. tree composition dominated by one or more of the STRONG DRY DIAGNOSTICS of Carya ovata, Juniperus virginiana,",
-      "    Pinus banksiana, Pinus resinosa, Pinus strobus, Populus tremuloides, Quercus alba, Quercus ellipsoidalis,",
-      "    Quercus imbricaria, Quercus macrocarpa, Quercus rubra, Quercus muehlenbergii, Quercus stellata,",
-      "    Quercus velutina (>=50% RIV);",
-      "OR",
-      "ii. tree composition as above, but with >=20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS",
-      "    diagnostic species of Betula papyrifera, Carya alba, Carya glabra, Carya laciniosa, or weakly diagnostic species",
-      "    of Amelanchier spp., Carpinus caroliniana, Cercis canadensis, Cornus florida, Diospyros virginiana,",
-      "    Fraxinus quadrangulata, Morus rubra, Ostrya virginiana, Populus gradidentata, Prunus serotina,",
-      "    Quercus falcata (= var. falcata), Sassafras albidum (together >=50% RIV)"
-   ],
-
-   "trigger": [
-      "    match(ECOREGIONS)",
-      "and (    riv(STRONG_DRY_DIAGNOSTICS) >= 50",
-      "     or (riv(STRONG_DRY_DIAGNOSTICS) >= 20 and riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >= 50))"
-   ],
-
-   "filters": {
-      "ECOREGIONS": [
-        {"ecoregion": "222, 223G, 251 ! 222I"}
-      ],
-      "STRONG_DRY_DIAGNOSTICS": [
-        {"species": "Carya ovata"},
-        {"species": "Juniperus virginiana var. silicicola"},
-        {"species": "Pinus banksiana"},
-        {"species": "Pinus resinosa"},
-        {"species": "Pinus strobus"},
-        {"species": "Populus tremuloides"},
-        {"species": "Quercus alba"},
-        {"species": "Quercus ellipsoidalis"},
-        {"species": "Quercus imbricaria"},
-        {"species": "Quercus macrocarpa"},
-        {"species": "Quercus rubra"},
-        {"species": "Quercus muehlenbergii"},
-        {"species": "Quercus stellata"},
-        {"species": "Quercus velutina"}
-      ],
-      "MODERATE_DRY_DIAGNOSTICS": [
-        {"species": "Betula papyrifera"},
-        {"species": "Carya alba"},
-        {"species": "Carya glabra"},
-        {"species": "Carya laciniosa"},
-        {"species": "Amelanchier"},
-        {"species": "Carpinus caroliniana"},
-        {"species": "Cercis canadensis"},
-        {"species": "Cornus florida"},
-        {"species": "Diospyros virginiana"},
-        {"species": "Fraxinus quadrangulata"},
-        {"species": "Morus rubra"},
-        {"species": "Ostrya virginiana"},
-        {"species": "Populus grandidentata"},
-        {"species": "Prunus serotina"},
-        {"species": "Quercus falcata"},
-        {"species": "Sassafras albidum"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Central Midwest Oak Forest, Woodland & Savanna (M012)",
+        "id": "Central Midwest Oak Forest, Woodland & Savanna (M012)",
+        "level": "macrogroup",
+        "description": [
+            "Plot occurs in Ecoregion 222, 223G, 251 [excludes 222I, exclude Ozarks ecoregion] AND",
+            " i. tree composition dominated by one or more of the STRONG DRY DIAGNOSTICS of Carya ovata, Juniperus virginiana,",
+            "    Pinus banksiana, Pinus resinosa, Pinus strobus, Populus tremuloides, Quercus alba, Quercus ellipsoidalis,",
+            "    Quercus imbricaria, Quercus macrocarpa, Quercus rubra, Quercus muehlenbergii, Quercus stellata,",
+            "    Quercus velutina (>=50% RIV);",
+            "OR",
+            "ii. tree composition as above, but with >=20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS",
+            "    diagnostic species of Betula papyrifera, Carya alba, Carya glabra, Carya laciniosa, or weakly diagnostic species",
+            "    of Amelanchier spp., Carpinus caroliniana, Cercis canadensis, Cornus florida, Diospyros virginiana,",
+            "    Fraxinus quadrangulata, Morus rubra, Ostrya virginiana, Populus gradidentata, Prunus serotina,",
+            "    Quercus falcata (= var. falcata), Sassafras albidum (together >=50% RIV)"
+        ],
+        "trigger": [
+            "    match(ECOREGIONS)",
+            "and (    riv(STRONG_DRY_DIAGNOSTICS) >= 50",
+            "     or (riv(STRONG_DRY_DIAGNOSTICS) >= 20 and riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >= 50))"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "222, 223G, 251 ! 222I"
+                }
+            ],
+            "STRONG_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Carya ovata"
+                },
+                {
+                    "species": "Juniperus virginiana var. silicicola"
+                },
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus ellipsoidalis"
+                },
+                {
+                    "species": "Quercus imbricaria"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Quercus velutina"
+                }
+            ],
+            "MODERATE_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Carya alba"
+                },
+                {
+                    "species": "Carya glabra"
+                },
+                {
+                    "species": "Carya laciniosa"
+                },
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Carpinus caroliniana"
+                },
+                {
+                    "species": "Cercis canadensis"
+                },
+                {
+                    "species": "Cornus florida"
+                },
+                {
+                    "species": "Diospyros virginiana"
+                },
+                {
+                    "species": "Fraxinus quadrangulata"
+                },
+                {
+                    "species": "Morus rubra"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus falcata"
+                },
+                {
+                    "species": "Sassafras albidum"
+                }
+            ]
+        }
+    }
+}

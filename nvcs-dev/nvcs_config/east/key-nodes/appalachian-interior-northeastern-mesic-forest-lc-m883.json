@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Appalachian, Interior - Northeastern Mesic Forest LC (M883)",
-
-   "id":
-      "Appalachian, Interior - Northeastern Mesic Forest LC (M883)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Appalachian, Interior - Northeastern Mesic Forest LC (M883)",
+        "id": "Appalachian, Interior - Northeastern Mesic Forest LC (M883)",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

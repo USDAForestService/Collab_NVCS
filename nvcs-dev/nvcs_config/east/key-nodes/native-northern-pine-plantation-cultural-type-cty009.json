@@ -1,45 +1,74 @@
-{"node": {
-
-   "name":
-      "Native Northern Pine Plantation Cultural Type (CTY009)",
-
-   "id":
-      "Native Northern Pine Plantation Cultural Type (CTY009)",
-
-   "level":
-      "type",
-
-   "description": [
-      "Native pine species of Pinus spp. [Pinus spp not E = Exotic] exceed non-pine conifers (Native Pinus spp >=50% RIV)"
-   ],
-
-   "trigger": [
-      "riv(NATIVE_NORTHERN_PINES) >= 50"
-   ],
-
-   "filters": {
-      "NATIVE_NORTHERN_PINES": [
-        {"species": "Pinus banksiana"},
-        {"species": "Pinus caribaea"},
-        {"species": "Pinus cembroides"},
-        {"species": "Pinus clausa"},
-        {"species": "Pinus echinata"},
-        {"species": "Pinus edulis"},
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus flexilis"},
-        {"species": "Pinus glabra"},
-        {"species": "Pinus palustris"},
-        {"species": "Pinus pungens"},
-        {"species": "Pinus remota"},
-        {"species": "Pinus resinosa"},
-        {"species": "Pinus rigida"},
-        {"species": "Pinus serotina"},
-        {"species": "Pinus strobus"},
-        {"species": "Pinus taeda"},
-        {"species": "Pinus virginiana"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Northern Pine Plantation Cultural Type (CTY009)",
+        "id": "Native Northern Pine Plantation Cultural Type (CTY009)",
+        "level": "type",
+        "description": [
+            "Native pine species of Pinus spp. [Pinus spp not E = Exotic] exceed non-pine conifers (Native Pinus spp >=50% RIV)"
+        ],
+        "trigger": [
+            "riv(NATIVE_NORTHERN_PINES) >= 50"
+        ],
+        "filters": {
+            "NATIVE_NORTHERN_PINES": [
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus caribaea"
+                },
+                {
+                    "species": "Pinus cembroides"
+                },
+                {
+                    "species": "Pinus clausa"
+                },
+                {
+                    "species": "Pinus echinata"
+                },
+                {
+                    "species": "Pinus edulis"
+                },
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus flexilis"
+                },
+                {
+                    "species": "Pinus glabra"
+                },
+                {
+                    "species": "Pinus palustris"
+                },
+                {
+                    "species": "Pinus pungens"
+                },
+                {
+                    "species": "Pinus remota"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus rigida"
+                },
+                {
+                    "species": "Pinus serotina"
+                },
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Pinus taeda"
+                },
+                {
+                    "species": "Pinus virginiana"
+                }
+            ]
+        }
+    }
+}

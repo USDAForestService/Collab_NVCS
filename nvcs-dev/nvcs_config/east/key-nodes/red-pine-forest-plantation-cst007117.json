@@ -1,36 +1,33 @@
-{"node": {
-
-   "name":
-      "Red Pine Forest Plantation (CST007117)",
-
-   "id":
-      "Red Pine Forest Plantation (CST007117)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "Tree composition dominated by Pinus resinosa >= 25% RIV,",
-      "and exceeds each species of Pinus banksiana and Pinus strobus."
-   ],
-
-   "trigger": [
-      "    riv(RED_PINE) >= 25",
-      "and riv(RED_PINE) > riv(JACK_PINE)",
-      "and riv(RED_PINE) > riv(WHITE_PINE)"
-   ],
-
-   "filters": {
-      "RED_PINE": [
-        {"species": "Pinus resinosa"}
-      ],
-      "JACK_PINE": [
-        {"species": "Pinus banksiana"}
-      ],
-      "WHITE_PINE": [
-        {"species": "Pinus strobus"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Red Pine Forest Plantation (CST007117)",
+        "id": "Red Pine Forest Plantation (CST007117)",
+        "level": "subtype",
+        "description": [
+            "Tree composition dominated by Pinus resinosa >= 25% RIV,",
+            "and exceeds each species of Pinus banksiana and Pinus strobus."
+        ],
+        "trigger": [
+            "    riv(RED_PINE) >= 25",
+            "and riv(RED_PINE) > riv(JACK_PINE)",
+            "and riv(RED_PINE) > riv(WHITE_PINE)"
+        ],
+        "filters": {
+            "RED_PINE": [
+                {
+                    "species": "Pinus resinosa"
+                }
+            ],
+            "JACK_PINE": [
+                {
+                    "species": "Pinus banksiana"
+                }
+            ],
+            "WHITE_PINE": [
+                {
+                    "species": "Pinus strobus"
+                }
+            ]
+        }
+    }
+}

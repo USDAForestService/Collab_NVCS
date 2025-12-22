@@ -1,30 +1,27 @@
-{"node": {
-
-   "name":
-      "Native Caribbean Conifer Plantation Cultural Type (CTY001)",
-
-   "id":
-      "Native Caribbean Conifer Plantation Cultural Type (CTY001)",
-
-   "level":
-      "type",
-
-   "description": [
-      "Species of native conifers have > RIV than exotic species"
-   ],
-
-   "trigger": [
-      "riv(NATIVE_CONIFERS) > riv(EXOTIC_CONIFERS)"
-   ],
-
-   "filters": {
-      "NATIVE_CONIFERS": [
-        {"softwoodhardwood": "S", "exotic": "N"}
-      ],
-      "EXOTIC_CONIFERS": [
-        {"softwoodhardwood": "S", "exotic": "Y"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Caribbean Conifer Plantation Cultural Type (CTY001)",
+        "id": "Native Caribbean Conifer Plantation Cultural Type (CTY001)",
+        "level": "type",
+        "description": [
+            "Species of native conifers have > RIV than exotic species"
+        ],
+        "trigger": [
+            "riv(NATIVE_CONIFERS) > riv(EXOTIC_CONIFERS)"
+        ],
+        "filters": {
+            "NATIVE_CONIFERS": [
+                {
+                    "softwoodhardwood": "S",
+                    "exotic": "N"
+                }
+            ],
+            "EXOTIC_CONIFERS": [
+                {
+                    "softwoodhardwood": "S",
+                    "exotic": "Y"
+                }
+            ]
+        }
+    }
+}

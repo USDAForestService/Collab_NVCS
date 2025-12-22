@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)",
-
-   "id":
-      "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)",
-
-   "level":
-      "subtype",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)",
+        "id": "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)",
+        "level": "subtype",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

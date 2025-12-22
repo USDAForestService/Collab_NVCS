@@ -1,82 +1,144 @@
-{"node": {
-
-   "name":
-      "Southeastern North American Flooded & Swamp Forest Division",
-
-   "id":
-      "Southeastern North American Flooded & Swamp Forest Division",
-
-   "level":
-      "division",
-
-   "description": [
-      " i. Tree composition dominated by one or more of conifers of Chamaecyparis thyoides, Pinus elliottii,",
-      "    Pinus glabra, Pinus palustris, Pinus serotina, Pinus taeda, Taxodium distichum, Taxodium ascendens,",
-      "    or hardwoods Carya aquatica, Fraxinus caroliniana, Fraxinus profunda, Gleditsia aquatica,",
-      "    Gordonia lasianthus, Halesia diptera, Juglans major, Juglans microcarpa, Magnolia virginiana,",
-      "    Nyssa aquatica, Nyssa biflora, Planera aquatica, Persea borbonia, Nyssa ogeche, Quercus laurifolia,",
-      "    Quercus lyrata, Quercus michauxii, Quercus nigra, Quercus pagoda, Quercus sinuata var. sinuata,",
-      "    Quercus texana, Quercus virginiana, Sabal palmetto, Ulmus crassifolia (>=20% RIV); EXCLUDING coastal",
-      "    plain forests of MD, NY, NJ, PA, DE, VA or Ecoregion 221.",
-      "OR",
-      "ii. STANDS FOUND in EcoProvince 231, 232, 234 and 255 (but EXCLUDING KS and coastal plain forests",
-      "    of MD, NY, NJ, PA, DE)",
-      "",
-      "[Note: Tree composition that fits c.ii. (i.e lack strong diagnostics but are found in coastal plain forest",
-      "wetlands could include stands dominated by one or more of conifers of Pinus taeda or hardwoods  Acer saccharinum,",
-      "Acer rubrum, Celtis laevigata, Fraxinus pennsylvanica, Liquidambar styraciflua, Platanus occidentalis Salix nigra,",
-      "Quercus macrocarpa, Quercus shumardii, Ulmus americana, Ulmus crassifolia (>=50% RIV); OR Tree composition as above,",
-      "but with >=20% RIV; AND other species are any combination of Acer negundo, Carpinus caroliniana, Ilex opaca,",
-      "Magnolia grandiflora (together >=50% RIV), OR All Ruderal stands where ruderals >= 80% RIV]"
-   ],
-
-   "trigger": [
-      "(not match(EXCLUDED_REGIONS) and riv(DIAGNOSTIC_SPECIES) >= 20) or match(ECOREGIONS_II)"
-   ],
-
-   "filters": {
-      "EXCLUDED_REGIONS": [
-        {"state": "MD, NY, NJ, PA, DE, VA"},
-        {"ecoregion": "221"}
-      ],
-      "DIAGNOSTIC_SPECIES": [
-        {"species": "Chamaecyparis thyoides"},
-        {"species": "Pinus elliottii var. elliottii"},
-        {"species": "Pinus glabra"},
-        {"species": "Pinus palustris"},
-        {"species": "Pinus serotina"},
-        {"species": "Pinus taeda"},
-        {"species": "Taxodium distichum"},
-        {"species": "Taxodium ascendens"},
-        {"species": "Carya aquatica"},
-        {"species": "Fraxinus caroliniana"},
-        {"species": "Fraxinus profunda"},
-        {"species": "Gleditsia aquatica"},
-        {"species": "Gordonia lasianthus"},
-        {"species": "Halesia diptera"},
-        {"species": "Juglans major"},
-        {"species": "Juglans microcarpa"},
-        {"species": "Magnolia virginiana"},
-        {"species": "Nyssa aquatica"},
-        {"species": "Nyssa biflora"},
-        {"species": "Planera aquatica"},
-        {"species": "Persea borbonia"},
-        {"species": "Nyssa ogeche"},
-        {"species": "Quercus laurifolia"},
-        {"species": "Quercus lyrata"},
-        {"species": "Quercus michauxii"},
-        {"species": "Quercus nigra"},
-        {"species": "Quercus pagoda"},
-        {"species": "Quercus sinuata var. sinuata"},
-        {"species": "Quercus texana"},
-        {"species": "Quercus virginiana"},
-        {"species": "Sabal palmetto"},
-        {"species": "Ulmus crassifolia"}
-      ],
-      "ECOREGIONS_II": [
-        {"ecoregion": "231, 232, 234, 255", "state": "!KS, MD, NY, NJ, PA, DE"}
-      ]
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Southeastern North American Flooded & Swamp Forest Division",
+        "id": "Southeastern North American Flooded & Swamp Forest Division",
+        "level": "division",
+        "description": [
+            " i. Tree composition dominated by one or more of conifers of Chamaecyparis thyoides, Pinus elliottii,",
+            "    Pinus glabra, Pinus palustris, Pinus serotina, Pinus taeda, Taxodium distichum, Taxodium ascendens,",
+            "    or hardwoods Carya aquatica, Fraxinus caroliniana, Fraxinus profunda, Gleditsia aquatica,",
+            "    Gordonia lasianthus, Halesia diptera, Juglans major, Juglans microcarpa, Magnolia virginiana,",
+            "    Nyssa aquatica, Nyssa biflora, Planera aquatica, Persea borbonia, Nyssa ogeche, Quercus laurifolia,",
+            "    Quercus lyrata, Quercus michauxii, Quercus nigra, Quercus pagoda, Quercus sinuata var. sinuata,",
+            "    Quercus texana, Quercus virginiana, Sabal palmetto, Ulmus crassifolia (>=20% RIV); EXCLUDING coastal",
+            "    plain forests of MD, NY, NJ, PA, DE, VA or Ecoregion 221.",
+            "OR",
+            "ii. STANDS FOUND in EcoProvince 231, 232, 234 and 255 (but EXCLUDING KS and coastal plain forests",
+            "    of MD, NY, NJ, PA, DE)",
+            "",
+            "[Note: Tree composition that fits c.ii. (i.e lack strong diagnostics but are found in coastal plain forest",
+            "wetlands could include stands dominated by one or more of conifers of Pinus taeda or hardwoods  Acer saccharinum,",
+            "Acer rubrum, Celtis laevigata, Fraxinus pennsylvanica, Liquidambar styraciflua, Platanus occidentalis Salix nigra,",
+            "Quercus macrocarpa, Quercus shumardii, Ulmus americana, Ulmus crassifolia (>=50% RIV); OR Tree composition as above,",
+            "but with >=20% RIV; AND other species are any combination of Acer negundo, Carpinus caroliniana, Ilex opaca,",
+            "Magnolia grandiflora (together >=50% RIV), OR All Ruderal stands where ruderals >= 80% RIV]"
+        ],
+        "trigger": [
+            "(not match(EXCLUDED_REGIONS) and riv(DIAGNOSTIC_SPECIES) >= 20) or match(ECOREGIONS_II)"
+        ],
+        "filters": {
+            "EXCLUDED_REGIONS": [
+                {
+                    "state": "MD, NY, NJ, PA, DE, VA"
+                },
+                {
+                    "ecoregion": "221"
+                }
+            ],
+            "DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Chamaecyparis thyoides"
+                },
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Pinus glabra"
+                },
+                {
+                    "species": "Pinus palustris"
+                },
+                {
+                    "species": "Pinus serotina"
+                },
+                {
+                    "species": "Pinus taeda"
+                },
+                {
+                    "species": "Taxodium distichum"
+                },
+                {
+                    "species": "Taxodium ascendens"
+                },
+                {
+                    "species": "Carya aquatica"
+                },
+                {
+                    "species": "Fraxinus caroliniana"
+                },
+                {
+                    "species": "Fraxinus profunda"
+                },
+                {
+                    "species": "Gleditsia aquatica"
+                },
+                {
+                    "species": "Gordonia lasianthus"
+                },
+                {
+                    "species": "Halesia diptera"
+                },
+                {
+                    "species": "Juglans major"
+                },
+                {
+                    "species": "Juglans microcarpa"
+                },
+                {
+                    "species": "Magnolia virginiana"
+                },
+                {
+                    "species": "Nyssa aquatica"
+                },
+                {
+                    "species": "Nyssa biflora"
+                },
+                {
+                    "species": "Planera aquatica"
+                },
+                {
+                    "species": "Persea borbonia"
+                },
+                {
+                    "species": "Nyssa ogeche"
+                },
+                {
+                    "species": "Quercus laurifolia"
+                },
+                {
+                    "species": "Quercus lyrata"
+                },
+                {
+                    "species": "Quercus michauxii"
+                },
+                {
+                    "species": "Quercus nigra"
+                },
+                {
+                    "species": "Quercus pagoda"
+                },
+                {
+                    "species": "Quercus sinuata var. sinuata"
+                },
+                {
+                    "species": "Quercus texana"
+                },
+                {
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Sabal palmetto"
+                },
+                {
+                    "species": "Ulmus crassifolia"
+                }
+            ],
+            "ECOREGIONS_II": [
+                {
+                    "ecoregion": "231, 232, 234, 255",
+                    "state": "!KS, MD, NY, NJ, PA, DE"
+                }
+            ]
+        }
+    }
+}

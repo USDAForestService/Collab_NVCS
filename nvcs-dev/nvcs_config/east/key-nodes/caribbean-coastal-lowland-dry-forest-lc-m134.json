@@ -1,24 +1,14 @@
-{"node": {
-
-   "name":
-      "Caribbean Coastal Lowland Dry Forest LC (M134)",
-
-   "id":
-      "Caribbean Coastal Lowland Dry Forest LC (M134)",
-
-   "level":
-      "macrogroup",
-
-   "description": [
-      "other"
-   ],
-
-   "trigger": [
-      "true"
-   ],
-
-   "filters": {
-   }
-
-}}
-
+{
+    "node": {
+        "name": "Caribbean Coastal Lowland Dry Forest LC (M134)",
+        "id": "Caribbean Coastal Lowland Dry Forest LC (M134)",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}
