@@ -54,7 +54,7 @@ class Plot:
         else:
             pct_riv = (match_riv / total_riv) * 100
         logging.debug('%s|riv()::%s|%.1f', self.ident, pattlist.label, pct_riv)
-        return round(pct_riv, 3)
+        return round(pct_riv, <%roundingDecimals%>)
         
     def spcov(self, pattlist):
         match_spcov = 0.0
@@ -63,7 +63,7 @@ class Plot:
             if pattlist.match_any({k:d.get(k) for d in (self.attrs, tree.attrs) for k in d}):
                 match_spcov += tree.spcov;
         logging.debug('%s|spcov()::%s|%.1f', self.ident, pattlist.label, match_spcov)
-        return round(match_spcov, 3)
+        return round(match_spcov, <%roundingDecimals%>)
 
     def get_elevation(self):
         logging.debug('%s|elevation()|%s', self.ident, self.elevation)
