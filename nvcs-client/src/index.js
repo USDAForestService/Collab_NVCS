@@ -376,6 +376,7 @@ async function executeTester(event, targetPath, testSettings) {
     config.EastConfig.In_ConfigPath = path.resolve(targetPath);
     config.EastConfig.AdditionalWhereClause = testSettings.additionalWhere;
   }
+  config.FullOutputConfig.RoundingDecimals = testSettings.roundingDecimals;
   config.FullOutputConfig.SkipSharedTables = "True";
   config.FullOutputConfig.In_Alerts = path.resolve(path.join(targetPath, "alerts.json"));
   config.FullOutputConfig.Out_DbPath = path.resolve(path.join(targetPath, "nvcs-output.db"));
@@ -575,7 +576,8 @@ async function fetchSettings(event, type) {
   
   const response = {
     inventoryYears: config.FullOutputConfig.InventoryYears,
-    additionalWhere: additionalWhere
+    additionalWhere: additionalWhere,
+    roundingDecimals: config.FullOutputConfig.RoundingDecimals
   };
 
   console.log("- RETURNING RESULTS");
