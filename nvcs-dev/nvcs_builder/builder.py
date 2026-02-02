@@ -82,9 +82,10 @@ class HierarchyBuilder:
         return code
         
 class KeyBuilder:
-    def __init__(self, configdir, templatedir):
+    def __init__(self, configdir, templatedir, roundingDecimals):
         self.configdir = configdir
         self.templatedir = templatedir
+        self.roundingDecimals = roundingDecimals
         self.template = open(self.templatedir + '/template-classification-key.py', 'r').read()
     
     def build(self):
@@ -94,6 +95,7 @@ class KeyBuilder:
         hbuilder = HierarchyBuilder(open(self.configdir + '/key-hierarchy.txt', 'r'))
         hcode = hbuilder.build()
         code = code.replace('<%hierarchy%>', hcode)
+        code = code.replace('<%roundingDecimals%>', self.roundingDecimals)
 
         ncode_list = []
         for f in os.listdir(self.configdir + '/key-nodes'):
@@ -115,9 +117,10 @@ if __name__ == '__main__':
     config = configuration.DebugConfig()
     templatePath = config.get(config.base, "TemplatePath")
     configPath = config.get(config.target, "In_ConfigPath")
+    roundingDecimals = config.get(config.fullOutputSection, "RoundingDecimals")
     keyPath = config.get(config.target, "Out_KeyPath")
 
-    keybuilder = builder.KeyBuilder(configPath, templatePath)
+    keybuilder = builder.KeyBuilder(configPath, templatePath, roundingDecimals)
     code = keybuilder.build()
 
     f = open(keyPath, 'w')

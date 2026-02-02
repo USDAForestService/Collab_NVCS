@@ -3100,6 +3100,7 @@ async function getDefaultTestSettings() {
     testSettings.type = currentHierarchyType;
     testSettings.inventoryYears = convertStringToNumbersList(defaultSettings.inventoryYears);
     testSettings.additionalWhere = defaultSettings.additionalWhere;
+    testSettings.roundingDecimals = defaultSettings.roundingDecimals;
     testSettings.keepExisting = false;
 }
 
@@ -3163,6 +3164,7 @@ async function updateAddressAlertDialog() {
 function updateSettingsDialogValues() {
     updateAvailableYears();
     document.getElementById("settings-additional-where").value = testSettings.additionalWhere;
+    document.getElementById("settings-rounding-decimals").value = testSettings.roundingDecimals;
     document.getElementById("settings-keep-existing").checked = testSettings.keepExisting;
 }
 
@@ -3224,10 +3226,12 @@ function saveSettingsChanges(closeAfter = true) {
     inventoryYears.sort((a, b) => a - b);
 
     const additionalWhere = document.getElementById("settings-additional-where").value;
+    const roundingDecimals = document.getElementById("settings-rounding-decimals").value;
     const keepExisting = document.getElementById("settings-keep-existing").checked;
 
     testSettings.inventoryYears = inventoryYears;
     testSettings.additionalWhere = additionalWhere.trim();
+    testSettings.roundingDecimals = roundingDecimals;
     testSettings.keepExisting = keepExisting;
     
     if (closeAfter)
