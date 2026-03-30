@@ -288,7 +288,8 @@ function handleSaveButton() {
         "duplicate-names",
         "duplicate-files",
         "missing-required-fields",
-        "blank-filters"
+        "blank-filters",
+        "invalid-trigger-operators"
     ];
     if (errors.filter(i => savePreventingErrors.includes(i.name)).length > 0) {
         document.getElementById("btn-update-json").disabled = true;
@@ -1553,6 +1554,7 @@ function checkForProblems() {
     checkDuplicateFiles();
     checkMissingRequiredFields();
     checkBlankFilters();
+    checkInvalidTriggerOperators();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -1938,6 +1940,45 @@ function checkBlankFilters() {
     `;
 
     createError("blank-filters", html, invalidBlankFilters);
+}
+
+function checkInvalidTriggerOperators() {
+    const invalidTriggerOperators = findInvalidTriggerOperators();
+    if (invalidTriggerOperators.length == 0)
+        return;
+    console.error("Invalid trigger operators", invalidTriggerOperators);
+
+    let html = `
+        <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
+            Invalid trigger operators detected within ${invalidTriggerOperators.length} hierarchy elements!
+            Node trigger operators must use "and" or "or" (case-sensitive) or the classification key may fail to build.
+            Saving will be prevented until all node triggers are using "and" or "or" boolean operators.
+            <button id='btn-toggle-nested-invalid-trigger-operators-errors' aria-describedby="nested-invalid-trigger-operators-errors" aria-controls='nested-invalid-trigger-operators-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-invalid-trigger-operators-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Trigger Operators" hidden>
+    `;
+
+    for (const info of invalidTriggerOperators) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid operators)");
+        const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
+        html += `
+            <li class="border-box-list-item">
+                ${elementButton}
+                ${addressButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-trigger-operators", html, invalidTriggerOperators);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -2604,6 +2645,24 @@ function findBlankFilters() {
     return invalidInfo;
 }
 
+function findInvalidTriggerOperators() {
+    let invalid = [];
+    const regex = /\b(AND|OR)\b/g;
+    for (const element of hierarchy) {
+        const trigger = element.node.trigger;
+        const joinedTrigger = trigger.join("\n");
+        const hasInvalids = regex.test(joinedTrigger);
+        if (!hasInvalids) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
+        });
+    }
+    return invalid;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -2978,6 +3037,17 @@ function createFlattenedErrors() {
                         targetProblem: `${invalid.value} is blank and invalid for species`
                     });
                 }
+            }
+        }
+        else if (error.name == "invalid-trigger-operators") {
+            for (const source of error.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "error",
+                    alertSubType: error.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node Trigger has invalid operators"
+                });
             }
         }
         else if (error.name == "invalid-trigger-parentheses") {
