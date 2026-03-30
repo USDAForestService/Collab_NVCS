@@ -3179,10 +3179,17 @@ function findInvalidsForSubFilters(newMarkedElements) {
     for (const element of inputTypes) {
         const input = element.value;
         const listId = element.getAttribute("list");
-        if (!listId) continue;
-        const listDetails = getDatalistDetails(listId);
-        if (!listDetails.options.includes(input))
-            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
+        if (!listId) {
+            continue;
+        }
+        else if (listId == "species-list" && input.trim() === "") {
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Species cannot be blank", "error");
+        }
+        else {
+            const listDetails = getDatalistDetails(listId);
+            if (!listDetails.options.includes(input))
+                newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
+        }
     }
     return newMarkedElements;
 }
