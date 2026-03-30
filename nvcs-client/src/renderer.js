@@ -1097,6 +1097,10 @@ function findInvalidsForNodeTrigger(newMarkedElements) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger boolean operators must be 'and' or 'or' (case-sensitive)", "error");
     }
 
+    if (hasInvalidMatchNegations(nodeTrigger)) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger must negate match() calls with 'not' instead of '!'", "error");
+    }
+
     return newMarkedElements;
 }
 
@@ -1990,6 +1994,7 @@ function checkInvalidMatchNegation() {
         <p>
             Invalid match negations detected within ${invalidMatchNegations.length} hierarchy elements!
             Node triggers must negate match() calls with "not" instead of "!" or the classification key may fail to build.
+            For example, "not match(ECOREGION)" is valid while "!match(ECOREGION)" is invalid.
             <button id='btn-toggle-nested-invalid-match-negations-errors' aria-describedby="nested-invalid-match-negations-errors" aria-controls='nested-invalid-match-negations-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
