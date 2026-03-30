@@ -1095,6 +1095,10 @@ function findInvalidsForNodeTrigger(newMarkedElements) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger references filter names that don't exist", "error");
     }
 
+    if (hasInvalidTriggerOperators(nodeTrigger)) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger boolean operators must be 'and' or 'or' (case-sensitive)", "error");
+    }
+
     return newMarkedElements;
 }
 
@@ -2647,11 +2651,10 @@ function findBlankFilters() {
 
 function findInvalidTriggerOperators() {
     let invalid = [];
-    const regex = /\b(AND|OR)\b/g;
     for (const element of hierarchy) {
         const trigger = element.node.trigger;
         const joinedTrigger = trigger.join("\n");
-        const hasInvalids = regex.test(joinedTrigger);
+        const hasInvalids = hasInvalidTriggerOperators(joinedTrigger);
         if (!hasInvalids) continue;
         
         invalid.push({
@@ -2661,6 +2664,12 @@ function findInvalidTriggerOperators() {
         });
     }
     return invalid;
+}
+
+function hasInvalidTriggerOperators(trigger) {
+    const regex = /\b(AND|OR)\b/g;
+    const hasInvalids = regex.test(trigger);
+    return hasInvalids;
 }
 
 function findMissingTriggerParentheses() {
