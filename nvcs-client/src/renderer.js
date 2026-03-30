@@ -287,7 +287,8 @@ function handleSaveButton() {
     const savePreventingErrors = [
         "duplicate-names",
         "duplicate-files",
-        "missing-required-fields"
+        "missing-required-fields",
+        "blank-species"
     ];
     if (errors.filter(i => savePreventingErrors.includes(i.name)).length > 0) {
         document.getElementById("btn-update-json").disabled = true;
@@ -1550,6 +1551,7 @@ function checkForProblems() {
     checkDuplicateNames();
     checkDuplicateFiles();
     checkMissingRequiredFields();
+    checkBlankSpecies();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -1855,6 +1857,86 @@ function checkMissingRequiredFields() {
     `;
 
     createError("missing-required-fields", html, invalidMissingRequired);
+}
+
+function checkBlankSpecies() {
+    const invalidBlankSpecies = findBlankSpecies();
+    if (invalidBlankSpecies.length == 0)
+        return;
+    console.error("Invalid blank species", invalidBlankSpecies);
+
+    let html = `
+        <p>
+            <span class='save-prevention'>SAVE PREVENTION</span>
+            Blank species detected within ${invalidBlankSpecies.length} hierarchy elements!
+            Species cannot be blank or the classification key may fail to build.
+            Saving will be prevented until all species are no longer blank.
+            <button id='btn-toggle-nested-blank-species-errors' aria-describedby="nested-blank-species-errors" aria-controls='nested-blank-species-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-blank-species-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Blank Species" hidden>
+    `;
+
+    for (const info of invalidBlankSpecies) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (blank species)");
+        const elementButton = cloneButton.outerHTML;
+
+        let elementFilters = [];
+        for (const entry of info.invalids)
+            elementFilters.push(entry.filter);
+        elementFilters = [...new Set(elementFilters)];
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of elementFilters) {
+            html += `
+                <li class='invalid-species-filter-container'>
+                    <p class='invalid-filter-name'>
+                        ${elementFilter}
+                    </p>
+                    <ul class='invalid-species-container'>
+            `;
+
+            for (const entry of info.invalids) {
+                if (entry.filter != elementFilter) 
+                    continue;
+
+                const invalidSpeciesName = entry.value;
+                const [addressButton, addressId] = generateAddressButton();
+                entry.addressId = addressId;
+                html += `
+                    <li>
+                        <span>
+                            ${invalidSpeciesName} (BLANK)
+                        </span>
+                        ${addressButton}
+                    </li>
+                `;
+            }
+
+            html += `
+                    </ul>
+                </li>
+            `;
+        }
+
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("blank-species", html, invalidBlankSpecies);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -2508,6 +2590,19 @@ function findMissingRequiredFields() {
     return invalid;
 }
 
+function findBlankSpecies() {
+    let invalidInfo = [];
+    for (const element of hierarchy) {
+        const filters = element.node.filters;
+        for (const [filterKey, filterValues] of Object.entries(filters)) {
+            for (const filterValue of filterValues) {
+                invalidInfo = extractBlankInfo(invalidInfo, element, filterKey, filterValue);
+            }
+        }
+    }
+    return invalidInfo;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -2730,6 +2825,34 @@ function findUnlabeledElementsInDocument() {
     return invalid;
 }
 
+function extractBlankInfo(invalidInfo, element, filterKey, filterValue) {
+    for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
+        // Skip non-blank species
+        if (subFilterValue && subFilterValue.trim() !== "") continue;
+        // Either add new unique invalid info node entries or add to their existing invalids list
+        const subFilterCombo = `${subFilterKey}: ${subFilterValue}`;
+        let existingInvalid = invalidInfo.filter(i => i.element == element)[0];
+        if (!existingInvalid) {
+            invalidInfo.push({
+                hierarchyName: element.hierarchyName,
+                invalids: [{
+                    filter: filterKey,
+                    value: subFilterCombo
+                }],
+                element: element,
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
+            });
+        }
+        else {
+            existingInvalid.invalids.push({
+                filter: filterKey,
+                value: subFilterCombo
+            });
+        }
+    }
+    return invalidInfo;
+}
+
 function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue) {
     for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
         // Skip if sub-filter key isn't available
@@ -2839,6 +2962,19 @@ function createFlattenedErrors() {
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
                         targetProblem: `${invalid.value} is a required field`
+                    });
+                }
+            }
+        }
+        else if (error.name == "blank-species") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.value} is blank and invalid for species`
                     });
                 }
             }
