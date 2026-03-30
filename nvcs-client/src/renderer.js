@@ -288,7 +288,7 @@ function handleSaveButton() {
         "duplicate-names",
         "duplicate-files",
         "missing-required-fields",
-        "blank-species"
+        "blank-filters"
     ];
     if (errors.filter(i => savePreventingErrors.includes(i.name)).length > 0) {
         document.getElementById("btn-update-json").disabled = true;
@@ -926,6 +926,7 @@ function performDialogValidations(displayAlert) {
     newMarkedElements = findInvalidsForNodeTrigger(newMarkedElements);
     newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
     newMarkedElements = findInvalidsForSubFilters(newMarkedElements);
+    newMarkedElements = findBlanksForSubFilters(newMarkedElements);
 
     // Mark invalid fields
     markValidationFields(newMarkedElements, displayAlert);
@@ -1551,7 +1552,7 @@ function checkForProblems() {
     checkDuplicateNames();
     checkDuplicateFiles();
     checkMissingRequiredFields();
-    checkBlankSpecies();
+    checkBlankFilters();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -1859,27 +1860,27 @@ function checkMissingRequiredFields() {
     createError("missing-required-fields", html, invalidMissingRequired);
 }
 
-function checkBlankSpecies() {
-    const invalidBlankSpecies = findBlankSpecies();
-    if (invalidBlankSpecies.length == 0)
+function checkBlankFilters() {
+    const invalidBlankFilters = findBlankFilters();
+    if (invalidBlankFilters.length == 0)
         return;
-    console.error("Invalid blank species", invalidBlankSpecies);
+    console.error("Invalid blank filters", invalidBlankFilters);
 
     let html = `
         <p>
             <span class='save-prevention'>SAVE PREVENTION</span>
-            Blank species detected within ${invalidBlankSpecies.length} hierarchy elements!
-            Species cannot be blank or the classification key may fail to build.
-            Saving will be prevented until all species are no longer blank.
-            <button id='btn-toggle-nested-blank-species-errors' aria-describedby="nested-blank-species-errors" aria-controls='nested-blank-species-errors' onclick="toggleNestedContent(this, 'error')">
+            Blank filters detected within ${invalidBlankFilters.length} hierarchy elements!
+            Filters cannot be blank or the classification key may fail to build.
+            Saving will be prevented until all filters are no longer blank.
+            <button id='btn-toggle-nested-blank-filters-errors' aria-describedby="nested-blank-filters-errors" aria-controls='nested-blank-filters-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
         </p>
-        <ul id='nested-blank-species-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Blank Species" hidden>
+        <ul id='nested-blank-filters-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Blank Filters" hidden>
     `;
 
-    for (const info of invalidBlankSpecies) {
-        const cloneButton = cloneElement(info.button, info.button.innerText + " (blank species)");
+    for (const info of invalidBlankFilters) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (blank filter)");
         const elementButton = cloneButton.outerHTML;
 
         let elementFilters = [];
@@ -1936,7 +1937,7 @@ function checkBlankSpecies() {
         </ul>
     `;
 
-    createError("blank-species", html, invalidBlankSpecies);
+    createError("blank-filters", html, invalidBlankFilters);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -2590,7 +2591,7 @@ function findMissingRequiredFields() {
     return invalid;
 }
 
-function findBlankSpecies() {
+function findBlankFilters() {
     let invalidInfo = [];
     for (const element of hierarchy) {
         const filters = element.node.filters;
@@ -2827,7 +2828,7 @@ function findUnlabeledElementsInDocument() {
 
 function extractBlankInfo(invalidInfo, element, filterKey, filterValue) {
     for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
-        // Skip non-blank species
+        // Skip non-blank filters
         if (subFilterValue && subFilterValue.trim() !== "") continue;
         // Either add new unique invalid info node entries or add to their existing invalids list
         const subFilterCombo = `${subFilterKey}: ${subFilterValue}`;
@@ -2966,7 +2967,7 @@ function createFlattenedErrors() {
                 }
             }
         }
-        else if (error.name == "blank-species") {
+        else if (error.name == "blank-filters") {
             for (const source of error.source) {
                 for (const invalid of source.invalids) {
                     alerts.push({
@@ -3182,14 +3183,24 @@ function findInvalidsForSubFilters(newMarkedElements) {
         if (!listId) {
             continue;
         }
-        else if (listId == "species-list" && input.trim() === "") {
-            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Species cannot be blank", "error");
+        else if (input.trim() === "") {
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Filters cannot be blank", "error");
         }
         else {
             const listDetails = getDatalistDetails(listId);
             if (!listDetails.options.includes(input))
                 newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
         }
+    }
+    return newMarkedElements;
+}
+
+function findBlanksForSubFilters(newMarkedElements) {
+    const inputTypes = document.querySelectorAll("input.input-value:not(.skip-validation)");
+    for (const element of inputTypes) {
+        const input = element.value;
+        if (input.trim() === "")
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Filters cannot be blank", "error");
     }
     return newMarkedElements;
 }
