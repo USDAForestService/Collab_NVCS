@@ -1557,6 +1557,7 @@ function checkForProblems() {
     checkMissingRequiredFields();
     checkBlankFilters();
     checkInvalidTriggerOperators();
+    checkInvalidMatchNegation();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -1977,6 +1978,43 @@ function checkInvalidTriggerOperators() {
     `;
 
     createError("invalid-trigger-operators", html, invalidTriggerOperators);
+}
+
+function checkInvalidMatchNegation() {
+    const invalidMatchNegations = findInvalidMatchNegations();
+    if (invalidMatchNegations.length == 0)
+        return;
+    console.error("Invalid match negations", invalidMatchNegations);
+
+    let html = `
+        <p>
+            Invalid match negations detected within ${invalidMatchNegations.length} hierarchy elements!
+            Node triggers must negate match() calls with "not" instead of "!" or the classification key may fail to build.
+            <button id='btn-toggle-nested-invalid-match-negations-errors' aria-describedby="nested-invalid-match-negations-errors" aria-controls='nested-invalid-match-negations-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-invalid-match-negations-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Match Negations" hidden>
+    `;
+
+    for (const info of invalidMatchNegations) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid match negations)");
+        const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
+        html += `
+            <li class="border-box-list-item">
+                ${elementButton}
+                ${addressButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-match-negations", html, invalidMatchNegations);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -2666,6 +2704,28 @@ function hasInvalidTriggerOperators(trigger) {
     return hasInvalids;
 }
 
+function findInvalidMatchNegations() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        const trigger = element.node.trigger;
+        const joinedTrigger = trigger.join("\n");
+        const hasInvalids = hasInvalidMatchNegations(joinedTrigger);
+        if (!hasInvalids) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
+        });
+    }
+    return invalid;
+}
+
+function hasInvalidMatchNegations(trigger) {
+    const hasInvalids = trigger.includes("!match");
+    return hasInvalids;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -3050,6 +3110,17 @@ function createFlattenedErrors() {
                     alertSubType: error.name,
                     targetNode: source.hierarchyName,
                     targetProblem: "Node Trigger has invalid operators"
+                });
+            }
+        }
+        else if (error.name == "invalid-match-negations") {
+            for (const source of error.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "error",
+                    alertSubType: error.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node Trigger has invalid match negations"
                 });
             }
         }
