@@ -287,9 +287,7 @@ function handleSaveButton() {
     const savePreventingErrors = [
         "duplicate-names",
         "duplicate-files",
-        "missing-required-fields",
-        "blank-filters",
-        "invalid-trigger-operators"
+        "missing-required-fields"
     ];
     if (errors.filter(i => savePreventingErrors.includes(i.name)).length > 0) {
         document.getElementById("btn-update-json").disabled = true;
@@ -1874,10 +1872,8 @@ function checkBlankFilters() {
 
     let html = `
         <p>
-            <span class='save-prevention'>SAVE PREVENTION</span>
             Blank filters detected within ${invalidBlankFilters.length} hierarchy elements!
             Filters cannot be blank or the classification key may fail to build.
-            Saving will be prevented until all filters are no longer blank.
             <button id='btn-toggle-nested-blank-filters-errors' aria-describedby="nested-blank-filters-errors" aria-controls='nested-blank-filters-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
@@ -1954,10 +1950,8 @@ function checkInvalidTriggerOperators() {
 
     let html = `
         <p>
-            <span class='save-prevention'>SAVE PREVENTION</span>
             Invalid trigger operators detected within ${invalidTriggerOperators.length} hierarchy elements!
             Node trigger operators must use "and" or "or" (case-sensitive) or the classification key may fail to build.
-            Saving will be prevented until all node triggers are using "and" or "or" boolean operators.
             <button id='btn-toggle-nested-invalid-trigger-operators-errors' aria-describedby="nested-invalid-trigger-operators-errors" aria-controls='nested-invalid-trigger-operators-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
