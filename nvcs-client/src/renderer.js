@@ -35,6 +35,7 @@ let errors = [];
 let flattenedAlerts = [];
 let unsavedDialogChanges = false;
 let showTags = false;
+let currentFilterObject = {};
 
 let nodeJson;
 let nodeHierarchy;
@@ -629,6 +630,9 @@ function openJsonDialog(event) {
     document.getElementById("suggest-file-name").disabled = isRoot;
     document.getElementById("add-new-filter").disabled = isRoot;
     document.getElementById("delete-hierarchy-element").disabled = isRoot;
+    
+    // Update current filter object for validations
+    currentFilterObject = createFilterObject();
 
     // Perform other dialog validations
     performDialogValidations(false);
@@ -847,23 +851,7 @@ async function saveJsonChanges() {
         newHierarchyElement.node.trigger.push(splitNodeTrigger);
 
     // Update node filter data
-    let filterObject = {};
-    let filterContainers = document.querySelectorAll(".filter-container");
-    for (const filterContainer of filterContainers) {
-        let filterName = filterContainer.querySelector(".sub-content-header-container input").value.trim();
-        filterObject[filterName] = [];
-
-        let subFilterContainers = filterContainer.querySelectorAll(".input-filters-container .sub-content-container");
-        for (const subFilterContainer of subFilterContainers) {
-            let subFilterKey = subFilterContainer.querySelector(".sub-key-holder").value.trim();
-            let subFilterValue = subFilterContainer.querySelector(".sub-value-holder").value.trim();
-            
-            let subFilterObject = {};
-            subFilterObject[subFilterKey] = subFilterValue;
-            filterObject[filterName].push(subFilterObject);
-        }
-    }
-    newHierarchyElement.node.filters = filterObject;
+    newHierarchyElement.node.filters = createFilterObject();
 
     // Update node parent relationship
     if (!isRoot) {
@@ -902,6 +890,26 @@ async function saveJsonChanges() {
     unsavedDialogChanges = false;
     document.getElementById("json-dialog").close();
     generatePages(hierarchy);
+}
+
+function createFilterObject() {
+    let filterObject = {};
+    let filterContainers = document.querySelectorAll(".filter-container");
+    for (const filterContainer of filterContainers) {
+        let filterName = filterContainer.querySelector(".sub-content-header-container input").value.trim();
+        filterObject[filterName] = [];
+
+        let subFilterContainers = filterContainer.querySelectorAll(".input-filters-container .sub-content-container");
+        for (const subFilterContainer of subFilterContainers) {
+            let subFilterKey = subFilterContainer.querySelector(".sub-key-holder").value.trim();
+            let subFilterValue = subFilterContainer.querySelector(".sub-value-holder").value.trim();
+            
+            let subFilterObject = {};
+            subFilterObject[subFilterKey] = subFilterValue;
+            filterObject[filterName].push(subFilterObject);
+        }
+    }
+    return filterObject;
 }
 
 function performDialogValidations(displayAlert) {
@@ -1099,6 +1107,13 @@ function findInvalidsForNodeTrigger(newMarkedElements) {
 
     if (hasInvalidMatchNegations(nodeTrigger)) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger must negate match() calls with 'not' instead of '!'", "error");
+    }
+
+    const improperMatchCalls = getImproperMatchCallFilterGroups(nodeTrigger, currentFilterObject);
+    if (improperMatchCalls.length > 0) {
+        const filterGroups = [...new Set(improperMatchCalls.map(i => i.filter))];
+        const joinedFilterGroups = filterGroups.join(", ");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, `Node trigger must make match() calls on only non-species filter groups. Violating filter groups: [${joinedFilterGroups}]`, "error");
     }
 
     return newMarkedElements;
@@ -1528,6 +1543,9 @@ function swapInputType(element) {
     const inputValue = element.parentElement.querySelector(".input-value");
     const inputValueListName = getInputValueListForType(element.value);
     inputValue.setAttribute("list", inputValueListName);
+
+    // Update current filter object for any related validations
+    currentFilterObject = createFilterObject();
     
     // Check adjacent input field to see if any violations appear
     performDialogValidations(false);
@@ -2788,32 +2806,11 @@ function hasInvalidMatchNegations(trigger) {
 
 function findInvalidMatchCalls() {
     let invalid = [];
-    const regex = /(match)\(([^)]*)\)/g;
     for (const element of hierarchy) {
-        // Find calls to match() and get target filter group names
-        const targetFilterKeys = [];
+        // Retrieve improper match() call filter groups
         const joinedTrigger = element.node.trigger.join("\n");
-        const matchCalls = joinedTrigger.match(regex) ?? [];
-        for (const matchCall of matchCalls) {
-            const filterKey = matchCall.replace("match(", "").slice(0, -1);
-            targetFilterKeys.push(filterKey);
-        }
-
-        // Find same filter groups and extract assigned keys
-        const improperFilterGroups = [];
         const filters = element.node.filters;
-        for (const [filterKey, filterValues] of Object.entries(filters)) {
-            // Skip filter groups that aren't in our target list
-            if (!targetFilterKeys.includes(filterKey))
-                continue;
-
-            // Push filter groups who contain species filter values
-            const filterValueTypes = [...new Set(filterValues.map(i => Object.keys(i)).flat())];
-            if (filterValueTypes.includes("species"))
-                improperFilterGroups.push({
-                    filter: filterKey
-                });
-        }
+        const improperFilterGroups = getImproperMatchCallFilterGroups(joinedTrigger, filters);
 
         // If any improper filter groups caught, push the entire element as an invalid
         if (improperFilterGroups.length > 0)
@@ -2825,6 +2822,35 @@ function findInvalidMatchCalls() {
             });
     }
     return invalid;
+}
+
+function getImproperMatchCallFilterGroups(trigger, filters) {
+    // Find calls to match() and get target filter group names
+    const regex = /(match)\(([^)]*)\)/g;
+    const matchCalls = trigger.match(regex) ?? [];
+    const targetFilterKeys = [];
+    for (const matchCall of matchCalls) {
+        const filterKey = matchCall.replace("match(", "").slice(0, -1);
+        targetFilterKeys.push(filterKey);
+    }
+
+    // Find same filter groups and extract assigned keys
+    const improperFilterGroups = [];
+    for (const [filterKey, filterValues] of Object.entries(filters)) {
+        // Skip filter groups that aren't in our target list
+        if (!targetFilterKeys.includes(filterKey))
+            continue;
+
+        // Push filter groups who contain species filter values
+        const filterValueTypes = [...new Set(filterValues.map(i => Object.keys(i)).flat())];
+        if (filterValueTypes.includes("species"))
+            improperFilterGroups.push({
+                filter: filterKey
+            });
+    }
+
+    // Return list of all filter groups who violate the match() requirements
+    return improperFilterGroups;
 }
 
 function findMissingTriggerParentheses() {
