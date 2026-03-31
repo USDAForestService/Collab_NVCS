@@ -35,6 +35,7 @@ let errors = [];
 let flattenedAlerts = [];
 let unsavedDialogChanges = false;
 let showTags = false;
+let currentFilterObject = {};
 
 let nodeJson;
 let nodeHierarchy;
@@ -629,6 +630,9 @@ function openJsonDialog(event) {
     document.getElementById("suggest-file-name").disabled = isRoot;
     document.getElementById("add-new-filter").disabled = isRoot;
     document.getElementById("delete-hierarchy-element").disabled = isRoot;
+    
+    // Update current filter object for validations
+    currentFilterObject = createFilterObject();
 
     // Perform other dialog validations
     performDialogValidations(false);
@@ -847,23 +851,7 @@ async function saveJsonChanges() {
         newHierarchyElement.node.trigger.push(splitNodeTrigger);
 
     // Update node filter data
-    let filterObject = {};
-    let filterContainers = document.querySelectorAll(".filter-container");
-    for (const filterContainer of filterContainers) {
-        let filterName = filterContainer.querySelector(".sub-content-header-container input").value.trim();
-        filterObject[filterName] = [];
-
-        let subFilterContainers = filterContainer.querySelectorAll(".input-filters-container .sub-content-container");
-        for (const subFilterContainer of subFilterContainers) {
-            let subFilterKey = subFilterContainer.querySelector(".sub-key-holder").value.trim();
-            let subFilterValue = subFilterContainer.querySelector(".sub-value-holder").value.trim();
-            
-            let subFilterObject = {};
-            subFilterObject[subFilterKey] = subFilterValue;
-            filterObject[filterName].push(subFilterObject);
-        }
-    }
-    newHierarchyElement.node.filters = filterObject;
+    newHierarchyElement.node.filters = createFilterObject();
 
     // Update node parent relationship
     if (!isRoot) {
@@ -904,6 +892,26 @@ async function saveJsonChanges() {
     generatePages(hierarchy);
 }
 
+function createFilterObject() {
+    let filterObject = {};
+    let filterContainers = document.querySelectorAll(".filter-container");
+    for (const filterContainer of filterContainers) {
+        let filterName = filterContainer.querySelector(".sub-content-header-container input").value.trim();
+        filterObject[filterName] = [];
+
+        let subFilterContainers = filterContainer.querySelectorAll(".input-filters-container .sub-content-container");
+        for (const subFilterContainer of subFilterContainers) {
+            let subFilterKey = subFilterContainer.querySelector(".sub-key-holder").value.trim();
+            let subFilterValue = subFilterContainer.querySelector(".sub-value-holder").value.trim();
+            
+            let subFilterObject = {};
+            subFilterObject[subFilterKey] = subFilterValue;
+            filterObject[filterName].push(subFilterObject);
+        }
+    }
+    return filterObject;
+}
+
 function performDialogValidations(displayAlert) {
     // Prepare for new validations
     clearMarkedValidationFields();
@@ -925,6 +933,7 @@ function performDialogValidations(displayAlert) {
     newMarkedElements = findInvalidsForNodeTrigger(newMarkedElements);
     newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
     newMarkedElements = findInvalidsForSubFilters(newMarkedElements);
+    newMarkedElements = findBlanksForSubFilters(newMarkedElements);
 
     // Mark invalid fields
     markValidationFields(newMarkedElements, displayAlert);
@@ -1090,6 +1099,28 @@ function findInvalidsForNodeTrigger(newMarkedElements) {
 
     if (missingFilters.length > 0) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger references filter names that don't exist", "error");
+    }
+
+    if (hasInvalidTriggerOperators(nodeTrigger)) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger boolean operators must be 'and' or 'or' (case-sensitive)", "error");
+    }
+
+    if (hasInvalidMatchNegations(nodeTrigger)) {
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, "Node trigger must negate match() calls with 'not' instead of '!'", "error");
+    }
+
+    const improperMatchCalls = getImproperMatchCallFilterGroups(nodeTrigger, currentFilterObject);
+    if (improperMatchCalls.length > 0) {
+        const filterGroups = [...new Set(improperMatchCalls.map(i => i.filter))];
+        const joinedFilterGroups = filterGroups.join(", ");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, `Node trigger must make match() calls on only non-species filter groups. Violating filter groups: [${joinedFilterGroups}]`, "error");
+    }
+
+    const unwrappedFilterGroups = getUnwrappedFilterGroups(nodeTrigger, currentFilterObject);
+    if (unwrappedFilterGroups.length > 0) {
+        const filterGroups = [...new Set(unwrappedFilterGroups.map(i => i.filter))];
+        const joinedFilterGroups = filterGroups.join(", ");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, `Node trigger must wrap all filter groups in a function call (match/riv/spcov). Violating filter groups: [${joinedFilterGroups}]`, "error");
     }
 
     return newMarkedElements;
@@ -1519,6 +1550,9 @@ function swapInputType(element) {
     const inputValue = element.parentElement.querySelector(".input-value");
     const inputValueListName = getInputValueListForType(element.value);
     inputValue.setAttribute("list", inputValueListName);
+
+    // Update current filter object for any related validations
+    currentFilterObject = createFilterObject();
     
     // Check adjacent input field to see if any violations appear
     performDialogValidations(false);
@@ -1550,6 +1584,11 @@ function checkForProblems() {
     checkDuplicateNames();
     checkDuplicateFiles();
     checkMissingRequiredFields();
+    checkBlankFilters();
+    checkInvalidTriggerOperators();
+    checkInvalidMatchNegations();
+    checkInvalidMatchCalls();
+    checkUnwrappedFilterGroups();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -1855,6 +1894,267 @@ function checkMissingRequiredFields() {
     `;
 
     createError("missing-required-fields", html, invalidMissingRequired);
+}
+
+function checkBlankFilters() {
+    const invalidBlankFilters = findBlankFilters();
+    if (invalidBlankFilters.length == 0)
+        return;
+    console.error("Invalid blank filters", invalidBlankFilters);
+
+    let html = `
+        <p>
+            Blank filters detected within ${invalidBlankFilters.length} hierarchy elements!
+            Filters cannot be blank or the classification key may fail to build.
+            <button id='btn-toggle-nested-blank-filters-errors' aria-describedby="nested-blank-filters-errors" aria-controls='nested-blank-filters-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-blank-filters-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Blank Filters" hidden>
+    `;
+
+    for (const info of invalidBlankFilters) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (blank filter)");
+        const elementButton = cloneButton.outerHTML;
+
+        let elementFilters = [];
+        for (const entry of info.invalids)
+            elementFilters.push(entry.filter);
+        elementFilters = [...new Set(elementFilters)];
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of elementFilters) {
+            html += `
+                <li class='invalid-species-filter-container'>
+                    <p class='invalid-filter-name'>
+                        ${elementFilter}
+                    </p>
+                    <ul class='invalid-species-container'>
+            `;
+
+            for (const entry of info.invalids) {
+                if (entry.filter != elementFilter) 
+                    continue;
+
+                const invalidSpeciesName = entry.value;
+                const [addressButton, addressId] = generateAddressButton();
+                entry.addressId = addressId;
+                html += `
+                    <li>
+                        <span>
+                            ${invalidSpeciesName} (BLANK)
+                        </span>
+                        ${addressButton}
+                    </li>
+                `;
+            }
+
+            html += `
+                    </ul>
+                </li>
+            `;
+        }
+
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("blank-filters", html, invalidBlankFilters);
+}
+
+function checkInvalidTriggerOperators() {
+    const invalidTriggerOperators = findInvalidTriggerOperators();
+    if (invalidTriggerOperators.length == 0)
+        return;
+    console.error("Invalid trigger operators", invalidTriggerOperators);
+
+    let html = `
+        <p>
+            Invalid trigger operators detected within ${invalidTriggerOperators.length} hierarchy elements!
+            Node trigger operators must use "and" or "or" (case-sensitive) or the classification key may fail to build.
+            <button id='btn-toggle-nested-invalid-trigger-operators-errors' aria-describedby="nested-invalid-trigger-operators-errors" aria-controls='nested-invalid-trigger-operators-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-invalid-trigger-operators-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Trigger Operators" hidden>
+    `;
+
+    for (const info of invalidTriggerOperators) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid operators)");
+        const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
+        html += `
+            <li class="border-box-list-item">
+                ${elementButton}
+                ${addressButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-trigger-operators", html, invalidTriggerOperators);
+}
+
+function checkInvalidMatchNegations() {
+    const invalidMatchNegations = findInvalidMatchNegations();
+    if (invalidMatchNegations.length == 0)
+        return;
+    console.error("Invalid match negations", invalidMatchNegations);
+
+    let html = `
+        <p>
+            Invalid match negations detected within ${invalidMatchNegations.length} hierarchy elements!
+            Node triggers must negate match() calls with "not" instead of "!" or the classification key may fail to build.
+            For example, "not match(ECOREGION)" is valid while "!match(ECOREGION)" is invalid.
+            <button id='btn-toggle-nested-invalid-match-negations-errors' aria-describedby="nested-invalid-match-negations-errors" aria-controls='nested-invalid-match-negations-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-invalid-match-negations-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Match Negations" hidden>
+    `;
+
+    for (const info of invalidMatchNegations) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid match negations)");
+        const elementButton = cloneButton.outerHTML;
+        const [addressButton, addressId] = generateAddressButton();
+        info.addressId = addressId;
+        html += `
+            <li class="border-box-list-item">
+                ${elementButton}
+                ${addressButton}
+            </li>
+        `
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-match-negations", html, invalidMatchNegations);
+}
+
+function checkInvalidMatchCalls() {
+    const invalidMatchCalls = findInvalidMatchCalls();
+    if (invalidMatchCalls.length == 0)
+        return;
+    console.error("Invalid match calls", invalidMatchCalls);
+
+    let html = `
+        <p>
+            Invalid match calls detected within ${invalidMatchCalls.length} hierarchy element triggers!
+            Calls to the match() function in node triggers cannot be used on species lists or the classification key may fail to build.
+            Comparisons of species lists should be handled using the riv() or spcov() functions, for example "riv(STRONG_DIAGNOSTIC) >= 50" is valid.
+            <button id='btn-toggle-nested-match-calls-errors' aria-describedby="nested-match-calls-errors" aria-controls='nested-match-calls-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-match-calls-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Match Calls" hidden>
+    `;
+
+    for (const info of invalidMatchCalls) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid match calls)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
+            html += `
+                <li>
+                    <span>
+                        ${elementFilter.filter}
+                    </span>
+                    ${addressButton}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-match-calls", html, invalidMatchCalls);
+}
+
+function checkUnwrappedFilterGroups() {
+    const invalidUnwrappedFilterGroups = findUnwrappedFilterGroups();
+    if (invalidUnwrappedFilterGroups.length == 0)
+        return;
+    console.error("Invalid unwrapped filter groups", invalidUnwrappedFilterGroups);
+
+    let html = `
+        <p>
+            Invalid unwrapped filter groups detected within ${invalidUnwrappedFilterGroups.length} hierarchy element triggers!
+            All filter groups referenced within node triggers should be wrapped in a function call or the classification key may fail to build.
+            For example "riv(STRONG_DIAGNOSTIC) >= 50" or "match(ECOREGIONS)" is valid.
+            <button id='btn-toggle-nested-unwrapped-filter-groups-errors' aria-describedby="nested-unwrapped-filter-groups-errors" aria-controls='nested-unwrapped-filter-groups-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-unwrapped-filter-groups-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Unwrapped Filter Groups" hidden>
+    `;
+
+    for (const info of invalidUnwrappedFilterGroups) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid unwrapped filter groups)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
+            html += `
+                <li>
+                    <span>
+                        ${elementFilter.filter}
+                    </span>
+                    ${addressButton}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-unwrapped-filter-groups", html, invalidUnwrappedFilterGroups);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -2508,6 +2808,157 @@ function findMissingRequiredFields() {
     return invalid;
 }
 
+function findBlankFilters() {
+    let invalidInfo = [];
+    for (const element of hierarchy) {
+        const filters = element.node.filters;
+        for (const [filterKey, filterValues] of Object.entries(filters)) {
+            for (const filterValue of filterValues) {
+                invalidInfo = extractBlankInfo(invalidInfo, element, filterKey, filterValue);
+            }
+        }
+    }
+    return invalidInfo;
+}
+
+function findInvalidTriggerOperators() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        const trigger = element.node.trigger;
+        const joinedTrigger = trigger.join("\n");
+        const hasInvalids = hasInvalidTriggerOperators(joinedTrigger);
+        if (!hasInvalids) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
+        });
+    }
+    return invalid;
+}
+
+function hasInvalidTriggerOperators(trigger) {
+    const regex = /\b(AND|OR)\b/g;
+    const hasInvalids = regex.test(trigger);
+    return hasInvalids;
+}
+
+function findInvalidMatchNegations() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        const trigger = element.node.trigger;
+        const joinedTrigger = trigger.join("\n");
+        const hasInvalids = hasInvalidMatchNegations(joinedTrigger);
+        if (!hasInvalids) continue;
+        
+        invalid.push({
+            hierarchyName: element.hierarchyName,
+            element: element,
+            button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber)
+        });
+    }
+    return invalid;
+}
+
+function hasInvalidMatchNegations(trigger) {
+    const hasInvalids = trigger.includes("!match");
+    return hasInvalids;
+}
+
+function findInvalidMatchCalls() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        // Retrieve improper match() call filter groups
+        const joinedTrigger = element.node.trigger.join("\n");
+        const filters = element.node.filters;
+        const improperFilterGroups = getImproperMatchCallFilterGroups(joinedTrigger, filters);
+
+        // If any improper filter groups caught, push the entire element as an invalid
+        if (improperFilterGroups.length > 0)
+            invalid.push({
+                hierarchyName: element.hierarchyName,
+                invalids: improperFilterGroups,
+                element: element,
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
+            });
+    }
+    return invalid;
+}
+
+function getImproperMatchCallFilterGroups(trigger, filters) {
+    // Find calls to match() and get target filter group names
+    const regex = /(match)\(([^)]*)\)/g;
+    const matchCalls = trigger.match(regex) ?? [];
+    const targetFilterKeys = [];
+    for (const matchCall of matchCalls) {
+        const filterKey = matchCall.replace("match(", "").slice(0, -1);
+        targetFilterKeys.push(filterKey);
+    }
+
+    // Find same filter groups and extract assigned keys
+    const improperFilterGroups = [];
+    for (const [filterKey, filterValues] of Object.entries(filters)) {
+        // Skip filter groups that aren't in our target list
+        if (!targetFilterKeys.includes(filterKey))
+            continue;
+
+        // Push filter groups who contain species filter values
+        const filterValueTypes = [...new Set(filterValues.map(i => Object.keys(i)).flat())];
+        if (filterValueTypes.includes("species"))
+            improperFilterGroups.push({
+                filter: filterKey
+            });
+    }
+
+    // Return list of all filter groups who violate the match() requirements
+    return improperFilterGroups;
+}
+
+function findUnwrappedFilterGroups() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        // Retrieve unwrapped filter groups
+        const joinedTrigger = element.node.trigger.join("\n");
+        const filters = element.node.filters;
+        const improperFilterGroups = getUnwrappedFilterGroups(joinedTrigger, filters);
+
+        // If any unwrapped filter groups caught, push the entire element as an invalid
+        if (improperFilterGroups.length > 0)
+            invalid.push({
+                hierarchyName: element.hierarchyName,
+                invalids: improperFilterGroups,
+                element: element,
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
+            });
+    }
+    return invalid;
+}
+
+function getUnwrappedFilterGroups(trigger, filters) {
+    // Find same filter groups and extract assigned keys
+    const improperFilterGroups = [];
+    for (const filterKey of Object.keys(filters)) {
+        // Skip filter groups that aren't in the trigger
+        if (!trigger.includes(`(${filterKey})`))
+            continue;
+
+        // Determine if the filter keys are properly wrapped
+        const hasMatch = trigger.includes(`match(${filterKey})`);
+        const hasRiv = trigger.includes(`riv(${filterKey})`);
+        const hasSpcov = trigger.includes(`spcov(${filterKey})`);
+        
+        // Push filter groups who aren't properly wrapped
+        if (!hasMatch && !hasRiv && !hasSpcov)
+            improperFilterGroups.push({
+                filter: filterKey
+            });
+    }
+
+    // Return list of all filter groups who violate the match() requirements
+    return improperFilterGroups;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -2730,6 +3181,34 @@ function findUnlabeledElementsInDocument() {
     return invalid;
 }
 
+function extractBlankInfo(invalidInfo, element, filterKey, filterValue) {
+    for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
+        // Skip non-blank filters
+        if (subFilterValue && subFilterValue.trim() !== "") continue;
+        // Either add new unique invalid info node entries or add to their existing invalids list
+        const subFilterCombo = `${subFilterKey}: ${subFilterValue}`;
+        let existingInvalid = invalidInfo.filter(i => i.element == element)[0];
+        if (!existingInvalid) {
+            invalidInfo.push({
+                hierarchyName: element.hierarchyName,
+                invalids: [{
+                    filter: filterKey,
+                    value: subFilterCombo
+                }],
+                element: element,
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
+            });
+        }
+        else {
+            existingInvalid.invalids.push({
+                filter: filterKey,
+                value: subFilterCombo
+            });
+        }
+    }
+    return invalidInfo;
+}
+
 function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue) {
     for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
         // Skip if sub-filter key isn't available
@@ -2839,6 +3318,67 @@ function createFlattenedErrors() {
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
                         targetProblem: `${invalid.value} is a required field`
+                    });
+                }
+            }
+        }
+        else if (error.name == "blank-filters") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.value} is blank and invalid for species`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-trigger-operators") {
+            for (const source of error.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "error",
+                    alertSubType: error.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node Trigger has invalid operators"
+                });
+            }
+        }
+        else if (error.name == "invalid-match-negations") {
+            for (const source of error.source) {
+                alerts.push({
+                    addressId: source.addressId,
+                    alertType: "error",
+                    alertSubType: error.name,
+                    targetNode: source.hierarchyName,
+                    targetProblem: "Node Trigger has invalid match negations"
+                });
+            }
+        }
+        else if (error.name == "invalid-match-calls") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} is a species filter group improperly passed into a match() function call`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-unwrapped-filter-groups") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} is a filter group not wrapped in any function calls`
                     });
                 }
             }
@@ -3043,10 +3583,27 @@ function findInvalidsForSubFilters(newMarkedElements) {
     for (const element of inputTypes) {
         const input = element.value;
         const listId = element.getAttribute("list");
-        if (!listId) continue;
-        const listDetails = getDatalistDetails(listId);
-        if (!listDetails.options.includes(input))
-            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
+        if (!listId) {
+            continue;
+        }
+        else if (input.trim() === "") {
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Filters cannot be blank", "error");
+        }
+        else {
+            const listDetails = getDatalistDetails(listId);
+            if (!listDetails.options.includes(input))
+                newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
+        }
+    }
+    return newMarkedElements;
+}
+
+function findBlanksForSubFilters(newMarkedElements) {
+    const inputTypes = document.querySelectorAll("input.input-value:not(.skip-validation)");
+    for (const element of inputTypes) {
+        const input = element.value;
+        if (input.trim() === "")
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Filters cannot be blank", "error");
     }
     return newMarkedElements;
 }
