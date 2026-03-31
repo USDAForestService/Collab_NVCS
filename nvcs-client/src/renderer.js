@@ -1581,6 +1581,7 @@ function checkForProblems() {
     checkInvalidTriggerOperators();
     checkInvalidMatchNegations();
     checkInvalidMatchCalls();
+    checkUnwrappedFilterGroups();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -2093,6 +2094,60 @@ function checkInvalidMatchCalls() {
     `;
 
     createError("invalid-match-calls", html, invalidMatchCalls);
+}
+
+function checkUnwrappedFilterGroups() {
+    const invalidUnwrappedFilterGroups = findUnwrappedFilterGroups();
+    if (invalidUnwrappedFilterGroups.length == 0)
+        return;
+    console.error("Invalid unwrapped filter groups", invalidUnwrappedFilterGroups);
+
+    let html = `
+        <p>
+            Invalid unwrapped filter groups detected within ${invalidUnwrappedFilterGroups.length} hierarchy element triggers!
+            All filter groups referenced within node triggers should be wrapped in a function call or the classification key may fail to build.
+            For example "riv(STRONG_DIAGNOSTIC) >= 50" or "match(ECOREGIONS)" is valid.
+            <button id='btn-toggle-nested-unwrapped-filter-groups-errors' aria-describedby="nested-unwrapped-filter-groups-errors" aria-controls='nested-unwrapped-filter-groups-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-unwrapped-filter-groups-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Unwrapped Filter Groups" hidden>
+    `;
+
+    for (const info of invalidUnwrappedFilterGroups) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid unwrapped filter groups)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
+            html += `
+                <li>
+                    <span>
+                        ${elementFilter.filter}
+                    </span>
+                    ${addressButton}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-unwrapped-filter-groups", html, invalidUnwrappedFilterGroups);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -2853,6 +2908,50 @@ function getImproperMatchCallFilterGroups(trigger, filters) {
     return improperFilterGroups;
 }
 
+function findUnwrappedFilterGroups() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        // Retrieve unwrapped filter groups
+        const joinedTrigger = element.node.trigger.join("\n");
+        const filters = element.node.filters;
+        const improperFilterGroups = getUnwrappedFilterGroups(joinedTrigger, filters);
+
+        // If any unwrapped filter groups caught, push the entire element as an invalid
+        if (improperFilterGroups.length > 0)
+            invalid.push({
+                hierarchyName: element.hierarchyName,
+                invalids: improperFilterGroups,
+                element: element,
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
+            });
+    }
+    return invalid;
+}
+
+function getUnwrappedFilterGroups(trigger, filters) {
+    // Find same filter groups and extract assigned keys
+    const improperFilterGroups = [];
+    for (const filterKey of Object.keys(filters)) {
+        // Skip filter groups that aren't in the trigger
+        if (!trigger.includes(`(${filterKey})`))
+            continue;
+
+        // Determine if the filter keys are properly wrapped
+        const hasMatch = trigger.includes(`match(${filterKey})`);
+        const hasRiv = trigger.includes(`riv(${filterKey})`);
+        const hasSpcov = trigger.includes(`spcov(${filterKey})`);
+        
+        // Push filter groups who aren't properly wrapped
+        if (!hasMatch && !hasRiv && !hasSpcov)
+            improperFilterGroups.push({
+                filter: filterKey
+            });
+    }
+
+    // Return list of all filter groups who violate the match() requirements
+    return improperFilterGroups;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -3260,6 +3359,19 @@ function createFlattenedErrors() {
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
                         targetProblem: `${invalid.filter} is a species filter group improperly passed into a match() function call`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-unwrapped-filter-groups") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} is a filter group not wrapped in any function calls`
                     });
                 }
             }
