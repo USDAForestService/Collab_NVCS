@@ -1116,6 +1116,13 @@ function findInvalidsForNodeTrigger(newMarkedElements) {
         newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, `Node trigger must make match() calls on only non-species filter groups. Violating filter groups: [${joinedFilterGroups}]`, "error");
     }
 
+    const unwrappedFilterGroups = getUnwrappedFilterGroups(nodeTrigger, currentFilterObject);
+    if (unwrappedFilterGroups.length > 0) {
+        const filterGroups = [...new Set(unwrappedFilterGroups.map(i => i.filter))];
+        const joinedFilterGroups = filterGroups.join(", ");
+        newMarkedElements = addMarkedElementMessage(newMarkedElements, inputNodeTrigger, `Node trigger must wrap all filter groups in a function call (match/riv/spcov). Violating filter groups: [${joinedFilterGroups}]`, "error");
+    }
+
     return newMarkedElements;
 }
 
