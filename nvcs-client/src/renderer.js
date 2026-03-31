@@ -2052,7 +2052,7 @@ function checkInvalidMatchCalls() {
         <p>
             Invalid match calls detected within ${invalidMatchCalls.length} hierarchy element triggers!
             Calls to the match() function in node triggers cannot be used on species lists or the classification key may fail to build.
-            Comparisons of species lists should be handled using the riv() function, for example "riv(STRONG_DIAGNOSTIC) >= 50" is valid.
+            Comparisons of species lists should be handled using the riv() or spcov() functions, for example "riv(STRONG_DIAGNOSTIC) >= 50" is valid.
             <button id='btn-toggle-nested-match-calls-errors' aria-describedby="nested-match-calls-errors" aria-controls='nested-match-calls-errors' onclick="toggleNestedContent(this, 'error')">
                 Show Nested Errors
             </button>
