@@ -1562,6 +1562,8 @@ function getInputValueListForType(type) {
     switch (type) {
         case "species": 
             return "species-list";
+        case "wetland":
+            return "wetland-list"
         case "plantation":
         case "hydric":
         case "riverine":
@@ -3703,6 +3705,12 @@ function findInvalidsForSubFilters(newMarkedElements) {
         }
         else if (input.trim() === "") {
             newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Filters cannot be blank", "error");
+        }
+        else if (listId == "wetland-list") {
+            const listDetails = getDatalistDetails(listId);
+            const violations = extractCsvViolations(input, listDetails.options);
+            if (violations.length > 0)
+                newMarkedElements = addMarkedElementMessage(newMarkedElements, element, listDetails.message, listDetails.type);
         }
         else {
             const listDetails = getDatalistDetails(listId);
