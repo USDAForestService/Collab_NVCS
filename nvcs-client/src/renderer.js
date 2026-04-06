@@ -1592,6 +1592,7 @@ function checkForProblems() {
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
+    checkInvalidWetlandValueError();
 
     // Check hierarchy warnings
     checkMissingNodeIdInNames();
@@ -2324,6 +2325,83 @@ function checkInvalidBinaryValueError() {
     createError("invalid-binary", html, invalidBinaryValues);
 }
 
+function checkInvalidWetlandValueError() {
+    const invalidWetlandValues = findInvalidWetlandValues();
+    if (invalidWetlandValues.length == 0)
+        return;
+    console.error("Invalid wetland values", invalidWetlandValues);
+
+    let html = `
+        <p>
+            Invalid wetland values have been detected within ${invalidWetlandValues.length} hierarchy elements!
+            These wetland filters only allow "FAC", "FACU", "FACW", "OBL" or "UPL" (case-sensitive).
+            <button id='btn-toggle-invalid-wetland-errors' aria-describedby="nested-wetland-errors" aria-controls='nested-wetland-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-wetland-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Wetland Filters" hidden>
+    `;
+
+    for (const info of invalidWetlandValues) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid wetland fields)");
+        const elementButton = cloneButton.outerHTML;
+
+        let elementFilters = [];
+        for (const entry of info.invalids)
+            elementFilters.push(entry.filter);
+        elementFilters = [...new Set(elementFilters)];
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of elementFilters) {
+            html += `
+                <li class='invalid-wetland-filter-container'>
+                    <p class='invalid-filter-name'>
+                        ${elementFilter}
+                    </p>
+                    <ul class='invalid-wetland-container'>
+            `;
+
+            for (const entry of info.invalids) {
+                if (entry.filter != elementFilter) 
+                    continue;
+
+                const [addressButton, addressId] = generateAddressButton();
+                entry.addressId = addressId;
+                html += `
+                    <li>
+                        <span>
+                            ${entry.value}
+                        </span>
+                        ${addressButton}
+                    </li>
+                `;
+            }
+
+            html += `
+                    </ul>
+                </li>
+            `;
+        }
+
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-wetland", html, invalidWetlandValues);
+}
+
 function checkMissingNodeIdInNames() {
     const missingNodeIdsInNames = findMissingNodeIdInNames();
     if (missingNodeIdsInNames.length == 0)
@@ -3011,6 +3089,13 @@ function findInvalidBinaryValues() {
     return findInvalidFilters(availableKeys, availableValues);
 }
 
+function findInvalidWetlandValues() {
+    let availableKeys = ["wetland"];
+    let datalistDetails = getDatalistDetails("wetland-list");
+    let availableValues = datalistDetails.options;
+    return findInvalidFilters(availableKeys, availableValues, true);
+}
+
 function findInvalidSpecies() {
     let availableKeys = ["species"];
     let availableValues = availableSpecies;
@@ -3085,13 +3170,13 @@ function findDuplicateNodeIds() {
     return invalid;
 }
 
-function findInvalidFilters(availableKeys, availableValues) {
+function findInvalidFilters(availableKeys, availableValues, checkCsv = false) {
     let invalidInfo = [];
     for (const element of hierarchy) {
         const filters = element.node.filters;
         for (const [filterKey, filterValues] of Object.entries(filters)) {
             for (const filterValue of filterValues) {
-                invalidInfo = extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue);
+                invalidInfo = extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue, checkCsv);
             }
         }
     }
@@ -3209,12 +3294,18 @@ function extractBlankInfo(invalidInfo, element, filterKey, filterValue) {
     return invalidInfo;
 }
 
-function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue) {
+function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element, filterKey, filterValue, checkCsv = false) {
     for (const [subFilterKey, subFilterValue] of Object.entries(filterValue)) {
         // Skip if sub-filter key isn't available
         if (!availableKeys.includes(subFilterKey)) continue;
         // Skip if sub-filter key and value are available
         if (availableValues.includes(subFilterValue)) continue;
+        // Skip if comma-separated allowed and value is available
+        if (checkCsv) {
+            const violations = extractCsvViolations(subFilterValue, availableValues);
+            if (violations.length == 0) continue;
+        }
+
         // Either add new unique invalid info node entries or add to their existing invalids list
         const subFilterCombo = `${subFilterKey}: ${subFilterValue}`;
         let existingInvalid = invalidInfo.filter(i => i.element == element)[0];
@@ -3237,6 +3328,17 @@ function extractInvalidInfo(invalidInfo, availableKeys, availableValues, element
         }
     }
     return invalidInfo;
+}
+
+function extractCsvViolations(subFilterValue, availableValues) {
+    const violations = [];
+    const splitSubFilterValues = subFilterValue.split(",");
+    for (const splitSubFilterValue of splitSubFilterValues) {
+        const trimmed = splitSubFilterValue.trim();
+        if (!availableValues.includes(trimmed))
+            violations.push(trimmed);
+    }
+    return violations;
 }
 
 function createFlattenedAlerts() {
@@ -3416,6 +3518,19 @@ function createFlattenedErrors() {
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
                         targetProblem: `${invalid.filter} - ${invalid.value} is not a valid binary assignment (Y/N)`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-wetland") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} - ${invalid.value} is not a valid wetland assignment (FAC/FACU/FACW/OBL/UPL)`
                     });
                 }
             }
