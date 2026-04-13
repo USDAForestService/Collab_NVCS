@@ -1596,6 +1596,7 @@ function checkForProblems() {
     checkInvalidMatchNegations();
     checkInvalidMatchCalls();
     checkUnwrappedFilterGroups();
+    checkEmptyFilterGroups();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -2163,6 +2164,59 @@ function checkUnwrappedFilterGroups() {
     `;
 
     createError("invalid-unwrapped-filter-groups", html, invalidUnwrappedFilterGroups);
+}
+
+function checkEmptyFilterGroups() {
+    const invalidEmptyFilterGroups = findEmptyFilterGroups();
+    if (invalidEmptyFilterGroups.length == 0)
+        return;
+    console.error("Invalid empty filter groups", invalidEmptyFilterGroups);
+
+    let html = `
+        <p>
+            Invalid empty filter groups detected within ${invalidEmptyFilterGroups.length} hierarchy element triggers!
+            All filter groups must have at least one element or the classification key may fail to build.
+            <button id='btn-toggle-nested-empty-filter-groups-errors' aria-describedby="nested-empty-filter-groups-errors" aria-controls='nested-empty-filter-groups-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-empty-filter-groups-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Empty Filter Groups" hidden>
+    `;
+
+    for (const info of invalidEmptyFilterGroups) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid empty filter groups)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
+            html += `
+                <li>
+                    <span>
+                        ${elementFilter.filter}
+                    </span>
+                    ${addressButton}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-empty-filter-groups", html, invalidEmptyFilterGroups);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -3044,6 +3098,43 @@ function getUnwrappedFilterGroups(trigger, filters) {
     return improperFilterGroups;
 }
 
+function findEmptyFilterGroups() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        // Retrieve unwrapped filter groups
+        const filters = element.node.filters;
+        const improperFilterGroups = getEmptyFilterGroups(filters);
+
+        // If any unwrapped filter groups caught, push the entire element as an invalid
+        if (improperFilterGroups.length > 0)
+            invalid.push({
+                hierarchyName: element.hierarchyName,
+                invalids: improperFilterGroups,
+                element: element,
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
+            });
+    }
+    return invalid;
+}
+
+function getEmptyFilterGroups(filters) {
+    // Find same filter groups and extract assigned keys
+    const improperFilterGroups = [];
+    for (const [filterKey, filterValues] of Object.entries(filters)) {
+        // Skip filter groups that aren't empty
+        if (filterValues.length > 0)
+            continue;
+
+        // Push filter groups with no elements
+        improperFilterGroups.push({
+            filter: filterKey
+        });
+    }
+
+    // Return list of all filter groups who violate the match() requirements
+    return improperFilterGroups;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -3488,6 +3579,19 @@ function createFlattenedErrors() {
                         alertSubType: error.name,
                         targetNode: source.hierarchyName,
                         targetProblem: `${invalid.filter} is a filter group not wrapped in any function calls`
+                    });
+                }
+            }
+        }
+        else if (error.name == "invalid-empty-filter-groups") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} is an empty filter group`
                     });
                 }
             }
