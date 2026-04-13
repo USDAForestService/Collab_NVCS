@@ -1,23 +1,23 @@
 {
     "node": {
         "name": "Longleaf Pine Woodland (M007)",
-        "id": "Longleaf Pine Woodland (M007)",
+        "id": "M007",
         "level": "macrogroup",
         "description": [
-            "  i. Tree composition dominated by Pinus palustris >=20% RIV,",
+            "i. Tree composition dominated by Pinus palustris >=20% RIV,",
             "OR",
-            " ii. Tree composition dominated by Pinus clausa, Pinus elliottii, Pinus palustris >=5% AND Pinus clausa, Pinus echinata,",
+            " ii. Tree composition dominated by Pinus elliottii, Pinus palustris >=5% AND Pinus echinata,",
             "     Pinus elliottii, Pinus palustris, and Pinus taeda together >=50% RIV.",
             "OR",
             "iii. Tree composition dominated by one or more of Pinus clausa, Pinus elliottii or Pinus palustris (>=50% RIV);",
             "OR",
             " iv. Tree composition as above, but with >=20% RIV, AND other species are any combination of coastal plain species of",
-            "     Acer rubrum, Carya illinoinensis, Diospyros virginiana, Liquidambar styraciflua, Pinus echinata, Pinus taeda,",
+            "     Acer rubrum, Diospyros virginiana, Liquidambar styraciflua, Pinus clausa, Pinus echinata, Pinus taeda,",
             "     Persea borbonia, Quercus falcata, Quercus incana, Quercus laevis, Quercus laurifolia, Quercus margarettiae,",
             "     Quercus marilandica, Quercus nigra, Quercus virginiana or Sabal palmetto (together >=50% RIV)."
         ],
         "trigger": [
-            "    riv(DIAGNOSTIC_SPECIES_I) >= 20",
+            "riv(DIAGNOSTIC_SPECIES_I) >= 20",
             "or (riv(STRONG_LONGLEAF_DIAGNOSTICS) >= 5 and riv(DIAGNOSTIC_SPECIES_II) >= 50)",
             "or  riv(STRONG_LONGLEAF_DIAGNOSTICS) >= 50",
             "or (riv(STRONG_LONGLEAF_DIAGNOSTICS) >= 20 and riv(STRONG_LONGLEAF_DIAGNOSTICS) + riv(MODERATE_LONGLEAF_DIAGNOSTICS) >= 50)"
@@ -29,9 +29,6 @@
                 }
             ],
             "DIAGNOSTIC_SPECIES_II": [
-                {
-                    "species": "Pinus clausa"
-                },
                 {
                     "species": "Pinus echinata"
                 },
@@ -47,9 +44,6 @@
             ],
             "STRONG_LONGLEAF_DIAGNOSTICS": [
                 {
-                    "species": "Pinus clausa"
-                },
-                {
                     "species": "Pinus elliottii var. elliottii"
                 },
                 {
@@ -59,9 +53,6 @@
             "MODERATE_LONGLEAF_DIAGNOSTICS": [
                 {
                     "species": "Acer rubrum"
-                },
-                {
-                    "species": "Carya illinoinensis"
                 },
                 {
                     "species": "Diospyros virginiana"
@@ -91,7 +82,7 @@
                     "species": "Quercus laurifolia"
                 },
                 {
-                    "species": "Quercus margarettiae"
+                    "species": "Quercus margaretta"
                 },
                 {
                     "species": "Quercus marilandica"
@@ -104,6 +95,9 @@
                 },
                 {
                     "species": "Sabal palmetto"
+                },
+                {
+                    "species": "Pinus clausa"
                 }
             ]
         }

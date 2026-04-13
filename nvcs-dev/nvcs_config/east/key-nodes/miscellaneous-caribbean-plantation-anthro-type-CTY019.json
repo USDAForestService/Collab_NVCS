@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "Southeastern North American Ruderal Forest (M305)",
-        "id": "M305",
-        "level": "macrogroup",
+        "name": "Miscellaneous Caribbean Plantation Anthro-type (CTY019)",
+        "id": "CTY019",
+        "level": "type",
         "description": [
             "other"
         ],

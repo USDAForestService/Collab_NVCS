@@ -1,0 +1,98 @@
+{
+    "node": {
+        "name": "North Atlantic Coastal Forest & Woodland (M525)",
+        "id": "M525",
+        "level": "Macrogroup",
+        "description": [
+            "Tree composition dominated by one of the following:",
+            "[PM21.1]LOCATED in 221An, 221Ab[DFL22.1], 232A, 232H (but not North Carolina[PM23.1]) or 232I AND tree composition dominated by one or more of the following:",
+            "i. Tree composition dominated by one or more of the STRONG DIAGNOSTICS species of Fagus grandifolia, Ilex opaca, Juniperus virginiana, Pinus rigida, Pinus echinata, Pinus taeda, Pinus virginiana, Quercus alba, Quercus falcata (= var. falcata), Quercus stellata, Quercus velutina  (=>50% RIV);",
+            "OR",
+            "ii. tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DIAGNOSTICS diagnostic species of Pinus strobus, Prunus serotina, Quercus coccinea, Quercus montana, Quercus muehlenbergii (together =>50% RIV) .............................. North Atlantic Coastal Forest & Woodland (M525)"
+        ],
+        "trigger": [
+            "(match(ECOREGION) or",
+            "match(ECOREGION_STATE) and not match(STATE)) and",
+            "riv(STRONG_DIAGNOSTICS)>=20 or",
+            "(riv(STRONG_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTICS)>=50)"
+        ],
+        "filters": {
+            "ECOREGION": [
+                {
+                    "ecoregion": "221An"
+                },
+                {
+                    "ecoregion": "221Ab"
+                },
+                {
+                    "ecoregion": "232A"
+                },
+                {
+                    "ecoregion": "232I"
+                }
+            ],
+            "ECOREGION_STATE": [
+                {
+                    "ecoregion": "232H"
+                }
+            ],
+            "STATE": [
+                {
+                    "state": "NC"
+                }
+            ],
+            "STRONG_DIAGNOSTICS": [
+                {
+                    "species": "Fagus grandifolia"
+                },
+                {
+                    "species": "Ilex opaca"
+                },
+                {
+                    "species": "Juniperus virginiana"
+                },
+                {
+                    "species": "Pinus rigida"
+                },
+                {
+                    "species": "Pinus echinata"
+                },
+                {
+                    "species": "Pinus taeda"
+                },
+                {
+                    "species": "Pinus virginiana"
+                },
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus falcata"
+                },
+                {
+                    "species": "Quercus stellata"
+                },
+                {
+                    "species": "Quercus velutina"
+                }
+            ],
+            "MODERATE_DIAGNOSTICS": [
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus coccinea"
+                },
+                {
+                    "species": "Quercus montana"
+                },
+                {
+                    "species": "Quercus muehlenbergii"
+                }
+            ]
+        }
+    }
+}

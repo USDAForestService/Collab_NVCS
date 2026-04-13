@@ -1,0 +1,20 @@
+{
+    "node": {
+        "name": "Native Southern Hardwood Forest Plantation Anthro-type (CTY017)",
+        "id": "CTY017",
+        "level": "type",
+        "description": [
+            "Stands found in ecodivisions 230, M230, 310 and ecoprovince 255."
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "230, M230, 310, 255"
+                }
+            ]
+        }
+    }
+}

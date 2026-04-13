@@ -1,0 +1,38 @@
+{
+    "node": {
+        "name": "Southern Great Plains Forest & Woodland (M544)",
+        "id": "M544",
+        "level": "macrogroup",
+        "description": [
+            "Located in Ecoprovince 315, [315B – G] and 255.  [Typical species include Acer grandidentatum, Fraxinus albicans, Juniperus ashei, Pinus cembroides, Juglans major, Juniperus virginiana, Quercus buckleyi, Quercus fusiformis, Quercus laceyi, Quercus marilandica, Quercus muehlenbergii, Quercus sinuata var. breviloba, Quercus stellata, Sapindus Saponaria, Ulmus alata, Ulmus crassifolia, Ulmus rubra]"
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "255"
+                },
+                {
+                    "ecoregion": "315B"
+                },
+                {
+                    "ecoregion": "315C"
+                },
+                {
+                    "ecoregion": "315D"
+                },
+                {
+                    "ecoregion": "315E"
+                },
+                {
+                    "ecoregion": "315F"
+                },
+                {
+                    "ecoregion": "315G"
+                }
+            ]
+        }
+    }
+}

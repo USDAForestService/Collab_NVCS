@@ -1,0 +1,69 @@
+{
+    "node": {
+        "name": "Laurentian Dry Forest & Woodland (M159)",
+        "id": "M159",
+        "level": "macrogroup",
+        "description": [
+            "Tree composition dominated by one or more of the following:",
+            "  i Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana, Pinus banksiana, Pinus resinosa, Pinus strobus (=>50% RIV);",
+            "OR",
+            "     ii. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp.,, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus alba, Quercus ellipsoidalis, Quercus rubra (together =>50% RIV)…..Laurentian Dry Forest & Woodland (M159)"
+        ],
+        "trigger": [
+            "riv(STRONG_DRY_DIAGNOSTICS) >= 50",
+            "or (    riv(STRONG_DRY_DIAGNOSTICS) >= 20",
+            "    and riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
+        ],
+        "filters": {
+            "STRONG_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Picea mariana"
+                },
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus strobus"
+                }
+            ],
+            "MODERATE_DIAGNOSTIC_SPECIES": [
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Carpinus caroliniana"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Prunus pensylvanica"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus rubra"
+                },
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus ellipsoidalis"
+                }
+            ]
+        }
+    }
+}

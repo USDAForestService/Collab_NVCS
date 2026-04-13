@@ -1,7 +1,7 @@
 {
     "node": {
-        "name": "Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)",
-        "id": "Laurentian-Acadian Mesic Hardwood - Conifer Forest LC2 (M014)",
+        "name": "Laurentian Mesic Forest LC (M102)",
+        "id": "M102LC",
         "level": "macrogroup",
         "description": [
             "Plot is in Ecoregion 212"

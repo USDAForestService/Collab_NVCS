@@ -4,7 +4,7 @@
         "id": "Southeastern North American Flooded & Swamp Forest Division",
         "level": "division",
         "description": [
-            " i. Tree composition dominated by one or more of conifers of Chamaecyparis thyoides, Pinus elliottii,",
+            "i. Tree composition dominated by one or more of conifers of Chamaecyparis thyoides, Pinus elliottii,",
             "    Pinus glabra, Pinus palustris, Pinus serotina, Pinus taeda, Taxodium distichum, Taxodium ascendens,",
             "    or hardwoods Carya aquatica, Fraxinus caroliniana, Fraxinus profunda, Gleditsia aquatica,",
             "    Gordonia lasianthus, Halesia diptera, Juglans major, Juglans microcarpa, Magnolia virginiana,",
@@ -24,15 +24,13 @@
             "Magnolia grandiflora (together >=50% RIV), OR All Ruderal stands where ruderals >= 80% RIV]"
         ],
         "trigger": [
-            "(not match(EXCLUDED_REGIONS) and riv(DIAGNOSTIC_SPECIES) >= 20) or match(ECOREGIONS_II)"
+            "riv(DIAGNOSTIC_SPECIES) >= 20 or ",
+            "(match(ECOREGIONS_II) and not match(EXCLUDED_STATE_REGION))"
         ],
         "filters": {
-            "EXCLUDED_REGIONS": [
+            "EXCLUDED_STATE_REGION": [
                 {
-                    "state": "MD, NY, NJ, PA, DE, VA"
-                },
-                {
-                    "ecoregion": "221"
+                    "state": "KS"
                 }
             ],
             "DIAGNOSTIC_SPECIES": [
@@ -135,8 +133,7 @@
             ],
             "ECOREGIONS_II": [
                 {
-                    "ecoregion": "231, 232, 234, 255",
-                    "state": "!KS, MD, NY, NJ, PA, DE"
+                    "ecoregion": "231, 232, 234, 255"
                 }
             ]
         }

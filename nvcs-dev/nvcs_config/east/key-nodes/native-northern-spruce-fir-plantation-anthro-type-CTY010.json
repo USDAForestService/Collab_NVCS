@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Native Northern Spruce - Fir Plantation Anthro-type (CTY010)",
+        "id": "CTY010",
+        "level": "type",
+        "description": [
+            "Native Pinus species <50% RIV"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}
