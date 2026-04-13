@@ -1143,6 +1143,13 @@ function findInvalidsForNodeFilters(newMarkedElements) {
         if (filtersWithSameName.length > 1) {
             newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names must be unique", "error");
         }
+
+        // Determine if any filters are being added to the filter group
+        const filterContainerId = inputFilterName.id.replace("filter-", "");
+        const filterContainer = document.getElementById(filterContainerId);
+        const subFilterValues = filterContainer.querySelectorAll(".input-filters-container .sub-value-holder");
+        if (subFilterValues.length == 0)
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter groups must contain at least one element", "error");
     }
 
     return newMarkedElements;
