@@ -663,26 +663,30 @@ async function addInputFilter(identifier, bulkAdd = false) {
 
     const filterContainer = document.getElementById(identifier);
     const inputFiltersContainer = filterContainer.querySelector(".input-filters-container")
-    const singleInputType = document.getElementById("input_type_add_" + identifier).value;
-    const singleInputValue = document.getElementById("input_value_add_" + identifier).value;
+    const singleInputType = document.getElementById("input_type_add_" + identifier);
+    const singleInputValue = document.getElementById("input_value_add_" + identifier);
     let newInputFilterHtml = "";
     if (bulkAdd) {
-        const separatedInputValues = singleInputValue.split(",");
+        const separatedInputValues = singleInputValue.value.split(",");
         for (const separatedInputValue of separatedInputValues) {
             const cleanedInputValue = separatedInputValue.trim();
-            const [html] = createInputFilter(singleInputType, cleanedInputValue)
+            const [html] = createInputFilter(singleInputType.value, cleanedInputValue)
             newInputFilterHtml += html;
         }
 
     }
     else {
-        const [html] = createInputFilter(singleInputType, singleInputValue);
+        const [html] = createInputFilter(singleInputType.value, singleInputValue.value);
         newInputFilterHtml += html;
     }
     inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
 
     // Check newly-added filters
     performDialogValidations(false);
+
+    // Remove any errors on the add filter input and wipe values
+    markElementAsType(singleInputValue, null);
+    singleInputValue.value = null;
 }
 
 function createFilter(filterKey, inputFilters) {
@@ -934,6 +938,7 @@ function performDialogValidations(displayAlert) {
     newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
     newMarkedElements = findInvalidsForSubFilters(newMarkedElements);
     newMarkedElements = findBlanksForSubFilters(newMarkedElements);
+    newMarkedElements = findUnsubmittedFilters(newMarkedElements);
 
     // Mark invalid fields
     markValidationFields(newMarkedElements, displayAlert);
@@ -3727,6 +3732,17 @@ function findBlanksForSubFilters(newMarkedElements) {
         const input = element.value;
         if (input.trim() === "")
             newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Filters cannot be blank", "error");
+    }
+    return newMarkedElements;
+}
+
+function findUnsubmittedFilters(newMarkedElements) {
+    const filterContainers = document.querySelectorAll(".filter-container");
+    for (const filterContainer of filterContainers) {
+        const filterNameInput = document.getElementById(`filter-${filterContainer.id}`);
+        const filterAddInput = document.getElementById(`input_value_add_${filterContainer.id}`);
+        if (filterAddInput.value)
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, filterAddInput, `Filter group "${filterNameInput.value}" has unsubmitted filter changes`, "error");
     }
     return newMarkedElements;
 }
