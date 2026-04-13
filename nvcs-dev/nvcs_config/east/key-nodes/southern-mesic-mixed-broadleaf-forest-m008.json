@@ -1,10 +1,10 @@
 {
     "node": {
         "name": "Southern Mesic Mixed Broadleaf Forest (M008)",
-        "id": "Southern Mesic Mixed Broadleaf Forest (M008)",
+        "id": "M008",
         "level": "macrogroup",
         "description": [
-            " i. Tree composition dominated by one or more of Acer barbatum, Aesculus pavia, Fagus grandifolia,",
+            "i. Tree composition dominated by one or more of Acer barbatum, Aesculus pavia, Fagus grandifolia,",
             "    Halesia diptera, Ilex opaca, Magnolia acuminata, Magnolia grandiflora, Magnolia virginiana,",
             "    Pinus glabra, Quercus michauxii, Quercus pagoda, Quercus phellos, Quercus shumardii,",
             "    Sabal palmetto, Tilia spp., Tilia americana, Tilia americana var. heterophylla,",
@@ -19,13 +19,13 @@
             "    Quercus virginiana, Quercus nigra, Juniperus spp., Pinus taeda (together >=50% RIV)"
         ],
         "trigger": [
-            "    riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
+            "riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
             "or (riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and riv(STRONG_MESIC_DIAGNOSTICS) + riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)"
         ],
         "filters": {
             "STRONG_MESIC_DIAGNOSTICS": [
                 {
-                    "species": "Acer barbatum"
+                    "species": "Acer floridanum"
                 },
                 {
                     "species": "Aesculus pavia"
@@ -90,7 +90,7 @@
                     "species": "Carpinus caroliniana"
                 },
                 {
-                    "species": "Carya alba"
+                    "species": "Carya tomentosa"
                 },
                 {
                     "species": "Celtis"

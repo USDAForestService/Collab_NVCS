@@ -1,0 +1,44 @@
+{
+    "node": {
+        "name": "Caribbean-Mesoamerican Dry Pine Forest (M296)",
+        "id": "M296",
+        "level": "",
+        "description": [
+            "Caribbean-Mesoamerican Dry Pine Forest (M296)",
+            "",
+            "1. Tree composition dominated by one of the following:",
+            "",
+            "i. Tree composition dominated by Pinus elliottii [= var. densa] (=>50% RIV);",
+            "",
+            "OR",
+            "",
+            "ii. Tree composition as above, but with =>20% RIV, AND other species are any combination of (in dry stands) Coccothrinax argentata, Leucothrinax morrisii, Sideroxylon salicifolium (together =>50% RIV);",
+            "",
+            "........................................................ Caribbean-Mesoamerican Dry Pine Forest (M296)"
+        ],
+        "trigger": [
+            "riv (Strong_Indicator)>=50",
+            "or (riv(Strong_Indicator) >= 20",
+            "",
+            "    and riv(Strong_Indicator) + riv(Moderate_Indicator) >= 50)"
+        ],
+        "filters": {
+            "Strong_Indicator": [
+                {
+                    "species": "Pinus elliottii"
+                }
+            ],
+            "Moderate_Indicator": [
+                {
+                    "species": "Coccothrinax argentata"
+                },
+                {
+                    "species": "Leucothrinax morrisii"
+                },
+                {
+                    "species": "Sideroxylon salicifolium"
+                }
+            ]
+        }
+    }
+}

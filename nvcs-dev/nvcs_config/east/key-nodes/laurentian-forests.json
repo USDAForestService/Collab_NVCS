@@ -1,0 +1,150 @@
+{
+    "node": {
+        "name": "Laurentian Forests",
+        "id": "Laurentian Forests",
+        "level": "division",
+        "description": [
+            "2. Tree composition dominated by one of the following:",
+            "i Located in Ecoprovince 212 [i.e. all stands in Laurentian 212 ecoregion go here, regardless of tree composition]",
+            "OR",
+            "ii. Located in 222J, 222K, 222L, 222M, 222R, or 222U, AND ",
+            "     iia Tree composition dominated by one or more of STRONG DRY DIAGNOSTI2. Tree composition dominated by one of the following:",
+            "i Located in Ecoprovince 212 [i.e. all stands in Laurentian 212 ecoregion go here, regardless of tree composition]",
+            "OR",
+            "ii. Located in 222J, 222K, 222L, 222M, 222R, or 222U, AND ",
+            "     iia Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana, Pinus banksiana, Pinus resinosa, Pinus strobus (=>50% RIV);",
+            "OR",
+            "    iib. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp.,, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus alba, Quercus ellipsoidalis, Quercus rubra (together =>50% RIV)",
+            "OR",
+            "Ii . Tree composition dominated by any one or more of the hardwoods and/or conifer STRONG MESIC DIAGNOSTICS of Abies balsamea, Acer pensylvanicum, Acer spicatum, Betula alleghaniensis, Fraxinus nigra, Larix laricina, Picea glauca, Picea mariana, Populus balsamifera, Populus grandidentata,Thuja occidentalis, Tsuga canadensis (=>20% RIV) [DFL1]",
+            ".... Laurentian Forests……..................................................................................................... …3",
+            "[DFL1]Its possible that the details of composition could be omitted and the couplet just relies on ecoprovince Location.CS Picea mariana, Pinus banksiana, Pinus resinosa, Pinus strobus (=>50% RIV);",
+            "OR",
+            "    iib. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp.,, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus alba, Quercus ellipsoidalis, Quercus rubra (together =>50% RIV)",
+            "OR",
+            "Ii . Tree composition dominated by any one or more of the hardwoods and/or conifer STRONG MESIC DIAGNOSTICS of Abies balsamea, Acer pensylvanicum, Acer spicatum, Betula alleghaniensis, Fraxinus nigra, Larix laricina, Picea glauca, Picea mariana, Populus balsamifera, Populus grandidentata,Thuja occidentalis, Tsuga canadensis (=>20% RIV) [DFL1]",
+            ".... Laurentian Forests……..................................................................................................... …3"
+        ],
+        "trigger": [
+            "match(ECOPROVINCE) or ",
+            "(match(ECOREGION) and riv(STRONG_DRY_DIAGNOSTICS) >= 50 or ",
+            "riv(STRONG_DRY_DIAGNOSTICS) >= 20 and",
+            "riv(MODERATE_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >= 50",
+            "or riv(STRONG_MESIC_DIAGNOSTICS) >=20)"
+        ],
+        "filters": {
+            "ECOPROVINCE": [
+                {
+                    "ecoregion": "212"
+                }
+            ],
+            "ECOREGION": [
+                {
+                    "ecoregion": "222J"
+                },
+                {
+                    "ecoregion": "222K"
+                },
+                {
+                    "ecoregion": "222L"
+                },
+                {
+                    "ecoregion": "222M"
+                },
+                {
+                    "ecoregion": "222R"
+                },
+                {
+                    "ecoregion": "222U"
+                }
+            ],
+            "STRONG_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Picea mariana"
+                },
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus strobus"
+                }
+            ],
+            "MODERATE_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Carpinus caroliniana"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Prunus pensylvanica"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus ellipsoidalis"
+                },
+                {
+                    "species": "Quercus rubra"
+                }
+            ],
+            "STRONG_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Abies balsamea"
+                },
+                {
+                    "species": "Acer pensylvanicum"
+                },
+                {
+                    "species": "Acer spicatum"
+                },
+                {
+                    "species": "Betula alleghaniensis"
+                },
+                {
+                    "species": "Fraxinus nigra"
+                },
+                {
+                    "species": "Larix laricina"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Picea mariana"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Thuja occidentalis"
+                },
+                {
+                    "species": "Tsuga canadensis"
+                }
+            ]
+        }
+    }
+}

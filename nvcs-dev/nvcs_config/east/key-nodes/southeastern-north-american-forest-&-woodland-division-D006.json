@@ -1,0 +1,109 @@
+{
+    "node": {
+        "name": "Southeastern North American Forest & Woodland Division (D006)",
+        "id": "D006",
+        "level": "division",
+        "description": [
+            "Tree composition matching one of the following options: ",
+            "",
+            "i. Located in Ecoprovince 231A, 231B, 231E, 231F, 231H, 231I, 232, 234, 411A ",
+            "",
+            "AND ",
+            "",
+            "ii. Tree composition contains one or more of Aesculus pavia, Halesia diptera, Juniperus virginiana var. silicicola, Magnolia grandiflora, Pinus clausa, Pinus glabra, Pinus palustris, Pinus elliottii, Quercus incana, Quercus laevis, Quercus laurifolia, Quercus margarettiae, Quercus minima, Quercus sinuata var sinuata, Quercus virginiana, Sabal palmetto (>=5% RIV); [Additional tree species not tracked by FIA include Quercus fusiformis = Quercus virginiana var. fusiformis), Quercus geminata, Serenoa repens] ",
+            "",
+            "OR ",
+            "",
+            "Located in Ecosections 231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234, (but exclude DC, DE, MD, NJ, PA, VA  ",
+            "",
+            ".... Warm Temperate Evergreen Forest & Woodland Ecobiome (TT2.a1)… [eastern Warm Temperate Upland Forests] ......................................................................................................E ",
+            "",
+            "E. Southeastern North American Forest & Woodland Division (D006) one  E1"
+        ],
+        "trigger": [
+            "(match(ECOREGIONS_1) and riv(DIAGNOSTIC_SPECIES_1) >= 5) or (match(ECOREGIONS_2) and match(STATES))"
+        ],
+        "filters": {
+            "ECOREGIONS_1": [
+                {
+                    "ecoregion": "231A, 231B, 231E, 231F, 231H, 231I, 232, 234, 411A"
+                }
+            ],
+            "DIAGNOSTIC_SPECIES_1": [
+                {
+                    "species": "Aesculus pavia"
+                },
+                {
+                    "species": "Halesia diptera"
+                },
+                {
+                    "species": "Juniperus virginiana var. silicicola"
+                },
+                {
+                    "species": "Magnolia grandiflora"
+                },
+                {
+                    "species": "Pinus clausa"
+                },
+                {
+                    "species": "Pinus glabra"
+                },
+                {
+                    "species": "Pinus palustris"
+                },
+                {
+                    "species": "Pinus elliottii var. elliottii"
+                },
+                {
+                    "species": "Quercus incana"
+                },
+                {
+                    "species": "Quercus laevis"
+                },
+                {
+                    "species": "Quercus laurifolia"
+                },
+                {
+                    "species": "Quercus margaretta"
+                },
+                {
+                    "species": "Quercus minima"
+                },
+                {
+                    "species": "Quercus sinuata var. sinuata"
+                },
+                {
+                    "species": "Quercus virginiana"
+                },
+                {
+                    "species": "Sabal palmetto"
+                }
+            ],
+            "ECOREGIONS_2": [
+                {
+                    "ecoregion": "231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234"
+                }
+            ],
+            "STATES": [
+                {
+                    "state": "!DC"
+                },
+                {
+                    "state": "DE"
+                },
+                {
+                    "state": "MD"
+                },
+                {
+                    "state": "NJ"
+                },
+                {
+                    "state": "PA"
+                },
+                {
+                    "state": "VA"
+                }
+            ]
+        }
+    }
+}

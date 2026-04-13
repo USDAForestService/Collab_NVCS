@@ -1,0 +1,23 @@
+{
+    "node": {
+        "name": "Eastern Boreal Ruderal Wetland Forests",
+        "id": "Eastern Boreal Ruderal Wetland Forests",
+        "level": "Division",
+        "description": [
+            "Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division)."
+        ],
+        "trigger": [
+            "riv(RUDERAL_EXOTIC)"
+        ],
+        "filters": {
+            "RUDERAL_EXOTIC": [
+                {
+                    "exotic": "Y"
+                },
+                {
+                    "ruderal": "Y"
+                }
+            ]
+        }
+    }
+}

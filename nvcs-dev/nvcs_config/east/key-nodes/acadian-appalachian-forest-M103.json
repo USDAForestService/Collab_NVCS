@@ -1,0 +1,140 @@
+{
+    "node": {
+        "name": "Acadian-Appalachian Forest (M103)",
+        "id": "M103",
+        "level": "Macrogroup",
+        "description": [
+            "i.  Located in Ecoprovince 211A to 211E, M211, and 211Ia [i.e all stands in these Acadian- northern Appalachian ecoregions go here, regardless of tree composition].",
+            "OR ",
+            "ii.  tree composition dominated by one or more of Abies balsamea, Abies fraseri, Picea rubens (=>20% RIV)  ",
+            "OR ",
+            "iii.  Located in 211Ja, 211Jb, 211Jc, 211Jd, AND",
+            "i. Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea rubens, Picea mariana, Pinus banksiana, Pinus resinosa, Pinus strobus, Quercus alba, Quercus macrocarpa, Quercus velutina (=>50% RIV);",
+            "OR",
+            "ii. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp., Betula populifolia, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus rubra (together =>50% RIV);",
+            "OR  ",
+            "iii. Tree composition dominated by any one or more of the hardwoods and/or conifer STRONG MESIC DIAGNOSTICS of Abies balsamea, Abies fraseri, Acer spicatum, , Larix laricina, Picea glauca, Picea rubens, Picea mariana, Populus balsamifera, Populus grandidentata, Thuja occidentalis (=>20% RIV) [DFL1.1]   Acadian-Appalachian Forest (M103)",
+            "[note; dry forests in Acadian-Northern Appalachian region are relatively uncommon, so dry versus mesic combined at macrogroup level and distinction is made at group level]."
+        ],
+        "trigger": [
+            "match(ECOREGION_A) or",
+            "riv(ECOREGION_DIAGNOSTICS) >=1 or",
+            "match(ECOREGION_B) and ",
+            "(riv(STRONG_DRY_DIAGNOSTICS)>=50 or",
+            "riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >=50 or riv(STRONG_MESIC_DIAGNOSTICS)>=20)"
+        ],
+        "filters": {
+            "ECOREGION_A": [
+                {
+                    "ecoregion": "211A, 211B, 211C, 211D, 211E, M211, 211Ia"
+                }
+            ],
+            "ECOREGION_DIAGNOSTICS": [
+                {
+                    "species": "Abies balsamea"
+                },
+                {
+                    "species": "Abies fraseri"
+                },
+                {
+                    "species": "Picea rubens"
+                }
+            ],
+            "ECOREGION_B": [
+                {
+                    "ecoregion": "211Ja, 211Jb, 211Jc, 211JD"
+                }
+            ],
+            "STRONG_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Picea rubens"
+                },
+                {
+                    "species": "Picea mariana"
+                },
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Pinus resinosa"
+                },
+                {
+                    "species": "Pinus strobus"
+                },
+                {
+                    "species": "Quercus alba"
+                },
+                {
+                    "species": "Quercus macrocarpa"
+                },
+                {
+                    "species": "Quercus velutina"
+                }
+            ],
+            "MODERATE_DRY_DIAGNOSTICS": [
+                {
+                    "species": "Amelanchier"
+                },
+                {
+                    "species": "Betula populifolia"
+                },
+                {
+                    "species": "Betula papyrifera"
+                },
+                {
+                    "species": "Carpinus caroliniana"
+                },
+                {
+                    "species": "Ostrya virginiana"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Populus tremuloides"
+                },
+                {
+                    "species": "Prunus pensylvanica"
+                },
+                {
+                    "species": "Prunus serotina"
+                },
+                {
+                    "species": "Quercus rubra"
+                }
+            ],
+            "STRONG_MESIC_DIAGNOSTICS": [
+                {
+                    "species": "Abies balsamea"
+                },
+                {
+                    "species": "Abies fraseri"
+                },
+                {
+                    "species": "Acer spicatum"
+                },
+                {
+                    "species": "Larix laricina"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Picea rubens"
+                },
+                {
+                    "species": "Picea mariana"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Populus grandidentata"
+                },
+                {
+                    "species": "Thuja occidentalis"
+                }
+            ]
+        }
+    }
+}

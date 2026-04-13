@@ -1,7 +1,7 @@
 {
     "node": {
         "name": "Central Midwest Mesic Forest (M882)",
-        "id": "Central Midwest Mesic Forest (M882)",
+        "id": "M882",
         "level": "macrogroup",
         "description": [
             "Stands found in Ecoregion 222, 223A, 223G, 251, 332) [excludes 222I, includes Ozarks ecoregion]",
@@ -24,7 +24,7 @@
             "     Quercus prinus, Quercus velutina, Carya glabra, Carya ovata, Carya alba)"
         ],
         "trigger": [
-            "    match(ECOREGIONS)",
+            "match(ECOREGIONS)",
             "and (    riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
             "     or (riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and riv(STRONG_MESIC_DIAGNOSTICS) + riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)",
             "     or (riv(DIAGNOSTIC_SPECIES_III) >= 20 and riv(EXCLUDED_SPECIES_III) < 20))"
@@ -32,7 +32,7 @@
         "filters": {
             "ECOREGIONS": [
                 {
-                    "ecoregion": "222, 223A, 223G, 251, 332 ! 222I"
+                    "ecoregion": "222A, 222B, 222C, 222D, 222D, 222E, 222F, 222G, 222H, 222J, 222K, 222L, 222M,  223G, 251, 332 ! 222I"
                 }
             ],
             "STRONG_MESIC_DIAGNOSTICS": [
@@ -102,7 +102,7 @@
             ],
             "MODERATE_MESIC_DIAGNOSTICS": [
                 {
-                    "species": "Acer barbatum"
+                    "species": "Acer floridanum"
                 },
                 {
                     "species": "Acer negundo"
@@ -196,13 +196,13 @@
                     "species": "Quercus macrocarpa"
                 },
                 {
-                    "species": "Quercus prinus"
+                    "species": "Quercus montana"
                 },
                 {
                     "species": "Quercus velutina"
                 },
                 {
-                    "species": "Carya alba"
+                    "species": "Carya tomentosa"
                 },
                 {
                     "species": "Carya glabra"

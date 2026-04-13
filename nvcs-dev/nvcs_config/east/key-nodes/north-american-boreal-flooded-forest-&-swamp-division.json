@@ -1,0 +1,54 @@
+{
+    "node": {
+        "name": "North American Boreal Flooded Forest & Swamp Division",
+        "id": "North American Boreal Flooded Forest & Swamp Division",
+        "level": "Division",
+        "description": [
+            "D. Tree composition dominated by one of the following:",
+            "i. Located in Ecoprovince 212, 211, or M211, AND",
+            "    ia. Tree composition dominated by one or more of boreal wetland conifer species (Larix laricina, Picea mariana) (>=80% RIV);",
+            "  ib. The above tree composition but with =>20% RIV; AND other species are any combination of boreal hardwoods (Betula papyrifera) or other conifers (Abies balsamea, Fraxinus nigra, Picea glauca, Pinus banksiana, Populus balsamifera) species (together >=95% RIV); [N.B. role of Thuja occidentalis in boreal swamps still under review]"
+        ],
+        "trigger": [
+            "match(ECOREGION) and",
+            "(riv(STRONG_INDICATORS) >=80 or",
+            "(riv(STRONG_INDICATORS) +",
+            "riv(BOREAL_INDICATORS) >=95))"
+        ],
+        "filters": {
+            "ECOREGION": [
+                {
+                    "ecoregion": "212, 211, M211"
+                }
+            ],
+            "STRONG_INDICATORS": [
+                {
+                    "species": "Larix laricina"
+                },
+                {
+                    "species": "Picea mariana"
+                }
+            ],
+            "BOREAL_INDICATORS": [
+                {
+                    "species": "Abies balsamea"
+                },
+                {
+                    "species": "Fraxinus nigra"
+                },
+                {
+                    "species": "Picea glauca"
+                },
+                {
+                    "species": "Pinus banksiana"
+                },
+                {
+                    "species": "Populus balsamifera"
+                },
+                {
+                    "species": "Betula papyrifera"
+                }
+            ]
+        }
+    }
+}

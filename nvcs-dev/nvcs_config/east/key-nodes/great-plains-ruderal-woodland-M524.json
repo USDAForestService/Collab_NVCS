@@ -1,10 +1,10 @@
 {
     "node": {
-        "name": "Southeastern North American Ruderal Forest (M305)",
-        "id": "M305",
+        "name": "Great Plains Ruderal Woodland (M524)",
+        "id": "M524",
         "level": "macrogroup",
         "description": [
-            "other"
+            "Only 1 macrogroup, Great Plains Ruderal Woodland (M524)"
         ],
         "trigger": [
             "true"

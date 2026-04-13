@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Eastern North American Forest & Woodland (D008)",
+        "id": "D008a",
+        "level": "Division",
+        "description": [
+            "Tree composition not as above.  Eastern North American Forest & Woodland Division (D008)……………………………………………………………………………………………………………………..F2"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

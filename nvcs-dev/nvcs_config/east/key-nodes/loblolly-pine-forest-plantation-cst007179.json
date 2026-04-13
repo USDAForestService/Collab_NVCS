@@ -1,14 +1,14 @@
 {
     "node": {
         "name": "Loblolly Pine Forest Plantation (CST007179)",
-        "id": "Loblolly Pine Forest Plantation (CST007179)",
+        "id": "CST007179",
         "level": "subtype",
         "description": [
             "Tree composition dominated by Pinus taeda; i.e. Pinus taeda >= 25% RIV,",
             "and exceeds each species of Pinus echinta, Pinus elliottii, Pinus clausa or Pinus palustris"
         ],
         "trigger": [
-            "    riv(LOBLOLLY_PINE) >= 25",
+            "riv(LOBLOLLY_PINE) >= 25",
             "and riv(LOBLOLLY_PINE) > riv(SHORTLEAF_PINE)",
             "and riv(LOBLOLLY_PINE) > riv(LONGLEAF_PINE)",
             "and riv(LOBLOLLY_PINE) > riv(SLASH_PINE)",

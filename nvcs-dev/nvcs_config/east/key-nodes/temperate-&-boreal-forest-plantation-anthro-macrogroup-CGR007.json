@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "Southeastern North American Ruderal Forest (M305)",
-        "id": "M305",
-        "level": "macrogroup",
+        "name": "Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)",
+        "id": "CGR007",
+        "level": "group",
         "description": [
             "other"
         ],

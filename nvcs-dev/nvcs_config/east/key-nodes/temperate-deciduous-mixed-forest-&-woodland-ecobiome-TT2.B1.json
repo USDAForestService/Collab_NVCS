@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "Southeastern North American Ruderal Forest (M305)",
-        "id": "M305",
-        "level": "macrogroup",
+        "name": "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)",
+        "id": "TT2.b1",
+        "level": "division",
         "description": [
             "other"
         ],

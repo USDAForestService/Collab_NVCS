@@ -1,0 +1,29 @@
+{
+    "node": {
+        "name": "Great Plains Natural Woodlands",
+        "id": "Great Plains Natural Woodlands",
+        "level": "division",
+        "description": [
+            "0. Vegetation in a relatively natural state, dominated by native species; little or no evidence of trees in a row, no very recent logging, understory mowing, etc. (trees may be early successional pole-sized trees following logging or blowdowns). Tree composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix B - needs to be refined for this Division).................Great Plains Natural Woodlands"
+        ],
+        "trigger": [
+            "riv(RUDERAL_OR_EXOTIC_SPECIES) < 80 or",
+            "riv(NATIVE_RUDERAL) < 80"
+        ],
+        "filters": {
+            "RUDERAL_OR_EXOTIC_SPECIES": [
+                {
+                    "ruderal": "Y"
+                },
+                {
+                    "exotic": "Y"
+                }
+            ],
+            "NATIVE_RUDERAL": [
+                {
+                    "species": "Juniperus virginiana"
+                }
+            ]
+        }
+    }
+}
