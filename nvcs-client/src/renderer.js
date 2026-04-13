@@ -663,26 +663,30 @@ async function addInputFilter(identifier, bulkAdd = false) {
 
     const filterContainer = document.getElementById(identifier);
     const inputFiltersContainer = filterContainer.querySelector(".input-filters-container")
-    const singleInputType = document.getElementById("input_type_add_" + identifier).value;
-    const singleInputValue = document.getElementById("input_value_add_" + identifier).value;
+    const singleInputType = document.getElementById("input_type_add_" + identifier);
+    const singleInputValue = document.getElementById("input_value_add_" + identifier);
     let newInputFilterHtml = "";
     if (bulkAdd) {
-        const separatedInputValues = singleInputValue.split(",");
+        const separatedInputValues = singleInputValue.value.split(",");
         for (const separatedInputValue of separatedInputValues) {
             const cleanedInputValue = separatedInputValue.trim();
-            const [html] = createInputFilter(singleInputType, cleanedInputValue)
+            const [html] = createInputFilter(singleInputType.value, cleanedInputValue)
             newInputFilterHtml += html;
         }
 
     }
     else {
-        const [html] = createInputFilter(singleInputType, singleInputValue);
+        const [html] = createInputFilter(singleInputType.value, singleInputValue.value);
         newInputFilterHtml += html;
     }
     inputFiltersContainer.insertAdjacentHTML('beforeEnd', newInputFilterHtml);
 
     // Check newly-added filters
     performDialogValidations(false);
+
+    // Remove any errors on the add filter input and wipe values
+    markElementAsType(singleInputValue, null);
+    singleInputValue.value = null;
 }
 
 function createFilter(filterKey, inputFilters) {
@@ -934,6 +938,7 @@ function performDialogValidations(displayAlert) {
     newMarkedElements = findInvalidsForNodeFilters(newMarkedElements);
     newMarkedElements = findInvalidsForSubFilters(newMarkedElements);
     newMarkedElements = findBlanksForSubFilters(newMarkedElements);
+    newMarkedElements = findUnsubmittedFilters(newMarkedElements);
 
     // Mark invalid fields
     markValidationFields(newMarkedElements, displayAlert);
@@ -1138,6 +1143,13 @@ function findInvalidsForNodeFilters(newMarkedElements) {
         if (filtersWithSameName.length > 1) {
             newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter names must be unique", "error");
         }
+
+        // Determine if any filters are being added to the filter group
+        const filterContainerId = inputFilterName.id.replace("filter-", "");
+        const filterContainer = document.getElementById(filterContainerId);
+        const subFilterValues = filterContainer.querySelectorAll(".input-filters-container .sub-value-holder");
+        if (subFilterValues.length == 0)
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, inputFilterName, "Filter groups must contain at least one element", "error");
     }
 
     return newMarkedElements;
@@ -1591,6 +1603,7 @@ function checkForProblems() {
     checkInvalidMatchNegations();
     checkInvalidMatchCalls();
     checkUnwrappedFilterGroups();
+    checkEmptyFilterGroups();
     checkMissingTriggerParenthesesError();
     checkMissingFiltersInTrigger();
     checkInvalidBinaryValueError();
@@ -2158,6 +2171,59 @@ function checkUnwrappedFilterGroups() {
     `;
 
     createError("invalid-unwrapped-filter-groups", html, invalidUnwrappedFilterGroups);
+}
+
+function checkEmptyFilterGroups() {
+    const invalidEmptyFilterGroups = findEmptyFilterGroups();
+    if (invalidEmptyFilterGroups.length == 0)
+        return;
+    console.error("Invalid empty filter groups", invalidEmptyFilterGroups);
+
+    let html = `
+        <p>
+            Invalid empty filter groups detected within ${invalidEmptyFilterGroups.length} hierarchy element triggers!
+            All filter groups must have at least one element or the classification key may fail to build.
+            <button id='btn-toggle-nested-empty-filter-groups-errors' aria-describedby="nested-empty-filter-groups-errors" aria-controls='nested-empty-filter-groups-errors' onclick="toggleNestedContent(this, 'error')">
+                Show Nested Errors
+            </button>
+        </p>
+        <ul id='nested-empty-filter-groups-errors' class='border-box-list' aria-expanded='false' aria-label="Nested Invalid Empty Filter Groups" hidden>
+    `;
+
+    for (const info of invalidEmptyFilterGroups) {
+        const cloneButton = cloneElement(info.button, info.button.innerText + " (invalid empty filter groups)");
+        const elementButton = cloneButton.outerHTML;
+
+        html += `
+            <li class='border-box-list-item'>
+                ${elementButton}
+                <ul>
+        `;
+
+        for (const elementFilter of info.invalids) {
+            const [addressButton, addressId] = generateAddressButton();
+            elementFilter.addressId = addressId;
+            html += `
+                <li>
+                    <span>
+                        ${elementFilter.filter}
+                    </span>
+                    ${addressButton}
+                </li>
+            `;
+        }
+
+        html += `
+                </ul>
+            </li>        
+        `;
+    }
+
+    html += `
+        </ul>
+    `;
+
+    createError("invalid-empty-filter-groups", html, invalidEmptyFilterGroups);
 }
 
 function checkMissingTriggerParenthesesError() {
@@ -3039,6 +3105,43 @@ function getUnwrappedFilterGroups(trigger, filters) {
     return improperFilterGroups;
 }
 
+function findEmptyFilterGroups() {
+    let invalid = [];
+    for (const element of hierarchy) {
+        // Retrieve unwrapped filter groups
+        const filters = element.node.filters;
+        const improperFilterGroups = getEmptyFilterGroups(filters);
+
+        // If any unwrapped filter groups caught, push the entire element as an invalid
+        if (improperFilterGroups.length > 0)
+            invalid.push({
+                hierarchyName: element.hierarchyName,
+                invalids: improperFilterGroups,
+                element: element,
+                button: findHierarchyButton(element.hierarchyName, element.hierarchyLineNumber),
+            });
+    }
+    return invalid;
+}
+
+function getEmptyFilterGroups(filters) {
+    // Find same filter groups and extract assigned keys
+    const improperFilterGroups = [];
+    for (const [filterKey, filterValues] of Object.entries(filters)) {
+        // Skip filter groups that aren't empty
+        if (filterValues.length > 0)
+            continue;
+
+        // Push filter groups with no elements
+        improperFilterGroups.push({
+            filter: filterKey
+        });
+    }
+
+    // Return list of all filter groups who violate the match() requirements
+    return improperFilterGroups;
+}
+
 function findMissingTriggerParentheses() {
     let invalid = [];
     for (const element of hierarchy) {
@@ -3487,6 +3590,19 @@ function createFlattenedErrors() {
                 }
             }
         }
+        else if (error.name == "invalid-empty-filter-groups") {
+            for (const source of error.source) {
+                for (const invalid of source.invalids) {
+                    alerts.push({
+                        addressId: invalid.addressId,
+                        alertType: "error",
+                        alertSubType: error.name,
+                        targetNode: source.hierarchyName,
+                        targetProblem: `${invalid.filter} is an empty filter group`
+                    });
+                }
+            }
+        }
         else if (error.name == "invalid-trigger-parentheses") {
             for (const source of error.source) {
                 alerts.push({
@@ -3727,6 +3843,17 @@ function findBlanksForSubFilters(newMarkedElements) {
         const input = element.value;
         if (input.trim() === "")
             newMarkedElements = addMarkedElementMessage(newMarkedElements, element, "Filters cannot be blank", "error");
+    }
+    return newMarkedElements;
+}
+
+function findUnsubmittedFilters(newMarkedElements) {
+    const filterContainers = document.querySelectorAll(".filter-container");
+    for (const filterContainer of filterContainers) {
+        const filterNameInput = document.getElementById(`filter-${filterContainer.id}`);
+        const filterAddInput = document.getElementById(`input_value_add_${filterContainer.id}`);
+        if (filterAddInput.value)
+            newMarkedElements = addMarkedElementMessage(newMarkedElements, filterAddInput, `Filter group "${filterNameInput.value}" has unsubmitted filter changes`, "error");
     }
     return newMarkedElements;
 }
