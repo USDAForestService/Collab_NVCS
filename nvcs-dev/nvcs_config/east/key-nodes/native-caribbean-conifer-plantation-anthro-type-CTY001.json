@@ -1,0 +1,31 @@
+{
+    "node": {
+        "name": "Native Caribbean Conifer Plantation Anthro-type (CTY001)",
+        "id": "CTY001",
+        "level": "type",
+        "description": [
+            "Species of native conifers have > RIV than exotic species"
+        ],
+        "trigger": [
+            "riv(NATIVE_CONIFERS) > riv(EXOTIC_CONIFERS)"
+        ],
+        "filters": {
+            "NATIVE_CONIFERS": [
+                {
+                    "softwoodhardwood": "S"
+                },
+                {
+                    "exotic": "N"
+                }
+            ],
+            "EXOTIC_CONIFERS": [
+                {
+                    "softwoodhardwood": "S"
+                },
+                {
+                    "exotic": "Y"
+                }
+            ]
+        }
+    }
+}
