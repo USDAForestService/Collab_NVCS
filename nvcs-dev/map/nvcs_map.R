@@ -10,7 +10,7 @@ pt.csv = "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/west/maps/Y2017_MAP_I
 out_dir = "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_output/west/maps/"
 file_ext = ".png"
 # for using km2 LANDFIRE-mapped NVC by section:
-ecomap_lut = "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/west/maps/NVC_macrogroups_km2_by_section.csv"
+ecomap_lut = "C:/GitHub/FS-Enterprise/NVCS/nvcs-data/run_input/west/maps/MG_Groups_by_EcoSection_092025_FLAT.csv"
 lut = read.csv(ecomap_lut)
 
 west_states = c("AZ", "CA", "CO", "ID", "KS", "MT", "ND", "NE", "NM", "NV", "OK", "OR", "SD", "TX", "UT", "WA", "WY")
@@ -48,6 +48,7 @@ for (i in 1:classes_count) {
 	nvc_code = classes[i,"nvc_code"]
 	
 	file_name = gsub(" ", "_", class_name)
+	file_name = gsub("/", "_", file_name)
 	file_name = gsub("[\\(\\)]", "", file_name)
 	file_name = paste0(file_name, file_ext)
 
