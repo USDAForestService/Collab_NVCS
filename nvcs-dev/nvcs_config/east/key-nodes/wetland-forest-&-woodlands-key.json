@@ -2,7 +2,7 @@
     "node": {
         "name": "Wetland Forest & Woodlands Key",
         "id": "Wetland Forest & Woodlands",
-        "level": "division",
+        "level": "informal",
         "description": [
             "i. The \"physiographic class code\" in FIA database is NOT in the Hydric or Riverine series, AND EITHER",
             "     ia. the \"obligate wet\" (W1) species (see Appendix A) have a combined RIV >=20%; OR",

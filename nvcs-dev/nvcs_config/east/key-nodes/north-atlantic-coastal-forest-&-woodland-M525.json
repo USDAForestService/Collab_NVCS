@@ -2,7 +2,7 @@
     "node": {
         "name": "North Atlantic Coastal Forest & Woodland (M525)",
         "id": "M525",
-        "level": "Macrogroup",
+        "level": "macrogroup",
         "description": [
             "Tree composition dominated by one of the following:",
             "[PM21.1]LOCATED in 221An, 221Ab[DFL22.1], 232A, 232H (but not North Carolina[PM23.1]) or 232I AND tree composition dominated by one or more of the following:",

@@ -2,7 +2,7 @@
     "node": {
         "name": "Acadian-Appalachian Forest (M103)",
         "id": "M103",
-        "level": "Macrogroup",
+        "level": "macrogroup",
         "description": [
             "i.  Located in Ecoprovince 211A to 211E, M211, and 211Ia [i.e all stands in these Acadian- northern Appalachian ecoregions go here, regardless of tree composition].",
             "OR ",

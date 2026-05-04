@@ -2,9 +2,9 @@
     "node": {
         "name": "Native Northern Conifer Plantation",
         "id": "Native Northern Conifer Plantation",
-        "level": "type",
+        "level": "informal",
         "description": [
-            " i. Species are native conifers dominated by one or more of the following with >=25% RIV:",
+            "i. Species are native conifers dominated by one or more of the following with >=25% RIV:",
             "    Pinus banksiana, Pinus resinosa, Pinus strobus, Abies balsamea, Larix laricina, Picea glauca,",
             "    or Picea mariana [note - this list represents the expected list of common northern native pine",
             "    plantation species types. If other common native pine plantation species are identified, they",

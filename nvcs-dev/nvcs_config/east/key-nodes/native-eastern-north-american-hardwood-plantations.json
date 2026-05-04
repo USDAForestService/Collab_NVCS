@@ -2,7 +2,7 @@
     "node": {
         "name": "Native Eastern North American Hardwood Plantations",
         "id": "Native Eastern North American Hardwood Plantations",
-        "level": "type",
+        "level": "informal",
         "description": [
             "Tree species dominated by native hardwoods (See",
             "Appendix A) with RIV > exotic hardwoods."
@@ -13,13 +13,17 @@
         "filters": {
             "NATIVE_HARDWOODS": [
                 {
-                    "exotic": "N",
+                    "exotic": "N"
+                },
+                {
                     "softwoodhardwood": "H"
                 }
             ],
             "EXOTIC_HARDWOODS": [
                 {
-                    "exotic": "Y",
+                    "exotic": "Y"
+                },
+                {
                     "softwoodhardwood": "H"
                 }
             ]

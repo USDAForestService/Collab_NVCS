@@ -1,9 +1,9 @@
-Forest Plantations
-	Tropical Forest Plantation Anthro-marcogroup (CGR008)
-		Caribbean Forest Plantation Anthro-macrogroup (CSG008)
+Forest Plantation Anthro-Division (CSF05)
+	Tropical Forest Plantation Anthro-macrogroup (CGR008)
+		Caribbean Forest Plantation Anthro-group (CSG008)
 			Caribbean Conifer Plantations
 				Native Caribbean Conifer Plantation Anthro-type (CTY001)
-				Exotic Caribbean Forest Plantation Anthro-group (CTY002)
+				Exotic Caribbean Forest Plantation Anthro-type (CTY002)
 			Caribbean Hardwood Plantations
 				Native Caribbean Hardwood Plantation Anthro-type (CTY003)
 				Exotic Caribbean Hardwood Plantation Anthro-type (CTY004)
@@ -63,8 +63,8 @@ Natural and Ruderal Forests
 			Caribbean Natural Wetland Forest
 				Caribbean Swamp (M617)
 			Caribbean Ruderal Wetland Forest
-		Temperate & Boreal Wetland Forest
-			Southeastern North American Flooded & Swamp Forest Division
+		Temperate & Boreal Forested Wetland (F136)
+			Southeastern North American Flooded & Swamp Forest Division (D062)
 				Eastern Warm Temperate Natural Wetland Forest
 					Southern Great Plains Floodplain Forest & Woodland (M154)
 					Pond-cypress Basin Swamp (M161)
@@ -76,14 +76,14 @@ Natural and Ruderal Forests
 					Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)
 				Eastern Warm Temperate Ruderal Wetland Forest
 					Southeastern North American Ruderal Flooded & Swamp Forest (M310)
-			North American Boreal Flooded Forest & Swamp Division
+			North American Boreal Flooded Forest & Swamp Division (D016)
 				Eastern Boreal Natural Wetland Forests
 					North American Boreal Conifer Poor Swamp (M299)
 					North American Boreal Flooded Forest & Rich Swamp (M300)
 				Eastern Boreal Ruderal Wetland Forests
-			Eastern North American Flooded Forest & Swamp Division
+			Eastern North American Flooded Forest & Swamp Division (D011)
 				Eastern Cool Temperate & North American Boreal Wetland Forest
-					Eastern North American - Great Plains Flooded & Swamp Forest Division
+					Eastern North American - Great Plains Flooded & Swamp Forest
 						Eastern Cool Temperate Natural Wetland Forests
 							Laurentian-Acadian Flooded Forest & Swamp (M504)
 							Central Hardwood Floodplain Forest (M029)
@@ -95,7 +95,7 @@ Natural and Ruderal Forests
 							Eastern North American Ruderal Flooded Forest & Swamp (M302)
 	Upland Forest & Woodlands
 		Tropical Forest & Woodland Subclass
-			Tropical Florida - Caribbean Forest
+			Tropical Dry Forest
 				Tropical Florida Forest
 					Tropical Florida Natural Forest
 						Caribbean-Mesoamerican Dry Pine Forest (M296)

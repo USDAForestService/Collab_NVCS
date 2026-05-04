@@ -2,7 +2,7 @@
     "node": {
         "name": "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)",
         "id": "TT2.b1",
-        "level": "division",
+        "level": "ecobiome",
         "description": [
             "other"
         ],

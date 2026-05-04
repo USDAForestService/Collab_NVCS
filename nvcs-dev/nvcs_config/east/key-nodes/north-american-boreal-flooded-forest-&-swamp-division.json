@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "North American Boreal Flooded Forest & Swamp Division",
-        "id": "North American Boreal Flooded Forest & Swamp Division",
-        "level": "Division",
+        "name": "North American Boreal Flooded Forest & Swamp Division (D016)",
+        "id": "D016",
+        "level": "division",
         "description": [
             "D. Tree composition dominated by one of the following:",
             "i. Located in Ecoprovince 212, 211, or M211, AND",

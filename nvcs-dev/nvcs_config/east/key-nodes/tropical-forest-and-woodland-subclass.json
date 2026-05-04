@@ -1,8 +1,8 @@
 {
     "node": {
         "name": "Tropical Forest & Woodland Subclass",
-        "id": "Tropical Forest & Woodland Subclass",
-        "level": "division",
+        "id": "Tropical Forest",
+        "level": "biome",
         "description": [
             "Forests dominated by tropical hardwood, other palms and tropical conifer",
             "tree species. Found in tropical regions of the United States - Puerto Rico,",
@@ -24,7 +24,9 @@
                     "state": "VI"
                 },
                 {
-                    "state": "FL",
+                    "state": "FL"
+                },
+                {
                     "ecoregion": "411A"
                 }
             ],

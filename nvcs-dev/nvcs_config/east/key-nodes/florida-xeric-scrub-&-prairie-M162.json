@@ -2,7 +2,7 @@
     "node": {
         "name": "Florida Xeric Scrub & Prairie (M162)",
         "id": "M162",
-        "level": "Macrogroup",
+        "level": "macrogroup",
         "description": [
             "Tree composition dominated by Pinus clausa =>20% RIV   Florida Xeric Scrub & Prairie (M162) [The USNVC now treats Pinus clausa stands as part of a non-forested ecosystem, as they are closely linked to Florida Scrub as a successional stage in a fire-dominated successional sequence; and they are not part of the Longleaf Pine Woodland macrogroup]"
         ],

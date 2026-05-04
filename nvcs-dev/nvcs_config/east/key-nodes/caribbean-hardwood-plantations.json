@@ -2,7 +2,7 @@
     "node": {
         "name": "Caribbean Hardwood Plantations",
         "id": "Caribbean Hardwood Plantations",
-        "level": "type",
+        "level": "informal",
         "description": [
             "Caribbean species are hardwoods >=25% RIV"
         ],

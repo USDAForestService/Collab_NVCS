@@ -2,15 +2,6 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Forest Plantations",
-        "targetProblem": "Node ID (Forest Plantations) is not present in the Node Name",
-        "alertId": "id59b0b4a279bc8",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
         "targetNode": "Caribbean Conifer Plantations",
         "targetProblem": "Node ID (Caribbean Conifer Plantations) is not present in the Node Name",
         "alertId": "idfbe05c54852e3",
@@ -398,24 +389,6 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Temperate & Boreal Wetland Forest",
-        "targetProblem": "Node ID (Temperate & Boreal Wetland Forest) is not present in the Node Name",
-        "alertId": "idd7c66595d8f09",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Southeastern North American Flooded & Swamp Forest Division",
-        "targetProblem": "Node ID (Southeastern North American Flooded & Swamp Forest Division) is not present in the Node Name",
-        "alertId": "id4a1c27973cbad",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
         "targetNode": "Eastern Warm Temperate Natural Wetland Forest",
         "targetProblem": "Node ID (Eastern Warm Temperate Natural Wetland Forest) is not present in the Node Name",
         "alertId": "idac82fb61b51ae",
@@ -515,15 +488,6 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
-        "targetNode": "North American Boreal Flooded Forest & Swamp Division",
-        "targetProblem": "Node ID (North American Boreal Flooded Forest & Swamp Division) is not present in the Node Name",
-        "alertId": "id1be7f70aee5f8",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
         "targetNode": "Eastern Boreal Natural Wetland Forests",
         "targetProblem": "Node ID (Eastern Boreal Natural Wetland Forests) is not present in the Node Name",
         "alertId": "id8844a51d26028",
@@ -560,15 +524,6 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Eastern North American Flooded Forest & Swamp Division",
-        "targetProblem": "Node ID (Eastern North American Flooded Forest & Swamp Division) is not present in the Node Name",
-        "alertId": "id95d253d4cf5e4",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
         "targetNode": "Eastern Cool Temperate & North American Boreal Wetland Forest",
         "targetProblem": "Node ID (Eastern Cool Temperate & North American Boreal Wetland Forest) is not present in the Node Name",
         "alertId": "id9875b817b5fdc",
@@ -578,9 +533,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest Division",
+        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest",
         "targetProblem": "Node ID (Eastern North American - Great Plains Flooded & Swamp Forest Division) is not present in the Node Name",
-        "alertId": "idf01e9654ca9c5",
+        "alertId": "id7f1d9df2d4fe",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -678,17 +633,17 @@
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
         "targetNode": "Tropical Forest & Woodland Subclass",
-        "targetProblem": "Node ID (Tropical Forest & Woodland Subclass) is not present in the Node Name",
-        "alertId": "id53f138fdd70dc",
+        "targetProblem": "Node ID (Tropical Forest) is not present in the Node Name",
+        "alertId": "id560d34f41695",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Tropical Florida - Caribbean Forest",
-        "targetProblem": "Node ID (Tropical Florida - Caribbean Forest) is not present in the Node Name",
-        "alertId": "id21bc153c467af",
+        "targetNode": "Tropical Dry Forest",
+        "targetProblem": "Node ID (Tt1.b) is not present in the Node Name",
+        "alertId": "id00fb49e60ccd4",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1046,15 +1001,6 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Loblolly Pine Forest Plantation (CST007179)",
-        "targetProblem": "Node File Name loblolly-pine-forest-plantation-cst007179.json is unconventional",
-        "alertId": "id2731974f851e1",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
         "targetNode": "Sand Pine Forest Plantation (CST007168)",
         "targetProblem": "Node File Name sand-pine-forest-plantation-cst007168.json is unconventional",
         "alertId": "ide318c7b2f41e2",
@@ -1244,27 +1190,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).",
-        "targetProblem": "Node File Name mb1-mb1.a-mb1.a2-d004.json is unconventional",
-        "alertId": "idb790f87954c95",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Temperate & Boreal Wetland Forest",
+        "targetNode": "Temperate & Boreal Forested Wetland (F136)",
         "targetProblem": "Node File Name temperate-and-boreal-wetland-forest.json is unconventional",
-        "alertId": "id94aa9393d5859",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Southeastern North American Flooded & Swamp Forest Division",
-        "targetProblem": "Node File Name southeastern-north-american-flooded-and-swamp-forest-division.json is unconventional",
-        "alertId": "idb5dd564b0d6d5",
+        "alertId": "id262a31749362",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1352,18 +1280,27 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Eastern Cool Temperate & North American Boreal Wetland Forest",
-        "targetProblem": "Node File Name eastern-cool-temperate-and-north-american-boreal-wetland-forest.json is unconventional",
-        "alertId": "id0fc165ad8a843",
+        "targetNode": "North American Boreal Flooded Forest & Swamp Division (D016)",
+        "targetProblem": "Node File Name north-american-boreal-flooded-forest-&-swamp-division.json is unconventional",
+        "alertId": "id62acd325e5c11",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest Division",
-        "targetProblem": "Node File Name eastern-north-american-great-plains-flooded-and-swamp-forest-division.json is unconventional",
-        "alertId": "id31e13d1ddb809",
+        "targetNode": "Eastern North American Flooded Forest & Swamp Division (D011)",
+        "targetProblem": "Node File Name eastern-north-american-flooded-forest-&-swamp-division.json is unconventional",
+        "alertId": "id65c6f63638d8f",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Eastern Cool Temperate & North American Boreal Wetland Forest",
+        "targetProblem": "Node File Name eastern-cool-temperate-and-north-american-boreal-wetland-forest.json is unconventional",
+        "alertId": "id0fc165ad8a843",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1400,6 +1337,15 @@
         "targetNode": "Tropical Forest & Woodland Subclass",
         "targetProblem": "Node File Name tropical-forest-and-woodland-subclass.json is unconventional",
         "alertId": "id5a949ea1c68e1",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Tropical Dry Forest",
+        "targetProblem": "Node File Name tropical-florida-caribbean-forest.json is unconventional",
+        "alertId": "idc8e1884306e49",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1532,15 +1478,6 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Central Midwest Mesic Forest (M882)",
-        "targetProblem": "Node File Name central-midwest-mesic-forest-m882.json is unconventional",
-        "alertId": "id46360fa51f547",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
         "targetNode": "Laurentian Mesic Forest LC (M102)",
         "targetProblem": "Node File Name laurentian-acadian-mesic-hardwood-conifer-forest-lc2-m014.json is unconventional",
         "alertId": "id4e288d9ad554a",
@@ -1658,27 +1595,27 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Forest Plantations",
+        "targetNode": "Forest Plantation Anthro-Division (CSF05)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id9b7db7bf61ba1",
+        "alertId": "id8d1352bc59b1b",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Tropical Forest Plantation Anthro-marcogroup (CGR008)",
+        "targetNode": "Tropical Forest Plantation Anthro-macrogroup (CGR008)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id9f34c4dda61a9",
+        "alertId": "idacf5527ddf0ef",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Forest Plantation Anthro-macrogroup (CSG008)",
+        "targetNode": "Caribbean Forest Plantation Anthro-group (CSG008)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id3b0eb3523f7de",
+        "alertId": "idd470dd4b03523",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1703,9 +1640,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Exotic Caribbean Forest Plantation Anthro-group (CTY002)",
+        "targetNode": "Exotic Caribbean Forest Plantation Anthro-type (CTY002)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id40c423c88442",
+        "alertId": "id61554ec1508b6",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2243,18 +2180,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Temperate & Boreal Wetland Forest",
+        "targetNode": "Temperate & Boreal Forested Wetland (F136)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idc13ffa688e799",
+        "alertId": "id9bcdd81f07818",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southeastern North American Flooded & Swamp Forest Division",
+        "targetNode": "Southeastern North American Flooded & Swamp Forest Division (D062)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id67aa171280c1b",
+        "alertId": "idc057851a88caa",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2360,9 +2297,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "North American Boreal Flooded Forest & Swamp Division",
+        "targetNode": "North American Boreal Flooded Forest & Swamp Division (D016)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idbb8421a3a9728",
+        "alertId": "idefa4f9e41d969",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2405,9 +2342,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Eastern North American Flooded Forest & Swamp Division",
+        "targetNode": "Eastern North American Flooded Forest & Swamp Division (D011)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idbe053f19e1175",
+        "alertId": "id659f09e41f6d2",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2423,9 +2360,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest Division",
+        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idf2c096ec9ab1f",
+        "alertId": "id5cfe01b8a133d",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2531,9 +2468,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Tropical Florida - Caribbean Forest",
+        "targetNode": "Tropical Dry Forest",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id8660470a2488d",
+        "alertId": "idbb7a66e6c186f",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3071,27 +3008,27 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Forest Plantations",
+        "targetNode": "Forest Plantation Anthro-Division (CSF05)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idde745683bc04f",
+        "alertId": "id860d9769cd185",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Tropical Forest Plantation Anthro-marcogroup (CGR008)",
+        "targetNode": "Tropical Forest Plantation Anthro-macrogroup (CGR008)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id91783d577229",
+        "alertId": "id8f47c2cfd1173",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Forest Plantation Anthro-macrogroup (CSG008)",
+        "targetNode": "Caribbean Forest Plantation Anthro-group (CSG008)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id52370fcec8f84",
+        "alertId": "idf24d331422d03",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3116,9 +3053,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Exotic Caribbean Forest Plantation Anthro-group (CTY002)",
+        "targetNode": "Exotic Caribbean Forest Plantation Anthro-type (CTY002)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id91288f691754b",
+        "alertId": "idc9cc288764911",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3656,18 +3593,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Temperate & Boreal Wetland Forest",
+        "targetNode": "Temperate & Boreal Forested Wetland (F136)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id406f0798d91ee",
+        "alertId": "idd5c212d04b4ad",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southeastern North American Flooded & Swamp Forest Division",
+        "targetNode": "Southeastern North American Flooded & Swamp Forest Division (D062)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idcb97d199a28a",
+        "alertId": "idb35e8861eabbd",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3773,9 +3710,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "North American Boreal Flooded Forest & Swamp Division",
+        "targetNode": "North American Boreal Flooded Forest & Swamp Division (D016)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id6ec8799d57fe5",
+        "alertId": "id09b147097256e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3818,9 +3755,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern North American Flooded Forest & Swamp Division",
+        "targetNode": "Eastern North American Flooded Forest & Swamp Division (D011)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id725d298cd44e8",
+        "alertId": "ideebcbdddca847",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3836,9 +3773,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest Division",
+        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id6af444d6727fd",
+        "alertId": "id08694057159bf",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3944,9 +3881,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Tropical Florida - Caribbean Forest",
+        "targetNode": "Tropical Dry Forest",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "ideb9e646a9a1ad",
+        "alertId": "idfbeffb10e858a",
         "alertNotes": "",
         "alertAddressed": false
     },
