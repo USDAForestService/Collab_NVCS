@@ -2,7 +2,7 @@
     "node": {
         "name": "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)",
         "id": "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)",
-        "level": "Biome",
+        "level": "informal",
         "description": [
             "Tree composition not as above (that is, freshwater forested wetlands)…………….B (Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a) [note that we do not have good information on Puerto Rico freshwater forested wetlands, and so the key may fail there]"
         ],

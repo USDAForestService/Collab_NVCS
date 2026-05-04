@@ -2,7 +2,7 @@
     "node": {
         "name": "Tropical Florida Forest",
         "id": "Tropical Florida Forest",
-        "level": "division",
+        "level": "informal",
         "description": [
             "Stands found in Tropical Florida (Ecosection 411A) AND",
             "  i. Tropical Tree composition dominated by one or more of Bursera simaruba, Coccoloba diversifolia,",
@@ -16,7 +16,7 @@
             "iii. Ruderal (weedy natives and exotic) tree species with >=80% RIV"
         ],
         "trigger": [
-            "    match(TROPICAL_FLORIDA)",
+            "match(TROPICAL_FLORIDA)",
             "and (    riv(STRONG_DIAGNOSTIC_SPECIES) >= 50",
             "     or (riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)",
             "     or  riv(RUDERAL_SPECIES) >= 80)"
@@ -24,7 +24,9 @@
         "filters": {
             "TROPICAL_FLORIDA": [
                 {
-                    "state": "FL",
+                    "state": "FL"
+                },
+                {
                     "ecoregion": "411A"
                 }
             ],

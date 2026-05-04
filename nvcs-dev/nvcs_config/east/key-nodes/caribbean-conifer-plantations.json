@@ -2,7 +2,7 @@
     "node": {
         "name": "Caribbean Conifer Plantations",
         "id": "Caribbean Conifer Plantations",
-        "level": "type",
+        "level": "informal",
         "description": [
             "Caribbean species are conifers >=25% RIV"
         ],

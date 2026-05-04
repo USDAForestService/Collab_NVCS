@@ -2,7 +2,7 @@
     "node": {
         "name": "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).",
         "id": "Brackish Tidal Wetland Biome",
-        "level": "Biome",
+        "level": "informal",
         "description": [
             "A.  Plots found in coastal brackish tidal conditions, where ",
             "i.  Plots found in Ecosection 232 or 411 (Tropical Florida and Gulf or Atlantic coast) AND ",

@@ -46,12 +46,12 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Node _setup() {
         nodes.put(0, new Node(0, null, element_000(), ""));
-        nodes.put(  1,  new Node(  1,   0, element_001(), "Forest Plantations"));
-        nodes.put(  2,  new Node(  2,   1, element_002(), "Tropical Forest Plantation Anthro-marcogroup (CGR008)"));
-        nodes.put(  3,  new Node(  3,   2, element_003(), "Caribbean Forest Plantation Anthro-macrogroup (CSG008)"));
+        nodes.put(  1,  new Node(  1,   0, element_001(), "Forest Plantation Anthro-Division (CSF05)"));
+        nodes.put(  2,  new Node(  2,   1, element_002(), "Tropical Forest Plantation Anthro-macrogroup (CGR008)"));
+        nodes.put(  3,  new Node(  3,   2, element_003(), "Caribbean Forest Plantation Anthro-group (CSG008)"));
         nodes.put(  4,  new Node(  4,   3, element_004(), "Caribbean Conifer Plantations"));
         nodes.put(  5,  new Node(  5,   4, element_005(), "Native Caribbean Conifer Plantation Anthro-type (CTY001)"));
-        nodes.put(  6,  new Node(  6,   4, element_006(), "Exotic Caribbean Forest Plantation Anthro-group (CTY002)"));
+        nodes.put(  6,  new Node(  6,   4, element_006(), "Exotic Caribbean Forest Plantation Anthro-type (CTY002)"));
         nodes.put(  7,  new Node(  7,   3, element_007(), "Caribbean Hardwood Plantations"));
         nodes.put(  8,  new Node(  8,   7, element_008(), "Native Caribbean Hardwood Plantation Anthro-type (CTY003)"));
         nodes.put(  9,  new Node(  9,   7, element_009(), "Exotic Caribbean Hardwood Plantation Anthro-type (CTY004)"));
@@ -111,8 +111,8 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put( 63,  new Node( 63,  62, element_063(), "Caribbean Natural Wetland Forest"));
         nodes.put( 64,  new Node( 64,  63, element_064(), "Caribbean Swamp (M617)"));
         nodes.put( 65,  new Node( 65,  62, element_065(), "Caribbean Ruderal Wetland Forest"));
-        nodes.put( 66,  new Node( 66,  57, element_066(), "Temperate & Boreal Wetland Forest"));
-        nodes.put( 67,  new Node( 67,  66, element_067(), "Southeastern North American Flooded & Swamp Forest Division"));
+        nodes.put( 66,  new Node( 66,  57, element_066(), "Temperate & Boreal Forested Wetland (F136)"));
+        nodes.put( 67,  new Node( 67,  66, element_067(), "Southeastern North American Flooded & Swamp Forest Division (D062)"));
         nodes.put( 68,  new Node( 68,  67, element_068(), "Eastern Warm Temperate Natural Wetland Forest"));
         nodes.put( 69,  new Node( 69,  68, element_069(), "Southern Great Plains Floodplain Forest & Woodland (M154)"));
         nodes.put( 70,  new Node( 70,  68, element_070(), "Pond-cypress Basin Swamp (M161)"));
@@ -124,14 +124,14 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put( 76,  new Node( 76,  68, element_076(), "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)"));
         nodes.put( 77,  new Node( 77,  67, element_077(), "Eastern Warm Temperate Ruderal Wetland Forest"));
         nodes.put( 78,  new Node( 78,  77, element_078(), "Southeastern North American Ruderal Flooded & Swamp Forest (M310)"));
-        nodes.put( 79,  new Node( 79,  66, element_079(), "North American Boreal Flooded Forest & Swamp Division"));
+        nodes.put( 79,  new Node( 79,  66, element_079(), "North American Boreal Flooded Forest & Swamp Division (D016)"));
         nodes.put( 80,  new Node( 80,  79, element_080(), "Eastern Boreal Natural Wetland Forests"));
         nodes.put( 81,  new Node( 81,  80, element_081(), "North American Boreal Conifer Poor Swamp (M299)"));
         nodes.put( 82,  new Node( 82,  80, element_082(), "North American Boreal Flooded Forest & Rich Swamp (M300)"));
         nodes.put( 83,  new Node( 83,  79, element_083(), "Eastern Boreal Ruderal Wetland Forests"));
-        nodes.put( 84,  new Node( 84,  66, element_084(), "Eastern North American Flooded Forest & Swamp Division"));
+        nodes.put( 84,  new Node( 84,  66, element_084(), "Eastern North American Flooded Forest & Swamp Division (D011)"));
         nodes.put( 85,  new Node( 85,  84, element_085(), "Eastern Cool Temperate & North American Boreal Wetland Forest"));
-        nodes.put( 86,  new Node( 86,  85, element_086(), "Eastern North American - Great Plains Flooded & Swamp Forest Division"));
+        nodes.put( 86,  new Node( 86,  85, element_086(), "Eastern North American - Great Plains Flooded & Swamp Forest"));
         nodes.put( 87,  new Node( 87,  86, element_087(), "Eastern Cool Temperate Natural Wetland Forests"));
         nodes.put( 88,  new Node( 88,  87, element_088(), "Laurentian-Acadian Flooded Forest & Swamp (M504)"));
         nodes.put( 89,  new Node( 89,  87, element_089(), "Central Hardwood Floodplain Forest (M029)"));
@@ -143,7 +143,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put( 95,  new Node( 95,  94, element_095(), "Eastern North American Ruderal Flooded Forest & Swamp (M302)"));
         nodes.put( 96,  new Node( 96,  56, element_096(), "Upland Forest & Woodlands"));
         nodes.put( 97,  new Node( 97,  96, element_097(), "Tropical Forest & Woodland Subclass"));
-        nodes.put( 98,  new Node( 98,  97, element_098(), "Tropical Florida - Caribbean Forest"));
+        nodes.put( 98,  new Node( 98,  97, element_098(), "Tropical Dry Forest"));
         nodes.put( 99,  new Node( 99,  98, element_099(), "Tropical Florida Forest"));
         nodes.put(100,  new Node(100,  99, element_100(), "Tropical Florida Natural Forest"));
         nodes.put(101,  new Node(101, 100, element_101(), "Caribbean-Mesoamerican Dry Pine Forest (M296)"));
@@ -226,11 +226,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_001() {
 
-        // Forest Plantations
-        // Forest Plantations
+        // Forest Plantation Anthro-Division (CSF05)
+        // CSF05
 
         String level = "division";
-        String code = "Forest Plantations";
+        String code = "CSF05";
 
         // Vegetation shows evidence of intensive human management as planted vegetation,
         // such as trees being planted in rows, often dominated by single-species, and even
@@ -254,10 +254,10 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_002() {
 
-        // Tropical Forest Plantation Anthro-marcogroup (CGR008)
+        // Tropical Forest Plantation Anthro-macrogroup (CGR008)
         // CGR008
 
-        String level = "group";
+        String level = "macrogroup";
         String code = "CGR008";
 
         // Conifer & Hardwood plantations found in the tropics, including Puerto Rico, U.S. Virgin Islands, and tropical Florida (EcoSection 411A)
@@ -291,10 +291,10 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_003() {
 
-        // Caribbean Forest Plantation Anthro-macrogroup (CSG008)
+        // Caribbean Forest Plantation Anthro-group (CSG008)
         // CSG008
 
-        String level = "subgroup";
+        String level = "group";
         String code = "CSG008";
 
         // Tropical forest plantations found in the Caribbean region,
@@ -332,7 +332,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean Conifer Plantations
         // Caribbean Conifer Plantations
 
-        String level = "type";
+        String level = "informal";
         String code = "Caribbean Conifer Plantations";
 
         // Caribbean species are conifers >=25% RIV
@@ -395,7 +395,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_006() {
 
-        // Exotic Caribbean Forest Plantation Anthro-group (CTY002)
+        // Exotic Caribbean Forest Plantation Anthro-type (CTY002)
         // CTY002
 
         String level = "type";
@@ -415,7 +415,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean Hardwood Plantations
         // Caribbean Hardwood Plantations
 
-        String level = "type";
+        String level = "informal";
         String code = "Caribbean Hardwood Plantations";
 
         // Caribbean species are hardwoods >=25% RIV
@@ -566,7 +566,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern North American Conifer Plantations
         // Eastern North American Conifer Plantations
 
-        String level = "subgroup";
+        String level = "informal";
         String code = "Eastern North American Conifer Plantations";
 
         // Eastern North American species are conifers >=25% RIV
@@ -591,27 +591,33 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Native Eastern North American Conifer Plantations
         // Native Eastern North American Conifer Plantations
 
-        String level = "type";
+        String level = "informal";
         String code = "Native Eastern North American Conifer Plantations";
 
         // Tree species dominated by native conifers (See
         // Appendix A) with RIV > exotic conifers
 
         List<KeyValue> NATIVE_CONIFERS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "N"),
+            new KeyValue("exotic", "N")
+        );
+        List<KeyValue> NATIVE_CONIFERS_pattern1 = Arrays.asList(
             new KeyValue("softwoodhardwood", "S")
         );
         List<List<KeyValue>> NATIVE_CONIFERS_patterns = Arrays.asList(
-            NATIVE_CONIFERS_pattern0
+            NATIVE_CONIFERS_pattern0,
+            NATIVE_CONIFERS_pattern1
         );
         PatternList NATIVE_CONIFERS = new PatternList("NATIVE_CONIFERS", NATIVE_CONIFERS_patterns);
 
         List<KeyValue> EXOTIC_CONIFERS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "Y"),
+            new KeyValue("exotic", "Y")
+        );
+        List<KeyValue> EXOTIC_CONIFERS_pattern1 = Arrays.asList(
             new KeyValue("softwoodhardwood", "S")
         );
         List<List<KeyValue>> EXOTIC_CONIFERS_patterns = Arrays.asList(
-            EXOTIC_CONIFERS_pattern0
+            EXOTIC_CONIFERS_pattern0,
+            EXOTIC_CONIFERS_pattern1
         );
         PatternList EXOTIC_CONIFERS = new PatternList("EXOTIC_CONIFERS", EXOTIC_CONIFERS_patterns);
 
@@ -1010,10 +1016,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Native Northern Conifer Plantation
         // Native Northern Conifer Plantation
 
-        String level = "type";
+        String level = "informal";
         String code = "Native Northern Conifer Plantation";
 
-        //  i. Species are native conifers dominated by one or more of the following with >=25% RIV:
+        // i. Species are native conifers dominated by one or more of the following with >=25% RIV:
         //     Pinus banksiana, Pinus resinosa, Pinus strobus, Abies balsamea, Larix laricina, Picea glauca,
         //     or Picea mariana [note - this list represents the expected list of common northern native pine
         //     plantation species types. If other common native pine plantation species are identified, they
@@ -1542,7 +1548,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Exotic Eastern North American Conifer Plantations
         // Exotic Eastern North American Conifer Plantations
 
-        String level = "type";
+        String level = "informal";
         String code = "Exotic Eastern North American Conifer Plantations";
 
         // Tree species are dominated by exotic conifers (See
@@ -1809,27 +1815,33 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Native Eastern North American Hardwood Plantations
         // Native Eastern North American Hardwood Plantations
 
-        String level = "type";
+        String level = "informal";
         String code = "Native Eastern North American Hardwood Plantations";
 
         // Tree species dominated by native hardwoods (See
         // Appendix A) with RIV > exotic hardwoods.
 
         List<KeyValue> NATIVE_HARDWOODS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "N"),
+            new KeyValue("exotic", "N")
+        );
+        List<KeyValue> NATIVE_HARDWOODS_pattern1 = Arrays.asList(
             new KeyValue("softwoodhardwood", "H")
         );
         List<List<KeyValue>> NATIVE_HARDWOODS_patterns = Arrays.asList(
-            NATIVE_HARDWOODS_pattern0
+            NATIVE_HARDWOODS_pattern0,
+            NATIVE_HARDWOODS_pattern1
         );
         PatternList NATIVE_HARDWOODS = new PatternList("NATIVE_HARDWOODS", NATIVE_HARDWOODS_patterns);
 
         List<KeyValue> EXOTIC_HARDWOODS_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "Y"),
+            new KeyValue("exotic", "Y")
+        );
+        List<KeyValue> EXOTIC_HARDWOODS_pattern1 = Arrays.asList(
             new KeyValue("softwoodhardwood", "H")
         );
         List<List<KeyValue>> EXOTIC_HARDWOODS_patterns = Arrays.asList(
-            EXOTIC_HARDWOODS_pattern0
+            EXOTIC_HARDWOODS_pattern0,
+            EXOTIC_HARDWOODS_pattern1
         );
         PatternList EXOTIC_HARDWOODS = new PatternList("EXOTIC_HARDWOODS", EXOTIC_HARDWOODS_patterns);
 
@@ -2155,7 +2167,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Exotic Eastern North American Hardwood Plantations
         // Exotic Eastern North American Hardwood Plantations
 
-        String level = "type";
+        String level = "informal";
         String code = "Exotic Eastern North American Hardwood Plantations";
 
         // Tree species dominated by exotic hardwoods (See Appendix A) with RIV > native hardwoods.
@@ -2254,7 +2266,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Natural and Ruderal Forests
         // Natural and Ruderal Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Natural and Ruderal Forests";
 
         // other
@@ -2271,7 +2283,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Wetland Forest & Woodlands Key
         // Wetland Forest & Woodlands
 
-        String level = "division";
+        String level = "informal";
         String code = "Wetland Forest & Woodlands";
 
         // i. The "physiographic class code" in FIA database is NOT in the Hydric or Riverine series, AND EITHER
@@ -2446,7 +2458,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).
         // Brackish Tidal Wetland Biome
 
-        String level = "Biome";
+        String level = "informal";
         String code = "Brackish Tidal Wetland Biome";
 
         // A.  Plots found in coastal brackish tidal conditions, where 
@@ -2498,7 +2510,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical Florida Natural Mangrove Forests
         // Tropical Florida Natural Mangrove Forests
 
-        String level = "Division";
+        String level = "informal";
         String code = "Tropical Florida Natural Mangrove Forests";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no evidence of trees in a row, no very recent logging, understory mowing, etc. (trees may be early successional pole-sized trees following logging or blowdowns). Tree composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix B - needs to be refined for this Division).
@@ -2565,7 +2577,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical Florida Ruderal Mangrove Forests
         // Tropical Florida Ruderal Mangrove Forests
 
-        String level = "Division";
+        String level = "informal";
         String code = "Tropical Florida Ruderal Mangrove Forests";
 
         // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division).
@@ -2594,7 +2606,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)
         // Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)
 
-        String level = "Biome";
+        String level = "informal";
         String code = "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)";
 
         // Tree composition not as above (that is, freshwater forested wetlands)…………….B (Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a) [note that we do not have good information on Puerto Rico freshwater forested wetlands, and so the key may fail there]
@@ -2619,7 +2631,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean Natural Wetland Forest
         // Caribbean Natural Wetland Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Caribbean Natural Wetland Forest";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -2671,7 +2683,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean Ruderal Wetland Forest
         // Caribbean Ruderal Wetland Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Caribbean Ruderal Wetland Forest";
 
         // At this time, no ruderal types are know in the Caribbean region of the U.S., its
@@ -2686,11 +2698,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_066() {
 
-        // Temperate & Boreal Wetland Forest
-        // Temperate & Boreal Wetland Forest
+        // Temperate & Boreal Forested Wetland (F136)
+        // F136
 
-        String level = "division";
-        String code = "Temperate & Boreal Wetland Forest";
+        String level = "ecobiome";
+        String code = "F136";
 
         // other
 
@@ -2703,11 +2715,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_067() {
 
-        // Southeastern North American Flooded & Swamp Forest Division
-        // Southeastern North American Flooded & Swamp Forest Division
+        // Southeastern North American Flooded & Swamp Forest Division (D062)
+        // D062
 
         String level = "division";
-        String code = "Southeastern North American Flooded & Swamp Forest Division";
+        String code = "D062";
 
         // i. Tree composition dominated by one or more of conifers of Chamaecyparis thyoides, Pinus elliottii,
         //     Pinus glabra, Pinus palustris, Pinus serotina, Pinus taeda, Taxodium distichum, Taxodium ascendens,
@@ -2889,7 +2901,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern Warm Temperate Natural Wetland Forest
         // Eastern Warm Temperate Natural Wetland Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern Warm Temperate Natural Wetland Forest";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -4112,7 +4124,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern Warm Temperate Ruderal Wetland Forest
         // Eastern Warm Temperate Ruderal Wetland Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern Warm Temperate Ruderal Wetland Forest";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -4147,11 +4159,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_079() {
 
-        // North American Boreal Flooded Forest & Swamp Division
-        // North American Boreal Flooded Forest & Swamp Division
+        // North American Boreal Flooded Forest & Swamp Division (D016)
+        // D016
 
-        String level = "Division";
-        String code = "North American Boreal Flooded Forest & Swamp Division";
+        String level = "division";
+        String code = "D016";
 
         // D. Tree composition dominated by one of the following:
         // i. Located in Ecoprovince 212, 211, or M211, AND
@@ -4221,7 +4233,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern Boreal Natural Wetland Forests
         // Eastern Boreal Natural Wetland Forests
 
-        String level = "Division";
+        String level = "informal";
         String code = "Eastern Boreal Natural Wetland Forests";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no evidence of trees in a row, no very recent logging, understory mowing, etc. (trees may be early successional pole-sized trees following logging or blowdowns). Tree composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix B - needs to be refined for this Division).
@@ -4323,7 +4335,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern Boreal Ruderal Wetland Forests
         // Eastern Boreal Ruderal Wetland Forests
 
-        String level = "Division";
+        String level = "informal";
         String code = "Eastern Boreal Ruderal Wetland Forests";
 
         // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division).
@@ -4349,11 +4361,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_084() {
 
-        // Eastern North American Flooded Forest & Swamp Division
-        // Eastern North American Flooded Forest & Swamp Division
+        // Eastern North American Flooded Forest & Swamp Division (D011)
+        // D011
 
         String level = "division";
-        String code = "Eastern North American Flooded Forest & Swamp Division";
+        String code = "D011";
 
         // Eastern North American wetland Temperate & Boreal Forest (all forests found
         // in EcoSection 411A, EcoDomain Humid Temperate (200 or M200) of the eastern
@@ -4373,7 +4385,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern Cool Temperate & North American Boreal Wetland Forest
         // Eastern Cool Temperate & North American Boreal Wetland Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern Cool Temperate & North American Boreal Wetland Forest";
 
         // other
@@ -4387,10 +4399,10 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_086() {
 
-        // Eastern North American - Great Plains Flooded & Swamp Forest Division
+        // Eastern North American - Great Plains Flooded & Swamp Forest
         // Eastern North American - Great Plains Flooded & Swamp Forest Division
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern North American - Great Plains Flooded & Swamp Forest Division";
 
         // other
@@ -4407,7 +4419,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern Cool Temperate Natural Wetland Forests
         // Eastern Cool Temperate Natural Wetland Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern Cool Temperate Natural Wetland Forests";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -5190,7 +5202,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern Cool Temperate Ruderal Wetland Forests
         // Eastern Cool Temperate Ruderal Wetland Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern Cool Temperate Ruderal Wetland Forests";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -5228,7 +5240,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Upland Forest & Woodlands
         // Upland Forest & Woodlands
 
-        String level = "division";
+        String level = "informal";
         String code = "Upland Forest & Woodlands";
 
         // other
@@ -5243,10 +5255,10 @@ public class ClassificationKeyEast extends ClassificationKey {
     public Object[] element_097() {
 
         // Tropical Forest & Woodland Subclass
-        // Tropical Forest & Woodland Subclass
+        // Tropical Forest
 
-        String level = "division";
-        String code = "Tropical Forest & Woodland Subclass";
+        String level = "biome";
+        String code = "Tropical Forest";
 
         // Forests dominated by tropical hardwood, other palms and tropical conifer
         // tree species. Found in tropical regions of the United States - Puerto Rico,
@@ -5263,13 +5275,16 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("state", "VI")
         );
         List<KeyValue> TROPICAL_LOCATION_pattern2 = Arrays.asList(
-            new KeyValue("state", "FL"),
+            new KeyValue("state", "FL")
+        );
+        List<KeyValue> TROPICAL_LOCATION_pattern3 = Arrays.asList(
             new KeyValue("ecoregion", "411A")
         );
         List<List<KeyValue>> TROPICAL_LOCATION_patterns = Arrays.asList(
             TROPICAL_LOCATION_pattern0,
             TROPICAL_LOCATION_pattern1,
-            TROPICAL_LOCATION_pattern2
+            TROPICAL_LOCATION_pattern2,
+            TROPICAL_LOCATION_pattern3
         );
         PatternList TROPICAL_LOCATION = new PatternList("TROPICAL_LOCATION", TROPICAL_LOCATION_patterns);
 
@@ -5306,29 +5321,32 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_098() {
 
-        // Tropical Florida - Caribbean Forest
-        // Tropical Florida - Caribbean Forest
+        // Tropical Dry Forest
+        // Tt1.b
 
-        String level = "division";
-        String code = "Tropical Florida - Caribbean Forest";
+        String level = "subbiome";
+        String code = "Tt1.b";
 
         // Tropical hardwood and tropical conifer forests found in Puerto Rico, U.S. Virgin Islands,
         // and in tropical Florida (EcoSection 411A)
 
         List<KeyValue> TROPICAL_ATLANTIC_pattern0 = Arrays.asList(
-            new KeyValue("state", "FL"),
-            new KeyValue("ecoregion", "411A")
+            new KeyValue("state", "FL")
         );
         List<KeyValue> TROPICAL_ATLANTIC_pattern1 = Arrays.asList(
-            new KeyValue("state", "PR")
+            new KeyValue("ecoregion", "411A")
         );
         List<KeyValue> TROPICAL_ATLANTIC_pattern2 = Arrays.asList(
+            new KeyValue("state", "PR")
+        );
+        List<KeyValue> TROPICAL_ATLANTIC_pattern3 = Arrays.asList(
             new KeyValue("state", "VI")
         );
         List<List<KeyValue>> TROPICAL_ATLANTIC_patterns = Arrays.asList(
             TROPICAL_ATLANTIC_pattern0,
             TROPICAL_ATLANTIC_pattern1,
-            TROPICAL_ATLANTIC_pattern2
+            TROPICAL_ATLANTIC_pattern2,
+            TROPICAL_ATLANTIC_pattern3
         );
         PatternList TROPICAL_ATLANTIC = new PatternList("TROPICAL_ATLANTIC", TROPICAL_ATLANTIC_patterns);
 
@@ -5344,7 +5362,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical Florida Forest
         // Tropical Florida Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Tropical Florida Forest";
 
         // Stands found in Tropical Florida (Ecosection 411A) AND
@@ -5359,11 +5377,14 @@ public class ClassificationKeyEast extends ClassificationKey {
         // iii. Ruderal (weedy natives and exotic) tree species with >=80% RIV
 
         List<KeyValue> TROPICAL_FLORIDA_pattern0 = Arrays.asList(
-            new KeyValue("state", "FL"),
+            new KeyValue("state", "FL")
+        );
+        List<KeyValue> TROPICAL_FLORIDA_pattern1 = Arrays.asList(
             new KeyValue("ecoregion", "411A")
         );
         List<List<KeyValue>> TROPICAL_FLORIDA_patterns = Arrays.asList(
-            TROPICAL_FLORIDA_pattern0
+            TROPICAL_FLORIDA_pattern0,
+            TROPICAL_FLORIDA_pattern1
         );
         PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_patterns);
 
@@ -5424,7 +5445,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList RUDERAL_SPECIES = new PatternList("RUDERAL_SPECIES", RUDERAL_SPECIES_patterns);
 
         INodeMatch match = plot -> (
-                plot.match(TROPICAL_FLORIDA)
+            plot.match(TROPICAL_FLORIDA)
            && (    plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
                 || (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(STRONG_DIAGNOSTIC_SPECIES) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)
                 ||  plot.riv(RUDERAL_SPECIES) >= 80)
@@ -5438,7 +5459,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical Florida Natural Forest
         // Tropical Florida Natural Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Tropical Florida Natural Forest";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -5471,7 +5492,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean-Mesoamerican Dry Pine Forest (M296)
         // M296
 
-        String level = "";
+        String level = "macrogroup";
         String code = "M296";
 
         // Caribbean-Mesoamerican Dry Pine Forest (M296)
@@ -5618,7 +5639,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical Florida Ruderal Forest
         // Tropical Florida Ruderal Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Tropical Florida Ruderal Forest";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -5656,7 +5677,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean Forest
         // Caribbean Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Caribbean Forest";
 
         // Stands found in Caribbean islands.
@@ -5685,7 +5706,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean Natural Forest
         // Caribbean Natural Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Caribbean Natural Forest";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -5718,10 +5739,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean & Central American Dry Forests
         // Caribbean & Central American Dry Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Caribbean & Central American Dry Forests";
 
-        //  i. Tree composition dominated by Pinus elliottii (= var. densa) or Pinus caribaea, alone or in
+        // i. Tree composition dominated by Pinus elliottii (= var. densa) or Pinus caribaea, alone or in
         //     combination (>=50% RIV)
         // OR
         // ii. Tree composition as above, but with >=20% RIV, AND other species are any combination of (in
@@ -5864,7 +5885,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Caribbean Ruderal Forest
         // Caribbean Ruderal Forest
 
-        String level = "division";
+        String level = "informal";
         String code = "Caribbean Ruderal Forest";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -5902,7 +5923,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Temperate & Boreal Forests
         // Temperate & Boreal Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Temperate & Boreal Forests";
 
         // other
@@ -5919,7 +5940,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Temperate-Boreal Forest & Woodland (TT2)
         // TT2
 
-        String level = "Biome";
+        String level = "biome";
         String code = "TT2";
 
         // Woodland Subbiome (TT2.a), Cool Temperate Forest & Woodland Subbiome (TT2.b)) [note, Boreal Forest & Woodland Subbiome (TT2.c)  may occur in northern Minnesota or Michigan, but they are not reliably separated from subboreal counterparts, so this subbiome is not currently applied. Upland Subboreal equivalents, such as those dominated by Picea glauca or Picea mariana, are tracked in the Temperate Forest & Woodland subbiome under M159 (G999) and M102 (G048)]  D
@@ -6079,7 +6100,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Southeastern Warm Temperate Natural Forests
         // Southeastern Warm Temperate Natural Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Southeastern Warm Temperate Natural Forests";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -7085,7 +7106,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Florida Xeric Scrub & Prairie (M162)
         // M162
 
-        String level = "Macrogroup";
+        String level = "macrogroup";
         String code = "M162";
 
         // Tree composition dominated by Pinus clausa =>20% RIV   Florida Xeric Scrub & Prairie (M162) [The USNVC now treats Pinus clausa stands as part of a non-forested ecosystem, as they are closely linked to Florida Scrub as a successional stage in a fire-dominated successional sequence; and they are not part of the Longleaf Pine Woodland macrogroup]
@@ -7127,7 +7148,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Southeastern Warm Temperate Ruderal Forests
         // Southeastern Warm Temperate Ruderal Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Southeastern Warm Temperate Ruderal Forests";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -7165,7 +7186,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)
         // TT2.b1
 
-        String level = "division";
+        String level = "ecobiome";
         String code = "TT2.b1";
 
         // other
@@ -7182,7 +7203,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // North American Great Plains Forest & Woodland (D332)
         // D332
 
-        String level = "Division";
+        String level = "division";
         String code = "D332";
 
         // Located in Ecoprovince 331, 332, 315B, 315C, 315D, 315E, 315F, 315G, 255….North American Great Plains Forest & Woodland Division D332)……………………………….……F1
@@ -7239,7 +7260,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Great Plains Natural Woodlands
         // Great Plains Natural Woodlands
 
-        String level = "division";
+        String level = "informal";
         String code = "Great Plains Natural Woodlands";
 
         // 0. Vegetation in a relatively natural state, dominated by native species; little or no evidence of trees in a row, no very recent logging, understory mowing, etc. (trees may be early successional pole-sized trees following logging or blowdowns). Tree composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix B - needs to be refined for this Division).................Great Plains Natural Woodlands
@@ -7450,7 +7471,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Great Plains Ruderal Woodland
         // Great Plains Ruderal Woodland
 
-        String level = "division";
+        String level = "informal";
         String code = "Great Plains Ruderal Woodland";
 
         // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division.………………………………………………………………………………………. Great Plains Ruderal Woodlands
@@ -7501,7 +7522,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern North American Forest & Woodland (D008)
         // D008a
 
-        String level = "Division";
+        String level = "division";
         String code = "D008a";
 
         // Tree composition not as above.  Eastern North American Forest & Woodland Division (D008)……………………………………………………………………………………………………………………..F2
@@ -7518,7 +7539,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern North American Natural Forest & Woodlands
         // Eastern Cool Temperate Natural Forest & Woodlands
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern Cool Temperate Natural Forest & Woodlands";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
@@ -7551,7 +7572,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)
         // Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)
 
-        String level = "division";
+        String level = "informal";
         String code = "Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)";
 
         // i. Tree composition dominated by one or more of Abies balsamea, Abies fraseri, Picea rubens (>=20% RIV)
@@ -7863,7 +7884,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Laurentian Forests
         // Laurentian Forests
 
-        String level = "division";
+        String level = "informal";
         String code = "Laurentian Forests";
 
         // 2. Tree composition dominated by one of the following:
@@ -8059,7 +8080,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Acadian-Appalachian Forest (M103)
         // M103
 
-        String level = "Macrogroup";
+        String level = "macrogroup";
         String code = "M103";
 
         // i.  Located in Ecoprovince 211A to 211E, M211, and 211Ia [i.e all stands in these Acadian- northern Appalachian ecoregions go here, regardless of tree composition].
@@ -8463,7 +8484,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups
         // Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups
 
-        String level = "division";
+        String level = "informal";
         String code = "Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups";
 
         // other
@@ -8480,7 +8501,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // North Atlantic Coastal Forest & Woodland (M525)
         // M525
 
-        String level = "Macrogroup";
+        String level = "macrogroup";
         String code = "M525";
 
         // Tree composition dominated by one of the following:
@@ -10725,7 +10746,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Eastern North American Ruderal Forest & Woodlands
         // Eastern Cool Temperate Ruderal Forest & Woodlands
 
-        String level = "division";
+        String level = "informal";
         String code = "Eastern Cool Temperate Ruderal Forest & Woodlands";
 
         // Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (See Appendix A -

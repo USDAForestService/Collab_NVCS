@@ -2,7 +2,7 @@
     "node": {
         "name": "Temperate-Boreal Forest & Woodland (TT2)",
         "id": "TT2",
-        "level": "Biome",
+        "level": "biome",
         "description": [
             "Woodland Subbiome (TT2.a), Cool Temperate Forest & Woodland Subbiome (TT2.b)) [note, Boreal Forest & Woodland Subbiome (TT2.c)  may occur in northern Minnesota or Michigan, but they are not reliably separated from subboreal counterparts, so this subbiome is not currently applied. Upland Subboreal equivalents, such as those dominated by Picea glauca or Picea mariana, are tracked in the Temperate Forest & Woodland subbiome under M159 (G999) and M102 (G048)]  D"
         ],

@@ -1,17 +1,16 @@
 {
     "node": {
-        "name": "Caribbean Forest Plantation Anthro-macrogroup (CSG008)",
-        "id": "CSG008",
-        "level": "subgroup",
+        "name": "Tropical Forest Plantation Anthro-macrogroup (CGR008)",
+        "id": "CGR008",
+        "level": "macrogroup",
         "description": [
-            "Tropical forest plantations found in the Caribbean region,",
-            "including Puerto Rico, U.S. Virgin Islands, and tropical Florida (EcoSection 411A)"
+            "Conifer & Hardwood plantations found in the tropics, including Puerto Rico, U.S. Virgin Islands, and tropical Florida (EcoSection 411A)"
         ],
         "trigger": [
-            "match(CARIBBEAN)"
+            "match(TROPICAL_LOCATION)"
         ],
         "filters": {
-            "CARIBBEAN": [
+            "TROPICAL_LOCATION": [
                 {
                     "state": "PR"
                 },

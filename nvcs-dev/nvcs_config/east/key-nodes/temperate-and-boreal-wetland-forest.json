@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "Temperate & Boreal Wetland Forest",
-        "id": "Temperate & Boreal Wetland Forest",
-        "level": "division",
+        "name": "Temperate & Boreal Forested Wetland (F136)",
+        "id": "F136",
+        "level": "ecobiome",
         "description": [
             "other"
         ],
