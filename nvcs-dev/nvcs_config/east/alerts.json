@@ -92,15 +92,6 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Red Pine Forest Plantation (CST007117)",
-        "targetProblem": "Node ID (Red Pine Forest Plantation (CST007117)) is not present in the Node Name",
-        "alertId": "idfd0834478f0fc",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
         "targetNode": "White Pine Forest Plantation (CST007178)",
         "targetProblem": "Node ID (White Pine Forest Plantation (CST007178)) is not present in the Node Name",
         "alertId": "id6a82bb13fa24b",
@@ -1019,15 +1010,6 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Red Pine Forest Plantation (CST007117)",
-        "targetProblem": "Node File Name red-pine-forest-plantation-cst007117.json is unconventional",
-        "alertId": "idedf2877a5687c",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
         "targetNode": "White Pine Forest Plantation (CST007178)",
         "targetProblem": "Node File Name white-pine-forest-plantation-cst007178.json is unconventional",
         "alertId": "id492b46bb9191d",
@@ -1184,6 +1166,15 @@
         "targetNode": "Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)",
         "targetProblem": "Node File Name native-miscellaneous-southern-hardwood-forest-plantation-cst007155.json is unconventional",
         "alertId": "id81fbb5b60c054",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).",
+        "targetProblem": "Node File Name mb1-mb1.a-mb1.a2-d004.json is unconventional",
+        "alertId": "id5fae5e9933a16",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1802,9 +1793,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Red Pine Forest Plantation (CST007117)",
+        "targetNode": "Red Pine Forest Plantation (CST007177)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id52632ad6aca0f",
+        "alertId": "id5fa54651aef7c",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3215,9 +3206,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Red Pine Forest Plantation (CST007117)",
+        "targetNode": "Red Pine Forest Plantation (CST007177)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id83f60832ae8cf",
+        "alertId": "id59436e0668147",
         "alertNotes": "",
         "alertAddressed": false
     },

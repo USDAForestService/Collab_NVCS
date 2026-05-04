@@ -21,7 +21,7 @@ Forest Plantation Anthro-Division (CSF05)
 						Native Miscellaneous Southern Pine Forest Plantation (CST007160)
 					Native Northern Conifer Plantation
 						Native Northern Pine Plantation Anthro-type (CTY009)
-							Red Pine Forest Plantation (CST007117)
+							Red Pine Forest Plantation (CST007177)
 							White Pine Forest Plantation (CST007178)
 							Jack Pine Forest Plantation (CST007161)
 							Native Miscellaneous Northern Pine Forest Plantation
