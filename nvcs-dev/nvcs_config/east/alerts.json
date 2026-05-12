@@ -1577,6 +1577,15 @@
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
+        "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Broussonetia papyrifera does not exist in the FIA species list",
+        "alertId": "id986886fb9a5f7",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
         "targetNode": "Southeastern Coastal Plain Evergreen Oak Forest (M885)",
         "targetProblem": "MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS - species: other palms does not exist in the FIA species list",
         "alertId": "id10deee4448e58",

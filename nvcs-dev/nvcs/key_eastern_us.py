@@ -227,7 +227,7 @@ class ClassificationKey:
         self.nodes[ 21] = Node( 21,  15, element_021(), 'Native Miscellaneous Southern Pine Forest Plantation (CST007160)')
         self.nodes[ 22] = Node( 22,  14, element_022(), 'Native Northern Conifer Plantation')
         self.nodes[ 23] = Node( 23,  22, element_023(), 'Native Northern Pine Plantation Anthro-type (CTY009)')
-        self.nodes[ 24] = Node( 24,  23, element_024(), 'Red Pine Forest Plantation (CST007117)')
+        self.nodes[ 24] = Node( 24,  23, element_024(), 'Red Pine Forest Plantation (CST007177)')
         self.nodes[ 25] = Node( 25,  23, element_025(), 'White Pine Forest Plantation (CST007178)')
         self.nodes[ 26] = Node( 26,  23, element_026(), 'Jack Pine Forest Plantation (CST007161)')
         self.nodes[ 27] = Node( 27,  23, element_027(), 'Native Miscellaneous Northern Pine Forest Plantation')
@@ -997,10 +997,10 @@ def element_023():
 
 def element_024():
 
-    """Red Pine Forest Plantation (CST007117)"""
-    """Red Pine Forest Plantation (CST007117)"""
+    """Red Pine Forest Plantation (CST007177)"""
+    """CST007177"""
     level = 'subtype'
-    code = 'Red Pine Forest Plantation (CST007117)'
+    code = 'CST007177'
 
     # Tree composition dominated by Pinus resinosa >= 25% RIV,
     # and exceeds each species of Pinus banksiana and Pinus strobus.
@@ -1018,8 +1018,8 @@ def element_024():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=024|Red Pine Forest Plantation (CST007117)', plot.ident)
-        result = (    plot.riv(RED_PINE) >= 25
+        logging.debug('%s|NODE=024|Red Pine Forest Plantation (CST007177)', plot.ident)
+        result = (plot.riv(RED_PINE) >= 25
                and plot.riv(RED_PINE) > plot.riv(JACK_PINE)
                and plot.riv(RED_PINE) > plot.riv(WHITE_PINE))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -3844,15 +3844,23 @@ def element_116():
         {'species': 'Quercus minima'},
         {'species': 'Quercus sinuata var. sinuata'},
         {'species': 'Quercus virginiana'},
-        {'species': 'Sabal palmetto'}
+        {'species': 'Sabal palmetto'},
+        {'species': 'Albizia julibrissin'},
+        {'species': 'Broussonetia papyrifera'},
+        {'species': 'Triadica sebifera'},
+        {'species': 'Maclura pomifera'},
+        {'species': 'Pinus taeda'},
+        {'species': 'Quercus nigra'},
+        {'species': 'Liquidambar styraciflua'},
+        {'species': 'Melia azedarach'}
     )
 
     ECOREGIONS_2 = PatternList('ECOREGIONS_2',
-        {'ecoregion': '231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234'}
+        {'ecoregion': '231B, 231E, 231F, 231H, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234'}
     )
 
     STATES = PatternList('STATES',
-        {'state': '!DC'},
+        {'state': 'DC'},
         {'state': 'DE'},
         {'state': 'MD'},
         {'state': 'NJ'},
@@ -3862,7 +3870,7 @@ def element_116():
 
     def match(plot):
         logging.debug('%s|NODE=116|Southeastern North American Forest & Woodland Division (D006)', plot.ident)
-        result = ((plot.match(ECOREGIONS_1) and plot.riv(DIAGNOSTIC_SPECIES_1) >= 5) or (plot.match(ECOREGIONS_2) and plot.match(STATES)))
+        result = ((plot.match(ECOREGIONS_1) and plot.riv(DIAGNOSTIC_SPECIES_1) >= 5) or (plot.match(ECOREGIONS_2) and not plot.match(STATES)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -4000,8 +4008,7 @@ def element_119():
         {'species': 'Sabal palmetto'},
         {'species': 'Tilia'},
         {'species': 'Tilia americana'},
-        {'species': 'Tilia americana var. heterophylla'},
-        {'species': 'Tilia americana'}
+        {'species': 'Tilia americana var. heterophylla'}
     )
 
     MODERATE_MESIC_DIAGNOSTICS = PatternList('MODERATE_MESIC_DIAGNOSTICS',
@@ -4035,6 +4042,7 @@ def element_119():
     def match(plot):
         logging.debug('%s|NODE=119|Southern Mesic Mixed Broadleaf Forest (M008)', plot.ident)
         result = (plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
+
                or (plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and plot.riv(STRONG_MESIC_DIAGNOSTICS) + plot.riv(MODERATE_MESIC_DIAGNOSTICS) >= 50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -4276,8 +4284,7 @@ def element_123():
         {'species': 'Sabal palmetto'},
         {'species': 'Tilia'},
         {'species': 'Tilia americana'},
-        {'species': 'Tilia americana var. heterophylla'},
-        {'species': 'Tilia americana'}
+        {'species': 'Tilia americana var. heterophylla'}
     )
 
     def match(plot):
@@ -4824,7 +4831,6 @@ def element_139():
     )
 
     ECOREGION_DIAGNOSTICS = PatternList('ECOREGION_DIAGNOSTICS',
-        {'species': 'Abies balsamea'},
         {'species': 'Abies fraseri'},
         {'species': 'Picea rubens'}
     )
@@ -4873,10 +4879,10 @@ def element_139():
     def match(plot):
         logging.debug('%s|NODE=139|Acadian-Appalachian Forest (M103)', plot.ident)
         result = (plot.match(ECOREGION_A) or
-               plot.riv(ECOREGION_DIAGNOSTICS) >=1 or
-               plot.match(ECOREGION_B) and 
+               plot.riv(ECOREGION_DIAGNOSTICS) >=20 or
+               (plot.match(ECOREGION_B) and 
                (plot.riv(STRONG_DRY_DIAGNOSTICS)>=50 or
-               plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DRY_DIAGNOSTICS) >=50 or plot.riv(STRONG_MESIC_DIAGNOSTICS)>=20))
+               plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DRY_DIAGNOSTICS) >=50 or plot.riv(STRONG_MESIC_DIAGNOSTICS)>=20)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -5053,9 +5059,11 @@ def element_144():
     def match(plot):
         logging.debug('%s|NODE=144|North Atlantic Coastal Forest & Woodland (M525)', plot.ident)
         result = ((plot.match(ECOREGION) or
-               plot.match(ECOREGION_STATE) and not plot.match(STATE)) and
-               plot.riv(STRONG_DIAGNOSTICS)>=20 or
-               (plot.riv(STRONG_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTICS)>=50))
+               (plot.match(ECOREGION_STATE) and not plot.match(STATE))) 
+
+               and
+               (plot.riv(STRONG_DIAGNOSTICS)>=20 or
+               (plot.riv(STRONG_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTICS)>=50)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -5584,7 +5592,7 @@ def element_151():
     #     Quercus muehlenbergii, Quercus rubra, Sassafras albidum (>=50% RIV)
 
     ECOREGION = PatternList('ECOREGION',
-        {'ecoregion': '!212'}
+        {'ecoregion': '212'}
     )
 
     STRONG_APPALACHIAN_DRY_DIAGNOSTICS = PatternList('STRONG_APPALACHIAN_DRY_DIAGNOSTICS',
@@ -5630,7 +5638,7 @@ def element_151():
 
     def match(plot):
         logging.debug('%s|NODE=151|Southern-Central Appalachian Dry Forest & Woodland (M502)', plot.ident)
-        result = (plot.match(ECOREGION) and (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 or (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 and plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + plot.riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50)))
+        result = (not plot.match(ECOREGION) and (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 or (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 and plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + plot.riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match

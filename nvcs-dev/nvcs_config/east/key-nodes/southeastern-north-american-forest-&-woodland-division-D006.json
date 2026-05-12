@@ -21,7 +21,7 @@
             "E. Southeastern North American Forest & Woodland Division (D006) one  E1"
         ],
         "trigger": [
-            "(match(ECOREGIONS_1) and riv(DIAGNOSTIC_SPECIES_1) >= 5) or (match(ECOREGIONS_2) and match(STATES))"
+            "(match(ECOREGIONS_1) and riv(DIAGNOSTIC_SPECIES_1) >= 5) or (match(ECOREGIONS_2) and not match(STATES))"
         ],
         "filters": {
             "ECOREGIONS_1": [
@@ -77,16 +77,40 @@
                 },
                 {
                     "species": "Sabal palmetto"
+                },
+                {
+                    "species": "Albizia julibrissin"
+                },
+                {
+                    "species": "Broussonetia papyrifera"
+                },
+                {
+                    "species": "Triadica sebifera"
+                },
+                {
+                    "species": "Maclura pomifera"
+                },
+                {
+                    "species": "Pinus taeda"
+                },
+                {
+                    "species": "Quercus nigra"
+                },
+                {
+                    "species": "Liquidambar styraciflua"
+                },
+                {
+                    "species": "Melia azedarach"
                 }
             ],
             "ECOREGIONS_2": [
                 {
-                    "ecoregion": "231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234"
+                    "ecoregion": "231B, 231E, 231F, 231H, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234"
                 }
             ],
             "STATES": [
                 {
-                    "state": "!DC"
+                    "state": "DC"
                 },
                 {
                     "state": "DE"

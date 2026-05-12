@@ -12,9 +12,11 @@
         ],
         "trigger": [
             "(match(ECOREGION) or",
-            "match(ECOREGION_STATE) and not match(STATE)) and",
-            "riv(STRONG_DIAGNOSTICS)>=20 or",
-            "(riv(STRONG_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTICS)>=50)"
+            "(match(ECOREGION_STATE) and not match(STATE))) ",
+            "",
+            "and",
+            "(riv(STRONG_DIAGNOSTICS)>=20 or",
+            "(riv(STRONG_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTICS)>=50))"
         ],
         "filters": {
             "ECOREGION": [

@@ -20,6 +20,7 @@
         ],
         "trigger": [
             "riv(STRONG_MESIC_DIAGNOSTICS) >= 50",
+            "",
             "or (riv(STRONG_MESIC_DIAGNOSTICS) >= 20 and riv(STRONG_MESIC_DIAGNOSTICS) + riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)"
         ],
         "filters": {
@@ -74,9 +75,6 @@
                 },
                 {
                     "species": "Tilia americana var. heterophylla"
-                },
-                {
-                    "species": "Tilia americana"
                 }
             ],
             "MODERATE_MESIC_DIAGNOSTICS": [
