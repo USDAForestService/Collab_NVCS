@@ -18,12 +18,12 @@
             "    Quercus muehlenbergii, Quercus rubra, Sassafras albidum (>=50% RIV)"
         ],
         "trigger": [
-            "match(ECOREGION) and (riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 or (riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 and riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50))"
+            "not match(ECOREGION) and (riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 or (riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 and riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50))"
         ],
         "filters": {
             "ECOREGION": [
                 {
-                    "ecoregion": "!212"
+                    "ecoregion": "212"
                 }
             ],
             "STRONG_APPALACHIAN_DRY_DIAGNOSTICS": [

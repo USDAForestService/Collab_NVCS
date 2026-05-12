@@ -18,10 +18,10 @@
         ],
         "trigger": [
             "match(ECOREGION_A) or",
-            "riv(ECOREGION_DIAGNOSTICS) >=1 or",
-            "match(ECOREGION_B) and ",
+            "riv(ECOREGION_DIAGNOSTICS) >=20 or",
+            "(match(ECOREGION_B) and ",
             "(riv(STRONG_DRY_DIAGNOSTICS)>=50 or",
-            "riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >=50 or riv(STRONG_MESIC_DIAGNOSTICS)>=20)"
+            "riv(STRONG_DRY_DIAGNOSTICS) + riv(MODERATE_DRY_DIAGNOSTICS) >=50 or riv(STRONG_MESIC_DIAGNOSTICS)>=20))"
         ],
         "filters": {
             "ECOREGION_A": [
@@ -30,9 +30,6 @@
                 }
             ],
             "ECOREGION_DIAGNOSTICS": [
-                {
-                    "species": "Abies balsamea"
-                },
                 {
                     "species": "Abies fraseri"
                 },

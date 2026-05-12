@@ -69,7 +69,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put( 21,  new Node( 21,  15, element_021(), "Native Miscellaneous Southern Pine Forest Plantation (CST007160)"));
         nodes.put( 22,  new Node( 22,  14, element_022(), "Native Northern Conifer Plantation"));
         nodes.put( 23,  new Node( 23,  22, element_023(), "Native Northern Pine Plantation Anthro-type (CTY009)"));
-        nodes.put( 24,  new Node( 24,  23, element_024(), "Red Pine Forest Plantation (CST007117)"));
+        nodes.put( 24,  new Node( 24,  23, element_024(), "Red Pine Forest Plantation (CST007177)"));
         nodes.put( 25,  new Node( 25,  23, element_025(), "White Pine Forest Plantation (CST007178)"));
         nodes.put( 26,  new Node( 26,  23, element_026(), "Jack Pine Forest Plantation (CST007161)"));
         nodes.put( 27,  new Node( 27,  23, element_027(), "Native Miscellaneous Northern Pine Forest Plantation"));
@@ -1174,11 +1174,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_024() {
 
-        // Red Pine Forest Plantation (CST007117)
-        // Red Pine Forest Plantation (CST007117)
+        // Red Pine Forest Plantation (CST007177)
+        // CST007177
 
         String level = "subtype";
-        String code = "Red Pine Forest Plantation (CST007117)";
+        String code = "CST007177";
 
         // Tree composition dominated by Pinus resinosa >= 25% RIV,
         // and exceeds each species of Pinus banksiana and Pinus strobus.
@@ -1208,7 +1208,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList WHITE_PINE = new PatternList("WHITE_PINE", WHITE_PINE_patterns);
 
         INodeMatch match = plot -> (
-                plot.riv(RED_PINE) >= 25
+            plot.riv(RED_PINE) >= 25
            && plot.riv(RED_PINE) > plot.riv(JACK_PINE)
            && plot.riv(RED_PINE) > plot.riv(WHITE_PINE)
         );
@@ -6032,6 +6032,30 @@ public class ClassificationKeyEast extends ClassificationKey {
         List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern15 = Arrays.asList(
             new KeyValue("species", "Sabal palmetto")
         );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern16 = Arrays.asList(
+            new KeyValue("species", "Albizia julibrissin")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern17 = Arrays.asList(
+            new KeyValue("species", "Broussonetia papyrifera")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern18 = Arrays.asList(
+            new KeyValue("species", "Triadica sebifera")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern19 = Arrays.asList(
+            new KeyValue("species", "Maclura pomifera")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern20 = Arrays.asList(
+            new KeyValue("species", "Pinus taeda")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern21 = Arrays.asList(
+            new KeyValue("species", "Quercus nigra")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern22 = Arrays.asList(
+            new KeyValue("species", "Liquidambar styraciflua")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern23 = Arrays.asList(
+            new KeyValue("species", "Melia azedarach")
+        );
         List<List<KeyValue>> DIAGNOSTIC_SPECIES_1_patterns = Arrays.asList(
             DIAGNOSTIC_SPECIES_1_pattern0,
             DIAGNOSTIC_SPECIES_1_pattern1,
@@ -6048,12 +6072,20 @@ public class ClassificationKeyEast extends ClassificationKey {
             DIAGNOSTIC_SPECIES_1_pattern12,
             DIAGNOSTIC_SPECIES_1_pattern13,
             DIAGNOSTIC_SPECIES_1_pattern14,
-            DIAGNOSTIC_SPECIES_1_pattern15
+            DIAGNOSTIC_SPECIES_1_pattern15,
+            DIAGNOSTIC_SPECIES_1_pattern16,
+            DIAGNOSTIC_SPECIES_1_pattern17,
+            DIAGNOSTIC_SPECIES_1_pattern18,
+            DIAGNOSTIC_SPECIES_1_pattern19,
+            DIAGNOSTIC_SPECIES_1_pattern20,
+            DIAGNOSTIC_SPECIES_1_pattern21,
+            DIAGNOSTIC_SPECIES_1_pattern22,
+            DIAGNOSTIC_SPECIES_1_pattern23
         );
         PatternList DIAGNOSTIC_SPECIES_1 = new PatternList("DIAGNOSTIC_SPECIES_1", DIAGNOSTIC_SPECIES_1_patterns);
 
         List<KeyValue> ECOREGIONS_2_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234")
+            new KeyValue("ecoregion", "231B, 231E, 231F, 231H, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234")
         );
         List<List<KeyValue>> ECOREGIONS_2_patterns = Arrays.asList(
             ECOREGIONS_2_pattern0
@@ -6061,7 +6093,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList ECOREGIONS_2 = new PatternList("ECOREGIONS_2", ECOREGIONS_2_patterns);
 
         List<KeyValue> STATES_pattern0 = Arrays.asList(
-            new KeyValue("state", "!DC")
+            new KeyValue("state", "DC")
         );
         List<KeyValue> STATES_pattern1 = Arrays.asList(
             new KeyValue("state", "DE")
@@ -6089,7 +6121,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList STATES = new PatternList("STATES", STATES_patterns);
 
         INodeMatch match = plot -> (
-            (plot.match(ECOREGIONS_1) && plot.riv(DIAGNOSTIC_SPECIES_1) >= 5) || (plot.match(ECOREGIONS_2) && plot.match(STATES))
+            (plot.match(ECOREGIONS_1) && plot.riv(DIAGNOSTIC_SPECIES_1) >= 5) || (plot.match(ECOREGIONS_2) && !plot.match(STATES))
         );
 
         return new Object[] { level, code, match };
@@ -6361,9 +6393,6 @@ public class ClassificationKeyEast extends ClassificationKey {
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
             new KeyValue("species", "Tilia americana var. heterophylla")
         );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
-            new KeyValue("species", "Tilia americana")
-        );
         List<List<KeyValue>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
             STRONG_MESIC_DIAGNOSTICS_pattern0,
             STRONG_MESIC_DIAGNOSTICS_pattern1,
@@ -6381,8 +6410,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             STRONG_MESIC_DIAGNOSTICS_pattern13,
             STRONG_MESIC_DIAGNOSTICS_pattern14,
             STRONG_MESIC_DIAGNOSTICS_pattern15,
-            STRONG_MESIC_DIAGNOSTICS_pattern16,
-            STRONG_MESIC_DIAGNOSTICS_pattern17
+            STRONG_MESIC_DIAGNOSTICS_pattern16
         );
         PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
@@ -6492,6 +6520,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         INodeMatch match = plot -> (
             plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 50
+
            || (plot.riv(STRONG_MESIC_DIAGNOSTICS) >= 20 && plot.riv(STRONG_MESIC_DIAGNOSTICS) + plot.riv(MODERATE_MESIC_DIAGNOSTICS) >= 50)
         );
 
@@ -7069,9 +7098,6 @@ public class ClassificationKeyEast extends ClassificationKey {
         List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern16 = Arrays.asList(
             new KeyValue("species", "Tilia americana var. heterophylla")
         );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern17 = Arrays.asList(
-            new KeyValue("species", "Tilia americana")
-        );
         List<List<KeyValue>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
             STRONG_MESIC_DIAGNOSTICS_pattern0,
             STRONG_MESIC_DIAGNOSTICS_pattern1,
@@ -7089,8 +7115,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             STRONG_MESIC_DIAGNOSTICS_pattern13,
             STRONG_MESIC_DIAGNOSTICS_pattern14,
             STRONG_MESIC_DIAGNOSTICS_pattern15,
-            STRONG_MESIC_DIAGNOSTICS_pattern16,
-            STRONG_MESIC_DIAGNOSTICS_pattern17
+            STRONG_MESIC_DIAGNOSTICS_pattern16
         );
         PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
 
@@ -8104,18 +8129,14 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList ECOREGION_A = new PatternList("ECOREGION_A", ECOREGION_A_patterns);
 
         List<KeyValue> ECOREGION_DIAGNOSTICS_pattern0 = Arrays.asList(
-            new KeyValue("species", "Abies balsamea")
-        );
-        List<KeyValue> ECOREGION_DIAGNOSTICS_pattern1 = Arrays.asList(
             new KeyValue("species", "Abies fraseri")
         );
-        List<KeyValue> ECOREGION_DIAGNOSTICS_pattern2 = Arrays.asList(
+        List<KeyValue> ECOREGION_DIAGNOSTICS_pattern1 = Arrays.asList(
             new KeyValue("species", "Picea rubens")
         );
         List<List<KeyValue>> ECOREGION_DIAGNOSTICS_patterns = Arrays.asList(
             ECOREGION_DIAGNOSTICS_pattern0,
-            ECOREGION_DIAGNOSTICS_pattern1,
-            ECOREGION_DIAGNOSTICS_pattern2
+            ECOREGION_DIAGNOSTICS_pattern1
         );
         PatternList ECOREGION_DIAGNOSTICS = new PatternList("ECOREGION_DIAGNOSTICS", ECOREGION_DIAGNOSTICS_patterns);
 
@@ -8253,10 +8274,10 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         INodeMatch match = plot -> (
             plot.match(ECOREGION_A) ||
-           plot.riv(ECOREGION_DIAGNOSTICS) >=1 ||
-           plot.match(ECOREGION_B) && 
+           plot.riv(ECOREGION_DIAGNOSTICS) >=20 ||
+           (plot.match(ECOREGION_B) && 
            (plot.riv(STRONG_DRY_DIAGNOSTICS)>=50 ||
-           plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DRY_DIAGNOSTICS) >=50 || plot.riv(STRONG_MESIC_DIAGNOSTICS)>=20)
+           plot.riv(STRONG_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DRY_DIAGNOSTICS) >=50 || plot.riv(STRONG_MESIC_DIAGNOSTICS)>=20))
         );
 
         return new Object[] { level, code, match };
@@ -8620,9 +8641,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         INodeMatch match = plot -> (
             (plot.match(ECOREGION) ||
-           plot.match(ECOREGION_STATE) && !plot.match(STATE)) &&
-           plot.riv(STRONG_DIAGNOSTICS)>=20 ||
-           (plot.riv(STRONG_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTICS)>=50)
+           (plot.match(ECOREGION_STATE) && !plot.match(STATE))) 
+
+           &&
+           (plot.riv(STRONG_DIAGNOSTICS)>=20 ||
+           (plot.riv(STRONG_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTICS)>=50))
         );
 
         return new Object[] { level, code, match };
@@ -9973,7 +9996,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         //     Quercus muehlenbergii, Quercus rubra, Sassafras albidum (>=50% RIV)
 
         List<KeyValue> ECOREGION_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "!212")
+            new KeyValue("ecoregion", "212")
         );
         List<List<KeyValue>> ECOREGION_patterns = Arrays.asList(
             ECOREGION_pattern0
@@ -10129,7 +10152,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList MODERATE_APPALACHIAN_DRY_DIAGNOSTICS = new PatternList("MODERATE_APPALACHIAN_DRY_DIAGNOSTICS", MODERATE_APPALACHIAN_DRY_DIAGNOSTICS_patterns);
 
         INodeMatch match = plot -> (
-            plot.match(ECOREGION) && (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 || (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 && plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + plot.riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50))
+            !plot.match(ECOREGION) && (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 50 || (plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) >= 20 && plot.riv(STRONG_APPALACHIAN_DRY_DIAGNOSTICS) + plot.riv(MODERATE_APPALACHIAN_DRY_DIAGNOSTICS) >= 50))
         );
 
         return new Object[] { level, code, match };
