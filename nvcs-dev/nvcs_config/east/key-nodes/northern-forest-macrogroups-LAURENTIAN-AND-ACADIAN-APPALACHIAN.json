@@ -27,7 +27,7 @@
         ],
         "trigger": [
             "riv(DIAGNOSTIC_SPECIES_I) >= 20",
-            "or (     match(ECOREGIONS_II)",
+            "or ( match(ECOREGIONS_II)",
             "    and (riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 50 or (riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 20 and riv(STRONG_DIAGNOSTIC_SPECIES_II) + riv(MODERATE_DIAGNOSTIC_SPECIES_II) >= 50)))",
             "or (     match(ECOREGIONS_III)",
             "    and  riv(STRONG_DIAGNOSTIC_SPECIES_III) >= 50)"

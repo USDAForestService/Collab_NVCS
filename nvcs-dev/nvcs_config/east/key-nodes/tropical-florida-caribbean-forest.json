@@ -8,21 +8,26 @@
             "and in tropical Florida (EcoSection 411A)"
         ],
         "trigger": [
-            "match(TROPICAL_ATLANTIC)"
+            "match(TERRITORIES) or",
+            "(match(FLORIDA) and match(TROPICAL_FLORIDA))"
         ],
         "filters": {
-            "TROPICAL_ATLANTIC": [
-                {
-                    "state": "FL"
-                },
+            "TROPICAL_FLORIDA": [
                 {
                     "ecoregion": "411A"
-                },
+                }
+            ],
+            "TERRITORIES": [
                 {
                     "state": "PR"
                 },
                 {
                     "state": "VI"
+                }
+            ],
+            "FLORIDA": [
+                {
+                    "state": "FL"
                 }
             ]
         }

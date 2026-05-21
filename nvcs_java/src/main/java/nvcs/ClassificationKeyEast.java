@@ -162,17 +162,17 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put(114,  new Node(114,  96, element_114(), "Temperate & Boreal Forests"));
         nodes.put(115,  new Node(115, 114, element_115(), "Temperate-Boreal Forest & Woodland (TT2)"));
         nodes.put(116,  new Node(116, 115, element_116(), "Southeastern North American Forest & Woodland Division (D006)"));
-        nodes.put(117,  new Node(117, 116, element_117(), "Southeastern Warm Temperate Natural Forests"));
-        nodes.put(118,  new Node(118, 117, element_118(), "South-Central Oak - Pine Forest & Woodland (M540)"));
-        nodes.put(119,  new Node(119, 117, element_119(), "Southern Mesic Mixed Broadleaf Forest (M008)"));
-        nodes.put(120,  new Node(120, 117, element_120(), "Longleaf Pine Woodland (M007)"));
-        nodes.put(121,  new Node(121, 117, element_121(), "Southeastern Coastal Plain Evergreen Oak Forest (M885)"));
-        nodes.put(122,  new Node(122, 117, element_122(), "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"));
-        nodes.put(123,  new Node(123, 117, element_123(), "Longleaf Pine Woodland LC1 (M007)"));
-        nodes.put(124,  new Node(124, 117, element_124(), "Florida Xeric Scrub & Prairie (M162)"));
-        nodes.put(125,  new Node(125, 117, element_125(), "Southern Mesic Mixed Broadleaf Forest LC (M008)"));
-        nodes.put(126,  new Node(126, 116, element_126(), "Southeastern Warm Temperate Ruderal Forests"));
-        nodes.put(127,  new Node(127, 126, element_127(), "Southeastern North American Ruderal Forest (M305)"));
+        nodes.put(117,  new Node(117, 116, element_117(), "Southeastern Warm Temperate Ruderal Forests"));
+        nodes.put(118,  new Node(118, 117, element_118(), "Southeastern North American Ruderal Forest (M305)"));
+        nodes.put(119,  new Node(119, 116, element_119(), "Southeastern Warm Temperate Natural Forests"));
+        nodes.put(120,  new Node(120, 119, element_120(), "South-Central Oak - Pine Forest & Woodland (M540)"));
+        nodes.put(121,  new Node(121, 119, element_121(), "Southern Mesic Mixed Broadleaf Forest (M008)"));
+        nodes.put(122,  new Node(122, 119, element_122(), "Longleaf Pine Woodland (M007)"));
+        nodes.put(123,  new Node(123, 119, element_123(), "Southeastern Coastal Plain Evergreen Oak Forest (M885)"));
+        nodes.put(124,  new Node(124, 119, element_124(), "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"));
+        nodes.put(125,  new Node(125, 119, element_125(), "Longleaf Pine Woodland LC1 (M007)"));
+        nodes.put(126,  new Node(126, 119, element_126(), "Florida Xeric Scrub & Prairie (M162)"));
+        nodes.put(127,  new Node(127, 119, element_127(), "Southern Mesic Mixed Broadleaf Forest LC (M008)"));
         nodes.put(128,  new Node(128, 115, element_128(), "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)"));
         nodes.put(129,  new Node(129, 128, element_129(), "North American Great Plains Forest & Woodland (D332)"));
         nodes.put(130,  new Node(130, 129, element_130(), "Great Plains Natural Woodlands"));
@@ -183,26 +183,25 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put(135,  new Node(135, 128, element_135(), "Eastern North American Forest & Woodland (D008)"));
         nodes.put(136,  new Node(136, 135, element_136(), "Eastern North American Natural Forest & Woodlands"));
         nodes.put(137,  new Node(137, 136, element_137(), "Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)"));
-        nodes.put(138,  new Node(138, 137, element_138(), "Laurentian Forests"));
-        nodes.put(139,  new Node(139, 138, element_139(), "Acadian-Appalachian Forest (M103)"));
-        nodes.put(140,  new Node(140, 138, element_140(), "Laurentian Dry Forest & Woodland (M159)"));
-        nodes.put(141,  new Node(141, 138, element_141(), "Laurentian Mesic Mixed Forest (M102)"));
-        nodes.put(142,  new Node(142, 138, element_142(), "Laurentian Dry Forest & Woodland LC (M159)"));
-        nodes.put(143,  new Node(143, 136, element_143(), "Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups"));
-        nodes.put(144,  new Node(144, 143, element_144(), "North Atlantic Coastal Forest & Woodland (M525)"));
-        nodes.put(145,  new Node(145, 143, element_145(), "Central Midwest Oak Forest, Woodland & Savanna (M012)"));
-        nodes.put(146,  new Node(146, 143, element_146(), "Central Midwest Mesic Forest (M882)"));
-        nodes.put(147,  new Node(147, 143, element_147(), "Central Midwest Oak Forest, Woodland & Savanna LC (M012)"));
-        nodes.put(148,  new Node(148, 143, element_148(), "Central Midwest Mesic Forest LC (M882)"));
-        nodes.put(149,  new Node(149, 143, element_149(), "Southern-Central Appalachian Mesic Forest (M883)"));
-        nodes.put(150,  new Node(150, 143, element_150(), "Central Interior Oak - Pine Forest & Woodland (M543)"));
-        nodes.put(151,  new Node(151, 143, element_151(), "Southern-Central Appalachian Dry Forest & Woodland (M502)"));
-        nodes.put(152,  new Node(152, 143, element_152(), "Laurentian Mesic Forest LC (M102)"));
-        nodes.put(153,  new Node(153, 143, element_153(), "Central Interior Oak - Pine Forest & Woodland LC  (M543)"));
-        nodes.put(154,  new Node(154, 143, element_154(), "Southern-Central Appalachian Dry Forest & Woodland LC (M502)"));
-        nodes.put(155,  new Node(155, 143, element_155(), "Southern-Central Appalachian Mesic Forest LC (M883)"));
-        nodes.put(156,  new Node(156, 135, element_156(), "Eastern North American Ruderal Forest & Woodlands"));
-        nodes.put(157,  new Node(157, 156, element_157(), "Eastern North American Ruderal Forest (M013)"));
+        nodes.put(138,  new Node(138, 137, element_138(), "Acadian-Appalachian Forest (M103)"));
+        nodes.put(139,  new Node(139, 137, element_139(), "Laurentian Dry Forest & Woodland (M159)"));
+        nodes.put(140,  new Node(140, 137, element_140(), "Laurentian Mesic Mixed Forest (M102)"));
+        nodes.put(141,  new Node(141, 137, element_141(), "Laurentian Dry Forest & Woodland LC (M159)"));
+        nodes.put(142,  new Node(142, 136, element_142(), "Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups"));
+        nodes.put(143,  new Node(143, 142, element_143(), "North Atlantic Coastal Forest & Woodland (M525)"));
+        nodes.put(144,  new Node(144, 142, element_144(), "Central Midwest Oak Forest, Woodland & Savanna (M012)"));
+        nodes.put(145,  new Node(145, 142, element_145(), "Central Midwest Mesic Forest (M882)"));
+        nodes.put(146,  new Node(146, 142, element_146(), "Central Midwest Oak Forest, Woodland & Savanna LC (M012)"));
+        nodes.put(147,  new Node(147, 142, element_147(), "Central Midwest Mesic Forest LC (M882)"));
+        nodes.put(148,  new Node(148, 142, element_148(), "Southern-Central Appalachian Mesic Forest (M883)"));
+        nodes.put(149,  new Node(149, 142, element_149(), "Central Interior Oak - Pine Forest & Woodland (M543)"));
+        nodes.put(150,  new Node(150, 142, element_150(), "Southern-Central Appalachian Dry Forest & Woodland (M502)"));
+        nodes.put(151,  new Node(151, 142, element_151(), "Laurentian Mesic Forest LC (M102)"));
+        nodes.put(152,  new Node(152, 142, element_152(), "Central Interior Oak - Pine Forest & Woodland LC  (M543)"));
+        nodes.put(153,  new Node(153, 142, element_153(), "Southern-Central Appalachian Dry Forest & Woodland LC (M502)"));
+        nodes.put(154,  new Node(154, 142, element_154(), "Southern-Central Appalachian Mesic Forest LC (M883)"));
+        nodes.put(155,  new Node(155, 135, element_155(), "Eastern North American Ruderal Forest & Woodlands"));
+        nodes.put(156,  new Node(156, 155, element_156(), "Eastern North American Ruderal Forest (M013)"));
 
         for (Map.Entry<Integer,Node> entry : nodes.entrySet()) {
             Integer ident = entry.getKey();
@@ -5268,25 +5267,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         // extend into EcoSubsections 232Da, 232Ga, 232Gb, but specific diagnostic species will 
         // need to be identified to key them out.]
 
-        List<KeyValue> TROPICAL_LOCATION_pattern0 = Arrays.asList(
-            new KeyValue("state", "PR")
-        );
-        List<KeyValue> TROPICAL_LOCATION_pattern1 = Arrays.asList(
-            new KeyValue("state", "VI")
-        );
-        List<KeyValue> TROPICAL_LOCATION_pattern2 = Arrays.asList(
+        List<KeyValue> FLORIDA_pattern0 = Arrays.asList(
             new KeyValue("state", "FL")
         );
-        List<KeyValue> TROPICAL_LOCATION_pattern3 = Arrays.asList(
-            new KeyValue("ecoregion", "411A")
+        List<List<KeyValue>> FLORIDA_patterns = Arrays.asList(
+            FLORIDA_pattern0
         );
-        List<List<KeyValue>> TROPICAL_LOCATION_patterns = Arrays.asList(
-            TROPICAL_LOCATION_pattern0,
-            TROPICAL_LOCATION_pattern1,
-            TROPICAL_LOCATION_pattern2,
-            TROPICAL_LOCATION_pattern3
-        );
-        PatternList TROPICAL_LOCATION = new PatternList("TROPICAL_LOCATION", TROPICAL_LOCATION_patterns);
+        PatternList FLORIDA = new PatternList("FLORIDA", FLORIDA_patterns);
 
         List<KeyValue> EXCLUDED_SPECIES_pattern0 = Arrays.asList(
             new KeyValue("species", "Pinus elliottii var. elliottii")
@@ -5312,8 +5299,29 @@ public class ClassificationKeyEast extends ClassificationKey {
         );
         PatternList EXCLUDED_SPECIES = new PatternList("EXCLUDED_SPECIES", EXCLUDED_SPECIES_patterns);
 
+        List<KeyValue> TERRITORIES_pattern0 = Arrays.asList(
+            new KeyValue("state", "VI")
+        );
+        List<KeyValue> TERRITORIES_pattern1 = Arrays.asList(
+            new KeyValue("state", "PR")
+        );
+        List<List<KeyValue>> TERRITORIES_patterns = Arrays.asList(
+            TERRITORIES_pattern0,
+            TERRITORIES_pattern1
+        );
+        PatternList TERRITORIES = new PatternList("TERRITORIES", TERRITORIES_patterns);
+
+        List<KeyValue> TROPICAL_FLORIDA_pattern0 = Arrays.asList(
+            new KeyValue("ecoregion", "411A")
+        );
+        List<List<KeyValue>> TROPICAL_FLORIDA_patterns = Arrays.asList(
+            TROPICAL_FLORIDA_pattern0
+        );
+        PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_patterns);
+
         INodeMatch match = plot -> (
-            plot.match(TROPICAL_LOCATION) && plot.riv(EXCLUDED_SPECIES) < 20
+            plot.match(TERRITORIES) || 
+           (plot.match(FLORIDA) && plot.match(TROPICAL_FLORIDA) && plot.riv(EXCLUDED_SPECIES) < 20)
         );
 
         return new Object[] { level, code, match };
@@ -5330,28 +5338,37 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tropical hardwood and tropical conifer forests found in Puerto Rico, U.S. Virgin Islands,
         // and in tropical Florida (EcoSection 411A)
 
-        List<KeyValue> TROPICAL_ATLANTIC_pattern0 = Arrays.asList(
-            new KeyValue("state", "FL")
-        );
-        List<KeyValue> TROPICAL_ATLANTIC_pattern1 = Arrays.asList(
+        List<KeyValue> TROPICAL_FLORIDA_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "411A")
         );
-        List<KeyValue> TROPICAL_ATLANTIC_pattern2 = Arrays.asList(
+        List<List<KeyValue>> TROPICAL_FLORIDA_patterns = Arrays.asList(
+            TROPICAL_FLORIDA_pattern0
+        );
+        PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_patterns);
+
+        List<KeyValue> TERRITORIES_pattern0 = Arrays.asList(
             new KeyValue("state", "PR")
         );
-        List<KeyValue> TROPICAL_ATLANTIC_pattern3 = Arrays.asList(
+        List<KeyValue> TERRITORIES_pattern1 = Arrays.asList(
             new KeyValue("state", "VI")
         );
-        List<List<KeyValue>> TROPICAL_ATLANTIC_patterns = Arrays.asList(
-            TROPICAL_ATLANTIC_pattern0,
-            TROPICAL_ATLANTIC_pattern1,
-            TROPICAL_ATLANTIC_pattern2,
-            TROPICAL_ATLANTIC_pattern3
+        List<List<KeyValue>> TERRITORIES_patterns = Arrays.asList(
+            TERRITORIES_pattern0,
+            TERRITORIES_pattern1
         );
-        PatternList TROPICAL_ATLANTIC = new PatternList("TROPICAL_ATLANTIC", TROPICAL_ATLANTIC_patterns);
+        PatternList TERRITORIES = new PatternList("TERRITORIES", TERRITORIES_patterns);
+
+        List<KeyValue> FLORIDA_pattern0 = Arrays.asList(
+            new KeyValue("state", "FL")
+        );
+        List<List<KeyValue>> FLORIDA_patterns = Arrays.asList(
+            FLORIDA_pattern0
+        );
+        PatternList FLORIDA = new PatternList("FLORIDA", FLORIDA_patterns);
 
         INodeMatch match = plot -> (
-            plot.match(TROPICAL_ATLANTIC)
+            plot.match(TERRITORIES) ||
+           (plot.match(FLORIDA) && plot.match(TROPICAL_FLORIDA))
         );
 
         return new Object[] { level, code, match };
@@ -5377,14 +5394,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         // iii. Ruderal (weedy natives and exotic) tree species with >=80% RIV
 
         List<KeyValue> TROPICAL_FLORIDA_pattern0 = Arrays.asList(
-            new KeyValue("state", "FL")
-        );
-        List<KeyValue> TROPICAL_FLORIDA_pattern1 = Arrays.asList(
             new KeyValue("ecoregion", "411A")
         );
         List<List<KeyValue>> TROPICAL_FLORIDA_patterns = Arrays.asList(
-            TROPICAL_FLORIDA_pattern0,
-            TROPICAL_FLORIDA_pattern1
+            TROPICAL_FLORIDA_pattern0
         );
         PatternList TROPICAL_FLORIDA = new PatternList("TROPICAL_FLORIDA", TROPICAL_FLORIDA_patterns);
 
@@ -5428,27 +5441,35 @@ public class ClassificationKeyEast extends ClassificationKey {
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern3 = Arrays.asList(
             new KeyValue("species", "Thrinax morrisii")
         );
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
+            new KeyValue("species", "Piscidia piscipula")
+        );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             MODERATE_DIAGNOSTIC_SPECIES_pattern0,
             MODERATE_DIAGNOSTIC_SPECIES_pattern1,
             MODERATE_DIAGNOSTIC_SPECIES_pattern2,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern3
+            MODERATE_DIAGNOSTIC_SPECIES_pattern3,
+            MODERATE_DIAGNOSTIC_SPECIES_pattern4
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
-        List<KeyValue> RUDERAL_SPECIES_pattern0 = Arrays.asList(
+        List<KeyValue> RUDERAL_EXOTIC_SPECIES_pattern0 = Arrays.asList(
             new KeyValue("ruderal", "Y")
         );
-        List<List<KeyValue>> RUDERAL_SPECIES_patterns = Arrays.asList(
-            RUDERAL_SPECIES_pattern0
+        List<KeyValue> RUDERAL_EXOTIC_SPECIES_pattern1 = Arrays.asList(
+            new KeyValue("exotic", "Y")
         );
-        PatternList RUDERAL_SPECIES = new PatternList("RUDERAL_SPECIES", RUDERAL_SPECIES_patterns);
+        List<List<KeyValue>> RUDERAL_EXOTIC_SPECIES_patterns = Arrays.asList(
+            RUDERAL_EXOTIC_SPECIES_pattern0,
+            RUDERAL_EXOTIC_SPECIES_pattern1
+        );
+        PatternList RUDERAL_EXOTIC_SPECIES = new PatternList("RUDERAL_EXOTIC_SPECIES", RUDERAL_EXOTIC_SPECIES_patterns);
 
         INodeMatch match = plot -> (
             plot.match(TROPICAL_FLORIDA)
            && (    plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
                 || (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 && plot.riv(STRONG_DIAGNOSTIC_SPECIES) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)
-                ||  plot.riv(RUDERAL_SPECIES) >= 80)
+                ||  plot.riv(RUDERAL_EXOTIC_SPECIES) >= 80)
         );
 
         return new Object[] { level, code, match };
@@ -6129,16 +6150,16 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_117() {
 
-        // Southeastern Warm Temperate Natural Forests
-        // Southeastern Warm Temperate Natural Forests
+        // Southeastern Warm Temperate Ruderal Forests
+        // Southeastern Warm Temperate Ruderal Forests
 
         String level = "informal";
-        String code = "Southeastern Warm Temperate Natural Forests";
+        String code = "Southeastern Warm Temperate Ruderal Forests";
 
         // Vegetation in a relatively natural state, dominated by native species; little or no
         // evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
         // may be early successional pole-sized trees following logging or blowdowns).  Tree
-        // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
+        // composition dominated by ruderal native or exotic species (>= 80% RIV) (See Appendix A -
         // needs to be refined for this Division)
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
@@ -6153,14 +6174,65 @@ public class ClassificationKeyEast extends ClassificationKey {
         );
         PatternList RUDERAL_OR_EXOTIC_SPECIES = new PatternList("RUDERAL_OR_EXOTIC_SPECIES", RUDERAL_OR_EXOTIC_SPECIES_patterns);
 
+        List<KeyValue> UPLAND_RUDERAL_pattern0 = Arrays.asList(
+            new KeyValue("species", "Quercus phellos")
+        );
+        List<KeyValue> UPLAND_RUDERAL_pattern1 = Arrays.asList(
+            new KeyValue("species", "Quercus nigra")
+        );
+        List<List<KeyValue>> UPLAND_RUDERAL_patterns = Arrays.asList(
+            UPLAND_RUDERAL_pattern0,
+            UPLAND_RUDERAL_pattern1
+        );
+        PatternList UPLAND_RUDERAL = new PatternList("UPLAND_RUDERAL", UPLAND_RUDERAL_patterns);
+
         INodeMatch match = plot -> (
-            plot.riv(RUDERAL_OR_EXOTIC_SPECIES) < 80
+            plot.riv(RUDERAL_OR_EXOTIC_SPECIES) > 80 ||
+           (plot.riv(RUDERAL_OR_EXOTIC_SPECIES) + plot.riv(UPLAND_RUDERAL) > 80)
         );
 
         return new Object[] { level, code, match };
     }
 
     public Object[] element_118() {
+
+        // Southeastern North American Ruderal Forest (M305)
+        // M305
+
+        String level = "macrogroup";
+        String code = "M305";
+
+        // other
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_119() {
+
+        // Southeastern Warm Temperate Natural Forests
+        // Southeastern Warm Temperate Natural Forests
+
+        String level = "informal";
+        String code = "Southeastern Warm Temperate Natural Forests";
+
+        // Vegetation in a relatively natural state, dominated by native species; little or no
+        // evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
+        // may be early successional pole-sized trees following logging or blowdowns).  Tree
+        // composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix A -
+        // needs to be refined for this Division)
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_120() {
 
         // South-Central Oak - Pine Forest & Woodland (M540)
         // M540
@@ -6320,7 +6392,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_119() {
+    public Object[] element_121() {
 
         // Southern Mesic Mixed Broadleaf Forest (M008)
         // M008
@@ -6527,7 +6599,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_120() {
+    public Object[] element_122() {
 
         // Longleaf Pine Woodland (M007)
         // M007
@@ -6665,7 +6737,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_121() {
+    public Object[] element_123() {
 
         // Southeastern Coastal Plain Evergreen Oak Forest (M885)
         // M885
@@ -6861,7 +6933,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_122() {
+    public Object[] element_124() {
 
         // Southeastern Coastal Plain Evergreen Oak Forest LC (M885)
         // Southeastern Coastal Plain Evergreen Oak Forest LC (M885)
@@ -7021,7 +7093,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_123() {
+    public Object[] element_125() {
 
         // Longleaf Pine Woodland LC1 (M007)
         // Longleaf Pine Woodland LC1 (M007)
@@ -7126,7 +7198,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_124() {
+    public Object[] element_126() {
 
         // Florida Xeric Scrub & Prairie (M162)
         // M162
@@ -7151,51 +7223,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_125() {
+    public Object[] element_127() {
 
         // Southern Mesic Mixed Broadleaf Forest LC (M008)
         // Southern Mesic Mixed Broadleaf Forest LC (M008)
 
         String level = "macrogroup";
         String code = "Southern Mesic Mixed Broadleaf Forest LC (M008)";
-
-        // other
-
-        INodeMatch match = plot -> (
-            true
-        );
-
-        return new Object[] { level, code, match };
-    }
-
-    public Object[] element_126() {
-
-        // Southeastern Warm Temperate Ruderal Forests
-        // Southeastern Warm Temperate Ruderal Forests
-
-        String level = "informal";
-        String code = "Southeastern Warm Temperate Ruderal Forests";
-
-        // Vegetation in a relatively natural state, dominated by native species; little or no
-        // evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
-        // may be early successional pole-sized trees following logging or blowdowns).  Tree
-        // composition dominated by ruderal native or exotic species (>= 80% RIV) (See Appendix A -
-        // needs to be refined for this Division)
-
-        INodeMatch match = plot -> (
-            true
-        );
-
-        return new Object[] { level, code, match };
-    }
-
-    public Object[] element_127() {
-
-        // Southeastern North American Ruderal Forest (M305)
-        // M305
-
-        String level = "macrogroup";
-        String code = "M305";
 
         // other
 
@@ -7895,7 +7929,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         INodeMatch match = plot -> (
             plot.riv(DIAGNOSTIC_SPECIES_I) >= 20
-           || (     plot.match(ECOREGIONS_II)
+           || ( plot.match(ECOREGIONS_II)
                && (plot.riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 50 || (plot.riv(STRONG_DIAGNOSTIC_SPECIES_II) >= 20 && plot.riv(STRONG_DIAGNOSTIC_SPECIES_II) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES_II) >= 50)))
            || (     plot.match(ECOREGIONS_III)
                &&  plot.riv(STRONG_DIAGNOSTIC_SPECIES_III) >= 50)
@@ -7905,202 +7939,6 @@ public class ClassificationKeyEast extends ClassificationKey {
     }
 
     public Object[] element_138() {
-
-        // Laurentian Forests
-        // Laurentian Forests
-
-        String level = "informal";
-        String code = "Laurentian Forests";
-
-        // 2. Tree composition dominated by one of the following:
-        // i Located in Ecoprovince 212 [i.e. all stands in Laurentian 212 ecoregion go here, regardless of tree composition]
-        // OR
-        // ii. Located in 222J, 222K, 222L, 222M, 222R, or 222U, AND 
-        //      iia Tree composition dominated by one or more of STRONG DRY DIAGNOSTI2. Tree composition dominated by one of the following:
-        // i Located in Ecoprovince 212 [i.e. all stands in Laurentian 212 ecoregion go here, regardless of tree composition]
-        // OR
-        // ii. Located in 222J, 222K, 222L, 222M, 222R, or 222U, AND 
-        //      iia Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana, Pinus banksiana, Pinus resinosa, Pinus strobus (=>50% RIV);
-        // OR
-        //     iib. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp.,, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus alba, Quercus ellipsoidalis, Quercus rubra (together =>50% RIV)
-        // OR
-        // Ii . Tree composition dominated by any one or more of the hardwoods and/or conifer STRONG MESIC DIAGNOSTICS of Abies balsamea, Acer pensylvanicum, Acer spicatum, Betula alleghaniensis, Fraxinus nigra, Larix laricina, Picea glauca, Picea mariana, Populus balsamifera, Populus grandidentata,Thuja occidentalis, Tsuga canadensis (=>20% RIV) [DFL1]
-        // .... Laurentian Forests……..................................................................................................... …3
-        // [DFL1]Its possible that the details of composition could be omitted and the couplet just relies on ecoprovince Location.CS Picea mariana, Pinus banksiana, Pinus resinosa, Pinus strobus (=>50% RIV);
-        // OR
-        //     iib. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp.,, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus alba, Quercus ellipsoidalis, Quercus rubra (together =>50% RIV)
-        // OR
-        // Ii . Tree composition dominated by any one or more of the hardwoods and/or conifer STRONG MESIC DIAGNOSTICS of Abies balsamea, Acer pensylvanicum, Acer spicatum, Betula alleghaniensis, Fraxinus nigra, Larix laricina, Picea glauca, Picea mariana, Populus balsamifera, Populus grandidentata,Thuja occidentalis, Tsuga canadensis (=>20% RIV) [DFL1]
-        // .... Laurentian Forests……..................................................................................................... …3
-
-        List<KeyValue> ECOPROVINCE_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "212")
-        );
-        List<List<KeyValue>> ECOPROVINCE_patterns = Arrays.asList(
-            ECOPROVINCE_pattern0
-        );
-        PatternList ECOPROVINCE = new PatternList("ECOPROVINCE", ECOPROVINCE_patterns);
-
-        List<KeyValue> ECOREGION_pattern0 = Arrays.asList(
-            new KeyValue("ecoregion", "222J")
-        );
-        List<KeyValue> ECOREGION_pattern1 = Arrays.asList(
-            new KeyValue("ecoregion", "222K")
-        );
-        List<KeyValue> ECOREGION_pattern2 = Arrays.asList(
-            new KeyValue("ecoregion", "222L")
-        );
-        List<KeyValue> ECOREGION_pattern3 = Arrays.asList(
-            new KeyValue("ecoregion", "222M")
-        );
-        List<KeyValue> ECOREGION_pattern4 = Arrays.asList(
-            new KeyValue("ecoregion", "222R")
-        );
-        List<KeyValue> ECOREGION_pattern5 = Arrays.asList(
-            new KeyValue("ecoregion", "222U")
-        );
-        List<List<KeyValue>> ECOREGION_patterns = Arrays.asList(
-            ECOREGION_pattern0,
-            ECOREGION_pattern1,
-            ECOREGION_pattern2,
-            ECOREGION_pattern3,
-            ECOREGION_pattern4,
-            ECOREGION_pattern5
-        );
-        PatternList ECOREGION = new PatternList("ECOREGION", ECOREGION_patterns);
-
-        List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
-            new KeyValue("species", "Picea mariana")
-        );
-        List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Pinus banksiana")
-        );
-        List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
-            new KeyValue("species", "Pinus resinosa")
-        );
-        List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
-            new KeyValue("species", "Pinus strobus")
-        );
-        List<List<KeyValue>> STRONG_DRY_DIAGNOSTICS_patterns = Arrays.asList(
-            STRONG_DRY_DIAGNOSTICS_pattern0,
-            STRONG_DRY_DIAGNOSTICS_pattern1,
-            STRONG_DRY_DIAGNOSTICS_pattern2,
-            STRONG_DRY_DIAGNOSTICS_pattern3
-        );
-        PatternList STRONG_DRY_DIAGNOSTICS = new PatternList("STRONG_DRY_DIAGNOSTICS", STRONG_DRY_DIAGNOSTICS_patterns);
-
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
-            new KeyValue("species", "Amelanchier")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Betula papyrifera")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern2 = Arrays.asList(
-            new KeyValue("species", "Carpinus caroliniana")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern3 = Arrays.asList(
-            new KeyValue("species", "Ostrya virginiana")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Populus grandidentata")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern5 = Arrays.asList(
-            new KeyValue("species", "Populus tremuloides")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern6 = Arrays.asList(
-            new KeyValue("species", "Prunus pensylvanica")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern7 = Arrays.asList(
-            new KeyValue("species", "Prunus serotina")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern8 = Arrays.asList(
-            new KeyValue("species", "Quercus alba")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern9 = Arrays.asList(
-            new KeyValue("species", "Quercus ellipsoidalis")
-        );
-        List<KeyValue> MODERATE_DRY_DIAGNOSTICS_pattern10 = Arrays.asList(
-            new KeyValue("species", "Quercus rubra")
-        );
-        List<List<KeyValue>> MODERATE_DRY_DIAGNOSTICS_patterns = Arrays.asList(
-            MODERATE_DRY_DIAGNOSTICS_pattern0,
-            MODERATE_DRY_DIAGNOSTICS_pattern1,
-            MODERATE_DRY_DIAGNOSTICS_pattern2,
-            MODERATE_DRY_DIAGNOSTICS_pattern3,
-            MODERATE_DRY_DIAGNOSTICS_pattern4,
-            MODERATE_DRY_DIAGNOSTICS_pattern5,
-            MODERATE_DRY_DIAGNOSTICS_pattern6,
-            MODERATE_DRY_DIAGNOSTICS_pattern7,
-            MODERATE_DRY_DIAGNOSTICS_pattern8,
-            MODERATE_DRY_DIAGNOSTICS_pattern9,
-            MODERATE_DRY_DIAGNOSTICS_pattern10
-        );
-        PatternList MODERATE_DRY_DIAGNOSTICS = new PatternList("MODERATE_DRY_DIAGNOSTICS", MODERATE_DRY_DIAGNOSTICS_patterns);
-
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern0 = Arrays.asList(
-            new KeyValue("species", "Abies balsamea")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern1 = Arrays.asList(
-            new KeyValue("species", "Acer pensylvanicum")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern2 = Arrays.asList(
-            new KeyValue("species", "Acer spicatum")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern3 = Arrays.asList(
-            new KeyValue("species", "Betula alleghaniensis")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern4 = Arrays.asList(
-            new KeyValue("species", "Fraxinus nigra")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern5 = Arrays.asList(
-            new KeyValue("species", "Larix laricina")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern6 = Arrays.asList(
-            new KeyValue("species", "Picea glauca")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern7 = Arrays.asList(
-            new KeyValue("species", "Picea mariana")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern8 = Arrays.asList(
-            new KeyValue("species", "Populus balsamifera")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern9 = Arrays.asList(
-            new KeyValue("species", "Populus grandidentata")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern10 = Arrays.asList(
-            new KeyValue("species", "Thuja occidentalis")
-        );
-        List<KeyValue> STRONG_MESIC_DIAGNOSTICS_pattern11 = Arrays.asList(
-            new KeyValue("species", "Tsuga canadensis")
-        );
-        List<List<KeyValue>> STRONG_MESIC_DIAGNOSTICS_patterns = Arrays.asList(
-            STRONG_MESIC_DIAGNOSTICS_pattern0,
-            STRONG_MESIC_DIAGNOSTICS_pattern1,
-            STRONG_MESIC_DIAGNOSTICS_pattern2,
-            STRONG_MESIC_DIAGNOSTICS_pattern3,
-            STRONG_MESIC_DIAGNOSTICS_pattern4,
-            STRONG_MESIC_DIAGNOSTICS_pattern5,
-            STRONG_MESIC_DIAGNOSTICS_pattern6,
-            STRONG_MESIC_DIAGNOSTICS_pattern7,
-            STRONG_MESIC_DIAGNOSTICS_pattern8,
-            STRONG_MESIC_DIAGNOSTICS_pattern9,
-            STRONG_MESIC_DIAGNOSTICS_pattern10,
-            STRONG_MESIC_DIAGNOSTICS_pattern11
-        );
-        PatternList STRONG_MESIC_DIAGNOSTICS = new PatternList("STRONG_MESIC_DIAGNOSTICS", STRONG_MESIC_DIAGNOSTICS_patterns);
-
-        INodeMatch match = plot -> (
-            plot.match(ECOPROVINCE) || 
-           (plot.match(ECOREGION) && plot.riv(STRONG_DRY_DIAGNOSTICS) >= 50 || 
-           plot.riv(STRONG_DRY_DIAGNOSTICS) >= 20 &&
-           plot.riv(MODERATE_DRY_DIAGNOSTICS) + plot.riv(MODERATE_DRY_DIAGNOSTICS) >= 50
-           || plot.riv(STRONG_MESIC_DIAGNOSTICS) >=20)
-        );
-
-        return new Object[] { level, code, match };
-    }
-
-    public Object[] element_139() {
 
         // Acadian-Appalachian Forest (M103)
         // M103
@@ -8283,7 +8121,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_140() {
+    public Object[] element_139() {
 
         // Laurentian Dry Forest & Woodland (M159)
         // M159
@@ -8373,7 +8211,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_141() {
+    public Object[] element_140() {
 
         // Laurentian Mesic Mixed Forest (M102)
         // M102
@@ -8483,7 +8321,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_142() {
+    public Object[] element_141() {
 
         // Laurentian Dry Forest & Woodland LC (M159)
         // Laurentian Dry Forest & Woodland LC (M159)
@@ -8500,7 +8338,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_143() {
+    public Object[] element_142() {
 
         // Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups
         // Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups
@@ -8517,7 +8355,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_144() {
+    public Object[] element_143() {
 
         // North Atlantic Coastal Forest & Woodland (M525)
         // M525
@@ -8651,7 +8489,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_145() {
+    public Object[] element_144() {
 
         // Central Midwest Oak Forest, Woodland & Savanna (M012)
         // M012
@@ -8816,7 +8654,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_146() {
+    public Object[] element_145() {
 
         // Central Midwest Mesic Forest (M882)
         // M882
@@ -9101,7 +8939,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_147() {
+    public Object[] element_146() {
 
         // Central Midwest Oak Forest, Woodland & Savanna LC (M012)
         // Central Midwest Oak Forest, Woodland & Savanna LC (M012)
@@ -9275,7 +9113,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_148() {
+    public Object[] element_147() {
 
         // Central Midwest Mesic Forest LC (M882)
         // Central Midwest Mesic Forest LC (M882)
@@ -9300,7 +9138,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_149() {
+    public Object[] element_148() {
 
         // Southern-Central Appalachian Mesic Forest (M883)
         // M883
@@ -9718,7 +9556,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_150() {
+    public Object[] element_149() {
 
         // Central Interior Oak - Pine Forest & Woodland (M543)
         // M543
@@ -9974,7 +9812,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_151() {
+    public Object[] element_150() {
 
         // Southern-Central Appalachian Dry Forest & Woodland (M502)
         // M502
@@ -10158,7 +9996,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_152() {
+    public Object[] element_151() {
 
         // Laurentian Mesic Forest LC (M102)
         // M102LC
@@ -10183,7 +10021,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_153() {
+    public Object[] element_152() {
 
         // Central Interior Oak - Pine Forest & Woodland LC  (M543)
         // M543LC
@@ -10465,7 +10303,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_154() {
+    public Object[] element_153() {
 
         // Southern-Central Appalachian Dry Forest & Woodland LC (M502)
         // Southern-Central Appalachian Dry Forest & Woodland LC (M502)
@@ -10747,7 +10585,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_155() {
+    public Object[] element_154() {
 
         // Southern-Central Appalachian Mesic Forest LC (M883)
         // Southern-Central Appalachian Mesic Forest LC (M883)
@@ -10764,7 +10602,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_156() {
+    public Object[] element_155() {
 
         // Eastern North American Ruderal Forest & Woodlands
         // Eastern Cool Temperate Ruderal Forest & Woodlands
@@ -10794,7 +10632,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_157() {
+    public Object[] element_156() {
 
         // Eastern North American Ruderal Forest (M013)
         // Eastern North American Ruderal Forest (M013)
