@@ -114,6 +114,8 @@ Natural and Ruderal Forests
 		Temperate & Boreal Forests
 			Temperate-Boreal Forest & Woodland (TT2)
 				Southeastern North American Forest & Woodland Division (D006)
+					Southeastern Warm Temperate Ruderal Forests
+						Southeastern North American Ruderal Forest (M305)
 					Southeastern Warm Temperate Natural Forests
 						South-Central Oak - Pine Forest & Woodland (M540)
 						Southern Mesic Mixed Broadleaf Forest (M008)
@@ -123,8 +125,6 @@ Natural and Ruderal Forests
 						Longleaf Pine Woodland LC1 (M007)
 						Florida Xeric Scrub & Prairie (M162)
 						Southern Mesic Mixed Broadleaf Forest LC (M008)
-					Southeastern Warm Temperate Ruderal Forests
-						Southeastern North American Ruderal Forest (M305)
 				Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)
 					North American Great Plains Forest & Woodland (D332)
 						Great Plains Natural Woodlands
@@ -135,11 +135,10 @@ Natural and Ruderal Forests
 					Eastern North American Forest & Woodland (D008)
 						Eastern North American Natural Forest & Woodlands
 							Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)
-								Laurentian Forests
-									Acadian-Appalachian Forest (M103)
-									Laurentian Dry Forest & Woodland (M159)
-									Laurentian Mesic Mixed Forest (M102)
-									Laurentian Dry Forest & Woodland LC (M159)
+								Acadian-Appalachian Forest (M103)
+								Laurentian Dry Forest & Woodland (M159)
+								Laurentian Mesic Mixed Forest (M102)
+								Laurentian Dry Forest & Woodland LC (M159)
 							Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups
 								North Atlantic Coastal Forest & Woodland (M525)
 								Central Midwest Oak Forest, Woodland & Savanna (M012)

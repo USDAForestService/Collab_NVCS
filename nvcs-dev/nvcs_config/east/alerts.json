@@ -776,6 +776,15 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-node-id-in-name",
+        "targetNode": "Southeastern Warm Temperate Ruderal Forests",
+        "targetProblem": "Node ID (Southeastern Warm Temperate Ruderal Forests) is not present in the Node Name",
+        "alertId": "idd8881b28134bd",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-node-id-in-name",
         "targetNode": "Southeastern Warm Temperate Natural Forests",
         "targetProblem": "Node ID (Southeastern Warm Temperate Natural Forests) is not present in the Node Name",
         "alertId": "idb245eae756903",
@@ -806,15 +815,6 @@
         "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
         "targetProblem": "Node ID (Southern Mesic Mixed Broadleaf Forest LC (M008)) is not present in the Node Name",
         "alertId": "idad41deb3e9a54",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Southeastern Warm Temperate Ruderal Forests",
-        "targetProblem": "Node ID (Southeastern Warm Temperate Ruderal Forests) is not present in the Node Name",
-        "alertId": "idd8881b28134bd",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -860,15 +860,6 @@
         "targetNode": "Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)",
         "targetProblem": "Node ID (Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)) is not present in the Node Name",
         "alertId": "id1946e4138c1c5",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Laurentian Forests",
-        "targetProblem": "Node ID (Laurentian Forests) is not present in the Node Name",
-        "alertId": "id831139a8f29f7",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1406,9 +1397,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Southeastern Warm Temperate Natural Forests",
-        "targetProblem": "Node File Name southeastern-warm-temperate-natural-forest.json is unconventional",
-        "alertId": "idefeac6649a6eb",
+        "targetNode": "Southeastern North American Ruderal Forest (M305)",
+        "targetProblem": "Node File Name southeastern-north-american-ruderal-forest.json is unconventional",
+        "alertId": "id7d915fbbfeb2d",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1445,24 +1436,6 @@
         "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
         "targetProblem": "Node File Name southern-mesic-mixed-broadleaf-forest-lc-m008.json is unconventional",
         "alertId": "ide2a08be0dd26a",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Southeastern Warm Temperate Ruderal Forests",
-        "targetProblem": "Node File Name southeastern-warm-temperate-ruderal-forest.json is unconventional",
-        "alertId": "id42cedd142b4a9",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Southeastern North American Ruderal Forest (M305)",
-        "targetProblem": "Node File Name southeastern-north-american-ruderal-forest.json is unconventional",
-        "alertId": "id7d915fbbfeb2d",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2639,6 +2612,24 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
+        "targetNode": "Southeastern Warm Temperate Ruderal Forests",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "idee10cad1b301f",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Southeastern North American Ruderal Forest (M305)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "ida84937f51c15b",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
         "targetNode": "Southeastern Warm Temperate Natural Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
         "alertId": "id93215a6f5d373",
@@ -2714,24 +2705,6 @@
         "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
         "alertId": "idbcd7dea4fcb05",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-document-elements",
-        "targetNode": "Southeastern Warm Temperate Ruderal Forests",
-        "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idee10cad1b301f",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-document-elements",
-        "targetNode": "Southeastern North American Ruderal Forest (M305)",
-        "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ida84937f51c15b",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2822,15 +2795,6 @@
         "targetNode": "Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
         "alertId": "idd58e179c0fa56",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-document-elements",
-        "targetNode": "Laurentian Forests",
-        "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ide9e2700da72b1",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -4052,6 +4016,24 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Southeastern Warm Temperate Ruderal Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id170836c326b7a",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Southeastern North American Ruderal Forest (M305)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id990e1237e3ce2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
         "targetNode": "Southeastern Warm Temperate Natural Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
         "alertId": "id08c7695cc86cd",
@@ -4127,24 +4109,6 @@
         "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
         "targetProblem": "Node has no label in the generated Document viewer",
         "alertId": "id95f7829c1ae6b",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southeastern Warm Temperate Ruderal Forests",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id170836c326b7a",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southeastern North American Ruderal Forest (M305)",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id990e1237e3ce2",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -4235,15 +4199,6 @@
         "targetNode": "Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)",
         "targetProblem": "Node has no label in the generated Document viewer",
         "alertId": "idc060fc1950d38",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Laurentian Forests",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idd2989170d7db2",
         "alertNotes": "",
         "alertAddressed": false
     },

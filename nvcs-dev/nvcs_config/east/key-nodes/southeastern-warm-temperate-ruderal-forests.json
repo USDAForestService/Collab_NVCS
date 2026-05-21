@@ -11,8 +11,26 @@
             "needs to be refined for this Division)"
         ],
         "trigger": [
-            "true"
+            "riv(RUDERAL_OR_EXOTIC_SPECIES) > 80 or",
+            "(riv(RUDERAL_OR_EXOTIC_SPECIES) + riv(UPLAND_RUDERAL) > 80)"
         ],
-        "filters": {}
+        "filters": {
+            "RUDERAL_OR_EXOTIC_SPECIES": [
+                {
+                    "ruderal": "Y"
+                },
+                {
+                    "exotic": "Y"
+                }
+            ],
+            "UPLAND_RUDERAL": [
+                {
+                    "species": "Quercus phellos"
+                },
+                {
+                    "species": "Quercus nigra"
+                }
+            ]
+        }
     }
 }
