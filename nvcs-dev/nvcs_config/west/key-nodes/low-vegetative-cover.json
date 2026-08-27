@@ -1,10 +1,10 @@
 {
     "node": {
-        "name": "low vegetative cover",
+        "name": "Low Vegetative Cover",
         "id": "",
-        "level": "",
+        "level": "informal",
         "description": [
-            "grassland"
+            "No to low tree cover with grass, shrub, and forb coverage below 3"
         ],
         "trigger": [
             "grcov()<3 and shcov()<3 and fbcov()<3"

@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "Temperate-Boreal Forested Wetland(F136)",
+        "name": "Temperate-Boreal Forested Wetland (F136)",
         "id": "F136",
-        "level": "formation",
+        "level": "ecobiome",
         "description": [
             "Tree-dominated wetlands in a temperate climate that is influenced by minerotrophic",
             "  groundwater, either on mineral or organic soils. The vegetation is dominated by broad-leaved",

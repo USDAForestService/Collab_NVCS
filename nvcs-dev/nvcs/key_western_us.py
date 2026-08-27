@@ -204,15 +204,15 @@ class ClassificationKey:
 
     def _setup(self):
         self.nodes[  0] = Node(  0, None, ((lambda plot:True), "", ""), "")
-        self.nodes[  1] = Node(  1,   0, element_001(), 'Test No to Low Trees')
-        self.nodes[  2] = Node(  2,   1, element_002(), 'live canopy cover over 10')
+        self.nodes[  1] = Node(  1,   0, element_001(), 'No to Low Trees')
+        self.nodes[  2] = Node(  2,   1, element_002(), 'Live Canopy Cover Over 10')
         self.nodes[  3] = Node(  3,   1, element_003(), 'Western North American Grassland & Shrubland (D022)')
-        self.nodes[  4] = Node(  4,   1, element_004(), 'low vegetative cover')
+        self.nodes[  4] = Node(  4,   1, element_004(), 'Low Vegetative Cover')
         self.nodes[  5] = Node(  5,   0, element_005(), 'Forest Plantations')
         self.nodes[  6] = Node(  6,   0, element_006(), 'Natural (including ruderal) Forests (C01)')
         self.nodes[  7] = Node(  7,   6, element_007(), 'Wetland Forest & Woodlands')
-        self.nodes[  8] = Node(  8,   7, element_008(), 'Temperate-Boreal Forested Wetland(F136)')
-        self.nodes[  9] = Node(  9,   8, element_009(), 'Great Plains Temperate Flooded & Swamp Forests (F136)')
+        self.nodes[  8] = Node(  8,   7, element_008(), 'Temperate-Boreal Forested Wetland (F136)')
+        self.nodes[  9] = Node(  9,   8, element_009(), 'Great Plains Temperate Flooded & Swamp Forests')
         self.nodes[ 10] = Node( 10,   9, element_010(), 'Eastern North American-Great Plains Flooded Forest & Swamp Division (D011)')
         self.nodes[ 11] = Node( 11,  10, element_011(), 'Great Plains Floodplain Forest (M028)')
         self.nodes[ 12] = Node( 12,  11, element_012(), 'Great Plains Cottonwood - Willow Floodplain Forest (G147)')
@@ -221,14 +221,14 @@ class ClassificationKey:
         self.nodes[ 15] = Node( 15,  14, element_015(), 'Southeastern Great Plains Floodplain Forest (M154)')
         self.nodes[ 16] = Node( 16,  15, element_016(), 'Southeastern Great Plains Central Texas Floodplain Forest (G784)')
         self.nodes[ 17] = Node( 17,  14, element_017(), 'Southeastern North American Ruderal Flooded Forest & Swamp (M310)')
-        self.nodes[ 18] = Node( 18,   8, element_018(), 'Western North American Temperate Flooded & Swamp Forests (F136)')
+        self.nodes[ 18] = Node( 18,   8, element_018(), 'Western North American Temperate Flooded & Swamp Forests')
         self.nodes[ 19] = Node( 19,  18, element_019(), 'North Pacific Forested Wetland (D193)')
         self.nodes[ 20] = Node( 20,  19, element_020(), 'North Pacific Forested Wetland (M035)')
         self.nodes[ 21] = Node( 21,  20, element_021(), 'North-Central Pacific Montane Riparian & Seepage Swamp (G507)')
         self.nodes[ 22] = Node( 22,  20, element_022(), 'North-Central Pacific Maritime Lowland Swamp (G853)')
         self.nodes[ 23] = Node( 23,  20, element_023(), 'North-Central Pacific Lowland Riparian Forest (G851)')
         self.nodes[ 24] = Node( 24,  19, element_024(), 'North Pacific Forested Wetland Ruderal Forests (M405)')
-        self.nodes[ 25] = Node( 25,  18, element_025(), 'Rocky Mountain-Great Basin Montane Flooded Forest& Swamp Division (D195)')
+        self.nodes[ 25] = Node( 25,  18, element_025(), 'Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)')
         self.nodes[ 26] = Node( 26,  25, element_026(), 'Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)')
         self.nodes[ 27] = Node( 27,  26, element_027(), 'Rocky Mountain-Great Basin Swamp (G505)')
         self.nodes[ 28] = Node( 28,  26, element_028(), 'Rocky Mountain-Great Basin Montane Riparian Forest (G506)')
@@ -289,7 +289,7 @@ class ClassificationKey:
         self.nodes[ 83] = Node( 83,  81, element_083(), 'Madrean Lower Montane Pine - Oak Forest & Woodland (G203)')
         self.nodes[ 84] = Node( 84,  75, element_084(), 'Western North American Ruderal Forests - Madrean-Balconian (D060)')
         self.nodes[ 85] = Node( 85,  75, element_085(), 'LC Madrean Montane Forest & Woodland (M011LC)')
-        self.nodes[ 86] = Node( 86,  68, element_086(), 'Cool Temperate Forest & Woodland Subbiome(S92)')
+        self.nodes[ 86] = Node( 86,  68, element_086(), 'Cool Temperate Forest & Woodland Subbiome (S92)')
         self.nodes[ 87] = Node( 87,  86, element_087(), 'North American Pacific Coast Temperate Rainforest (D338)')
         self.nodes[ 88] = Node( 88,  87, element_088(), 'North Pacific Coastal Rainforest (M024)')
         self.nodes[ 89] = Node( 89,  88, element_089(), 'Coastal Redwood Forest (G235)')
@@ -359,15 +359,15 @@ class ClassificationKey:
 
 def element_001():
 
-    """Test No to Low Trees"""
+    """No to Low Trees"""
     """"""
-    level = ''
+    level = 'informal'
     code = ''
 
     # No to low trees.
 
     def match(plot):
-        logging.debug('%s|NODE=001|Test No to Low Trees', plot.ident)
+        logging.debug('%s|NODE=001|No to Low Trees', plot.ident)
         result = (plot.get_balive() < 1)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -375,15 +375,15 @@ def element_001():
 
 def element_002():
 
-    """live canopy cover over 10"""
-    """B02"""
-    level = 'Biome'
-    code = 'B02'
+    """Live Canopy Cover Over 10"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # No to low basal area but with live canopy > 10
 
     def match(plot):
-        logging.debug('%s|NODE=002|live canopy cover over 10', plot.ident)
+        logging.debug('%s|NODE=002|Live Canopy Cover Over 10', plot.ident)
         result = (plot.get_live_canopy_cvr_pct() > 10)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -393,10 +393,10 @@ def element_003():
 
     """Western North American Grassland & Shrubland (D022)"""
     """"""
-    level = ''
+    level = 'division'
     code = ''
 
-    # Testing shrubland versus grassland.
+    # No to low tree conditions with cover percentage of shrub, grass, or forbs > 3
 
     def match(plot):
         logging.debug('%s|NODE=003|Western North American Grassland & Shrubland (D022)', plot.ident)
@@ -407,15 +407,15 @@ def element_003():
 
 def element_004():
 
-    """low vegetative cover"""
+    """Low Vegetative Cover"""
     """"""
-    level = ''
+    level = 'informal'
     code = ''
 
-    # grassland
+    # No to low tree cover with grass, shrub, and forb coverage below 3
 
     def match(plot):
-        logging.debug('%s|NODE=004|low vegetative cover', plot.ident)
+        logging.debug('%s|NODE=004|Low Vegetative Cover', plot.ident)
         result = (plot.get_grcov()<3 and plot.get_shcov()<3 and plot.get_fbcov()<3)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -425,7 +425,7 @@ def element_005():
 
     """Forest Plantations"""
     """"""
-    level = ''
+    level = 'informal'
     code = ''
 
     # Vegetation shows evidence of intensive human management as planted vegetation,
@@ -475,7 +475,7 @@ def element_007():
 
     """Wetland Forest & Woodlands"""
     """"""
-    level = 'class'
+    level = 'informal'
     code = ''
 
     # Vegetation is a Western section wetland forest, where:
@@ -607,9 +607,9 @@ def element_007():
 
 def element_008():
 
-    """Temperate-Boreal Forested Wetland(F136)"""
+    """Temperate-Boreal Forested Wetland (F136)"""
     """F136"""
-    level = 'formation'
+    level = 'ecobiome'
     code = 'F136'
 
     # Tree-dominated wetlands in a temperate climate that is influenced by minerotrophic
@@ -618,7 +618,7 @@ def element_008():
     #   wood-rich peat or a mineral soil on floodplains.
 
     def match(plot):
-        logging.debug('%s|NODE=008|Temperate-Boreal Forested Wetland(F136)', plot.ident)
+        logging.debug('%s|NODE=008|Temperate-Boreal Forested Wetland (F136)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -626,10 +626,10 @@ def element_008():
 
 def element_009():
 
-    """Great Plains Temperate Flooded & Swamp Forests (F136)"""
-    """F136"""
-    level = 'Ecobiome'
-    code = 'F136'
+    """Great Plains Temperate Flooded & Swamp Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Forests found in ECOREGION 315, 331, 332, M334, AND
     # tree composition is dominated by one or more of Acer negundo, Betula occidentalis
@@ -671,7 +671,7 @@ def element_009():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=009|Great Plains Temperate Flooded & Swamp Forests (F136)', plot.ident)
+        logging.debug('%s|NODE=009|Great Plains Temperate Flooded & Swamp Forests', plot.ident)
         result = (plot.match(ECOREGIONS_GP) and plot.riv(DIAGNOSTIC_SPECIES) >= 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -1025,10 +1025,10 @@ def element_017():
 
 def element_018():
 
-    """Western North American Temperate Flooded & Swamp Forests (F136)"""
-    """F136"""
-    level = 'formation'
-    code = 'F136'
+    """Western North American Temperate Flooded & Swamp Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Forests found in ECOREGION 242, M242, 261, M261, 262, M262, 263, 313,
     # M313, 315, 321, 322, 331A, M331, M332, M333, M334, 341, M341, 342
@@ -1038,7 +1038,7 @@ def element_018():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=018|Western North American Temperate Flooded & Swamp Forests (F136)', plot.ident)
+        logging.debug('%s|NODE=018|Western North American Temperate Flooded & Swamp Forests', plot.ident)
         result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -1301,7 +1301,7 @@ def element_024():
 
     """North Pacific Forested Wetland Ruderal Forests (M405)"""
     """M405"""
-    level = 'Macrogroup'
+    level = 'macrogroup'
     code = 'M405'
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or
@@ -1309,7 +1309,6 @@ def element_024():
     # that dominates on formerly cleared and/or planted sites but which
     # has been allowed to succeed more-or-less spontaneously).
     # Tree composition dominated by EXOTIC = yes (>= 80% RIV)
-    # (See Appendix xx [PLACEHOLDER])
 
     EXOTIC = PatternList('EXOTIC',
         {'exotic': 'Y'}
@@ -1324,7 +1323,7 @@ def element_024():
 
 def element_025():
 
-    """Rocky Mountain-Great Basin Montane Flooded Forest& Swamp Division (D195)"""
+    """Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)"""
     """D195"""
     level = 'division'
     code = 'D195'
@@ -1391,7 +1390,7 @@ def element_025():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=025|Rocky Mountain-Great Basin Montane Flooded Forest& Swamp Division (D195)', plot.ident)
+        logging.debug('%s|NODE=025|Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or
@@ -2001,7 +2000,7 @@ def element_038():
 
     """Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)"""
     """G510"""
-    level = 'Group'
+    level = 'group'
     code = 'G510'
 
     # test
@@ -2017,10 +2016,10 @@ def element_039():
 
     """Upland Forest & Woodlands"""
     """"""
-    level = 'class'
+    level = 'informal'
     code = ''
 
-    # Not as above
+    # Not as above (Wetland Forest & Woodlands)
 
     def match(plot):
         logging.debug('%s|NODE=039|Upland Forest & Woodlands', plot.ident)
@@ -2033,7 +2032,7 @@ def element_040():
 
     """Temperate Boreal Forest & Woodland Subclass (B02)"""
     """B02"""
-    level = 'Biome'
+    level = 'biome'
     code = 'B02'
 
     # other
@@ -2049,7 +2048,7 @@ def element_041():
 
     """Great Plains Temperate Forests"""
     """"""
-    level = 'subclass'
+    level = 'informal'
     code = ''
 
     # Tree composition and ecology matching one of the following options
@@ -3302,7 +3301,7 @@ def element_068():
 
     """Western North American Temperate Forests"""
     """"""
-    level = 'subclass'
+    level = 'informal'
     code = ''
 
     # Forests found in ECOREGION 242, M242, 261, M261, 262, M262, 263, 313, M313,
@@ -3323,7 +3322,7 @@ def element_069():
 
     """Warm Temperate Forest & Woodland (S54)"""
     """S54"""
-    level = 'Subbiome'
+    level = 'subbiome'
     code = 'S54'
 
     # i. Located in ECOREGION M242B, 261, M261, 262, M262, 263, 313C, M313,
@@ -4385,9 +4384,9 @@ def element_085():
 
 def element_086():
 
-    """Cool Temperate Forest & Woodland Subbiome(S92)"""
+    """Cool Temperate Forest & Woodland Subbiome (S92)"""
     """S92"""
-    level = 'Subbiome'
+    level = 'subbiome'
     code = 'S92'
 
     # Not as above, Temperate deciduous forests and woodlands, temperate
@@ -4396,7 +4395,7 @@ def element_086():
     # in cool temperate regions of the western U.S. and southeast Alaska
 
     def match(plot):
-        logging.debug('%s|NODE=086|Cool Temperate Forest & Woodland Subbiome(S92)', plot.ident)
+        logging.debug('%s|NODE=086|Cool Temperate Forest & Woodland Subbiome (S92)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
