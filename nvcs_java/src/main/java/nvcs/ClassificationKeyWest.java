@@ -46,15 +46,15 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Node _setup() {
         nodes.put(0, new Node(0, null, element_000(), ""));
-        nodes.put(  1,  new Node(  1,   0, element_001(), "Test No to Low Trees"));
-        nodes.put(  2,  new Node(  2,   1, element_002(), "live canopy cover over 10"));
+        nodes.put(  1,  new Node(  1,   0, element_001(), "No to Low Trees"));
+        nodes.put(  2,  new Node(  2,   1, element_002(), "Live Canopy Cover Over 10"));
         nodes.put(  3,  new Node(  3,   1, element_003(), "Western North American Grassland & Shrubland (D022)"));
-        nodes.put(  4,  new Node(  4,   1, element_004(), "low vegetative cover"));
+        nodes.put(  4,  new Node(  4,   1, element_004(), "Low Vegetative Cover"));
         nodes.put(  5,  new Node(  5,   0, element_005(), "Forest Plantations"));
         nodes.put(  6,  new Node(  6,   0, element_006(), "Natural (including ruderal) Forests (C01)"));
         nodes.put(  7,  new Node(  7,   6, element_007(), "Wetland Forest & Woodlands"));
-        nodes.put(  8,  new Node(  8,   7, element_008(), "Temperate-Boreal Forested Wetland(F136)"));
-        nodes.put(  9,  new Node(  9,   8, element_009(), "Great Plains Temperate Flooded & Swamp Forests (F136)"));
+        nodes.put(  8,  new Node(  8,   7, element_008(), "Temperate-Boreal Forested Wetland (F136)"));
+        nodes.put(  9,  new Node(  9,   8, element_009(), "Great Plains Temperate Flooded & Swamp Forests"));
         nodes.put( 10,  new Node( 10,   9, element_010(), "Eastern North American-Great Plains Flooded Forest & Swamp Division (D011)"));
         nodes.put( 11,  new Node( 11,  10, element_011(), "Great Plains Floodplain Forest (M028)"));
         nodes.put( 12,  new Node( 12,  11, element_012(), "Great Plains Cottonwood - Willow Floodplain Forest (G147)"));
@@ -63,14 +63,14 @@ public class ClassificationKeyWest extends ClassificationKey {
         nodes.put( 15,  new Node( 15,  14, element_015(), "Southeastern Great Plains Floodplain Forest (M154)"));
         nodes.put( 16,  new Node( 16,  15, element_016(), "Southeastern Great Plains Central Texas Floodplain Forest (G784)"));
         nodes.put( 17,  new Node( 17,  14, element_017(), "Southeastern North American Ruderal Flooded Forest & Swamp (M310)"));
-        nodes.put( 18,  new Node( 18,   8, element_018(), "Western North American Temperate Flooded & Swamp Forests (F136)"));
+        nodes.put( 18,  new Node( 18,   8, element_018(), "Western North American Temperate Flooded & Swamp Forests"));
         nodes.put( 19,  new Node( 19,  18, element_019(), "North Pacific Forested Wetland (D193)"));
         nodes.put( 20,  new Node( 20,  19, element_020(), "North Pacific Forested Wetland (M035)"));
         nodes.put( 21,  new Node( 21,  20, element_021(), "North-Central Pacific Montane Riparian & Seepage Swamp (G507)"));
         nodes.put( 22,  new Node( 22,  20, element_022(), "North-Central Pacific Maritime Lowland Swamp (G853)"));
         nodes.put( 23,  new Node( 23,  20, element_023(), "North-Central Pacific Lowland Riparian Forest (G851)"));
         nodes.put( 24,  new Node( 24,  19, element_024(), "North Pacific Forested Wetland Ruderal Forests (M405)"));
-        nodes.put( 25,  new Node( 25,  18, element_025(), "Rocky Mountain-Great Basin Montane Flooded Forest& Swamp Division (D195)"));
+        nodes.put( 25,  new Node( 25,  18, element_025(), "Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)"));
         nodes.put( 26,  new Node( 26,  25, element_026(), "Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)"));
         nodes.put( 27,  new Node( 27,  26, element_027(), "Rocky Mountain-Great Basin Swamp (G505)"));
         nodes.put( 28,  new Node( 28,  26, element_028(), "Rocky Mountain-Great Basin Montane Riparian Forest (G506)"));
@@ -131,7 +131,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         nodes.put( 83,  new Node( 83,  81, element_083(), "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)"));
         nodes.put( 84,  new Node( 84,  75, element_084(), "Western North American Ruderal Forests - Madrean-Balconian (D060)"));
         nodes.put( 85,  new Node( 85,  75, element_085(), "LC Madrean Montane Forest & Woodland (M011LC)"));
-        nodes.put( 86,  new Node( 86,  68, element_086(), "Cool Temperate Forest & Woodland Subbiome(S92)"));
+        nodes.put( 86,  new Node( 86,  68, element_086(), "Cool Temperate Forest & Woodland Subbiome (S92)"));
         nodes.put( 87,  new Node( 87,  86, element_087(), "North American Pacific Coast Temperate Rainforest (D338)"));
         nodes.put( 88,  new Node( 88,  87, element_088(), "North Pacific Coastal Rainforest (M024)"));
         nodes.put( 89,  new Node( 89,  88, element_089(), "Coastal Redwood Forest (G235)"));
@@ -215,10 +215,10 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_001() {
 
-        // Test No to Low Trees
+        // No to Low Trees
         // 
 
-        String level = "";
+        String level = "informal";
         String code = "";
 
         // No to low trees.
@@ -232,11 +232,11 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_002() {
 
-        // live canopy cover over 10
-        // B02
+        // Live Canopy Cover Over 10
+        // 
 
-        String level = "Biome";
-        String code = "B02";
+        String level = "informal";
+        String code = "";
 
         // No to low basal area but with live canopy > 10
 
@@ -252,10 +252,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Western North American Grassland & Shrubland (D022)
         // 
 
-        String level = "";
+        String level = "division";
         String code = "";
 
-        // Testing shrubland versus grassland.
+        // No to low tree conditions with cover percentage of shrub, grass, or forbs > 3
 
         INodeMatch match = plot -> (
             plot.get_shcov()> 3 || plot.get_grcov()> 3 || plot.get_fbcov()>3
@@ -266,13 +266,13 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_004() {
 
-        // low vegetative cover
+        // Low Vegetative Cover
         // 
 
-        String level = "";
+        String level = "informal";
         String code = "";
 
-        // grassland
+        // No to low tree cover with grass, shrub, and forb coverage below 3
 
         INodeMatch match = plot -> (
             plot.get_grcov()<3 && plot.get_shcov()<3 && plot.get_fbcov()<3
@@ -286,7 +286,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Forest Plantations
         // 
 
-        String level = "";
+        String level = "informal";
         String code = "";
 
         // Vegetation shows evidence of intensive human management as planted vegetation,
@@ -356,7 +356,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Wetland Forest & Woodlands
         // 
 
-        String level = "class";
+        String level = "informal";
         String code = "";
 
         // Vegetation is a Western section wetland forest, where:
@@ -571,10 +571,10 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_008() {
 
-        // Temperate-Boreal Forested Wetland(F136)
+        // Temperate-Boreal Forested Wetland (F136)
         // F136
 
-        String level = "formation";
+        String level = "ecobiome";
         String code = "F136";
 
         // Tree-dominated wetlands in a temperate climate that is influenced by minerotrophic
@@ -591,11 +591,11 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_009() {
 
-        // Great Plains Temperate Flooded & Swamp Forests (F136)
-        // F136
+        // Great Plains Temperate Flooded & Swamp Forests
+        // 
 
-        String level = "Ecobiome";
-        String code = "F136";
+        String level = "informal";
+        String code = "";
 
         // Forests found in ECOREGION 315, 331, 332, M334, AND
         // tree composition is dominated by one or more of Acer negundo, Betula occidentalis
@@ -1302,11 +1302,11 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_018() {
 
-        // Western North American Temperate Flooded & Swamp Forests (F136)
-        // F136
+        // Western North American Temperate Flooded & Swamp Forests
+        // 
 
-        String level = "formation";
-        String code = "F136";
+        String level = "informal";
+        String code = "";
 
         // Forests found in ECOREGION 242, M242, 261, M261, 262, M262, 263, 313,
         // M313, 315, 321, 322, 331A, M331, M332, M333, M334, 341, M341, 342
@@ -1804,7 +1804,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // North Pacific Forested Wetland Ruderal Forests (M405)
         // M405
 
-        String level = "Macrogroup";
+        String level = "macrogroup";
         String code = "M405";
 
         // Vegetation dominated by ruderal vegetation (nonnative invasive or
@@ -1812,7 +1812,6 @@ public class ClassificationKeyWest extends ClassificationKey {
         // that dominates on formerly cleared and/or planted sites but which
         // has been allowed to succeed more-or-less spontaneously).
         // Tree composition dominated by EXOTIC = yes (>= 80% RIV)
-        // (See Appendix xx [PLACEHOLDER])
 
         List<KeyValue> EXOTIC_pattern0 = Arrays.asList(
             new KeyValue("exotic", "Y")
@@ -1831,7 +1830,7 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_025() {
 
-        // Rocky Mountain-Great Basin Montane Flooded Forest& Swamp Division (D195)
+        // Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)
         // D195
 
         String level = "division";
@@ -3161,7 +3160,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)
         // G510
 
-        String level = "Group";
+        String level = "group";
         String code = "G510";
 
         // test
@@ -3178,10 +3177,10 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Upland Forest & Woodlands
         // 
 
-        String level = "class";
+        String level = "informal";
         String code = "";
 
-        // Not as above
+        // Not as above (Wetland Forest & Woodlands)
 
         INodeMatch match = plot -> (
             true
@@ -3195,7 +3194,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Temperate Boreal Forest & Woodland Subclass (B02)
         // B02
 
-        String level = "Biome";
+        String level = "biome";
         String code = "B02";
 
         // other
@@ -3212,7 +3211,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Great Plains Temperate Forests
         // 
 
-        String level = "subclass";
+        String level = "informal";
         String code = "";
 
         // Tree composition and ecology matching one of the following options
@@ -5559,7 +5558,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Western North American Temperate Forests
         // 
 
-        String level = "subclass";
+        String level = "informal";
         String code = "";
 
         // Forests found in ECOREGION 242, M242, 261, M261, 262, M262, 263, 313, M313,
@@ -5585,7 +5584,7 @@ public class ClassificationKeyWest extends ClassificationKey {
         // Warm Temperate Forest & Woodland (S54)
         // S54
 
-        String level = "Subbiome";
+        String level = "subbiome";
         String code = "S54";
 
         // i. Located in ECOREGION M242B, 261, M261, 262, M262, 263, 313C, M313,
@@ -7928,10 +7927,10 @@ public class ClassificationKeyWest extends ClassificationKey {
 
     public Object[] element_086() {
 
-        // Cool Temperate Forest & Woodland Subbiome(S92)
+        // Cool Temperate Forest & Woodland Subbiome (S92)
         // S92
 
-        String level = "Subbiome";
+        String level = "subbiome";
         String code = "S92";
 
         // Not as above, Temperate deciduous forests and woodlands, temperate

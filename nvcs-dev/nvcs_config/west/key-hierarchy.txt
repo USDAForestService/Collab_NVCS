@@ -1,12 +1,12 @@
-Test No to Low Trees
-	live canopy cover over 10
+No to Low Trees
+	Live Canopy Cover Over 10
 	Western North American Grassland & Shrubland (D022)
-	low vegetative cover
+	Low Vegetative Cover
 Forest Plantations
 Natural (including ruderal) Forests (C01)
 	Wetland Forest & Woodlands
-		Temperate-Boreal Forested Wetland(F136)
-			Great Plains Temperate Flooded & Swamp Forests (F136)
+		Temperate-Boreal Forested Wetland (F136)
+			Great Plains Temperate Flooded & Swamp Forests
 				Eastern North American-Great Plains Flooded Forest & Swamp Division (D011)
 					Great Plains Floodplain Forest (M028)
 						Great Plains Cottonwood - Willow Floodplain Forest (G147)
@@ -15,14 +15,14 @@ Natural (including ruderal) Forests (C01)
 					Southeastern Great Plains Floodplain Forest (M154)
 						Southeastern Great Plains Central Texas Floodplain Forest (G784)
 					Southeastern North American Ruderal Flooded Forest & Swamp (M310)
-			Western North American Temperate Flooded & Swamp Forests (F136)
+			Western North American Temperate Flooded & Swamp Forests
 				North Pacific Forested Wetland (D193)
 					North Pacific Forested Wetland (M035)
 						North-Central Pacific Montane Riparian & Seepage Swamp (G507)
 						North-Central Pacific Maritime Lowland Swamp (G853)
 						North-Central Pacific Lowland Riparian Forest (G851)
 					North Pacific Forested Wetland Ruderal Forests (M405)
-				Rocky Mountain-Great Basin Montane Flooded Forest& Swamp Division (D195)
+				Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)
 					Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)
 						Rocky Mountain-Great Basin Swamp (G505)
 						Rocky Mountain-Great Basin Montane Riparian Forest (G506)
@@ -83,7 +83,7 @@ Natural (including ruderal) Forests (C01)
 								Madrean Lower Montane Pine - Oak Forest & Woodland (G203)
 						Western North American Ruderal Forests - Madrean-Balconian (D060)
 						LC Madrean Montane Forest & Woodland (M011LC)
-				Cool Temperate Forest & Woodland Subbiome(S92)
+				Cool Temperate Forest & Woodland Subbiome (S92)
 					North American Pacific Coast Temperate Rainforest (D338)
 						North Pacific Coastal Rainforest (M024)
 							Coastal Redwood Forest (G235)

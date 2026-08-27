@@ -2,9 +2,9 @@
     "node": {
         "name": "Western North American Grassland & Shrubland (D022)",
         "id": "",
-        "level": "",
+        "level": "division",
         "description": [
-            "Testing shrubland versus grassland."
+            "No to low tree conditions with cover percentage of shrub, grass, or forbs > 3"
         ],
         "trigger": [
             "shcov()> 3 or grcov()> 3 or fbcov()>3"

@@ -1,8 +1,8 @@
 {
     "node": {
-        "name": "live canopy cover over 10",
-        "id": "B02",
-        "level": "Biome",
+        "name": "Live Canopy Cover Over 10",
+        "id": "",
+        "level": "informal",
         "description": [
             "No to low basal area but with live canopy > 10"
         ],

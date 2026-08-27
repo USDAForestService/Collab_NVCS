@@ -2,9 +2,9 @@
     "node": {
         "name": "Upland Forest & Woodlands",
         "id": "",
-        "level": "class",
+        "level": "informal",
         "description": [
-            "Not as above"
+            "Not as above (Wetland Forest & Woodlands)"
         ],
         "trigger": [
             "true"
