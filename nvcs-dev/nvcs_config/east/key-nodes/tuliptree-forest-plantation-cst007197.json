@@ -1,14 +1,14 @@
 {
     "node": {
         "name": "Tuliptree Forest Plantation (CST007197)",
-        "id": "Tuliptree Forest Plantation (CST007197)",
+        "id": "CST007197",
         "level": "subtype",
         "description": [
             "Tree composition dominated by Liriodendron tulipifera >=25% RIV,",
             "and exceeds species of Liquidambar styraciflua."
         ],
         "trigger": [
-            "    riv(TULIPTREE) >= 25",
+            "riv(TULIPTREE) >= 25",
             "and riv(TULIPTREE) > riv(SWEETGUM)"
         ],
         "filters": {

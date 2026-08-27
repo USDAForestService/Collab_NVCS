@@ -1,7 +1,7 @@
 {
     "node": {
         "name": "Black Locust Forest Plantation (CST007190)",
-        "id": "Black Locust Forest Plantation (CST007190)",
+        "id": "CST007190",
         "level": "subtype",
         "description": [
             "Tree composition dominated by Robinia pseudoacacia, >=25% RIV,",
@@ -9,7 +9,7 @@
             "and Populus spp."
         ],
         "trigger": [
-            "    riv(BLACK_LOCUST) >= 25",
+            "riv(BLACK_LOCUST) >= 25",
             "and riv(BLACK_LOCUST) > riv(BLACK_WALNUT)",
             "and riv(BLACK_LOCUST) > riv(QUAKING_ASPEN)",
             "and riv(BLACK_LOCUST) > riv(POPULUS_SPP)"

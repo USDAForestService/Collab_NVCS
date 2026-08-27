@@ -54,7 +54,7 @@ Forest Plantation Anthro-Division (CSF05)
 					Exotic Southern Hardwood Plantation Anthro-type (CTY019a)
 		North American Boreal Forest Plantation Cultural Subgroup
 Natural and Ruderal Forests
-	Wetland Forest & Woodlands Key
+	Wetland Forest & Woodlands
 		Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).
 			Tropical Florida Natural Mangrove Forests
 				Western Atlantic & Caribbean Mangrove (M005)
@@ -71,7 +71,7 @@ Natural and Ruderal Forests
 					Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)
 					Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)
 					Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)
-					Pond-cypress Basin Swamp LC (M161)
+					Pond-Cypress Basin Swamp LC (M161)
 					Longleaf Pine Woodland LC2 (M007)
 					Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)
 				Eastern Warm Temperate Ruderal Wetland Forest
@@ -94,12 +94,12 @@ Natural and Ruderal Forests
 						Eastern Cool Temperate Ruderal Wetland Forests
 							Eastern North American Ruderal Flooded Forest & Swamp (M302)
 	Upland Forest & Woodlands
-		Tropical Forest & Woodland Subclass
-			Tropical Dry Forest
+		Tropical Forest (TT1)
+			Tropical Dry Forest (TT1.b)
 				Tropical Florida Forest
 					Tropical Florida Natural Forest
 						Caribbean-Mesoamerican Dry Pine Forest (M296)
-						Caribbean Swamp Forest via upland (M617)
+						Caribbean Swamp Forest (M617)
 						Caribbean Coastal Lowland Dry Forest (M134)
 						Caribbean Coastal Lowland Dry Forest LC (M134)
 					Tropical Florida Ruderal Forest

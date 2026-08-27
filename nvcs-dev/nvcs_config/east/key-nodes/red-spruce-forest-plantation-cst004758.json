@@ -1,14 +1,14 @@
 {
     "node": {
         "name": "Red Spruce Forest Plantation (CST004758)",
-        "id": "Red Spruce Forest Plantation (CST004758)",
+        "id": "CST004758",
         "level": "subtype",
         "description": [
             "Tree composition dominated by Picea rubens, i.e., Picea rubens >=25% RIV,",
             "and exceeds each species of Abies balsamea, Larix laricina, Picea glauca, and Picea mariana."
         ],
         "trigger": [
-            "    riv(RED_SPRUCE) >= 25",
+            "riv(RED_SPRUCE) >= 25",
             "and riv(RED_SPRUCE) > riv(BALSAM_FIR)",
             "and riv(RED_SPRUCE) > riv(NATIVE_TAMARACK)",
             "and riv(RED_SPRUCE) > riv(WHITE_SPRUCE)",

@@ -1,7 +1,7 @@
 {
     "node": {
         "name": "White Spruce Forest Plantation (CST007164)",
-        "id": "White Spruce Forest Plantation (CST007164)",
+        "id": "CST007164",
         "level": "subtype",
         "description": [
             "Tree composition dominated by Picea glauca >=25% RIV,",
@@ -9,7 +9,7 @@
             "Picea rubens and Picea mariana."
         ],
         "trigger": [
-            "    riv(WHITE_SPRUCE) >= 25",
+            "riv(WHITE_SPRUCE) >= 25",
             "and riv(WHITE_SPRUCE) > riv(BALSAM_FIR)",
             "and riv(WHITE_SPRUCE) > riv(NATIVE_TAMARACK)",
             "and riv(WHITE_SPRUCE) > riv(RED_SPRUCE)",

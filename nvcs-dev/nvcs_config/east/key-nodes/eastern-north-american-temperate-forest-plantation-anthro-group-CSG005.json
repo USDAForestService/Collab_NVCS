@@ -2,7 +2,7 @@
     "node": {
         "name": "Eastern North American Temperate Forest Plantation Anthro-group (CSG005)",
         "id": "CSG005",
-        "level": "subgroup",
+        "level": "group",
         "description": [
             "Plantations found in eastern temperate region of North America (EcoProvince 210,",
             "M210, 220, M220, 230, M230, 250, 310-Texas part only, and 330"

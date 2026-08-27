@@ -1,10 +1,10 @@
 {
     "node": {
         "name": "Central Hardwood Floodplain Forest (M029)",
-        "id": "Central Hardwood Floodplain Forest (M029)",
+        "id": "M029",
         "level": "macrogroup",
         "description": [
-            " i. Tree composition dominated by one or more of STRONG CENTRAL FLOODPLAIN DIAGNOSTICS",
+            "i. Tree composition dominated by one or more of STRONG CENTRAL FLOODPLAIN DIAGNOSTICS",
             "    Acer negundo, Acer saccharinum, Carya cordiformis, Carya laciniosa, Celtis laevigata,",
             "    Celtis occidentalis, Betula nigra, Fraxinus pennsylvanica, Platanus occidentalis,",
             "    Populus deltoides, Populus deltoides spp. monilifera, Salix bebbiana, Salix nigra,",
@@ -18,7 +18,7 @@
             "    Quercus macrocarpa, Tilia americana (together >=50% RIV)."
         ],
         "trigger": [
-            "    riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 50",
+            "riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 50",
             "or (    riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 20",
             "    and riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
         ],

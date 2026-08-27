@@ -1,10 +1,10 @@
 {
     "node": {
         "name": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)",
-        "id": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)",
+        "id": "M031",
         "level": "macrogroup",
         "description": [
-            " i. Tree composition dominated by STRONG FLOODPLAIN DIAGNOSTICS Acer saccharinum, Carya aquatica, Betula nigra,",
+            "i. Tree composition dominated by STRONG FLOODPLAIN DIAGNOSTICS Acer saccharinum, Carya aquatica, Betula nigra,",
             "    Carya illinoinensis, Celtis laevigata, Fraxinus pennsylvanica, Fraxinus profunda, Liquidambar styraciflua,",
             "    Gleditsia aquatica, Juniperus virginiana var. silicicola, Nyssa aquatica, Nyssa biflora, Nyssa ogeche,",
             "    Planera aquatica, Platanus occidentalis, Populus deltoides, Quercus falcata var. pagodifolia (= Q. pagoda),",
@@ -18,7 +18,7 @@
             "    Pinus elliottii, Pinus glabra, Pinus taeda, Quercus macrocarpa, Sabal palmetto, Ulmus rubra, Ulmus serotina (together >=50% RIV)"
         ],
         "trigger": [
-            "    riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 50",
+            "riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 50",
             "or (    riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 20",
             "    and riv(STRONG_FLOODPLAIN_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
         ],

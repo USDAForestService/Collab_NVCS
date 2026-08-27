@@ -260,7 +260,7 @@ class ClassificationKey:
         self.nodes[ 54] = Node( 54,  52, element_054(), 'Exotic Southern Hardwood Plantation Anthro-type (CTY019a)')
         self.nodes[ 55] = Node( 55,  11, element_055(), 'North American Boreal Forest Plantation Cultural Subgroup')
         self.nodes[ 56] = Node( 56,   0, element_056(), 'Natural and Ruderal Forests')
-        self.nodes[ 57] = Node( 57,  56, element_057(), 'Wetland Forest & Woodlands Key')
+        self.nodes[ 57] = Node( 57,  56, element_057(), 'Wetland Forest & Woodlands')
         self.nodes[ 58] = Node( 58,  57, element_058(), 'Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).')
         self.nodes[ 59] = Node( 59,  58, element_059(), 'Tropical Florida Natural Mangrove Forests')
         self.nodes[ 60] = Node( 60,  59, element_060(), 'Western Atlantic & Caribbean Mangrove (M005)')
@@ -277,7 +277,7 @@ class ClassificationKey:
         self.nodes[ 71] = Node( 71,  68, element_071(), 'Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)')
         self.nodes[ 72] = Node( 72,  68, element_072(), 'Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)')
         self.nodes[ 73] = Node( 73,  68, element_073(), 'Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)')
-        self.nodes[ 74] = Node( 74,  68, element_074(), 'Pond-cypress Basin Swamp LC (M161)')
+        self.nodes[ 74] = Node( 74,  68, element_074(), 'Pond-Cypress Basin Swamp LC (M161)')
         self.nodes[ 75] = Node( 75,  68, element_075(), 'Longleaf Pine Woodland LC2 (M007)')
         self.nodes[ 76] = Node( 76,  68, element_076(), 'Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)')
         self.nodes[ 77] = Node( 77,  67, element_077(), 'Eastern Warm Temperate Ruderal Wetland Forest')
@@ -300,12 +300,12 @@ class ClassificationKey:
         self.nodes[ 94] = Node( 94,  86, element_094(), 'Eastern Cool Temperate Ruderal Wetland Forests')
         self.nodes[ 95] = Node( 95,  94, element_095(), 'Eastern North American Ruderal Flooded Forest & Swamp (M302)')
         self.nodes[ 96] = Node( 96,  56, element_096(), 'Upland Forest & Woodlands')
-        self.nodes[ 97] = Node( 97,  96, element_097(), 'Tropical Forest & Woodland Subclass')
-        self.nodes[ 98] = Node( 98,  97, element_098(), 'Tropical Dry Forest')
+        self.nodes[ 97] = Node( 97,  96, element_097(), 'Tropical Forest (TT1)')
+        self.nodes[ 98] = Node( 98,  97, element_098(), 'Tropical Dry Forest (TT1.b)')
         self.nodes[ 99] = Node( 99,  98, element_099(), 'Tropical Florida Forest')
         self.nodes[100] = Node(100,  99, element_100(), 'Tropical Florida Natural Forest')
         self.nodes[101] = Node(101, 100, element_101(), 'Caribbean-Mesoamerican Dry Pine Forest (M296)')
-        self.nodes[102] = Node(102, 100, element_102(), 'Caribbean Swamp Forest via upland (M617)')
+        self.nodes[102] = Node(102, 100, element_102(), 'Caribbean Swamp Forest (M617)')
         self.nodes[103] = Node(103, 100, element_103(), 'Caribbean Coastal Lowland Dry Forest (M134)')
         self.nodes[104] = Node(104, 100, element_104(), 'Caribbean Coastal Lowland Dry Forest LC (M134)')
         self.nodes[105] = Node(105,  99, element_105(), 'Tropical Florida Ruderal Forest')
@@ -440,9 +440,9 @@ def element_003():
 def element_004():
 
     """Caribbean Conifer Plantations"""
-    """Caribbean Conifer Plantations"""
+    """"""
     level = 'informal'
-    code = 'Caribbean Conifer Plantations'
+    code = ''
 
     # Caribbean species are conifers >=25% RIV
 
@@ -502,9 +502,9 @@ def element_006():
 def element_007():
 
     """Caribbean Hardwood Plantations"""
-    """Caribbean Hardwood Plantations"""
+    """"""
     level = 'informal'
-    code = 'Caribbean Hardwood Plantations'
+    code = ''
 
     # Caribbean species are hardwoods >=25% RIV
 
@@ -581,7 +581,7 @@ def element_011():
 
     """Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)"""
     """CGR007"""
-    level = 'group'
+    level = 'macrogroup'
     code = 'CGR007'
 
     # other
@@ -597,7 +597,7 @@ def element_012():
 
     """Eastern North American Temperate Forest Plantation Anthro-group (CSG005)"""
     """CSG005"""
-    level = 'subgroup'
+    level = 'group'
     code = 'CSG005'
 
     # Plantations found in eastern temperate region of North America (EcoProvince 210,
@@ -619,9 +619,9 @@ def element_012():
 def element_013():
 
     """Eastern North American Conifer Plantations"""
-    """Eastern North American Conifer Plantations"""
+    """"""
     level = 'informal'
-    code = 'Eastern North American Conifer Plantations'
+    code = ''
 
     # Eastern North American species are conifers >=25% RIV
 
@@ -639,9 +639,9 @@ def element_013():
 def element_014():
 
     """Native Eastern North American Conifer Plantations"""
-    """Native Eastern North American Conifer Plantations"""
+    """"""
     level = 'informal'
-    code = 'Native Eastern North American Conifer Plantations'
+    code = ''
 
     # Tree species dominated by native conifers (See
     # Appendix A) with RIV > exotic conifers
@@ -701,9 +701,9 @@ def element_015():
 def element_016():
 
     """Shortleaf Pine Forest Plantation (CST007169)"""
-    """Shortleaf Pine Forest Plantation (CST007169)"""
+    """CST007169"""
     level = 'subtype'
-    code = 'Shortleaf Pine Forest Plantation (CST007169)'
+    code = 'CST007169'
 
     # Tree composition dominated by Pinus echinata; i.e. Pinus echinata >= 25% RIV,
     # and exceeds each species of Pinus elliottii, Pinus palustris, Pinus clausa and Pinus taeda.
@@ -730,7 +730,7 @@ def element_016():
 
     def match(plot):
         logging.debug('%s|NODE=016|Shortleaf Pine Forest Plantation (CST007169)', plot.ident)
-        result = (    plot.riv(SHORTLEAF_PINE) >= 25
+        result = (plot.riv(SHORTLEAF_PINE) >= 25
                and plot.riv(SHORTLEAF_PINE) > plot.riv(LONGLEAF_PINE)
                and plot.riv(SHORTLEAF_PINE) > plot.riv(SLASH_PINE)
                and plot.riv(SHORTLEAF_PINE) > plot.riv(LOBLOLLY_PINE)
@@ -742,9 +742,9 @@ def element_016():
 def element_017():
 
     """Longleaf Pine Forest Plantation (CST007176)"""
-    """Longleaf Pine Forest Plantation (CST007176)"""
+    """CST007176"""
     level = 'subtype'
-    code = 'Longleaf Pine Forest Plantation (CST007176)'
+    code = 'CST007176'
 
     # Tree composition dominated by Pinus palustris; i.e. Pinus palustris >= 25% RIV,
     # and exceeds each species of Pinus echinata, Pinus elliottii, Pinus clausa and Pinus taeda.
@@ -771,7 +771,7 @@ def element_017():
 
     def match(plot):
         logging.debug('%s|NODE=017|Longleaf Pine Forest Plantation (CST007176)', plot.ident)
-        result = (    plot.riv(LONGLEAF_PINE) >= 25
+        result = (plot.riv(LONGLEAF_PINE) >= 25
                and plot.riv(LONGLEAF_PINE) > plot.riv(SHORTLEAF_PINE)
                and plot.riv(LONGLEAF_PINE) > plot.riv(SLASH_PINE)
                and plot.riv(LONGLEAF_PINE) > plot.riv(LOBLOLLY_PINE)
@@ -783,9 +783,9 @@ def element_017():
 def element_018():
 
     """Slash Pine Forest Plantation (CST007170)"""
-    """Slash Pine Forest Plantation (CST007170)"""
+    """CST007170"""
     level = 'subtype'
-    code = 'Slash Pine Forest Plantation (CST007170)'
+    code = 'CST007170'
 
     # Tree composition dominated by Pinus elliottii; i.e. Pinus elliotti >= 25% RIV,
     # and exceeds each species of Pinus echinta, Pinus palustris, Pinus clausa or Pinus taeda.
@@ -812,7 +812,7 @@ def element_018():
 
     def match(plot):
         logging.debug('%s|NODE=018|Slash Pine Forest Plantation (CST007170)', plot.ident)
-        result = (    plot.riv(SLASH_PINE) >= 25
+        result = (plot.riv(SLASH_PINE) >= 25
                and plot.riv(SLASH_PINE) > plot.riv(SHORTLEAF_PINE)
                and plot.riv(SLASH_PINE) > plot.riv(LONGLEAF_PINE)
                and plot.riv(SLASH_PINE) > plot.riv(LOBLOLLY_PINE)
@@ -865,9 +865,9 @@ def element_019():
 def element_020():
 
     """Sand Pine Forest Plantation (CST007168)"""
-    """Sand Pine Forest Plantation (CST007168)"""
+    """CST007168"""
     level = 'subtype'
-    code = 'Sand Pine Forest Plantation (CST007168)'
+    code = 'CST007168'
 
     # Tree composition dominated by Pinus clausa >= 25% RIV, and exceeds each
     # species of Pinus echinata, Pinus palustris, Pinus elliottii and Pinus taeda
@@ -894,7 +894,7 @@ def element_020():
 
     def match(plot):
         logging.debug('%s|NODE=020|Sand Pine Forest Plantation (CST007168)', plot.ident)
-        result = (    plot.riv(SAND_PINE) >= 25
+        result = (plot.riv(SAND_PINE) >= 25
                and plot.riv(SAND_PINE) > plot.riv(SHORTLEAF_PINE)
                and plot.riv(SAND_PINE) > plot.riv(LONGLEAF_PINE)
                and plot.riv(SAND_PINE) > plot.riv(SLASH_PINE)
@@ -906,9 +906,9 @@ def element_020():
 def element_021():
 
     """Native Miscellaneous Southern Pine Forest Plantation (CST007160)"""
-    """Native Miscellaneous Southern Pine Forest Plantation (CST007160)"""
+    """CST007160"""
     level = 'subtype'
-    code = 'Native Miscellaneous Southern Pine Forest Plantation (CST007160)'
+    code = 'CST007160'
 
     # other
 
@@ -922,9 +922,9 @@ def element_021():
 def element_022():
 
     """Native Northern Conifer Plantation"""
-    """Native Northern Conifer Plantation"""
+    """"""
     level = 'informal'
-    code = 'Native Northern Conifer Plantation'
+    code = ''
 
     # i. Species are native conifers dominated by one or more of the following with >=25% RIV:
     #     Pinus banksiana, Pinus resinosa, Pinus strobus, Abies balsamea, Larix laricina, Picea glauca,
@@ -1028,9 +1028,9 @@ def element_024():
 def element_025():
 
     """White Pine Forest Plantation (CST007178)"""
-    """White Pine Forest Plantation (CST007178)"""
+    """CST007178"""
     level = 'subtype'
-    code = 'White Pine Forest Plantation (CST007178)'
+    code = 'CST007178'
 
     # Tree composition dominated by Pinus strobus >= 25% RIV,
     # and exceeds each species of Pinus resinosa and Pinus banksiana.
@@ -1049,7 +1049,7 @@ def element_025():
 
     def match(plot):
         logging.debug('%s|NODE=025|White Pine Forest Plantation (CST007178)', plot.ident)
-        result = (    plot.riv(WHITE_PINE) >= 25
+        result = (plot.riv(WHITE_PINE) >= 25
                and plot.riv(WHITE_PINE) > plot.riv(RED_PINE)
                and plot.riv(WHITE_PINE) > plot.riv(JACK_PINE))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -1059,9 +1059,9 @@ def element_025():
 def element_026():
 
     """Jack Pine Forest Plantation (CST007161)"""
-    """Jack Pine Forest Plantation (CST007161)"""
+    """CST007161"""
     level = 'subtype'
-    code = 'Jack Pine Forest Plantation (CST007161)'
+    code = 'CST007161'
 
     # Tree composition dominated by Pinus banksiana >= 25% RIV,
     # and exceeds each species of Pinus resinosa and Pinus strobus.
@@ -1080,7 +1080,7 @@ def element_026():
 
     def match(plot):
         logging.debug('%s|NODE=026|Jack Pine Forest Plantation (CST007161)', plot.ident)
-        result = (    plot.riv(JACK_PINE) >= 25
+        result = (plot.riv(JACK_PINE) >= 25
                and plot.riv(JACK_PINE) > plot.riv(RED_PINE)
                and plot.riv(JACK_PINE) > plot.riv(WHITE_PINE))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -1090,9 +1090,9 @@ def element_026():
 def element_027():
 
     """Native Miscellaneous Northern Pine Forest Plantation"""
-    """Native Miscellaneous Northern Pine Forest Plantation"""
+    """"""
     level = 'subtype'
-    code = 'Native Miscellaneous Northern Pine Forest Plantation'
+    code = ''
 
     # other
 
@@ -1122,9 +1122,9 @@ def element_028():
 def element_029():
 
     """White Spruce Forest Plantation (CST007164)"""
-    """White Spruce Forest Plantation (CST007164)"""
+    """CST007164"""
     level = 'subtype'
-    code = 'White Spruce Forest Plantation (CST007164)'
+    code = 'CST007164'
 
     # Tree composition dominated by Picea glauca >=25% RIV,
     # and exceeds each species of Abies balsamea, Larix laricina,
@@ -1152,7 +1152,7 @@ def element_029():
 
     def match(plot):
         logging.debug('%s|NODE=029|White Spruce Forest Plantation (CST007164)', plot.ident)
-        result = (    plot.riv(WHITE_SPRUCE) >= 25
+        result = (plot.riv(WHITE_SPRUCE) >= 25
                and plot.riv(WHITE_SPRUCE) > plot.riv(BALSAM_FIR)
                and plot.riv(WHITE_SPRUCE) > plot.riv(NATIVE_TAMARACK)
                and plot.riv(WHITE_SPRUCE) > plot.riv(RED_SPRUCE)
@@ -1164,9 +1164,9 @@ def element_029():
 def element_030():
 
     """Balsam Fir Forest Plantation (CST007182)"""
-    """Balsam Fir Forest Plantation (CST007182)"""
+    """CST007182"""
     level = 'subtype'
-    code = 'Balsam Fir Forest Plantation (CST007182)'
+    code = 'CST007182'
 
     # Tree composition dominated by Abies balsamea >=25% RIV,
     # and exceeds each species of Larix laricina, Picea glauca,
@@ -1194,7 +1194,7 @@ def element_030():
 
     def match(plot):
         logging.debug('%s|NODE=030|Balsam Fir Forest Plantation (CST007182)', plot.ident)
-        result = (    plot.riv(BALSAM_FIR) >= 25
+        result = (plot.riv(BALSAM_FIR) >= 25
                and plot.riv(BALSAM_FIR) > plot.riv(NATIVE_TAMARACK)
                and plot.riv(BALSAM_FIR) > plot.riv(WHITE_SPRUCE)
                and plot.riv(BALSAM_FIR) > plot.riv(RED_SPRUCE)
@@ -1206,9 +1206,9 @@ def element_030():
 def element_031():
 
     """Red Spruce Forest Plantation (CST004758)"""
-    """Red Spruce Forest Plantation (CST004758)"""
+    """CST004758"""
     level = 'subtype'
-    code = 'Red Spruce Forest Plantation (CST004758)'
+    code = 'CST004758'
 
     # Tree composition dominated by Picea rubens, i.e., Picea rubens >=25% RIV,
     # and exceeds each species of Abies balsamea, Larix laricina, Picea glauca, and Picea mariana.
@@ -1235,7 +1235,7 @@ def element_031():
 
     def match(plot):
         logging.debug('%s|NODE=031|Red Spruce Forest Plantation (CST004758)', plot.ident)
-        result = (    plot.riv(RED_SPRUCE) >= 25
+        result = (plot.riv(RED_SPRUCE) >= 25
                and plot.riv(RED_SPRUCE) > plot.riv(BALSAM_FIR)
                and plot.riv(RED_SPRUCE) > plot.riv(NATIVE_TAMARACK)
                and plot.riv(RED_SPRUCE) > plot.riv(WHITE_SPRUCE)
@@ -1247,9 +1247,9 @@ def element_031():
 def element_032():
 
     """Native Miscellaneous Northern Conifer Forest Plantation (CST007163)"""
-    """Native Miscellaneous Northern Conifer Forest Plantation (CST007163)"""
+    """CST007163"""
     level = 'subtype'
-    code = 'Native Miscellaneous Northern Conifer Forest Plantation (CST007163)'
+    code = 'CST007163'
 
     # other
 
@@ -1263,9 +1263,9 @@ def element_032():
 def element_033():
 
     """Exotic Eastern North American Conifer Plantations"""
-    """Exotic Eastern North American Conifer Plantations"""
+    """"""
     level = 'informal'
-    code = 'Exotic Eastern North American Conifer Plantations'
+    code = ''
 
     # Tree species are dominated by exotic conifers (See
     # Appendix A) with RIV > native conifers.  Implemented as NOT native conifers.
@@ -1312,11 +1312,11 @@ def element_034():
 def element_035():
 
     """Scotch Pine Exotic Forest Plantation (CST006313)"""
-    """Scotch Pine Exotic Forest Plantation (CST006313)"""
+    """CST006313"""
     level = 'subtype'
-    code = 'Scotch Pine Exotic Forest Plantation (CST006313)'
+    code = 'CST006313'
 
-    #  i. Tree composition dominated by Pinus sylvestris with >=50% RIV
+    # i. Tree composition dominated by Pinus sylvestris with >=50% RIV
     # OR
     # ii. The above tree species, but with >=25% RIV, AND planted Picea abies or
     #     Larix spp. alone or in combination <25%
@@ -1332,7 +1332,7 @@ def element_035():
 
     def match(plot):
         logging.debug('%s|NODE=035|Scotch Pine Exotic Forest Plantation (CST006313)', plot.ident)
-        result = (    plot.riv(SCOTCH_PINE) >= 50
+        result = (plot.riv(SCOTCH_PINE) >= 50
                or (plot.riv(SCOTCH_PINE) >= 25 and plot.riv(NORWAY_SPRUCE_LARCH) < 25))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -1341,11 +1341,11 @@ def element_035():
 def element_036():
 
     """Norway Spruce Forest Plantation (CST007167)"""
-    """Norway Spruce Forest Plantation (CST007167)"""
+    """CST007167"""
     level = 'subtype'
-    code = 'Norway Spruce Forest Plantation (CST007167)'
+    code = 'CST007167'
 
-    #  i. Tree composition dominated by Picea abies with >=50% RIV
+    # i. Tree composition dominated by Picea abies with >=50% RIV
     # OR
     # ii. Tree composition dominated by Pinus abies, but with >=25% RIV, AND species
     #     of Pinus sylvestris or Larix spp. alone or in combination <25% RIV
@@ -1361,7 +1361,7 @@ def element_036():
 
     def match(plot):
         logging.debug('%s|NODE=036|Norway Spruce Forest Plantation (CST007167)', plot.ident)
-        result = (    plot.riv(NORWAY_SPRUCE) >= 50
+        result = (plot.riv(NORWAY_SPRUCE) >= 50
                or (plot.riv(NORWAY_SPRUCE) >= 25 and plot.riv(OTHER_EXOTIC_CONIFERS) < 25))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -1370,11 +1370,11 @@ def element_036():
 def element_037():
 
     """Larch Forest Plantation (CST006408)"""
-    """Larch Forest Plantation (CST006408)"""
+    """CST006408"""
     level = 'subtype'
-    code = 'Larch Forest Plantation (CST006408)'
+    code = 'CST006408'
 
-    #  i. Tree composition dominated by Larix spp. with >=50% RIV
+    # i. Tree composition dominated by Larix spp. with >=50% RIV
     # OR
     # ii. Tree composition dominated by Larix spp., but with >=25% RIV, AND species
     #     of Pinus sylvestris or Picea abies alone or in combination <25% RIV
@@ -1390,7 +1390,7 @@ def element_037():
 
     def match(plot):
         logging.debug('%s|NODE=037|Larch Forest Plantation (CST006408)', plot.ident)
-        result = (    plot.riv(LARIX_SPP) >= 50
+        result = (plot.riv(LARIX_SPP) >= 50
                or (plot.riv(LARIX_SPP) >= 25 and plot.riv(OTHER_EXOTIC_CONIFERS) < 25))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -1399,9 +1399,9 @@ def element_037():
 def element_038():
 
     """Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)"""
-    """Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)"""
+    """CST007183"""
     level = 'subtype'
-    code = 'Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)'
+    code = 'CST007183'
 
     # other
 
@@ -1438,9 +1438,9 @@ def element_039():
 def element_040():
 
     """Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)"""
-    """Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)"""
+    """CST007187"""
     level = 'subtype'
-    code = 'Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)'
+    code = 'CST007187'
 
     # other
 
@@ -1454,9 +1454,9 @@ def element_040():
 def element_041():
 
     """Eastern North American Hardwood Plantation"""
-    """Eastern North American Hardwood Plantation"""
-    level = 'subgroup'
-    code = 'Eastern North American Hardwood Plantation'
+    """"""
+    level = 'informal'
+    code = ''
 
     # Tree species are hardwoods >=75% RIV.  Implemented as NOT (conifers >= 25% RIV)
 
@@ -1470,9 +1470,9 @@ def element_041():
 def element_042():
 
     """Native Eastern North American Hardwood Plantations"""
-    """Native Eastern North American Hardwood Plantations"""
+    """"""
     level = 'informal'
-    code = 'Native Eastern North American Hardwood Plantations'
+    code = ''
 
     # Tree species dominated by native hardwoods (See
     # Appendix A) with RIV > exotic hardwoods.
@@ -1517,9 +1517,9 @@ def element_043():
 def element_044():
 
     """Black Walnut Forest Plantation (CST007188)"""
-    """Black Walnut Forest Plantation (CST007188)"""
+    """CST007188"""
     level = 'subtype'
-    code = 'Black Walnut Forest Plantation (CST007188)'
+    code = 'CST007188'
 
     # Tree composition dominated by Juglans nigra >=25% RIV,
     # and exceeds each species of Populus tremuloides,
@@ -1543,7 +1543,7 @@ def element_044():
 
     def match(plot):
         logging.debug('%s|NODE=044|Black Walnut Forest Plantation (CST007188)', plot.ident)
-        result = (    plot.riv(BLACK_WALNUT) >= 25
+        result = (plot.riv(BLACK_WALNUT) >= 25
                and plot.riv(BLACK_WALNUT) > plot.riv(QUAKING_ASPEN)
                and plot.riv(BLACK_WALNUT) > plot.riv(POPULUS_SPP)
                and plot.riv(BLACK_WALNUT) > plot.riv(BLACK_LOCUST))
@@ -1554,9 +1554,9 @@ def element_044():
 def element_045():
 
     """Aspen Forest Plantation (CST007189)"""
-    """Aspen Forest Plantation (CST007189)"""
+    """CST007189"""
     level = 'subtype'
-    code = 'Aspen Forest Plantation (CST007189)'
+    code = 'CST007189'
 
     # i. Tree composition dominated by Populus tremuloides, Populus spp. >=25% RIV,
     #    and exceeds each species of Juglans nigra and Robinia pseudoacacia.
@@ -1576,7 +1576,7 @@ def element_045():
 
     def match(plot):
         logging.debug('%s|NODE=045|Aspen Forest Plantation (CST007189)', plot.ident)
-        result = (    plot.riv(ASPEN) >= 25
+        result = (plot.riv(ASPEN) >= 25
                and plot.riv(ASPEN) > plot.riv(BLACK_WALNUT)
                and plot.riv(ASPEN) > plot.riv(BLACK_LOCUST))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -1586,9 +1586,9 @@ def element_045():
 def element_046():
 
     """Black Locust Forest Plantation (CST007190)"""
-    """Black Locust Forest Plantation (CST007190)"""
+    """CST007190"""
     level = 'subtype'
-    code = 'Black Locust Forest Plantation (CST007190)'
+    code = 'CST007190'
 
     # Tree composition dominated by Robinia pseudoacacia, >=25% RIV,
     # and exceeds each species of Juglans nigra, Populus tremuloides
@@ -1612,7 +1612,7 @@ def element_046():
 
     def match(plot):
         logging.debug('%s|NODE=046|Black Locust Forest Plantation (CST007190)', plot.ident)
-        result = (    plot.riv(BLACK_LOCUST) >= 25
+        result = (plot.riv(BLACK_LOCUST) >= 25
                and plot.riv(BLACK_LOCUST) > plot.riv(BLACK_WALNUT)
                and plot.riv(BLACK_LOCUST) > plot.riv(QUAKING_ASPEN)
                and plot.riv(BLACK_LOCUST) > plot.riv(POPULUS_SPP))
@@ -1623,9 +1623,9 @@ def element_046():
 def element_047():
 
     """Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)"""
-    """Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)"""
+    """CST007193"""
     level = 'subtype'
-    code = 'Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)'
+    code = 'CST007193'
 
     # other
 
@@ -1659,9 +1659,9 @@ def element_048():
 def element_049():
 
     """Tuliptree Forest Plantation (CST007197)"""
-    """Tuliptree Forest Plantation (CST007197)"""
+    """CST007197"""
     level = 'subtype'
-    code = 'Tuliptree Forest Plantation (CST007197)'
+    code = 'CST007197'
 
     # Tree composition dominated by Liriodendron tulipifera >=25% RIV,
     # and exceeds species of Liquidambar styraciflua.
@@ -1676,7 +1676,7 @@ def element_049():
 
     def match(plot):
         logging.debug('%s|NODE=049|Tuliptree Forest Plantation (CST007197)', plot.ident)
-        result = (    plot.riv(TULIPTREE) >= 25
+        result = (plot.riv(TULIPTREE) >= 25
                and plot.riv(TULIPTREE) > plot.riv(SWEETGUM))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -1685,9 +1685,9 @@ def element_049():
 def element_050():
 
     """Sweetgum Forest Plantation Subtype (CST007450)"""
-    """Sweetgum Forest Plantation Subtype (CST007450)"""
+    """CST007450"""
     level = 'subtype'
-    code = 'Sweetgum Forest Plantation Subtype (CST007450)'
+    code = 'CST007450'
 
     # Tree composition dominated by Liquidambar styraciflua >=25% RIV,
     # and exceeds species of Liriodendron tulipifera.
@@ -1702,7 +1702,7 @@ def element_050():
 
     def match(plot):
         logging.debug('%s|NODE=050|Sweetgum Forest Plantation Subtype (CST007450)', plot.ident)
-        result = (    plot.riv(SWEETGUM) >= 25
+        result = (plot.riv(SWEETGUM) >= 25
                and plot.riv(SWEETGUM) > plot.riv(TULIPTREE))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -1711,9 +1711,9 @@ def element_050():
 def element_051():
 
     """Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)"""
-    """Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)"""
+    """CST007155"""
     level = 'type'
-    code = 'Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)'
+    code = 'CST007155'
 
     # other
 
@@ -1727,9 +1727,9 @@ def element_051():
 def element_052():
 
     """Exotic Eastern North American Hardwood Plantations"""
-    """Exotic Eastern North American Hardwood Plantations"""
+    """"""
     level = 'informal'
-    code = 'Exotic Eastern North American Hardwood Plantations'
+    code = ''
 
     # Tree species dominated by exotic hardwoods (See Appendix A) with RIV > native hardwoods.
     # Implemented as NOT native RIV > exotic RIV.
@@ -1790,9 +1790,9 @@ def element_054():
 def element_055():
 
     """North American Boreal Forest Plantation Cultural Subgroup"""
-    """North American Boreal Forest Plantation Cultural Subgroup"""
-    level = 'subgroup'
-    code = 'North American Boreal Forest Plantation Cultural Subgroup'
+    """"""
+    level = 'informal'
+    code = ''
 
     # Plantations found in the boreal region of North America (EcoDomain 100)
 
@@ -1810,9 +1810,9 @@ def element_055():
 def element_056():
 
     """Natural and Ruderal Forests"""
-    """Natural and Ruderal Forests"""
+    """"""
     level = 'informal'
-    code = 'Natural and Ruderal Forests'
+    code = ''
 
     # other
 
@@ -1825,10 +1825,10 @@ def element_056():
 
 def element_057():
 
-    """Wetland Forest & Woodlands Key"""
     """Wetland Forest & Woodlands"""
+    """"""
     level = 'informal'
-    code = 'Wetland Forest & Woodlands'
+    code = ''
 
     # i. The "physiographic class code" in FIA database is NOT in the Hydric or Riverine series, AND EITHER
     #      ia. the "obligate wet" (W1) species (see Appendix A) have a combined RIV >=20%; OR
@@ -1912,7 +1912,7 @@ def element_057():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=057|Wetland Forest & Woodlands Key', plot.ident)
+        logging.debug('%s|NODE=057|Wetland Forest & Woodlands', plot.ident)
         result = ((not plot.match(HYDRIC) and not plot.match(RIVERINE) and (    plot.riv(W1) >= 20
                                                       or (plot.riv(W1) >= 5 and plot.riv(W1) + plot.riv(W2) >= 50)
                                                       or  plot.riv(W2) >= 60
@@ -1935,9 +1935,9 @@ def element_057():
 def element_058():
 
     """Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004)."""
-    """Brackish Tidal Wetland Biome"""
+    """"""
     level = 'informal'
-    code = 'Brackish Tidal Wetland Biome'
+    code = ''
 
     # A.  Plots found in coastal brackish tidal conditions, where 
     # i.  Plots found in Ecosection 232 or 411 (Tropical Florida and Gulf or Atlantic coast) AND 
@@ -1966,9 +1966,9 @@ def element_058():
 def element_059():
 
     """Tropical Florida Natural Mangrove Forests"""
-    """Tropical Florida Natural Mangrove Forests"""
+    """"""
     level = 'informal'
-    code = 'Tropical Florida Natural Mangrove Forests'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no evidence of trees in a row, no very recent logging, understory mowing, etc. (trees may be early successional pole-sized trees following logging or blowdowns). Tree composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix B - needs to be refined for this Division).
 
@@ -2011,9 +2011,9 @@ def element_060():
 def element_061():
 
     """Tropical Florida Ruderal Mangrove Forests"""
-    """Tropical Florida Ruderal Mangrove Forests"""
+    """"""
     level = 'informal'
-    code = 'Tropical Florida Ruderal Mangrove Forests'
+    code = ''
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division).
 
@@ -2032,9 +2032,9 @@ def element_061():
 def element_062():
 
     """Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)"""
-    """Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)"""
+    """"""
     level = 'informal'
-    code = 'Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)'
+    code = ''
 
     # Tree composition not as above (that is, freshwater forested wetlands)…………….B (Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a) [note that we do not have good information on Puerto Rico freshwater forested wetlands, and so the key may fail there]
 
@@ -2052,9 +2052,9 @@ def element_062():
 def element_063():
 
     """Caribbean Natural Wetland Forest"""
-    """Caribbean Natural Wetland Forest"""
+    """"""
     level = 'informal'
-    code = 'Caribbean Natural Wetland Forest'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -2095,9 +2095,9 @@ def element_064():
 def element_065():
 
     """Caribbean Ruderal Wetland Forest"""
-    """Caribbean Ruderal Wetland Forest"""
+    """"""
     level = 'informal'
-    code = 'Caribbean Ruderal Wetland Forest'
+    code = ''
 
     # At this time, no ruderal types are know in the Caribbean region of the U.S., its
     # territories and commonwealth.
@@ -2205,9 +2205,9 @@ def element_067():
 def element_068():
 
     """Eastern Warm Temperate Natural Wetland Forest"""
-    """Eastern Warm Temperate Natural Wetland Forest"""
+    """"""
     level = 'informal'
-    code = 'Eastern Warm Temperate Natural Wetland Forest'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -2230,9 +2230,9 @@ def element_068():
 def element_069():
 
     """Southern Great Plains Floodplain Forest & Woodland (M154)"""
-    """Southern Great Plains Floodplain Forest & Woodland (M154)"""
+    """M154"""
     level = 'macrogroup'
-    code = 'Southern Great Plains Floodplain Forest & Woodland (M154)'
+    code = 'M154'
 
     # Stands found in Ecoregion 255B-D, 315C-E, 315G, 321B AND Tree composition dominated by:
     #  i. Tree composition dominated by one or more of STRONG SOUTHERN GREAT PLAINS DIAGNOSTICS,
@@ -2284,7 +2284,7 @@ def element_069():
 
     def match(plot):
         logging.debug('%s|NODE=069|Southern Great Plains Floodplain Forest & Woodland (M154)', plot.ident)
-        result = (     plot.match(ECOREGIONS)
+        result = (plot.match(ECOREGIONS)
                and (    plot.riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 50
                     or (    plot.riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 20
                         and plot.riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)))
@@ -2295,11 +2295,11 @@ def element_069():
 def element_070():
 
     """Pond-cypress Basin Swamp (M161)"""
-    """Pond-cypress Basin Swamp (M161)"""
+    """M161"""
     level = 'macrogroup'
-    code = 'Pond-cypress Basin Swamp (M161)'
+    code = 'M161'
 
-    #  i. Tree composition dominated by STRONG POND CYPRESS DIAGNOSTICS
+    # i. Tree composition dominated by STRONG POND CYPRESS DIAGNOSTICS
     #     Taxodium distichum var. nutans (= Taxodium ascendens) (>=50% RIV);
     # OR
     # ii. Tree composition as above, but with >=20% RIV, AND other species are
@@ -2329,7 +2329,7 @@ def element_070():
 
     def match(plot):
         logging.debug('%s|NODE=070|Pond-cypress Basin Swamp (M161)', plot.ident)
-        result = (    plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 50
+        result = (plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 50
                or (    plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 20
                    and plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -2339,9 +2339,9 @@ def element_070():
 def element_071():
 
     """Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)"""
-    """Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)"""
+    """M032"""
     level = 'macrogroup'
-    code = 'Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)'
+    code = 'M032'
 
     # Plots found in ecosection 231A, B, D, E, 232A-D, F, G AND
     # tree composition, with STRONG SWAMP DIAGNOSTICS Pinus palustris < 5% RIV AND dominated by one or more
@@ -2378,11 +2378,11 @@ def element_071():
 def element_072():
 
     """Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)"""
-    """Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)"""
+    """M031"""
     level = 'macrogroup'
-    code = 'Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)'
+    code = 'M031'
 
-    #  i. Tree composition dominated by STRONG FLOODPLAIN DIAGNOSTICS Acer saccharinum, Carya aquatica, Betula nigra,
+    # i. Tree composition dominated by STRONG FLOODPLAIN DIAGNOSTICS Acer saccharinum, Carya aquatica, Betula nigra,
     #     Carya illinoinensis, Celtis laevigata, Fraxinus pennsylvanica, Fraxinus profunda, Liquidambar styraciflua,
     #     Gleditsia aquatica, Juniperus virginiana var. silicicola, Nyssa aquatica, Nyssa biflora, Nyssa ogeche,
     #     Planera aquatica, Platanus occidentalis, Populus deltoides, Quercus falcata var. pagodifolia (= Q. pagoda),
@@ -2452,7 +2452,7 @@ def element_072():
 
     def match(plot):
         logging.debug('%s|NODE=072|Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)', plot.ident)
-        result = (    plot.riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 50
+        result = (plot.riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 50
                or (    plot.riv(STRONG_FLOODPLAIN_DIAGNOSTICS) >= 20
                    and plot.riv(STRONG_FLOODPLAIN_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -2462,9 +2462,9 @@ def element_072():
 def element_073():
 
     """Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)"""
-    """Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)"""
+    """M032"""
     level = 'macrogroup'
-    code = 'Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)'
+    code = 'M032'
 
     # Plots found in ecosection 231A, B, D, E, 232A-D, F, G AND
     # % RIV of STRONG SWAMP DIAGNOSTICS > either STRONG POND CYPRESS DIAGNOSTICS
@@ -2541,10 +2541,10 @@ def element_073():
 
 def element_074():
 
-    """Pond-cypress Basin Swamp LC (M161)"""
-    """Pond-cypress Basin Swamp LC (M161)"""
+    """Pond-Cypress Basin Swamp LC (M161)"""
+    """M161"""
     level = 'macrogroup'
-    code = 'Pond-cypress Basin Swamp LC (M161)'
+    code = 'M161'
 
     # % RIV OF STRONG POND CYPRESS DIAGNOSTICS > STRONG LONGLEAF DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS
 
@@ -2604,8 +2604,8 @@ def element_074():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=074|Pond-cypress Basin Swamp LC (M161)', plot.ident)
-        result = (   plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > plot.riv(STRONG_LONGLEAF_DIAGNOSTICS)
+        logging.debug('%s|NODE=074|Pond-Cypress Basin Swamp LC (M161)', plot.ident)
+        result = (plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > plot.riv(STRONG_LONGLEAF_DIAGNOSTICS)
                or plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > plot.riv(STRONG_FLOODPLAIN_DIAGNOSTICS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -2614,9 +2614,9 @@ def element_074():
 def element_075():
 
     """Longleaf Pine Woodland LC2 (M007)"""
-    """Longleaf Pine Woodland LC2 (M007)"""
+    """M007"""
     level = 'macrogroup'
-    code = 'Longleaf Pine Woodland LC2 (M007)'
+    code = 'M007'
 
     # % RIV OF STRONG LONGLEAF DIAGNOSTICS > either STRONG POND CYPRESS DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS
 
@@ -2677,7 +2677,7 @@ def element_075():
 
     def match(plot):
         logging.debug('%s|NODE=075|Longleaf Pine Woodland LC2 (M007)', plot.ident)
-        result = (   plot.riv(STRONG_LONGLEAF_DIAGNOSTICS) > plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS)
+        result = (plot.riv(STRONG_LONGLEAF_DIAGNOSTICS) > plot.riv(STRONG_POND_CYPRESS_DIAGNOSTICS)
                or plot.riv(STRONG_LONGLEAF_DIAGNOSTICS) > plot.riv(STRONG_FLOODPLAIN_DIAGNOSTICS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -2686,9 +2686,9 @@ def element_075():
 def element_076():
 
     """Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)"""
-    """Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)"""
+    """M031"""
     level = 'macrogroup'
-    code = 'Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)'
+    code = 'M031'
 
     # other
 
@@ -2702,9 +2702,9 @@ def element_076():
 def element_077():
 
     """Eastern Warm Temperate Ruderal Wetland Forest"""
-    """Eastern Warm Temperate Ruderal Wetland Forest"""
+    """"""
     level = 'informal'
-    code = 'Eastern Warm Temperate Ruderal Wetland Forest'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -2722,9 +2722,9 @@ def element_077():
 def element_078():
 
     """Southeastern North American Ruderal Flooded & Swamp Forest (M310)"""
-    """Southeastern North American Ruderal Flooded & Swamp Forest (M310)"""
+    """M310"""
     level = 'macrogroup'
-    code = 'Southeastern North American Ruderal Flooded & Swamp Forest (M310)'
+    code = 'M310'
 
     # other
 
@@ -2778,9 +2778,9 @@ def element_079():
 def element_080():
 
     """Eastern Boreal Natural Wetland Forests"""
-    """Eastern Boreal Natural Wetland Forests"""
+    """"""
     level = 'informal'
-    code = 'Eastern Boreal Natural Wetland Forests'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no evidence of trees in a row, no very recent logging, understory mowing, etc. (trees may be early successional pole-sized trees following logging or blowdowns). Tree composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix B - needs to be refined for this Division).
 
@@ -2799,9 +2799,9 @@ def element_080():
 def element_081():
 
     """North American Boreal Conifer Poor Swamp (M299)"""
-    """North American Boreal Conifer Poor Swamp (M299)"""
+    """M299"""
     level = 'macrogroup'
-    code = 'North American Boreal Conifer Poor Swamp (M299)'
+    code = 'M299'
 
     # Tree composition dominated by one of the following:
     #  i.   Any combination of one or more of the boreal wetland conifer species (Larix laricina,
@@ -2834,9 +2834,9 @@ def element_081():
 def element_082():
 
     """North American Boreal Flooded Forest & Rich Swamp (M300)"""
-    """North American Boreal Flooded Forest & Rich Swamp (M300)"""
+    """M300"""
     level = 'macrogroup'
-    code = 'North American Boreal Flooded Forest & Rich Swamp (M300)'
+    code = 'M300'
 
     # other
 
@@ -2850,9 +2850,9 @@ def element_082():
 def element_083():
 
     """Eastern Boreal Ruderal Wetland Forests"""
-    """Eastern Boreal Ruderal Wetland Forests"""
+    """"""
     level = 'informal'
-    code = 'Eastern Boreal Ruderal Wetland Forests'
+    code = ''
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division).
 
@@ -2891,9 +2891,9 @@ def element_084():
 def element_085():
 
     """Eastern Cool Temperate & North American Boreal Wetland Forest"""
-    """Eastern Cool Temperate & North American Boreal Wetland Forest"""
+    """"""
     level = 'informal'
-    code = 'Eastern Cool Temperate & North American Boreal Wetland Forest'
+    code = ''
 
     # other
 
@@ -2907,9 +2907,9 @@ def element_085():
 def element_086():
 
     """Eastern North American - Great Plains Flooded & Swamp Forest"""
-    """Eastern North American - Great Plains Flooded & Swamp Forest Division"""
+    """"""
     level = 'informal'
-    code = 'Eastern North American - Great Plains Flooded & Swamp Forest Division'
+    code = ''
 
     # other
 
@@ -2923,9 +2923,9 @@ def element_086():
 def element_087():
 
     """Eastern Cool Temperate Natural Wetland Forests"""
-    """Eastern Cool Temperate Natural Wetland Forests"""
+    """"""
     level = 'informal'
-    code = 'Eastern Cool Temperate Natural Wetland Forests'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -2948,9 +2948,9 @@ def element_087():
 def element_088():
 
     """Laurentian-Acadian Flooded Forest & Swamp (M504)"""
-    """Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)"""
+    """M504"""
     level = 'macrogroup'
-    code = 'Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)'
+    code = 'M504'
 
     # Tree composition dominated by one of the following:
     #  i. Plots occurs in EcoProvinces or EcoSections 212, M211, 211A - 211E, 211Ja, 211Jb, 211Jc [intentionally
@@ -3039,11 +3039,11 @@ def element_088():
 def element_089():
 
     """Central Hardwood Floodplain Forest (M029)"""
-    """Central Hardwood Floodplain Forest (M029)"""
+    """M029"""
     level = 'macrogroup'
-    code = 'Central Hardwood Floodplain Forest (M029)'
+    code = 'M029'
 
-    #  i. Tree composition dominated by one or more of STRONG CENTRAL FLOODPLAIN DIAGNOSTICS
+    # i. Tree composition dominated by one or more of STRONG CENTRAL FLOODPLAIN DIAGNOSTICS
     #     Acer negundo, Acer saccharinum, Carya cordiformis, Carya laciniosa, Celtis laevigata,
     #     Celtis occidentalis, Betula nigra, Fraxinus pennsylvanica, Platanus occidentalis,
     #     Populus deltoides, Populus deltoides spp. monilifera, Salix bebbiana, Salix nigra,
@@ -3100,7 +3100,7 @@ def element_089():
 
     def match(plot):
         logging.debug('%s|NODE=089|Central Hardwood Floodplain Forest (M029)', plot.ident)
-        result = (    plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 50
+        result = (plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 50
                or (    plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) >= 20
                    and plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) + plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -3110,9 +3110,9 @@ def element_089():
 def element_090():
 
     """Central Hardwood Swamp (M503)"""
-    """Central Hardwood Swamp (M503)"""
+    """M503"""
     level = 'macrogroup'
-    code = 'Central Hardwood Swamp (M503)'
+    code = 'M503'
 
     # i. Tree composition dominated by one or more of of STRONG CENTRAL SWAMP DIAGNOSTICS
     #     Fraxinus nigra, Larix laricina, Nyssa sylvatica, Quercus bicolor, Quercus palustris,
@@ -3178,9 +3178,9 @@ def element_090():
 def element_091():
 
     """Laurentian-Acadian Flooded Forest & Swamp LC (M504)"""
-    """Laurentian-Acadian Flooded Forest & Swamp LC (M504)"""
+    """M504"""
     level = 'macrogroup'
-    code = 'Laurentian-Acadian Flooded Forest & Swamp LC (M504)'
+    code = 'M504'
 
     # ECOREGION is 212, M211, 211, 222I, 221A-221D
 
@@ -3198,11 +3198,11 @@ def element_091():
 def element_092():
 
     """Central Hardwood Floodplain Forest LC (M029)"""
-    """Central Hardwood Floodplain Forest LC (M029)"""
+    """M029"""
     level = 'macrogroup'
-    code = 'Central Hardwood Floodplain Forest LC (M029)'
+    code = 'M029'
 
-    #  i. % RIV STRONG CENTRAL FLOODPLAIN DIAGNOSTICS > STRONG CENTRAL SWAMP DIAGNOSTICS
+    # i. % RIV STRONG CENTRAL FLOODPLAIN DIAGNOSTICS > STRONG CENTRAL SWAMP DIAGNOSTICS
     # OR
     # ii. Physiographic code = R (Riverine)
 
@@ -3246,7 +3246,7 @@ def element_092():
 
     def match(plot):
         logging.debug('%s|NODE=092|Central Hardwood Floodplain Forest LC (M029)', plot.ident)
-        result = (   plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) > plot.riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS)
+        result = (plot.riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) > plot.riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS)
                or plot.match(RIVERINE))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -3255,9 +3255,9 @@ def element_092():
 def element_093():
 
     """Central Hardwood Swamp LC (M503)"""
-    """Central Hardwood Swamp LC (M503)"""
+    """M503"""
     level = 'macrogroup'
-    code = 'Central Hardwood Swamp LC (M503)'
+    code = 'M503'
 
     # other
 
@@ -3271,9 +3271,9 @@ def element_093():
 def element_094():
 
     """Eastern Cool Temperate Ruderal Wetland Forests"""
-    """Eastern Cool Temperate Ruderal Wetland Forests"""
+    """"""
     level = 'informal'
-    code = 'Eastern Cool Temperate Ruderal Wetland Forests'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -3291,9 +3291,9 @@ def element_094():
 def element_095():
 
     """Eastern North American Ruderal Flooded Forest & Swamp (M302)"""
-    """Eastern North American Ruderal Flooded Forest & Swamp (M302)"""
+    """M302"""
     level = 'macrogroup'
-    code = 'Eastern North American Ruderal Flooded Forest & Swamp (M302)'
+    code = 'M302'
 
     # other
 
@@ -3307,9 +3307,9 @@ def element_095():
 def element_096():
 
     """Upland Forest & Woodlands"""
-    """Upland Forest & Woodlands"""
+    """"""
     level = 'informal'
-    code = 'Upland Forest & Woodlands'
+    code = ''
 
     # other
 
@@ -3322,10 +3322,10 @@ def element_096():
 
 def element_097():
 
-    """Tropical Forest & Woodland Subclass"""
-    """Tropical Forest"""
+    """Tropical Forest (TT1)"""
+    """TT1"""
     level = 'biome'
-    code = 'Tropical Forest'
+    code = 'TT1'
 
     # Forests dominated by tropical hardwood, other palms and tropical conifer
     # tree species. Found in tropical regions of the United States - Puerto Rico,
@@ -3357,7 +3357,7 @@ def element_097():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=097|Tropical Forest & Woodland Subclass', plot.ident)
+        logging.debug('%s|NODE=097|Tropical Forest (TT1)', plot.ident)
         result = (plot.match(TERRITORIES) or 
                (plot.match(FLORIDA) and plot.match(TROPICAL_FLORIDA) and plot.riv(EXCLUDED_SPECIES) < 20))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -3366,10 +3366,10 @@ def element_097():
 
 def element_098():
 
-    """Tropical Dry Forest"""
-    """Tt1.b"""
+    """Tropical Dry Forest (TT1.b)"""
+    """TT1b"""
     level = 'subbiome'
-    code = 'Tt1.b'
+    code = 'TT1b'
 
     # Tropical hardwood and tropical conifer forests found in Puerto Rico, U.S. Virgin Islands,
     # and in tropical Florida (EcoSection 411A)
@@ -3388,7 +3388,7 @@ def element_098():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=098|Tropical Dry Forest', plot.ident)
+        logging.debug('%s|NODE=098|Tropical Dry Forest (TT1.b)', plot.ident)
         result = (plot.match(TERRITORIES) or
                (plot.match(FLORIDA) and plot.match(TROPICAL_FLORIDA)))
         logging.debug('%s|RESULT|%s', plot.ident, result)
@@ -3398,9 +3398,9 @@ def element_098():
 def element_099():
 
     """Tropical Florida Forest"""
-    """Tropical Florida Forest"""
+    """"""
     level = 'informal'
-    code = 'Tropical Florida Forest'
+    code = ''
 
     # Stands found in Tropical Florida (Ecosection 411A) AND
     #   i. Tropical Tree composition dominated by one or more of Bursera simaruba, Coccoloba diversifolia,
@@ -3452,9 +3452,9 @@ def element_099():
 def element_100():
 
     """Tropical Florida Natural Forest"""
-    """Tropical Florida Natural Forest"""
+    """"""
     level = 'informal'
-    code = 'Tropical Florida Natural Forest'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -3515,10 +3515,10 @@ def element_101():
 
 def element_102():
 
-    """Caribbean Swamp Forest via upland (M617)"""
-    """Caribbean Swamp Forest via upland (M617)"""
+    """Caribbean Swamp Forest (M617)"""
+    """M617"""
     level = 'macrogroup'
-    code = 'Caribbean Swamp Forest via upland (M617)'
+    code = 'M617'
 
     # Tree composition >= 50% Sabal palmetto RIV
 
@@ -3527,7 +3527,7 @@ def element_102():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=102|Caribbean Swamp Forest via upland (M617)', plot.ident)
+        logging.debug('%s|NODE=102|Caribbean Swamp Forest (M617)', plot.ident)
         result = (plot.riv(SABAL_PALMETTO) >= 50)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -3536,9 +3536,9 @@ def element_102():
 def element_103():
 
     """Caribbean Coastal Lowland Dry Forest (M134)"""
-    """Caribbean Coastal Lowland Dry Forest (M134)"""
+    """M134"""
     level = 'macrogroup'
-    code = 'Caribbean Coastal Lowland Dry Forest (M134)'
+    code = 'M134'
 
     # Tree composition dominated by one or more of Bursera simaruba, Coccoloba diversifolia,
     # Guapira discolor, Metopium toxiferum, Conocarpus erectus, "other palms",
@@ -3564,9 +3564,9 @@ def element_103():
 def element_104():
 
     """Caribbean Coastal Lowland Dry Forest LC (M134)"""
-    """Caribbean Coastal Lowland Dry Forest LC (M134)"""
+    """M134"""
     level = 'macrogroup'
-    code = 'Caribbean Coastal Lowland Dry Forest LC (M134)'
+    code = 'M134'
 
     # other
 
@@ -3580,9 +3580,9 @@ def element_104():
 def element_105():
 
     """Tropical Florida Ruderal Forest"""
-    """Tropical Florida Ruderal Forest"""
+    """"""
     level = 'informal'
-    code = 'Tropical Florida Ruderal Forest'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -3600,9 +3600,9 @@ def element_105():
 def element_106():
 
     """Caribbean Ruderal Dry Forest (M514)"""
-    """Caribbean Ruderal Dry Forest (M514)"""
+    """M514"""
     level = 'macrogroup'
-    code = 'Caribbean Ruderal Dry Forest (M514)'
+    code = 'M514'
 
     # other
 
@@ -3616,9 +3616,9 @@ def element_106():
 def element_107():
 
     """Caribbean Forest"""
-    """Caribbean Forest"""
+    """"""
     level = 'informal'
-    code = 'Caribbean Forest'
+    code = ''
 
     # Stands found in Caribbean islands.
 
@@ -3637,9 +3637,9 @@ def element_107():
 def element_108():
 
     """Caribbean Natural Forest"""
-    """Caribbean Natural Forest"""
+    """"""
     level = 'informal'
-    code = 'Caribbean Natural Forest'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -3662,9 +3662,9 @@ def element_108():
 def element_109():
 
     """Caribbean & Central American Dry Forests"""
-    """Caribbean & Central American Dry Forests"""
+    """"""
     level = 'informal'
-    code = 'Caribbean & Central American Dry Forests'
+    code = ''
 
     # i. Tree composition dominated by Pinus elliottii (= var. densa) or Pinus caribaea, alone or in
     #     combination (>=50% RIV)
@@ -3702,9 +3702,9 @@ def element_109():
 def element_110():
 
     """Caribbean-Mesoamerican Pine Forest via Caribbean (M296)"""
-    """Caribbean-Mesoamerican Pine Forest via Caribbean (M296)"""
+    """M296"""
     level = 'macrogroup'
-    code = 'Caribbean-Mesoamerican Pine Forest via Caribbean (M296)'
+    code = 'M296'
 
     # i. Tree composition dominated by Pinus elliottii (var. densa) or Pinus caribaea,
     #     alone or in combination (>=50% RIV);
@@ -3734,9 +3734,9 @@ def element_110():
 def element_111():
 
     """Caribbean-Mesoamerican Pine Forest LC (M296)"""
-    """Caribbean-Mesoamerican Pine Forest LC (M296)"""
+    """M296"""
     level = 'macrogroup'
-    code = 'Caribbean-Mesoamerican Pine Forest LC (M296)'
+    code = 'M296'
 
     # other
 
@@ -3750,9 +3750,9 @@ def element_111():
 def element_112():
 
     """Caribbean Ruderal Forest"""
-    """Caribbean Ruderal Forest"""
+    """"""
     level = 'informal'
-    code = 'Caribbean Ruderal Forest'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -3770,9 +3770,9 @@ def element_112():
 def element_113():
 
     """Caribbean Ruderal Dry ForestA (M514A)"""
-    """Caribbean Ruderal Dry ForestA (M514A)"""
+    """M514A"""
     level = 'macrogroup'
-    code = 'Caribbean Ruderal Dry ForestA (M514A)'
+    code = 'M514A'
 
     # other
 
@@ -3786,9 +3786,9 @@ def element_113():
 def element_114():
 
     """Temperate & Boreal Forests"""
-    """Temperate & Boreal Forests"""
+    """"""
     level = 'informal'
-    code = 'Temperate & Boreal Forests'
+    code = ''
 
     # other
 
@@ -3892,9 +3892,9 @@ def element_116():
 def element_117():
 
     """Southeastern Warm Temperate Ruderal Forests"""
-    """Southeastern Warm Temperate Ruderal Forests"""
+    """"""
     level = 'informal'
-    code = 'Southeastern Warm Temperate Ruderal Forests'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -3939,9 +3939,9 @@ def element_118():
 def element_119():
 
     """Southeastern Warm Temperate Natural Forests"""
-    """Southeastern Warm Temperate Natural Forests"""
+    """"""
     level = 'informal'
-    code = 'Southeastern Warm Temperate Natural Forests'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -4249,9 +4249,9 @@ def element_123():
 def element_124():
 
     """Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"""
-    """Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"""
+    """M885"""
     level = 'macrogroup'
-    code = 'Southeastern Coastal Plain Evergreen Oak Forest LC (M885)'
+    code = 'M885'
 
     # Plot is in 232B-E, 232G, 255Da-Dc or 411A, AND
     # % RIV of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS > either STRONG LONGLEAF DIAGNOSTICS or STRONG MESIC DIAGNOSTICS
@@ -4311,9 +4311,9 @@ def element_124():
 def element_125():
 
     """Longleaf Pine Woodland LC1 (M007)"""
-    """Longleaf Pine Woodland LC1 (M007)"""
+    """M007"""
     level = 'macrogroup'
-    code = 'Longleaf Pine Woodland LC1 (M007)'
+    code = 'M007'
 
     # STRONG LONGLEAF DIAGNOSTICS %RIV > STRONG MESIC DIAGNOSTICS %RIV
 
@@ -4373,9 +4373,9 @@ def element_126():
 def element_127():
 
     """Southern Mesic Mixed Broadleaf Forest LC (M008)"""
-    """Southern Mesic Mixed Broadleaf Forest LC (M008)"""
+    """M008"""
     level = 'macrogroup'
-    code = 'Southern Mesic Mixed Broadleaf Forest LC (M008)'
+    code = 'M008'
 
     # other
 
@@ -4433,9 +4433,9 @@ def element_129():
 def element_130():
 
     """Great Plains Natural Woodlands"""
-    """Great Plains Natural Woodlands"""
+    """"""
     level = 'informal'
-    code = 'Great Plains Natural Woodlands'
+    code = ''
 
     # 0. Vegetation in a relatively natural state, dominated by native species; little or no evidence of trees in a row, no very recent logging, understory mowing, etc. (trees may be early successional pole-sized trees following logging or blowdowns). Tree composition not dominated by ruderal native or exotic species (< 80% RIV) (See Appendix B - needs to be refined for this Division).................Great Plains Natural Woodlands
 
@@ -4541,9 +4541,9 @@ def element_132():
 def element_133():
 
     """Great Plains Ruderal Woodland"""
-    """Great Plains Ruderal Woodland"""
+    """"""
     level = 'informal'
-    code = 'Great Plains Ruderal Woodland'
+    code = ''
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division.………………………………………………………………………………………. Great Plains Ruderal Woodlands
 
@@ -4582,9 +4582,9 @@ def element_134():
 def element_135():
 
     """Eastern North American Forest & Woodland (D008)"""
-    """D008a"""
+    """D008"""
     level = 'division'
-    code = 'D008a'
+    code = 'D008'
 
     # Tree composition not as above.  Eastern North American Forest & Woodland Division (D008)……………………………………………………………………………………………………………………..F2
 
@@ -4598,9 +4598,9 @@ def element_135():
 def element_136():
 
     """Eastern North American Natural Forest & Woodlands"""
-    """Eastern Cool Temperate Natural Forest & Woodlands"""
+    """"""
     level = 'informal'
-    code = 'Eastern Cool Temperate Natural Forest & Woodlands'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species; little or no
     # evidence of trees in a row, no very recent logging, understory mowing, etc. (trees
@@ -4623,9 +4623,9 @@ def element_136():
 def element_137():
 
     """Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)"""
-    """Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)"""
+    """"""
     level = 'informal'
-    code = 'Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)'
+    code = ''
 
     # i. Tree composition dominated by one or more of Abies balsamea, Abies fraseri, Picea rubens (>=20% RIV)
     # OR
@@ -4909,9 +4909,9 @@ def element_140():
 def element_141():
 
     """Laurentian Dry Forest & Woodland LC (M159)"""
-    """Laurentian Dry Forest & Woodland LC (M159)"""
+    """M159"""
     level = 'macrogroup'
-    code = 'Laurentian Dry Forest & Woodland LC (M159)'
+    code = 'M159'
 
     # Not as Above
 
@@ -4925,9 +4925,9 @@ def element_141():
 def element_142():
 
     """Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups"""
-    """Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups"""
+    """"""
     level = 'informal'
-    code = 'Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups'
+    code = ''
 
     # other
 
@@ -5179,9 +5179,9 @@ def element_145():
 def element_146():
 
     """Central Midwest Oak Forest, Woodland & Savanna LC (M012)"""
-    """Central Midwest Oak Forest, Woodland & Savanna LC (M012)"""
+    """M012"""
     level = 'macrogroup'
-    code = 'Central Midwest Oak Forest, Woodland & Savanna LC (M012)'
+    code = 'M012'
 
     # Plot occurs in Ecoregions 222 (except not 222I), 251,
     # AND % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS
@@ -5241,9 +5241,9 @@ def element_146():
 def element_147():
 
     """Central Midwest Mesic Forest LC (M882)"""
-    """Central Midwest Mesic Forest LC (M882)"""
+    """M882"""
     level = 'macrogroup'
-    code = 'Central Midwest Mesic Forest LC (M882)'
+    code = 'M882'
 
     # other
 
@@ -5578,9 +5578,9 @@ def element_150():
 def element_151():
 
     """Laurentian Mesic Forest LC (M102)"""
-    """M102LC"""
+    """M102"""
     level = 'macrogroup'
-    code = 'M102LC'
+    code = 'M102'
 
     # Plot is in Ecoregion 212
 
@@ -5598,9 +5598,9 @@ def element_151():
 def element_152():
 
     """Central Interior Oak - Pine Forest & Woodland LC  (M543)"""
-    """M543LC"""
+    """M543"""
     level = 'macrogroup'
-    code = 'M543LC'
+    code = 'M543'
 
     # %RIV of STRONG DRY SOUTH-CENTRAL DIAGNOSTICS > either STRONG APPALACHIAN DRY DIAGONOSTICS OR ECOREGIONAL STRONG MESIC DIAGNOSTICS
 
@@ -5687,9 +5687,9 @@ def element_152():
 def element_153():
 
     """Southern-Central Appalachian Dry Forest & Woodland LC (M502)"""
-    """Southern-Central Appalachian Dry Forest & Woodland LC (M502)"""
+    """M502"""
     level = 'macrogroup'
-    code = 'Southern-Central Appalachian Dry Forest & Woodland LC (M502)'
+    code = 'M502'
 
     # i. %RIV STRONG APPALACHIAN DRY DIAGNOSTICS > either STRONG DRY SOUTH-CENTRAL DIAGNOSTICS OR ECOREGIONAL STRONG MESIC DIAGNOSTICS
 
@@ -5776,9 +5776,9 @@ def element_153():
 def element_154():
 
     """Southern-Central Appalachian Mesic Forest LC (M883)"""
-    """Southern-Central Appalachian Mesic Forest LC (M883)"""
+    """M883"""
     level = 'macrogroup'
-    code = 'Southern-Central Appalachian Mesic Forest LC (M883)'
+    code = 'M883'
 
     # other
 
@@ -5792,9 +5792,9 @@ def element_154():
 def element_155():
 
     """Eastern North American Ruderal Forest & Woodlands"""
-    """Eastern Cool Temperate Ruderal Forest & Woodlands"""
+    """"""
     level = 'informal'
-    code = 'Eastern Cool Temperate Ruderal Forest & Woodlands'
+    code = ''
 
     # Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (See Appendix A -
     # needs to be refined for this Division)
@@ -5814,9 +5814,9 @@ def element_155():
 def element_156():
 
     """Eastern North American Ruderal Forest (M013)"""
-    """Eastern North American Ruderal Forest (M013)"""
+    """M013"""
     level = 'macrogroup'
-    code = 'Eastern North American Ruderal Forest (M013)'
+    code = 'M013'
 
     # other
 

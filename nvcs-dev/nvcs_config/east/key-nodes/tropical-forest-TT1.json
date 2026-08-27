@@ -1,7 +1,7 @@
 {
     "node": {
-        "name": "Tropical Forest & Woodland Subclass",
-        "id": "Tropical Forest",
+        "name": "Tropical Forest (TT1)",
+        "id": "TT1",
         "level": "biome",
         "description": [
             "Forests dominated by tropical hardwood, other palms and tropical conifer",

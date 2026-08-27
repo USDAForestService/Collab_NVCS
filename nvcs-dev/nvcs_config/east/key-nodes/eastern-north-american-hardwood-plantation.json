@@ -1,8 +1,8 @@
 {
     "node": {
         "name": "Eastern North American Hardwood Plantation",
-        "id": "Eastern North American Hardwood Plantation",
-        "level": "subgroup",
+        "id": "",
+        "level": "informal",
         "description": [
             "Tree species are hardwoods >=75% RIV.  Implemented as NOT (conifers >= 25% RIV)"
         ],

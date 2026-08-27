@@ -1,13 +1,13 @@
 {
     "node": {
         "name": "Longleaf Pine Woodland LC2 (M007)",
-        "id": "Longleaf Pine Woodland LC2 (M007)",
+        "id": "M007",
         "level": "macrogroup",
         "description": [
             "% RIV OF STRONG LONGLEAF DIAGNOSTICS > either STRONG POND CYPRESS DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS"
         ],
         "trigger": [
-            "   riv(STRONG_LONGLEAF_DIAGNOSTICS) > riv(STRONG_POND_CYPRESS_DIAGNOSTICS)",
+            "riv(STRONG_LONGLEAF_DIAGNOSTICS) > riv(STRONG_POND_CYPRESS_DIAGNOSTICS)",
             "or riv(STRONG_LONGLEAF_DIAGNOSTICS) > riv(STRONG_FLOODPLAIN_DIAGNOSTICS)"
         ],
         "filters": {
