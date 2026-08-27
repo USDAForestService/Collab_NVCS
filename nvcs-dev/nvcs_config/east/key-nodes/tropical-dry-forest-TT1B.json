@@ -1,7 +1,7 @@
 {
     "node": {
-        "name": "Tropical Dry Forest",
-        "id": "Tt1.b",
+        "name": "Tropical Dry Forest (TT1.b)",
+        "id": "TT1b",
         "level": "subbiome",
         "description": [
             "Tropical hardwood and tropical conifer forests found in Puerto Rico, U.S. Virgin Islands,",

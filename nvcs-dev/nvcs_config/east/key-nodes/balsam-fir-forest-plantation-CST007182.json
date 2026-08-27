@@ -1,7 +1,7 @@
 {
     "node": {
         "name": "Balsam Fir Forest Plantation (CST007182)",
-        "id": "Balsam Fir Forest Plantation (CST007182)",
+        "id": "CST007182",
         "level": "subtype",
         "description": [
             "Tree composition dominated by Abies balsamea >=25% RIV,",
@@ -9,7 +9,7 @@
             "Picea rubens and Picea mariana."
         ],
         "trigger": [
-            "    riv(BALSAM_FIR) >= 25",
+            "riv(BALSAM_FIR) >= 25",
             "and riv(BALSAM_FIR) > riv(NATIVE_TAMARACK)",
             "and riv(BALSAM_FIR) > riv(WHITE_SPRUCE)",
             "and riv(BALSAM_FIR) > riv(RED_SPRUCE)",

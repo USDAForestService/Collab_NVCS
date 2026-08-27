@@ -1,15 +1,15 @@
 {
     "node": {
         "name": "Central Hardwood Floodplain Forest LC (M029)",
-        "id": "Central Hardwood Floodplain Forest LC (M029)",
+        "id": "M029",
         "level": "macrogroup",
         "description": [
-            " i. % RIV STRONG CENTRAL FLOODPLAIN DIAGNOSTICS > STRONG CENTRAL SWAMP DIAGNOSTICS",
+            "i. % RIV STRONG CENTRAL FLOODPLAIN DIAGNOSTICS > STRONG CENTRAL SWAMP DIAGNOSTICS",
             "OR",
             "ii. Physiographic code = R (Riverine)"
         ],
         "trigger": [
-            "   riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) > riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS)",
+            "riv(STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS) > riv(STRONG_CENTRAL_SWAMP_DIAGNOSTICS)",
             "or match(RIVERINE)"
         ],
         "filters": {

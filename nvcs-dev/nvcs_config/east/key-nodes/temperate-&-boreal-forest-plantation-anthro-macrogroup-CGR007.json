@@ -2,7 +2,7 @@
     "node": {
         "name": "Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)",
         "id": "CGR007",
-        "level": "group",
+        "level": "macrogroup",
         "description": [
             "other"
         ],

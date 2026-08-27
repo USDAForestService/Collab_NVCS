@@ -1,7 +1,7 @@
 {
     "node": {
         "name": "Southern Great Plains Floodplain Forest & Woodland (M154)",
-        "id": "Southern Great Plains Floodplain Forest & Woodland (M154)",
+        "id": "M154",
         "level": "macrogroup",
         "description": [
             "Stands found in Ecoregion 255B-D, 315C-E, 315G, 321B AND Tree composition dominated by:",
@@ -17,7 +17,7 @@
             "    Ulmus crassifolia (together >=50% RIV)"
         ],
         "trigger": [
-            "     match(ECOREGIONS)",
+            "match(ECOREGIONS)",
             "and (    riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 50",
             "     or (    riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) >= 20",
             "         and riv(STRONG_SOUTHERN_GREAT_PLAINS_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50))"

@@ -1,0 +1,347 @@
+### Saved at 2026-08-27T21:59:22.526Z (UTC):
+~ Updated element "Eastern North American Temperate Forest Plantation Anthro-group (CSG005)"
+	~ Updated Level from "subgroup" to "group"
+
+### Saved at 2026-08-27T21:58:11.354Z (UTC):
++ Added element "Wetland Forest & Woodlands"
++ Added element "Pond-Cypress Basin Swamp LC (M161)"
++ Added element "Tropical Forest (TT1)"
++ Added element "Tropical Dry Forest (TT1.b)"
++ Added element "Caribbean Swamp Forest (M617)"
+- Removed element "Wetland Forest & Woodlands Key"
+- Removed element "Tropical Forest & Woodland Subclass"
+- Removed element "Tropical Dry Forest"
+- Removed element "Pond-cypress Basin Swamp LC (M161)"
+- Removed element "Caribbean Swamp Forest via upland (M617)"
+~ Updated element "Natural and Ruderal Forests"
+	~ Updated ID from "Natural and Ruderal Forests" to ""
+	+ Added Child Element "Wetland Forest & Woodlands" at position "0"
+	+ Removed Child Element "Wetland Forest & Woodlands Key" at position "0"
+~ Updated element "Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)"
+	~ Updated Level from "group" to "macrogroup"
+~ Updated element "Upland Forest & Woodlands"
+	~ Updated File Name
+	~ Updated ID from "Upland Forest & Woodlands" to ""
+	+ Added Child Element "Tropical Forest (TT1)" at position "0"
+	+ Removed Child Element "Tropical Forest & Woodland Subclass" at position "0"
+~ Updated element "North American Boreal Forest Plantation Cultural Subgroup"
+	~ Updated ID from "North American Boreal Forest Plantation Cultural Subgroup" to ""
+	~ Updated Level from "subgroup" to "informal"
+~ Updated element "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004)."
+	~ Updated File Name
+	~ Updated ID from "Brackish Tidal Wetland Biome" to ""
+	~ Updated Parent Element from "Wetland Forest & Woodlands Key" to "Wetland Forest & Woodlands"
+~ Updated element "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)"
+	~ Updated ID from "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)" to ""
+	~ Updated Parent Element from "Wetland Forest & Woodlands Key" to "Wetland Forest & Woodlands"
+~ Updated element "Temperate & Boreal Forested Wetland (F136)"
+	~ Updated File Name
+	~ Updated Parent Element from "Wetland Forest & Woodlands Key" to "Wetland Forest & Woodlands"
+~ Updated element "Temperate & Boreal Forests"
+	~ Updated File Name
+	~ Updated ID from "Temperate & Boreal Forests" to ""
+~ Updated element "Caribbean Conifer Plantations"
+	~ Updated ID from "Caribbean Conifer Plantations" to ""
+~ Updated element "Caribbean Hardwood Plantations"
+	~ Updated ID from "Caribbean Hardwood Plantations" to ""
+~ Updated element "Eastern North American Conifer Plantations"
+	~ Updated ID from "Eastern North American Conifer Plantations" to ""
+~ Updated element "Eastern North American Hardwood Plantation"
+	~ Updated ID from "Eastern North American Hardwood Plantation" to ""
+	~ Updated Level from "subgroup" to "informal"
+~ Updated element "Tropical Florida Natural Mangrove Forests"
+	~ Updated ID from "Tropical Florida Natural Mangrove Forests" to ""
+~ Updated element "Tropical Florida Ruderal Mangrove Forests"
+	~ Updated ID from "Tropical Florida Ruderal Mangrove Forests" to ""
+~ Updated element "Caribbean Natural Wetland Forest"
+	~ Updated ID from "Caribbean Natural Wetland Forest" to ""
+~ Updated element "Caribbean Ruderal Wetland Forest"
+	~ Updated ID from "Caribbean Ruderal Wetland Forest" to ""
+~ Updated element "North American Boreal Flooded Forest & Swamp Division (D016)"
+	~ Updated File Name
+~ Updated element "Eastern North American Flooded Forest & Swamp Division (D011)"
+	~ Updated File Name
+~ Updated element "Native Eastern North American Conifer Plantations"
+	~ Updated ID from "Native Eastern North American Conifer Plantations" to ""
+~ Updated element "Exotic Eastern North American Conifer Plantations"
+	~ Updated ID from "Exotic Eastern North American Conifer Plantations" to ""
+~ Updated element "Native Eastern North American Hardwood Plantations"
+	~ Updated ID from "Native Eastern North American Hardwood Plantations" to ""
+~ Updated element "Exotic Eastern North American Hardwood Plantations"
+	~ Updated ID from "Exotic Eastern North American Hardwood Plantations" to ""
+~ Updated element "Eastern Warm Temperate Natural Wetland Forest"
+	~ Updated ID from "Eastern Warm Temperate Natural Wetland Forest" to ""
+	+ Added Child Element "Pond-Cypress Basin Swamp LC (M161)" at position "5"
+	+ Removed Child Element "Pond-cypress Basin Swamp LC (M161)" at position "5"
+~ Updated element "Eastern Warm Temperate Ruderal Wetland Forest"
+	~ Updated ID from "Eastern Warm Temperate Ruderal Wetland Forest" to ""
+~ Updated element "Eastern Boreal Natural Wetland Forests"
+	~ Updated ID from "Eastern Boreal Natural Wetland Forests" to ""
+~ Updated element "Eastern Boreal Ruderal Wetland Forests"
+	~ Updated ID from "Eastern Boreal Ruderal Wetland Forests" to ""
+~ Updated element "Eastern Cool Temperate & North American Boreal Wetland Forest"
+	~ Updated File Name
+	~ Updated ID from "Eastern Cool Temperate & North American Boreal Wetland Forest" to ""
+~ Updated element "Tropical Florida Forest"
+	~ Updated ID from "Tropical Florida Forest" to ""
+	~ Updated Parent Element from "Tropical Dry Forest" to "Tropical Dry Forest (TT1.b)"
+~ Updated element "Caribbean Forest"
+	~ Updated ID from "Caribbean Forest" to ""
+	~ Updated Parent Element from "Tropical Dry Forest" to "Tropical Dry Forest (TT1.b)"
+~ Updated element "Native Northern Conifer Plantation"
+	~ Updated ID from "Native Northern Conifer Plantation" to ""
+~ Updated element "Southern Great Plains Floodplain Forest & Woodland (M154)"
+	~ Updated File Name
+	~ Updated ID from "Southern Great Plains Floodplain Forest & Woodland (M154)" to "M154"
+	~ Updated Trigger
+~ Updated element "Pond-cypress Basin Swamp (M161)"
+	~ Updated File Name
+	~ Updated Description
+	~ Updated ID from "Pond-cypress Basin Swamp (M161)" to "M161"
+	~ Updated Trigger
+~ Updated element "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)"
+	~ Updated File Name
+	~ Updated ID from "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)" to "M032"
+~ Updated element "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)"
+	~ Updated File Name
+	~ Updated Description
+	~ Updated ID from "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)" to "M031"
+	~ Updated Trigger
+~ Updated element "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)"
+	~ Updated File Name
+	~ Updated ID from "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)" to "M032"
+~ Updated element "Longleaf Pine Woodland LC2 (M007)"
+	~ Updated File Name
+	~ Updated ID from "Longleaf Pine Woodland LC2 (M007)" to "M007"
+	~ Updated Trigger
+~ Updated element "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)"
+	~ Updated File Name
+	~ Updated ID from "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)" to "M031"
+~ Updated element "Southeastern North American Ruderal Flooded & Swamp Forest (M310)"
+	~ Updated File Name
+	~ Updated ID from "Southeastern North American Ruderal Flooded & Swamp Forest (M310)" to "M310"
+~ Updated element "North American Boreal Conifer Poor Swamp (M299)"
+	~ Updated ID from "North American Boreal Conifer Poor Swamp (M299)" to "M299"
+~ Updated element "North American Boreal Flooded Forest & Rich Swamp (M300)"
+	~ Updated ID from "North American Boreal Flooded Forest & Rich Swamp (M300)" to "M300"
+~ Updated element "Eastern North American - Great Plains Flooded & Swamp Forest"
+	~ Updated ID from "Eastern North American - Great Plains Flooded & Swamp Forest Division" to ""
+~ Updated element "Tropical Florida Natural Forest"
+	~ Updated ID from "Tropical Florida Natural Forest" to ""
+	+ Added Child Element "Caribbean Swamp Forest (M617)" at position "1"
+	+ Removed Child Element "Caribbean Swamp Forest via upland (M617)" at position "1"
+~ Updated element "Tropical Florida Ruderal Forest"
+	~ Updated ID from "Tropical Florida Ruderal Forest" to ""
+~ Updated element "Caribbean Natural Forest"
+	~ Updated ID from "Caribbean Natural Forest" to ""
+~ Updated element "Caribbean Ruderal Forest"
+	~ Updated ID from "Caribbean Ruderal Forest" to ""
+~ Updated element "Southeastern Warm Temperate Ruderal Forests"
+	~ Updated ID from "Southeastern Warm Temperate Ruderal Forests" to ""
+~ Updated element "Southeastern Warm Temperate Natural Forests"
+	~ Updated ID from "Southeastern Warm Temperate Natural Forests" to ""
+~ Updated element "Eastern North American Forest & Woodland (D008)"
+	~ Updated ID from "D008a" to "D008"
+~ Updated element "Shortleaf Pine Forest Plantation (CST007169)"
+	~ Updated File Name
+	~ Updated ID from "Shortleaf Pine Forest Plantation (CST007169)" to "CST007169"
+	~ Updated Trigger
+~ Updated element "Longleaf Pine Forest Plantation (CST007176)"
+	~ Updated File Name
+	~ Updated ID from "Longleaf Pine Forest Plantation (CST007176)" to "CST007176"
+	~ Updated Trigger
+~ Updated element "Slash Pine Forest Plantation (CST007170)"
+	~ Updated File Name
+	~ Updated ID from "Slash Pine Forest Plantation (CST007170)" to "CST007170"
+	~ Updated Trigger
+~ Updated element "Sand Pine Forest Plantation (CST007168)"
+	~ Updated File Name
+	~ Updated ID from "Sand Pine Forest Plantation (CST007168)" to "CST007168"
+	~ Updated Trigger
+~ Updated element "Native Miscellaneous Southern Pine Forest Plantation (CST007160)"
+	~ Updated File Name
+	~ Updated ID from "Native Miscellaneous Southern Pine Forest Plantation (CST007160)" to "CST007160"
+~ Updated element "Scotch Pine Exotic Forest Plantation (CST006313)"
+	~ Updated File Name
+	~ Updated Description
+	~ Updated ID from "Scotch Pine Exotic Forest Plantation (CST006313)" to "CST006313"
+	~ Updated Trigger
+~ Updated element "Norway Spruce Forest Plantation (CST007167)"
+	~ Updated File Name
+	~ Updated Description
+	~ Updated ID from "Norway Spruce Forest Plantation (CST007167)" to "CST007167"
+	~ Updated Trigger
+~ Updated element "Larch Forest Plantation (CST006408)"
+	~ Updated File Name
+	~ Updated Description
+	~ Updated ID from "Larch Forest Plantation (CST006408)" to "CST006408"
+	~ Updated Trigger
+~ Updated element "Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)"
+	~ Updated File Name
+	~ Updated ID from "Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)" to "CST007183"
+~ Updated element "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)"
+	~ Updated File Name
+	~ Updated ID from "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)" to "CST007187"
+~ Updated element "Black Walnut Forest Plantation (CST007188)"
+	~ Updated File Name
+	~ Updated ID from "Black Walnut Forest Plantation (CST007188)" to "CST007188"
+	~ Updated Trigger
+~ Updated element "Aspen Forest Plantation (CST007189)"
+	~ Updated File Name
+	~ Updated ID from "Aspen Forest Plantation (CST007189)" to "CST007189"
+	~ Updated Trigger
+~ Updated element "Black Locust Forest Plantation (CST007190)"
+	~ Updated File Name
+	~ Updated ID from "Black Locust Forest Plantation (CST007190)" to "CST007190"
+	~ Updated Trigger
+~ Updated element "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)"
+	~ Updated File Name
+	~ Updated ID from "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)" to "CST007193"
+~ Updated element "Tuliptree Forest Plantation (CST007197)"
+	~ Updated File Name
+	~ Updated ID from "Tuliptree Forest Plantation (CST007197)" to "CST007197"
+	~ Updated Trigger
+~ Updated element "Sweetgum Forest Plantation Subtype (CST007450)"
+	~ Updated File Name
+	~ Updated ID from "Sweetgum Forest Plantation Subtype (CST007450)" to "CST007450"
+	~ Updated Trigger
+~ Updated element "Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)"
+	~ Updated File Name
+	~ Updated ID from "Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)" to "CST007155"
+~ Updated element "Eastern Cool Temperate Natural Wetland Forests"
+	~ Updated ID from "Eastern Cool Temperate Natural Wetland Forests" to ""
+~ Updated element "Eastern Cool Temperate Ruderal Wetland Forests"
+	~ Updated ID from "Eastern Cool Temperate Ruderal Wetland Forests" to ""
+~ Updated element "Caribbean Coastal Lowland Dry Forest (M134)"
+	~ Updated File Name
+	~ Updated ID from "Caribbean Coastal Lowland Dry Forest (M134)" to "M134"
+~ Updated element "Caribbean Coastal Lowland Dry Forest LC (M134)"
+	~ Updated File Name
+	~ Updated ID from "Caribbean Coastal Lowland Dry Forest LC (M134)" to "M134"
+~ Updated element "Caribbean Ruderal Dry Forest (M514)"
+	~ Updated File Name
+	~ Updated ID from "Caribbean Ruderal Dry Forest (M514)" to "M514"
+~ Updated element "Caribbean & Central American Dry Forests"
+	~ Updated File Name
+	~ Updated ID from "Caribbean & Central American Dry Forests" to ""
+~ Updated element "Caribbean Ruderal Dry ForestA (M514A)"
+	~ Updated ID from "Caribbean Ruderal Dry ForestA (M514A)" to "M514A"
+~ Updated element "Southeastern North American Ruderal Forest (M305)"
+	~ Updated File Name
+~ Updated element "Southern Mesic Mixed Broadleaf Forest (M008)"
+	~ Updated File Name
+~ Updated element "Longleaf Pine Woodland (M007)"
+	~ Updated File Name
+~ Updated element "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"
+	~ Updated ID from "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)" to "M885"
+~ Updated element "Longleaf Pine Woodland LC1 (M007)"
+	~ Updated File Name
+	~ Updated ID from "Longleaf Pine Woodland LC1 (M007)" to "M007"
+~ Updated element "Southern Mesic Mixed Broadleaf Forest LC (M008)"
+	~ Updated File Name
+	~ Updated ID from "Southern Mesic Mixed Broadleaf Forest LC (M008)" to "M008"
+~ Updated element "Great Plains Natural Woodlands"
+	~ Updated ID from "Great Plains Natural Woodlands" to ""
+~ Updated element "Great Plains Ruderal Woodland"
+	~ Updated ID from "Great Plains Ruderal Woodland" to ""
+~ Updated element "Eastern North American Natural Forest & Woodlands"
+	~ Updated ID from "Eastern Cool Temperate Natural Forest & Woodlands" to ""
+~ Updated element "Eastern North American Ruderal Forest & Woodlands"
+	~ Updated ID from "Eastern Cool Temperate Ruderal Forest & Woodlands" to ""
+~ Updated element "White Pine Forest Plantation (CST007178)"
+	~ Updated File Name
+	~ Updated ID from "White Pine Forest Plantation (CST007178)" to "CST007178"
+	~ Updated Trigger
+~ Updated element "Jack Pine Forest Plantation (CST007161)"
+	~ Updated File Name
+	~ Updated ID from "Jack Pine Forest Plantation (CST007161)" to "CST007161"
+	~ Updated Trigger
+~ Updated element "Native Miscellaneous Northern Pine Forest Plantation"
+	~ Updated ID from "Native Miscellaneous Northern Pine Forest Plantation" to ""
+~ Updated element "White Spruce Forest Plantation (CST007164)"
+	~ Updated File Name
+	~ Updated ID from "White Spruce Forest Plantation (CST007164)" to "CST007164"
+	~ Updated Trigger
+~ Updated element "Balsam Fir Forest Plantation (CST007182)"
+	~ Updated File Name
+	~ Updated ID from "Balsam Fir Forest Plantation (CST007182)" to "CST007182"
+	~ Updated Trigger
+~ Updated element "Red Spruce Forest Plantation (CST004758)"
+	~ Updated File Name
+	~ Updated ID from "Red Spruce Forest Plantation (CST004758)" to "CST004758"
+	~ Updated Trigger
+~ Updated element "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)"
+	~ Updated File Name
+	~ Updated ID from "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)" to "CST007163"
+~ Updated element "Laurentian-Acadian Flooded Forest & Swamp (M504)"
+	~ Updated ID from "Laurentian-Acadian-North Atlantic Coastal Flooded & Swamp Forest (M504)" to "M504"
+~ Updated element "Central Hardwood Floodplain Forest (M029)"
+	~ Updated File Name
+	~ Updated Description
+	~ Updated ID from "Central Hardwood Floodplain Forest (M029)" to "M029"
+	~ Updated Trigger
+~ Updated element "Central Hardwood Swamp (M503)"
+	~ Updated ID from "Central Hardwood Swamp (M503)" to "M503"
+~ Updated element "Laurentian-Acadian Flooded Forest & Swamp LC (M504)"
+	~ Updated ID from "Laurentian-Acadian Flooded Forest & Swamp LC (M504)" to "M504"
+~ Updated element "Central Hardwood Floodplain Forest LC (M029)"
+	~ Updated File Name
+	~ Updated Description
+	~ Updated ID from "Central Hardwood Floodplain Forest LC (M029)" to "M029"
+	~ Updated Trigger
+~ Updated element "Central Hardwood Swamp LC (M503)"
+	~ Updated ID from "Central Hardwood Swamp LC (M503)" to "M503"
+~ Updated element "Eastern North American Ruderal Flooded Forest & Swamp (M302)"
+	~ Updated ID from "Eastern North American Ruderal Flooded Forest & Swamp (M302)" to "M302"
+~ Updated element "Caribbean-Mesoamerican Pine Forest via Caribbean (M296)"
+	~ Updated ID from "Caribbean-Mesoamerican Pine Forest via Caribbean (M296)" to "M296"
+~ Updated element "Caribbean-Mesoamerican Pine Forest LC (M296)"
+	~ Updated File Name
+	~ Updated ID from "Caribbean-Mesoamerican Pine Forest LC (M296)" to "M296"
+~ Updated element "Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)"
+	~ Updated ID from "Northern Forest Macrogroups (Laurentian and Acadian-Appalachian)" to ""
+~ Updated element "Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups"
+	~ Updated ID from "Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups" to ""
+~ Updated element "Eastern North American Ruderal Forest (M013)"
+	~ Updated ID from "Eastern North American Ruderal Forest (M013)" to "M013"
+~ Updated element "Laurentian Dry Forest & Woodland LC (M159)"
+	~ Updated ID from "Laurentian Dry Forest & Woodland LC (M159)" to "M159"
+~ Updated element "Central Midwest Oak Forest, Woodland & Savanna LC (M012)"
+	~ Updated ID from "Central Midwest Oak Forest, Woodland & Savanna LC (M012)" to "M012"
+~ Updated element "Central Midwest Mesic Forest LC (M882)"
+	~ Updated ID from "Central Midwest Mesic Forest LC (M882)" to "M882"
+~ Updated element "Laurentian Mesic Forest LC (M102)"
+	~ Updated File Name
+	~ Updated ID from "M102LC" to "M102"
+~ Updated element "Central Interior Oak - Pine Forest & Woodland LC  (M543)"
+	~ Updated ID from "M543LC" to "M543"
+~ Updated element "Southern-Central Appalachian Dry Forest & Woodland LC (M502)"
+	~ Updated ID from "Southern-Central Appalachian Dry Forest & Woodland LC (M502)" to "M502"
+~ Updated element "Southern-Central Appalachian Mesic Forest LC (M883)"
+	~ Updated ID from "Southern-Central Appalachian Mesic Forest LC (M883)" to "M883"
+
+### Saved at 2026-08-27T21:00:35.016Z (UTC):
++ Added element "Forest Plantation Anthro-division (CSF05)"
++ Added element "Tropical Forest (TT1)"
++ Added element "Caribbean Ruderal Dry Forest (M514A)"
+- Removed element "Forest Plantation Anthro-Division (CSF05)"
+- Removed element "Tropical Forest & Woodland Subclass"
+- Removed element "Caribbean Ruderal Dry ForestA (M514A)"
+~ Updated element "ROOT"
+	+ Added Child Element "Forest Plantation Anthro-division (CSF05)" at position "0"
+	+ Removed Child Element "Forest Plantation Anthro-Division (CSF05)" at position "0"
+~ Updated element "Tropical Forest Plantation Anthro-macrogroup (CGR008)"
+	~ Updated Parent Element from "Forest Plantation Anthro-Division (CSF05)" to "Forest Plantation Anthro-division (CSF05)"
+~ Updated element "Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)"
+	~ Updated Parent Element from "Forest Plantation Anthro-Division (CSF05)" to "Forest Plantation Anthro-division (CSF05)"
+~ Updated element "Upland Forest & Woodlands"
+	+ Added Child Element "Tropical Forest (TT1)" at position "0"
+	+ Removed Child Element "Tropical Forest & Woodland Subclass" at position "0"
+~ Updated element "Eastern North American Hardwood Plantation"
+	~ Updated Level from "subgroup" to "informal"
+~ Updated element "Tropical Dry Forest"
+	~ Updated Parent Element from "Tropical Forest & Woodland Subclass" to "Tropical Forest (TT1)"
+~ Updated element "Caribbean Ruderal Forest"
+	+ Added Child Element "Caribbean Ruderal Dry Forest (M514A)" at position "0"
+	+ Removed Child Element "Caribbean Ruderal Dry ForestA (M514A)" at position "0"
+

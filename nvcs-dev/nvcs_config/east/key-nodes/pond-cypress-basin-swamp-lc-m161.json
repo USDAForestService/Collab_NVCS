@@ -1,13 +1,13 @@
 {
     "node": {
-        "name": "Pond-cypress Basin Swamp LC (M161)",
-        "id": "Pond-cypress Basin Swamp LC (M161)",
+        "name": "Pond-Cypress Basin Swamp LC (M161)",
+        "id": "M161",
         "level": "macrogroup",
         "description": [
             "% RIV OF STRONG POND CYPRESS DIAGNOSTICS > STRONG LONGLEAF DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS"
         ],
         "trigger": [
-            "   riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > riv(STRONG_LONGLEAF_DIAGNOSTICS)",
+            "riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > riv(STRONG_LONGLEAF_DIAGNOSTICS)",
             "or riv(STRONG_POND_CYPRESS_DIAGNOSTICS) > riv(STRONG_FLOODPLAIN_DIAGNOSTICS)"
         ],
         "filters": {

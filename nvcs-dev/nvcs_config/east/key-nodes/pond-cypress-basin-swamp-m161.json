@@ -1,10 +1,10 @@
 {
     "node": {
         "name": "Pond-cypress Basin Swamp (M161)",
-        "id": "Pond-cypress Basin Swamp (M161)",
+        "id": "M161",
         "level": "macrogroup",
         "description": [
-            " i. Tree composition dominated by STRONG POND CYPRESS DIAGNOSTICS",
+            "i. Tree composition dominated by STRONG POND CYPRESS DIAGNOSTICS",
             "    Taxodium distichum var. nutans (= Taxodium ascendens) (>=50% RIV);",
             "OR",
             "ii. Tree composition as above, but with >=20% RIV, AND other species are",
@@ -15,7 +15,7 @@
             "    (together >=50% RIV)."
         ],
         "trigger": [
-            "    riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 50",
+            "riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 50",
             "or (    riv(STRONG_POND_CYPRESS_DIAGNOSTICS) >= 20",
             "    and riv(STRONG_POND_CYPRESS_DIAGNOSTICS) + riv(MODERATE_DIAGNOSTIC_SPECIES) >= 50)"
         ],
