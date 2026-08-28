@@ -11,11 +11,245 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
+        "targetNode": "Shortleaf Pine Forest Plantation (CST007169)",
+        "targetProblem": "Node File Name shortleaf-pine-forest-plantation-cst007169.json is unconventional",
+        "alertId": "id280d53d174be9",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Longleaf Pine Forest Plantation (CST007176)",
+        "targetProblem": "Node File Name longleaf-pine-forest-plantation-cst007176.json is unconventional",
+        "alertId": "id7860ade957797",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Slash Pine Forest Plantation (CST007170)",
+        "targetProblem": "Node File Name slash-pine-forest-plantation-cst007170.json is unconventional",
+        "alertId": "id6525e46a9064f",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Sand Pine Forest Plantation (CST007168)",
+        "targetProblem": "Node File Name sand-pine-forest-plantation-cst007168.json is unconventional",
+        "alertId": "ida136fb78e7788",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Native Miscellaneous Southern Pine Forest Plantation (CST007160)",
+        "targetProblem": "Node File Name native-miscellaneous-southern-pine-forest-plantation-cst007160.json is unconventional",
+        "alertId": "id879d60871c3b6",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "White Pine Forest Plantation (CST007178)",
+        "targetProblem": "Node File Name white-pine-forest-plantation-cst007178.json is unconventional",
+        "alertId": "idea14e7997ede2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Jack Pine Forest Plantation (CST007161)",
+        "targetProblem": "Node File Name jack-pine-forest-plantation-cst007161.json is unconventional",
+        "alertId": "idb0fb27bae52cb",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "White Spruce Forest Plantation (CST007164)",
+        "targetProblem": "Node File Name white-spruce-forest-plantation-cst007164.json is unconventional",
+        "alertId": "id3326eed392075",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Red Spruce Forest Plantation (CST004758)",
+        "targetProblem": "Node File Name red-spruce-forest-plantation-cst004758.json is unconventional",
+        "alertId": "idbc8ea27ea655e",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)",
+        "targetProblem": "Node File Name native-miscellaneous-northern-conifer-forest-plantation-cst007163.json is unconventional",
+        "alertId": "id6e0fe3c34fd12",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Scotch Pine Exotic Forest Plantation (CST006313)",
+        "targetProblem": "Node File Name scotch-pine-exotic-forest-plantation-cst006313.json is unconventional",
+        "alertId": "id724baf41950f4",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Norway Spruce Forest Plantation (CST007167)",
+        "targetProblem": "Node File Name norway-spruce-forest-plantation-cst007167.json is unconventional",
+        "alertId": "id0891e58e40ea",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Larch Forest Plantation (CST006408)",
+        "targetProblem": "Node File Name larch-forest-plantation-cst006408.json is unconventional",
+        "alertId": "idc52f22cc3cb67",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)",
+        "targetProblem": "Node File Name exotic-miscellaneous-northern-conifer-forest-plantation-cst007183.json is unconventional",
+        "alertId": "ida5fd40d087c2f",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Black Walnut Forest Plantation (CST007188)",
+        "targetProblem": "Node File Name black-walnut-forest-plantation-cst007188.json is unconventional",
+        "alertId": "idfed8173c148ac",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Aspen Forest Plantation (CST007189)",
+        "targetProblem": "Node File Name aspen-forest-plantation-cst007189.json is unconventional",
+        "alertId": "id35290cdc18ed3",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Black Locust Forest Plantation (CST007190)",
+        "targetProblem": "Node File Name black-locust-forest-plantation-cst007190.json is unconventional",
+        "alertId": "id4d55290d48ae3",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)",
+        "targetProblem": "Node File Name native-miscellaneous-northern-hardwood-forest-plantation-cst007193.json is unconventional",
+        "alertId": "id550a225aec774",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Tuliptree Forest Plantation (CST007197)",
+        "targetProblem": "Node File Name tuliptree-forest-plantation-cst007197.json is unconventional",
+        "alertId": "id78d5f4c115e75",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)",
+        "targetProblem": "Node File Name native-miscellaneous-southern-hardwood-forest-plantation-cst007155.json is unconventional",
+        "alertId": "id14092c73add83",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).",
+        "targetProblem": "Node File Name mb1-mb1a-mb1a2-d004.json is unconventional",
+        "alertId": "id7dd334c9d405a",
+        "alertNotes": "This extra long file name needed to be truncated to avoid configuration tool compilation errors",
+        "alertAddressed": true
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Pond-cypress Basin Swamp (M161)",
+        "targetProblem": "Node File Name pond-cypress-basin-swamp-m161.json is unconventional",
+        "alertId": "id245b22910f989",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)",
+        "targetProblem": "Node File Name southern-coastal-plain-evergreen-hardwood-conifer-swamp-forest-m032.json is unconventional",
+        "alertId": "id0741e26e27e95",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
         "targetNode": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)",
         "targetProblem": "Node File Name southern-coastal-plain-floodplain-forest-m031-southern-coastal-plain-basin-swamp-&-flatwoods-M033.json is unconventional",
         "alertId": "idf1a94dbe22afb",
         "alertNotes": "removed slash from filename",
         "alertAddressed": true
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)",
+        "targetProblem": "Node File Name southern-coastal-plain-evergreen-hardwood-conifer-swamp-forest-lc-m032.json is unconventional",
+        "alertId": "idbc0b893e22b09",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Pond-Cypress Basin Swamp LC (M161)",
+        "targetProblem": "Node File Name pond-cypress-basin-swamp-lc-m161.json is unconventional",
+        "alertId": "id76a99d9bc7568",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Longleaf Pine Woodland LC2 (M007)",
+        "targetProblem": "Node File Name longleaf-pine-woodland-lc2-m007.json is unconventional",
+        "alertId": "id4f7fcb0bbb75c",
+        "alertNotes": "",
+        "alertAddressed": false
     },
     {
         "alertType": "warning",
@@ -29,11 +263,110 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
+        "targetNode": "North American Boreal Conifer Poor Swamp (M299)",
+        "targetProblem": "Node File Name north-american-boreal-conifer-poor-swamp-m299.json is unconventional",
+        "alertId": "id7c79f88b5f65c",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Central Hardwood Floodplain Forest (M029)",
+        "targetProblem": "Node File Name central-hardwood-floodplain-forest-m029.json is unconventional",
+        "alertId": "id28a29a3749605",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Central Hardwood Floodplain Forest LC (M029)",
+        "targetProblem": "Node File Name central-hardwood-floodplain-forest-lc-m029.json is unconventional",
+        "alertId": "id8d04afb3bfced",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
         "targetNode": "Tropical Dry Forest (TT1.b)",
         "targetProblem": "Node File Name tropical-dry-forest-TT1B.json is unconventional",
         "alertId": "id210c74cd5a188",
         "alertNotes": "removed punctuation in node ID from filename",
         "alertAddressed": true
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Caribbean Coastal Lowland Dry Forest (M134)",
+        "targetProblem": "Node File Name caribbean-coastal-lowland-dry-forest-m134.json is unconventional",
+        "alertId": "idd599f8e07f3f2",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Caribbean Coastal Lowland Dry Forest LC (M134)",
+        "targetProblem": "Node File Name caribbean-coastal-lowland-dry-forest-lc-m134.json is unconventional",
+        "alertId": "id3f9b76ce0c1bc",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Caribbean Ruderal Dry Forest (M514)",
+        "targetProblem": "Node File Name caribbean-ruderal-dry-forest-m514.json is unconventional",
+        "alertId": "id32ed0fb1dfe92",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Caribbean-Mesoamerican Pine Forest LC (M296)",
+        "targetProblem": "Node File Name caribbean-mesoamerican-pine-forest-lc-m296.json is unconventional",
+        "alertId": "ida33ad55c99552",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Longleaf Pine Woodland LC1 (M007)",
+        "targetProblem": "Node File Name longleaf-pine-woodland-lc1-m007.json is unconventional",
+        "alertId": "id19e19d106c1e7",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
+        "targetProblem": "Node File Name southern-mesic-mixed-broadleaf-forest-lc-m008.json is unconventional",
+        "alertId": "idcdd84aee06bf9",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Central Midwest Mesic Forest LC (M882)",
+        "targetProblem": "Node File Name central-midwest-mesic-forest-lc-m882.json is unconventional",
+        "alertId": "idd1e5900bb85bb",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unconventional-file-name",
+        "targetNode": "Eastern North American Ruderal Forest (M013)",
+        "targetProblem": "Node File Name eastern-north-american-ruderal-forest-m013.json is unconventional",
+        "alertId": "id9711e7165867b",
+        "alertNotes": "",
+        "alertAddressed": false
     },
     {
         "alertType": "warning",
