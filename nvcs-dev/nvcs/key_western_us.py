@@ -204,12 +204,12 @@ class ClassificationKey:
 
     def _setup(self):
         self.nodes[  0] = Node(  0, None, ((lambda plot:True), "", ""), "")
-        self.nodes[  1] = Node(  1,   0, element_001(), 'No to Low Trees')
-        self.nodes[  2] = Node(  2,   1, element_002(), 'Live Canopy Cover Over 10')
-        self.nodes[  3] = Node(  3,   1, element_003(), 'Western North American Grassland & Shrubland (D022)')
-        self.nodes[  4] = Node(  4,   1, element_004(), 'Low Vegetative Cover')
-        self.nodes[  5] = Node(  5,   0, element_005(), 'Forest Plantations')
-        self.nodes[  6] = Node(  6,   0, element_006(), 'Natural (including ruderal) Forests (C01)')
+        self.nodes[  1] = Node(  1,   0, element_001(), 'Non-Forests')
+        self.nodes[  2] = Node(  2,   1, element_002(), 'Temperate-Boreal Grassland & Shrubland (B04)')
+        self.nodes[  3] = Node(  3,   2, element_003(), 'Western North American Grassland & Shrubland (D022)')
+        self.nodes[  4] = Node(  4,   0, element_004(), 'Forest Plantations')
+        self.nodes[  5] = Node(  5,   4, element_005(), 'Western North American Temperate Forest Plantation (CSG007)')
+        self.nodes[  6] = Node(  6,   0, element_006(), 'Natural (including ruderal) Forests')
         self.nodes[  7] = Node(  7,   6, element_007(), 'Wetland Forest & Woodlands')
         self.nodes[  8] = Node(  8,   7, element_008(), 'Temperate-Boreal Forested Wetland (F136)')
         self.nodes[  9] = Node(  9,   8, element_009(), 'Great Plains Temperate Flooded & Swamp Forests')
@@ -219,137 +219,134 @@ class ClassificationKey:
         self.nodes[ 13] = Node( 13,  10, element_013(), 'Eastern North American Ruderal Flooded Forest & Swamp (M302)')
         self.nodes[ 14] = Node( 14,   9, element_014(), 'Southeastern North American Flooded Forest & Swamp Division (D062)')
         self.nodes[ 15] = Node( 15,  14, element_015(), 'Southeastern Great Plains Floodplain Forest (M154)')
-        self.nodes[ 16] = Node( 16,  15, element_016(), 'Southeastern Great Plains Central Texas Floodplain Forest (G784)')
-        self.nodes[ 17] = Node( 17,  14, element_017(), 'Southeastern North American Ruderal Flooded Forest & Swamp (M310)')
-        self.nodes[ 18] = Node( 18,   8, element_018(), 'Western North American Temperate Flooded & Swamp Forests')
-        self.nodes[ 19] = Node( 19,  18, element_019(), 'North Pacific Forested Wetland (D193)')
-        self.nodes[ 20] = Node( 20,  19, element_020(), 'North Pacific Forested Wetland (M035)')
-        self.nodes[ 21] = Node( 21,  20, element_021(), 'North-Central Pacific Montane Riparian & Seepage Swamp (G507)')
-        self.nodes[ 22] = Node( 22,  20, element_022(), 'North-Central Pacific Maritime Lowland Swamp (G853)')
-        self.nodes[ 23] = Node( 23,  20, element_023(), 'North-Central Pacific Lowland Riparian Forest (G851)')
-        self.nodes[ 24] = Node( 24,  19, element_024(), 'North Pacific Forested Wetland Ruderal Forests (M405)')
-        self.nodes[ 25] = Node( 25,  18, element_025(), 'Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)')
-        self.nodes[ 26] = Node( 26,  25, element_026(), 'Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)')
-        self.nodes[ 27] = Node( 27,  26, element_027(), 'Rocky Mountain-Great Basin Swamp (G505)')
-        self.nodes[ 28] = Node( 28,  26, element_028(), 'Rocky Mountain-Great Basin Montane Riparian Forest (G506)')
-        self.nodes[ 29] = Node( 29,  26, element_029(), 'Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)')
-        self.nodes[ 30] = Node( 30,  25, element_030(), 'Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)')
-        self.nodes[ 31] = Node( 31,  18, element_031(), 'Western North American Arid Flooded Forest (D013)')
-        self.nodes[ 32] = Node( 32,  31, element_032(), 'Western Arid Lowland Flooded Forest (M036)')
-        self.nodes[ 33] = Node( 33,  32, element_033(), 'Tamaulipan Flooded Forest (G549)')
-        self.nodes[ 34] = Node( 34,  32, element_034(), 'Californian Mediterranean Riparian Forest (G113)')
-        self.nodes[ 35] = Node( 35,  32, element_035(), 'Southwest Warm Desert Riparian Forest (G109)')
-        self.nodes[ 36] = Node( 36,  32, element_036(), 'Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)')
-        self.nodes[ 37] = Node( 37,  31, element_037(), 'Western Arid Ruderal Riparian Forest & Scrub (M298)')
-        self.nodes[ 38] = Node( 38,  37, element_038(), 'Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)')
-        self.nodes[ 39] = Node( 39,   6, element_039(), 'Upland Forest & Woodlands')
-        self.nodes[ 40] = Node( 40,  39, element_040(), 'Temperate Boreal Forest & Woodland Subclass (B02)')
-        self.nodes[ 41] = Node( 41,  40, element_041(), 'Great Plains Temperate Forests')
-        self.nodes[ 42] = Node( 42,  41, element_042(), 'North American Great Plains Forest & Woodland Division (D332)')
-        self.nodes[ 43] = Node( 43,  42, element_043(), 'Southern Great Plains Forest & Woodland (M544)')
-        self.nodes[ 44] = Node( 44,  43, element_044(), 'Cross Timbers Woodland (G887)')
-        self.nodes[ 45] = Node( 45,  43, element_045(), 'Edwards Plateau Dry-Mesic Hardwood Forest (G028)')
-        self.nodes[ 46] = Node( 46,  43, element_046(), 'Edwards Plateau Dry Woodland (G126)')
-        self.nodes[ 47] = Node( 47,  42, element_047(), 'Northern Great Plains Forest & Woodland (M545)')
-        self.nodes[ 48] = Node( 48,  47, element_048(), 'Great Plains Bur Oak Forest & Woodland (G329)')
-        self.nodes[ 49] = Node( 49,  47, element_049(), 'Northern Tallgrass Oak Aspen Woodland (G146)')
-        self.nodes[ 50] = Node( 50,  47, element_050(), 'Northwestern Great Plains Aspen Woodland (G328)')
-        self.nodes[ 51] = Node( 51,  47, element_051(), 'Northern Great Plains Mesic Forest & Woodland (G145)')
-        self.nodes[ 52] = Node( 52,  42, element_052(), 'Great Plains Ruderal Woodland (M524)')
-        self.nodes[ 53] = Node( 53,  42, element_053(), 'LC Southern Great Plains Forest & Woodland (M544LC)')
-        self.nodes[ 54] = Node( 54,  42, element_054(), 'LC Northern Great Plains Forest & Woodland (M545LC)')
-        self.nodes[ 55] = Node( 55,  41, element_055(), 'Southeastern North American Forest & Woodland Division (D006)')
-        self.nodes[ 56] = Node( 56,  55, element_056(), 'Southeastern Coastal Plain Evergreen Oak Forest (M885)')
-        self.nodes[ 57] = Node( 57,  56, element_057(), 'Southeast Maritime Live Oak - Palmetto Forest (G798)')
-        self.nodes[ 58] = Node( 58,  56, element_058(), 'Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)')
-        self.nodes[ 59] = Node( 59,  55, element_059(), 'Southeastern North American Ruderal Forest (M305)')
-        self.nodes[ 60] = Node( 60,  41, element_060(), 'Eastern North American Forest & Woodland Division (D008)')
-        self.nodes[ 61] = Node( 61,  60, element_061(), 'Eastern North American Forest & Woodland Natural Forests (D008)')
-        self.nodes[ 62] = Node( 62,  61, element_062(), 'Central Midwest Oak Forest, Woodland & Savanna (M012)')
-        self.nodes[ 63] = Node( 63,  62, element_063(), 'Midwest Oak Hickory Forest (G990)')
-        self.nodes[ 64] = Node( 64,  61, element_064(), 'South - Central Oak - Pine Forest & Woodland (M540)')
-        self.nodes[ 65] = Node( 65,  64, element_065(), 'West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)')
-        self.nodes[ 66] = Node( 66,  60, element_066(), 'Eastern North American Ruderal Forests (D008)')
-        self.nodes[ 67] = Node( 67,  66, element_067(), 'Eastern North American Ruderal Forest (M013)')
-        self.nodes[ 68] = Node( 68,  40, element_068(), 'Western North American Temperate Forests')
-        self.nodes[ 69] = Node( 69,  68, element_069(), 'Warm Temperate Forest & Woodland (S54)')
-        self.nodes[ 70] = Node( 70,  69, element_070(), 'Californian Forest & Woodland Division (D007)')
-        self.nodes[ 71] = Node( 71,  70, element_071(), 'Californian Forest & Woodland (M009)')
-        self.nodes[ 72] = Node( 72,  71, element_072(), 'Californian Conifer Forest & Woodland (G198)')
-        self.nodes[ 73] = Node( 73,  71, element_073(), 'Californian Broadleaf Forest & Woodland (G195)')
-        self.nodes[ 74] = Node( 74,  70, element_074(), 'Californian Ruderal Forest (M513)')
-        self.nodes[ 75] = Node( 75,  69, element_075(), 'Madrean Forest & Woodland Division (D331)')
-        self.nodes[ 76] = Node( 76,  75, element_076(), 'Madrean Natural Forests & Woodlands (D331)')
-        self.nodes[ 77] = Node( 77,  76, element_077(), 'Madrean Foothills Evergreen Woodland (M010)')
-        self.nodes[ 78] = Node( 78,  77, element_078(), 'Madrean Pinyon - Juniper Woodland (G200)')
-        self.nodes[ 79] = Node( 79,  77, element_079(), 'Madrean Encinal (G201)')
-        self.nodes[ 80] = Node( 80,  77, element_080(), 'Madrean Juniper Open Woodland (G487)')
-        self.nodes[ 81] = Node( 81,  76, element_081(), 'Madrean Montane Forest & Woodland (M011)')
-        self.nodes[ 82] = Node( 82,  81, element_082(), 'Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)')
-        self.nodes[ 83] = Node( 83,  81, element_083(), 'Madrean Lower Montane Pine - Oak Forest & Woodland (G203)')
-        self.nodes[ 84] = Node( 84,  75, element_084(), 'Western North American Ruderal Forests - Madrean-Balconian (D060)')
-        self.nodes[ 85] = Node( 85,  75, element_085(), 'LC Madrean Montane Forest & Woodland (M011LC)')
-        self.nodes[ 86] = Node( 86,  68, element_086(), 'Cool Temperate Forest & Woodland Subbiome (S92)')
-        self.nodes[ 87] = Node( 87,  86, element_087(), 'North American Pacific Coast Temperate Rainforest (D338)')
-        self.nodes[ 88] = Node( 88,  87, element_088(), 'North Pacific Coastal Rainforest (M024)')
-        self.nodes[ 89] = Node( 89,  88, element_089(), 'Coastal Redwood Forest (G235)')
-        self.nodes[ 90] = Node( 90,  88, element_090(), 'Coastal Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)')
-        self.nodes[ 91] = Node( 91,  88, element_091(), 'Coastal Douglas-fir - Western Hemlock Rainforest (G240)')
-        self.nodes[ 92] = Node( 92,  88, element_092(), 'Coastal Silver Fir - Western Hemlock Rainforest (G241)')
-        self.nodes[ 93] = Node( 93,  88, element_093(), 'Coastal Western Hemlock - Sitka Spruce Rainforest (G751)')
-        self.nodes[ 94] = Node( 94,  86, element_094(), 'Western North American Pinyon-Juniper Woodland & Scrub Division (D010)')
-        self.nodes[ 95] = Node( 95,  94, element_095(), 'Intermountain Pinyon-Juniper Woodland (M896)')
-        self.nodes[ 96] = Node( 96,  95, element_096(), 'Intermountain Western Juniper Open Woodland (G248)')
-        self.nodes[ 97] = Node( 97,  95, element_097(), 'Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)')
-        self.nodes[ 98] = Node( 98,  95, element_098(), 'Great Basin Pinyon - Juniper Woodland (G899)')
-        self.nodes[ 99] = Node( 99,  95, element_099(), 'Colorado Plateau Pinyon - Juniper Woodland (G900)')
-        self.nodes[100] = Node(100,  95, element_100(), 'Intermountain Utah Juniper Open Woodland (G105)')
-        self.nodes[101] = Node(101,  94, element_101(), 'Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)')
-        self.nodes[102] = Node(102, 101, element_102(), 'Southern Rocky Mountain Pinyon - Juniper Woodland (G253)')
-        self.nodes[103] = Node(103, 101, element_103(), 'Southern Rocky Mountain Juniper Open Woodland (G252)')
-        self.nodes[104] = Node(104,  94, element_104(), 'LC Intermountain Pinyon-Juniper Woodland (M896LC)')
-        self.nodes[105] = Node(105,  86, element_105(), 'Californian-North Pacific Foothills Forest & Woodland (D339)')
-        self.nodes[106] = Node(106, 105, element_106(), 'Californian-North Pacific Dry Foothill Forest & Woodland (M886)')
-        self.nodes[107] = Node(107, 106, element_107(), 'Cascadian Oregon White Oak - Conifer Forest (G206)')
-        self.nodes[108] = Node(108, 106, element_108(), 'Californian Moist Coastal Mixed Evergreen Forest (G208)')
-        self.nodes[109] = Node(109, 106, element_109(), 'North Pacific Douglas-fir - Madrone Dry Woodland (G800)')
-        self.nodes[110] = Node(110, 106, element_110(), 'Coastal Shore Pine Forest & Woodland (G205)')
-        self.nodes[111] = Node(111, 105, element_111(), 'Sierran-Californian Montane-Foothill Forest & Woodland (M023)')
-        self.nodes[112] = Node(112, 111, element_112(), 'Californian Montane Conifer Forest & Woodland (G344)')
-        self.nodes[113] = Node(113, 105, element_113(), 'North Pacific Ruderal Forest (M405)')
-        self.nodes[114] = Node(114, 113, element_114(), 'North Pacific Ruderal Forest (G801)')
-        self.nodes[115] = Node(115, 105, element_115(), 'LC Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)')
-        self.nodes[116] = Node(116,  86, element_116(), 'Rocky Mountain Foothills & Montane Forest & Woodland (D337)')
-        self.nodes[117] = Node(117, 116, element_117(), 'Southern Rocky Mountain Montane Forest & Woodland (M022)')
-        self.nodes[118] = Node(118, 117, element_118(), 'Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)')
-        self.nodes[119] = Node(119, 117, element_119(), 'Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)')
-        self.nodes[120] = Node(120, 117, element_120(), 'Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)')
-        self.nodes[121] = Node(121, 117, element_121(), 'Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)')
-        self.nodes[122] = Node(122, 116, element_122(), 'Central Rocky Mountain Montane Forest & Woodland (M501)')
-        self.nodes[123] = Node(123, 122, element_123(), 'Central Rocky Mountain Montane White Spruce Forest (G345)')
-        self.nodes[124] = Node(124, 122, element_124(), 'Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)')
-        self.nodes[125] = Node(125, 122, element_125(), 'Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)')
-        self.nodes[126] = Node(126, 122, element_126(), 'Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)')
-        self.nodes[127] = Node(127, 122, element_127(), 'Central Rocky Mountain Douglas-fir Mesic Forest (G215)')
-        self.nodes[128] = Node(128, 122, element_128(), 'Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)')
-        self.nodes[129] = Node(129, 116, element_129(), 'Central Rocky Mountain-Interior Moist Montane Forest (M500)')
-        self.nodes[130] = Node(130, 129, element_130(), 'East Cascades Moist-Mesic Grand Fir - Douglas-fir (G212)')
-        self.nodes[131] = Node(131, 129, element_131(), 'Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)')
-        self.nodes[132] = Node(132, 129, element_132(), 'Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)')
-        self.nodes[133] = Node(133, 116, element_133(), 'LC Central Rocky Mountain Montane Forest & Woodland (M501LC)')
-        self.nodes[134] = Node(134,  86, element_134(), 'Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)')
-        self.nodes[135] = Node(135, 134, element_135(), 'Rocky Mountain Subalpine-Upper Montane Forest & Woodland (M020)')
-        self.nodes[136] = Node(136, 135, element_136(), 'Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)')
-        self.nodes[137] = Node(137, 135, element_137(), 'Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)')
-        self.nodes[138] = Node(138, 135, element_138(), 'Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)')
-        self.nodes[139] = Node(139, 135, element_139(), 'Rocky Mountain Lodgepole Pine Forest & Woodland (G220)')
-        self.nodes[140] = Node(140, 135, element_140(), 'Rocky Mountain Montane-Subalpine Limber Pine Woodland (G101)')
-        self.nodes[141] = Node(141, 135, element_141(), 'Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)')
-        self.nodes[142] = Node(142, 134, element_142(), 'Vancouverian Subalpine-High Montane Forest (M025)')
-        self.nodes[143] = Node(143, 142, element_143(), 'Sierra-Cascade Cold-Dry Subalpine Woodland (G243)')
-        self.nodes[144] = Node(144, 142, element_144(), 'Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)')
-        self.nodes[145] = Node(145, 142, element_145(), 'North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)')
-        self.nodes[146] = Node(146, 134, element_146(), 'LC Rocky Mountain Subalpine-High Montane Forest (M020LC)')
+        self.nodes[ 16] = Node( 16,  14, element_016(), 'Southeastern North American Ruderal Flooded Forest & Swamp (M310)')
+        self.nodes[ 17] = Node( 17,   8, element_017(), 'Western North American Temperate Flooded & Swamp Forests')
+        self.nodes[ 18] = Node( 18,  17, element_018(), 'North Pacific Forested Wetland (D193)')
+        self.nodes[ 19] = Node( 19,  18, element_019(), 'North Pacific Forested Wetland (M035)')
+        self.nodes[ 20] = Node( 20,  19, element_020(), 'North-Central Pacific Montane Riparian & Seepage Swamp (G507)')
+        self.nodes[ 21] = Node( 21,  19, element_021(), 'North-Central Pacific Maritime Lowland Swamp (G853)')
+        self.nodes[ 22] = Node( 22,  19, element_022(), 'North-Central Pacific Lowland Riparian Forest (G851)')
+        self.nodes[ 23] = Node( 23,  18, element_023(), 'North Pacific Forested Wetland Ruderal Forests')
+        self.nodes[ 24] = Node( 24,  17, element_024(), 'Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)')
+        self.nodes[ 25] = Node( 25,  24, element_025(), 'Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)')
+        self.nodes[ 26] = Node( 26,  25, element_026(), 'Rocky Mountain-Great Basin Swamp (G505)')
+        self.nodes[ 27] = Node( 27,  25, element_027(), 'Rocky Mountain-Great Basin Montane Riparian Forest (G506)')
+        self.nodes[ 28] = Node( 28,  25, element_028(), 'Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)')
+        self.nodes[ 29] = Node( 29,  24, element_029(), 'Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forests')
+        self.nodes[ 30] = Node( 30,  17, element_030(), 'Western North American Arid Flooded Forest (D013)')
+        self.nodes[ 31] = Node( 31,  30, element_031(), 'Western Arid Lowland Flooded Forest (M036)')
+        self.nodes[ 32] = Node( 32,  31, element_032(), 'Tamaulipan Flooded Forest (G549)')
+        self.nodes[ 33] = Node( 33,  31, element_033(), 'Californian Mediterranean Riparian Forest (G113)')
+        self.nodes[ 34] = Node( 34,  31, element_034(), 'Southwest Warm Desert Riparian Forest (G109)')
+        self.nodes[ 35] = Node( 35,  31, element_035(), 'Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)')
+        self.nodes[ 36] = Node( 36,  30, element_036(), 'Western Arid Ruderal Riparian Forest & Scrub (M298)')
+        self.nodes[ 37] = Node( 37,  36, element_037(), 'Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)')
+        self.nodes[ 38] = Node( 38,   6, element_038(), 'Upland Forest & Woodlands')
+        self.nodes[ 39] = Node( 39,  38, element_039(), 'Temperate Boreal Forest & Woodland (B02)')
+        self.nodes[ 40] = Node( 40,  39, element_040(), 'Great Plains Temperate Forests')
+        self.nodes[ 41] = Node( 41,  40, element_041(), 'North American Great Plains Forest & Woodland Division (D332)')
+        self.nodes[ 42] = Node( 42,  41, element_042(), 'Southern Great Plains Forest & Woodland (M544)')
+        self.nodes[ 43] = Node( 43,  42, element_043(), 'Cross Timbers Woodland (G887)')
+        self.nodes[ 44] = Node( 44,  42, element_044(), 'Edwards Plateau Dry-Mesic Hardwood Forest (G028)')
+        self.nodes[ 45] = Node( 45,  42, element_045(), 'Edwards Plateau Dry Woodland (G126)')
+        self.nodes[ 46] = Node( 46,  41, element_046(), 'Northern Great Plains Forest & Woodland (M545)')
+        self.nodes[ 47] = Node( 47,  46, element_047(), 'Great Plains Bur Oak Forest & Woodland (G329)')
+        self.nodes[ 48] = Node( 48,  46, element_048(), 'Northern Tallgrass Oak Aspen Woodland (G146)')
+        self.nodes[ 49] = Node( 49,  46, element_049(), 'Northwestern Great Plains Aspen Woodland (G328)')
+        self.nodes[ 50] = Node( 50,  46, element_050(), 'Northern Great Plains Mesic Forest & Woodland (G145)')
+        self.nodes[ 51] = Node( 51,  41, element_051(), 'Great Plains Ruderal Woodland (M524)')
+        self.nodes[ 52] = Node( 52,  41, element_052(), 'Low Confidence Southern Great Plains Forest & Woodland (M544LC)')
+        self.nodes[ 53] = Node( 53,  41, element_053(), 'Low Confidence Northern Great Plains Forest & Woodland (M545LC)')
+        self.nodes[ 54] = Node( 54,  40, element_054(), 'Southeastern North American Forest & Woodland Division (D006)')
+        self.nodes[ 55] = Node( 55,  54, element_055(), 'Southeastern Coastal Plain Evergreen Oak Forest (M885)')
+        self.nodes[ 56] = Node( 56,  55, element_056(), 'Southeast Maritime Live Oak - Palmetto Forest (G798)')
+        self.nodes[ 57] = Node( 57,  55, element_057(), 'Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)')
+        self.nodes[ 58] = Node( 58,  54, element_058(), 'Southeastern North American Ruderal Forest (M305)')
+        self.nodes[ 59] = Node( 59,  40, element_059(), 'Eastern North American Forest & Woodland Division (D008)')
+        self.nodes[ 60] = Node( 60,  59, element_060(), 'Eastern North American Forest & Woodland Natural Forests')
+        self.nodes[ 61] = Node( 61,  60, element_061(), 'Central Midwest Oak Forest, Woodland & Savanna (M012)')
+        self.nodes[ 62] = Node( 62,  60, element_062(), 'South - Central Oak - Pine Forest & Woodland (M540)')
+        self.nodes[ 63] = Node( 63,  59, element_063(), 'Eastern North American Ruderal Forests')
+        self.nodes[ 64] = Node( 64,  63, element_064(), 'Eastern North American Ruderal Forest (M013)')
+        self.nodes[ 65] = Node( 65,  39, element_065(), 'Western North American Temperate Forests')
+        self.nodes[ 66] = Node( 66,  65, element_066(), 'Warm Temperate Forest & Woodland (S54)')
+        self.nodes[ 67] = Node( 67,  66, element_067(), 'Californian Forest & Woodland Division (D007)')
+        self.nodes[ 68] = Node( 68,  67, element_068(), 'Californian Forest & Woodland (M009)')
+        self.nodes[ 69] = Node( 69,  68, element_069(), 'Californian Conifer Forest & Woodland (G198)')
+        self.nodes[ 70] = Node( 70,  68, element_070(), 'Californian Broadleaf Forest & Woodland (G195)')
+        self.nodes[ 71] = Node( 71,  67, element_071(), 'Californian Ruderal Forest (M513)')
+        self.nodes[ 72] = Node( 72,  66, element_072(), 'Madrean Forest & Woodland Division (D331)')
+        self.nodes[ 73] = Node( 73,  72, element_073(), 'Madrean Natural Forests & Woodlands')
+        self.nodes[ 74] = Node( 74,  73, element_074(), 'Madrean Foothills Evergreen Woodland (M010)')
+        self.nodes[ 75] = Node( 75,  74, element_075(), 'Madrean Pinyon - Juniper Woodland (G200)')
+        self.nodes[ 76] = Node( 76,  74, element_076(), 'Madrean Encinal (G201)')
+        self.nodes[ 77] = Node( 77,  74, element_077(), 'Madrean Juniper Open Woodland (G487)')
+        self.nodes[ 78] = Node( 78,  73, element_078(), 'Madrean Montane Forest & Woodland (M011)')
+        self.nodes[ 79] = Node( 79,  78, element_079(), 'Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)')
+        self.nodes[ 80] = Node( 80,  78, element_080(), 'Madrean Lower Montane Pine - Oak Forest & Woodland (G203)')
+        self.nodes[ 81] = Node( 81,  72, element_081(), 'Madrean Ruderal Forests')
+        self.nodes[ 82] = Node( 82,  72, element_082(), 'Low Confidence Madrean Montane Forest & Woodland (M011LC)')
+        self.nodes[ 83] = Node( 83,  65, element_083(), 'Cool Temperate Forest & Woodland Subbiome (S92)')
+        self.nodes[ 84] = Node( 84,  83, element_084(), 'North American Pacific Coast Temperate Rainforest (D338)')
+        self.nodes[ 85] = Node( 85,  84, element_085(), 'North Pacific Coastal Rainforest (M024)')
+        self.nodes[ 86] = Node( 86,  85, element_086(), 'Coastal Redwood Forest (G235)')
+        self.nodes[ 87] = Node( 87,  85, element_087(), 'Coastal Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)')
+        self.nodes[ 88] = Node( 88,  85, element_088(), 'Coastal Douglas-fir - Western Hemlock Rainforest (G240)')
+        self.nodes[ 89] = Node( 89,  85, element_089(), 'Coastal Silver Fir - Western Hemlock Rainforest (G241)')
+        self.nodes[ 90] = Node( 90,  85, element_090(), 'Coastal Western Hemlock - Sitka Spruce Rainforest (G751)')
+        self.nodes[ 91] = Node( 91,  83, element_091(), 'Western North American Pinyon-Juniper Woodland & Scrub Division (D010)')
+        self.nodes[ 92] = Node( 92,  91, element_092(), 'Intermountain Pinyon-Juniper Woodland (M896)')
+        self.nodes[ 93] = Node( 93,  92, element_093(), 'Intermountain Western Juniper Open Woodland (G248)')
+        self.nodes[ 94] = Node( 94,  92, element_094(), 'Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)')
+        self.nodes[ 95] = Node( 95,  92, element_095(), 'Great Basin Pinyon - Juniper Woodland (G899)')
+        self.nodes[ 96] = Node( 96,  92, element_096(), 'Colorado Plateau Pinyon - Juniper Woodland (G900)')
+        self.nodes[ 97] = Node( 97,  92, element_097(), 'Intermountain Utah Juniper Open Woodland (G105)')
+        self.nodes[ 98] = Node( 98,  91, element_098(), 'Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)')
+        self.nodes[ 99] = Node( 99,  98, element_099(), 'Southern Rocky Mountain Pinyon - Juniper Woodland (G253)')
+        self.nodes[100] = Node(100,  98, element_100(), 'Southern Rocky Mountain Juniper Open Woodland (G252)')
+        self.nodes[101] = Node(101,  91, element_101(), 'Low Confidence Intermountain Pinyon-Juniper Woodland (M896LC)')
+        self.nodes[102] = Node(102,  83, element_102(), 'Californian-North Pacific Foothills Forest & Woodland (D339)')
+        self.nodes[103] = Node(103, 102, element_103(), 'Californian-North Pacific Dry Foothill Forest & Woodland (M886)')
+        self.nodes[104] = Node(104, 103, element_104(), 'Cascadian Oregon White Oak - Conifer Forest (G206)')
+        self.nodes[105] = Node(105, 103, element_105(), 'Californian Moist Coastal Mixed Evergreen Forest (G208)')
+        self.nodes[106] = Node(106, 103, element_106(), 'North Pacific Douglas-fir - Madrone Dry Woodland (G800)')
+        self.nodes[107] = Node(107, 103, element_107(), 'Coastal Shore Pine Forest & Woodland (G205)')
+        self.nodes[108] = Node(108, 102, element_108(), 'Sierran-Californian Montane-Foothill Forest & Woodland (M023)')
+        self.nodes[109] = Node(109, 108, element_109(), 'Californian Montane Conifer Forest & Woodland (G344)')
+        self.nodes[110] = Node(110, 102, element_110(), 'North Pacific Ruderal Forest (M405)')
+        self.nodes[111] = Node(111, 110, element_111(), 'North Pacific Ruderal Forest (G801)')
+        self.nodes[112] = Node(112, 102, element_112(), 'Low Confidence Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)')
+        self.nodes[113] = Node(113,  83, element_113(), 'Rocky Mountain Foothills & Montane Forest & Woodland (D337)')
+        self.nodes[114] = Node(114, 113, element_114(), 'Southern Rocky Mountain Montane Forest & Woodland (M022)')
+        self.nodes[115] = Node(115, 114, element_115(), 'Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)')
+        self.nodes[116] = Node(116, 114, element_116(), 'Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)')
+        self.nodes[117] = Node(117, 114, element_117(), 'Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)')
+        self.nodes[118] = Node(118, 114, element_118(), 'Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)')
+        self.nodes[119] = Node(119, 113, element_119(), 'Central Rocky Mountain Montane Forest & Woodland (M501)')
+        self.nodes[120] = Node(120, 119, element_120(), 'Central Rocky Mountain Montane White Spruce Forest (G345)')
+        self.nodes[121] = Node(121, 119, element_121(), 'Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)')
+        self.nodes[122] = Node(122, 119, element_122(), 'Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)')
+        self.nodes[123] = Node(123, 119, element_123(), 'Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)')
+        self.nodes[124] = Node(124, 119, element_124(), 'Central Rocky Mountain Douglas-fir Mesic Forest (G215)')
+        self.nodes[125] = Node(125, 119, element_125(), 'Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)')
+        self.nodes[126] = Node(126, 113, element_126(), 'Central Rocky Mountain-Interior Moist Montane Forest (M500)')
+        self.nodes[127] = Node(127, 126, element_127(), 'East Cascades Moist-Mesic Grand Fir - Douglas-fir (G212)')
+        self.nodes[128] = Node(128, 126, element_128(), 'Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)')
+        self.nodes[129] = Node(129, 126, element_129(), 'Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)')
+        self.nodes[130] = Node(130, 113, element_130(), 'Low Confidence Central Rocky Mountain Montane Forest & Woodland (M501LC)')
+        self.nodes[131] = Node(131,  83, element_131(), 'Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)')
+        self.nodes[132] = Node(132, 131, element_132(), 'Rocky Mountain Subalpine-Upper Montane Forest & Woodland (M020)')
+        self.nodes[133] = Node(133, 132, element_133(), 'Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)')
+        self.nodes[134] = Node(134, 132, element_134(), 'Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)')
+        self.nodes[135] = Node(135, 132, element_135(), 'Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)')
+        self.nodes[136] = Node(136, 132, element_136(), 'Rocky Mountain Lodgepole Pine Forest & Woodland (G220)')
+        self.nodes[137] = Node(137, 132, element_137(), 'Rocky Mountain Montane-Subalpine Limber Pine Woodland (G101)')
+        self.nodes[138] = Node(138, 132, element_138(), 'Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)')
+        self.nodes[139] = Node(139, 131, element_139(), 'Vancouverian Subalpine-High Montane Forest (M025)')
+        self.nodes[140] = Node(140, 139, element_140(), 'Sierra-Cascade Cold-Dry Subalpine Woodland (G243)')
+        self.nodes[141] = Node(141, 139, element_141(), 'Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)')
+        self.nodes[142] = Node(142, 139, element_142(), 'North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)')
+        self.nodes[143] = Node(143, 131, element_143(), 'Low Confidence Rocky Mountain Subalpine-High Montane Forest (M020LC)')
 
         for ident, element in self.nodes.items():
             if (element.parent is not None):
@@ -359,15 +356,15 @@ class ClassificationKey:
 
 def element_001():
 
-    """No to Low Trees"""
+    """Non-Forests"""
     """"""
     level = 'informal'
     code = ''
 
-    # No to low trees.
+    # No to low forests
 
     def match(plot):
-        logging.debug('%s|NODE=001|No to Low Trees', plot.ident)
+        logging.debug('%s|NODE=001|Non-Forests', plot.ident)
         result = (plot.get_balive() < 1)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -375,16 +372,16 @@ def element_001():
 
 def element_002():
 
-    """Live Canopy Cover Over 10"""
-    """"""
-    level = 'informal'
-    code = ''
+    """Temperate-Boreal Grassland & Shrubland (B04)"""
+    """B04"""
+    level = 'biome'
+    code = 'B04'
 
-    # No to low basal area but with live canopy > 10
+    # No to low trees.
 
     def match(plot):
-        logging.debug('%s|NODE=002|Live Canopy Cover Over 10', plot.ident)
-        result = (plot.get_live_canopy_cvr_pct() > 10)
+        logging.debug('%s|NODE=002|Temperate-Boreal Grassland & Shrubland (B04)', plot.ident)
+        result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
@@ -392,9 +389,9 @@ def element_002():
 def element_003():
 
     """Western North American Grassland & Shrubland (D022)"""
-    """"""
+    """D022"""
     level = 'division'
-    code = ''
+    code = 'D022'
 
     # No to low tree conditions with cover percentage of shrub, grass, or forbs > 3
 
@@ -407,22 +404,6 @@ def element_003():
 
 def element_004():
 
-    """Low Vegetative Cover"""
-    """"""
-    level = 'informal'
-    code = ''
-
-    # No to low tree cover with grass, shrub, and forb coverage below 3
-
-    def match(plot):
-        logging.debug('%s|NODE=004|Low Vegetative Cover', plot.ident)
-        result = (plot.get_grcov()<3 and plot.get_shcov()<3 and plot.get_fbcov()<3)
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_005():
-
     """Forest Plantations"""
     """"""
     level = 'informal'
@@ -432,40 +413,51 @@ def element_005():
     # such as trees being planted in rows, often dominated by single-species, and even
     # aged.  The stand is identified as planted in the FIA database (Stand Origin Code
     # = 1 "Clear evidence of artificial regeneration," Condition Table, Miles et al. 2001).
-    # AND the Stand Origin Species (STDORGSP) is EITHER a Populus spp. or Exotic.
+    # AND the Stand Origin Species (STDORGSP) is Exotic.
 
     PLANTATION = PatternList('PLANTATION',
         {'plantation': 'Y'}
     )
 
     PLANTED_EXOTIC = PatternList('PLANTED_EXOTIC',
-        {'planted': 'Y'},
-        {'exotic': 'Y'}
-    )
-
-    PLANTED_POPULUS = PatternList('PLANTED_POPULUS',
-        {'planted': 'Y'},
-        {'species': 'Populus'}
+        {'exotic': 'Y'},
+        {'planted': 'Y'}
     )
 
     def match(plot):
-        logging.debug('%s|NODE=005|Forest Plantations', plot.ident)
+        logging.debug('%s|NODE=004|Forest Plantations', plot.ident)
         result = (False)
+        logging.debug('%s|RESULT|%s', plot.ident, result)
+        return result
+    return level, code, match
+
+def element_005():
+
+    """Western North American Temperate Forest Plantation (CSG007)"""
+    """CSG007"""
+    level = 'group'
+    code = 'CSG007'
+
+    # Plantation or planted & exotic species in Western North America
+
+    def match(plot):
+        logging.debug('%s|NODE=005|Western North American Temperate Forest Plantation (CSG007)', plot.ident)
+        result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
 def element_006():
 
-    """Natural (including ruderal) Forests (C01)"""
-    """C01"""
-    level = 'class'
-    code = 'C01'
+    """Natural (including ruderal) Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Natural (including ruderal) forests
 
     def match(plot):
-        logging.debug('%s|NODE=006|Natural (including ruderal) Forests (C01)', plot.ident)
+        logging.debug('%s|NODE=006|Natural (including ruderal) Forests', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
@@ -942,64 +934,6 @@ def element_015():
 
 def element_016():
 
-    """Southeastern Great Plains Central Texas Floodplain Forest (G784)"""
-    """G784"""
-    level = 'group'
-    code = 'G784'
-
-    # i. Located in ECOREGION 321B, 315C, 315D, 315E, 315G and tree
-    # composition dominated by one or more of STRONG DIAGNOSTIC species
-    # Carya illinoinensis, Celtis laevigata,
-    # Celtis laevigata var. reticulata, Platanus occidentalis,
-    # Populus deltoides, Salix nigra, Sapindus saponaria var. drummondii,
-    # Sideroxylon lanuginosum, Taxodium distichum, or Ulmus crassifolia,
-    # (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Acer negundo, Fraxinus texensis, Fraxinus pennsylvanica,
-    # Juglans microcarpa, Prosopis glandulosa, Prunus serotina,
-    # or Quercus virginiana (>=30% RIV; i.e., together STRONG and MODERATE
-    # diagnostic species RIV =>50%)
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '321B, 315C, 315D, 315E, 315G'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Carya illinoinensis'},
-        {'species': 'Celtis laevigata'},
-        {'species': 'Celtis laevigata var. reticulata'},
-        {'species': 'Platanus occidentalis'},
-        {'species': 'Populus deltoides'},
-        {'species': 'Salix nigra'},
-        {'species': 'Sapindus saponaria var. drummondii'},
-        {'species': 'Taxodium distichum'},
-        {'species': 'Ulmus crassifolia'},
-        {'species': 'Sideroxylon lanuginosum ssp. lanuginosum'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Acer negundo'},
-        {'species': 'Fraxinus pennsylvanica'},
-        {'species': 'Juglans microcarpa'},
-        {'species': 'Prosopis glandulosa'},
-        {'species': 'Prunus serotina'},
-        {'species': 'Quercus virginiana'},
-        {'species': 'Fraxinus texensis'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=016|Southeastern Great Plains Central Texas Floodplain Forest (G784)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_017():
-
     """Southeastern North American Ruderal Flooded Forest & Swamp (M310)"""
     """M310"""
     level = 'macrogroup'
@@ -1017,13 +951,13 @@ def element_017():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=017|Southeastern North American Ruderal Flooded Forest & Swamp (M310)', plot.ident)
+        logging.debug('%s|NODE=016|Southeastern North American Ruderal Flooded Forest & Swamp (M310)', plot.ident)
         result = (plot.riv(EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_018():
+def element_017():
 
     """Western North American Temperate Flooded & Swamp Forests"""
     """"""
@@ -1038,13 +972,13 @@ def element_018():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=018|Western North American Temperate Flooded & Swamp Forests', plot.ident)
+        logging.debug('%s|NODE=017|Western North American Temperate Flooded & Swamp Forests', plot.ident)
         result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_019():
+def element_018():
 
     """North Pacific Forested Wetland (D193)"""
     """D193"""
@@ -1111,7 +1045,7 @@ def element_019():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=019|North Pacific Forested Wetland (D193)', plot.ident)
+        logging.debug('%s|NODE=018|North Pacific Forested Wetland (D193)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or
@@ -1120,7 +1054,7 @@ def element_019():
         return result
     return level, code, match
 
-def element_020():
+def element_019():
 
     """North Pacific Forested Wetland (M035)"""
     """M035"""
@@ -1139,13 +1073,13 @@ def element_020():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=020|North Pacific Forested Wetland (M035)', plot.ident)
+        logging.debug('%s|NODE=019|North Pacific Forested Wetland (M035)', plot.ident)
         result = (plot.riv(EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_021():
+def element_020():
 
     """North-Central Pacific Montane Riparian & Seepage Swamp (G507)"""
     """G507"""
@@ -1187,7 +1121,7 @@ def element_021():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=021|North-Central Pacific Montane Riparian & Seepage Swamp (G507)', plot.ident)
+        logging.debug('%s|NODE=020|North-Central Pacific Montane Riparian & Seepage Swamp (G507)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1195,7 +1129,7 @@ def element_021():
         return result
     return level, code, match
 
-def element_022():
+def element_021():
 
     """North-Central Pacific Maritime Lowland Swamp (G853)"""
     """G853"""
@@ -1234,7 +1168,7 @@ def element_022():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=022|North-Central Pacific Maritime Lowland Swamp (G853)', plot.ident)
+        logging.debug('%s|NODE=021|North-Central Pacific Maritime Lowland Swamp (G853)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1242,7 +1176,7 @@ def element_022():
         return result
     return level, code, match
 
-def element_023():
+def element_022():
 
     """North-Central Pacific Lowland Riparian Forest (G851)"""
     """G851"""
@@ -1289,7 +1223,7 @@ def element_023():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=023|North-Central Pacific Lowland Riparian Forest (G851)', plot.ident)
+        logging.debug('%s|NODE=022|North-Central Pacific Lowland Riparian Forest (G851)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1297,12 +1231,12 @@ def element_023():
         return result
     return level, code, match
 
-def element_024():
+def element_023():
 
-    """North Pacific Forested Wetland Ruderal Forests (M405)"""
-    """M405"""
-    level = 'macrogroup'
-    code = 'M405'
+    """North Pacific Forested Wetland Ruderal Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or
     # weedy native vegetation that invades natural stands or vegetation
@@ -1315,13 +1249,13 @@ def element_024():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=024|North Pacific Forested Wetland Ruderal Forests (M405)', plot.ident)
+        logging.debug('%s|NODE=023|North Pacific Forested Wetland Ruderal Forests', plot.ident)
         result = (plot.riv(EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_025():
+def element_024():
 
     """Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)"""
     """D195"""
@@ -1390,7 +1324,7 @@ def element_025():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=025|Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)', plot.ident)
+        logging.debug('%s|NODE=024|Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or
@@ -1399,7 +1333,7 @@ def element_025():
         return result
     return level, code, match
 
-def element_026():
+def element_025():
 
     """Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)"""
     """M034"""
@@ -1418,13 +1352,13 @@ def element_026():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=026|Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)', plot.ident)
+        logging.debug('%s|NODE=025|Rocky Mountain-Great Basin Montane Riparian Forest & Swamp (M034)', plot.ident)
         result = (plot.riv(EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_027():
+def element_026():
 
     """Rocky Mountain-Great Basin Swamp (G505)"""
     """G505"""
@@ -1471,7 +1405,7 @@ def element_027():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=027|Rocky Mountain-Great Basin Swamp (G505)', plot.ident)
+        logging.debug('%s|NODE=026|Rocky Mountain-Great Basin Swamp (G505)', plot.ident)
         result = (plot.get_elevation() < 1500 and plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1479,7 +1413,7 @@ def element_027():
         return result
     return level, code, match
 
-def element_028():
+def element_027():
 
     """Rocky Mountain-Great Basin Montane Riparian Forest (G506)"""
     """G506"""
@@ -1523,7 +1457,7 @@ def element_028():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=028|Rocky Mountain-Great Basin Montane Riparian Forest (G506)', plot.ident)
+        logging.debug('%s|NODE=027|Rocky Mountain-Great Basin Montane Riparian Forest (G506)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1531,7 +1465,7 @@ def element_028():
         return result
     return level, code, match
 
-def element_029():
+def element_028():
 
     """Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)"""
     """G796"""
@@ -1565,7 +1499,7 @@ def element_029():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=029|Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)', plot.ident)
+        logging.debug('%s|NODE=028|Central Rocky Mountain Lowland & Foothill Riparian Forest (G796)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1573,12 +1507,12 @@ def element_029():
         return result
     return level, code, match
 
-def element_030():
+def element_029():
 
-    """Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)"""
-    """D195"""
-    level = 'division'
-    code = 'D195'
+    """Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or
     # weedy native vegetation that invades natural stands or vegetation
@@ -1592,13 +1526,13 @@ def element_030():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=030|Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)', plot.ident)
+        logging.debug('%s|NODE=029|Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forests', plot.ident)
         result = (plot.riv(EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_031():
+def element_030():
 
     """Western North American Arid Flooded Forest (D013)"""
     """D013"""
@@ -1694,7 +1628,7 @@ def element_031():
         {'species': 'Salix lasiolepis'},
         {'species': 'Salix lutea'},
         {'species': 'Umbellularia californica'},
-        {'species': 'Cupressus arizonica'},
+        {'species': 'Hesperocyparis arizonica'},
         {'species': 'Taxodium distichum'}
     )
 
@@ -1703,7 +1637,7 @@ def element_031():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=031|Western North American Arid Flooded Forest (D013)', plot.ident)
+        logging.debug('%s|NODE=030|Western North American Arid Flooded Forest (D013)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or
@@ -1712,7 +1646,7 @@ def element_031():
         return result
     return level, code, match
 
-def element_032():
+def element_031():
 
     """Western Arid Lowland Flooded Forest (M036)"""
     """M036"""
@@ -1731,13 +1665,13 @@ def element_032():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=032|Western Arid Lowland Flooded Forest (M036)', plot.ident)
+        logging.debug('%s|NODE=031|Western Arid Lowland Flooded Forest (M036)', plot.ident)
         result = (plot.riv(EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_033():
+def element_032():
 
     """Tamaulipan Flooded Forest (G549)"""
     """G549"""
@@ -1786,7 +1720,7 @@ def element_033():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=033|Tamaulipan Flooded Forest (G549)', plot.ident)
+        logging.debug('%s|NODE=032|Tamaulipan Flooded Forest (G549)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1794,7 +1728,7 @@ def element_033():
         return result
     return level, code, match
 
-def element_034():
+def element_033():
 
     """Californian Mediterranean Riparian Forest (G113)"""
     """G113"""
@@ -1842,7 +1776,7 @@ def element_034():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=034|Californian Mediterranean Riparian Forest (G113)', plot.ident)
+        logging.debug('%s|NODE=033|Californian Mediterranean Riparian Forest (G113)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1850,7 +1784,7 @@ def element_034():
         return result
     return level, code, match
 
-def element_035():
+def element_034():
 
     """Southwest Warm Desert Riparian Forest (G109)"""
     """G109"""
@@ -1893,7 +1827,7 @@ def element_035():
         {'species': 'Acer grandidentatum'},
         {'species': 'Acer negundo'},
         {'species': 'Celtis laevigata'},
-        {'species': 'Cupressus arizonica'},
+        {'species': 'Hesperocyparis arizonica'},
         {'species': 'Populus angustifolia'},
         {'species': 'Populus deltoides'},
         {'species': 'Prosopis glandulosa'},
@@ -1905,7 +1839,7 @@ def element_035():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=035|Southwest Warm Desert Riparian Forest (G109)', plot.ident)
+        logging.debug('%s|NODE=034|Southwest Warm Desert Riparian Forest (G109)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1913,7 +1847,7 @@ def element_035():
         return result
     return level, code, match
 
-def element_036():
+def element_035():
 
     """Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)"""
     """G107"""
@@ -1961,7 +1895,7 @@ def element_036():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=036|Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)', plot.ident)
+        logging.debug('%s|NODE=035|Great Basin-Colorado Plateau Semi-Desert Riparian Forest (G107)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -1969,7 +1903,7 @@ def element_036():
         return result
     return level, code, match
 
-def element_037():
+def element_036():
 
     """Western Arid Ruderal Riparian Forest & Scrub (M298)"""
     """M298"""
@@ -1990,13 +1924,13 @@ def element_037():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=037|Western Arid Ruderal Riparian Forest & Scrub (M298)', plot.ident)
+        logging.debug('%s|NODE=036|Western Arid Ruderal Riparian Forest & Scrub (M298)', plot.ident)
         result = (plot.riv(RUDERAL_OR_EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_038():
+def element_037():
 
     """Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)"""
     """G510"""
@@ -2006,13 +1940,13 @@ def element_038():
     # test
 
     def match(plot):
-        logging.debug('%s|NODE=038|Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)', plot.ident)
+        logging.debug('%s|NODE=037|Western Arid Ruderal Lowland Riparian Forest & Scrub (G510)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_039():
+def element_038():
 
     """Upland Forest & Woodlands"""
     """"""
@@ -2022,15 +1956,15 @@ def element_039():
     # Not as above (Wetland Forest & Woodlands)
 
     def match(plot):
-        logging.debug('%s|NODE=039|Upland Forest & Woodlands', plot.ident)
+        logging.debug('%s|NODE=038|Upland Forest & Woodlands', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_040():
+def element_039():
 
-    """Temperate Boreal Forest & Woodland Subclass (B02)"""
+    """Temperate Boreal Forest & Woodland (B02)"""
     """B02"""
     level = 'biome'
     code = 'B02'
@@ -2038,13 +1972,13 @@ def element_040():
     # other
 
     def match(plot):
-        logging.debug('%s|NODE=040|Temperate Boreal Forest & Woodland Subclass (B02)', plot.ident)
+        logging.debug('%s|NODE=039|Temperate Boreal Forest & Woodland (B02)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_041():
+def element_040():
 
     """Great Plains Temperate Forests"""
     """"""
@@ -2143,7 +2077,7 @@ def element_041():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=041|Great Plains Temperate Forests', plot.ident)
+        logging.debug('%s|NODE=040|Great Plains Temperate Forests', plot.ident)
         result = ((plot.match(ECOREGIONS_1) and not plot.match(ECOREGIONS_EXCL)) and
                ( (plot.riv(DIAGNOSTIC_SPECIES_1) >= 20 and plot.riv(DIAGNOSTIC_SPECIES_2) <= 5) or
                plot.riv(DIAGNOSTIC_SPECIES_3) >= 20 ))
@@ -2151,7 +2085,7 @@ def element_041():
         return result
     return level, code, match
 
-def element_042():
+def element_041():
 
     """North American Great Plains Forest & Woodland Division (D332)"""
     """D332"""
@@ -2234,7 +2168,7 @@ def element_042():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=042|North American Great Plains Forest & Woodland Division (D332)', plot.ident)
+        logging.debug('%s|NODE=041|North American Great Plains Forest & Woodland Division (D332)', plot.ident)
         result = (plot.match(ECOREGIONS_1) and not plot.match(ECOREGIONS_EXCL) and
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or
@@ -2243,7 +2177,7 @@ def element_042():
         return result
     return level, code, match
 
-def element_043():
+def element_042():
 
     """Southern Great Plains Forest & Woodland (M544)"""
     """M544"""
@@ -2290,7 +2224,7 @@ def element_043():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=043|Southern Great Plains Forest & Woodland (M544)', plot.ident)
+        logging.debug('%s|NODE=042|Southern Great Plains Forest & Woodland (M544)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2298,7 +2232,7 @@ def element_043():
         return result
     return level, code, match
 
-def element_044():
+def element_043():
 
     """Cross Timbers Woodland (G887)"""
     """G887"""
@@ -2338,7 +2272,7 @@ def element_044():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=044|Cross Timbers Woodland (G887)', plot.ident)
+        logging.debug('%s|NODE=043|Cross Timbers Woodland (G887)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2346,7 +2280,7 @@ def element_044():
         return result
     return level, code, match
 
-def element_045():
+def element_044():
 
     """Edwards Plateau Dry-Mesic Hardwood Forest (G028)"""
     """G028"""
@@ -2394,7 +2328,7 @@ def element_045():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=045|Edwards Plateau Dry-Mesic Hardwood Forest (G028)', plot.ident)
+        logging.debug('%s|NODE=044|Edwards Plateau Dry-Mesic Hardwood Forest (G028)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2402,7 +2336,7 @@ def element_045():
         return result
     return level, code, match
 
-def element_046():
+def element_045():
 
     """Edwards Plateau Dry Woodland (G126)"""
     """G126"""
@@ -2445,7 +2379,7 @@ def element_046():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=046|Edwards Plateau Dry Woodland (G126)', plot.ident)
+        logging.debug('%s|NODE=045|Edwards Plateau Dry Woodland (G126)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2453,7 +2387,7 @@ def element_046():
         return result
     return level, code, match
 
-def element_047():
+def element_046():
 
     """Northern Great Plains Forest & Woodland (M545)"""
     """M545"""
@@ -2472,13 +2406,13 @@ def element_047():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=047|Northern Great Plains Forest & Woodland (M545)', plot.ident)
+        logging.debug('%s|NODE=046|Northern Great Plains Forest & Woodland (M545)', plot.ident)
         result = (plot.riv(EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_048():
+def element_047():
 
     """Great Plains Bur Oak Forest & Woodland (G329)"""
     """G329"""
@@ -2514,7 +2448,7 @@ def element_048():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=048|Great Plains Bur Oak Forest & Woodland (G329)', plot.ident)
+        logging.debug('%s|NODE=047|Great Plains Bur Oak Forest & Woodland (G329)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2522,7 +2456,7 @@ def element_048():
         return result
     return level, code, match
 
-def element_049():
+def element_048():
 
     """Northern Tallgrass Oak Aspen Woodland (G146)"""
     """G146"""
@@ -2558,7 +2492,7 @@ def element_049():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=049|Northern Tallgrass Oak Aspen Woodland (G146)', plot.ident)
+        logging.debug('%s|NODE=048|Northern Tallgrass Oak Aspen Woodland (G146)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2566,7 +2500,7 @@ def element_049():
         return result
     return level, code, match
 
-def element_050():
+def element_049():
 
     """Northwestern Great Plains Aspen Woodland (G328)"""
     """G328"""
@@ -2603,7 +2537,7 @@ def element_050():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=050|Northwestern Great Plains Aspen Woodland (G328)', plot.ident)
+        logging.debug('%s|NODE=049|Northwestern Great Plains Aspen Woodland (G328)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2611,7 +2545,7 @@ def element_050():
         return result
     return level, code, match
 
-def element_051():
+def element_050():
 
     """Northern Great Plains Mesic Forest & Woodland (G145)"""
     """G145"""
@@ -2657,7 +2591,7 @@ def element_051():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=051|Northern Great Plains Mesic Forest & Woodland (G145)', plot.ident)
+        logging.debug('%s|NODE=050|Northern Great Plains Mesic Forest & Woodland (G145)', plot.ident)
         result = ((plot.match(ECOREGIONS) and not plot.match(ECOREGIONS_EXCL)) and
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2665,7 +2599,7 @@ def element_051():
         return result
     return level, code, match
 
-def element_052():
+def element_051():
 
     """Great Plains Ruderal Woodland (M524)"""
     """M524"""
@@ -2684,15 +2618,15 @@ def element_052():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=052|Great Plains Ruderal Woodland (M524)', plot.ident)
+        logging.debug('%s|NODE=051|Great Plains Ruderal Woodland (M524)', plot.ident)
         result = (plot.riv(EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_053():
+def element_052():
 
-    """LC Southern Great Plains Forest & Woodland (M544LC)"""
+    """Low Confidence Southern Great Plains Forest & Woodland (M544LC)"""
     """M544LC"""
     level = 'macrogroup'
     code = 'M544LC'
@@ -2704,15 +2638,15 @@ def element_053():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=053|LC Southern Great Plains Forest & Woodland (M544LC)', plot.ident)
+        logging.debug('%s|NODE=052|Low Confidence Southern Great Plains Forest & Woodland (M544LC)', plot.ident)
         result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_054():
+def element_053():
 
-    """LC Northern Great Plains Forest & Woodland (M545LC)"""
+    """Low Confidence Northern Great Plains Forest & Woodland (M545LC)"""
     """M545LC"""
     level = 'macrogroup'
     code = 'M545LC'
@@ -2720,13 +2654,13 @@ def element_054():
     # Not as above.
 
     def match(plot):
-        logging.debug('%s|NODE=054|LC Northern Great Plains Forest & Woodland (M545LC)', plot.ident)
+        logging.debug('%s|NODE=053|Low Confidence Northern Great Plains Forest & Woodland (M545LC)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_055():
+def element_054():
 
     """Southeastern North American Forest & Woodland Division (D006)"""
     """D006"""
@@ -2785,7 +2719,7 @@ def element_055():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=055|Southeastern North American Forest & Woodland Division (D006)', plot.ident)
+        logging.debug('%s|NODE=054|Southeastern North American Forest & Woodland Division (D006)', plot.ident)
         result = (plot.match(ECOREGIONS) and plot.match(STATES) and
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) or
@@ -2794,7 +2728,7 @@ def element_055():
         return result
     return level, code, match
 
-def element_056():
+def element_055():
 
     """Southeastern Coastal Plain Evergreen Oak Forest (M885)"""
     """M885"""
@@ -2814,13 +2748,13 @@ def element_056():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=056|Southeastern Coastal Plain Evergreen Oak Forest (M885)', plot.ident)
+        logging.debug('%s|NODE=055|Southeastern Coastal Plain Evergreen Oak Forest (M885)', plot.ident)
         result = (plot.riv(RUDERAL_EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_057():
+def element_056():
 
     """Southeast Maritime Live Oak - Palmetto Forest (G798)"""
     """G798"""
@@ -2851,7 +2785,7 @@ def element_057():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=057|Southeast Maritime Live Oak - Palmetto Forest (G798)', plot.ident)
+        logging.debug('%s|NODE=056|Southeast Maritime Live Oak - Palmetto Forest (G798)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2859,7 +2793,7 @@ def element_057():
         return result
     return level, code, match
 
-def element_058():
+def element_057():
 
     """Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)"""
     """G799"""
@@ -2891,7 +2825,7 @@ def element_058():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=058|Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)', plot.ident)
+        logging.debug('%s|NODE=057|Texas Live Oak - Wax Mallow Motte & Coastal Forest (G799)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -2899,7 +2833,7 @@ def element_058():
         return result
     return level, code, match
 
-def element_059():
+def element_058():
 
     """Southeastern North American Ruderal Forest (M305)"""
     """M305"""
@@ -2919,13 +2853,13 @@ def element_059():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=059|Southeastern North American Ruderal Forest (M305)', plot.ident)
+        logging.debug('%s|NODE=058|Southeastern North American Ruderal Forest (M305)', plot.ident)
         result = (plot.riv(RUDERAL_EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_060():
+def element_059():
 
     """Eastern North American Forest & Woodland Division (D008)"""
     """D008"""
@@ -3012,7 +2946,7 @@ def element_060():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=060|Eastern North American Forest & Woodland Division (D008)', plot.ident)
+        logging.debug('%s|NODE=059|Eastern North American Forest & Woodland Division (D008)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) or
@@ -3021,12 +2955,12 @@ def element_060():
         return result
     return level, code, match
 
-def element_061():
+def element_060():
 
-    """Eastern North American Forest & Woodland Natural Forests (D008)"""
-    """D008"""
-    level = 'division'
-    code = 'D008'
+    """Eastern North American Forest & Woodland Natural Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species,
     # little or no evidence of trees in a row, no very recent logging,
@@ -3040,13 +2974,13 @@ def element_061():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=061|Eastern North American Forest & Woodland Natural Forests (D008)', plot.ident)
+        logging.debug('%s|NODE=060|Eastern North American Forest & Woodland Natural Forests', plot.ident)
         result = (plot.riv(EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_062():
+def element_061():
 
     """Central Midwest Oak Forest, Woodland & Savanna (M012)"""
     """M012"""
@@ -3092,7 +3026,7 @@ def element_062():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=062|Central Midwest Oak Forest, Woodland & Savanna (M012)', plot.ident)
+        logging.debug('%s|NODE=061|Central Midwest Oak Forest, Woodland & Savanna (M012)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -3100,53 +3034,7 @@ def element_062():
         return result
     return level, code, match
 
-def element_063():
-
-    """Midwest Oak Hickory Forest (G990)"""
-    """G990"""
-    level = 'group'
-    code = 'G990'
-
-    # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 332
-    # and tree composition dominated by one or more of STRONG DIAGNOSTIC
-    # species Carya cordiformis,
-    # Quercus alba, Quercus rubra, or Quercus velutina (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above,
-    # but with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Acer saccharum, Celtis occidentalis,
-    # Ostrya virginiana, Quercus macrocarpa,
-    # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '332'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Carya cordiformis'},
-        {'species': 'Quercus alba'},
-        {'species': 'Quercus rubra'},
-        {'species': 'Quercus velutina'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Acer saccharum'},
-        {'species': 'Celtis occidentalis'},
-        {'species': 'Ostrya virginiana'},
-        {'species': 'Quercus macrocarpa'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=063|Midwest Oak Hickory Forest (G990)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_064():
+def element_062():
 
     """South - Central Oak - Pine Forest & Woodland (M540)"""
     """M540"""
@@ -3195,7 +3083,7 @@ def element_064():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=064|South - Central Oak - Pine Forest & Woodland (M540)', plot.ident)
+        logging.debug('%s|NODE=062|South - Central Oak - Pine Forest & Woodland (M540)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -3203,59 +3091,12 @@ def element_064():
         return result
     return level, code, match
 
-def element_065():
+def element_063():
 
-    """West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)"""
-    """G013"""
-    level = 'group'
-    code = 'G013'
-
-    # Plot location and tree composition are as follows:
-    # i. Located in ECOREGION 315D, 315E
-    # and tree composition dominated by one or more of STRONG DIAGNOSTIC
-    # species Carya texana, Quercus falcata, Quercus rubra, or Quercus velutina
-    # (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of Carya tomentosa, Ostrya virginiana,
-    # Pinus palustris, Quercus margarettae, Quercus stellata
-    # (>=30% RIV; i.e., together STRONG and MODERATE diagnostic species RIV =>50%)
-
-    ECOREGIONS = PatternList('ECOREGIONS',
-        {'ecoregion': '315D, 315E'}
-    )
-
-    STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Carya texana'},
-        {'species': 'Quercus falcata'},
-        {'species': 'Quercus rubra'},
-        {'species': 'Quercus velutina'}
-    )
-
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'Carya tomentosa'},
-        {'species': 'Ostrya virginiana'},
-        {'species': 'Pinus palustris'},
-        {'species': 'Quercus margarettae'},
-        {'species': 'Quercus stellata'}
-    )
-
-    def match(plot):
-        logging.debug('%s|NODE=065|West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)', plot.ident)
-        result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
-        logging.debug('%s|RESULT|%s', plot.ident, result)
-        return result
-    return level, code, match
-
-def element_066():
-
-    """Eastern North American Ruderal Forests (D008)"""
-    """D008"""
-    level = 'division'
-    code = 'D008'
+    """Eastern North American Ruderal Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or weedy
     # native vegetation that invades natural stands or vegetation that
@@ -3270,13 +3111,13 @@ def element_066():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=066|Eastern North American Ruderal Forests (D008)', plot.ident)
+        logging.debug('%s|NODE=063|Eastern North American Ruderal Forests', plot.ident)
         result = (plot.riv(RUDERAL_EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_067():
+def element_064():
 
     """Eastern North American Ruderal Forest (M013)"""
     """M013"""
@@ -3291,13 +3132,13 @@ def element_067():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=067|Eastern North American Ruderal Forest (M013)', plot.ident)
+        logging.debug('%s|NODE=064|Eastern North American Ruderal Forest (M013)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_068():
+def element_065():
 
     """Western North American Temperate Forests"""
     """"""
@@ -3312,13 +3153,13 @@ def element_068():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=068|Western North American Temperate Forests', plot.ident)
+        logging.debug('%s|NODE=065|Western North American Temperate Forests', plot.ident)
         result = (plot.match(ECOREGIONS))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_069():
+def element_066():
 
     """Warm Temperate Forest & Woodland (S54)"""
     """S54"""
@@ -3364,12 +3205,12 @@ def element_069():
     )
 
     DIAGNOSTIC_SPECIES_1 = PatternList('DIAGNOSTIC_SPECIES_1',
-        {'species': 'Cupressus bakeri'},
-        {'species': 'Cupressus forbesii'},
-        {'species': 'Cupressus macnabiana'},
-        {'species': 'Cupressus macrocarpa'},
-        {'species': 'Cupressus goveniana ssp. pygmaea'},
-        {'species': 'Cupressus sargentii'},
+        {'species': 'Hesperocyparis bakeri'},
+        {'species': 'Hesperocyparis forbesii'},
+        {'species': 'Hesperocyparis macnabiana'},
+        {'species': 'Hesperocyparis macrocarpa'},
+        {'species': 'Hesperocyparis pigmaea'},
+        {'species': 'Hesperocyparis sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus pinchotii'},
         {'species': 'Juniperus ashei'},
@@ -3418,12 +3259,12 @@ def element_069():
     )
 
     DIAGNOSTIC_SPECIES_2 = PatternList('DIAGNOSTIC_SPECIES_2',
-        {'species': 'Cupressus bakeri'},
-        {'species': 'Cupressus forbesii'},
-        {'species': 'Cupressus macnabiana'},
-        {'species': 'Cupressus macrocarpa'},
-        {'species': 'Cupressus goveniana ssp. pygmaea'},
-        {'species': 'Cupressus sargentii'},
+        {'species': 'Hesperocyparis bakeri'},
+        {'species': 'Hesperocyparis forbesii'},
+        {'species': 'Hesperocyparis macnabiana'},
+        {'species': 'Hesperocyparis macrocarpa'},
+        {'species': 'Hesperocyparis pigmaea'},
+        {'species': 'Hesperocyparis sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus pinchotii'},
         {'species': 'Juniperus ashei'},
@@ -3469,12 +3310,12 @@ def element_069():
     )
 
     DIAGNOSTIC_SPECIES_3 = PatternList('DIAGNOSTIC_SPECIES_3',
-        {'species': 'Cupressus bakeri'},
-        {'species': 'Cupressus forbesii'},
-        {'species': 'Cupressus macnabiana'},
-        {'species': 'Cupressus macrocarpa'},
-        {'species': 'Cupressus goveniana ssp. pygmaea'},
-        {'species': 'Cupressus sargentii'},
+        {'species': 'Hesperocyparis bakeri'},
+        {'species': 'Hesperocy parisforbesii'},
+        {'species': 'Hesperocyparis macnabiana'},
+        {'species': 'Hesperocyparis macrocarpa'},
+        {'species': 'Hesperocyparis pigmaea'},
+        {'species': 'Hesperocyparis sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Juniperus pinchotii'},
         {'species': 'Juniperus ashei'},
@@ -3519,7 +3360,7 @@ def element_069():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=069|Warm Temperate Forest & Woodland (S54)', plot.ident)
+        logging.debug('%s|NODE=066|Warm Temperate Forest & Woodland (S54)', plot.ident)
         result = ((plot.match(ECOREGIONS) and not plot.match(ECOREGIONS_EXCL) and plot.riv(DIAGNOSTIC_SPECIES_1) >= 20) or
                (plot.match(ECOREGIONS_EXCL) and plot.riv(DIAGNOSTIC_SPECIES_2) >= 20) or
                (plot.match(ECOREGIONS_263) and plot.riv(DIAGNOSTIC_SPECIES_3) >= 20))
@@ -3527,7 +3368,7 @@ def element_069():
         return result
     return level, code, match
 
-def element_070():
+def element_067():
 
     """Californian Forest & Woodland Division (D007)"""
     """D007"""
@@ -3536,7 +3377,7 @@ def element_070():
 
     # Tree composition and ecology matching one of the following options:
     # i. EITHER
-    # a. Tree composition contains one or more of STRONG diagnostic tree species Abies concolor, Aesculus californica, Arbutus menziesii, Calocedrus decurrens, Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Fraxinus latifolia, Cupressus bakeri, Cupressus forbesii, Cupressus macnabiana, Cupressus macrocarpa, Cupressus goveniana ssp. pigmaea, Cupressus sargentii, Juglans californica, Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata, Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata, Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis, Quercus douglasii, Quercus engelmannii, Quercus kelloggii, Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei,  or Umbellularia californica (=>50% RIV), [Additional tree species not tracked by FIA include Cupressus abramsiana, Cupressus goveniana, CupressusHesperocyparis nevadensis, Cupressus Hesperocyparis stephensonii, Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis, Quercus tomentella] 
+    # a. Tree composition contains one or more of STRONG diagnostic tree species Abies concolor, Aesculus californica, Arbutus menziesii, Calocedrus decurrens, Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Fraxinus latifolia, Hesperocyparis bakeri, Hesperocyparis forbesii, Hesperocyparis macnabiana, Hesperocyparis macrocarpa, Hesperocyparis pigmaea, Hesperocyparis sargentii, Juglans californica, Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata, Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata, Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis, Quercus douglasii, Quercus engelmannii, Quercus kelloggii, Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei,  or Umbellularia californica (=>50% RIV), [Additional tree species not tracked by FIA include Hesperocyparis abramsiana, Hesperocyparis goveniana, Hesperocyparis nevadensis, Hesperocyparis stephensonii, Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis, Quercus tomentella] 
     # OR
     # b. The above tree species, but with =>20% RIV AND other MODERATE
     # diagnostic species any combination of Pinus lambertiana,
@@ -3577,12 +3418,12 @@ def element_070():
         {'species': 'Umbellularia californica'},
         {'species': 'Abies concolor'},
         {'species': 'Fraxinus latifolia'},
-        {'species': 'Cupressus bakeri'},
-        {'species': 'Cupressus forbesii'},
-        {'species': 'Cupressus macnabiana'},
-        {'species': 'Cupressus macrocarpa'},
-        {'species': 'Cupressus goveniana ssp. pygmaea'},
-        {'species': 'Cupressus sargentii'},
+        {'species': 'Hesperocyparis bakeri'},
+        {'species': 'Hesperocyparis forbesii'},
+        {'species': 'Hesperocyparis macnabiana'},
+        {'species': 'Hesperocyparis macrocarpa'},
+        {'species': 'Hesperocyparis pigmaea'},
+        {'species': 'Hesperocyparis sargentii'},
         {'species': 'Quercus parvula'}
     )
 
@@ -3600,7 +3441,7 @@ def element_070():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=070|Californian Forest & Woodland Division (D007)', plot.ident)
+        logging.debug('%s|NODE=067|Californian Forest & Woodland Division (D007)', plot.ident)
         result = (( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or 
                plot.riv(EXOTIC_TREE_SPP) >=80 )
@@ -3609,7 +3450,7 @@ def element_070():
         return result
     return level, code, match
 
-def element_071():
+def element_068():
 
     """Californian Forest & Woodland (M009)"""
     """M009"""
@@ -3628,13 +3469,13 @@ def element_071():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=071|Californian Forest & Woodland (M009)', plot.ident)
+        logging.debug('%s|NODE=068|Californian Forest & Woodland (M009)', plot.ident)
         result = (plot.riv(EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_072():
+def element_069():
 
     """Californian Conifer Forest & Woodland (G198)"""
     """G198"""
@@ -3669,13 +3510,13 @@ def element_072():
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
         {'species': 'Hesperocyparis abramsiana'},
-        {'species': 'Cupressus bakeri'},
-        {'species': 'Cupressus forbesii'},
-        {'species': 'Cupressus goveniana ssp. pygmaea'},
-        {'species': 'Cupressus macnabiana'},
-        {'species': 'Cupressus macrocarpa'},
-        {'species': 'Cupressus arizonica'},
-        {'species': 'Cupressus sargentii'},
+        {'species': 'Hesperocyparis bakeri'},
+        {'species': 'Hesperocyparis forbesii'},
+        {'species': 'Hesperocyparis pigmaea'},
+        {'species': 'Hesperocyparis macnabiana'},
+        {'species': 'Hesperocyparis macrocarpa'},
+        {'species': 'Hesperocyparis arizonica'},
+        {'species': 'Hesperocyparis sargentii'},
         {'species': 'Juniperus californica'},
         {'species': 'Pinus sabiniana'},
         {'species': 'Pinus attenuata'},
@@ -3703,7 +3544,7 @@ def element_072():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=072|Californian Conifer Forest & Woodland (G198)', plot.ident)
+        logging.debug('%s|NODE=069|Californian Conifer Forest & Woodland (G198)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -3711,7 +3552,7 @@ def element_072():
         return result
     return level, code, match
 
-def element_073():
+def element_070():
 
     """Californian Broadleaf Forest & Woodland (G195)"""
     """G195"""
@@ -3754,7 +3595,7 @@ def element_073():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=073|Californian Broadleaf Forest & Woodland (G195)', plot.ident)
+        logging.debug('%s|NODE=070|Californian Broadleaf Forest & Woodland (G195)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -3762,7 +3603,7 @@ def element_073():
         return result
     return level, code, match
 
-def element_074():
+def element_071():
 
     """Californian Ruderal Forest (M513)"""
     """M513"""
@@ -3781,13 +3622,13 @@ def element_074():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=074|Californian Ruderal Forest (M513)', plot.ident)
+        logging.debug('%s|NODE=071|Californian Ruderal Forest (M513)', plot.ident)
         result = (plot.riv(EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_075():
+def element_072():
 
     """Madrean Forest & Woodland Division (D331)"""
     """D331"""
@@ -3878,7 +3719,7 @@ def element_075():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=075|Madrean Forest & Woodland Division (D331)', plot.ident)
+        logging.debug('%s|NODE=072|Madrean Forest & Woodland Division (D331)', plot.ident)
         result = (( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or 
                plot.riv(EXOTIC_TREE_SPP) >=80 )
@@ -3887,12 +3728,12 @@ def element_075():
         return result
     return level, code, match
 
-def element_076():
+def element_073():
 
-    """Madrean Natural Forests & Woodlands (D331)"""
-    """D331"""
-    level = 'division'
-    code = 'D331'
+    """Madrean Natural Forests & Woodlands"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Vegetation in a relatively natural state, dominated by native species,
     # little or no evidence of trees in a row, no very recent logging,
@@ -3906,13 +3747,13 @@ def element_076():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=076|Madrean Natural Forests & Woodlands (D331)', plot.ident)
+        logging.debug('%s|NODE=073|Madrean Natural Forests & Woodlands', plot.ident)
         result = (plot.riv(EXOTIC) < 20)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_077():
+def element_074():
 
     """Madrean Foothills Evergreen Woodland (M010)"""
     """M010"""
@@ -3973,7 +3814,7 @@ def element_077():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=077|Madrean Foothills Evergreen Woodland (M010)', plot.ident)
+        logging.debug('%s|NODE=074|Madrean Foothills Evergreen Woodland (M010)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) ))
@@ -3981,7 +3822,7 @@ def element_077():
         return result
     return level, code, match
 
-def element_078():
+def element_075():
 
     """Madrean Pinyon - Juniper Woodland (G200)"""
     """G200"""
@@ -4039,7 +3880,7 @@ def element_078():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=078|Madrean Pinyon - Juniper Woodland (G200)', plot.ident)
+        logging.debug('%s|NODE=075|Madrean Pinyon - Juniper Woodland (G200)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
@@ -4048,7 +3889,7 @@ def element_078():
         return result
     return level, code, match
 
-def element_079():
+def element_076():
 
     """Madrean Encinal (G201)"""
     """G201"""
@@ -4102,7 +3943,7 @@ def element_079():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=079|Madrean Encinal (G201)', plot.ident)
+        logging.debug('%s|NODE=076|Madrean Encinal (G201)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30) or
@@ -4111,7 +3952,7 @@ def element_079():
         return result
     return level, code, match
 
-def element_080():
+def element_077():
 
     """Madrean Juniper Open Woodland (G487)"""
     """G487"""
@@ -4146,7 +3987,7 @@ def element_080():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=080|Madrean Juniper Open Woodland (G487)', plot.ident)
+        logging.debug('%s|NODE=077|Madrean Juniper Open Woodland (G487)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4154,7 +3995,7 @@ def element_080():
         return result
     return level, code, match
 
-def element_081():
+def element_078():
 
     """Madrean Montane Forest & Woodland (M011)"""
     """M011"""
@@ -4214,7 +4055,7 @@ def element_081():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=081|Madrean Montane Forest & Woodland (M011)', plot.ident)
+        logging.debug('%s|NODE=078|Madrean Montane Forest & Woodland (M011)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) ))
@@ -4222,7 +4063,7 @@ def element_081():
         return result
     return level, code, match
 
-def element_082():
+def element_079():
 
     """Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)"""
     """G202"""
@@ -4271,7 +4112,7 @@ def element_082():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=082|Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)', plot.ident)
+        logging.debug('%s|NODE=079|Madrean Upper Montane Conifer - Oak Forest & Woodland (G202)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4279,7 +4120,7 @@ def element_082():
         return result
     return level, code, match
 
-def element_083():
+def element_080():
 
     """Madrean Lower Montane Pine - Oak Forest & Woodland (G203)"""
     """G203"""
@@ -4308,7 +4149,7 @@ def element_083():
     )
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
-        {'species': 'Cupressus arizonica'},
+        {'species': 'Hesperocyparis arizonica'},
         {'species': 'Juniperus deppeana'},
         {'species': 'Pinus arizonica'},
         {'species': 'Pinus engelmannii'},
@@ -4333,7 +4174,7 @@ def element_083():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=083|Madrean Lower Montane Pine - Oak Forest & Woodland (G203)', plot.ident)
+        logging.debug('%s|NODE=080|Madrean Lower Montane Pine - Oak Forest & Woodland (G203)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4341,12 +4182,12 @@ def element_083():
         return result
     return level, code, match
 
-def element_084():
+def element_081():
 
-    """Western North American Ruderal Forests - Madrean-Balconian (D060)"""
-    """D060"""
-    level = 'division'
-    code = 'D060'
+    """Madrean Ruderal Forests"""
+    """"""
+    level = 'informal'
+    code = ''
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or
     # weedy native vegetation that invades natural stands or vegetation
@@ -4360,29 +4201,29 @@ def element_084():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=084|Western North American Ruderal Forests - Madrean-Balconian (D060)', plot.ident)
+        logging.debug('%s|NODE=081|Madrean Ruderal Forests', plot.ident)
         result = (plot.riv(EXOTIC) >= 80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_085():
+def element_082():
 
-    """LC Madrean Montane Forest & Woodland (M011LC)"""
+    """Low Confidence Madrean Montane Forest & Woodland (M011LC)"""
     """M011LC"""
     level = 'macrogroup'
     code = 'M011LC'
 
-    # Not as above.
+    # Not as above. Low confidence in assignment.
 
     def match(plot):
-        logging.debug('%s|NODE=085|LC Madrean Montane Forest & Woodland (M011LC)', plot.ident)
+        logging.debug('%s|NODE=082|Low Confidence Madrean Montane Forest & Woodland (M011LC)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_086():
+def element_083():
 
     """Cool Temperate Forest & Woodland Subbiome (S92)"""
     """S92"""
@@ -4395,13 +4236,13 @@ def element_086():
     # in cool temperate regions of the western U.S. and southeast Alaska
 
     def match(plot):
-        logging.debug('%s|NODE=086|Cool Temperate Forest & Woodland Subbiome (S92)', plot.ident)
+        logging.debug('%s|NODE=083|Cool Temperate Forest & Woodland Subbiome (S92)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_087():
+def element_084():
 
     """North American Pacific Coast Temperate Rainforest (D338)"""
     """D338"""
@@ -4566,7 +4407,7 @@ def element_087():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=087|North American Pacific Coast Temperate Rainforest (D338)', plot.ident)
+        logging.debug('%s|NODE=084|North American Pacific Coast Temperate Rainforest (D338)', plot.ident)
         result = ((plot.match(ECOREGIONS_1) and plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) or
                (plot.match(ECOREGIONS_2) and plot.get_elevation() < 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 50) or
                (plot.match(ECOREGIONS_2) and plot.get_elevation() >= 500 and plot.riv(STRONG_DIAGNOSTIC_SPECIES_3) >= 50) or
@@ -4578,7 +4419,7 @@ def element_087():
         return result
     return level, code, match
 
-def element_088():
+def element_085():
 
     """North Pacific Coastal Rainforest (M024)"""
     """M024"""
@@ -4588,13 +4429,13 @@ def element_088():
     # Only macrogroup
 
     def match(plot):
-        logging.debug('%s|NODE=088|North Pacific Coastal Rainforest (M024)', plot.ident)
+        logging.debug('%s|NODE=085|North Pacific Coastal Rainforest (M024)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_089():
+def element_086():
 
     """Coastal Redwood Forest (G235)"""
     """G235"""
@@ -4632,7 +4473,7 @@ def element_089():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=089|Coastal Redwood Forest (G235)', plot.ident)
+        logging.debug('%s|NODE=086|Coastal Redwood Forest (G235)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4640,7 +4481,7 @@ def element_089():
         return result
     return level, code, match
 
-def element_090():
+def element_087():
 
     """Coastal Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)"""
     """G237"""
@@ -4683,7 +4524,7 @@ def element_090():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=090|Coastal Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)', plot.ident)
+        logging.debug('%s|NODE=087|Coastal Red Alder - Bigleaf Maple - Douglas-fir Rainforest (G237)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4691,7 +4532,7 @@ def element_090():
         return result
     return level, code, match
 
-def element_091():
+def element_088():
 
     """Coastal Douglas-fir - Western Hemlock Rainforest (G240)"""
     """G240"""
@@ -4728,7 +4569,7 @@ def element_091():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=091|Coastal Douglas-fir - Western Hemlock Rainforest (G240)', plot.ident)
+        logging.debug('%s|NODE=088|Coastal Douglas-fir - Western Hemlock Rainforest (G240)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4736,7 +4577,7 @@ def element_091():
         return result
     return level, code, match
 
-def element_092():
+def element_089():
 
     """Coastal Silver Fir - Western Hemlock Rainforest (G241)"""
     """G241"""
@@ -4773,7 +4614,7 @@ def element_092():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=092|Coastal Silver Fir - Western Hemlock Rainforest (G241)', plot.ident)
+        logging.debug('%s|NODE=089|Coastal Silver Fir - Western Hemlock Rainforest (G241)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4781,7 +4622,7 @@ def element_092():
         return result
     return level, code, match
 
-def element_093():
+def element_090():
 
     """Coastal Western Hemlock - Sitka Spruce Rainforest (G751)"""
     """G751"""
@@ -4828,7 +4669,7 @@ def element_093():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=093|Coastal Western Hemlock - Sitka Spruce Rainforest (G751)', plot.ident)
+        logging.debug('%s|NODE=090|Coastal Western Hemlock - Sitka Spruce Rainforest (G751)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4836,7 +4677,7 @@ def element_093():
         return result
     return level, code, match
 
-def element_094():
+def element_091():
 
     """Western North American Pinyon-Juniper Woodland & Scrub Division (D010)"""
     """D010"""
@@ -4888,7 +4729,7 @@ def element_094():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=094|Western North American Pinyon-Juniper Woodland & Scrub Division (D010)', plot.ident)
+        logging.debug('%s|NODE=091|Western North American Pinyon-Juniper Woodland & Scrub Division (D010)', plot.ident)
         result = (plot.match(ECOREGIONS)
                and ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50
                or (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >= 30)
@@ -4897,7 +4738,7 @@ def element_094():
         return result
     return level, code, match
 
-def element_095():
+def element_092():
 
     """Intermountain Pinyon-Juniper Woodland (M896)"""
     """M896"""
@@ -4940,7 +4781,7 @@ def element_095():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=095|Intermountain Pinyon-Juniper Woodland (M896)', plot.ident)
+        logging.debug('%s|NODE=092|Intermountain Pinyon-Juniper Woodland (M896)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) ))
@@ -4948,7 +4789,7 @@ def element_095():
         return result
     return level, code, match
 
-def element_096():
+def element_093():
 
     """Intermountain Western Juniper Open Woodland (G248)"""
     """G248"""
@@ -4983,7 +4824,7 @@ def element_096():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=096|Intermountain Western Juniper Open Woodland (G248)', plot.ident)
+        logging.debug('%s|NODE=093|Intermountain Western Juniper Open Woodland (G248)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -4991,7 +4832,7 @@ def element_096():
         return result
     return level, code, match
 
-def element_097():
+def element_094():
 
     """Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)"""
     """G249"""
@@ -5005,12 +4846,7 @@ def element_097():
     # 342B, 342D, 342C, 342J, M331A, M331B, M331E, M331J, M331D, 313A,
     # 341A, 341F, 341E, 341D, 341G, 322A, M341 
     # and tree composition dominated by one or more of STRONG DIAGNOSTIC
-    # species Cercocarpus ledifolius (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of [PLACEHOLDER - INSERT P2 VEG] (>=30% RIV; i.e.,
-    # together STRONG and MODERATE diagnostic species RIV =>50%) 
+    # species Cercocarpus ledifolius (RIV=>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': '322B, 341B, 341C, 342F, 342A, 342G, 342I, 342E, M242B, M261A, M261B, M261F, M262B, M332A, M331G, M331H, M242C, M332E, M332F, M332G, M332B, M332D, M261D, M261E, M261G, 342H, 342B, 342D, 342C, 342J, M331A, M331B, M331E, M331J, M331D, 313A, 341A, 341F, 341E, 341D, 341G, 322A, M341'}
@@ -5020,20 +4856,15 @@ def element_097():
         {'species': 'Cercocarpus ledifolius'}
     )
 
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'placeholder - add moderate diagnostic'}
-    )
-
     def match(plot):
-        logging.debug('%s|NODE=097|Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)', plot.ident)
+        logging.debug('%s|NODE=094|Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
+               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 ))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_098():
+def element_095():
 
     """Great Basin Pinyon - Juniper Woodland (G899)"""
     """G899"""
@@ -5070,7 +4901,7 @@ def element_098():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=098|Great Basin Pinyon - Juniper Woodland (G899)', plot.ident)
+        logging.debug('%s|NODE=095|Great Basin Pinyon - Juniper Woodland (G899)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5078,7 +4909,7 @@ def element_098():
         return result
     return level, code, match
 
-def element_099():
+def element_096():
 
     """Colorado Plateau Pinyon - Juniper Woodland (G900)"""
     """G900"""
@@ -5115,7 +4946,7 @@ def element_099():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=099|Colorado Plateau Pinyon - Juniper Woodland (G900)', plot.ident)
+        logging.debug('%s|NODE=096|Colorado Plateau Pinyon - Juniper Woodland (G900)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5123,7 +4954,7 @@ def element_099():
         return result
     return level, code, match
 
-def element_100():
+def element_097():
 
     """Intermountain Utah Juniper Open Woodland (G105)"""
     """G105"""
@@ -5157,7 +4988,7 @@ def element_100():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=100|Intermountain Utah Juniper Open Woodland (G105)', plot.ident)
+        logging.debug('%s|NODE=097|Intermountain Utah Juniper Open Woodland (G105)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5165,7 +4996,7 @@ def element_100():
         return result
     return level, code, match
 
-def element_101():
+def element_098():
 
     """Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)"""
     """M897"""
@@ -5199,7 +5030,7 @@ def element_101():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=101|Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)', plot.ident)
+        logging.debug('%s|NODE=098|Southern Rocky Mountain Two-needle Pinyon-Juniper Woodland (M897)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) ))
@@ -5207,7 +5038,7 @@ def element_101():
         return result
     return level, code, match
 
-def element_102():
+def element_099():
 
     """Southern Rocky Mountain Pinyon - Juniper Woodland (G253)"""
     """G253"""
@@ -5243,7 +5074,7 @@ def element_102():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=102|Southern Rocky Mountain Pinyon - Juniper Woodland (G253)', plot.ident)
+        logging.debug('%s|NODE=099|Southern Rocky Mountain Pinyon - Juniper Woodland (G253)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5251,7 +5082,7 @@ def element_102():
         return result
     return level, code, match
 
-def element_103():
+def element_100():
 
     """Southern Rocky Mountain Juniper Open Woodland (G252)"""
     """G252"""
@@ -5282,7 +5113,7 @@ def element_103():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=103|Southern Rocky Mountain Juniper Open Woodland (G252)', plot.ident)
+        logging.debug('%s|NODE=100|Southern Rocky Mountain Juniper Open Woodland (G252)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5290,23 +5121,23 @@ def element_103():
         return result
     return level, code, match
 
-def element_104():
+def element_101():
 
-    """LC Intermountain Pinyon-Juniper Woodland (M896LC)"""
+    """Low Confidence Intermountain Pinyon-Juniper Woodland (M896LC)"""
     """M896LC"""
     level = 'macrogroup'
     code = 'M896LC'
 
-    # Not as above.
+    # Not as above. Low confidence in assignment.
 
     def match(plot):
-        logging.debug('%s|NODE=104|LC Intermountain Pinyon-Juniper Woodland (M896LC)', plot.ident)
+        logging.debug('%s|NODE=101|Low Confidence Intermountain Pinyon-Juniper Woodland (M896LC)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_105():
+def element_102():
 
     """Californian-North Pacific Foothills Forest & Woodland (D339)"""
     """D339"""
@@ -5363,7 +5194,7 @@ def element_105():
         {'species': 'Abies procera'},
         {'species': 'Calocedrus decurrens'},
         {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Lithocarpus densiflorus'},
+        {'species': 'Notholithocarpus densiflorus'},
         {'species': 'Pinus jeffreyi'},
         {'species': 'Pinus monticola'},
         {'species': 'Quercus chrysolepis'},
@@ -5448,7 +5279,7 @@ def element_105():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=105|Californian-North Pacific Foothills Forest & Woodland (D339)', plot.ident)
+        logging.debug('%s|NODE=102|Californian-North Pacific Foothills Forest & Woodland (D339)', plot.ident)
         result = (plot.get_elevation() < 2400 and plot.match(ECOREGIONS_I) and
                ((plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES_I) >= 10 and 
@@ -5463,7 +5294,7 @@ def element_105():
         return result
     return level, code, match
 
-def element_106():
+def element_103():
 
     """Californian-North Pacific Dry Foothill Forest & Woodland (M886)"""
     """M886"""
@@ -5517,7 +5348,7 @@ def element_106():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=106|Californian-North Pacific Dry Foothill Forest & Woodland (M886)', plot.ident)
+        logging.debug('%s|NODE=103|Californian-North Pacific Dry Foothill Forest & Woodland (M886)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5525,7 +5356,7 @@ def element_106():
         return result
     return level, code, match
 
-def element_107():
+def element_104():
 
     """Cascadian Oregon White Oak - Conifer Forest (G206)"""
     """G206"""
@@ -5563,7 +5394,7 @@ def element_107():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=107|Cascadian Oregon White Oak - Conifer Forest (G206)', plot.ident)
+        logging.debug('%s|NODE=104|Cascadian Oregon White Oak - Conifer Forest (G206)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5571,7 +5402,7 @@ def element_107():
         return result
     return level, code, match
 
-def element_108():
+def element_105():
 
     """Californian Moist Coastal Mixed Evergreen Forest (G208)"""
     """G208"""
@@ -5599,7 +5430,7 @@ def element_108():
 
     STRONG_DIAGNOSTIC_SPECIES = PatternList('STRONG_DIAGNOSTIC_SPECIES',
         {'species': 'Chrysolepis chrysophylla'},
-        {'species': 'Lithocarpus densiflorus'},
+        {'species': 'Notholithocarpus densiflorus'},
         {'species': 'Pseudotsuga menziesii'},
         {'species': 'Pseudotsuga macrocarpa'},
         {'species': 'Quercus chrysolepis'},
@@ -5616,7 +5447,7 @@ def element_108():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=108|Californian Moist Coastal Mixed Evergreen Forest (G208)', plot.ident)
+        logging.debug('%s|NODE=105|Californian Moist Coastal Mixed Evergreen Forest (G208)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5624,7 +5455,7 @@ def element_108():
         return result
     return level, code, match
 
-def element_109():
+def element_106():
 
     """North Pacific Douglas-fir - Madrone Dry Woodland (G800)"""
     """G800"""
@@ -5663,7 +5494,7 @@ def element_109():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=109|North Pacific Douglas-fir - Madrone Dry Woodland (G800)', plot.ident)
+        logging.debug('%s|NODE=106|North Pacific Douglas-fir - Madrone Dry Woodland (G800)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5671,7 +5502,7 @@ def element_109():
         return result
     return level, code, match
 
-def element_110():
+def element_107():
 
     """Coastal Shore Pine Forest & Woodland (G205)"""
     """G205"""
@@ -5707,7 +5538,7 @@ def element_110():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=110|Coastal Shore Pine Forest & Woodland (G205)', plot.ident)
+        logging.debug('%s|NODE=107|Coastal Shore Pine Forest & Woodland (G205)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5715,7 +5546,7 @@ def element_110():
         return result
     return level, code, match
 
-def element_111():
+def element_108():
 
     """Sierran-Californian Montane-Foothill Forest & Woodland (M023)"""
     """M023"""
@@ -5768,7 +5599,7 @@ def element_111():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=111|Sierran-Californian Montane-Foothill Forest & Woodland (M023)', plot.ident)
+        logging.debug('%s|NODE=108|Sierran-Californian Montane-Foothill Forest & Woodland (M023)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 10 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=40) ))
@@ -5776,7 +5607,7 @@ def element_111():
         return result
     return level, code, match
 
-def element_112():
+def element_109():
 
     """Californian Montane Conifer Forest & Woodland (G344)"""
     """G344"""
@@ -5829,7 +5660,7 @@ def element_112():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=112|Californian Montane Conifer Forest & Woodland (G344)', plot.ident)
+        logging.debug('%s|NODE=109|Californian Montane Conifer Forest & Woodland (G344)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -5837,7 +5668,7 @@ def element_112():
         return result
     return level, code, match
 
-def element_113():
+def element_110():
 
     """North Pacific Ruderal Forest (M405)"""
     """M405"""
@@ -5851,13 +5682,13 @@ def element_113():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=113|North Pacific Ruderal Forest (M405)', plot.ident)
+        logging.debug('%s|NODE=110|North Pacific Ruderal Forest (M405)', plot.ident)
         result = (plot.riv(EXOTIC_TREE_SPP) >=80)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_114():
+def element_111():
 
     """North Pacific Ruderal Forest (G801)"""
     """G801"""
@@ -5867,29 +5698,29 @@ def element_114():
     # Plots with greater than 80% non-native RIV.
 
     def match(plot):
-        logging.debug('%s|NODE=114|North Pacific Ruderal Forest (G801)', plot.ident)
+        logging.debug('%s|NODE=111|North Pacific Ruderal Forest (G801)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_115():
+def element_112():
 
-    """LC Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)"""
+    """Low Confidence Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)"""
     """M886LC"""
     level = 'macrogroup'
     code = 'M886LC'
 
-    # Not as above.
+    # Not as above. Low confidence in assigment
 
     def match(plot):
-        logging.debug('%s|NODE=115|LC Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)', plot.ident)
+        logging.debug('%s|NODE=112|Low Confidence Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_116():
+def element_113():
 
     """Rocky Mountain Foothills & Montane Forest & Woodland (D337)"""
     """D337"""
@@ -5969,7 +5800,7 @@ def element_116():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=116|Rocky Mountain Foothills & Montane Forest & Woodland (D337)', plot.ident)
+        logging.debug('%s|NODE=113|Rocky Mountain Foothills & Montane Forest & Woodland (D337)', plot.ident)
         result = (plot.get_elevation() < 2800 and plot.match(ECOREGIONS) and 
                ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and 
@@ -5979,7 +5810,7 @@ def element_116():
         return result
     return level, code, match
 
-def element_117():
+def element_114():
 
     """Southern Rocky Mountain Montane Forest & Woodland (M022)"""
     """M022"""
@@ -6032,7 +5863,7 @@ def element_117():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=117|Southern Rocky Mountain Montane Forest & Woodland (M022)', plot.ident)
+        logging.debug('%s|NODE=114|Southern Rocky Mountain Montane Forest & Woodland (M022)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6040,7 +5871,7 @@ def element_117():
         return result
     return level, code, match
 
-def element_118():
+def element_115():
 
     """Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)"""
     """G102"""
@@ -6083,7 +5914,7 @@ def element_118():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=118|Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)', plot.ident)
+        logging.debug('%s|NODE=115|Southern Rocky Mountain Bristlecone Pine Forest & Woodland (G102)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6091,7 +5922,7 @@ def element_118():
         return result
     return level, code, match
 
-def element_119():
+def element_116():
 
     """Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)"""
     """G225"""
@@ -6130,7 +5961,7 @@ def element_119():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=119|Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)', plot.ident)
+        logging.debug('%s|NODE=116|Southern Rocky Mountain Mesic-Moist Mixed Conifer Forest (G225)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6138,7 +5969,7 @@ def element_119():
         return result
     return level, code, match
 
-def element_120():
+def element_117():
 
     """Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)"""
     """G226"""
@@ -6182,7 +6013,7 @@ def element_120():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=120|Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)', plot.ident)
+        logging.debug('%s|NODE=117|Southern Rocky Mountain Dry Mixed Conifer Forest & Woodland (G226)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6190,7 +6021,7 @@ def element_120():
         return result
     return level, code, match
 
-def element_121():
+def element_118():
 
     """Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)"""
     """G103"""
@@ -6236,7 +6067,7 @@ def element_121():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=121|Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)', plot.ident)
+        logging.debug('%s|NODE=118|Southern Rocky Mountain Ponderosa Pine Forest & Woodland (G103)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6244,7 +6075,7 @@ def element_121():
         return result
     return level, code, match
 
-def element_122():
+def element_119():
 
     """Central Rocky Mountain Montane Forest & Woodland (M501)"""
     """M501"""
@@ -6294,7 +6125,7 @@ def element_122():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=122|Central Rocky Mountain Montane Forest & Woodland (M501)', plot.ident)
+        logging.debug('%s|NODE=119|Central Rocky Mountain Montane Forest & Woodland (M501)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6302,7 +6133,7 @@ def element_122():
         return result
     return level, code, match
 
-def element_123():
+def element_120():
 
     """Central Rocky Mountain Montane White Spruce Forest (G345)"""
     """G345"""
@@ -6338,7 +6169,7 @@ def element_123():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=123|Central Rocky Mountain Montane White Spruce Forest (G345)', plot.ident)
+        logging.debug('%s|NODE=120|Central Rocky Mountain Montane White Spruce Forest (G345)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6346,7 +6177,7 @@ def element_123():
         return result
     return level, code, match
 
-def element_124():
+def element_121():
 
     """Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)"""
     """G216"""
@@ -6393,7 +6224,7 @@ def element_124():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=124|Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)', plot.ident)
+        logging.debug('%s|NODE=121|Black Hills-Northwestern Great Plains Ponderosa Pine Forest & Woodland (G216)', plot.ident)
         result = ((plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) or 
                (plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) and 
                (plot.match(ECOREGIONS) and plot.riv(PSME) <= 1))
@@ -6401,7 +6232,7 @@ def element_124():
         return result
     return level, code, match
 
-def element_125():
+def element_122():
 
     """Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)"""
     """G209"""
@@ -6414,12 +6245,7 @@ def element_125():
     # 342E, 342F, 342G, M331A, M331B, M331D, M331E, M331H, M331I, M331J
     # and tree composition dominated by one
     # or more of STRONG DIAGNOSTIC species Juniperus osteosperma,
-    # Juniperus scopulorum or Pinus flexilis (RIV=>50%),
-    # OR
-    # ii. Located in above ECOREGION, and tree composition as above, but
-    # with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any
-    # combination of [PLACEHOLDER - INSERT P2 VEG] (>=30% RIV; i.e.,
-    # together STRONG and MODERATE diagnostic species RIV =>50%)
+    # Juniperus scopulorum or Pinus flexilis (RIV=>50%)
 
     ECOREGIONS = PatternList('ECOREGIONS',
         {'ecoregion': 'M332A, M332B, M332E, M332F, M333C, M334A, 341A, 341B, 342D, 331B, 331D, 331F, 331G, 331K, 331N, M332D, 342A, 342E, 342F, 342G, M331A, M331B, M331D, M331E, M331H, M331I, M331J'}
@@ -6431,20 +6257,15 @@ def element_125():
         {'species': 'Pinus flexilis'}
     )
 
-    MODERATE_DIAGNOSTIC_SPECIES = PatternList('MODERATE_DIAGNOSTIC_SPECIES',
-        {'species': 'PLACEHOLDER - INSERT P2 VEG'}
-    )
-
     def match(plot):
-        logging.debug('%s|NODE=125|Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)', plot.ident)
+        logging.debug('%s|NODE=122|Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
-               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
-               (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
+               ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50))
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_126():
+def element_123():
 
     """Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)"""
     """G213"""
@@ -6484,7 +6305,7 @@ def element_126():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=126|Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)', plot.ident)
+        logging.debug('%s|NODE=123|Central Rocky Mountain Ponderosa Pine Forest & Woodland (G213)', plot.ident)
         result = ((plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50) or 
                (plot.match(ECOREGIONS) and plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) and 
                (plot.match(ECOREGIONS) and plot.riv(PSME) <= 10))
@@ -6492,7 +6313,7 @@ def element_126():
         return result
     return level, code, match
 
-def element_127():
+def element_124():
 
     """Central Rocky Mountain Douglas-fir Mesic Forest (G215)"""
     """G215"""
@@ -6530,7 +6351,7 @@ def element_127():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=127|Central Rocky Mountain Douglas-fir Mesic Forest (G215)', plot.ident)
+        logging.debug('%s|NODE=124|Central Rocky Mountain Douglas-fir Mesic Forest (G215)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6538,7 +6359,7 @@ def element_127():
         return result
     return level, code, match
 
-def element_128():
+def element_125():
 
     """Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)"""
     """G210"""
@@ -6578,7 +6399,7 @@ def element_128():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=128|Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)', plot.ident)
+        logging.debug('%s|NODE=125|Central Rocky Mountain Dry Mixed Conifer Forest & Woodland (G210)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6586,7 +6407,7 @@ def element_128():
         return result
     return level, code, match
 
-def element_129():
+def element_126():
 
     """Central Rocky Mountain-Interior Moist Montane Forest (M500)"""
     """M500"""
@@ -6634,7 +6455,7 @@ def element_129():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=129|Central Rocky Mountain-Interior Moist Montane Forest (M500)', plot.ident)
+        logging.debug('%s|NODE=126|Central Rocky Mountain-Interior Moist Montane Forest (M500)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6642,7 +6463,7 @@ def element_129():
         return result
     return level, code, match
 
-def element_130():
+def element_127():
 
     """East Cascades Moist-Mesic Grand Fir - Douglas-fir (G212)"""
     """G212"""
@@ -6680,7 +6501,7 @@ def element_130():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=130|East Cascades Moist-Mesic Grand Fir - Douglas-fir (G212)', plot.ident)
+        logging.debug('%s|NODE=127|East Cascades Moist-Mesic Grand Fir - Douglas-fir (G212)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6688,7 +6509,7 @@ def element_130():
         return result
     return level, code, match
 
-def element_131():
+def element_128():
 
     """Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)"""
     """G217"""
@@ -6730,7 +6551,7 @@ def element_131():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=131|Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)', plot.ident)
+        logging.debug('%s|NODE=128|Central Rocky Mountain-Interior Cedar - Hemlock Forest (G217)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6738,7 +6559,7 @@ def element_131():
         return result
     return level, code, match
 
-def element_132():
+def element_129():
 
     """Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)"""
     """G211"""
@@ -6780,7 +6601,7 @@ def element_132():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=132|Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)', plot.ident)
+        logging.debug('%s|NODE=129|Central Rocky Mountain-Interior Mesic Grand Fir - Douglas-fir - Western Larch Forest (G211)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6788,23 +6609,23 @@ def element_132():
         return result
     return level, code, match
 
-def element_133():
+def element_130():
 
-    """LC Central Rocky Mountain Montane Forest & Woodland (M501LC)"""
+    """Low Confidence Central Rocky Mountain Montane Forest & Woodland (M501LC)"""
     """M501LC"""
     level = 'macrogroup'
     code = 'M501LC'
 
-    # Not as above.
+    # Not as above. Low confidence in assignment
 
     def match(plot):
-        logging.debug('%s|NODE=133|LC Central Rocky Mountain Montane Forest & Woodland (M501LC)', plot.ident)
+        logging.debug('%s|NODE=130|Low Confidence Central Rocky Mountain Montane Forest & Woodland (M501LC)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_134():
+def element_131():
 
     """Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)"""
     """D336"""
@@ -6869,7 +6690,7 @@ def element_134():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=134|Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)', plot.ident)
+        logging.debug('%s|NODE=131|Western Cordilleran Subalpine-High Montane Forest & Woodland (D336)', plot.ident)
         result = (plot.get_elevation() > 2100 and plot.match(ECOREGIONS) and 
                ((plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or 
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and 
@@ -6879,7 +6700,7 @@ def element_134():
         return result
     return level, code, match
 
-def element_135():
+def element_132():
 
     """Rocky Mountain Subalpine-Upper Montane Forest & Woodland (M020)"""
     """M020"""
@@ -6926,7 +6747,7 @@ def element_135():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=135|Rocky Mountain Subalpine-Upper Montane Forest & Woodland (M020)', plot.ident)
+        logging.debug('%s|NODE=132|Rocky Mountain Subalpine-Upper Montane Forest & Woodland (M020)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -6934,7 +6755,7 @@ def element_135():
         return result
     return level, code, match
 
-def element_136():
+def element_133():
 
     """Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)"""
     """G222"""
@@ -6959,14 +6780,14 @@ def element_136():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=136|Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)', plot.ident)
+        logging.debug('%s|NODE=133|Rocky Mountain-Interior Subalpine-Montane Aspen Forest (G222)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 75)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
 
-def element_137():
+def element_134():
 
     """Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)"""
     """G218"""
@@ -7003,7 +6824,7 @@ def element_137():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=137|Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)', plot.ident)
+        logging.debug('%s|NODE=134|Rocky Mountain Subalpine Moist-Mesic Spruce - Fir Forest (G218)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7011,7 +6832,7 @@ def element_137():
         return result
     return level, code, match
 
-def element_138():
+def element_135():
 
     """Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)"""
     """G219"""
@@ -7047,7 +6868,7 @@ def element_138():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=138|Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)', plot.ident)
+        logging.debug('%s|NODE=135|Rocky Mountain Subalpine Dry-Mesic Spruce - Fir Forest (G219)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7055,7 +6876,7 @@ def element_138():
         return result
     return level, code, match
 
-def element_139():
+def element_136():
 
     """Rocky Mountain Lodgepole Pine Forest & Woodland (G220)"""
     """G220"""
@@ -7093,7 +6914,7 @@ def element_139():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=139|Rocky Mountain Lodgepole Pine Forest & Woodland (G220)', plot.ident)
+        logging.debug('%s|NODE=136|Rocky Mountain Lodgepole Pine Forest & Woodland (G220)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7101,7 +6922,7 @@ def element_139():
         return result
     return level, code, match
 
-def element_140():
+def element_137():
 
     """Rocky Mountain Montane-Subalpine Limber Pine Woodland (G101)"""
     """G101"""
@@ -7144,7 +6965,7 @@ def element_140():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=140|Rocky Mountain Montane-Subalpine Limber Pine Woodland (G101)', plot.ident)
+        logging.debug('%s|NODE=137|Rocky Mountain Montane-Subalpine Limber Pine Woodland (G101)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7152,7 +6973,7 @@ def element_140():
         return result
     return level, code, match
 
-def element_141():
+def element_138():
 
     """Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)"""
     """G223"""
@@ -7188,7 +7009,7 @@ def element_141():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=141|Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)', plot.ident)
+        logging.debug('%s|NODE=138|Central Rocky Mountain Whitebark Pine - Subalpine Larch Woodland (G223)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7196,7 +7017,7 @@ def element_141():
         return result
     return level, code, match
 
-def element_142():
+def element_139():
 
     """Vancouverian Subalpine-High Montane Forest (M025)"""
     """M025"""
@@ -7290,7 +7111,7 @@ def element_142():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=142|Vancouverian Subalpine-High Montane Forest (M025)', plot.ident)
+        logging.debug('%s|NODE=139|Vancouverian Subalpine-High Montane Forest (M025)', plot.ident)
         result = ((plot.match(ECOREGIONS_1) and plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 50) or
                (plot.match(ECOREGIONS_1) and plot.riv(STRONG_DIAGNOSTIC_SPECIES_1) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES_1) >= 30) or
                (plot.match(ECOREGIONS_2) and plot.riv(STRONG_DIAGNOSTIC_SPECIES_2) >= 50) or
@@ -7299,7 +7120,7 @@ def element_142():
         return result
     return level, code, match
 
-def element_143():
+def element_140():
 
     """Sierra-Cascade Cold-Dry Subalpine Woodland (G243)"""
     """G243"""
@@ -7336,7 +7157,7 @@ def element_143():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=143|Sierra-Cascade Cold-Dry Subalpine Woodland (G243)', plot.ident)
+        logging.debug('%s|NODE=140|Sierra-Cascade Cold-Dry Subalpine Woodland (G243)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7344,7 +7165,7 @@ def element_143():
         return result
     return level, code, match
 
-def element_144():
+def element_141():
 
     """Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)"""
     """G749"""
@@ -7385,7 +7206,7 @@ def element_144():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=144|Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)', plot.ident)
+        logging.debug('%s|NODE=141|Sierra-Cascade Red Fir - Mountain Hemlock Forest (G749)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7393,7 +7214,7 @@ def element_144():
         return result
     return level, code, match
 
-def element_145():
+def element_142():
 
     """North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)"""
     """G849"""
@@ -7429,7 +7250,7 @@ def element_145():
     )
 
     def match(plot):
-        logging.debug('%s|NODE=145|North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)', plot.ident)
+        logging.debug('%s|NODE=142|North-Central Pacific Mountain Hemlock - Silver Fir Woodland (G849)', plot.ident)
         result = (plot.match(ECOREGIONS) and 
                ( plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or
                (plot.riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and plot.riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) ))
@@ -7437,17 +7258,17 @@ def element_145():
         return result
     return level, code, match
 
-def element_146():
+def element_143():
 
-    """LC Rocky Mountain Subalpine-High Montane Forest (M020LC)"""
+    """Low Confidence Rocky Mountain Subalpine-High Montane Forest (M020LC)"""
     """M020LC"""
     level = 'macrogroup'
     code = 'M020LC'
 
-    # Not as above.
+    # Not as above. Low confidence in assignment
 
     def match(plot):
-        logging.debug('%s|NODE=146|LC Rocky Mountain Subalpine-High Montane Forest (M020LC)', plot.ident)
+        logging.debug('%s|NODE=143|Low Confidence Rocky Mountain Subalpine-High Montane Forest (M020LC)', plot.ident)
         result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result

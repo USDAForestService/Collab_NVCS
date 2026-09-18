@@ -1,15 +1,14 @@
 {
     "node": {
-        "name": "Western North American Ruderal Forests - Madrean-Balconian (D060)",
-        "id": "D060",
-        "level": "division",
+        "name": "North Pacific Forested Wetland Ruderal Forests",
+        "id": "",
+        "level": "informal",
         "description": [
             "Vegetation dominated by ruderal vegetation (nonnative invasive or",
             "weedy native vegetation that invades natural stands or vegetation",
             "that dominates on formerly cleared and/or planted sites but which",
             "has been allowed to succeed more-or-less spontaneously).",
-            "Tree composition dominated by EXOTIC = yes (>= 80% RIV)",
-            "(See Appendix xx [PLACEHOLDER])"
+            "Tree composition dominated by EXOTIC = yes (>= 80% RIV)"
         ],
         "trigger": [
             "riv(EXOTIC) >= 80"

@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Western North American Temperate Forest Plantation (CSG007)",
+        "id": "CSG007",
+        "level": "group",
+        "description": [
+            "Plantation or planted & exotic species in Western North America"
+        ],
+        "trigger": [
+            "TRUE"
+        ],
+        "filters": {}
+    }
+}

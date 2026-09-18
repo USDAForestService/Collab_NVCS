@@ -1,10 +1,10 @@
 {
     "node": {
-        "name": "No to Low Trees",
+        "name": "Non-Forests",
         "id": "",
         "level": "informal",
         "description": [
-            "No to low trees."
+            "No to low forests"
         ],
         "trigger": [
             "balive() < 1"

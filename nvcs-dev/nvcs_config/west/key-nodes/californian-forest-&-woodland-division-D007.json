@@ -6,7 +6,7 @@
         "description": [
             "Tree composition and ecology matching one of the following options:",
             "i. EITHER",
-            "a. Tree composition contains one or more of STRONG diagnostic tree species Abies concolor, Aesculus californica, Arbutus menziesii, Calocedrus decurrens, Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Fraxinus latifolia, Cupressus bakeri, Cupressus forbesii, Cupressus macnabiana, Cupressus macrocarpa, Cupressus goveniana ssp. pigmaea, Cupressus sargentii, Juglans californica, Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata, Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata, Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis, Quercus douglasii, Quercus engelmannii, Quercus kelloggii, Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei,  or Umbellularia californica (=>50% RIV), [Additional tree species not tracked by FIA include Cupressus abramsiana, Cupressus goveniana, CupressusHesperocyparis nevadensis, Cupressus Hesperocyparis stephensonii, Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis, Quercus tomentella] ",
+            "a. Tree composition contains one or more of STRONG diagnostic tree species Abies concolor, Aesculus californica, Arbutus menziesii, Calocedrus decurrens, Chamaecyparis lawsoniana, Chrysolepis chrysophylla, Fraxinus latifolia, Hesperocyparis bakeri, Hesperocyparis forbesii, Hesperocyparis macnabiana, Hesperocyparis macrocarpa, Hesperocyparis pigmaea, Hesperocyparis sargentii, Juglans californica, Juniperus californica, Notholithocarpus densiflorus, Pinus attenuata, Pinus coulteri, Pinus jeffreyi, Pinus muricata, Pinus radiata, Pinus sabiniana, Quercus agrifolia, Quercus chrysolepis, Quercus douglasii, Quercus engelmannii, Quercus kelloggii, Quercus lobata, Quercus wislizeni, Quercus parvula var. shrevei,  or Umbellularia californica (=>50% RIV), [Additional tree species not tracked by FIA include Hesperocyparis abramsiana, Hesperocyparis goveniana, Hesperocyparis nevadensis, Hesperocyparis stephensonii, Pinus quadrifolia, Pinus torreyana, Quercus cedrosensis, Quercus tomentella] ",
             "OR",
             "b. The above tree species, but with =>20% RIV AND other MODERATE",
             "diagnostic species any combination of Pinus lambertiana,",
@@ -104,22 +104,22 @@
                     "species": "Fraxinus latifolia"
                 },
                 {
-                    "species": "Cupressus bakeri"
+                    "species": "Hesperocyparis bakeri"
                 },
                 {
-                    "species": "Cupressus forbesii"
+                    "species": "Hesperocyparis forbesii"
                 },
                 {
-                    "species": "Cupressus macnabiana"
+                    "species": "Hesperocyparis macnabiana"
                 },
                 {
-                    "species": "Cupressus macrocarpa"
+                    "species": "Hesperocyparis macrocarpa"
                 },
                 {
-                    "species": "Cupressus goveniana ssp. pygmaea"
+                    "species": "Hesperocyparis pigmaea"
                 },
                 {
-                    "species": "Cupressus sargentii"
+                    "species": "Hesperocyparis sargentii"
                 },
                 {
                     "species": "Quercus parvula"

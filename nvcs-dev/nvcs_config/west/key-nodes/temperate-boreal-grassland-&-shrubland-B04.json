@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Temperate-Boreal Grassland & Shrubland (B04)",
+        "id": "B04",
+        "level": "biome",
+        "description": [
+            "No to low trees."
+        ],
+        "trigger": [
+            "TRUE"
+        ],
+        "filters": {}
+    }
+}
