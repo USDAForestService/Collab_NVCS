@@ -1,0 +1,20 @@
+{
+    "node": {
+        "name": "Low Confidence Laurentian-Acadian Flooded Forest & Swamp (M504LC)",
+        "id": "M504LC",
+        "level": "macrogroup",
+        "description": [
+            "ECOREGION is 212, M211, 211, 222I, 221A-221D"
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "212, M211, 211, 222I, 221A, 221B, 221C, 221D"
+                }
+            ]
+        }
+    }
+}

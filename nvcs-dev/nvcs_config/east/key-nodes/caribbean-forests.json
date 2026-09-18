@@ -1,0 +1,23 @@
+{
+    "node": {
+        "name": "Caribbean Forests",
+        "id": "",
+        "level": "informal",
+        "description": [
+            "Stands found in Caribbean islands."
+        ],
+        "trigger": [
+            "match(CARIBBEAN)"
+        ],
+        "filters": {
+            "CARIBBEAN": [
+                {
+                    "state": "PR"
+                },
+                {
+                    "state": "VI"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "node": {
+        "name": "Low Confidence Central Midwest Mesic Forest (M882LC)",
+        "id": "M882LC",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "match(ECOREGIONS)"
+        ],
+        "filters": {
+            "ECOREGIONS": [
+                {
+                    "ecoregion": "222, 251 ! 222I"
+                }
+            ]
+        }
+    }
+}

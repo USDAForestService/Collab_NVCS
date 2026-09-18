@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Temperate-Boreal Forest & Woodland (B02)",
+        "id": "B02",
+        "level": "biome",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

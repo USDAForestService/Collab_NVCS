@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Non-Forests",
+        "id": "",
+        "level": "informal",
+        "description": [
+            "No to low trees"
+        ],
+        "trigger": [
+            "balive() < 1"
+        ],
+        "filters": {}
+    }
+}

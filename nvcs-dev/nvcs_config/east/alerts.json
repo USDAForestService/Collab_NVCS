@@ -1,222 +1,6 @@
 [
     {
         "alertType": "warning",
-        "alertSubType": "missing-node-id-in-name",
-        "targetNode": "Tropical Dry Forest (TT1.b)",
-        "targetProblem": "Node ID (TT1b) is not present in the Node Name",
-        "alertId": "idd4b991d51cc6a",
-        "alertNotes": "removed punctuation from node id",
-        "alertAddressed": true
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Shortleaf Pine Forest Plantation (CST007169)",
-        "targetProblem": "Node File Name shortleaf-pine-forest-plantation-cst007169.json is unconventional",
-        "alertId": "id280d53d174be9",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Longleaf Pine Forest Plantation (CST007176)",
-        "targetProblem": "Node File Name longleaf-pine-forest-plantation-cst007176.json is unconventional",
-        "alertId": "id7860ade957797",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Slash Pine Forest Plantation (CST007170)",
-        "targetProblem": "Node File Name slash-pine-forest-plantation-cst007170.json is unconventional",
-        "alertId": "id6525e46a9064f",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Sand Pine Forest Plantation (CST007168)",
-        "targetProblem": "Node File Name sand-pine-forest-plantation-cst007168.json is unconventional",
-        "alertId": "ida136fb78e7788",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Native Miscellaneous Southern Pine Forest Plantation (CST007160)",
-        "targetProblem": "Node File Name native-miscellaneous-southern-pine-forest-plantation-cst007160.json is unconventional",
-        "alertId": "id879d60871c3b6",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "White Pine Forest Plantation (CST007178)",
-        "targetProblem": "Node File Name white-pine-forest-plantation-cst007178.json is unconventional",
-        "alertId": "idea14e7997ede2",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Jack Pine Forest Plantation (CST007161)",
-        "targetProblem": "Node File Name jack-pine-forest-plantation-cst007161.json is unconventional",
-        "alertId": "idb0fb27bae52cb",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "White Spruce Forest Plantation (CST007164)",
-        "targetProblem": "Node File Name white-spruce-forest-plantation-cst007164.json is unconventional",
-        "alertId": "id3326eed392075",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Red Spruce Forest Plantation (CST004758)",
-        "targetProblem": "Node File Name red-spruce-forest-plantation-cst004758.json is unconventional",
-        "alertId": "idbc8ea27ea655e",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)",
-        "targetProblem": "Node File Name native-miscellaneous-northern-conifer-forest-plantation-cst007163.json is unconventional",
-        "alertId": "id6e0fe3c34fd12",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Scotch Pine Exotic Forest Plantation (CST006313)",
-        "targetProblem": "Node File Name scotch-pine-exotic-forest-plantation-cst006313.json is unconventional",
-        "alertId": "id724baf41950f4",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Norway Spruce Forest Plantation (CST007167)",
-        "targetProblem": "Node File Name norway-spruce-forest-plantation-cst007167.json is unconventional",
-        "alertId": "id0891e58e40ea",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Larch Forest Plantation (CST006408)",
-        "targetProblem": "Node File Name larch-forest-plantation-cst006408.json is unconventional",
-        "alertId": "idc52f22cc3cb67",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)",
-        "targetProblem": "Node File Name exotic-miscellaneous-northern-conifer-forest-plantation-cst007183.json is unconventional",
-        "alertId": "ida5fd40d087c2f",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Black Walnut Forest Plantation (CST007188)",
-        "targetProblem": "Node File Name black-walnut-forest-plantation-cst007188.json is unconventional",
-        "alertId": "idfed8173c148ac",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Aspen Forest Plantation (CST007189)",
-        "targetProblem": "Node File Name aspen-forest-plantation-cst007189.json is unconventional",
-        "alertId": "id35290cdc18ed3",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Black Locust Forest Plantation (CST007190)",
-        "targetProblem": "Node File Name black-locust-forest-plantation-cst007190.json is unconventional",
-        "alertId": "id4d55290d48ae3",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)",
-        "targetProblem": "Node File Name native-miscellaneous-northern-hardwood-forest-plantation-cst007193.json is unconventional",
-        "alertId": "id550a225aec774",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Tuliptree Forest Plantation (CST007197)",
-        "targetProblem": "Node File Name tuliptree-forest-plantation-cst007197.json is unconventional",
-        "alertId": "id78d5f4c115e75",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)",
-        "targetProblem": "Node File Name native-miscellaneous-southern-hardwood-forest-plantation-cst007155.json is unconventional",
-        "alertId": "id14092c73add83",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).",
-        "targetProblem": "Node File Name mb1-mb1a-mb1a2-d004.json is unconventional",
-        "alertId": "id7dd334c9d405a",
-        "alertNotes": "This extra long file name needed to be truncated to avoid configuration tool compilation errors",
-        "alertAddressed": true
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Pond-cypress Basin Swamp (M161)",
-        "targetProblem": "Node File Name pond-cypress-basin-swamp-m161.json is unconventional",
-        "alertId": "id245b22910f989",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)",
-        "targetProblem": "Node File Name southern-coastal-plain-evergreen-hardwood-conifer-swamp-forest-m032.json is unconventional",
-        "alertId": "id0741e26e27e95",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
         "alertSubType": "unconventional-file-name",
         "targetNode": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)",
         "targetProblem": "Node File Name southern-coastal-plain-floodplain-forest-m031-southern-coastal-plain-basin-swamp-&-flatwoods-M033.json is unconventional",
@@ -227,506 +11,11 @@
     {
         "alertType": "warning",
         "alertSubType": "unconventional-file-name",
-        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)",
-        "targetProblem": "Node File Name southern-coastal-plain-evergreen-hardwood-conifer-swamp-forest-lc-m032.json is unconventional",
-        "alertId": "idbc0b893e22b09",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Pond-Cypress Basin Swamp LC (M161)",
-        "targetProblem": "Node File Name pond-cypress-basin-swamp-lc-m161.json is unconventional",
-        "alertId": "id76a99d9bc7568",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Longleaf Pine Woodland LC2 (M007)",
-        "targetProblem": "Node File Name longleaf-pine-woodland-lc2-m007.json is unconventional",
-        "alertId": "id4f7fcb0bbb75c",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)",
-        "targetProblem": "Node File Name southern-coastal-plain-floodplain-forest-m031-southern-coastal-plain-basin-swamp-&-flatwoods-lc-M033.json is unconventional",
-        "alertId": "idc97876dab2c41",
-        "alertNotes": "remove slash in filename",
+        "targetNode": "Low Confidence Southern Coastal Plain Floodplain Forest (M031LC) / Southern Coastal Plain Basin Swamp & Flatwoods (M033LC)",
+        "targetProblem": "Node File Name low-confidence-southern-coastal-plain-floodplain-forest-m031lc-southern-coastal-plain-basin-swamp-&-flatwoods-M033LC.json is unconventional",
+        "alertId": "id74fd9c667dac7",
+        "alertNotes": "slash removed from file name",
         "alertAddressed": true
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "North American Boreal Conifer Poor Swamp (M299)",
-        "targetProblem": "Node File Name north-american-boreal-conifer-poor-swamp-m299.json is unconventional",
-        "alertId": "id7c79f88b5f65c",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Central Hardwood Floodplain Forest (M029)",
-        "targetProblem": "Node File Name central-hardwood-floodplain-forest-m029.json is unconventional",
-        "alertId": "id28a29a3749605",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Central Hardwood Floodplain Forest LC (M029)",
-        "targetProblem": "Node File Name central-hardwood-floodplain-forest-lc-m029.json is unconventional",
-        "alertId": "id8d04afb3bfced",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Tropical Dry Forest (TT1.b)",
-        "targetProblem": "Node File Name tropical-dry-forest-TT1B.json is unconventional",
-        "alertId": "id210c74cd5a188",
-        "alertNotes": "removed punctuation in node ID from filename",
-        "alertAddressed": true
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Caribbean Coastal Lowland Dry Forest (M134)",
-        "targetProblem": "Node File Name caribbean-coastal-lowland-dry-forest-m134.json is unconventional",
-        "alertId": "idd599f8e07f3f2",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Caribbean Coastal Lowland Dry Forest LC (M134)",
-        "targetProblem": "Node File Name caribbean-coastal-lowland-dry-forest-lc-m134.json is unconventional",
-        "alertId": "id3f9b76ce0c1bc",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Caribbean Ruderal Dry Forest (M514)",
-        "targetProblem": "Node File Name caribbean-ruderal-dry-forest-m514.json is unconventional",
-        "alertId": "id32ed0fb1dfe92",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Caribbean-Mesoamerican Pine Forest LC (M296)",
-        "targetProblem": "Node File Name caribbean-mesoamerican-pine-forest-lc-m296.json is unconventional",
-        "alertId": "ida33ad55c99552",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Longleaf Pine Woodland LC1 (M007)",
-        "targetProblem": "Node File Name longleaf-pine-woodland-lc1-m007.json is unconventional",
-        "alertId": "id19e19d106c1e7",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
-        "targetProblem": "Node File Name southern-mesic-mixed-broadleaf-forest-lc-m008.json is unconventional",
-        "alertId": "idcdd84aee06bf9",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Central Midwest Mesic Forest LC (M882)",
-        "targetProblem": "Node File Name central-midwest-mesic-forest-lc-m882.json is unconventional",
-        "alertId": "idd1e5900bb85bb",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unconventional-file-name",
-        "targetNode": "Eastern North American Ruderal Forest (M013)",
-        "targetProblem": "Node File Name eastern-north-american-ruderal-forest-m013.json is unconventional",
-        "alertId": "id9711e7165867b",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Caribbean Swamp (M617)",
-        "targetProblem": "Node ID M617 is nonunique",
-        "alertId": "id0d406dd9a1c68",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Caribbean Swamp Forest (M617)",
-        "targetProblem": "Node ID M617 is nonunique",
-        "alertId": "id82eea7b612518",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Pond-cypress Basin Swamp (M161)",
-        "targetProblem": "Node ID M161 is nonunique",
-        "alertId": "id90b11baf9567a",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Pond-Cypress Basin Swamp LC (M161)",
-        "targetProblem": "Node ID M161 is nonunique",
-        "alertId": "idf63ee18bae6f5",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)",
-        "targetProblem": "Node ID M032 is nonunique",
-        "alertId": "id55540dbadb1bb",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)",
-        "targetProblem": "Node ID M032 is nonunique",
-        "alertId": "idecb314ce0aa75",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)",
-        "targetProblem": "Node ID M031 is nonunique",
-        "alertId": "idf738a8368fb8e",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)",
-        "targetProblem": "Node ID M031 is nonunique",
-        "alertId": "id5913ca06685fb",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Longleaf Pine Woodland LC2 (M007)",
-        "targetProblem": "Node ID M007 is nonunique",
-        "alertId": "id8bb8d8723e023",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Longleaf Pine Woodland (M007)",
-        "targetProblem": "Node ID M007 is nonunique",
-        "alertId": "idc7c7702698fbd",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Longleaf Pine Woodland LC1 (M007)",
-        "targetProblem": "Node ID M007 is nonunique",
-        "alertId": "id378ce2c41541a",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Laurentian-Acadian Flooded Forest & Swamp (M504)",
-        "targetProblem": "Node ID M504 is nonunique",
-        "alertId": "id4890966407b7",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Laurentian-Acadian Flooded Forest & Swamp LC (M504)",
-        "targetProblem": "Node ID M504 is nonunique",
-        "alertId": "id578d012508c7f",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Hardwood Floodplain Forest (M029)",
-        "targetProblem": "Node ID M029 is nonunique",
-        "alertId": "idfb72af318d1f1",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Hardwood Floodplain Forest LC (M029)",
-        "targetProblem": "Node ID M029 is nonunique",
-        "alertId": "idf72fee5eb4c99",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Hardwood Swamp (M503)",
-        "targetProblem": "Node ID M503 is nonunique",
-        "alertId": "ida97157a3f590c",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Hardwood Swamp LC (M503)",
-        "targetProblem": "Node ID M503 is nonunique",
-        "alertId": "id6762fca1c31a",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Caribbean-Mesoamerican Dry Pine Forest (M296)",
-        "targetProblem": "Node ID M296 is nonunique",
-        "alertId": "idbf2baf85497f7",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Caribbean-Mesoamerican Pine Forest via Caribbean (M296)",
-        "targetProblem": "Node ID M296 is nonunique",
-        "alertId": "id6e4f8cbe20f41",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Caribbean-Mesoamerican Pine Forest LC (M296)",
-        "targetProblem": "Node ID M296 is nonunique",
-        "alertId": "id47b77d9a3971f",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Caribbean Coastal Lowland Dry Forest (M134)",
-        "targetProblem": "Node ID M134 is nonunique",
-        "alertId": "id660b22da0be2d",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Caribbean Coastal Lowland Dry Forest LC (M134)",
-        "targetProblem": "Node ID M134 is nonunique",
-        "alertId": "id5b3ee59d6a6bc",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern Mesic Mixed Broadleaf Forest (M008)",
-        "targetProblem": "Node ID M008 is nonunique",
-        "alertId": "id567d82d142872",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
-        "targetProblem": "Node ID M008 is nonunique",
-        "alertId": "id084f7a3d2a9c2",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southeastern Coastal Plain Evergreen Oak Forest (M885)",
-        "targetProblem": "Node ID M885 is nonunique",
-        "alertId": "id37e414128c9ea",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)",
-        "targetProblem": "Node ID M885 is nonunique",
-        "alertId": "id59bd807fc3b66",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Laurentian Dry Forest & Woodland (M159)",
-        "targetProblem": "Node ID M159 is nonunique",
-        "alertId": "id3c8b1d8a029db",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Laurentian Dry Forest & Woodland LC (M159)",
-        "targetProblem": "Node ID M159 is nonunique",
-        "alertId": "idc67a3522c521d",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Laurentian Mesic Mixed Forest (M102)",
-        "targetProblem": "Node ID M102 is nonunique",
-        "alertId": "idb18e80db2042",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Laurentian Mesic Forest LC (M102)",
-        "targetProblem": "Node ID M102 is nonunique",
-        "alertId": "id2bbed9c40e098",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Midwest Oak Forest, Woodland & Savanna (M012)",
-        "targetProblem": "Node ID M012 is nonunique",
-        "alertId": "id103d1ff2d6a11",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Midwest Oak Forest, Woodland & Savanna LC (M012)",
-        "targetProblem": "Node ID M012 is nonunique",
-        "alertId": "id4166588a937b7",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Midwest Mesic Forest (M882)",
-        "targetProblem": "Node ID M882 is nonunique",
-        "alertId": "id07e7a716f33f2",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Midwest Mesic Forest LC (M882)",
-        "targetProblem": "Node ID M882 is nonunique",
-        "alertId": "idb693e26b73c5f",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern-Central Appalachian Mesic Forest (M883)",
-        "targetProblem": "Node ID M883 is nonunique",
-        "alertId": "id5c6647e6546b8",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern-Central Appalachian Mesic Forest LC (M883)",
-        "targetProblem": "Node ID M883 is nonunique",
-        "alertId": "idff67567079f83",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Interior Oak - Pine Forest & Woodland (M543)",
-        "targetProblem": "Node ID M543 is nonunique",
-        "alertId": "idf5b2b397b9939",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Central Interior Oak - Pine Forest & Woodland LC  (M543)",
-        "targetProblem": "Node ID M543 is nonunique",
-        "alertId": "id0c9a7bb6bf014",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern-Central Appalachian Dry Forest & Woodland (M502)",
-        "targetProblem": "Node ID M502 is nonunique",
-        "alertId": "idbabaa8da7ba4b",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Southern-Central Appalachian Dry Forest & Woodland LC (M502)",
-        "targetProblem": "Node ID M502 is nonunique",
-        "alertId": "id1bca41fc4a3c4",
-        "alertNotes": "",
-        "alertAddressed": false
     },
     {
         "alertType": "warning",
@@ -734,35 +23,35 @@
         "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)",
         "targetProblem": "STRONG_SWAMP_DIAGNOSTICS - species: Cliftonia monophylla does not exist in the FIA species list",
         "alertId": "idd891a953d7f68",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
-        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)",
+        "targetNode": "Low Confidence Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032LC)",
         "targetProblem": "STRONG_SWAMP_DIAGNOSTICS - species: Cliftonia monophylla does not exist in the FIA species list",
-        "alertId": "id37e0eb92a54d3",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertId": "idc3bdbcce9dec8",
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
-        "targetNode": "Pond-Cypress Basin Swamp LC (M161)",
+        "targetNode": "Low Confidence Pond-Cypress Basin Swamp (M161LC)",
         "targetProblem": "STRONG_SWAMP_DIAGNOSTICS - species: Cliftonia monophylla does not exist in the FIA species list",
-        "alertId": "idf2e079538b05",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertId": "idc76050171eccc",
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
-        "targetNode": "Longleaf Pine Woodland LC2 (M007)",
+        "targetNode": "Low Confidence Longleaf Pine Woodland (M007LC2)",
         "targetProblem": "STRONG_SWAMP_DIAGNOSTICS - species: Cliftonia monophylla does not exist in the FIA species list",
-        "alertId": "id7ff7d9952e009",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertId": "idbff790585127f",
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -770,53 +59,26 @@
         "targetNode": "Central Hardwood Floodplain Forest (M029)",
         "targetProblem": "STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS - species: Populus deltoides spp. monilifera does not exist in the FIA species list",
         "alertId": "id3a32938e8ab8c",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
-        "targetNode": "Central Hardwood Floodplain Forest LC (M029)",
+        "targetNode": "Low Confidence Central Hardwood Floodplain Forest (M029LC)",
         "targetProblem": "STRONG_CENTRAL_FLOODPLAIN_DIAGNOSTICS - species: Populus deltoides spp. monilifera does not exist in the FIA species list",
-        "alertId": "ide1139b49ade77",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertId": "id7ade1c565a459",
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
-        "targetNode": "Tropical Florida Forest",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: other palms does not exist in the FIA species list",
-        "alertId": "idcf442228ca8e8",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Tropical Florida Forest",
+        "targetNode": "Tropical Florida Forests",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Thrinax morrisii does not exist in the FIA species list",
-        "alertId": "id60d5009d055dc",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Caribbean Coastal Lowland Dry Forest (M134)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: other palms does not exist in the FIA species list",
-        "alertId": "id6d5ae5859721c",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Caribbean & Central American Dry Forests",
-        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: other palms does not exist in the FIA species list",
-        "alertId": "id3331707d7d277",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertId": "ide9726402a212",
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -824,8 +86,17 @@
         "targetNode": "Caribbean & Central American Dry Forests",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Thrinax morrisii does not exist in the FIA species list",
         "alertId": "idaae927e9053a5",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "invalid-species",
+        "targetNode": "Warm Temperate Evergreen Forest & Woodland (F109)",
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Broussonetia papyrifera does not exist in the FIA species list",
+        "alertId": "idbf7d40b0b7583",
+        "alertNotes": "Diagnostic species not tracked in FIA species list",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -833,15 +104,24 @@
         "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
         "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Broussonetia papyrifera does not exist in the FIA species list",
         "alertId": "id986886fb9a5f7",
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Non-Forests",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id811afd52c7623",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Southeastern Coastal Plain Evergreen Oak Forest (M885)",
-        "targetProblem": "MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS - species: other palms does not exist in the FIA species list",
-        "alertId": "id10deee4448e58",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Temperate-Boreal Grassland & Shrubland (B04)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "idaf5a9caf1970e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1037,9 +317,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Native Northern Conifer Plantation",
+        "targetNode": "Native Northern Conifer Plantations",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id272c6675118ae",
+        "alertId": "idc8759d6c3961",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1208,9 +488,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Eastern North American Hardwood Plantation",
+        "targetNode": "Eastern North American Hardwood Plantations",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idf6daa60ef4106",
+        "alertId": "idf708cb5345d6",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1334,9 +614,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "North American Boreal Forest Plantation Cultural Subgroup",
+        "targetNode": "North American Boreal Forest Plantations Cultural Subgroup",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "iddd2f278e70a02",
+        "alertId": "id26e809b793486",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1361,9 +641,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).",
+        "targetNode": "Mangrove Ecobiome (F146)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idce4fb8e066a6c",
+        "alertId": "id073a88a0ab216",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1397,36 +677,36 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)",
+        "targetNode": "Tropical Flooded Forest & Peat Forest (F135)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id466a0c2fd586d",
+        "alertId": "id96d08a8b361b6",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Natural Wetland Forest",
+        "targetNode": "Caribbean Natural Wetland Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id2f36103f30df8",
+        "alertId": "id863c5cb0fcd66",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Swamp (M617)",
+        "targetNode": "Caribbean Swamp Forest (M617C)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id08d06de56682b",
+        "alertId": "id7855a3208a5a",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Ruderal Wetland Forest",
+        "targetNode": "Caribbean Ruderal Wetland Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id807ff1b49d02",
+        "alertId": "id05c333340d171",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1451,9 +731,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Eastern Warm Temperate Natural Wetland Forest",
+        "targetNode": "Eastern Warm Temperate Natural Wetland Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id5d63802a38938",
+        "alertId": "id4807b7f2a4d47",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1496,45 +776,45 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)",
+        "targetNode": "Low Confidence Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id73795e6afa704",
+        "alertId": "id21f1109a1d4f2",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Pond-Cypress Basin Swamp LC (M161)",
+        "targetNode": "Low Confidence Pond-Cypress Basin Swamp (M161LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id6fdfe31056d82",
+        "alertId": "idb677c700a05b3",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Longleaf Pine Woodland LC2 (M007)",
+        "targetNode": "Low Confidence Longleaf Pine Woodland (M007LC2)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id60803930ecb08",
+        "alertId": "id253895b0d24c9",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)",
+        "targetNode": "Low Confidence Southern Coastal Plain Floodplain Forest (M031LC) / Southern Coastal Plain Basin Swamp & Flatwoods (M033LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id24137f9e38e0e",
+        "alertId": "iddd6138352f7c3",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Eastern Warm Temperate Ruderal Wetland Forest",
+        "targetNode": "Eastern Warm Temperate Ruderal Wetland Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id1f4598b7adf8b",
+        "alertId": "ida2e1036ecf",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1604,24 +884,6 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Eastern Cool Temperate & North American Boreal Wetland Forest",
-        "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idd29cad1b78fdb",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-document-elements",
-        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest",
-        "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id5cfe01b8a133d",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-document-elements",
         "targetNode": "Eastern Cool Temperate Natural Wetland Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
         "alertId": "ida0bba0f60b9d3",
@@ -1658,27 +920,27 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Laurentian-Acadian Flooded Forest & Swamp LC (M504)",
+        "targetNode": "Low Confidence Laurentian-Acadian Flooded Forest & Swamp (M504LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idb4b3eb38f00c1",
+        "alertId": "idb8d014f2bb9f2",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Central Hardwood Floodplain Forest LC (M029)",
+        "targetNode": "Low Confidence Central Hardwood Floodplain Forest (M029LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idc6d1ad161f029",
+        "alertId": "id1ddb646600c7a",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Central Hardwood Swamp LC (M503)",
+        "targetNode": "Low Confidence Central Hardwood Swamp (M503LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idc6a24ed663cd",
+        "alertId": "id8edcf498e0051",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1712,45 +974,45 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Tropical Forest (TT1)",
+        "targetNode": "Tropical Forest (B01)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idf94fb8285c405",
+        "alertId": "id7fd36be7c1e2c",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Tropical Dry Forest (TT1.b)",
+        "targetNode": "Tropical Seasonally Dry Forest & Thicket (F104)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id66fa7d4a63c1a",
+        "alertId": "idafad197173bd",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Tropical Florida Forest",
+        "targetNode": "Tropical Florida Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ide527473ad3296",
+        "alertId": "idc0d54cd9beb8e",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Tropical Florida Natural Forest",
+        "targetNode": "Tropical Florida Natural Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ideed7631b20a56",
+        "alertId": "id92d7fc407b5",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean-Mesoamerican Dry Pine Forest (M296)",
+        "targetNode": "Caribbean-Mesoamerican Pine Dry Forest (M296)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id754968c73027d",
+        "alertId": "idd8335b9ed9b49",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1775,18 +1037,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Coastal Lowland Dry Forest LC (M134)",
+        "targetNode": "Low Confidence Caribbean Coastal Lowland Dry Forest (M134LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ide0bb5d018bd1d",
+        "alertId": "idc3455cf31cb7f",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Tropical Florida Ruderal Forest",
+        "targetNode": "Tropical Florida Ruderal Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "iddb45642e98cb1",
+        "alertId": "idd4cee4d257371",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1802,18 +1064,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Forest",
+        "targetNode": "Caribbean Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id4a33cde24a91d",
+        "alertId": "id4bb7b1c4c3b81",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Natural Forest",
+        "targetNode": "Caribbean Natural Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id66d450996869d",
+        "alertId": "id496218d656f56",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1829,54 +1091,54 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean-Mesoamerican Pine Forest via Caribbean (M296)",
+        "targetNode": "Caribbean-Mesoamerican Pine Dry Forest (M296C)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id08049f6849591",
+        "alertId": "id58ab61db08f2e",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean-Mesoamerican Pine Forest LC (M296)",
+        "targetNode": "Low Confidence Caribbean-Mesoamerican Pine Forest (M296LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ida91e216b0dd94",
+        "alertId": "ide36e7f0ea1513",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Ruderal Forest",
+        "targetNode": "Caribbean Ruderal Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idab22073478881",
+        "alertId": "id007f676b9aeb8",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Caribbean Ruderal Dry ForestA (M514A)",
+        "targetNode": "Caribbean Ruderal Dry Forest (M514C)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id73a8ccc91082",
+        "alertId": "id7ee18ed4d58f4",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Temperate & Boreal Forests",
+        "targetNode": "Temperate-Boreal Forest & Woodland (B02)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idd9b0e12c63a85",
+        "alertId": "id59b44596516b7",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Temperate-Boreal Forest & Woodland (TT2)",
+        "targetNode": "Warm Temperate Evergreen Forest & Woodland (F109)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id10b3ea60a85c2",
+        "alertId": "id6ba018d40dbf",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1955,18 +1217,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)",
+        "targetNode": "Low Confidence Southeastern Coastal Plain Evergreen Oak Forest (M885LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idd19ff54cceeb9",
+        "alertId": "id863be38e9c32d",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Longleaf Pine Woodland LC1 (M007)",
+        "targetNode": "Low Confidence Longleaf Pine Woodland (M007LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id3a1ed7c6bc52e",
+        "alertId": "id338680f402cd8",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1982,18 +1244,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
+        "targetNode": "Low Confidence Southern Mesic Mixed Broadleaf Forest (M008LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idbcd7dea4fcb05",
+        "alertId": "ida97b2cfa5407",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)",
+        "targetNode": "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (F107)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id9c3e060c11a4c",
+        "alertId": "ida1e23212dfe01",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2036,9 +1298,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Great Plains Ruderal Woodland",
+        "targetNode": "Great Plains Ruderal Woodlands",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id1a4b791028d26",
+        "alertId": "id81351898a5d8c",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2108,9 +1370,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Laurentian Dry Forest & Woodland LC (M159)",
+        "targetNode": "Low Confidence Laurentian Dry Forest & Woodland (M159LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id72716a68db44a",
+        "alertId": "idc184164ce290e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2153,18 +1415,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Central Midwest Oak Forest, Woodland & Savanna LC (M012)",
+        "targetNode": "Low Confidence Central Midwest Oak Forest, Woodland & Savanna (M012LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id6b94593ed7438",
+        "alertId": "id61741e89d4f09",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Central Midwest Mesic Forest LC (M882)",
+        "targetNode": "Low Confidence Central Midwest Mesic Forest (M882LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idf5cff2d285ff7",
+        "alertId": "id13e2e4f2f3ec1",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2198,36 +1460,36 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Laurentian Mesic Forest LC (M102)",
+        "targetNode": "Low Confidence Laurentian Mesic Forest (M102LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idea8941cf481db",
+        "alertId": "id46e174e12bde8",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Central Interior Oak - Pine Forest & Woodland LC  (M543)",
+        "targetNode": "Low Confidence Central Interior Oak - Pine Forest & Woodland (M543LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id7770a9beb1797",
+        "alertId": "idd1e46e176d32c",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southern-Central Appalachian Dry Forest & Woodland LC (M502)",
+        "targetNode": "Low Confidence Southern-Central Appalachian Dry Forest & Woodland (M502LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id37836c5e0dca7",
+        "alertId": "idf0832492d2e41",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southern-Central Appalachian Mesic Forest LC (M883)",
+        "targetNode": "Low Confidence Southern-Central Appalachian Mesic Forest (M883LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id1e741540ea5b7",
+        "alertId": "ida08aca157ad5e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2246,6 +1508,24 @@
         "targetNode": "Eastern North American Ruderal Forest (M013)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
         "alertId": "id6594396450aac",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Non-Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "idaf73fc8a622fc",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Temperate-Boreal Grassland & Shrubland (B04)",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "ideaee0dfc1b8e3",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2441,9 +1721,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Native Northern Conifer Plantation",
+        "targetNode": "Native Northern Conifer Plantations",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5416ad6ec3fec",
+        "alertId": "id259b6ca40d816",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2612,9 +1892,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern North American Hardwood Plantation",
+        "targetNode": "Eastern North American Hardwood Plantations",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idf58986cd5a01d",
+        "alertId": "ide9a756ca4cfed",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2738,9 +2018,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "North American Boreal Forest Plantation Cultural Subgroup",
+        "targetNode": "North American Boreal Forest Plantations Cultural Subgroup",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idaf5831ddf818d",
+        "alertId": "id0d62e8ee1caea",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2765,9 +2045,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).",
+        "targetNode": "Mangrove Ecobiome (F146)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idee4b9242b14b5",
+        "alertId": "id5aad5b0d6c414",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2801,36 +2081,36 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)",
+        "targetNode": "Tropical Flooded Forest & Peat Forest (F135)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id2cf9abc3f4b6e",
+        "alertId": "id97fe0f2869f7e",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Natural Wetland Forest",
+        "targetNode": "Caribbean Natural Wetland Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "ida19cf902d73a9",
+        "alertId": "idc996621df7a29",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Swamp (M617)",
+        "targetNode": "Caribbean Swamp Forest (M617C)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id7fbf9f019b27c",
+        "alertId": "id67efd105e18ba",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Ruderal Wetland Forest",
+        "targetNode": "Caribbean Ruderal Wetland Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5c36465b3e1e3",
+        "alertId": "idf7485bcae1447",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2855,9 +2135,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern Warm Temperate Natural Wetland Forest",
+        "targetNode": "Eastern Warm Temperate Natural Wetland Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id468af79469e1a",
+        "alertId": "id7ab3c0888953c",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2900,45 +2180,45 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)",
+        "targetNode": "Low Confidence Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id3060a6b5a494d",
+        "alertId": "ideef8b01968dac",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Pond-Cypress Basin Swamp LC (M161)",
+        "targetNode": "Low Confidence Pond-Cypress Basin Swamp (M161LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id9629641dea335",
+        "alertId": "id1b91f0d50cbec",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Longleaf Pine Woodland LC2 (M007)",
+        "targetNode": "Low Confidence Longleaf Pine Woodland (M007LC2)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id2fe75a0c50eb4",
+        "alertId": "id96d5ce18350d3",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)",
+        "targetNode": "Low Confidence Southern Coastal Plain Floodplain Forest (M031LC) / Southern Coastal Plain Basin Swamp & Flatwoods (M033LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "ide1e0d3af501ee",
+        "alertId": "id25f2c6cf44034",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern Warm Temperate Ruderal Wetland Forest",
+        "targetNode": "Eastern Warm Temperate Ruderal Wetland Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idc30b281a198d",
+        "alertId": "id85da0d69f1308",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3008,24 +2288,6 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern Cool Temperate & North American Boreal Wetland Forest",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id178b95c70c97a",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern North American - Great Plains Flooded & Swamp Forest",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id08694057159bf",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
         "targetNode": "Eastern Cool Temperate Natural Wetland Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
         "alertId": "id3d78c831ee246",
@@ -3062,27 +2324,27 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Laurentian-Acadian Flooded Forest & Swamp LC (M504)",
+        "targetNode": "Low Confidence Laurentian-Acadian Flooded Forest & Swamp (M504LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id6bb21ecc08a5f",
+        "alertId": "idac287878b3f25",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Central Hardwood Floodplain Forest LC (M029)",
+        "targetNode": "Low Confidence Central Hardwood Floodplain Forest (M029LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id921d80c3370be",
+        "alertId": "idc4904b472a01e",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Central Hardwood Swamp LC (M503)",
+        "targetNode": "Low Confidence Central Hardwood Swamp (M503LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id98dee3baaf255",
+        "alertId": "ida0eb2edd1aaa",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3116,45 +2378,45 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Tropical Forest (TT1)",
+        "targetNode": "Tropical Forest (B01)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idb40d693196796",
+        "alertId": "idc5b2a5a4a0859",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Tropical Dry Forest (TT1.b)",
+        "targetNode": "Tropical Seasonally Dry Forest & Thicket (F104)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5b0602a0956b6",
+        "alertId": "id42a80bcdbbd0f",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Tropical Florida Forest",
+        "targetNode": "Tropical Florida Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id59539906a9e44",
+        "alertId": "id55310ef92c658",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Tropical Florida Natural Forest",
+        "targetNode": "Tropical Florida Natural Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id1d866f5e97968",
+        "alertId": "idf3843ff68155a",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean-Mesoamerican Dry Pine Forest (M296)",
+        "targetNode": "Caribbean-Mesoamerican Pine Dry Forest (M296)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id0c36451dd02fc",
+        "alertId": "idce665bf3131f2",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3179,18 +2441,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Coastal Lowland Dry Forest LC (M134)",
+        "targetNode": "Low Confidence Caribbean Coastal Lowland Dry Forest (M134LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5c157eec1514f",
+        "alertId": "ida42470f23a5cd",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Tropical Florida Ruderal Forest",
+        "targetNode": "Tropical Florida Ruderal Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id9186c89317ac",
+        "alertId": "id5d17e7e989952",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3206,18 +2468,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Forest",
+        "targetNode": "Caribbean Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id3c98c99ae7917",
+        "alertId": "id2e0e16300f1a3",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Natural Forest",
+        "targetNode": "Caribbean Natural Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idb6a70bd4a4bac",
+        "alertId": "id950a957142805",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3233,54 +2495,54 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean-Mesoamerican Pine Forest via Caribbean (M296)",
+        "targetNode": "Caribbean-Mesoamerican Pine Dry Forest (M296C)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id23c7e0fa10ba",
+        "alertId": "id45291f2a75351",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean-Mesoamerican Pine Forest LC (M296)",
+        "targetNode": "Low Confidence Caribbean-Mesoamerican Pine Forest (M296LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idd2fbb237d6093",
+        "alertId": "idc89d8ffd52143",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Ruderal Forest",
+        "targetNode": "Caribbean Ruderal Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idfd59000a56e19",
+        "alertId": "id56bde5470e318",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Caribbean Ruderal Dry ForestA (M514A)",
+        "targetNode": "Caribbean Ruderal Dry Forest (M514C)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idbb5b02b5adae7",
+        "alertId": "idc2b2e0b86d98f",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Temperate & Boreal Forests",
+        "targetNode": "Temperate-Boreal Forest & Woodland (B02)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idda1f8374726c5",
+        "alertId": "id73c5c5f762e4c",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Temperate-Boreal Forest & Woodland (TT2)",
+        "targetNode": "Warm Temperate Evergreen Forest & Woodland (F109)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id87771f26225f3",
+        "alertId": "id69b06074944b1",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3359,18 +2621,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)",
+        "targetNode": "Low Confidence Southeastern Coastal Plain Evergreen Oak Forest (M885LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idca33a71d9e645",
+        "alertId": "id2e8dd2e83e3c4",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Longleaf Pine Woodland LC1 (M007)",
+        "targetNode": "Low Confidence Longleaf Pine Woodland (M007LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "ide36cd4e21e3ad",
+        "alertId": "id3ad10c24334eb",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3386,18 +2648,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southern Mesic Mixed Broadleaf Forest LC (M008)",
+        "targetNode": "Low Confidence Southern Mesic Mixed Broadleaf Forest (M008LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id95f7829c1ae6b",
+        "alertId": "id38c7533f8fff8",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)",
+        "targetNode": "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (F107)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id6382a75fcd2f",
+        "alertId": "id9677366d4041c",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3440,9 +2702,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Great Plains Ruderal Woodland",
+        "targetNode": "Great Plains Ruderal Woodlands",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idc6eb2e538f719",
+        "alertId": "id78699abc4d85d",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3512,9 +2774,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Laurentian Dry Forest & Woodland LC (M159)",
+        "targetNode": "Low Confidence Laurentian Dry Forest & Woodland (M159LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idf56a63652e9dc",
+        "alertId": "id7e4492bab32b2",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3557,18 +2819,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Central Midwest Oak Forest, Woodland & Savanna LC (M012)",
+        "targetNode": "Low Confidence Central Midwest Oak Forest, Woodland & Savanna (M012LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idf8a7faf5ecbc5",
+        "alertId": "id3ecaea6bf1e29",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Central Midwest Mesic Forest LC (M882)",
+        "targetNode": "Low Confidence Central Midwest Mesic Forest (M882LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5f06311be1e67",
+        "alertId": "id7a32425720db9",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3602,36 +2864,36 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Laurentian Mesic Forest LC (M102)",
+        "targetNode": "Low Confidence Laurentian Mesic Forest (M102LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id1f6fdd779c869",
+        "alertId": "ida5f9d47addc9c",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Central Interior Oak - Pine Forest & Woodland LC  (M543)",
+        "targetNode": "Low Confidence Central Interior Oak - Pine Forest & Woodland (M543LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idad307da21177f",
+        "alertId": "idb96a1976e5bc1",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southern-Central Appalachian Dry Forest & Woodland LC (M502)",
+        "targetNode": "Low Confidence Southern-Central Appalachian Dry Forest & Woodland (M502LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id8497022731655",
+        "alertId": "idc47632ab49d62",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southern-Central Appalachian Mesic Forest LC (M883)",
+        "targetNode": "Low Confidence Southern-Central Appalachian Mesic Forest (M883LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id816abc2539b22",
+        "alertId": "ide1e53f07aa134",
         "alertNotes": "",
         "alertAddressed": false
     },

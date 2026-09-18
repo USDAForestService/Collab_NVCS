@@ -1,0 +1,20 @@
+{
+    "node": {
+        "name": "Tropical Flooded Forest & Peat Forest (F135)",
+        "id": "F135",
+        "level": "ecobiome",
+        "description": [
+            "Tree composition not as above (that is, freshwater forested wetlands)…………….B (Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a) [note that we do not have good information on Puerto Rico freshwater forested wetlands, and so the key may fail there]"
+        ],
+        "trigger": [
+            "match(TROPICAL)"
+        ],
+        "filters": {
+            "TROPICAL": [
+                {
+                    "ecoregion": "411"
+                }
+            ]
+        }
+    }
+}

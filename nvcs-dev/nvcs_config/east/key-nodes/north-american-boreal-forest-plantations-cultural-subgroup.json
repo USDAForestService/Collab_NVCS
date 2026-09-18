@@ -1,0 +1,20 @@
+{
+    "node": {
+        "name": "North American Boreal Forest Plantations Cultural Subgroup",
+        "id": "",
+        "level": "informal",
+        "description": [
+            "Plantations found in the boreal region of North America (EcoDomain 100)"
+        ],
+        "trigger": [
+            "match(BOREAL_REGION)"
+        ],
+        "filters": {
+            "BOREAL_REGION": [
+                {
+                    "ecoregion": "100"
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "node": {
+        "name": "Caribbean Swamp Forest (M617C)",
+        "id": "M617C",
+        "level": "macrogroup",
+        "description": [
+            "Only one Macrogroup reported for the Caribbean U.S., its territories and commonwealth.",
+            "See also M618 (Caribbean Floodplain Forest) reported elsewhere in the Caribbean, and",
+            "likely present in Puerto Rico",
+            "Caribbean"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

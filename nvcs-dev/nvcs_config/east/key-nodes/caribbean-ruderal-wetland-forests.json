@@ -1,0 +1,15 @@
+{
+    "node": {
+        "name": "Caribbean Ruderal Wetland Forests",
+        "id": "",
+        "level": "informal",
+        "description": [
+            "At this time, no ruderal types are know in the Caribbean region of the U.S., its",
+            "territories and commonwealth."
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

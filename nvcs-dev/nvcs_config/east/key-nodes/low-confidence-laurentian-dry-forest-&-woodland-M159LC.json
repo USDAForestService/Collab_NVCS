@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Laurentian Dry Forest & Woodland (M159LC)",
+        "id": "M159LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as Above"
+        ],
+        "trigger": [
+            "True"
+        ],
+        "filters": {}
+    }
+}

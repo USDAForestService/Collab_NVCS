@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Caribbean Coastal Lowland Dry Forest (M134LC)",
+        "id": "M134LC",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}
