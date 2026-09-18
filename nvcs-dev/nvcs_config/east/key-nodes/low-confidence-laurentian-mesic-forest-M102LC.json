@@ -1,0 +1,20 @@
+{
+    "node": {
+        "name": "Low Confidence Laurentian Mesic Forest (M102LC)",
+        "id": "M102LC",
+        "level": "macrogroup",
+        "description": [
+            "Plot is in Ecoregion 212"
+        ],
+        "trigger": [
+            "match(ECOREGION)"
+        ],
+        "filters": {
+            "ECOREGION": [
+                {
+                    "ecoregion": "212"
+                }
+            ]
+        }
+    }
+}

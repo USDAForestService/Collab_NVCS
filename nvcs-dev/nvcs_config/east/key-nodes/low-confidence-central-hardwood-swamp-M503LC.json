@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Central Hardwood Swamp (M503LC)",
+        "id": "M503LC",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

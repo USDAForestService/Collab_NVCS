@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Southern Mesic Mixed Broadleaf Forest (M008LC)",
+        "id": "M008LC",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

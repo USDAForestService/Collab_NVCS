@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Eastern North American Hardwood Plantations",
+        "id": "",
+        "level": "informal",
+        "description": [
+            "Tree species are hardwoods >=75% RIV.  Implemented as NOT (conifers >= 25% RIV)"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

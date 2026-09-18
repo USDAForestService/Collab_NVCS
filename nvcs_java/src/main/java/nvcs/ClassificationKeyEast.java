@@ -46,121 +46,121 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Node _setup() {
         nodes.put(0, new Node(0, null, element_000(), ""));
-        nodes.put(  1,  new Node(  1,   0, element_001(), "Forest Plantation Anthro-Division (CSF05)"));
-        nodes.put(  2,  new Node(  2,   1, element_002(), "Tropical Forest Plantation Anthro-macrogroup (CGR008)"));
-        nodes.put(  3,  new Node(  3,   2, element_003(), "Caribbean Forest Plantation Anthro-group (CSG008)"));
-        nodes.put(  4,  new Node(  4,   3, element_004(), "Caribbean Conifer Plantations"));
-        nodes.put(  5,  new Node(  5,   4, element_005(), "Native Caribbean Conifer Plantation Anthro-type (CTY001)"));
-        nodes.put(  6,  new Node(  6,   4, element_006(), "Exotic Caribbean Forest Plantation Anthro-type (CTY002)"));
-        nodes.put(  7,  new Node(  7,   3, element_007(), "Caribbean Hardwood Plantations"));
-        nodes.put(  8,  new Node(  8,   7, element_008(), "Native Caribbean Hardwood Plantation Anthro-type (CTY003)"));
-        nodes.put(  9,  new Node(  9,   7, element_009(), "Exotic Caribbean Hardwood Plantation Anthro-type (CTY004)"));
-        nodes.put( 10,  new Node( 10,   3, element_010(), "Miscellaneous Caribbean Plantation Anthro-type (CTY019)"));
-        nodes.put( 11,  new Node( 11,   1, element_011(), "Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)"));
-        nodes.put( 12,  new Node( 12,  11, element_012(), "Eastern North American Temperate Forest Plantation Anthro-group (CSG005)"));
-        nodes.put( 13,  new Node( 13,  12, element_013(), "Eastern North American Conifer Plantations"));
-        nodes.put( 14,  new Node( 14,  13, element_014(), "Native Eastern North American Conifer Plantations"));
-        nodes.put( 15,  new Node( 15,  14, element_015(), "Native Southern Pine Plantation Anthro-type (CTY012)"));
-        nodes.put( 16,  new Node( 16,  15, element_016(), "Shortleaf Pine Forest Plantation (CST007169)"));
-        nodes.put( 17,  new Node( 17,  15, element_017(), "Longleaf Pine Forest Plantation (CST007176)"));
-        nodes.put( 18,  new Node( 18,  15, element_018(), "Slash Pine Forest Plantation (CST007170)"));
-        nodes.put( 19,  new Node( 19,  15, element_019(), "Loblolly Pine Forest Plantation (CST007179)"));
-        nodes.put( 20,  new Node( 20,  15, element_020(), "Sand Pine Forest Plantation (CST007168)"));
-        nodes.put( 21,  new Node( 21,  15, element_021(), "Native Miscellaneous Southern Pine Forest Plantation (CST007160)"));
-        nodes.put( 22,  new Node( 22,  14, element_022(), "Native Northern Conifer Plantation"));
-        nodes.put( 23,  new Node( 23,  22, element_023(), "Native Northern Pine Plantation Anthro-type (CTY009)"));
-        nodes.put( 24,  new Node( 24,  23, element_024(), "Red Pine Forest Plantation (CST007177)"));
-        nodes.put( 25,  new Node( 25,  23, element_025(), "White Pine Forest Plantation (CST007178)"));
-        nodes.put( 26,  new Node( 26,  23, element_026(), "Jack Pine Forest Plantation (CST007161)"));
-        nodes.put( 27,  new Node( 27,  23, element_027(), "Native Miscellaneous Northern Pine Forest Plantation"));
-        nodes.put( 28,  new Node( 28,  22, element_028(), "Native Northern Spruce - Fir Plantation Anthro-type (CTY010)"));
-        nodes.put( 29,  new Node( 29,  28, element_029(), "White Spruce Forest Plantation (CST007164)"));
-        nodes.put( 30,  new Node( 30,  28, element_030(), "Balsam Fir Forest Plantation (CST007182)"));
-        nodes.put( 31,  new Node( 31,  28, element_031(), "Red Spruce Forest Plantation (CST004758)"));
-        nodes.put( 32,  new Node( 32,  28, element_032(), "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)"));
-        nodes.put( 33,  new Node( 33,  13, element_033(), "Exotic Eastern North American Conifer Plantations"));
-        nodes.put( 34,  new Node( 34,  33, element_034(), "Exotic Northern Conifer Plantation Anthro-type (CTY014)"));
-        nodes.put( 35,  new Node( 35,  34, element_035(), "Scotch Pine Exotic Forest Plantation (CST006313)"));
-        nodes.put( 36,  new Node( 36,  34, element_036(), "Norway Spruce Forest Plantation (CST007167)"));
-        nodes.put( 37,  new Node( 37,  34, element_037(), "Larch Forest Plantation (CST006408)"));
-        nodes.put( 38,  new Node( 38,  34, element_038(), "Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)"));
-        nodes.put( 39,  new Node( 39,  33, element_039(), "Exotic Southern Conifer Plantation Anthro-type (CTY015)"));
-        nodes.put( 40,  new Node( 40,  39, element_040(), "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)"));
-        nodes.put( 41,  new Node( 41,  12, element_041(), "Eastern North American Hardwood Plantation"));
-        nodes.put( 42,  new Node( 42,  41, element_042(), "Native Eastern North American Hardwood Plantations"));
-        nodes.put( 43,  new Node( 43,  42, element_043(), "Native Northern Hardwood Forest Plantation Anthro-type (CTY016)"));
-        nodes.put( 44,  new Node( 44,  43, element_044(), "Black Walnut Forest Plantation (CST007188)"));
-        nodes.put( 45,  new Node( 45,  43, element_045(), "Aspen Forest Plantation (CST007189)"));
-        nodes.put( 46,  new Node( 46,  43, element_046(), "Black Locust Forest Plantation (CST007190)"));
-        nodes.put( 47,  new Node( 47,  43, element_047(), "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)"));
-        nodes.put( 48,  new Node( 48,  42, element_048(), "Native Southern Hardwood Forest Plantation Anthro-type (CTY017)"));
-        nodes.put( 49,  new Node( 49,  48, element_049(), "Tuliptree Forest Plantation (CST007197)"));
-        nodes.put( 50,  new Node( 50,  48, element_050(), "Sweetgum Forest Plantation Subtype (CST007450)"));
-        nodes.put( 51,  new Node( 51,  48, element_051(), "Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)"));
-        nodes.put( 52,  new Node( 52,  41, element_052(), "Exotic Eastern North American Hardwood Plantations"));
-        nodes.put( 53,  new Node( 53,  52, element_053(), "Exotic Northern Hardwood Plantation Anthro-type (CTY018)"));
-        nodes.put( 54,  new Node( 54,  52, element_054(), "Exotic Southern Hardwood Plantation Anthro-type (CTY019a)"));
-        nodes.put( 55,  new Node( 55,  11, element_055(), "North American Boreal Forest Plantation Cultural Subgroup"));
-        nodes.put( 56,  new Node( 56,   0, element_056(), "Natural and Ruderal Forests"));
-        nodes.put( 57,  new Node( 57,  56, element_057(), "Wetland Forest & Woodlands"));
-        nodes.put( 58,  new Node( 58,  57, element_058(), "Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004)."));
-        nodes.put( 59,  new Node( 59,  58, element_059(), "Tropical Florida Natural Mangrove Forests"));
-        nodes.put( 60,  new Node( 60,  59, element_060(), "Western Atlantic & Caribbean Mangrove (M005)"));
-        nodes.put( 61,  new Node( 61,  58, element_061(), "Tropical Florida Ruderal Mangrove Forests"));
-        nodes.put( 62,  new Node( 62,  57, element_062(), "Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)"));
-        nodes.put( 63,  new Node( 63,  62, element_063(), "Caribbean Natural Wetland Forest"));
-        nodes.put( 64,  new Node( 64,  63, element_064(), "Caribbean Swamp (M617)"));
-        nodes.put( 65,  new Node( 65,  62, element_065(), "Caribbean Ruderal Wetland Forest"));
-        nodes.put( 66,  new Node( 66,  57, element_066(), "Temperate & Boreal Forested Wetland (F136)"));
-        nodes.put( 67,  new Node( 67,  66, element_067(), "Southeastern North American Flooded & Swamp Forest Division (D062)"));
-        nodes.put( 68,  new Node( 68,  67, element_068(), "Eastern Warm Temperate Natural Wetland Forest"));
-        nodes.put( 69,  new Node( 69,  68, element_069(), "Southern Great Plains Floodplain Forest & Woodland (M154)"));
-        nodes.put( 70,  new Node( 70,  68, element_070(), "Pond-cypress Basin Swamp (M161)"));
-        nodes.put( 71,  new Node( 71,  68, element_071(), "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)"));
-        nodes.put( 72,  new Node( 72,  68, element_072(), "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)"));
-        nodes.put( 73,  new Node( 73,  68, element_073(), "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)"));
-        nodes.put( 74,  new Node( 74,  68, element_074(), "Pond-Cypress Basin Swamp LC (M161)"));
-        nodes.put( 75,  new Node( 75,  68, element_075(), "Longleaf Pine Woodland LC2 (M007)"));
-        nodes.put( 76,  new Node( 76,  68, element_076(), "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)"));
-        nodes.put( 77,  new Node( 77,  67, element_077(), "Eastern Warm Temperate Ruderal Wetland Forest"));
-        nodes.put( 78,  new Node( 78,  77, element_078(), "Southeastern North American Ruderal Flooded & Swamp Forest (M310)"));
-        nodes.put( 79,  new Node( 79,  66, element_079(), "North American Boreal Flooded Forest & Swamp Division (D016)"));
-        nodes.put( 80,  new Node( 80,  79, element_080(), "Eastern Boreal Natural Wetland Forests"));
-        nodes.put( 81,  new Node( 81,  80, element_081(), "North American Boreal Conifer Poor Swamp (M299)"));
-        nodes.put( 82,  new Node( 82,  80, element_082(), "North American Boreal Flooded Forest & Rich Swamp (M300)"));
-        nodes.put( 83,  new Node( 83,  79, element_083(), "Eastern Boreal Ruderal Wetland Forests"));
-        nodes.put( 84,  new Node( 84,  66, element_084(), "Eastern North American Flooded Forest & Swamp Division (D011)"));
-        nodes.put( 85,  new Node( 85,  84, element_085(), "Eastern Cool Temperate & North American Boreal Wetland Forest"));
-        nodes.put( 86,  new Node( 86,  85, element_086(), "Eastern North American - Great Plains Flooded & Swamp Forest"));
+        nodes.put(  1,  new Node(  1,   0, element_001(), "Non-Forests"));
+        nodes.put(  2,  new Node(  2,   1, element_002(), "Temperate-Boreal Grassland & Shrubland (B04)"));
+        nodes.put(  3,  new Node(  3,   0, element_003(), "Forest Plantation Anthro-Division (CSF05)"));
+        nodes.put(  4,  new Node(  4,   3, element_004(), "Tropical Forest Plantation Anthro-macrogroup (CGR008)"));
+        nodes.put(  5,  new Node(  5,   4, element_005(), "Caribbean Forest Plantation Anthro-group (CSG008)"));
+        nodes.put(  6,  new Node(  6,   5, element_006(), "Caribbean Conifer Plantations"));
+        nodes.put(  7,  new Node(  7,   6, element_007(), "Native Caribbean Conifer Plantation Anthro-type (CTY001)"));
+        nodes.put(  8,  new Node(  8,   6, element_008(), "Exotic Caribbean Forest Plantation Anthro-type (CTY002)"));
+        nodes.put(  9,  new Node(  9,   5, element_009(), "Caribbean Hardwood Plantations"));
+        nodes.put( 10,  new Node( 10,   9, element_010(), "Native Caribbean Hardwood Plantation Anthro-type (CTY003)"));
+        nodes.put( 11,  new Node( 11,   9, element_011(), "Exotic Caribbean Hardwood Plantation Anthro-type (CTY004)"));
+        nodes.put( 12,  new Node( 12,   5, element_012(), "Miscellaneous Caribbean Plantation Anthro-type (CTY019)"));
+        nodes.put( 13,  new Node( 13,   3, element_013(), "Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)"));
+        nodes.put( 14,  new Node( 14,  13, element_014(), "Eastern North American Temperate Forest Plantation Anthro-group (CSG005)"));
+        nodes.put( 15,  new Node( 15,  14, element_015(), "Eastern North American Conifer Plantations"));
+        nodes.put( 16,  new Node( 16,  15, element_016(), "Native Eastern North American Conifer Plantations"));
+        nodes.put( 17,  new Node( 17,  16, element_017(), "Native Southern Pine Plantation Anthro-type (CTY012)"));
+        nodes.put( 18,  new Node( 18,  17, element_018(), "Shortleaf Pine Forest Plantation (CST007169)"));
+        nodes.put( 19,  new Node( 19,  17, element_019(), "Longleaf Pine Forest Plantation (CST007176)"));
+        nodes.put( 20,  new Node( 20,  17, element_020(), "Slash Pine Forest Plantation (CST007170)"));
+        nodes.put( 21,  new Node( 21,  17, element_021(), "Loblolly Pine Forest Plantation (CST007179)"));
+        nodes.put( 22,  new Node( 22,  17, element_022(), "Sand Pine Forest Plantation (CST007168)"));
+        nodes.put( 23,  new Node( 23,  17, element_023(), "Native Miscellaneous Southern Pine Forest Plantation (CST007160)"));
+        nodes.put( 24,  new Node( 24,  16, element_024(), "Native Northern Conifer Plantations"));
+        nodes.put( 25,  new Node( 25,  24, element_025(), "Native Northern Pine Plantation Anthro-type (CTY009)"));
+        nodes.put( 26,  new Node( 26,  25, element_026(), "Red Pine Forest Plantation (CST007177)"));
+        nodes.put( 27,  new Node( 27,  25, element_027(), "White Pine Forest Plantation (CST007178)"));
+        nodes.put( 28,  new Node( 28,  25, element_028(), "Jack Pine Forest Plantation (CST007161)"));
+        nodes.put( 29,  new Node( 29,  25, element_029(), "Native Miscellaneous Northern Pine Forest Plantation"));
+        nodes.put( 30,  new Node( 30,  24, element_030(), "Native Northern Spruce - Fir Plantation Anthro-type (CTY010)"));
+        nodes.put( 31,  new Node( 31,  30, element_031(), "White Spruce Forest Plantation (CST007164)"));
+        nodes.put( 32,  new Node( 32,  30, element_032(), "Balsam Fir Forest Plantation (CST007182)"));
+        nodes.put( 33,  new Node( 33,  30, element_033(), "Red Spruce Forest Plantation (CST004758)"));
+        nodes.put( 34,  new Node( 34,  30, element_034(), "Native Miscellaneous Northern Conifer Forest Plantation (CST007163)"));
+        nodes.put( 35,  new Node( 35,  15, element_035(), "Exotic Eastern North American Conifer Plantations"));
+        nodes.put( 36,  new Node( 36,  35, element_036(), "Exotic Northern Conifer Plantation Anthro-type (CTY014)"));
+        nodes.put( 37,  new Node( 37,  36, element_037(), "Scotch Pine Exotic Forest Plantation (CST006313)"));
+        nodes.put( 38,  new Node( 38,  36, element_038(), "Norway Spruce Forest Plantation (CST007167)"));
+        nodes.put( 39,  new Node( 39,  36, element_039(), "Larch Forest Plantation (CST006408)"));
+        nodes.put( 40,  new Node( 40,  36, element_040(), "Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)"));
+        nodes.put( 41,  new Node( 41,  35, element_041(), "Exotic Southern Conifer Plantation Anthro-type (CTY015)"));
+        nodes.put( 42,  new Node( 42,  41, element_042(), "Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)"));
+        nodes.put( 43,  new Node( 43,  14, element_043(), "Eastern North American Hardwood Plantations"));
+        nodes.put( 44,  new Node( 44,  43, element_044(), "Native Eastern North American Hardwood Plantations"));
+        nodes.put( 45,  new Node( 45,  44, element_045(), "Native Northern Hardwood Forest Plantation Anthro-type (CTY016)"));
+        nodes.put( 46,  new Node( 46,  45, element_046(), "Black Walnut Forest Plantation (CST007188)"));
+        nodes.put( 47,  new Node( 47,  45, element_047(), "Aspen Forest Plantation (CST007189)"));
+        nodes.put( 48,  new Node( 48,  45, element_048(), "Black Locust Forest Plantation (CST007190)"));
+        nodes.put( 49,  new Node( 49,  45, element_049(), "Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)"));
+        nodes.put( 50,  new Node( 50,  44, element_050(), "Native Southern Hardwood Forest Plantation Anthro-type (CTY017)"));
+        nodes.put( 51,  new Node( 51,  50, element_051(), "Tuliptree Forest Plantation (CST007197)"));
+        nodes.put( 52,  new Node( 52,  50, element_052(), "Sweetgum Forest Plantation Subtype (CST007450)"));
+        nodes.put( 53,  new Node( 53,  50, element_053(), "Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)"));
+        nodes.put( 54,  new Node( 54,  43, element_054(), "Exotic Eastern North American Hardwood Plantations"));
+        nodes.put( 55,  new Node( 55,  54, element_055(), "Exotic Northern Hardwood Plantation Anthro-type (CTY018)"));
+        nodes.put( 56,  new Node( 56,  54, element_056(), "Exotic Southern Hardwood Plantation Anthro-type (CTY019a)"));
+        nodes.put( 57,  new Node( 57,  13, element_057(), "North American Boreal Forest Plantations Cultural Subgroup"));
+        nodes.put( 58,  new Node( 58,   0, element_058(), "Natural and Ruderal Forests"));
+        nodes.put( 59,  new Node( 59,  58, element_059(), "Wetland Forest & Woodlands"));
+        nodes.put( 60,  new Node( 60,  59, element_060(), "Mangrove Ecobiome (F146)"));
+        nodes.put( 61,  new Node( 61,  60, element_061(), "Tropical Florida Natural Mangrove Forests"));
+        nodes.put( 62,  new Node( 62,  61, element_062(), "Western Atlantic & Caribbean Mangrove (M005)"));
+        nodes.put( 63,  new Node( 63,  60, element_063(), "Tropical Florida Ruderal Mangrove Forests"));
+        nodes.put( 64,  new Node( 64,  59, element_064(), "Tropical Flooded Forest & Peat Forest (F135)"));
+        nodes.put( 65,  new Node( 65,  64, element_065(), "Caribbean Natural Wetland Forests"));
+        nodes.put( 66,  new Node( 66,  65, element_066(), "Caribbean Swamp Forest (M617C)"));
+        nodes.put( 67,  new Node( 67,  64, element_067(), "Caribbean Ruderal Wetland Forests"));
+        nodes.put( 68,  new Node( 68,  59, element_068(), "Temperate & Boreal Forested Wetland (F136)"));
+        nodes.put( 69,  new Node( 69,  68, element_069(), "Southeastern North American Flooded & Swamp Forest Division (D062)"));
+        nodes.put( 70,  new Node( 70,  69, element_070(), "Eastern Warm Temperate Natural Wetland Forests"));
+        nodes.put( 71,  new Node( 71,  70, element_071(), "Southern Great Plains Floodplain Forest & Woodland (M154)"));
+        nodes.put( 72,  new Node( 72,  70, element_072(), "Pond-cypress Basin Swamp (M161)"));
+        nodes.put( 73,  new Node( 73,  70, element_073(), "Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)"));
+        nodes.put( 74,  new Node( 74,  70, element_074(), "Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)"));
+        nodes.put( 75,  new Node( 75,  70, element_075(), "Low Confidence Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032LC)"));
+        nodes.put( 76,  new Node( 76,  70, element_076(), "Low Confidence Pond-Cypress Basin Swamp (M161LC)"));
+        nodes.put( 77,  new Node( 77,  70, element_077(), "Low Confidence Longleaf Pine Woodland (M007LC2)"));
+        nodes.put( 78,  new Node( 78,  70, element_078(), "Low Confidence Southern Coastal Plain Floodplain Forest (M031LC) / Southern Coastal Plain Basin Swamp & Flatwoods (M033LC)"));
+        nodes.put( 79,  new Node( 79,  69, element_079(), "Eastern Warm Temperate Ruderal Wetland Forests"));
+        nodes.put( 80,  new Node( 80,  79, element_080(), "Southeastern North American Ruderal Flooded & Swamp Forest (M310)"));
+        nodes.put( 81,  new Node( 81,  68, element_081(), "North American Boreal Flooded Forest & Swamp Division (D016)"));
+        nodes.put( 82,  new Node( 82,  81, element_082(), "Eastern Boreal Natural Wetland Forests"));
+        nodes.put( 83,  new Node( 83,  82, element_083(), "North American Boreal Conifer Poor Swamp (M299)"));
+        nodes.put( 84,  new Node( 84,  82, element_084(), "North American Boreal Flooded Forest & Rich Swamp (M300)"));
+        nodes.put( 85,  new Node( 85,  81, element_085(), "Eastern Boreal Ruderal Wetland Forests"));
+        nodes.put( 86,  new Node( 86,  68, element_086(), "Eastern North American Flooded Forest & Swamp Division (D011)"));
         nodes.put( 87,  new Node( 87,  86, element_087(), "Eastern Cool Temperate Natural Wetland Forests"));
         nodes.put( 88,  new Node( 88,  87, element_088(), "Laurentian-Acadian Flooded Forest & Swamp (M504)"));
         nodes.put( 89,  new Node( 89,  87, element_089(), "Central Hardwood Floodplain Forest (M029)"));
         nodes.put( 90,  new Node( 90,  87, element_090(), "Central Hardwood Swamp (M503)"));
-        nodes.put( 91,  new Node( 91,  87, element_091(), "Laurentian-Acadian Flooded Forest & Swamp LC (M504)"));
-        nodes.put( 92,  new Node( 92,  87, element_092(), "Central Hardwood Floodplain Forest LC (M029)"));
-        nodes.put( 93,  new Node( 93,  87, element_093(), "Central Hardwood Swamp LC (M503)"));
+        nodes.put( 91,  new Node( 91,  87, element_091(), "Low Confidence Laurentian-Acadian Flooded Forest & Swamp (M504LC)"));
+        nodes.put( 92,  new Node( 92,  87, element_092(), "Low Confidence Central Hardwood Floodplain Forest (M029LC)"));
+        nodes.put( 93,  new Node( 93,  87, element_093(), "Low Confidence Central Hardwood Swamp (M503LC)"));
         nodes.put( 94,  new Node( 94,  86, element_094(), "Eastern Cool Temperate Ruderal Wetland Forests"));
         nodes.put( 95,  new Node( 95,  94, element_095(), "Eastern North American Ruderal Flooded Forest & Swamp (M302)"));
-        nodes.put( 96,  new Node( 96,  56, element_096(), "Upland Forest & Woodlands"));
-        nodes.put( 97,  new Node( 97,  96, element_097(), "Tropical Forest (TT1)"));
-        nodes.put( 98,  new Node( 98,  97, element_098(), "Tropical Dry Forest (TT1.b)"));
-        nodes.put( 99,  new Node( 99,  98, element_099(), "Tropical Florida Forest"));
-        nodes.put(100,  new Node(100,  99, element_100(), "Tropical Florida Natural Forest"));
-        nodes.put(101,  new Node(101, 100, element_101(), "Caribbean-Mesoamerican Dry Pine Forest (M296)"));
+        nodes.put( 96,  new Node( 96,  58, element_096(), "Upland Forest & Woodlands"));
+        nodes.put( 97,  new Node( 97,  96, element_097(), "Tropical Forest (B01)"));
+        nodes.put( 98,  new Node( 98,  97, element_098(), "Tropical Seasonally Dry Forest & Thicket (F104)"));
+        nodes.put( 99,  new Node( 99,  98, element_099(), "Tropical Florida Forests"));
+        nodes.put(100,  new Node(100,  99, element_100(), "Tropical Florida Natural Forests"));
+        nodes.put(101,  new Node(101, 100, element_101(), "Caribbean-Mesoamerican Pine Dry Forest (M296)"));
         nodes.put(102,  new Node(102, 100, element_102(), "Caribbean Swamp Forest (M617)"));
         nodes.put(103,  new Node(103, 100, element_103(), "Caribbean Coastal Lowland Dry Forest (M134)"));
-        nodes.put(104,  new Node(104, 100, element_104(), "Caribbean Coastal Lowland Dry Forest LC (M134)"));
-        nodes.put(105,  new Node(105,  99, element_105(), "Tropical Florida Ruderal Forest"));
+        nodes.put(104,  new Node(104, 100, element_104(), "Low Confidence Caribbean Coastal Lowland Dry Forest (M134LC)"));
+        nodes.put(105,  new Node(105,  99, element_105(), "Tropical Florida Ruderal Forests"));
         nodes.put(106,  new Node(106, 105, element_106(), "Caribbean Ruderal Dry Forest (M514)"));
-        nodes.put(107,  new Node(107,  98, element_107(), "Caribbean Forest"));
-        nodes.put(108,  new Node(108, 107, element_108(), "Caribbean Natural Forest"));
+        nodes.put(107,  new Node(107,  98, element_107(), "Caribbean Forests"));
+        nodes.put(108,  new Node(108, 107, element_108(), "Caribbean Natural Forests"));
         nodes.put(109,  new Node(109, 108, element_109(), "Caribbean & Central American Dry Forests"));
-        nodes.put(110,  new Node(110, 109, element_110(), "Caribbean-Mesoamerican Pine Forest via Caribbean (M296)"));
-        nodes.put(111,  new Node(111, 109, element_111(), "Caribbean-Mesoamerican Pine Forest LC (M296)"));
-        nodes.put(112,  new Node(112, 107, element_112(), "Caribbean Ruderal Forest"));
-        nodes.put(113,  new Node(113, 112, element_113(), "Caribbean Ruderal Dry ForestA (M514A)"));
-        nodes.put(114,  new Node(114,  96, element_114(), "Temperate & Boreal Forests"));
-        nodes.put(115,  new Node(115, 114, element_115(), "Temperate-Boreal Forest & Woodland (TT2)"));
+        nodes.put(110,  new Node(110, 109, element_110(), "Caribbean-Mesoamerican Pine Dry Forest (M296C)"));
+        nodes.put(111,  new Node(111, 109, element_111(), "Low Confidence Caribbean-Mesoamerican Pine Forest (M296LC)"));
+        nodes.put(112,  new Node(112, 107, element_112(), "Caribbean Ruderal Forests"));
+        nodes.put(113,  new Node(113, 112, element_113(), "Caribbean Ruderal Dry Forest (M514C)"));
+        nodes.put(114,  new Node(114,  96, element_114(), "Temperate-Boreal Forest & Woodland (B02)"));
+        nodes.put(115,  new Node(115, 114, element_115(), "Warm Temperate Evergreen Forest & Woodland (F109)"));
         nodes.put(116,  new Node(116, 115, element_116(), "Southeastern North American Forest & Woodland Division (D006)"));
         nodes.put(117,  new Node(117, 116, element_117(), "Southeastern Warm Temperate Ruderal Forests"));
         nodes.put(118,  new Node(118, 117, element_118(), "Southeastern North American Ruderal Forest (M305)"));
@@ -169,16 +169,16 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put(121,  new Node(121, 119, element_121(), "Southern Mesic Mixed Broadleaf Forest (M008)"));
         nodes.put(122,  new Node(122, 119, element_122(), "Longleaf Pine Woodland (M007)"));
         nodes.put(123,  new Node(123, 119, element_123(), "Southeastern Coastal Plain Evergreen Oak Forest (M885)"));
-        nodes.put(124,  new Node(124, 119, element_124(), "Southeastern Coastal Plain Evergreen Oak Forest LC (M885)"));
-        nodes.put(125,  new Node(125, 119, element_125(), "Longleaf Pine Woodland LC1 (M007)"));
+        nodes.put(124,  new Node(124, 119, element_124(), "Low Confidence Southeastern Coastal Plain Evergreen Oak Forest (M885LC)"));
+        nodes.put(125,  new Node(125, 119, element_125(), "Low Confidence Longleaf Pine Woodland (M007LC)"));
         nodes.put(126,  new Node(126, 119, element_126(), "Florida Xeric Scrub & Prairie (M162)"));
-        nodes.put(127,  new Node(127, 119, element_127(), "Southern Mesic Mixed Broadleaf Forest LC (M008)"));
-        nodes.put(128,  new Node(128, 115, element_128(), "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)"));
+        nodes.put(127,  new Node(127, 119, element_127(), "Low Confidence Southern Mesic Mixed Broadleaf Forest (M008LC)"));
+        nodes.put(128,  new Node(128, 114, element_128(), "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (F107)"));
         nodes.put(129,  new Node(129, 128, element_129(), "North American Great Plains Forest & Woodland (D332)"));
         nodes.put(130,  new Node(130, 129, element_130(), "Great Plains Natural Woodlands"));
         nodes.put(131,  new Node(131, 130, element_131(), "Northern Great Plains Forest & Woodland (M545)"));
         nodes.put(132,  new Node(132, 130, element_132(), "Southern Great Plains Forest & Woodland (M544)"));
-        nodes.put(133,  new Node(133, 129, element_133(), "Great Plains Ruderal Woodland"));
+        nodes.put(133,  new Node(133, 129, element_133(), "Great Plains Ruderal Woodlands"));
         nodes.put(134,  new Node(134, 133, element_134(), "Great Plains Ruderal Woodland (M524)"));
         nodes.put(135,  new Node(135, 128, element_135(), "Eastern North American Forest & Woodland (D008)"));
         nodes.put(136,  new Node(136, 135, element_136(), "Eastern North American Natural Forest & Woodlands"));
@@ -186,20 +186,20 @@ public class ClassificationKeyEast extends ClassificationKey {
         nodes.put(138,  new Node(138, 137, element_138(), "Acadian-Appalachian Forest (M103)"));
         nodes.put(139,  new Node(139, 137, element_139(), "Laurentian Dry Forest & Woodland (M159)"));
         nodes.put(140,  new Node(140, 137, element_140(), "Laurentian Mesic Mixed Forest (M102)"));
-        nodes.put(141,  new Node(141, 137, element_141(), "Laurentian Dry Forest & Woodland LC (M159)"));
+        nodes.put(141,  new Node(141, 137, element_141(), "Low Confidence Laurentian Dry Forest & Woodland (M159LC)"));
         nodes.put(142,  new Node(142, 136, element_142(), "Coastal and Midwest Forest Macrogroups, Appalachian and Central Interior Forest Macrogroups"));
         nodes.put(143,  new Node(143, 142, element_143(), "North Atlantic Coastal Forest & Woodland (M525)"));
         nodes.put(144,  new Node(144, 142, element_144(), "Central Midwest Oak Forest, Woodland & Savanna (M012)"));
         nodes.put(145,  new Node(145, 142, element_145(), "Central Midwest Mesic Forest (M882)"));
-        nodes.put(146,  new Node(146, 142, element_146(), "Central Midwest Oak Forest, Woodland & Savanna LC (M012)"));
-        nodes.put(147,  new Node(147, 142, element_147(), "Central Midwest Mesic Forest LC (M882)"));
+        nodes.put(146,  new Node(146, 142, element_146(), "Low Confidence Central Midwest Oak Forest, Woodland & Savanna (M012LC)"));
+        nodes.put(147,  new Node(147, 142, element_147(), "Low Confidence Central Midwest Mesic Forest (M882LC)"));
         nodes.put(148,  new Node(148, 142, element_148(), "Southern-Central Appalachian Mesic Forest (M883)"));
         nodes.put(149,  new Node(149, 142, element_149(), "Central Interior Oak - Pine Forest & Woodland (M543)"));
         nodes.put(150,  new Node(150, 142, element_150(), "Southern-Central Appalachian Dry Forest & Woodland (M502)"));
-        nodes.put(151,  new Node(151, 142, element_151(), "Laurentian Mesic Forest LC (M102)"));
-        nodes.put(152,  new Node(152, 142, element_152(), "Central Interior Oak - Pine Forest & Woodland LC  (M543)"));
-        nodes.put(153,  new Node(153, 142, element_153(), "Southern-Central Appalachian Dry Forest & Woodland LC (M502)"));
-        nodes.put(154,  new Node(154, 142, element_154(), "Southern-Central Appalachian Mesic Forest LC (M883)"));
+        nodes.put(151,  new Node(151, 142, element_151(), "Low Confidence Laurentian Mesic Forest (M102LC)"));
+        nodes.put(152,  new Node(152, 142, element_152(), "Low Confidence Central Interior Oak - Pine Forest & Woodland (M543LC)"));
+        nodes.put(153,  new Node(153, 142, element_153(), "Low Confidence Southern-Central Appalachian Dry Forest & Woodland (M502LC)"));
+        nodes.put(154,  new Node(154, 142, element_154(), "Low Confidence Southern-Central Appalachian Mesic Forest (M883LC)"));
         nodes.put(155,  new Node(155, 135, element_155(), "Eastern North American Ruderal Forest & Woodlands"));
         nodes.put(156,  new Node(156, 155, element_156(), "Eastern North American Ruderal Forest (M013)"));
 
@@ -224,6 +224,40 @@ public class ClassificationKeyEast extends ClassificationKey {
     }
 
     public Object[] element_001() {
+
+        // Non-Forests
+        // 
+
+        String level = "informal";
+        String code = "";
+
+        // No to low trees
+
+        INodeMatch match = plot -> (
+            plot.get_balive() < 1
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_002() {
+
+        // Temperate-Boreal Grassland & Shrubland (B04)
+        // B04
+
+        String level = "biome";
+        String code = "B04";
+
+        // Grassland and shrubland
+
+        INodeMatch match = plot -> (
+            true
+        );
+
+        return new Object[] { level, code, match };
+    }
+
+    public Object[] element_003() {
 
         // Forest Plantation Anthro-Division (CSF05)
         // CSF05
@@ -251,7 +285,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_002() {
+    public Object[] element_004() {
 
         // Tropical Forest Plantation Anthro-macrogroup (CGR008)
         // CGR008
@@ -288,7 +322,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_003() {
+    public Object[] element_005() {
 
         // Caribbean Forest Plantation Anthro-group (CSG008)
         // CSG008
@@ -326,7 +360,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_004() {
+    public Object[] element_006() {
 
         // Caribbean Conifer Plantations
         // 
@@ -351,7 +385,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_005() {
+    public Object[] element_007() {
 
         // Native Caribbean Conifer Plantation Anthro-type (CTY001)
         // CTY001
@@ -392,7 +426,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_006() {
+    public Object[] element_008() {
 
         // Exotic Caribbean Forest Plantation Anthro-type (CTY002)
         // CTY002
@@ -409,7 +443,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_007() {
+    public Object[] element_009() {
 
         // Caribbean Hardwood Plantations
         // 
@@ -434,7 +468,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_008() {
+    public Object[] element_010() {
 
         // Native Caribbean Hardwood Plantation Anthro-type (CTY003)
         // CTY003
@@ -475,7 +509,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_009() {
+    public Object[] element_011() {
 
         // Exotic Caribbean Hardwood Plantation Anthro-type (CTY004)
         // CTY004
@@ -492,7 +526,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_010() {
+    public Object[] element_012() {
 
         // Miscellaneous Caribbean Plantation Anthro-type (CTY019)
         // CTY019
@@ -509,7 +543,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_011() {
+    public Object[] element_013() {
 
         // Temperate & Boreal Forest Plantation Anthro-macrogroup (CGR007)
         // CGR007
@@ -526,7 +560,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_012() {
+    public Object[] element_014() {
 
         // Eastern North American Temperate Forest Plantation Anthro-group (CSG005)
         // CSG005
@@ -560,7 +594,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_013() {
+    public Object[] element_015() {
 
         // Eastern North American Conifer Plantations
         // 
@@ -585,7 +619,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_014() {
+    public Object[] element_016() {
 
         // Native Eastern North American Conifer Plantations
         // 
@@ -627,7 +661,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_015() {
+    public Object[] element_017() {
 
         // Native Southern Pine Plantation Anthro-type (CTY012)
         // CTY012
@@ -683,7 +717,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_016() {
+    public Object[] element_018() {
 
         // Shortleaf Pine Forest Plantation (CST007169)
         // CST007169
@@ -745,7 +779,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_017() {
+    public Object[] element_019() {
 
         // Longleaf Pine Forest Plantation (CST007176)
         // CST007176
@@ -807,7 +841,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_018() {
+    public Object[] element_020() {
 
         // Slash Pine Forest Plantation (CST007170)
         // CST007170
@@ -869,7 +903,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_019() {
+    public Object[] element_021() {
 
         // Loblolly Pine Forest Plantation (CST007179)
         // CST007179
@@ -931,7 +965,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_020() {
+    public Object[] element_022() {
 
         // Sand Pine Forest Plantation (CST007168)
         // CST007168
@@ -993,7 +1027,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_021() {
+    public Object[] element_023() {
 
         // Native Miscellaneous Southern Pine Forest Plantation (CST007160)
         // CST007160
@@ -1010,9 +1044,9 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_022() {
+    public Object[] element_024() {
 
-        // Native Northern Conifer Plantation
+        // Native Northern Conifer Plantations
         // 
 
         String level = "informal";
@@ -1074,7 +1108,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_023() {
+    public Object[] element_025() {
 
         // Native Northern Pine Plantation Anthro-type (CTY009)
         // CTY009
@@ -1171,7 +1205,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_024() {
+    public Object[] element_026() {
 
         // Red Pine Forest Plantation (CST007177)
         // CST007177
@@ -1215,7 +1249,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_025() {
+    public Object[] element_027() {
 
         // White Pine Forest Plantation (CST007178)
         // CST007178
@@ -1259,7 +1293,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_026() {
+    public Object[] element_028() {
 
         // Jack Pine Forest Plantation (CST007161)
         // CST007161
@@ -1303,7 +1337,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_027() {
+    public Object[] element_029() {
 
         // Native Miscellaneous Northern Pine Forest Plantation
         // 
@@ -1320,7 +1354,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_028() {
+    public Object[] element_030() {
 
         // Native Northern Spruce - Fir Plantation Anthro-type (CTY010)
         // CTY010
@@ -1337,7 +1371,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_029() {
+    public Object[] element_031() {
 
         // White Spruce Forest Plantation (CST007164)
         // CST007164
@@ -1400,7 +1434,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_030() {
+    public Object[] element_032() {
 
         // Balsam Fir Forest Plantation (CST007182)
         // CST007182
@@ -1463,7 +1497,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_031() {
+    public Object[] element_033() {
 
         // Red Spruce Forest Plantation (CST004758)
         // CST004758
@@ -1525,7 +1559,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_032() {
+    public Object[] element_034() {
 
         // Native Miscellaneous Northern Conifer Forest Plantation (CST007163)
         // CST007163
@@ -1542,7 +1576,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_033() {
+    public Object[] element_035() {
 
         // Exotic Eastern North American Conifer Plantations
         // 
@@ -1560,7 +1594,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_034() {
+    public Object[] element_036() {
 
         // Exotic Northern Conifer Plantation Anthro-type (CTY014)
         // CTY014
@@ -1607,7 +1641,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_035() {
+    public Object[] element_037() {
 
         // Scotch Pine Exotic Forest Plantation (CST006313)
         // CST006313
@@ -1648,7 +1682,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_036() {
+    public Object[] element_038() {
 
         // Norway Spruce Forest Plantation (CST007167)
         // CST007167
@@ -1689,7 +1723,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_037() {
+    public Object[] element_039() {
 
         // Larch Forest Plantation (CST006408)
         // CST006408
@@ -1730,7 +1764,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_038() {
+    public Object[] element_040() {
 
         // Exotic Miscellaneous Northern Conifer Forest Plantation (CST007183)
         // CST007183
@@ -1747,7 +1781,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_039() {
+    public Object[] element_041() {
 
         // Exotic Southern Conifer Plantation Anthro-type (CTY015)
         // CTY015
@@ -1775,7 +1809,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_040() {
+    public Object[] element_042() {
 
         // Exotic Miscellaneous Southern Conifer Forest Plantation (CST007187)
         // CST007187
@@ -1792,9 +1826,9 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_041() {
+    public Object[] element_043() {
 
-        // Eastern North American Hardwood Plantation
+        // Eastern North American Hardwood Plantations
         // 
 
         String level = "informal";
@@ -1809,7 +1843,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_042() {
+    public Object[] element_044() {
 
         // Native Eastern North American Hardwood Plantations
         // 
@@ -1851,7 +1885,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_043() {
+    public Object[] element_045() {
 
         // Native Northern Hardwood Forest Plantation Anthro-type (CTY016)
         // CTY016
@@ -1876,7 +1910,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_044() {
+    public Object[] element_046() {
 
         // Black Walnut Forest Plantation (CST007188)
         // CST007188
@@ -1930,7 +1964,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_045() {
+    public Object[] element_047() {
 
         // Aspen Forest Plantation (CST007189)
         // CST007189
@@ -1978,7 +2012,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_046() {
+    public Object[] element_048() {
 
         // Black Locust Forest Plantation (CST007190)
         // CST007190
@@ -2032,7 +2066,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_047() {
+    public Object[] element_049() {
 
         // Native Miscellaneous Northern Hardwood Forest Plantation (CST007193)
         // CST007193
@@ -2049,7 +2083,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_048() {
+    public Object[] element_050() {
 
         // Native Southern Hardwood Forest Plantation Anthro-type (CTY017)
         // CTY017
@@ -2074,7 +2108,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_049() {
+    public Object[] element_051() {
 
         // Tuliptree Forest Plantation (CST007197)
         // CST007197
@@ -2109,7 +2143,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_050() {
+    public Object[] element_052() {
 
         // Sweetgum Forest Plantation Subtype (CST007450)
         // CST007450
@@ -2144,7 +2178,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_051() {
+    public Object[] element_053() {
 
         // Native Miscellaneous Southern Hardwood Forest Plantation (CST007155)
         // CST007155
@@ -2161,7 +2195,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_052() {
+    public Object[] element_054() {
 
         // Exotic Eastern North American Hardwood Plantations
         // 
@@ -2179,7 +2213,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_053() {
+    public Object[] element_055() {
 
         // Exotic Northern Hardwood Plantation Anthro-type (CTY018)
         // CTY018
@@ -2207,7 +2241,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_054() {
+    public Object[] element_056() {
 
         // Exotic Southern Hardwood Plantation Anthro-type (CTY019a)
         // CTY019a
@@ -2235,9 +2269,9 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_055() {
+    public Object[] element_057() {
 
-        // North American Boreal Forest Plantation Cultural Subgroup
+        // North American Boreal Forest Plantations Cultural Subgroup
         // 
 
         String level = "informal";
@@ -2260,7 +2294,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_056() {
+    public Object[] element_058() {
 
         // Natural and Ruderal Forests
         // 
@@ -2277,7 +2311,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_057() {
+    public Object[] element_059() {
 
         // Wetland Forest & Woodlands
         // 
@@ -2452,13 +2486,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_058() {
+    public Object[] element_060() {
 
-        // Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).
-        // 
+        // Mangrove Ecobiome (F146)
+        // F146
 
-        String level = "informal";
-        String code = "";
+        String level = "ecobiome";
+        String code = "F146";
 
         // A.  Plots found in coastal brackish tidal conditions, where 
         // i.  Plots found in Ecosection 232 or 411 (Tropical Florida and Gulf or Atlantic coast) AND 
@@ -2504,7 +2538,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_059() {
+    public Object[] element_061() {
 
         // Tropical Florida Natural Mangrove Forests
         // 
@@ -2533,7 +2567,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_060() {
+    public Object[] element_062() {
 
         // Western Atlantic & Caribbean Mangrove (M005)
         // M005
@@ -2571,7 +2605,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_061() {
+    public Object[] element_063() {
 
         // Tropical Florida Ruderal Mangrove Forests
         // 
@@ -2600,13 +2634,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_062() {
+    public Object[] element_064() {
 
-        // Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a)
-        // 
+        // Tropical Flooded Forest & Peat Forest (F135)
+        // F135
 
-        String level = "informal";
-        String code = "";
+        String level = "ecobiome";
+        String code = "F135";
 
         // Tree composition not as above (that is, freshwater forested wetlands)…………….B (Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a) [note that we do not have good information on Puerto Rico freshwater forested wetlands, and so the key may fail there]
 
@@ -2625,9 +2659,9 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_063() {
+    public Object[] element_065() {
 
-        // Caribbean Natural Wetland Forest
+        // Caribbean Natural Wetland Forests
         // 
 
         String level = "informal";
@@ -2658,17 +2692,18 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_064() {
+    public Object[] element_066() {
 
-        // Caribbean Swamp (M617)
-        // M617
+        // Caribbean Swamp Forest (M617C)
+        // M617C
 
         String level = "macrogroup";
-        String code = "M617";
+        String code = "M617C";
 
         // Only one Macrogroup reported for the Caribbean U.S., its territories and commonwealth.
         // See also M618 (Caribbean Floodplain Forest) reported elsewhere in the Caribbean, and
         // likely present in Puerto Rico
+        // Caribbean
 
         INodeMatch match = plot -> (
             true
@@ -2677,9 +2712,9 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_065() {
+    public Object[] element_067() {
 
-        // Caribbean Ruderal Wetland Forest
+        // Caribbean Ruderal Wetland Forests
         // 
 
         String level = "informal";
@@ -2695,7 +2730,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_066() {
+    public Object[] element_068() {
 
         // Temperate & Boreal Forested Wetland (F136)
         // F136
@@ -2712,7 +2747,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_067() {
+    public Object[] element_069() {
 
         // Southeastern North American Flooded & Swamp Forest Division (D062)
         // D062
@@ -2895,9 +2930,9 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_068() {
+    public Object[] element_070() {
 
-        // Eastern Warm Temperate Natural Wetland Forest
+        // Eastern Warm Temperate Natural Wetland Forests
         // 
 
         String level = "informal";
@@ -2928,7 +2963,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_069() {
+    public Object[] element_071() {
 
         // Southern Great Plains Floodplain Forest & Woodland (M154)
         // M154
@@ -3078,7 +3113,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_070() {
+    public Object[] element_072() {
 
         // Pond-cypress Basin Swamp (M161)
         // M161
@@ -3161,7 +3196,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_071() {
+    public Object[] element_073() {
 
         // Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032)
         // M032
@@ -3237,7 +3272,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_072() {
+    public Object[] element_074() {
 
         // Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods (M033)
         // M031
@@ -3471,13 +3506,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_073() {
+    public Object[] element_075() {
 
-        // Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest LC (M032)
-        // M032
+        // Low Confidence Southern Coastal Plain Evergreen Hardwood - Conifer Swamp Forest (M032LC)
+        // M032LC
 
         String level = "macrogroup";
-        String code = "M032";
+        String code = "M032LC";
 
         // Plots found in ecosection 231A, B, D, E, 232A-D, F, G AND
         // % RIV of STRONG SWAMP DIAGNOSTICS > either STRONG POND CYPRESS DIAGNOSTICS
@@ -3689,13 +3724,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_074() {
+    public Object[] element_076() {
 
-        // Pond-Cypress Basin Swamp LC (M161)
-        // M161
+        // Low Confidence Pond-Cypress Basin Swamp (M161LC)
+        // M161LC
 
         String level = "macrogroup";
-        String code = "M161";
+        String code = "M161LC";
 
         // % RIV OF STRONG POND CYPRESS DIAGNOSTICS > STRONG LONGLEAF DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS
 
@@ -3895,13 +3930,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_075() {
+    public Object[] element_077() {
 
-        // Longleaf Pine Woodland LC2 (M007)
-        // M007
+        // Low Confidence Longleaf Pine Woodland (M007LC2)
+        // M007LC2
 
         String level = "macrogroup";
-        String code = "M007";
+        String code = "M007LC2";
 
         // % RIV OF STRONG LONGLEAF DIAGNOSTICS > either STRONG POND CYPRESS DIAGNOSTICS or STRONG FLOODPLAIN DIAGNOSTICS
 
@@ -4101,13 +4136,13 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_076() {
+    public Object[] element_078() {
 
-        // Southern Coastal Plain Floodplain Forest (M031) / Southern Coastal Plain Basin Swamp & Flatwoods LC (M033)
-        // M031
+        // Low Confidence Southern Coastal Plain Floodplain Forest (M031LC) / Southern Coastal Plain Basin Swamp & Flatwoods (M033LC)
+        // M031LC
 
         String level = "macrogroup";
-        String code = "M031";
+        String code = "M031LC";
 
         // other
 
@@ -4118,9 +4153,9 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_077() {
+    public Object[] element_079() {
 
-        // Eastern Warm Temperate Ruderal Wetland Forest
+        // Eastern Warm Temperate Ruderal Wetland Forests
         // 
 
         String level = "informal";
@@ -4139,7 +4174,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_078() {
+    public Object[] element_080() {
 
         // Southeastern North American Ruderal Flooded & Swamp Forest (M310)
         // M310
@@ -4156,7 +4191,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_079() {
+    public Object[] element_081() {
 
         // North American Boreal Flooded Forest & Swamp Division (D016)
         // D016
@@ -4227,7 +4262,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_080() {
+    public Object[] element_082() {
 
         // Eastern Boreal Natural Wetland Forests
         // 
@@ -4256,7 +4291,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_081() {
+    public Object[] element_083() {
 
         // North American Boreal Conifer Poor Swamp (M299)
         // M299
@@ -4312,7 +4347,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_082() {
+    public Object[] element_084() {
 
         // North American Boreal Flooded Forest & Rich Swamp (M300)
         // M300
@@ -4329,7 +4364,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_083() {
+    public Object[] element_085() {
 
         // Eastern Boreal Ruderal Wetland Forests
         // 
@@ -4358,7 +4393,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         return new Object[] { level, code, match };
     }
 
-    public Object[] element_084() {
+    public Object[] element_086() {
 
         // Eastern North American Flooded Forest & Swamp Division (D011)
         // D011
@@ -4371,40 +4406,6 @@ public class ClassificationKeyEast extends ClassificationKey {
         // United States and Canada, and EcoDomain Polar (100 or M100) east of Alberta
         // and the Yukon [may not need worry about east-west boreal line since tree
         // species for Macrogroups are the same across the line.
-
-        INodeMatch match = plot -> (
-            true
-        );
-
-        return new Object[] { level, code, match };
-    }
-
-    public Object[] element_085() {
-
-        // Eastern Cool Temperate & North American Boreal Wetland Forest
-        // 
-
-        String level = "informal";
-        String code = "";
-
-        // other
-
-        INodeMatch match = plot -> (
-            true
-        );
-
-        return new Object[] { level, code, match };
-    }
-
-    public Object[] element_086() {
-
-        // Eastern North American - Great Plains Flooded & Swamp Forest
-        // 
-
-        String level = "informal";
-        String code = "";
-
-        // other
 
         INodeMatch match = plot -> (
             true
@@ -5008,11 +5009,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_091() {
 
-        // Laurentian-Acadian Flooded Forest & Swamp LC (M504)
-        // M504
+        // Low Confidence Laurentian-Acadian Flooded Forest & Swamp (M504LC)
+        // M504LC
 
         String level = "macrogroup";
-        String code = "M504";
+        String code = "M504LC";
 
         // ECOREGION is 212, M211, 211, 222I, 221A-221D
 
@@ -5033,11 +5034,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_092() {
 
-        // Central Hardwood Floodplain Forest LC (M029)
-        // M029
+        // Low Confidence Central Hardwood Floodplain Forest (M029LC)
+        // M029LC
 
         String level = "macrogroup";
-        String code = "M029";
+        String code = "M029LC";
 
         // i. % RIV STRONG CENTRAL FLOODPLAIN DIAGNOSTICS > STRONG CENTRAL SWAMP DIAGNOSTICS
         // OR
@@ -5181,11 +5182,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_093() {
 
-        // Central Hardwood Swamp LC (M503)
-        // M503
+        // Low Confidence Central Hardwood Swamp (M503LC)
+        // M503LC
 
         String level = "macrogroup";
-        String code = "M503";
+        String code = "M503LC";
 
         // other
 
@@ -5253,11 +5254,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_097() {
 
-        // Tropical Forest (TT1)
-        // TT1
+        // Tropical Forest (B01)
+        // B01
 
         String level = "biome";
-        String code = "TT1";
+        String code = "B01";
 
         // Forests dominated by tropical hardwood, other palms and tropical conifer
         // tree species. Found in tropical regions of the United States - Puerto Rico,
@@ -5329,11 +5330,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_098() {
 
-        // Tropical Dry Forest (TT1.b)
-        // TT1b
+        // Tropical Seasonally Dry Forest & Thicket (F104)
+        // F104
 
-        String level = "subbiome";
-        String code = "TT1b";
+        String level = "ecobiome";
+        String code = "F104";
 
         // Tropical hardwood and tropical conifer forests found in Puerto Rico, U.S. Virgin Islands,
         // and in tropical Florida (EcoSection 411A)
@@ -5376,7 +5377,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_099() {
 
-        // Tropical Florida Forest
+        // Tropical Florida Forests
         // 
 
         String level = "informal";
@@ -5416,16 +5417,12 @@ public class ClassificationKeyEast extends ClassificationKey {
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern4 = Arrays.asList(
             new KeyValue("species", "Sabal palmetto")
         );
-        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
-            new KeyValue("species", "other palms")
-        );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
             STRONG_DIAGNOSTIC_SPECIES_pattern0,
             STRONG_DIAGNOSTIC_SPECIES_pattern1,
             STRONG_DIAGNOSTIC_SPECIES_pattern2,
             STRONG_DIAGNOSTIC_SPECIES_pattern3,
-            STRONG_DIAGNOSTIC_SPECIES_pattern4,
-            STRONG_DIAGNOSTIC_SPECIES_pattern5
+            STRONG_DIAGNOSTIC_SPECIES_pattern4
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -5477,7 +5474,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_100() {
 
-        // Tropical Florida Natural Forest
+        // Tropical Florida Natural Forests
         // 
 
         String level = "informal";
@@ -5510,7 +5507,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_101() {
 
-        // Caribbean-Mesoamerican Dry Pine Forest (M296)
+        // Caribbean-Mesoamerican Pine Dry Forest (M296)
         // M296
 
         String level = "macrogroup";
@@ -5615,9 +5612,6 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Conocarpus erectus")
         );
         List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern5 = Arrays.asList(
-            new KeyValue("species", "other palms")
-        );
-        List<KeyValue> STRONG_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
             new KeyValue("species", "Sabal palmetto")
         );
         List<List<KeyValue>> STRONG_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
@@ -5626,8 +5620,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             STRONG_DIAGNOSTIC_SPECIES_pattern2,
             STRONG_DIAGNOSTIC_SPECIES_pattern3,
             STRONG_DIAGNOSTIC_SPECIES_pattern4,
-            STRONG_DIAGNOSTIC_SPECIES_pattern5,
-            STRONG_DIAGNOSTIC_SPECIES_pattern6
+            STRONG_DIAGNOSTIC_SPECIES_pattern5
         );
         PatternList STRONG_DIAGNOSTIC_SPECIES = new PatternList("STRONG_DIAGNOSTIC_SPECIES", STRONG_DIAGNOSTIC_SPECIES_patterns);
 
@@ -5640,11 +5633,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_104() {
 
-        // Caribbean Coastal Lowland Dry Forest LC (M134)
-        // M134
+        // Low Confidence Caribbean Coastal Lowland Dry Forest (M134LC)
+        // M134LC
 
         String level = "macrogroup";
-        String code = "M134";
+        String code = "M134LC";
 
         // other
 
@@ -5657,7 +5650,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_105() {
 
-        // Tropical Florida Ruderal Forest
+        // Tropical Florida Ruderal Forests
         // 
 
         String level = "informal";
@@ -5695,7 +5688,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_107() {
 
-        // Caribbean Forest
+        // Caribbean Forests
         // 
 
         String level = "informal";
@@ -5724,7 +5717,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_108() {
 
-        // Caribbean Natural Forest
+        // Caribbean Natural Forests
         // 
 
         String level = "informal";
@@ -5802,15 +5795,12 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Metopium toxiferum")
         );
         List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern6 = Arrays.asList(
-            new KeyValue("species", "other palms")
-        );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
             new KeyValue("species", "Sabal palmetto")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern7 = Arrays.asList(
             new KeyValue("species", "Thrinax morrisii")
         );
-        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern9 = Arrays.asList(
+        List<KeyValue> MODERATE_DIAGNOSTIC_SPECIES_pattern8 = Arrays.asList(
             new KeyValue("species", "Sideroxylon salicifolium")
         );
         List<List<KeyValue>> MODERATE_DIAGNOSTIC_SPECIES_patterns = Arrays.asList(
@@ -5822,8 +5812,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             MODERATE_DIAGNOSTIC_SPECIES_pattern5,
             MODERATE_DIAGNOSTIC_SPECIES_pattern6,
             MODERATE_DIAGNOSTIC_SPECIES_pattern7,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern8,
-            MODERATE_DIAGNOSTIC_SPECIES_pattern9
+            MODERATE_DIAGNOSTIC_SPECIES_pattern8
         );
         PatternList MODERATE_DIAGNOSTIC_SPECIES = new PatternList("MODERATE_DIAGNOSTIC_SPECIES", MODERATE_DIAGNOSTIC_SPECIES_patterns);
 
@@ -5836,12 +5825,13 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_110() {
 
-        // Caribbean-Mesoamerican Pine Forest via Caribbean (M296)
-        // M296
+        // Caribbean-Mesoamerican Pine Dry Forest (M296C)
+        // M296C
 
         String level = "macrogroup";
-        String code = "M296";
+        String code = "M296C";
 
+        // Caribbean
         // i. Tree composition dominated by Pinus elliottii (var. densa) or Pinus caribaea,
         //     alone or in combination (>=50% RIV);
         // OR
@@ -5886,11 +5876,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_111() {
 
-        // Caribbean-Mesoamerican Pine Forest LC (M296)
-        // M296
+        // Low Confidence Caribbean-Mesoamerican Pine Forest (M296LC)
+        // M296LC
 
         String level = "macrogroup";
-        String code = "M296";
+        String code = "M296LC";
 
         // other
 
@@ -5903,7 +5893,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_112() {
 
-        // Caribbean Ruderal Forest
+        // Caribbean Ruderal Forests
         // 
 
         String level = "informal";
@@ -5924,13 +5914,14 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_113() {
 
-        // Caribbean Ruderal Dry ForestA (M514A)
-        // M514A
+        // Caribbean Ruderal Dry Forest (M514C)
+        // M514C
 
         String level = "macrogroup";
-        String code = "M514A";
+        String code = "M514C";
 
         // other
+        // M514 Caribbean
 
         INodeMatch match = plot -> (
             true
@@ -5941,11 +5932,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_114() {
 
-        // Temperate & Boreal Forests
-        // 
+        // Temperate-Boreal Forest & Woodland (B02)
+        // B02
 
-        String level = "informal";
-        String code = "";
+        String level = "biome";
+        String code = "B02";
 
         // other
 
@@ -5958,16 +5949,202 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_115() {
 
-        // Temperate-Boreal Forest & Woodland (TT2)
-        // TT2
+        // Warm Temperate Evergreen Forest & Woodland (F109)
+        // F109
 
-        String level = "biome";
-        String code = "TT2";
+        String level = "ecobiome";
+        String code = "F109";
 
-        // Woodland Subbiome (TT2.a), Cool Temperate Forest & Woodland Subbiome (TT2.b)) [note, Boreal Forest & Woodland Subbiome (TT2.c)  may occur in northern Minnesota or Michigan, but they are not reliably separated from subboreal counterparts, so this subbiome is not currently applied. Upland Subboreal equivalents, such as those dominated by Picea glauca or Picea mariana, are tracked in the Temperate Forest & Woodland subbiome under M159 (G999) and M102 (G048)]  D
+        // Tree composition matching one of the following options: 
+        // 
+        // i. Located in Ecoprovince 231A, 231B, 231E, 231F, 231H, 231I, 232, 234, 411A 
+        // 
+        // AND 
+        // 
+        // ii. Tree composition contains one or more of Aesculus pavia, Halesia diptera, Juniperus virginiana var. silicicola, Magnolia grandiflora, Pinus clausa, Pinus glabra, Pinus palustris, Pinus elliottii, Quercus incana, Quercus laevis, Quercus laurifolia, Quercus margarettiae, Quercus minima, Quercus sinuata var sinuata, Quercus virginiana, Sabal palmetto (>=5% RIV); [Additional tree species not tracked by FIA include Quercus fusiformis = Quercus virginiana var. fusiformis), Quercus geminata, Serenoa repens] 
+        // 
+        // OR 
+        // 
+        // Located in Ecosections 231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234, (but exclude DC, DE, MD, NJ, PA, VA  
+        // 
+        // .... Warm Temperate Evergreen Forest & Woodland Ecobiome (TT2.a1)… [eastern Warm Temperate Upland Forests] ......................................................................................................E 
+        // 
+        // E. Southeastern North American Forest & Woodland Division (D006) one  E1
+
+        List<KeyValue> ECOREGIONS_1_pattern0 = Arrays.asList(
+            new KeyValue("ecoregion", "231A")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern1 = Arrays.asList(
+            new KeyValue("ecoregion", "231B")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern2 = Arrays.asList(
+            new KeyValue("ecoregion", "231E")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern3 = Arrays.asList(
+            new KeyValue("ecoregion", "231F")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern4 = Arrays.asList(
+            new KeyValue("ecoregion", "231H")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern5 = Arrays.asList(
+            new KeyValue("ecoregion", "231I")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern6 = Arrays.asList(
+            new KeyValue("ecoregion", "232")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern7 = Arrays.asList(
+            new KeyValue("ecoregion", "234")
+        );
+        List<KeyValue> ECOREGIONS_1_pattern8 = Arrays.asList(
+            new KeyValue("ecoregion", "411A")
+        );
+        List<List<KeyValue>> ECOREGIONS_1_patterns = Arrays.asList(
+            ECOREGIONS_1_pattern0,
+            ECOREGIONS_1_pattern1,
+            ECOREGIONS_1_pattern2,
+            ECOREGIONS_1_pattern3,
+            ECOREGIONS_1_pattern4,
+            ECOREGIONS_1_pattern5,
+            ECOREGIONS_1_pattern6,
+            ECOREGIONS_1_pattern7,
+            ECOREGIONS_1_pattern8
+        );
+        PatternList ECOREGIONS_1 = new PatternList("ECOREGIONS_1", ECOREGIONS_1_patterns);
+
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern0 = Arrays.asList(
+            new KeyValue("species", "Aesculus pavia")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern1 = Arrays.asList(
+            new KeyValue("species", "Halesia diptera")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern2 = Arrays.asList(
+            new KeyValue("species", "Juniperus virginiana var. silicicola")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern3 = Arrays.asList(
+            new KeyValue("species", "Magnolia grandiflora")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern4 = Arrays.asList(
+            new KeyValue("species", "Pinus clausa")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern5 = Arrays.asList(
+            new KeyValue("species", "Pinus glabra")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern6 = Arrays.asList(
+            new KeyValue("species", "Pinus palustris")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern7 = Arrays.asList(
+            new KeyValue("species", "Pinus elliottii var. elliottii")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern8 = Arrays.asList(
+            new KeyValue("species", "Quercus incana")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern9 = Arrays.asList(
+            new KeyValue("species", "Quercus laevis")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern10 = Arrays.asList(
+            new KeyValue("species", "Quercus laurifolia")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern11 = Arrays.asList(
+            new KeyValue("species", "Quercus margaretta")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern12 = Arrays.asList(
+            new KeyValue("species", "Quercus minima")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern13 = Arrays.asList(
+            new KeyValue("species", "Quercus sinuata var. sinuata")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern14 = Arrays.asList(
+            new KeyValue("species", "Quercus virginiana")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern15 = Arrays.asList(
+            new KeyValue("species", "Sabal palmetto")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern16 = Arrays.asList(
+            new KeyValue("species", "Triadica sebifera")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern17 = Arrays.asList(
+            new KeyValue("species", "Maclura pomifera")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern18 = Arrays.asList(
+            new KeyValue("species", "Pinus taeda")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern19 = Arrays.asList(
+            new KeyValue("species", "Quercus nigra")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern20 = Arrays.asList(
+            new KeyValue("species", "Liquidambar styraciflua")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern21 = Arrays.asList(
+            new KeyValue("species", "Melia azedarach")
+        );
+        List<KeyValue> DIAGNOSTIC_SPECIES_1_pattern22 = Arrays.asList(
+            new KeyValue("species", "Broussonetia papyrifera")
+        );
+        List<List<KeyValue>> DIAGNOSTIC_SPECIES_1_patterns = Arrays.asList(
+            DIAGNOSTIC_SPECIES_1_pattern0,
+            DIAGNOSTIC_SPECIES_1_pattern1,
+            DIAGNOSTIC_SPECIES_1_pattern2,
+            DIAGNOSTIC_SPECIES_1_pattern3,
+            DIAGNOSTIC_SPECIES_1_pattern4,
+            DIAGNOSTIC_SPECIES_1_pattern5,
+            DIAGNOSTIC_SPECIES_1_pattern6,
+            DIAGNOSTIC_SPECIES_1_pattern7,
+            DIAGNOSTIC_SPECIES_1_pattern8,
+            DIAGNOSTIC_SPECIES_1_pattern9,
+            DIAGNOSTIC_SPECIES_1_pattern10,
+            DIAGNOSTIC_SPECIES_1_pattern11,
+            DIAGNOSTIC_SPECIES_1_pattern12,
+            DIAGNOSTIC_SPECIES_1_pattern13,
+            DIAGNOSTIC_SPECIES_1_pattern14,
+            DIAGNOSTIC_SPECIES_1_pattern15,
+            DIAGNOSTIC_SPECIES_1_pattern16,
+            DIAGNOSTIC_SPECIES_1_pattern17,
+            DIAGNOSTIC_SPECIES_1_pattern18,
+            DIAGNOSTIC_SPECIES_1_pattern19,
+            DIAGNOSTIC_SPECIES_1_pattern20,
+            DIAGNOSTIC_SPECIES_1_pattern21,
+            DIAGNOSTIC_SPECIES_1_pattern22
+        );
+        PatternList DIAGNOSTIC_SPECIES_1 = new PatternList("DIAGNOSTIC_SPECIES_1", DIAGNOSTIC_SPECIES_1_patterns);
+
+        List<KeyValue> ECOREGIONS_2_pattern0 = Arrays.asList(
+            new KeyValue("ecoregion", "231B, 231E, 231F, 231H, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234")
+        );
+        List<List<KeyValue>> ECOREGIONS_2_patterns = Arrays.asList(
+            ECOREGIONS_2_pattern0
+        );
+        PatternList ECOREGIONS_2 = new PatternList("ECOREGIONS_2", ECOREGIONS_2_patterns);
+
+        List<KeyValue> STATES_pattern0 = Arrays.asList(
+            new KeyValue("state", "DC")
+        );
+        List<KeyValue> STATES_pattern1 = Arrays.asList(
+            new KeyValue("state", "DE")
+        );
+        List<KeyValue> STATES_pattern2 = Arrays.asList(
+            new KeyValue("state", "MD")
+        );
+        List<KeyValue> STATES_pattern3 = Arrays.asList(
+            new KeyValue("state", "NJ")
+        );
+        List<KeyValue> STATES_pattern4 = Arrays.asList(
+            new KeyValue("state", "PA")
+        );
+        List<KeyValue> STATES_pattern5 = Arrays.asList(
+            new KeyValue("state", "VA")
+        );
+        List<List<KeyValue>> STATES_patterns = Arrays.asList(
+            STATES_pattern0,
+            STATES_pattern1,
+            STATES_pattern2,
+            STATES_pattern3,
+            STATES_pattern4,
+            STATES_pattern5
+        );
+        PatternList STATES = new PatternList("STATES", STATES_patterns);
 
         INodeMatch match = plot -> (
-            true
+            (plot.match(ECOREGIONS_1) && plot.riv(DIAGNOSTIC_SPECIES_1) >= 5) || (plot.match(ECOREGIONS_2) && !plot.match(STATES))
         );
 
         return new Object[] { level, code, match };
@@ -6856,39 +7033,36 @@ public class ClassificationKeyEast extends ClassificationKey {
             new KeyValue("species", "Oxydendrum arboreum")
         );
         List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern16 = Arrays.asList(
-            new KeyValue("species", "other palms")
-        );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern17 = Arrays.asList(
             new KeyValue("species", "Persea borbonia")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern18 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern17 = Arrays.asList(
             new KeyValue("species", "Prunus serotina")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern19 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern18 = Arrays.asList(
             new KeyValue("species", "Quercus alba")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern20 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern19 = Arrays.asList(
             new KeyValue("species", "Quercus falcata")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern21 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern20 = Arrays.asList(
             new KeyValue("species", "Quercus nigra")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern22 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern21 = Arrays.asList(
             new KeyValue("species", "Quercus pagoda")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern23 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern22 = Arrays.asList(
             new KeyValue("species", "Quercus stellata")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern24 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern23 = Arrays.asList(
             new KeyValue("species", "Pinus echinata")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern25 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern24 = Arrays.asList(
             new KeyValue("species", "Pinus taeda")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern26 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern25 = Arrays.asList(
             new KeyValue("species", "Ulmus alata")
         );
-        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern27 = Arrays.asList(
+        List<KeyValue> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern26 = Arrays.asList(
             new KeyValue("species", "Carya illinoinensis")
         );
         List<List<KeyValue>> MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns = Arrays.asList(
@@ -6918,8 +7092,7 @@ public class ClassificationKeyEast extends ClassificationKey {
             MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern23,
             MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern24,
             MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern25,
-            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern26,
-            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern27
+            MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_pattern26
         );
         PatternList MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS = new PatternList("MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS", MODERATE_OAK_MIXED_HARDWOOD_DIAGNOSTICS_patterns);
 
@@ -6935,11 +7108,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_124() {
 
-        // Southeastern Coastal Plain Evergreen Oak Forest LC (M885)
-        // M885
+        // Low Confidence Southeastern Coastal Plain Evergreen Oak Forest (M885LC)
+        // M885LC
 
         String level = "macrogroup";
-        String code = "M885";
+        String code = "M885LC";
 
         // Plot is in 232B-E, 232G, 255Da-Dc or 411A, AND
         // % RIV of STRONG OAK-MIXED HARDWOOD DIAGNOSTICS > either STRONG LONGLEAF DIAGNOSTICS or STRONG MESIC DIAGNOSTICS
@@ -7095,11 +7268,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_125() {
 
-        // Longleaf Pine Woodland LC1 (M007)
-        // M007
+        // Low Confidence Longleaf Pine Woodland (M007LC)
+        // M007LC
 
         String level = "macrogroup";
-        String code = "M007";
+        String code = "M007LC";
 
         // STRONG LONGLEAF DIAGNOSTICS %RIV > STRONG MESIC DIAGNOSTICS %RIV
 
@@ -7225,11 +7398,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_127() {
 
-        // Southern Mesic Mixed Broadleaf Forest LC (M008)
-        // M008
+        // Low Confidence Southern Mesic Mixed Broadleaf Forest (M008LC)
+        // M008LC
 
         String level = "macrogroup";
-        String code = "M008";
+        String code = "M008LC";
 
         // other
 
@@ -7242,11 +7415,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_128() {
 
-        // Temperate Deciduous-Mixed Forest & Woodland Ecobiome (TT2.b1)
-        // TT2.b1
+        // Temperate Deciduous-Mixed Forest & Woodland Ecobiome (F107)
+        // F107
 
         String level = "ecobiome";
-        String code = "TT2.b1";
+        String code = "F107";
 
         // other
 
@@ -7527,7 +7700,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_133() {
 
-        // Great Plains Ruderal Woodland
+        // Great Plains Ruderal Woodlands
         // 
 
         String level = "informal";
@@ -8323,11 +8496,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_141() {
 
-        // Laurentian Dry Forest & Woodland LC (M159)
-        // M159
+        // Low Confidence Laurentian Dry Forest & Woodland (M159LC)
+        // M159LC
 
         String level = "macrogroup";
-        String code = "M159";
+        String code = "M159LC";
 
         // Not as Above
 
@@ -8941,11 +9114,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_146() {
 
-        // Central Midwest Oak Forest, Woodland & Savanna LC (M012)
-        // M012
+        // Low Confidence Central Midwest Oak Forest, Woodland & Savanna (M012LC)
+        // M012LC
 
         String level = "macrogroup";
-        String code = "M012";
+        String code = "M012LC";
 
         // Plot occurs in Ecoregions 222 (except not 222I), 251,
         // AND % RIV of STRONG DRY DIAGNOSTICS > STRONG MESIC DIAGNOSTICS
@@ -9115,11 +9288,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_147() {
 
-        // Central Midwest Mesic Forest LC (M882)
-        // M882
+        // Low Confidence Central Midwest Mesic Forest (M882LC)
+        // M882LC
 
         String level = "macrogroup";
-        String code = "M882";
+        String code = "M882LC";
 
         // other
 
@@ -9998,11 +10171,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_151() {
 
-        // Laurentian Mesic Forest LC (M102)
-        // M102
+        // Low Confidence Laurentian Mesic Forest (M102LC)
+        // M102LC
 
         String level = "macrogroup";
-        String code = "M102";
+        String code = "M102LC";
 
         // Plot is in Ecoregion 212
 
@@ -10023,11 +10196,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_152() {
 
-        // Central Interior Oak - Pine Forest & Woodland LC  (M543)
-        // M543
+        // Low Confidence Central Interior Oak - Pine Forest & Woodland (M543LC)
+        // M543LC
 
         String level = "macrogroup";
-        String code = "M543";
+        String code = "M543LC";
 
         // %RIV of STRONG DRY SOUTH-CENTRAL DIAGNOSTICS > either STRONG APPALACHIAN DRY DIAGONOSTICS OR ECOREGIONAL STRONG MESIC DIAGNOSTICS
 
@@ -10305,11 +10478,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_153() {
 
-        // Southern-Central Appalachian Dry Forest & Woodland LC (M502)
-        // M502
+        // Low Confidence Southern-Central Appalachian Dry Forest & Woodland (M502LC)
+        // M502LC
 
         String level = "macrogroup";
-        String code = "M502";
+        String code = "M502LC";
 
         // i. %RIV STRONG APPALACHIAN DRY DIAGNOSTICS > either STRONG DRY SOUTH-CENTRAL DIAGNOSTICS OR ECOREGIONAL STRONG MESIC DIAGNOSTICS
 
@@ -10587,11 +10760,11 @@ public class ClassificationKeyEast extends ClassificationKey {
 
     public Object[] element_154() {
 
-        // Southern-Central Appalachian Mesic Forest LC (M883)
-        // M883
+        // Low Confidence Southern-Central Appalachian Mesic Forest (M883LC)
+        // M883LC
 
         String level = "macrogroup";
-        String code = "M883";
+        String code = "M883LC";
 
         // other
 

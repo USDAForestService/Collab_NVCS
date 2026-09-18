@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Temperate Deciduous-Mixed Forest & Woodland Ecobiome (F107)",
+        "id": "F107",
+        "level": "ecobiome",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

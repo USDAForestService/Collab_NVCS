@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Caribbean-Mesoamerican Pine Forest (M296LC)",
+        "id": "M296LC",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

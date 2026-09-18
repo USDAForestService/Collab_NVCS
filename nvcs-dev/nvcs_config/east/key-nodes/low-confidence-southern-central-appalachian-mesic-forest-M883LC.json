@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Southern-Central Appalachian Mesic Forest (M883LC)",
+        "id": "M883LC",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

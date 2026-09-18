@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Southern Coastal Plain Floodplain Forest (M031LC) / Southern Coastal Plain Basin Swamp & Flatwoods (M033LC)",
+        "id": "M031LC",
+        "level": "macrogroup",
+        "description": [
+            "other"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}
