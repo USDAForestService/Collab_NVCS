@@ -2,6 +2,15 @@
     {
         "alertType": "error",
         "alertSubType": "nonexistent-document-elements",
+        "targetNode": "Document Section: sectionOne",
+        "targetProblem": "Natural (including ruderal) Forests (C01) is not a valid hierarchy node",
+        "alertId": "id335fea44dab62",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "error",
+        "alertSubType": "nonexistent-document-elements",
         "targetNode": "Document Section: sectionFour",
         "targetProblem": "Temperate & Boreal Forest & Woodland Subclass (S15) is not a valid hierarchy node",
         "alertId": "id4482a3faad225",
@@ -30,8 +39,35 @@
         "alertType": "error",
         "alertSubType": "nonexistent-document-elements",
         "targetNode": "Document Section: sectionSix",
+        "targetProblem": "Eastern North American Forest & Woodland Natural Forests (D008) is not a valid hierarchy node",
+        "alertId": "id7b8c999a68119",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "error",
+        "alertSubType": "nonexistent-document-elements",
+        "targetNode": "Document Section: sectionSix",
+        "targetProblem": "Eastern North American Ruderal Forests (D008) is not a valid hierarchy node",
+        "alertId": "idf4376af5a0738",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "error",
+        "alertSubType": "nonexistent-document-elements",
+        "targetNode": "Document Section: sectionSix",
         "targetProblem": "Southern & South-Central Oak - Pine Forest & Woodland (M016) is not a valid hierarchy node",
         "alertId": "idd231e91cd859",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "error",
+        "alertSubType": "nonexistent-document-elements",
+        "targetNode": "Document Section: sectionSix",
+        "targetProblem": "Western North American Ruderal Forests - Madrean-Balconian (D060) is not a valid hierarchy node",
+        "alertId": "id3b5266647c73",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -280,102 +316,12 @@
     },
     {
         "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "North Pacific Forested Wetland Ruderal Forests (M405)",
-        "targetProblem": "Node ID M405 is nonunique",
-        "alertId": "id163dc1997ec37",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "North Pacific Ruderal Forest (M405)",
-        "targetProblem": "Node ID M405 is nonunique",
-        "alertId": "id7de1cd541db2b",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Rocky Mountain-Great Basin Montane Flooded Forest & Swamp Division (D195)",
-        "targetProblem": "Node ID D195 is nonunique",
-        "alertId": "idf77bf9014f727",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)",
-        "targetProblem": "Node ID D195 is nonunique",
-        "alertId": "idadeaeb071a019",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Eastern North American Forest & Woodland Division (D008)",
-        "targetProblem": "Node ID D008 is nonunique",
-        "alertId": "idb0b5c17e26335",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Eastern North American Forest & Woodland Natural Forests (D008)",
-        "targetProblem": "Node ID D008 is nonunique",
-        "alertId": "id231a9109670af",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Eastern North American Ruderal Forests (D008)",
-        "targetProblem": "Node ID D008 is nonunique",
-        "alertId": "id3ea57d5a14c9e",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Madrean Forest & Woodland Division (D331)",
-        "targetProblem": "Node ID D331 is nonunique",
-        "alertId": "id28e68c6ab2ddd",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "duplicate-node-ids",
-        "targetNode": "Madrean Natural Forests & Woodlands (D331)",
-        "targetProblem": "Node ID D331 is nonunique",
-        "alertId": "idbccda7551cba9",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Southeastern North American Flooded Forest & Swamp Division (D062)",
         "targetProblem": "SPECIES_3 - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "id226b7404a4fc9",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Southeastern Great Plains Central Texas Floodplain Forest (G784)",
-        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Fraxinus texensis does not exist in the FIA species list",
-        "alertId": "idf0190fd691d3f",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -383,8 +329,8 @@
         "targetNode": "Western North American Arid Flooded Forest (D013)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Phaulothamnus spinescens does not exist in the FIA species list",
         "alertId": "ida1f60993a0824",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -392,8 +338,8 @@
         "targetNode": "Western North American Arid Flooded Forest (D013)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Washingtonia filifera does not exist in the FIA species list",
         "alertId": "id0c270c8ea81b",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -401,17 +347,8 @@
         "targetNode": "Western North American Arid Flooded Forest (D013)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Acacia farnesiana does not exist in the FIA species list",
         "alertId": "id7ac711516a07",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Western North American Arid Flooded Forest (D013)",
-        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Cupressus arizonica does not exist in the FIA species list",
-        "alertId": "id94a7ae3cf3eb9",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -419,8 +356,8 @@
         "targetNode": "Tamaulipan Flooded Forest (G549)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Phaulothamnus spinescens does not exist in the FIA species list",
         "alertId": "id5c1ca46e1af82",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -428,8 +365,8 @@
         "targetNode": "Tamaulipan Flooded Forest (G549)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Acacia farnesiana does not exist in the FIA species list",
         "alertId": "id0d2095c680bb7",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -437,8 +374,8 @@
         "targetNode": "Tamaulipan Flooded Forest (G549)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Taxodium mucronatum does not exist in the FIA species list",
         "alertId": "id88680e2165352",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -446,17 +383,8 @@
         "targetNode": "Southwest Warm Desert Riparian Forest (G109)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Washingtonia filifera does not exist in the FIA species list",
         "alertId": "ida8daa89f86e2",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Southwest Warm Desert Riparian Forest (G109)",
-        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Cupressus arizonica does not exist in the FIA species list",
-        "alertId": "id32d24356aa68d",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -464,8 +392,8 @@
         "targetNode": "Southern Great Plains Forest & Woodland (M544)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "idee0431a3edf18",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -473,8 +401,8 @@
         "targetNode": "Edwards Plateau Dry-Mesic Hardwood Forest (G028)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "id780abf49b947d",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -482,8 +410,8 @@
         "targetNode": "Edwards Plateau Dry Woodland (G126)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "id68a075fd5d601",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -491,8 +419,8 @@
         "targetNode": "Southeastern North American Forest & Woodland Division (D006)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus margarettiae does not exist in the FIA species list",
         "alertId": "id85cc41715e299",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -500,8 +428,8 @@
         "targetNode": "Southeast Maritime Live Oak - Palmetto Forest (G798)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus hemisphaerica does not exist in the FIA species list",
         "alertId": "id271d4028c0034",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -515,65 +443,56 @@
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
-        "targetNode": "West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)",
-        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus margarettae does not exist in the FIA species list",
-        "alertId": "idb60d614d4f476",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetNode": "Warm Temperate Forest & Woodland (S54)",
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Hesperocyparis bakeri does not exist in the FIA species list",
+        "alertId": "id250727045140a",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Cupressus bakeri does not exist in the FIA species list",
-        "alertId": "id96397691281ab",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Hesperocyparis forbesii does not exist in the FIA species list",
+        "alertId": "id387a724c6dc1",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Cupressus forbesii does not exist in the FIA species list",
-        "alertId": "idb3febf2795718",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Hesperocyparis macnabiana does not exist in the FIA species list",
+        "alertId": "idbe52eb465f617",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Cupressus macnabiana does not exist in the FIA species list",
-        "alertId": "id91bba768f8f82",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Hesperocyparis macrocarpa does not exist in the FIA species list",
+        "alertId": "id0ebfdb112e024",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Cupressus macrocarpa does not exist in the FIA species list",
-        "alertId": "idaa65eb1041c4b",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Hesperocyparis pigmaea does not exist in the FIA species list",
+        "alertId": "id9280aa44db84c",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Cupressus goveniana ssp. pygmaea does not exist in the FIA species list",
-        "alertId": "idd105ddd5b718d",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Cupressus sargentii does not exist in the FIA species list",
-        "alertId": "id281fcea6ff8bc",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Hesperocyparis sargentii does not exist in the FIA species list",
+        "alertId": "idf57ef2d2839b7",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -581,8 +500,8 @@
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
         "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "ida1a3a2b1739a8",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -590,8 +509,8 @@
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
         "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Quercus albocincta does not exist in the FIA species list",
         "alertId": "id3db40c8f3474d",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -599,62 +518,62 @@
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
         "targetProblem": "DIAGNOSTIC_SPECIES_1 - species: Quercus vaseyana does not exist in the FIA species list",
         "alertId": "id1a2272b3e769",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species not in FIA list",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Cupressus bakeri does not exist in the FIA species list",
-        "alertId": "idbd612c69ba091",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Hesperocyparis bakeri does not exist in the FIA species list",
+        "alertId": "id8bf22fd818891",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Cupressus forbesii does not exist in the FIA species list",
-        "alertId": "idada34962c393e",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Hesperocyparis forbesii does not exist in the FIA species list",
+        "alertId": "ideee27520dd2e9",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Cupressus macnabiana does not exist in the FIA species list",
-        "alertId": "idbcacd958dd683",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Hesperocyparis macnabiana does not exist in the FIA species list",
+        "alertId": "id9aea67fff41f6",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Cupressus macrocarpa does not exist in the FIA species list",
-        "alertId": "id643a5aea6b84f",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Hesperocyparis macrocarpa does not exist in the FIA species list",
+        "alertId": "idb8f50399fa56c",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Cupressus goveniana ssp. pygmaea does not exist in the FIA species list",
-        "alertId": "idaf12aaef088a1",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Hesperocyparis pigmaea does not exist in the FIA species list",
+        "alertId": "id211120061caa8",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Cupressus sargentii does not exist in the FIA species list",
-        "alertId": "id5eab292b07792",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Hesperocyparis sargentii does not exist in the FIA species list",
+        "alertId": "id8b1bac25ff868",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -662,8 +581,8 @@
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
         "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "idc0a4a4623abed",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species does not appear in FIA list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -671,62 +590,62 @@
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
         "targetProblem": "DIAGNOSTIC_SPECIES_2 - species: Quercus albocincta does not exist in the FIA species list",
         "alertId": "idafad111076f9c",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species not in FIA list",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Cupressus bakeri does not exist in the FIA species list",
-        "alertId": "idc7a8aab34ed19",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Hesperocyparis bakeri does not exist in the FIA species list",
+        "alertId": "id63a6fb9358452",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Cupressus forbesii does not exist in the FIA species list",
-        "alertId": "id1c06f63615f6a",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Hesperocy parisforbesii does not exist in the FIA species list",
+        "alertId": "id59aa21622e052",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Cupressus macnabiana does not exist in the FIA species list",
-        "alertId": "id74b3695e3ab01",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Hesperocyparis macnabiana does not exist in the FIA species list",
+        "alertId": "idf186db971438e",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Cupressus macrocarpa does not exist in the FIA species list",
-        "alertId": "id3d86aeaa660b",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Hesperocyparis macrocarpa does not exist in the FIA species list",
+        "alertId": "ided0a5c8a4de4a",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Cupressus goveniana ssp. pygmaea does not exist in the FIA species list",
-        "alertId": "ided85b34960a05",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Hesperocyparis pigmaea does not exist in the FIA species list",
+        "alertId": "id7e6df4c5c2fb4",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
-        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Cupressus sargentii does not exist in the FIA species list",
-        "alertId": "ide550a06aa7ab6",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Hesperocyparis sargentii does not exist in the FIA species list",
+        "alertId": "idaa35e872a4132",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -734,8 +653,8 @@
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
         "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "id788b1ae0bc1b2",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species does not appear in FIA list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -743,62 +662,62 @@
         "targetNode": "Warm Temperate Forest & Woodland (S54)",
         "targetProblem": "DIAGNOSTIC_SPECIES_3 - species: Quercus albocincta does not exist in the FIA species list",
         "alertId": "idcdc380f099737",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Forest & Woodland Division (D007)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus bakeri does not exist in the FIA species list",
-        "alertId": "id26b7d176d84a1",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis bakeri does not exist in the FIA species list",
+        "alertId": "idfe881aa8e0b7e",
+        "alertNotes": "Diagnostic species not tracked by FIA",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Forest & Woodland Division (D007)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus forbesii does not exist in the FIA species list",
-        "alertId": "id712fd65e2665b",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis forbesii does not exist in the FIA species list",
+        "alertId": "idb89c872cb4321",
+        "alertNotes": "Diagnostic species not tracked by FIA",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Forest & Woodland Division (D007)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus macnabiana does not exist in the FIA species list",
-        "alertId": "idb21c3fcb08266",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis macnabiana does not exist in the FIA species list",
+        "alertId": "id1d6d04b6f3742",
+        "alertNotes": "Diagnostic species not tracked by FIA",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Forest & Woodland Division (D007)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus macrocarpa does not exist in the FIA species list",
-        "alertId": "idd405262e6d5c1",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis macrocarpa does not exist in the FIA species list",
+        "alertId": "id6edc4b965b35e",
+        "alertNotes": "Diagnostic species not tracked by FIA",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Forest & Woodland Division (D007)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus goveniana ssp. pygmaea does not exist in the FIA species list",
-        "alertId": "id6a790418c05d8",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis pigmaea does not exist in the FIA species list",
+        "alertId": "idbd3aa79d17a2f",
+        "alertNotes": "Diagnostic species not tracked by FIA",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Forest & Woodland Division (D007)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus sargentii does not exist in the FIA species list",
-        "alertId": "id525719d856c99",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis sargentii does not exist in the FIA species list",
+        "alertId": "id6f032f79cb555",
+        "alertNotes": "Diagnostic species not tracked by FIA",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -806,71 +725,62 @@
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis abramsiana does not exist in the FIA species list",
         "alertId": "id2c4459eb865f",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus bakeri does not exist in the FIA species list",
-        "alertId": "id2369d8368fb3e",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis bakeri does not exist in the FIA species list",
+        "alertId": "idf1dbef99b58fc",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus forbesii does not exist in the FIA species list",
-        "alertId": "idfef4611f9530c",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis forbesii does not exist in the FIA species list",
+        "alertId": "id088ee8e4d903e",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus goveniana ssp. pygmaea does not exist in the FIA species list",
-        "alertId": "ide07f2c7bc5f74",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis pigmaea does not exist in the FIA species list",
+        "alertId": "id2b54d5a4035ce",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus macnabiana does not exist in the FIA species list",
-        "alertId": "id0ab1822875806",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis macnabiana does not exist in the FIA species list",
+        "alertId": "id08b07056d4b9e",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus macrocarpa does not exist in the FIA species list",
-        "alertId": "id5449dd7d0e0c9",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis macrocarpa does not exist in the FIA species list",
+        "alertId": "id33f8082039784",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus arizonica does not exist in the FIA species list",
-        "alertId": "id204ec2fd6d658",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Californian Conifer Forest & Woodland (G198)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus sargentii does not exist in the FIA species list",
-        "alertId": "ida742eba68b9c5",
-        "alertNotes": "",
-        "alertAddressed": false
+        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Hesperocyparis sargentii does not exist in the FIA species list",
+        "alertId": "idfbd47381382cb",
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -878,8 +788,8 @@
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Pinus torreyana does not exist in the FIA species list",
         "alertId": "id8c31a6418f958",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species not in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -887,8 +797,8 @@
         "targetNode": "Californian Conifer Forest & Woodland (G198)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Pinus quadrifolia does not exist in the FIA species list",
         "alertId": "idc59152cbc9faf",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -896,8 +806,8 @@
         "targetNode": "Madrean Forest & Woodland Division (D331)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus albocincta does not exist in the FIA species list",
         "alertId": "ide7cf575cdf0e6",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -905,8 +815,8 @@
         "targetNode": "Madrean Forest & Woodland Division (D331)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Fraxinus texensis does not exist in the FIA species list",
         "alertId": "idb128f66c49393",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -914,8 +824,8 @@
         "targetNode": "Madrean Forest & Woodland Division (D331)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus vaseyana does not exist in the FIA species list",
         "alertId": "id0d4f245e2261b",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -923,8 +833,8 @@
         "targetNode": "Madrean Montane Forest & Woodland (M011)",
         "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Quercus albocincta does not exist in the FIA species list",
         "alertId": "id4e28054950061",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -939,19 +849,10 @@
         "alertType": "warning",
         "alertSubType": "invalid-species",
         "targetNode": "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Cupressus arizonica does not exist in the FIA species list",
-        "alertId": "id3380ae4bd5713",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus fulva does not exist in the FIA species list",
         "alertId": "id373372639554a",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -959,26 +860,8 @@
         "targetNode": "Madrean Lower Montane Pine - Oak Forest & Woodland (G203)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Quercus viminea does not exist in the FIA species list",
         "alertId": "idebe9ab2816714",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Intermountain Basins Curl-leaf Mountain-mahogany Woodland & Scrub (G249)",
-        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: placeholder - add moderate diagnostic does not exist in the FIA species list",
-        "alertId": "id1d9f17828b413",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Californian-North Pacific Foothills Forest & Woodland (D339)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES_I - species: Lithocarpus densiflorus does not exist in the FIA species list",
-        "alertId": "id37b8f76a21dc2",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -986,8 +869,8 @@
         "targetNode": "Californian-North Pacific Foothills Forest & Woodland (D339)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES_I - species: Pinus washoensis does not exist in the FIA species list",
         "alertId": "idaae31f5db688d",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -995,17 +878,8 @@
         "targetNode": "Californian-North Pacific Foothills Forest & Woodland (D339)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES_II - species: Pinus washoensis does not exist in the FIA species list",
         "alertId": "id130f831ca84b5",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Californian Moist Coastal Mixed Evergreen Forest (G208)",
-        "targetProblem": "STRONG_DIAGNOSTIC_SPECIES - species: Lithocarpus densiflorus does not exist in the FIA species list",
-        "alertId": "id46bd3dfea3fa9",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species does not exist in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -1013,8 +887,8 @@
         "targetNode": "Sierran-Californian Montane-Foothill Forest & Woodland (M023)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Pinus washoensis does not exist in the FIA species list",
         "alertId": "idb257a1cfca6bc",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
@@ -1022,33 +896,24 @@
         "targetNode": "Californian Montane Conifer Forest & Woodland (G344)",
         "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: Pinus washoensis does not exist in the FIA species list",
         "alertId": "id99a540da9f4d6",
-        "alertNotes": "",
-        "alertAddressed": false
+        "alertNotes": "Diagnostic species, does not occur in FIA species list.",
+        "alertAddressed": true
     },
     {
         "alertType": "warning",
-        "alertSubType": "invalid-species",
-        "targetNode": "Rocky Mountain Foothill-Rock Outcrop Limber Pine - Juniper Woodland (G209)",
-        "targetProblem": "MODERATE_DIAGNOSTIC_SPECIES - species: PLACEHOLDER - INSERT P2 VEG does not exist in the FIA species list",
-        "alertId": "id895418fe45bed",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Non-Forests",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id3b05662ada645",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "No to Low Trees",
+        "targetNode": "Temperate-Boreal Grassland & Shrubland (B04)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "iddf958e5fb8379",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-document-elements",
-        "targetNode": "Live Canopy Cover Over 10",
-        "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idc4187b35c43e6",
+        "alertId": "id913bb9e37eaae",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1064,9 +929,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Low Vegetative Cover",
+        "targetNode": "Western North American Temperate Forest Plantation (CSG007)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id9dcb81d61d95f",
+        "alertId": "id991724ed6dd54",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Natural (including ruderal) Forests",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "id6f30bf99430af",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1145,15 +1019,6 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Southeastern Great Plains Central Texas Floodplain Forest (G784)",
-        "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id12fa3ed1e61ca",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "missing-document-elements",
         "targetNode": "Southeastern North American Ruderal Flooded Forest & Swamp (M310)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
         "alertId": "id8047b37b83198",
@@ -1217,9 +1082,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "North Pacific Forested Wetland Ruderal Forests (M405)",
+        "targetNode": "North Pacific Forested Wetland Ruderal Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ida8c37da7dbe46",
+        "alertId": "idb6046ebf0ad27",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1271,9 +1136,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)",
+        "targetNode": "Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idd737ccb6bcda5",
+        "alertId": "idf34b9a1f9247c",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1352,9 +1217,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Temperate Boreal Forest & Woodland Subclass (B02)",
+        "targetNode": "Temperate Boreal Forest & Woodland (B02)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "ide8ab059093721",
+        "alertId": "idd0b799e0f7afd",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1460,18 +1325,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "LC Southern Great Plains Forest & Woodland (M544LC)",
+        "targetNode": "Low Confidence Southern Great Plains Forest & Woodland (M544LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id18349224861da",
+        "alertId": "id3746467879733",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "LC Northern Great Plains Forest & Woodland (M545LC)",
+        "targetNode": "Low Confidence Northern Great Plains Forest & Woodland (M545LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id45ab4b8001bee",
+        "alertId": "idc5aeacc3954bc",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1523,6 +1388,15 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
+        "targetNode": "Eastern North American Forest & Woodland Natural Forests",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "ideeb3c4b3bead6",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
         "targetNode": "South - Central Oak - Pine Forest & Woodland (M540)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
         "alertId": "idfad24c022d07b",
@@ -1532,9 +1406,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)",
+        "targetNode": "Eastern North American Ruderal Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id5937d67dfe53e",
+        "alertId": "id4ebbd82f25b06",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1577,9 +1451,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "Madrean Natural Forests & Woodlands (D331)",
+        "targetNode": "Madrean Natural Forests & Woodlands",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id2c7690a04c1e9",
+        "alertId": "id652ae34d7d69a",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1622,9 +1496,18 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "LC Madrean Montane Forest & Woodland (M011LC)",
+        "targetNode": "Madrean Ruderal Forests",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idcbc1512cbd4ca",
+        "alertId": "iddf775fe5378af",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "missing-document-elements",
+        "targetNode": "Low Confidence Madrean Montane Forest & Woodland (M011LC)",
+        "targetProblem": "Node is not referenced in the generated Document viewer",
+        "alertId": "ide6f180639d5dd",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1712,9 +1595,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "LC Intermountain Pinyon-Juniper Woodland (M896LC)",
+        "targetNode": "Low Confidence Intermountain Pinyon-Juniper Woodland (M896LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idb677a4703bf3b",
+        "alertId": "id5486d6ecbfc87",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1811,9 +1694,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "LC Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)",
+        "targetNode": "Low Confidence Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idb0488a0053538",
+        "alertId": "ida4e377e84c788",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -1964,9 +1847,9 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "LC Central Rocky Mountain Montane Forest & Woodland (M501LC)",
+        "targetNode": "Low Confidence Central Rocky Mountain Montane Forest & Woodland (M501LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "idec3465cdcf711",
+        "alertId": "idba768b79f457e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2036,27 +1919,27 @@
     {
         "alertType": "warning",
         "alertSubType": "missing-document-elements",
-        "targetNode": "LC Rocky Mountain Subalpine-High Montane Forest (M020LC)",
+        "targetNode": "Low Confidence Rocky Mountain Subalpine-High Montane Forest (M020LC)",
         "targetProblem": "Node is not referenced in the generated Document viewer",
-        "alertId": "id7aa1dc0b263f9",
+        "alertId": "ide196715874556",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "No to Low Trees",
+        "targetNode": "Non-Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5420c3f9ba884",
+        "alertId": "ideaa4842a7b57",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Live Canopy Cover Over 10",
+        "targetNode": "Temperate-Boreal Grassland & Shrubland (B04)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "ide3499093ef18b",
+        "alertId": "id60aa03837de79",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2072,27 +1955,27 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Low Vegetative Cover",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5fe856f29ca6b",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
         "targetNode": "Forest Plantations",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id9a817ae809934",
+        "alertId": "iddadbc407949ed",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Natural (including ruderal) Forests (C01)",
+        "targetNode": "Western North American Temperate Forest Plantation (CSG007)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idff41a005d29f7",
+        "alertId": "id2afc9c3f06163",
+        "alertNotes": "",
+        "alertAddressed": false
+    },
+    {
+        "alertType": "warning",
+        "alertSubType": "unlabeled-document-elements",
+        "targetNode": "Natural (including ruderal) Forests",
+        "targetProblem": "Node has no label in the generated Document viewer",
+        "alertId": "id56968e15f3ebc",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2180,15 +2063,6 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Southeastern Great Plains Central Texas Floodplain Forest (G784)",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id3b98e62fdb69e",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
         "targetNode": "Southeastern North American Ruderal Flooded Forest & Swamp (M310)",
         "targetProblem": "Node has no label in the generated Document viewer",
         "alertId": "idef43327d4c1be",
@@ -2252,9 +2126,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "North Pacific Forested Wetland Ruderal Forests (M405)",
+        "targetNode": "North Pacific Forested Wetland Ruderal Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id9fb550b4ca78a",
+        "alertId": "id68c758501bfa1",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2306,9 +2180,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forest (D195)",
+        "targetNode": "Rocky Mountain-Great Basin Montane Ruderal Flooded & Swamp Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idfb8fd3b09f1fb",
+        "alertId": "id320332b03b37e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2396,9 +2270,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Temperate Boreal Forest & Woodland Subclass (B02)",
+        "targetNode": "Temperate Boreal Forest & Woodland (B02)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id5510440571564",
+        "alertId": "iddc40c37f72e8e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2513,18 +2387,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "LC Southern Great Plains Forest & Woodland (M544LC)",
+        "targetNode": "Low Confidence Southern Great Plains Forest & Woodland (M544LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id687bf2ffd9042",
+        "alertId": "idbd0b6c7cceea1",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "LC Northern Great Plains Forest & Woodland (M545LC)",
+        "targetNode": "Low Confidence Northern Great Plains Forest & Woodland (M545LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idc8075a97978af",
+        "alertId": "idf5832d0954f5e",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2585,9 +2459,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern North American Forest & Woodland Natural Forests (D008)",
+        "targetNode": "Eastern North American Forest & Woodland Natural Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id77034a1133611",
+        "alertId": "id9b74d21c978b2",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2603,18 +2477,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "West Gulf Coastal Plain Pine - Oak Forest & Woodland (G013)",
+        "targetNode": "Eastern North American Ruderal Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id8c9803486ff9b",
-        "alertNotes": "",
-        "alertAddressed": false
-    },
-    {
-        "alertType": "warning",
-        "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Eastern North American Ruderal Forests (D008)",
-        "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id690c9ce3affcd",
+        "alertId": "idefa6d6aa54724",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2675,9 +2540,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Madrean Natural Forests & Woodlands (D331)",
+        "targetNode": "Madrean Natural Forests & Woodlands",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "ide54d0d8f579e3",
+        "alertId": "id335f652adef49",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2720,18 +2585,18 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "Western North American Ruderal Forests - Madrean-Balconian (D060)",
+        "targetNode": "Madrean Ruderal Forests",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id525c816892d5e",
+        "alertId": "idab11805d0efc3",
         "alertNotes": "",
         "alertAddressed": false
     },
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "LC Madrean Montane Forest & Woodland (M011LC)",
+        "targetNode": "Low Confidence Madrean Montane Forest & Woodland (M011LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id9d453c54a9d65",
+        "alertId": "id3db23fcdb606c",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2819,9 +2684,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "LC Intermountain Pinyon-Juniper Woodland (M896LC)",
+        "targetNode": "Low Confidence Intermountain Pinyon-Juniper Woodland (M896LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "id407fff878e092",
+        "alertId": "id9fd63d98d5cdd",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -2918,9 +2783,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "LC Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)",
+        "targetNode": "Low Confidence Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idd9e97cd313a8d",
+        "alertId": "id8d04e8e61e491",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3080,9 +2945,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "LC Central Rocky Mountain Montane Forest & Woodland (M501LC)",
+        "targetNode": "Low Confidence Central Rocky Mountain Montane Forest & Woodland (M501LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idfc383c462d97",
+        "alertId": "idaca10d5bd37a5",
         "alertNotes": "",
         "alertAddressed": false
     },
@@ -3161,9 +3026,9 @@
     {
         "alertType": "warning",
         "alertSubType": "unlabeled-document-elements",
-        "targetNode": "LC Rocky Mountain Subalpine-High Montane Forest (M020LC)",
+        "targetNode": "Low Confidence Rocky Mountain Subalpine-High Montane Forest (M020LC)",
         "targetProblem": "Node has no label in the generated Document viewer",
-        "alertId": "idf16251403b4be",
+        "alertId": "id7f39f51624815",
         "alertNotes": "",
         "alertAddressed": false
     }

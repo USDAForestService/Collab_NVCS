@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Californian-North Pacific Dry Foothill Forest & Woodland (M886LC)",
+        "id": "M886LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above. Low confidence in assigment"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

@@ -10,17 +10,11 @@
             "342E, 342F, 342G, M331A, M331B, M331D, M331E, M331H, M331I, M331J",
             "and tree composition dominated by one",
             "or more of STRONG DIAGNOSTIC species Juniperus osteosperma,",
-            "Juniperus scopulorum or Pinus flexilis (RIV=>50%),",
-            "OR",
-            "ii. Located in above ECOREGION, and tree composition as above, but",
-            "with =>20% RIV AND with other MODERATE DIAGNOSTIC species in any",
-            "combination of [PLACEHOLDER - INSERT P2 VEG] (>=30% RIV; i.e.,",
-            "together STRONG and MODERATE diagnostic species RIV =>50%)"
+            "Juniperus scopulorum or Pinus flexilis (RIV=>50%)"
         ],
         "trigger": [
             "match(ECOREGIONS) and ",
-            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50 or",
-            "(riv(STRONG_DIAGNOSTIC_SPECIES) >= 20 and riv(MODERATE_DIAGNOSTIC_SPECIES) >=30) )"
+            "( riv(STRONG_DIAGNOSTIC_SPECIES) >= 50)"
         ],
         "filters": {
             "ECOREGIONS": [
@@ -37,11 +31,6 @@
                 },
                 {
                     "species": "Pinus flexilis"
-                }
-            ],
-            "MODERATE_DIAGNOSTIC_SPECIES": [
-                {
-                    "species": "PLACEHOLDER - INSERT P2 VEG"
                 }
             ]
         }

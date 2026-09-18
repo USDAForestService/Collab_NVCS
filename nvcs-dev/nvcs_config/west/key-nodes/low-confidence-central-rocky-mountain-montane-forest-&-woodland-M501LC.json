@@ -1,0 +1,14 @@
+{
+    "node": {
+        "name": "Low Confidence Central Rocky Mountain Montane Forest & Woodland (M501LC)",
+        "id": "M501LC",
+        "level": "macrogroup",
+        "description": [
+            "Not as above. Low confidence in assignment"
+        ],
+        "trigger": [
+            "true"
+        ],
+        "filters": {}
+    }
+}

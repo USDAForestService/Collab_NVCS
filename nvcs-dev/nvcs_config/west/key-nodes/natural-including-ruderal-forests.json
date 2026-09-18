@@ -1,13 +1,13 @@
 {
     "node": {
-        "name": "Live Canopy Cover Over 10",
+        "name": "Natural (including ruderal) Forests",
         "id": "",
         "level": "informal",
         "description": [
-            "No to low basal area but with live canopy > 10"
+            "Natural (including ruderal) forests"
         ],
         "trigger": [
-            "live_canopy_cvr_pct() > 10"
+            "TRUE"
         ],
         "filters": {}
     }
