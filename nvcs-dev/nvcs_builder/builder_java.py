@@ -47,9 +47,9 @@ class ElementBuilder:
         elif trigger.lower() == 'false':
             trigger = 'false'
         else:
-            trigger = re.sub(r'(and)', '&&', trigger)
-            trigger = re.sub(r'(or)', '||', trigger)
-            trigger = re.sub(r'(not )', '!', trigger)
+            trigger = re.sub(r'(\band\b)', '&&', trigger)
+            trigger = re.sub(r'(\bor\b)', '||', trigger)
+            trigger = re.sub(r'(\bnot\b )', '!', trigger)
             trigger = re.sub(r'(elevation)\s*\(\s*\)', r'plot.get_\1()', trigger)
             trigger = re.sub(r'(balive)\s*\(\s*\)', r'plot.get_\1()', trigger)
             trigger = re.sub(r'(fbcov)\s*\(\s*\)', r'plot.get_\1()', trigger)

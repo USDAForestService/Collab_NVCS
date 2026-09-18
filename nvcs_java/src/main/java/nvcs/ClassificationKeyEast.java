@@ -5550,10 +5550,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         PatternList Moderate_Indicator = new PatternList("Moderate_Indicator", Moderate_Indicator_patterns);
 
         INodeMatch match = plot -> (
-            riv (Strong_Indicat||)>=50
-           || (riv(Strong_Indicat||) >= 20
+            plot.riv(Strong_Indicator)>=50
+           || (plot.riv(Strong_Indicator) >= 20
 
-               && riv(Strong_Indicat||) + riv(Moderate_Indicat||) >= 50)
+               && plot.riv(Strong_Indicator) + plot.riv(Moderate_Indicator) >= 50)
         );
 
         return new Object[] { level, code, match };
