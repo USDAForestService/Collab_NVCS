@@ -2496,7 +2496,7 @@ public class ClassificationKeyEast extends ClassificationKey {
 
         // A.  Plots found in coastal brackish tidal conditions, where 
         // i.  Plots found in Ecosection 232 or 411 (Tropical Florida and Gulf or Atlantic coast) AND 
-        // ii.  tree composition dominated by one or more of Avicennia germinans, Conocarpus erectus, Laguncularia racemosa, Rhizophora mangle (=>20% RIV); …………………………Key TW1. Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).
+        // ii.  tree composition dominated by one or more of Avicennia germinans, Conocarpus erectus, Laguncularia racemosa, Rhizophora mangle (=>20% RIV); ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Key TW1. Brackish Tidal Wetland Biome (MB1), Coastal Brackish Tidal Wetland Subbiome (MB1.a), Mangrove Ecobiome, (MB1.a2) and Atlantic-Caribbean & East Pacific Mangrove (D004).
 
         List<KeyValue> TROPICAL_ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "232")
@@ -2613,7 +2613,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         String level = "informal";
         String code = "";
 
-        // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division).
+        // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B ï¿½ needs to be refined for this Division).
 
         List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
             new KeyValue("exotic", "Y")
@@ -2642,7 +2642,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         String level = "ecobiome";
         String code = "F135";
 
-        // Tree composition not as above (that is, freshwater forested wetlands)…………….B (Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a) [note that we do not have good information on Puerto Rico freshwater forested wetlands, and so the key may fail there]
+        // Tree composition not as above (that is, freshwater forested wetlands)ï¿½ï¿½ï¿½ï¿½ï¿½.B (Palustrine Wetland Biome (TP1), Forested Wetland Subbiome (TP1.a) [note that we do not have good information on Puerto Rico freshwater forested wetlands, and so the key may fail there]
 
         List<KeyValue> TROPICAL_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "411")
@@ -4372,22 +4372,10 @@ public class ClassificationKeyEast extends ClassificationKey {
         String level = "informal";
         String code = "";
 
-        // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division).
-
-        List<KeyValue> RUDERAL_EXOTIC_pattern0 = Arrays.asList(
-            new KeyValue("exotic", "Y")
-        );
-        List<KeyValue> RUDERAL_EXOTIC_pattern1 = Arrays.asList(
-            new KeyValue("ruderal", "Y")
-        );
-        List<List<KeyValue>> RUDERAL_EXOTIC_patterns = Arrays.asList(
-            RUDERAL_EXOTIC_pattern0,
-            RUDERAL_EXOTIC_pattern1
-        );
-        PatternList RUDERAL_EXOTIC = new PatternList("RUDERAL_EXOTIC", RUDERAL_EXOTIC_patterns);
+        // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B ï¿½ needs to be refined for this Division).
 
         INodeMatch match = plot -> (
-            plot.riv(RUDERAL_EXOTIC)
+            true
         );
 
         return new Object[] { level, code, match };
@@ -5967,7 +5955,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // 
         // Located in Ecosections 231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234, (but exclude DC, DE, MD, NJ, PA, VA  
         // 
-        // .... Warm Temperate Evergreen Forest & Woodland Ecobiome (TT2.a1)… [eastern Warm Temperate Upland Forests] ......................................................................................................E 
+        // .... Warm Temperate Evergreen Forest & Woodland Ecobiome (TT2.a1)ï¿½ [eastern Warm Temperate Upland Forests] ......................................................................................................E 
         // 
         // E. Southeastern North American Forest & Woodland Division (D006) one  E1
 
@@ -6170,7 +6158,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // 
         // Located in Ecosections 231A, 231B, 231E, 231F, 231H, 231I, 232B, 232C, 232E, 232F, 232J, 232K, 232L, 234, (but exclude DC, DE, MD, NJ, PA, VA  
         // 
-        // .... Warm Temperate Evergreen Forest & Woodland Ecobiome (TT2.a1)… [eastern Warm Temperate Upland Forests] ......................................................................................................E 
+        // .... Warm Temperate Evergreen Forest & Woodland Ecobiome (TT2.a1)ï¿½ [eastern Warm Temperate Upland Forests] ......................................................................................................E 
         // 
         // E. Southeastern North American Forest & Woodland Division (D006) one  E1
 
@@ -7438,7 +7426,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         String level = "division";
         String code = "D332";
 
-        // Located in Ecoprovince 331, 332, 315B, 315C, 315D, 315E, 315F, 315G, 255….North American Great Plains Forest & Woodland Division D332)……………………………….……F1
+        // Located in Ecoprovince 331, 332, 315B, 315C, 315D, 315E, 315F, 315G, 255ï¿½.North American Great Plains Forest & Woodland Division D332)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.ï¿½ï¿½F1
 
         List<KeyValue> Great_Plains_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "331")
@@ -7657,7 +7645,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         String level = "macrogroup";
         String code = "M544";
 
-        // Located in Ecoprovince 315, [315B – G] and 255.  [Typical species include Acer grandidentatum, Fraxinus albicans, Juniperus ashei, Pinus cembroides, Juglans major, Juniperus virginiana, Quercus buckleyi, Quercus fusiformis, Quercus laceyi, Quercus marilandica, Quercus muehlenbergii, Quercus sinuata var. breviloba, Quercus stellata, Sapindus Saponaria, Ulmus alata, Ulmus crassifolia, Ulmus rubra]
+        // Located in Ecoprovince 315, [315B ï¿½ G] and 255.  [Typical species include Acer grandidentatum, Fraxinus albicans, Juniperus ashei, Pinus cembroides, Juglans major, Juniperus virginiana, Quercus buckleyi, Quercus fusiformis, Quercus laceyi, Quercus marilandica, Quercus muehlenbergii, Quercus sinuata var. breviloba, Quercus stellata, Sapindus Saponaria, Ulmus alata, Ulmus crassifolia, Ulmus rubra]
 
         List<KeyValue> ECOREGIONS_pattern0 = Arrays.asList(
             new KeyValue("ecoregion", "255")
@@ -7706,7 +7694,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         String level = "informal";
         String code = "";
 
-        // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division.………………………………………………………………………………………. Great Plains Ruderal Woodlands
+        // Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B ï¿½ needs to be refined for this Division.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. Great Plains Ruderal Woodlands
 
         List<KeyValue> RUDERAL_OR_EXOTIC_SPECIES_pattern0 = Arrays.asList(
             new KeyValue("exotic", "Y")
@@ -7757,7 +7745,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         String level = "division";
         String code = "D008";
 
-        // Tree composition not as above.  Eastern North American Forest & Woodland Division (D008)……………………………………………………………………………………………………………………..F2
+        // Tree composition not as above.  Eastern North American Forest & Woodland Division (D008)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½..F2
 
         INodeMatch match = plot -> (
             true
@@ -8305,7 +8293,7 @@ public class ClassificationKeyEast extends ClassificationKey {
         // Tree composition dominated by one or more of the following:
         //   i Tree composition dominated by one or more of STRONG DRY DIAGNOSTICS Picea mariana, Pinus banksiana, Pinus resinosa, Pinus strobus (=>50% RIV);
         // OR
-        //      ii. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp.,, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus alba, Quercus ellipsoidalis, Quercus rubra (together =>50% RIV)…..Laurentian Dry Forest & Woodland (M159)
+        //      ii. Tree composition as above, but with =>20% RIV, AND other species are any combination of MODERATE DRY DIAGNOSTICS of Amelanchier spp.,, Betula papyrifera, Carpinus caroliniana, Ostrya virginiana, Populus grandidentata, Populus tremuloides, Prunus pensylvanica, Prunus serotina, Quercus alba, Quercus ellipsoidalis, Quercus rubra (together =>50% RIV)ï¿½..Laurentian Dry Forest & Woodland (M159)
 
         List<KeyValue> STRONG_DRY_DIAGNOSTICS_pattern0 = Arrays.asList(
             new KeyValue("species", "Picea mariana")
