@@ -2889,14 +2889,9 @@ def element_085():
 
     # Vegetation dominated by ruderal vegetation (nonnative invasive or weedy native vegetation that invades natural stands or vegetation that dominates on formerly cleared and/or planted sites but which has been allowed to succeed more-or-less spontaneously). Tree composition dominated by ruderal native or exotic species (>= 80% RIV) (see Appendix B – needs to be refined for this Division).
 
-    RUDERAL_EXOTIC = PatternList('RUDERAL_EXOTIC',
-        {'exotic': 'Y'},
-        {'ruderal': 'Y'}
-    )
-
     def match(plot):
         logging.debug('%s|NODE=085|Eastern Boreal Ruderal Wetland Forests', plot.ident)
-        result = (plot.riv(RUDERAL_EXOTIC))
+        result = (True)
         logging.debug('%s|RESULT|%s', plot.ident, result)
         return result
     return level, code, match
